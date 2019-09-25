@@ -10,13 +10,14 @@ While these objects give you a simple way to get started, they also allow you to
 
 ## How to compile/install this project
 
-Before you start make shure you installed cmake, make, gcc ang g++
+Before you start make shure you installed cmake, make, gcc ang g++ (`sudo apt install cmake make gcc g++`).
+Note that while it should work on Windows and Mac I don't actively support those platforms.
 
 * Clone the repo with --recursive flag
-* Download and install GLFW for your operating system
+* Download and install GLFW and GLM for your operating system (on Ubuntu: `sudo apt install libglfw3-dev libglfw3 libxcursor-dev libglm-dev libpthread-stubs0-dev libxi-dev libxxf86vm-dev libx11-xcb-dev libxau-dev libxdmcp-dev libx11-dev libxinerama-dev libglu1-mesa-dev libxrandr-dev`)
 * Create a build folder
 * Change into that folder
-* Run cmake .
+* Run cmake ..
 * Run make
 * enjoy (you can run the main.out)
 

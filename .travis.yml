@@ -113,6 +113,8 @@ jobs:
           - build
       env: ISOLATED=true
 
+matrix:
+  fast_finish: true
   allow_failures:
     -
       os: windows
