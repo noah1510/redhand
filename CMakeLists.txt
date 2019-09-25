@@ -7,7 +7,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/../include/)
 
 SET(GCC_COVERAGE_COMPILE_FLAGS "-std=c++17 -g -O0")
 SET(GC_COVERAGE_COMPILE_FLAGS "-g -O0")
-SET(GCC_COVERAGE_LINK_FLAGS "-lm -lGL -lglfw -lpthread -lX11 -ldl -lXcursor")
+SET(GCC_COVERAGE_LINK_FLAGS "-lm -lGL -lglfw -lpthread -lX11 -lXcursor -ldl -lXi -lXxf86vm")
 
 
 SET(GCC_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")

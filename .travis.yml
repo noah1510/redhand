@@ -1,6 +1,7 @@
 language: cpp
 
 matrix:
+  fast_finish: true
   include:
     - os: linux
       dist: bionic
@@ -22,6 +23,11 @@ matrix:
       compiler: gcc
       name: windows-gcc
 
+  allow_failures:
+    - os: windows
+      compiler: gcc
+      name: windows-gcc
+
 addons:
   apt:
     packages:
@@ -29,8 +35,12 @@ addons:
       - libglfw3 
       - libxcursor-dev 
       - libglm-dev
+      - libpthread-stubs0-dev
+      - libxi-dev
+      - libxxf86vm-dev 
 
-install: skip
+install: 
+  - if [ $TRAVIS_OS_NAME = windows ]; then choco install glfw3; fi;
 
 before_script:
   - git clone https://github.com/nothings/stb.git include/stb
