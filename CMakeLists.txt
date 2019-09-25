@@ -32,3 +32,4 @@ add_executable(main.out src/glad.c
                         src/main.cpp)
 
 target_link_libraries(main.out glfw)
+target_link_libraries(main.out dl)
