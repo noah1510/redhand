@@ -7,12 +7,13 @@ compiler:
   - clang
 
 before_script:
-  - sudo apt-get install libglfw3-dev libglfw3 -y
+  - sudo apt-get install libglfw3-dev libglfw3 libglm-dev -y
+  - git clone https://github.com/nothings/stb.git include/stb
 
 script:
   - mkdir build && cd build
   - cmake ..
-  - make
+  - make -j2
 
 deploy:
   provider: releases
