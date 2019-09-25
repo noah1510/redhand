@@ -7,26 +7,32 @@ matrix:
       dist: bionic
       compiler: gcc
       name: bionic-gcc
+      env: ISOLATED=true
     - os: linux
       dist: xenial
       compiler: gcc
       name: xenial-gcc
+      env: ISOLATED=true
     - os: linux
       dist: bionic
       compiler: clang
       name: bionic-clang
+      env: ISOLATED=true
     - os: linux
       dist: xenial
       compiler: clang
       name: xenial-clang
+      env: ISOLATED=true
     - os: windows
       compiler: gcc
       name: windows-gcc
+      env: ISOLATED=true
 
   allow_failures:
     - os: windows
       compiler: gcc
       name: windows-gcc
+      env: ISOLATED=true
 
 addons:
   apt:
