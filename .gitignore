@@ -1,3 +1,5 @@
 .vscode
 build
 textures
+
+include/stb
