@@ -1,2 +1,2 @@
 [submodule "include/stb"]
-	url = https://github.com/nothings/stb.git
+	url = git@github.com:nothings/stb.git
