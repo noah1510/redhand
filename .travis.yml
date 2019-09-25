@@ -1,36 +1,114 @@
 language: cpp
 
-matrix:
-  fast_finish: true
+jobs:
   include:
-    - stage: test
+    - stage: should work
       os: linux
       dist: bionic
       compiler: gcc
       name: bionic-gcc
-      env: ISOLATED=true
-    - 
-      os: linux
-      dist: xenial
-      compiler: gcc
-      name: xenial-gcc
+      addons:
+        apt:
+          packages:
+            - libglfw3-dev 
+            - libglfw3 
+            - libxcursor-dev 
+            - libglm-dev
+            - libpthread-stubs0-dev
+            - libxi-dev
+            - libxxf86vm-dev 
+            - libx11-xcb-dev
+            - libxau-dev
+            - libxdmcp-dev
+            - libx11-dev
+            - libxinerama-dev
+            - libglu1-mesa-dev
+            - libxrandr-dev
+      script: .Travis/build_linux.sh
+      cache:
+        directories:
+          - build
       env: ISOLATED=true
     - 
       os: linux
       dist: bionic
       compiler: clang
       name: bionic-clang
+      addons:
+        apt:
+          packages:
+            - libglfw3-dev 
+            - libglfw3 
+            - libxcursor-dev 
+            - libglm-dev
+            - libpthread-stubs0-dev
+            - libxi-dev
+            - libxxf86vm-dev 
+            - libx11-xcb-dev
+            - libxau-dev
+            - libxdmcp-dev
+            - libx11-dev
+            - libxinerama-dev
+            - libglu1-mesa-dev
+            - libxrandr-dev
+      script: .Travis/build_linux.sh
+      cache:
+        directories:
+          - build
+      env: ISOLATED=true
+    - 
+      os: linux
+      dist: xenial
+      compiler: gcc
+      name: xenial-gcc
+      addons:
+        apt:
+          packages:
+            - libglfw3-dev 
+            - libglfw3 
+            - libxcursor-dev 
+            - libglm-dev
+            - libpthread-stubs0-dev
+            - libxi-dev
+            - libxxf86vm-dev 
+            - libx11-xcb-dev
+            - libxau-dev
+            - libxdmcp-dev
+            - libx11-dev
+            - libxinerama-dev
+            - libglu1-mesa-dev
+            - libxrandr-dev
+      script: .Travis/build_linux.sh
+      cache:
+        directories:
+          - build
       env: ISOLATED=true
     - 
       os: linux
       dist: xenial
       compiler: clang
       name: xenial-clang
-      env: ISOLATED=true
-    - stage: experimental
-      os: windows
-      compiler: gcc
-      name: windows-gcc
+      addons:
+        apt:
+          packages:
+            - libglfw3-dev 
+            - libglfw3 
+            - libxcursor-dev 
+            - libglm-dev
+            - libpthread-stubs0-dev
+            - libxi-dev
+            - libxxf86vm-dev 
+            - libx11-xcb-dev
+            - libxau-dev
+            - libxdmcp-dev
+            - libx11-dev
+            - libxinerama-dev
+            - libglu1-mesa-dev
+            - libxrandr-dev
+      script: .Travis/build_linux.sh
+      cache:
+        directories:
+          - build
       env: ISOLATED=true
 
   allow_failures:
@@ -38,41 +116,14 @@ matrix:
       os: windows
       compiler: gcc
       name: windows-gcc
+      script: .Travis/build_windows.sh
+      cache:
+        directories:
+          - build
       env: ISOLATED=true
 
-addons:
-  apt:
-    packages:
-      - libglfw3-dev 
-      - libglfw3 
-      - libxcursor-dev 
-      - libglm-dev
-      - libpthread-stubs0-dev
-      - libxi-dev
-      - libxxf86vm-dev 
-      - libx11-xcb-dev
-      - libxau-dev
-      - libxdmcp-dev
-      - libx11-dev
-      - libxinerama-dev
-      - libglu1-mesa-dev
-      - libxrandr-dev
 
-install: 
-  - if [ $TRAVIS_OS_NAME = windows ]; then choco install glfw3; fi;
-
-before_script:
-  - git clone https://github.com/nothings/stb.git include/stb
-
-script:
-  - mkdir -p build 
-  - cd build
-  - cmake ..
-  - make -j2
-
-cache:
-  directories:
-    - build
+install: skip
 
 deploy:
   provider: releases
