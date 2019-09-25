@@ -14,7 +14,6 @@ Before you start make shure you installed cmake, make, gcc ang g++
 
 * Clone the repo with --recursive flag
 * Download and install GLFW for your operating system
-* Update the IncludePath in the CMakeLists.txt
 * Create a build folder
 * Change into that folder
 * Run cmake .
