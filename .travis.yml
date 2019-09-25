@@ -24,7 +24,7 @@ jobs:
             - libxinerama-dev
             - libglu1-mesa-dev
             - libxrandr-dev
-      script: .Travis/build_linux.sh
+      script: bash .Travis/build_linux.sh
       cache:
         directories:
           - build
@@ -51,7 +51,7 @@ jobs:
             - libxinerama-dev
             - libglu1-mesa-dev
             - libxrandr-dev
-      script: .Travis/build_linux.sh
+      script: bash .Travis/build_linux.sh
       cache:
         directories:
           - build
@@ -78,7 +78,7 @@ jobs:
             - libxinerama-dev
             - libglu1-mesa-dev
             - libxrandr-dev
-      script: .Travis/build_linux.sh
+      script: bash .Travis/build_linux.sh
       cache:
         directories:
           - build
@@ -105,18 +105,18 @@ jobs:
             - libxinerama-dev
             - libglu1-mesa-dev
             - libxrandr-dev
-      script: .Travis/build_linux.sh
+      script: bash .Travis/build_linux.sh
       cache:
         directories:
           - build
       env: ISOLATED=true
 
   allow_failures:
-    - stage: experimental
+    -
       os: windows
       compiler: gcc
       name: windows-gcc
-      script: .Travis/build_windows.sh
+      script: bash .Travis/build_windows.sh
       cache:
         directories:
           - build
