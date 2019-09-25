@@ -44,6 +44,11 @@ addons:
       - libpthread-stubs0-dev
       - libxi-dev
       - libxxf86vm-dev 
+      - libx11-xcb-dev
+      - libxau-dev
+      - libxdmcp-dev
+      - libx11-dev
+      - libxinerama-dev
 
 install: 
   - if [ $TRAVIS_OS_NAME = windows ]; then choco install glfw3; fi;
