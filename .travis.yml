@@ -4,33 +4,38 @@ matrix:
   fast_finish: true
   include:
     - stage: test
-    - os: linux
+      os: linux
       dist: bionic
       compiler: gcc
       name: bionic-gcc
       env: ISOLATED=true
-    - os: linux
+    - 
+      os: linux
       dist: xenial
       compiler: gcc
       name: xenial-gcc
       env: ISOLATED=true
-    - os: linux
+    - 
+      os: linux
       dist: bionic
       compiler: clang
       name: bionic-clang
       env: ISOLATED=true
-    - os: linux
+    - 
+      os: linux
       dist: xenial
       compiler: clang
       name: xenial-clang
       env: ISOLATED=true
-    - os: windows
+    - stage: experimental
+      os: windows
       compiler: gcc
       name: windows-gcc
       env: ISOLATED=true
 
   allow_failures:
-    - os: windows
+    - stage: experimental
+      os: windows
       compiler: gcc
       name: windows-gcc
       env: ISOLATED=true
