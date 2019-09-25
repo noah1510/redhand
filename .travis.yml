@@ -3,6 +3,7 @@ language: cpp
 matrix:
   fast_finish: true
   include:
+    - stage: test
     - os: linux
       dist: bionic
       compiler: gcc
@@ -49,6 +50,8 @@ addons:
       - libxdmcp-dev
       - libx11-dev
       - libxinerama-dev
+      - libglu1-mesa-dev
+      - libxrandr-dev
 
 install: 
   - if [ $TRAVIS_OS_NAME = windows ]; then choco install glfw3; fi;
