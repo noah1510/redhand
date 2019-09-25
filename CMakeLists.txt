@@ -3,7 +3,7 @@ set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 
 project("Greenfoot++")
 
-include_directories(include/)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/../include/)
 
 SET(GCC_COVERAGE_COMPILE_FLAGS "-std=c++17 -g -O0")
 SET(GC_COVERAGE_COMPILE_FLAGS "-g -O0")
