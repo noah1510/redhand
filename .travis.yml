@@ -1,5 +1,7 @@
 language: cpp
 
+cache: ccache
+
 jobs:
   include:
     - stage: should work
@@ -29,7 +31,7 @@ jobs:
         directories:
           - build
       env: ISOLATED=true
-    - 
+    - stage: should work
       os: linux
       dist: bionic
       compiler: clang
@@ -56,7 +58,7 @@ jobs:
         directories:
           - build
       env: ISOLATED=true
-    - 
+    - stage: should work
       os: linux
       dist: xenial
       compiler: gcc
@@ -83,7 +85,7 @@ jobs:
         directories:
           - build
       env: ISOLATED=true
-    - 
+    - stage: should work
       os: linux
       dist: xenial
       compiler: clang
