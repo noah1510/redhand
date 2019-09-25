@@ -4,13 +4,23 @@ matrix:
   include:
     - os: linux
       dist: bionic
+      compiler: gcc
+      name: bionic-gcc
     - os: linux
       dist: xenial
+      compiler: gcc
+      name: xenial-gcc
+    - os: linux
+      dist: bionic
+      compiler: clang
+      name: bionic-clang
+    - os: linux
+      dist: xenial
+      compiler: clang
+      name: xenial-clang
     - os: windows
-
-compiler:
-  - gcc
-  - clang
+      compiler: gcc
+      name: windows-gcc
 
 addons:
   apt:
