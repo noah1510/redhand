@@ -1,0 +1,19 @@
+language: cpp
+
+compiler:
+  - clang
+  - gcc
+
+script:
+  - mkdir build && cd build
+  - cmake .
+  - make
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_OAUTH_TOKEN
+  file: build/main.out
+  file_glob: true
+  skip_cleanup: true
+  on:
+    tags: true
