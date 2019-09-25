@@ -3,7 +3,9 @@ language: cpp
 matrix:
   include:
     - os: linux
-      dist: trusty
+      dist: bionic
+    - os: linux
+      dist: xenial
     - os: windows
 
 compiler:
@@ -24,7 +26,8 @@ before_script:
   - git clone https://github.com/nothings/stb.git include/stb
 
 script:
-  - mkdir build && cd build
+  - mkdir -p build 
+  - cd build
   - cmake ..
   - make -j2
 
