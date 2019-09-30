@@ -1,13 +1,5 @@
 #include "objects.hpp"
 
-#include <cmath>
-#include <iostream>
-#include <vector>
-#include <array>
-
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 object::object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,

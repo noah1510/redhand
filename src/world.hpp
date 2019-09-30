@@ -1,8 +1,8 @@
 #pragma once
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <gitglm/glm/glm.hpp>
+#include <gitglm/glm/gtc/matrix_transform.hpp>
+#include <gitglm/glm/gtc/type_ptr.hpp>
 
 #include <vector>
 

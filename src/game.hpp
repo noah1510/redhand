@@ -1,10 +1,6 @@
 #pragma once
-#include <vector>
 
 #include "world.hpp"
-
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 int game_init(
     world* startWorld

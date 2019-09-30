@@ -1,13 +1,5 @@
 #include "shader.hpp"
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-
 shader::shader(const char* vertexPath, const char* fragmentPath){
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;

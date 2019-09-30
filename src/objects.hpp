@@ -2,6 +2,8 @@
 #include "shader.hpp"
 #include "texture.hpp"
 
+#include <cmath>
+#include <iostream>
 #include <vector>
 #include <functional>
 

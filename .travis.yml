@@ -15,7 +15,6 @@ matrix:
             - libglfw3-dev 
             - libglfw3 
             - libxcursor-dev 
-            - libglm-dev
             - libpthread-stubs0-dev
             - libxi-dev
             - libxxf86vm-dev 
@@ -42,7 +41,6 @@ matrix:
             - libglfw3-dev 
             - libglfw3 
             - libxcursor-dev 
-            - libglm-dev
             - libpthread-stubs0-dev
             - libxi-dev
             - libxxf86vm-dev 
@@ -69,7 +67,6 @@ matrix:
             - libglfw3-dev 
             - libglfw3 
             - libxcursor-dev 
-            - libglm-dev
             - libpthread-stubs0-dev
             - libxi-dev
             - libxxf86vm-dev 
@@ -96,7 +93,6 @@ matrix:
             - libglfw3-dev 
             - libglfw3 
             - libxcursor-dev 
-            - libglm-dev
             - libpthread-stubs0-dev
             - libxi-dev
             - libxxf86vm-dev 
