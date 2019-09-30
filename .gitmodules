@@ -1,2 +1,5 @@
 [submodule "include/stb"]
 	url = git://github.com/nothings/stb.git
+[submodule "include/gitglm"]
+	path = include/gitglm
+	url = https://github.com/g-truc/glm
