@@ -105,7 +105,7 @@ matrix:
         directories:
           - build
       env: ISOLATED=true
-    - stage: experimental
+    - stage: should work
       os: windows
       compiler: gcc
       name: windows-gcc
@@ -122,6 +122,7 @@ deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_TOKEN
   file: build/main.out
+        build/main.exe
   file_glob: true
   skip_cleanup: true
   on:

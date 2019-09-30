@@ -8,6 +8,14 @@ project("Greenfoot++")
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../include/)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../lib/)
 
+if (UNIX)
+    SET(OUTPUT "main.out")
+endif (UNIX)
+
+if (WIN32)
+    SET(OUTPUT "main.exe")
+endif (WIN32)
+
 find_program(CCACHE_FOUND ccache)
 if(CCACHE_FOUND)
     set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
@@ -29,7 +37,7 @@ SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS
 
 find_package(OpenGL REQUIRED)
 
-add_executable(main.out src/glad.c
+add_executable(${OUTPUT} src/glad.c
                         src/shader.cpp
                         src/texture.cpp
                         src/objects.cpp
@@ -38,11 +46,11 @@ add_executable(main.out src/glad.c
                         src/main.cpp)
 
 if (UNIX)
-    target_link_libraries(main.out libglfw.so)
+    target_link_libraries(${OUTPUT} libglfw.so)
 endif (UNIX)
 
 if (WIN32)
-    target_link_libraries(main.out glfw3dll.lib)
+    target_link_libraries(${OUTPUT} glfw3.dll)
 endif (WIN32)
 
-target_link_libraries(main.out dl)
+target_link_libraries(${OUTPUT} dl)

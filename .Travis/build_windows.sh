@@ -1,16 +1,14 @@
 #!/bin/bash
 
-mingw-get install msys-make
-
 cd "dependencies/glfw"
 mkdir -p "out"
 cd "out"
-cmake -DCMAKE_VERBOSE_MAKEFILE=ON ..
+cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DBUILD_SHARED_LIBS=ON ..
 cmake --build .
 ls -a
 cd "../../.."
 mkdir -p "lib"
-cp "dependencies/glfw/out/src/glfw3dll.lib" "lib"
+cp "dependencies/glfw/out/src/glfw3.dll" "lib"
 
 mkdir -p "build" 
 cd "build"

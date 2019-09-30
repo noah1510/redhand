@@ -3,7 +3,7 @@
 cd "dependencies/glfw"
 mkdir -p "out"
 cd "out"
-cmake -BUILD_SHARED_LIBS=ON ..
+cmake -DBUILD_SHARED_LIBS=ON ..
 cmake --build .
 cd "../../.."
 mkdir -p "lib"
