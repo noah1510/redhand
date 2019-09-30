@@ -9,7 +9,7 @@ make install
 cd "../.."
 
 cd "include/glfw"
-cmake -G "MinGW Makefiles" -DBUILD_SHARED_LIBS=ON .
+cmake -G "MSYS Makefiles" -DBUILD_SHARED_LIBS=ON .
 make -j2
 cd "../.."
 

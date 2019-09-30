@@ -6,6 +6,7 @@ cmake_policy(VERSION 3.12)
 project("Greenfoot++")
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../include/)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../lib)
 
 find_program(CCACHE_FOUND ccache)
 if(CCACHE_FOUND)
@@ -15,7 +16,7 @@ endif(CCACHE_FOUND)
 
 SET(GCC_COVERAGE_COMPILE_FLAGS "-std=c++17 -g -O0")
 SET(GC_COVERAGE_COMPILE_FLAGS "-g -O0")
-SET(GCC_COVERAGE_LINK_FLAGS "-lglfw -pthread -ldl -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
+SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
 
 
 SET(GCC_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
@@ -37,5 +38,5 @@ add_executable(main.out src/glad.c
                         src/world.cpp
                         src/main.cpp)
 
-target_link_libraries(main.out glfw)
+target_link_libraries(main.out libglfw.so)
 target_link_libraries(main.out dl)

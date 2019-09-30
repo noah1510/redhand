@@ -1,9 +1,13 @@
 #!/bin/bash
 
 cd "dependencies/glfw"
-cmake -DBUILD_SHARED_LIBS=ON .
+mkdir "out"
+cd "out"
+cmake -DBUILD_SHARED_LIBS=ON ..
 make -j2
-cd "../.."
+cd "../../.."
+mkdir "lib"
+cp "dependencies/glfw/out/src/libglfw.so" "lib"
 
 mkdir -p "build"
 cd "build"
