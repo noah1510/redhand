@@ -113,16 +113,6 @@ matrix:
       cache:
         directories:
           - build
-      env: ISOLATED=true 
-  allow_failures:
-    - stage: experimental
-      os: windows
-      compiler: gcc
-      name: windows-gcc
-      script: bash .Travis/build_windows.sh
-      cache:
-        directories:
-          - build
       env: ISOLATED=true
 
 

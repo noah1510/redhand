@@ -6,7 +6,7 @@ cmake_policy(VERSION 3.12)
 project("Greenfoot++")
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../include/)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../lib)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../lib/)
 
 find_program(CCACHE_FOUND ccache)
 if(CCACHE_FOUND)
@@ -37,5 +37,12 @@ add_executable(main.out src/glad.c
                         src/world.cpp
                         src/main.cpp)
 
-target_link_libraries(main.out libglfw.so)
+if (UNIX)
+    target_link_libraries(main.out libglfw.so)
+endif (UNIX)
+
+if (WIN32)
+    target_link_libraries(main.out glfw3dll.lib)
+endif (WIN32)
+
 target_link_libraries(main.out dl)
