@@ -7,12 +7,13 @@
 #include <GLFW/glfw3.h>
 
 int game_init(
-    std::vector<world*>* worlds
+    world* startWorld
 );
 
 int game_loop(
     GLFWwindow* window,
-    world* activeWorld
+    world* activeWorld,
+    world* nextWorld
 );
 
 int createTestworld(world* testWorld);

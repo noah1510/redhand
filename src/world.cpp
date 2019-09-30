@@ -7,13 +7,39 @@ world::world(){
 }
 
 world::~world(){
-    try{ 
-        WorldShaders.clear();
-        WorldTextures.clear();
+    //delete objects
+    try{
+        for(int i = 0;i < WorldObjects.size();i++){
+            delete WorldObjects.at(i);
+        }
         WorldObjects.clear();
-    }catch(std::exception e){
-        std::cout << e.what() << std::endl;
     }
+    catch(const std::exception& e){
+        std::cout << e.what() << '\n';
+    }
+
+    //delte textures
+    try{
+        for(int i = 0;i < WorldTextures.size();i++){
+            delete WorldTextures.at(i);
+        }
+        WorldTextures.clear();
+    }
+    catch(const std::exception& e){
+        std::cout << e.what() << '\n';
+    }
+
+    //delete shaders
+    try{
+        for(int i = 0;i < WorldShaders.size();i++){
+            delete WorldShaders.at(i);
+        }
+        WorldShaders.clear();
+    }
+    catch(const std::exception& e){
+        std::cout << e.what() << '\n';
+    }
+    
     
 }
 
@@ -72,6 +98,48 @@ int world::addObject(object* obj){
     }else{
         return -1;
     }
+}
+
+int world::removeShader(int i){
+    shader* shade = WorldShaders.at(i);
+    WorldShaders.erase(WorldShaders.begin() + i);
+    try{
+        delete shade;
+    }
+    catch(const std::exception& e){
+        std::cout << e.what() << '\n';
+        return -1;
+    }
+
+    return 0;
+}
+
+int world::removeTexture(int i){
+    texture2D* tex = WorldTextures.at(i);
+    WorldTextures.erase(WorldTextures.begin() + i);
+    try{
+        delete tex;
+    }
+    catch(const std::exception& e){
+        std::cout << e.what() << '\n';
+        return -1;
+    }
+
+    return 0;
+}
+
+int world::removeObject(int i){
+    object* obj = WorldObjects.at(i);
+    WorldObjects.erase(WorldObjects.begin() + i);
+    try{
+        delete obj;
+    }
+    catch(const std::exception& e){
+        std::cout << e.what() << '\n';
+        return -1;
+    }
+
+    return 0;
 }
 
 shader* world::getShader(int i){

@@ -2,7 +2,7 @@ language: cpp
 
 cache: ccache
 
-jobs:
+matrix:
   include:
     - stage: should work
       os: linux
@@ -112,11 +112,19 @@ jobs:
         directories:
           - build
       env: ISOLATED=true
-
-matrix:
+    - stage: experimental
+      os: windows
+      compiler: gcc
+      name: windows-gcc
+      script: bash .Travis/build_windows.sh
+      cache:
+        directories:
+          - build
+      env: ISOLATED=true
+      
   fast_finish: true
   allow_failures:
-    -
+    - stage: experimental
       os: windows
       compiler: gcc
       name: windows-gcc

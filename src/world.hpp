@@ -22,6 +22,10 @@ public:
     int addTexture(texture2D*);
     int addObject(object*);
 
+    int removeShader(int);
+    int removeTexture(int);
+    int removeObject(int);
+
     shader* getShader(int);
     texture2D* getTexture(int);
     object* getObject(int);

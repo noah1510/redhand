@@ -52,17 +52,15 @@ int main(){
     }
 
     //Create Vector containing all the worlds
-    std::vector<world*> worlds;
-    exitCode = game_init(&worlds);
-    if(exitCode < 0){glfwSetWindowShouldClose(window, true);};
-
-    world* activeWorld;
-    try{
-        activeWorld = worlds.at(exitCode);
-    }
-    catch(const std::exception& e){
-        std::cerr << e.what() << '\n';
+    world* activeWorld = new world();
+    exitCode = game_init(activeWorld);
+    if(exitCode < 0){
         glfwSetWindowShouldClose(window, true);
+        exitCode = -3;
+    };
+    if(activeWorld == nullptr){
+        glfwSetWindowShouldClose(window, true);
+        exitCode = -4;
     }
 
     //Clear up
@@ -72,20 +70,27 @@ int main(){
     //render loop
     while(!glfwWindowShouldClose(window)){
         //run the game loop
-        exitCode = game_loop(window, activeWorld);
+        world* nextWorld = nullptr;
+        exitCode = game_loop(window, activeWorld, nextWorld);
 
         //if egative return exit loop
         if(exitCode < 0){
             break;
         }
 
-        //try setting next World
-        try{
-            activeWorld = worlds.at(exitCode);
-        }
-        catch(const std::exception& e){
-            std::cerr << e.what() << '\n';
-            break;
+        //if !nullptr change world
+        if(nextWorld != nullptr){
+
+            try{
+                delete activeWorld;
+            }
+            catch(const std::exception& e){
+                std::cout << e.what() << '\n';
+                exitCode = -6;
+                break;
+            }
+            activeWorld = nextWorld;
+            
         }
         
     }
@@ -94,7 +99,7 @@ int main(){
 
     //try clearing up
     try{
-        worlds.clear();
+        delete activeWorld;
     }
     catch(const std::exception& e){
         std::cerr << e.what() << '\n';

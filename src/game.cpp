@@ -1,22 +1,13 @@
 #include "game.hpp"
 
 int game_init(
-    std::vector<world*>* worlds
+    world* startWorld
 ){
     int exitCode = 0;
 
-    world* testWorld = new world();
-    exitCode = createTestworld(testWorld);
+    exitCode = createTestworld(startWorld);
     if(exitCode < 0){
         return exitCode;
-    }
-
-    try{
-        worlds->emplace_back(testWorld);
-    }
-    catch(const std::exception& e){
-        std::cerr << e.what() << '\n';
-        return -4;
     }
 
     return 0;   
@@ -24,7 +15,8 @@ int game_init(
 
 int game_loop(
     GLFWwindow* window,
-    world* activeWorld
+    world* activeWorld,
+    world* nextWorld
 ){
     //process the input
     processGlobalInput(window);
@@ -39,6 +31,8 @@ int game_loop(
     //Update the window buffers
     glfwSwapBuffers(window);
     glfwPollEvents(); 
+
+    nextWorld = nullptr;
 
     return 0;
 
