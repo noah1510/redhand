@@ -13,8 +13,6 @@ matrix:
       addons:
         apt:
           packages:
-            - libglfw3-dev 
-            - libglfw3 
             - libxcursor-dev 
             - libpthread-stubs0-dev
             - libxi-dev
@@ -26,6 +24,7 @@ matrix:
             - libxinerama-dev
             - libglu1-mesa-dev
             - libxrandr-dev
+            - xorg-dev
       script: bash .Travis/build_linux.sh
       cache:
         directories:
@@ -39,8 +38,6 @@ matrix:
       addons:
         apt:
           packages:
-            - libglfw3-dev 
-            - libglfw3 
             - libxcursor-dev 
             - libpthread-stubs0-dev
             - libxi-dev
@@ -52,6 +49,7 @@ matrix:
             - libxinerama-dev
             - libglu1-mesa-dev
             - libxrandr-dev
+            - xorg-dev
       script: bash .Travis/build_linux.sh
       cache:
         directories:
@@ -65,8 +63,6 @@ matrix:
       addons:
         apt:
           packages:
-            - libglfw3-dev 
-            - libglfw3 
             - libxcursor-dev 
             - libpthread-stubs0-dev
             - libxi-dev
@@ -78,6 +74,7 @@ matrix:
             - libxinerama-dev
             - libglu1-mesa-dev
             - libxrandr-dev
+            - xorg-dev
       script: bash .Travis/build_linux.sh
       cache:
         directories:
@@ -91,8 +88,6 @@ matrix:
       addons:
         apt:
           packages:
-            - libglfw3-dev 
-            - libglfw3 
             - libxcursor-dev 
             - libpthread-stubs0-dev
             - libxi-dev
@@ -104,6 +99,7 @@ matrix:
             - libxinerama-dev
             - libglu1-mesa-dev
             - libxrandr-dev
+            - xorg-dev
       script: bash .Travis/build_linux.sh
       cache:
         directories:

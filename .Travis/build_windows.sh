@@ -1,16 +1,15 @@
 #!/bin/bash
-git clone https://github.com/glfw/glfw.git include/glfw
 
 cd "dependencies/doxygen"
 mkdir "build"
 cd "build"
-cmake -G "Unix Makefiles" ..
+cmake -G "MinGW Makefiles" ..
 make
 make install
 cd "../.."
 
 cd "include/glfw"
-cmake .
+cmake -G "MinGW Makefiles" -DBUILD_SHARED_LIBS=ON .
 make -j2
 cd "../.."
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include <gitGLFW/glfw3.h>
 
 #include <iostream>
 
