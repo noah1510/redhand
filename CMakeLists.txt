@@ -28,7 +28,6 @@ SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} ${GC_COVERAGE_COMPILE_FLAGS}")
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
 find_package(OpenGL REQUIRED)
-find_package(glfw3 REQUIRED)
 
 add_executable(main.out src/glad.c
                         src/shader.cpp

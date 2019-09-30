@@ -1,17 +1,13 @@
 #!/bin/bash
 
-cd "dependencies/doxygen"
-mkdir "build"
-cd "build"
-cmake -G "MinGW Makefiles" ..
-make
-make install
-cd "../.."
-
-cd "include/glfw"
-cmake -G "MSYS Makefiles" -DBUILD_SHARED_LIBS=ON .
+cd "dependencies/glfw"
+mkdir "out"
+cd "out"
+cmake -DBUILD_SHARED_LIBS=ON ..
 make -j2
-cd "../.."
+cd "../../.."
+mkdir "lib"
+cp "dependencies/glfw/out/src/libglfw.so" "lib"
 
 mkdir -p "build" 
 cd "build"
