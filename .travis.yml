@@ -3,6 +3,7 @@ language: cpp
 cache: ccache
 
 matrix:
+  fast_finish: true
   include:
     - stage: should work
       os: linux
@@ -116,9 +117,7 @@ matrix:
       cache:
         directories:
           - build
-      env: ISOLATED=true
-      
-  fast_finish: true
+      env: ISOLATED=true 
   allow_failures:
     - stage: experimental
       os: windows

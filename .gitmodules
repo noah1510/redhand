@@ -4,3 +4,6 @@
 [submodule "include/stb"]
 	path = include/stb
 	url = https://github.com/nothings/stb.git
+[submodule "dependencies/doxygen"]
+	path = dependencies/doxygen
+	url = https://github.com/doxygen/doxygen.git
