@@ -1,7 +1,5 @@
 language: cpp
 
-cache: ccache
-
 stages:
   - should work
   - deploy
@@ -30,9 +28,6 @@ matrix:
             - libxrandr-dev
             - xorg-dev
       script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
-      cache:
-        directories:
-          - build
       env: ISOLATED=true
     - stage: should work
       os: linux
@@ -55,9 +50,6 @@ matrix:
             - libxrandr-dev
             - xorg-dev
       script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
-      cache:
-        directories:
-          - build
       env: ISOLATED=true
     - stage: should work
       os: linux
@@ -80,9 +72,6 @@ matrix:
             - libxrandr-dev
             - xorg-dev
       script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
-      cache:
-        directories:
-          - build
       env: ISOLATED=true
     - stage: should work
       os: linux
@@ -105,18 +94,12 @@ matrix:
             - libxrandr-dev
             - xorg-dev
       script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
-      cache:
-        directories:
-          - build
       env: ISOLATED=true
     - stage: should work
       os: windows
       compiler: gcc
       name: windows-gcc
       script: bash .Travis/build_windows.sh "${TRAVIS_JOB_NAME}"
-      cache:
-        directories:
-          - build
       env: ISOLATED=true
 
 
