@@ -13,7 +13,7 @@ matrix:
       os: linux
       dist: bionic
       compiler: gcc
-      name: ${TRAVIS_OS_NAME}-${TRAVIS_DIST}-${TRAVIS_COMPILER}
+      name: linux-bionic-gcc
       addons:
         apt:
           packages:
@@ -38,7 +38,7 @@ matrix:
       os: linux
       dist: bionic
       compiler: clang
-      name: ${TRAVIS_OS_NAME}-${TRAVIS_DIST}-${TRAVIS_COMPILER}
+      name: linux-bionic-clang
       addons:
         apt:
           packages:
@@ -63,7 +63,7 @@ matrix:
       os: linux
       dist: xenial
       compiler: gcc
-      name: ${TRAVIS_OS_NAME}-${TRAVIS_DIST}-${TRAVIS_COMPILER}
+      name: linux-xenial-gcc
       addons:
         apt:
           packages:
@@ -88,7 +88,7 @@ matrix:
       os: linux
       dist: xenial
       compiler: clang
-      name: ${TRAVIS_OS_NAME}-${TRAVIS_DIST}-${TRAVIS_COMPILER}
+      name: linux-xenial-clang
       addons:
         apt:
           packages:
@@ -112,7 +112,7 @@ matrix:
     - stage: should work
       os: windows
       compiler: gcc
-      name: ${TRAVIS_OS_NAME}-${TRAVIS_COMPILER}
+      name: windows-gcc
       script: bash .Travis/build_windows.sh "${TRAVIS_JOB_NAME}"
       cache:
         directories:
