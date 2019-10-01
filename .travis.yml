@@ -2,6 +2,10 @@ language: cpp
 
 cache: ccache
 
+stages:
+  - should work
+  - deploy
+
 matrix:
   fast_finish: true
   include:
@@ -9,7 +13,7 @@ matrix:
       os: linux
       dist: bionic
       compiler: gcc
-      name: bionic-gcc
+      name: ${TRAVIS_OS_NAME}-${TRAVIS_DIST}-${TRAVIS_COMPILER}
       addons:
         apt:
           packages:
@@ -25,7 +29,7 @@ matrix:
             - libglu1-mesa-dev
             - libxrandr-dev
             - xorg-dev
-      script: bash .Travis/build_linux.sh
+      script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
       cache:
         directories:
           - build
@@ -34,7 +38,7 @@ matrix:
       os: linux
       dist: bionic
       compiler: clang
-      name: bionic-clang
+      name: ${TRAVIS_OS_NAME}-${TRAVIS_DIST}-${TRAVIS_COMPILER}
       addons:
         apt:
           packages:
@@ -50,7 +54,7 @@ matrix:
             - libglu1-mesa-dev
             - libxrandr-dev
             - xorg-dev
-      script: bash .Travis/build_linux.sh
+      script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
       cache:
         directories:
           - build
@@ -59,7 +63,7 @@ matrix:
       os: linux
       dist: xenial
       compiler: gcc
-      name: xenial-gcc
+      name: ${TRAVIS_OS_NAME}-${TRAVIS_DIST}-${TRAVIS_COMPILER}
       addons:
         apt:
           packages:
@@ -75,7 +79,7 @@ matrix:
             - libglu1-mesa-dev
             - libxrandr-dev
             - xorg-dev
-      script: bash .Travis/build_linux.sh
+      script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
       cache:
         directories:
           - build
@@ -84,7 +88,7 @@ matrix:
       os: linux
       dist: xenial
       compiler: clang
-      name: xenial-clang
+      name: ${TRAVIS_OS_NAME}-${TRAVIS_DIST}-${TRAVIS_COMPILER}
       addons:
         apt:
           packages:
@@ -100,7 +104,7 @@ matrix:
             - libglu1-mesa-dev
             - libxrandr-dev
             - xorg-dev
-      script: bash .Travis/build_linux.sh
+      script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
       cache:
         directories:
           - build
@@ -108,8 +112,8 @@ matrix:
     - stage: should work
       os: windows
       compiler: gcc
-      name: windows-gcc
-      script: bash .Travis/build_windows.sh
+      name: ${TRAVIS_OS_NAME}-${TRAVIS_COMPILER}
+      script: bash .Travis/build_windows.sh "${TRAVIS_JOB_NAME}"
       cache:
         directories:
           - build
@@ -121,8 +125,7 @@ install: skip
 deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_TOKEN
-  file: build/main.out
-        build/main.exe
+  file: deploy/*
   file_glob: true
   skip_cleanup: true
   on:

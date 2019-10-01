@@ -3,5 +3,6 @@ build
 textures
 
 include/stb
-dependencies/glfw
+dependencies/glfw/out
 lib
+deploy

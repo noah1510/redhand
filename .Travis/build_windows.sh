@@ -1,22 +1,36 @@
 #!/bin/bash
 
+#parse parameter
+if [ $1 == "" ]
+then
+    OUTPUT="main"
+else 
+    OUTPUT="greenfoot++-$1"
+fi
+
+#compiling glfw
 cd "dependencies/glfw"
 mkdir -p "out"
 cd "out"
-cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DBUILD_SHARED_LIBS=ON ..
+cmake cmake -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DBUILD_SHARED_LIBS=ON  ..
 cmake --build .
-echo "--- contentes of win32 ---"
-ls -a "win32"
-echo "--- contentes of win32/Debug ---"
-ls -a "win32/Debug"
-echo "--- contentes of win32/Debug/ALL_BUILD ---"
-ls -a " win32/Debug/ALL_BUILD"
 cd "../../.."
+
+#copy results
 mkdir -p "lib"
-cp "dependencies/glfw/out/src/win32/Debug/ALL_BUILD/glfw3.dll" "lib"
-
 mkdir -p "build" 
-cd "build"
+mkdir -p "deploy"
+cp "dependencies/glfw/out/src/glfw3.dll" "lib"
+cp "dependencies/glfw/out/src/glfw3.dll" "build"
+cp "dependencies/glfw/out/src/glfw3.dll" "deploy"
+mv "deploy/glfw3.dll" "deploy/$1-glfw3.dll"
 
-cmake ..
+#build actual project
+cd "build"
+cmake -G "Unix Makefiles" -DOUTPUTFILE=$OUTPUT ..
 make -j2
+cd ".."
+
+#clean up
+cp "build/$OUTPUT.exe" "deploy"
+rm -r build

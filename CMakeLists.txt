@@ -8,12 +8,24 @@ project("Greenfoot++")
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../include/)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../lib/)
 
+option(OUTPUTFILE "Build shared libraries" main)
+
 if (UNIX)
-    SET(OUTPUT "main.out")
+    if (OUTPUTFILE)
+        SET(OUTPUT ${OUTPUTFILE})
+    else (OUTPUTFILE)
+        SET(OUTPUT "main.out")
+    endif (OUTPUTFILE)
+    SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
 endif (UNIX)
 
 if (WIN32)
-    SET(OUTPUT "main.exe")
+    if (OUTPUTFILE)
+        SET(OUTPUT ${OUTPUTFILE})
+    else (OUTPUTFILE)
+        SET(OUTPUT "main")
+    endif (OUTPUTFILE)
+    SET(GCC_COVERAGE_LINK_FLAGS "-pthread")
 endif (WIN32)
 
 find_program(CCACHE_FOUND ccache)
@@ -24,7 +36,7 @@ endif(CCACHE_FOUND)
 
 SET(GCC_COVERAGE_COMPILE_FLAGS "-std=c++17 -g -O0")
 SET(GC_COVERAGE_COMPILE_FLAGS "-g -O0")
-SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
+
 
 
 SET(GCC_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
@@ -47,10 +59,9 @@ add_executable(${OUTPUT} src/glad.c
 
 if (UNIX)
     target_link_libraries(${OUTPUT} libglfw.so)
+    target_link_libraries(${OUTPUT} dl)
 endif (UNIX)
 
 if (WIN32)
     target_link_libraries(${OUTPUT} glfw3.dll)
 endif (WIN32)
-
-target_link_libraries(${OUTPUT} dl)
