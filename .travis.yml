@@ -27,6 +27,7 @@ matrix:
             - libglu1-mesa-dev
             - libxrandr-dev
             - xorg-dev
+      install: skip
       script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
@@ -49,6 +50,7 @@ matrix:
             - libglu1-mesa-dev
             - libxrandr-dev
             - xorg-dev
+      install: skip
       script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
@@ -71,6 +73,7 @@ matrix:
             - libglu1-mesa-dev
             - libxrandr-dev
             - xorg-dev
+      install: skip
       script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
@@ -93,17 +96,21 @@ matrix:
             - libglu1-mesa-dev
             - libxrandr-dev
             - xorg-dev
+      install: skip
       script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
       os: windows
       compiler: gcc
       name: windows-gcc
+      install: 
+        - choco install mingw
+        - choco install make
       script: bash .Travis/build_windows.sh "${TRAVIS_JOB_NAME}" "gitbash"
       env: ISOLATED=true
 
 
-install: skip
+
 
 deploy:
   provider: releases
