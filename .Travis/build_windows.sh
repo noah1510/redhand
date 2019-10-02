@@ -7,11 +7,6 @@ then
 else 
     OUTPUT="greenfoot++-$1"
 fi
-if [ $2 == "gitbash" ]
-then
-	wget https://netix.dl.sourceforge.net/project/ezwinports/make-4.2.1-with-guile-w32-bin.zip
-	unzip -n make-4.2.1-with-guile-w32-bin.zip -d ../..
-fi
 
 #compiling glfw
 cd "dependencies/glfw"
