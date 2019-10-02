@@ -83,7 +83,6 @@ void object::draw(){
     shade->setInt("useTexture", 2);
     //bind texture and draw background
     if(textures.size() != 0){
-        
         for(int i = 0;i < textures.size();i++){
             textures[i]->bind(i);
         }
@@ -91,8 +90,19 @@ void object::draw(){
         shade->setInt("useTexture", 0);
     }
 
+    //Create World transformation matrix
+    glm::mat4 worldTrans = glm::mat4(1.0f);
+    worldTrans = glm::translate(worldTrans, glm::vec3(position[0],position[1],position[2]));
+    worldTrans = glm::rotate(worldTrans, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
+    worldTrans = glm::scale(worldTrans, glm::vec3(scale, scale, scale));
+
+    unsigned int transformLoc = glGetUniformLocation(shade->ID, "worldTransformation");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
+
+    //run the custom shader routine
     shader_routine(shade);
 
+    //actually draw the object
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices_size, GL_UNSIGNED_INT, 0);
 

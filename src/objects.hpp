@@ -7,6 +7,10 @@
 #include <vector>
 #include <functional>
 
+#include <gitglm/glm/glm.hpp>
+#include <gitglm/glm/gtc/matrix_transform.hpp>
+#include <gitglm/glm/gtc/type_ptr.hpp>
+
 #include <glad/glad.h>
 #include <gitGLFW/glfw3.h>
 
@@ -25,6 +29,11 @@ private:
     
     std::function<void(shader*)> shader_routine;
     std::function<void(GLFWwindow* window, object* obj)> LoopFunction;
+
+
+    std::vector<float> position;
+    float scale;
+    float rotation;
 
 public:
     object(
