@@ -68,11 +68,17 @@ int createTestworld(world* testWorld){
     }
 
     //Add textures to world
-    if(testWorld->addTexture(new texture2D("../textures/open/crate.png")) == -1){
+    if(testWorld->addTexture(
+        new texture2D(
+            "../textures/open/crate.png"
+        )) == -1){
         return -2;
     }
 
-    if(testWorld->addTexture(new texture2D("../textures/open/house.png")) == -1){
+    if(testWorld->addTexture(
+        new texture2D(
+            "../textures/open/house.png"
+        )) == -1){
         return -2;
     }
     
@@ -85,7 +91,7 @@ int createTestworld(world* testWorld){
         float bottomLeft[3] = {-1.0f, -1.0f, 0.0f};
         float colorTopRight[3] = {1.0f, 1.0f, 1.0f};
         float colorBottomLeft[3] = {0.0f, 0.0f, 0.0f};
-        float texTopRight[2] = {1.0f, 1.0f};
+        float texTopRight[2] = {10.0f, 10.0f};
         float texBottomLeft[2] = {0.0f, 0.0f};
         ret = testWorld->addObject(
             createColorTextureRectangle(
@@ -137,7 +143,7 @@ int createTestworld(world* testWorld){
         std::vector <float> trig_points = {0.0f,0.5f,0.0f, -0.25f,0.0f,0.0f, 0.25f,0.0f,0.0f};
         std::vector <unsigned int> trig_indicies = {0,1,2};
         std::vector <float> trig_colors = {1.0f,0.0f,0.0f, 0.0f,1.0f,0.0f, 0.0f,0.0f,1.0f};
-        std::vector <float> trig_texels = {0.5f,1.0f, 0.0f,0.0f, 1.0f,0.0f};
+        std::vector <float> trig_texels = {5.0f,10.0f, 0.0f,0.0f, 10.0f,0.0f};
         ret = testWorld->addObject(
             new object(
                 trig_points,

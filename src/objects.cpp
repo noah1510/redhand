@@ -143,11 +143,11 @@ object* createHouse(
         1.0f, 1.0f, 1.0f };
 
     std::vector <float> texels = {
-        0.8f, 0.8f,   // top right
-        0.8f, 0.0f,  // bottom right
-        0.2f, 0.0f,  // bottom left
-        0.2f, 0.8f,   // top left 
-        0.5f, 1.0f // top middle
+        8.0f, 8.0f,   // top right
+        8.0f, 0.0f,  // bottom right
+        2.0f, 0.0f,  // bottom left
+        2.0f, 8.0f,   // top left 
+        5.0f, 10.0f // top middle
     };
 
     std::function<void(shader*)> routine = [](shader* shade){

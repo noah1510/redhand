@@ -51,6 +51,9 @@ int main(){
         return -2;
     }
 
+    //init stb
+    initSTB();
+
     //Create Vector containing all the worlds
     world* activeWorld = new world();
     exitCode = game_init(activeWorld);

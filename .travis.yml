@@ -104,12 +104,13 @@ matrix:
       compiler: gcc
       name: windows-gcc
       install: 
+        - choco install git-lfs
         - choco install mingw
         - choco install make
       script: bash scripts/build_windows.sh "${TRAVIS_JOB_NAME}" "gitbash"
       env: ISOLATED=true
 
-before_install:
+script_install:
   - git lfs pull
 
 
