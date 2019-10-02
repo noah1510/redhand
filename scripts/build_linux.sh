@@ -1,36 +1,33 @@
 #!/bin/bash
 
 #parse parameter
-if [ $1 == "" ]
+if [ $1 ]
 then
-    OUTPUT="main.out"
-else 
     OUTPUT="greenfoot++-$1"
+else 
+    OUTPUT="main.out"
 fi
 
 #compiling glfw
 cd "dependencies/glfw"
-mkdir -p "out"
-cd "out"
+mkdir -p "x64"
+cd "x64"
 cmake -DBUILD_SHARED_LIBS=ON ..
 cmake --build .
 cd "../../.."
 
 #copy results
 mkdir -p "lib"
-mkdir -p "build"
+mkdir -p "build/$1"
 mkdir -p "deploy"
-cp "dependencies/glfw/out/src/libglfw.so" "lib"
-cp "dependencies/glfw/out/src/libglfw.so" "build"
-cp "dependencies/glfw/out/src/libglfw.so" "deploy"
+cp "dependencies/glfw/x64/src/libglfw.so" "lib"
+cp "dependencies/glfw/x64/src/libglfw.so" "build/$1"
+cp "dependencies/glfw/x64/src/libglfw.so" "deploy"
 mv "deploy/libglfw.so" "deploy/$1-libglfw.so"
 
 #build actual project
-cd "build"
+cd "build/$1"
 cmake -G "Unix Makefiles" -DOUTPUTFILE=$OUTPUT ..
 make -j2
 cd ".."
-
-#clean up
-cp "build/$OUTPUT" "deploy"
-rm -r build
+cp "build/$1/$OUTPUT" "deploy"

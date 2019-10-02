@@ -28,7 +28,7 @@ matrix:
             - libxrandr-dev
             - xorg-dev
       install: skip
-      script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
+      script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
       os: linux
@@ -51,7 +51,7 @@ matrix:
             - libxrandr-dev
             - xorg-dev
       install: skip
-      script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
+      script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
       os: linux
@@ -74,7 +74,7 @@ matrix:
             - libxrandr-dev
             - xorg-dev
       install: skip
-      script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
+      script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
       os: linux
@@ -97,7 +97,7 @@ matrix:
             - libxrandr-dev
             - xorg-dev
       install: skip
-      script: bash .Travis/build_linux.sh "${TRAVIS_JOB_NAME}"
+      script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
       os: windows
@@ -106,7 +106,7 @@ matrix:
       install: 
         - choco install mingw
         - choco install make
-      script: bash .Travis/build_windows.sh "${TRAVIS_JOB_NAME}" "gitbash"
+      script: bash scripts/build_windows.sh "${TRAVIS_JOB_NAME}" "gitbash"
       env: ISOLATED=true
 
 
