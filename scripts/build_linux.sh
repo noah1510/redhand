@@ -4,9 +4,17 @@
 if [ $1 ]
 then
     OUTPUT="greenfoot++-$1"
+    BUILDDIR="build/$1"
+    
+    UP="../.."
 else 
     OUTPUT="main.out"
+    BUILDDIR="build"
+    UP=".."
 fi
+
+LIBNAME="libglfw.so"
+REPOROOT="$(pwd)"
 
 #compiling glfw
 cd "dependencies/glfw"
@@ -18,16 +26,17 @@ cd "../../.."
 
 #copy results
 mkdir -p "lib"
-mkdir -p "build/$1"
+mkdir -p "build"
+mkdir -p "$BUILDDIR"
 mkdir -p "deploy"
-cp "dependencies/glfw/x64/src/libglfw.so" "lib"
-cp "dependencies/glfw/x64/src/libglfw.so" "build/$1"
-cp "dependencies/glfw/x64/src/libglfw.so" "deploy"
-mv "deploy/libglfw.so" "deploy/$1-libglfw.so"
+cp "dependencies/glfw/x64/src/$LIBNAME" "lib"
+cp "dependencies/glfw/x64/src/$LIBNAME" "$BUILDDIR"
+cp "dependencies/glfw/x64/src/$LIBNAME" "deploy"
+mv "deploy/$LIBNAME" "deploy/$1-$LIBNAME"
 
 #build actual project
-cd "build/$1"
-cmake -G "Unix Makefiles" -DOUTPUTFILE=$OUTPUT ..
+cd "$BUILDDIR"
+cmake -G "Unix Makefiles" -DOUTPUTFILE=$OUTPUT -DREPOROOT=$REPOROOT $UP
 make -j2
-cd ".."
-cp "build/$1/$OUTPUT" "deploy"
+cd "$UP"
+cp "$BUILDDIR/$OUTPUT" "deploy"

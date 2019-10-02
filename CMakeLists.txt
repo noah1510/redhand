@@ -5,10 +5,17 @@ cmake_policy(VERSION 3.12)
 
 project("Greenfoot++")
 
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../include/)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../lib/)
+option(OUTPUTFILE "Name of file to output")
+option(REPOROOT "Path of the root of the repo")
 
-option(OUTPUTFILE "Build shared libraries" main)
+if (REPOROOT)
+    SET(ROOTDIR ${REPOROOT})
+else (REPOROOT)
+    SET(ROOTDIR ${CMAKE_CURRENT_BINARY_DIR}/..)
+endif (REPOROOT)
+
+include_directories(${ROOTDIR}/include/)
+link_directories(${ROOTDIR}/lib/)
 
 if (UNIX)
     if (OUTPUTFILE)

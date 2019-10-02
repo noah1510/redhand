@@ -1,9 +1,12 @@
 .vscode
-build
-textures/*
-!textures/open/
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles
 
-include/stb
+build
 dependencies/glfw/out
 lib
 deploy
+
+textures/*
+!textures/open/

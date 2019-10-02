@@ -109,7 +109,8 @@ matrix:
       script: bash scripts/build_windows.sh "${TRAVIS_JOB_NAME}" "gitbash"
       env: ISOLATED=true
 
-
+before_install:
+  - git lfs pull
 
 
 deploy:
