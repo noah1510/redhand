@@ -1,7 +1,7 @@
 .vscode
 build
-textures
-!textures/open
+textures/*
+!textures/open/
 
 include/stb
 dependencies/glfw/out
