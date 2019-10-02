@@ -68,11 +68,11 @@ int createTestworld(world* testWorld){
     }
 
     //Add textures to world
-    if(testWorld->addTexture(new texture2D("../textures/natural/andesite.png")) == -1){
+    if(testWorld->addTexture(new texture2D("../textures/open/crate.png")) == -1){
         return -2;
     }
 
-    if(testWorld->addTexture(new texture2D("../textures/natural/birch_log.png")) == -1){
+    if(testWorld->addTexture(new texture2D("../textures/open/house.png")) == -1){
         return -2;
     }
     
