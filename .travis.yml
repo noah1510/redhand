@@ -99,7 +99,7 @@ matrix:
       os: windows
       compiler: gcc
       name: windows-gcc
-      script: bash .Travis/build_windows.sh "${TRAVIS_JOB_NAME}"
+      script: bash .Travis/build_windows.sh "${TRAVIS_JOB_NAME}" "gitbash"
       env: ISOLATED=true
 
 
