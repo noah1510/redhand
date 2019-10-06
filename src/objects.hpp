@@ -86,6 +86,14 @@ public:
     void draw();
     void onLoop(GLFWwindow* window);
     bool hasErrord();
+
+    //sets and gets the object position
+    std::vector<float> getPosition();
+    void setPosition(std::vector<float> pos);
+
+    //sets and gets the rotation in degrees
+    float getRotation();
+    void setRotation(float rot);
 };
 
 
@@ -103,13 +111,12 @@ object* createCircle(
     shader* shade,
     texture2D* tex);
 
-object* createColorTextureRectangle(
-    float topRightCorner[3],
-    float bottomLeftCorner[3],
-    float colorTopRight[3],
-    float colorBottomLeft[3],
-    float texel2DTopRight[2],
-    float texel2DBottomLeft[2],
+object* createRecktangle(
+    float topleft[2],
+    float width,
+    float height,
+    float color[3],
+    float textureScale,
     shader* shade,
     texture2D* tex,
     int DrawingMode);

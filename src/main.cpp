@@ -19,8 +19,8 @@
 #include "game.hpp"
 #include "world.hpp"
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-
+//void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void setWindowSize(int width, int height);
 
 int main(){
     int exitCode = 0;
@@ -43,7 +43,7 @@ int main(){
     glfwMakeContextCurrent(window);
 
     //register callback function for viewport
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
+    //glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
 
     //make sure glad works
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
@@ -114,6 +114,12 @@ int main(){
     return exitCode;
 }
 
+void setWindowSize(int width, int height){
+    glViewport(0, 0, width, height);
+}
+
+/*
 void framebuffer_size_callback(GLFWwindow* window, int width, int height){
     glViewport(0, 0, width, height);
 }
+*/

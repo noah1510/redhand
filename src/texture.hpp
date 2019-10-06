@@ -20,6 +20,9 @@ public:
     bool hasErrord();
     unsigned int getID();
     void bind(int unit);
+
+    int getWidth();
+    int getHeight();
 };
 
 

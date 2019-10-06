@@ -49,3 +49,11 @@ void texture2D::bind(int unit){
     glActiveTexture(GL_TEXTURE0 + unit);
     glBindTexture(GL_TEXTURE_2D, id);
 }
+
+int texture2D::getWidth(){
+    return width;
+}
+
+int texture2D::getHeight(){
+    return height;
+}

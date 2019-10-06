@@ -41,15 +41,7 @@ int game_loop(
 int createTestworld(world* testWorld){
     //add shaders to world
     if( testWorld->addShader(new shader(
-        "../shaders/minimalColorTexture.vert",
-        "../shaders/texture.frag"
-        )
-    ) == -1){
-        return -1;
-    }
-
-    if( testWorld->addShader(new shader(
-        "../shaders/advanced1.vert",
+        "../shaders/default.vert",
         "../shaders/variableColor.frag"
         )
     ) == -1){
@@ -92,22 +84,17 @@ int createTestworld(world* testWorld){
 
      // Background rectangle
     {
-        float topRight[3] = {1.0f, 1.0f, 0.0f};
-        float bottomLeft[3] = {-1.0f, -1.0f, 0.0f};
-        float colorTopRight[3] = {1.0f, 1.0f, 1.0f};
-        float colorBottomLeft[3] = {0.0f, 0.0f, 0.0f};
-        float texTopRight[2] = {10.0f, 10.0f};
-        float texBottomLeft[2] = {0.0f, 0.0f};
+        float topLeft[2] = {-1.0f, 1.0f};
+        float color[3] = {1.0f, 1.0f, 1.0f};
         if( testWorld->addObject(
-            createColorTextureRectangle(
-                topRight,
-                bottomLeft,
-                colorTopRight,
-                colorBottomLeft,
-                texTopRight,
-                texBottomLeft,
-                testWorld->getShader(0),
-                testWorld->getTexture(0),
+            createRecktangle(
+                topLeft,
+                2.0f,
+                2.0f,
+                color,
+                1200.0f/testWorld->getTexture(1)->getWidth(),
+                testWorld->getShader(2),
+                testWorld->getTexture(1),
                 GL_STATIC_DRAW
             )
         ) == -1){
@@ -127,7 +114,7 @@ int createTestworld(world* testWorld){
                 edges,
                 iColorSunTwo,
                 oColorSunTwo,
-                testWorld->getShader(3),
+                testWorld->getShader(2),
                 nullptr
             )
         ) == -1){
@@ -136,7 +123,7 @@ int createTestworld(world* testWorld){
     }
 
     // sun one
-    if( testWorld->addObject(createCircle(NULL, 0.25f, edges, NULL, NULL, testWorld->getShader(3), nullptr)) == -1){
+    if( testWorld->addObject(createCircle(NULL, 0.25f, edges, NULL, NULL, testWorld->getShader(2), nullptr)) == -1){
         return -3;
     }
 
@@ -152,7 +139,7 @@ int createTestworld(world* testWorld){
                 trig_indicies,
                 trig_colors,
                 trig_texels,
-                testWorld->getShader(2),
+                testWorld->getShader(1),
                 nullptr,
                 GL_STATIC_DRAW,
                 [](shader* shade){
@@ -178,7 +165,7 @@ int createTestworld(world* testWorld){
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTexture(1),testWorld->getShader(1))) == -1){
+    if( testWorld->addObject(createHouse(testWorld->getTexture(0),testWorld->getShader(0))) == -1){
         return -3;
     }
 
@@ -188,25 +175,34 @@ int createTestworld(world* testWorld){
 }
 
 void processHouseMovement(GLFWwindow* window, object* obj){
-    shader* shade = obj->getShader();
-    float currentOffset[4];
-    shade->getFloat("positionOffset", currentOffset);
+    //check for button presses and change position
+    std::vector<float> currentPosition = obj->getPosition();
 
-    if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS){
-        currentOffset[0] += 0.02f;
-    }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS){
-        currentOffset[0] -= 0.02f;
+    if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
+        currentPosition[0] += 0.02f;
+    }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
+        currentPosition[0] -= 0.02f;
     }
 
-    if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS){
-        currentOffset[1] += 0.02f;
-    }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS){
-        currentOffset[1] -= 0.02f;
+    if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
+        currentPosition[1] += 0.02f;
+    }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
+        currentPosition[1] -= 0.02f;
     }
 
-    currentOffset[2] = 0.0f;
+    obj->setPosition(currentPosition);
 
-    shade->setFloat("positionOffset", currentOffset[0], currentOffset[1], currentOffset[2], currentOffset[3]);
+    //check for button presses and change rotation
+    float currentRotation = obj->getRotation();
+
+    if(glfwGetKey(window,GLFW_KEY_E) == GLFW_PRESS){
+        currentRotation -= 2.5f;
+    }else if(glfwGetKey(window,GLFW_KEY_Q) == GLFW_PRESS){
+        currentRotation += 2.5f;
+    }
+
+    obj->setRotation(currentRotation);
+
 }
 
 void processGlobalInput(GLFWwindow* window){

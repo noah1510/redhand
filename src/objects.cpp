@@ -155,17 +155,32 @@ shader* object::getShader(){
     return shade;
 };
 
+std::vector<float> object::getPosition(){
+    return position;
+};
+
+void object::setPosition(std::vector<float> pos){
+    position = pos;
+};
+
+float object::getRotation(){
+    return rotation;
+};
+void object::setRotation(float rot){
+    rotation = rot;
+};
+
 object* createHouse(
     texture2D* texture,
     shader* shade
 ){
     //Vertex Data
     std::vector <float> points = {
-        0.4f,  0.10f, 0.0f,  // top right
-        0.4f, -0.5f, 0.0f,  // bottom right
-        -0.4f, -0.5f, 0.0f,  // bottom left
-        -0.4f,  0.10f, 0.0f,   // top left 
-        0.0f, 0.45f, 0.0f // top middle
+        1.0f,  0.2f, 0.0f,  // top right
+        1.0f, -1.0f, 0.0f,  // bottom right
+        -1.0f, -1.0f, 0.0f,  // bottom left
+        -1.0f,  0.2f, 0.0f,   // top left 
+        0.0f, 1.0f, 0.0f // top middle
     };
     std::vector <unsigned int> indices = {
         0, 1, 3,   // first triangle
@@ -197,7 +212,7 @@ object* createHouse(
         shade->setFloat("ourColor", redValue, greenValue, blueValue, 1.0f);
     };
 
-    return new object(points,indices,colors,texels,shade,texture,GL_DYNAMIC_DRAW,routine);
+    return new object(points,indices,colors,texels,shade,texture,GL_DYNAMIC_DRAW,routine,0.5f,0.0f,{0.0f,0.0f});
     
 }
 
@@ -270,70 +285,43 @@ object* createCircle(
     return new object(points, indices, colors, texels, shade, tex, GL_STATIC_DRAW, [](shader*){}, radius, 0.0f, position);
 }
 
-object* createColorTextureRectangle(
-    float topRightCorner[3],
-    float bottomLeftCorner[3],
-    float colorTopRight[3],
-    float colorBottomLeft[3],
-    float texel2DTopRight[2],
-    float texel2DBottomLeft[2],
+object* createRecktangle(
+    float topleft[2],
+    float width,
+    float height,
+    float color[3],
+    float textureScale,
     shader* shade,
     texture2D* tex,
     int DrawingMode
 ){
-
-    if(topRightCorner == NULL || bottomLeftCorner == NULL){
-        return nullptr;
-    } 
-
-    if(texel2DBottomLeft == NULL || texel2DTopRight == NULL){
-        return nullptr;
-    }
-
-    float tColor[3] = {0.2f, 0.3f, 0.3f};
-    if(colorTopRight != NULL){
-        for(int i = 0;i < 3;i++){
-            tColor[i]  = colorTopRight[i];
-        }
-    }
-
-    float bColor[3] = {0.2f, 0.3f, 0.3f};
-    if(colorBottomLeft != NULL){
-        for(int i = 0;i < 3;i++){
-            bColor[i]  = colorBottomLeft[i];
-        }
-    }
-
     std::vector<float> points = {
-        topRightCorner[0],   bottomLeftCorner[1], bottomLeftCorner[2], // bottom right
-        bottomLeftCorner[0], bottomLeftCorner[1], bottomLeftCorner[2], // bottom left
-        topRightCorner[0],   topRightCorner[1],   topRightCorner[2],   // top right
-        bottomLeftCorner[0], topRightCorner[1],   topRightCorner[2]   // top left
+        topleft[0],         topleft[1],          0.0f, //top left
+        topleft[0] + width, topleft[1],          0.0f, //top right
+        topleft[0] + width, topleft[1] - height, 0.0f, //bottom right
+        topleft[0]        , topleft[1] - height, 0.0f, //bottom left
     };
-
-    std::vector<float> colors = {
-        (tColor[0] + bColor[0])/2.0f, (tColor[1] + bColor[1])/2.0f, (tColor[2] + bColor[2])/2.0f, // bottom right
-        bColor[0], bColor[1], bColor[2],// bottom left
-        tColor[0], tColor[1], tColor[2],// top right
-        (tColor[0] + bColor[0])/2.0f, (tColor[1] + bColor[1])/2.0f, (tColor[2] + bColor[2])/2.0f // top left
-        
-    };
-
-    std::vector<float> texels = {
-        texel2DTopRight[0],   texel2DBottomLeft[1], // bottom right
-        texel2DBottomLeft[0], texel2DBottomLeft[1], // bottom left
-        texel2DTopRight[0],   texel2DTopRight[1],   // top right
-        texel2DBottomLeft[0], texel2DTopRight[1]    // top left
-    };
-
 
     std::vector<unsigned int> indices = {
         0, 1, 2,   // first triangle
-        1, 2, 3    // second triangle
+        0, 2, 3    // second triangle
     };
 
-    return new object(points,indices,colors,texels,shade,tex,DrawingMode);
+     std::vector<float> colors;
+    for(int i = 0;i < 4;i++){
+        colors.emplace_back(color[0]);
+        colors.emplace_back(color[1]);
+        colors.emplace_back(color[2]);
+    }
 
+    std::vector<float> texels = {
+        ((topleft[0] / 2.0f) + 0.5f) * textureScale,             (topleft[1]) * textureScale,                             //top left
+        (((topleft[0] + width) / 2.0f) + 0.5f) * textureScale,   ((topleft[1] / 2.0f) + 0.5f) * textureScale,             //top right
+        (((topleft[0] + width) / 2.0f) + 0.5f) * textureScale,   (((topleft[1] - height) / 2.0f) + 0.5f) * textureScale,  //bottom right
+        ((topleft[0] / 2.0f) + 0.5f) * textureScale,             (((topleft[1] - height) / 2.0f) + 0.5f) * textureScale,  //bottom left
+    };
+
+    return new object(points,indices,colors,texels,shade,tex,DrawingMode,[](shader*){},1.0f,0.0f,{0.0f,0.0f});
 }
 
 float degToRad(float val){
