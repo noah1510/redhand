@@ -16,6 +16,8 @@
 
 class object{
 private:
+    unsigned int objectVersion = 0;
+
     unsigned int VAO;
     unsigned int VBO;
     unsigned int EBO;
@@ -31,11 +33,12 @@ private:
     std::function<void(GLFWwindow* window, object* obj)> LoopFunction;
 
 
-    std::vector<float> position;
-    float scale;
-    float rotation;
+    std::vector<float> position = {0.0f, 0.0f};
+    float scale = 1.0f;
+    float rotation = 0.0f;
 
 public:
+    //minimal constructor
     object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
@@ -44,6 +47,8 @@ public:
         shader* attached_shader,
         texture2D* texture,
         int gl_drawing_mode);
+
+    //constructor with shader_routine
     object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
@@ -52,7 +57,25 @@ public:
         shader* attached_shader,
         texture2D* texture,
         int gl_drawing_mode,
+
         std::function<void(shader*)> routine);
+
+    //constructor for objectVersion 1
+    object(
+        std::vector <float> points, 
+        std::vector <unsigned int> indices,
+        std::vector <float> colors,
+        std::vector <float> texels,
+        shader* attached_shader,
+        texture2D* texture,
+        int gl_drawing_mode,
+
+        std::function<void(shader*)> routine,
+
+        float scaler,
+        float rotator,
+        std::vector<float> postitions);
+
     ~object();
 
     void setShaderRoutine(std::function<void(shader*)> routine);

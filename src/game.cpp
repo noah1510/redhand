@@ -40,30 +40,35 @@ int game_loop(
 
 int createTestworld(world* testWorld){
     //add shaders to world
-    int ret = testWorld->addShader(new shader(
+    if( testWorld->addShader(new shader(
         "../shaders/minimalColorTexture.vert",
         "../shaders/texture.frag"
         )
-    );
-    if(ret == -1){
+    ) == -1){
         return -1;
     }
 
-    testWorld->addShader(new shader(
+    if( testWorld->addShader(new shader(
         "../shaders/advanced1.vert",
         "../shaders/variableColor.frag"
         )
-    );
-    if(ret == -1){
+    ) == -1){
         return -1;
     }
 
-    testWorld->addShader(new shader(
+    if( testWorld->addShader(new shader(
         "../shaders/advanced2.vert",
         "../shaders/texture.frag"
         )
-    );
-    if(ret == -1){
+    ) ==  -1){
+        return -1;
+    }
+
+    if( testWorld->addShader(new shader(
+        "../shaders/default.vert",
+        "../shaders/default.frag"
+        )
+    ) == -1){
         return -1;
     }
 
@@ -93,7 +98,7 @@ int createTestworld(world* testWorld){
         float colorBottomLeft[3] = {0.0f, 0.0f, 0.0f};
         float texTopRight[2] = {10.0f, 10.0f};
         float texBottomLeft[2] = {0.0f, 0.0f};
-        ret = testWorld->addObject(
+        if( testWorld->addObject(
             createColorTextureRectangle(
                 topRight,
                 bottomLeft,
@@ -105,8 +110,7 @@ int createTestworld(world* testWorld){
                 testWorld->getTexture(0),
                 GL_STATIC_DRAW
             )
-        );
-        if(ret == -1){
+        ) == -1){
             return -3;
         }
     }
@@ -116,25 +120,23 @@ int createTestworld(world* testWorld){
         float posSunTwo[3] = {0.3f, 0.7f, 0.0f};
         float iColorSunTwo[3] = {0.0f, 0.8f, 1.0f};
         float oColorSunTwo[3] = {0.8f, 0.0f, 1.0f};
-        ret = testWorld->addObject(
+        if( testWorld->addObject(
             createCircle(
                 posSunTwo,
                 0.35f,
                 edges,
                 iColorSunTwo,
                 oColorSunTwo,
-                testWorld->getShader(0),
+                testWorld->getShader(3),
                 nullptr
             )
-        );
-        if(ret == -1){
+        ) == -1){
             return -3;
         }
     }
 
     // sun one
-    ret = testWorld->addObject(createCircle(NULL, 0.25f, edges, NULL, NULL, testWorld->getShader(0), nullptr));
-    if(ret == -1){
+    if( testWorld->addObject(createCircle(NULL, 0.25f, edges, NULL, NULL, testWorld->getShader(3), nullptr)) == -1){
         return -3;
     }
 
@@ -144,7 +146,7 @@ int createTestworld(world* testWorld){
         std::vector <unsigned int> trig_indicies = {0,1,2};
         std::vector <float> trig_colors = {1.0f,0.0f,0.0f, 0.0f,1.0f,0.0f, 0.0f,0.0f,1.0f};
         std::vector <float> trig_texels = {5.0f,10.0f, 0.0f,0.0f, 10.0f,0.0f};
-        ret = testWorld->addObject(
+        if( testWorld->addObject(
             new object(
                 trig_points,
                 trig_indicies,
@@ -162,8 +164,7 @@ int createTestworld(world* testWorld){
                     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
                 }
             )
-        );
-        if(ret == -1){
+        ) == -1){
             return -3;
         }
 
@@ -177,8 +178,7 @@ int createTestworld(world* testWorld){
     }
 
     //house
-    ret = testWorld->addObject(createHouse(testWorld->getTexture(1),testWorld->getShader(1)));
-    if(ret == -1){
+    if( testWorld->addObject(createHouse(testWorld->getTexture(1),testWorld->getShader(1))) == -1){
         return -3;
     }
 

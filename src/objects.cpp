@@ -70,6 +70,31 @@ object::object(
     shader_routine = routine;
 }
 
+object::object(
+    std::vector <float> points, 
+    std::vector <unsigned int> indices,
+    std::vector <float> colors,
+    std::vector <float> texels,
+    shader* attached_shader,
+    texture2D* texture,
+    int gl_drawing_mode,
+
+    std::function<void(shader*)> routine,
+
+    float scaler,
+    float rotator,
+    std::vector<float> postitions
+):object(points, indices, colors, texels, attached_shader, texture, gl_drawing_mode, routine){
+    scale = scaler;
+    rotation = rotator;
+    if (postitions.size() != 2){
+        errored = true;
+    }
+    position = postitions;
+
+    objectVersion = 1;
+}
+
 object::~object(){
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
@@ -91,13 +116,15 @@ void object::draw(){
     }
 
     //Create World transformation matrix
-    glm::mat4 worldTrans = glm::mat4(1.0f);
-    worldTrans = glm::translate(worldTrans, glm::vec3(position[0],position[1],position[2]));
-    worldTrans = glm::rotate(worldTrans, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
-    worldTrans = glm::scale(worldTrans, glm::vec3(scale, scale, scale));
+    if (objectVersion > 0){
+        glm::mat4 worldTrans = glm::mat4(1.0f);
+        worldTrans = glm::translate(worldTrans, glm::vec3(position[0],position[1],0.0f));
+        worldTrans = glm::rotate(worldTrans, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
+        worldTrans = glm::scale(worldTrans, glm::vec3(scale, scale, 1.0f));
 
-    unsigned int transformLoc = glGetUniformLocation(shade->ID, "worldTransformation");
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
+        unsigned int transformLoc = glGetUniformLocation(shade->ID, "worldTransformation");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
+    }
 
     //run the custom shader routine
     shader_routine(shade);
@@ -175,7 +202,7 @@ object* createHouse(
 }
 
 object* createCircle( 
-    float midpoint[3],
+    float midpoint[2],
     float radius,
     int edges,
     float innerColor[3],
@@ -184,7 +211,7 @@ object* createCircle(
     texture2D* tex
 ){
 
-    std::vector <float> points = {0.6f, 0.6f, 0.0f};
+    std::vector <float> points = {0.0f, 0.0f, 0.0f};
     std::vector <unsigned int> indices;
     std::vector <float> colors = {1.0f, 1.0f, 0.0f};
     std::vector <float> texels = {0.5f, 0.5f};
@@ -194,10 +221,10 @@ object* createCircle(
     }
 
     //Set default midpoint
+    std::vector<float> position = {0.6f, 0.6f};
     if(midpoint != NULL){
-        for(int i = 0;i < 3;i++){
-            points[i] = midpoint[i];
-        }
+        position.at(0) = midpoint[0];
+        position.at(1) = midpoint[1];
     }
 
     //Set to yellow if NULL
@@ -220,9 +247,9 @@ object* createCircle(
         dx = cosDeg(i*360/edges);
         dy = sinDeg(i*360/edges);
 
-        points.insert(points.end(), dx * radius + points[0]);
-        points.insert(points.end(), dy * radius + points[1]);
-        points.insert(points.end(), points[2]);
+        points.insert(points.end(), dx);
+        points.insert(points.end(), dy);
+        points.insert(points.end(), 0.0f);
 
         colors.insert(colors.end(), oColor[0]);
         colors.insert(colors.end(), oColor[1]);
@@ -240,7 +267,7 @@ object* createCircle(
         if(indices[i*3 + 2] == edges + 1){indices[i*3 + 2] = 1;};
     }  
 
-    return new object(points,indices,colors,texels,shade,tex,GL_STATIC_DRAW);
+    return new object(points, indices, colors, texels, shade, tex, GL_STATIC_DRAW, [](shader*){}, radius, 0.0f, position);
 }
 
 object* createColorTextureRectangle(
