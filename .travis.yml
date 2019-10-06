@@ -15,17 +15,6 @@ matrix:
       addons:
         apt:
           packages:
-            - libxcursor-dev 
-            - libpthread-stubs0-dev
-            - libxi-dev
-            - libxxf86vm-dev 
-            - libx11-xcb-dev
-            - libxau-dev
-            - libxdmcp-dev
-            - libx11-dev
-            - libxinerama-dev
-            - libglu1-mesa-dev
-            - libxrandr-dev
             - xorg-dev
       install: skip
       script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
@@ -38,17 +27,6 @@ matrix:
       addons:
         apt:
           packages:
-            - libxcursor-dev 
-            - libpthread-stubs0-dev
-            - libxi-dev
-            - libxxf86vm-dev 
-            - libx11-xcb-dev
-            - libxau-dev
-            - libxdmcp-dev
-            - libx11-dev
-            - libxinerama-dev
-            - libglu1-mesa-dev
-            - libxrandr-dev
             - xorg-dev
       install: skip
       script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
@@ -61,17 +39,6 @@ matrix:
       addons:
         apt:
           packages:
-            - libxcursor-dev 
-            - libpthread-stubs0-dev
-            - libxi-dev
-            - libxxf86vm-dev 
-            - libx11-xcb-dev
-            - libxau-dev
-            - libxdmcp-dev
-            - libx11-dev
-            - libxinerama-dev
-            - libglu1-mesa-dev
-            - libxrandr-dev
             - xorg-dev
       install: skip
       script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
@@ -84,17 +51,6 @@ matrix:
       addons:
         apt:
           packages:
-            - libxcursor-dev 
-            - libpthread-stubs0-dev
-            - libxi-dev
-            - libxxf86vm-dev 
-            - libx11-xcb-dev
-            - libxau-dev
-            - libxdmcp-dev
-            - libx11-dev
-            - libxinerama-dev
-            - libglu1-mesa-dev
-            - libxrandr-dev
             - xorg-dev
       install: skip
       script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"

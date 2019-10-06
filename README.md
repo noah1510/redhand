@@ -20,9 +20,10 @@ In case the license differs from CC-0 it will also be mentioned there.
 
 Before you start make shure you installed cmake, make, gcc ang g++ (`sudo apt install cmake make gcc g++`).
 Note that while it should work on Windows and Mac I don't actively support those platforms.
+Also you need CMake version 3.12 or newer, on LTS Linux distributions you might need to install it over a diffent route.
 
 * Clone the repo with --recursive flag
-* Download and install GLFW and GLM for your operating system (on Ubuntu: `sudo apt install libxcursor-dev libpthread-stubs0-dev libxi-dev libxxf86vm-dev libx11-xcb-dev libxau-dev libxdmcp-dev libx11-dev libxinerama-dev libglu1-mesa-dev libxrandr-dev`
+* Download and install GLFW and GLM for your operating system (on Ubuntu: `sudo apt install xorg-dev`
 * run `./scripts/install_linux.sh` (You can specify a custom filename just put it after the script).
 * enjoy (you can run the main.out)
 
