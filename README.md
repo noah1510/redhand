@@ -27,10 +27,12 @@ Also you need CMake version 3.12 or newer, on LTS Linux distributions you might 
 * run `./scripts/install_linux.sh` (You can specify a custom filename just put it after the script).
 * enjoy (you can run the main.out)
 
-### Extra Ntes for contibutors
+### Extra Notes for contibutors
 
 All changes have to be made on the dev branch and merged to master via a pull request.
 Open a Terminal in the folder where you cloned the repository to, type `git checkout dev` and you are ready to go.
+To update the branch from master first type `git fetch` then `git rebase origin/master`.
+The CI has to succeed in compiling before you are allowd to push your changes to master.
 
 ## Getting started
 
