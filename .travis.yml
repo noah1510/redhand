@@ -16,6 +16,7 @@ matrix:
         apt:
           packages:
             - xorg-dev
+            - libgl1-mesa-dev
       install: skip
       script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
@@ -28,6 +29,7 @@ matrix:
         apt:
           packages:
             - xorg-dev
+            - libgl1-mesa-dev
       install: skip
       script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true

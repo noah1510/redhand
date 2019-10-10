@@ -23,7 +23,7 @@ if (UNIX)
     else (OUTPUTFILE)
         SET(OUTPUT "main.out")
     endif (OUTPUTFILE)
-    SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGLU -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
+    SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
 endif (UNIX)
 
 if (WIN32)
