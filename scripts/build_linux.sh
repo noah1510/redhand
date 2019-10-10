@@ -8,7 +8,7 @@ else
     BUILDNAME="main"
 fi
 
-LIBNAME="libglfw.so"
+GLFWLIBNAME="libglfw.so"
 REPOROOT="$(pwd)"
 PROJECTNAME="greenfoot++"
 
@@ -20,16 +20,25 @@ cmake -DBUILD_SHARED_LIBS=ON ..
 cmake --build .
 cd "../../.."
 
+#compiling portaudio
+cd "dependencies/portaudio"
+mkdir -p "bin"
+cd "bin"
+cmake ".." -DCMAKE_INSTALL_PREFIX="../../.."
+make -j2
+make install
+cd "../../.."
+
 #copy results
 mkdir -p "lib"
 mkdir -p "build"
 mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
-cp "dependencies/glfw/x64/src/$LIBNAME" "lib/$LIBNAME"
-cp "dependencies/glfw/x64/src/$LIBNAME" "lib/$LIBNAME.3"
-cp "dependencies/glfw/x64/src/$LIBNAME" "build/$BUILDNAME"
-cp "dependencies/glfw/x64/src/$LIBNAME" "deploy/$LIBNAME.3"
-mv "deploy/$LIBNAME.3" "deploy/$BUILDNAME-$LIBNAME.3"
+cp "dependencies/glfw/x64/src/$GLFWLIBNAME" "lib/$GLFWLIBNAME"
+cp "dependencies/glfw/x64/src/$GLFWLIBNAME" "lib/$GLFWLIBNAME.3"
+cp "dependencies/glfw/x64/src/$GLFWLIBNAME" "build/$BUILDNAME"
+cp "dependencies/glfw/x64/src/$GLFWLIBNAME" "deploy/$GLFWLIBNAME.3"
+mv "deploy/$GLFWLIBNAME.3" "deploy/$BUILDNAME-$GLFWLIBNAME.3"
 
 #build actual project
 cd "build/$BUILDNAME"

@@ -4,9 +4,13 @@ cmake_install.cmake
 CMakeFiles
 
 build
-dependencies/glfw/out
+dependencies/glfw/
+dependencies/portaudio/
 lib
 deploy
+include/pa_linux_alsa.h
+include/portaudio.h
+share
 
 textures/*
 !textures/open/
