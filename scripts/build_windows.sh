@@ -16,7 +16,7 @@ PROJECTNAME="greenfoot++"
 cd "dependencies/glfw"
 mkdir -p "x64"
 cd "x64"
-cmake cmake -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DBUILD_SHARED_LIBS=ON  ..
+cmake -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DBUILD_SHARED_LIBS=ON  ..
 cmake --build .
 cd "../../.."
 
@@ -24,7 +24,7 @@ cd "../../.."
 cd "dependencies/portaudio"
 mkdir -p "bin"
 cd "bin"
-cmake ".." -DCMAKE_INSTALL_PREFIX="../../.."
+cmake ".." -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="../../.."
 make -j2
 make install
 cd "../../.."
