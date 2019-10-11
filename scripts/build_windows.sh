@@ -35,7 +35,7 @@ mkdir -p "build"
 mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
 cp "dependencies/glfw/x64/src/$LIBNAME" "lib"
-cp "dependencies/glfw/x64/src/$LIBNAME" "$BUILDDIR"
+cp "dependencies/glfw/x64/src/$LIBNAME" "build/$BUILDNAME"
 cp "dependencies/glfw/x64/src/$LIBNAME" "deploy"
 mv "deploy/$LIBNAME" "deploy/$BUILDNAME-$LIBNAME"
 
