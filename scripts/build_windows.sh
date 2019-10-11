@@ -28,7 +28,7 @@ mkdir -p "deploy"
 cp "dependencies/glfw/x64/src/$LIBNAME" "lib"
 cp "dependencies/glfw/x64/src/$LIBNAME" "$BUILDDIR"
 cp "dependencies/glfw/x64/src/$LIBNAME" "deploy"
-mv "deploy/$LIBNAME" "deploy/$BUILDNAME-$LIBNAME"
+cp "deploy/$LIBNAME" "deploy/$BUILDNAME-$LIBNAME"
 
 #build actual project
 cd "build/$BUILDNAME"
