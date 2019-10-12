@@ -20,13 +20,13 @@ cmake -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DBUILD_SHARED_LIBS=ON  ..
 cmake --build .
 cd "../../.."
 
-#compiling portaudio
-cd "dependencies/portaudio"
+#compiling SFML
+cd "dependencies/SFML"
 mkdir -p "bin"
 cd "bin"
 cmake ".." -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="../../.."
-make -j2
-make install
+mingw32-make -j2
+mingw32-make install
 cd "../../.."
 
 #copy results
@@ -42,7 +42,7 @@ cp "deploy/$LIBNAME" "deploy/$BUILDNAME-$LIBNAME"
 #build actual project
 cd "build/$BUILDNAME"
 cmake -G "Unix Makefiles" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../.."
-make -j2
+mingw32-make -j2
 cd "../.."
 cp -r "build/$BUILDNAME/$PROJECTNAME-$BUILDNAME.exe" "deploy"
 

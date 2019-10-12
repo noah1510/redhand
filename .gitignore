@@ -10,7 +10,7 @@ dependencies/portaudio/
 lib
 deploy
 include/pa_linux_alsa.h
-include/portaudio.h
+include/SFML
 share
 
 textures/*
