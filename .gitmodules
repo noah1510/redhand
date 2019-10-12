@@ -7,6 +7,3 @@
 [submodule "dependencies/glfw"]
 	path = dependencies/glfw
 	url = https://github.com/glfw/glfw.git
-[submodule "dependencies/portaudio"]
-	path = dependencies/portaudio
-	url = https://git.assembla.com/portaudio.git
