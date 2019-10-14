@@ -56,6 +56,7 @@ SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS
 
 find_package(OpenGL REQUIRED)
 
+
 add_executable(${OUTPUT} src/glad.c
                         src/shader.cpp
                         src/texture.cpp
@@ -71,4 +72,5 @@ endif (UNIX)
 
 if (WIN32)
     target_link_libraries(${OUTPUT} glfw3.dll)
+    target_link_libraries(${OUTPUT} sfml-graphics sfml-audio sfml-window sfml-system)
 endif (WIN32)

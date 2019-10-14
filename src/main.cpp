@@ -18,6 +18,8 @@
 #include "texture.hpp"
 #include "game.hpp"
 #include "world.hpp"
+#include "audio/AudioHandler.hpp"
+using namespace audio;
 
 //void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void setWindowSize(int width, int height);
@@ -65,7 +67,7 @@ int main(){
         glfwSetWindowShouldClose(window, true);
         exitCode = -4;
     }
-
+    
     //Clear up
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);

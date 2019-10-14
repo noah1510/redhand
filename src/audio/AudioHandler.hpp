@@ -1,7 +1,8 @@
 #pragma once
 
-#include <portaudio.h>
 #include <iostream>
+#include <SFML/Audio.hpp>
+#include <string>
 
 namespace audio
 {
@@ -10,5 +11,6 @@ namespace audio
         public:
             AudioHandler();
             ~AudioHandler();
+            static sf::Sound loadSound(const std::string);
     };
 }
