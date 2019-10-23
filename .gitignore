@@ -6,10 +6,9 @@ CMakeFiles
 
 build
 dependencies/glfw/
-dependencies/portaudio/
+dependencies/SFML/
 lib
 deploy
-include/pa_linux_alsa.h
 include/SFML
 share
 

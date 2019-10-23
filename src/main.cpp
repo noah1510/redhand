@@ -19,7 +19,6 @@
 #include "game.hpp"
 #include "world.hpp"
 #include "audio/AudioHandler.hpp"
-using namespace audio;
 
 //void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void setWindowSize(int width, int height);

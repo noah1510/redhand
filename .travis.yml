@@ -17,8 +17,10 @@ matrix:
           packages:
             - xorg-dev
             - libgl1-mesa-dev
+            - libflac++-dev
+            - libogg-dev
       install: skip
-      script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
+      script: bash scripts/build.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
       os: linux
@@ -30,8 +32,10 @@ matrix:
           packages:
             - xorg-dev
             - libgl1-mesa-dev
+            - libflac++-dev
+            - libogg-dev
       install: skip
-      script: bash scripts/build_linux.sh "${TRAVIS_JOB_NAME}"
+      script: bash scripts/build.sh "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
       os: windows
@@ -41,7 +45,7 @@ matrix:
         - choco install git-lfs
         - choco install mingw
         - choco install make
-      script: bash scripts/build_windows.sh "${TRAVIS_JOB_NAME}" "gitbash"
+      script: bash scripts/build.sh "${TRAVIS_JOB_NAME}" "gitbash"
       env: ISOLATED=true
 
 script_install:
