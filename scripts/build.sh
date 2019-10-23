@@ -53,45 +53,62 @@ else
         exit 1
 fi
 
+mkdir -p "build"
+
 #compiling glfw
-cd "dependencies/glfw"
-mkdir -p "x64"
-cd "x64"
-cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON  ..
+mkdir -p "build/glfw"
+cd "build/glfw"
+cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
 cmake --build .
-cd "../../.."
+if [ $? -eq 0 ]
+then
+  echo "Successfully compiled glfw"
+else
+  echo "Could not compile glfw" >&2
+  cd "../.."
+  exit 2
+fi
+cd "../.."
 
 #compiling SFML
-cd "dependencies/SFML"
-mkdir -p "bin"
-cd "bin"
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Release" -DBUILD_SHARED_LIBS=ON ..
+mkdir -p "build/SFML"
+cd "build/SFML"
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Release" -DBUILD_SHARED_LIBS=ON "../../dependencies/SFML"
 make -j2
-cd "../../.."
+if [ $? -eq 0 ]
+then
+  echo "Successfully compiled SFML"
+else
+  echo "Could not compile SFML" >&2
+  cd "../.."
+  exit 3
+fi
+cd "../.."
+
+rm -rf "dependencies/SFML/bin"
 
 #copy results
 mkdir -p "lib"
-mkdir -p "build"
 mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
 
-cp "dependencies/glfw/x64/src/$GLFWLIBNAME" "lib"
-cp "dependencies/SFML/bin/lib/$SFMLAUDIOLIB" "lib"
-cp "dependencies/SFML/bin/lib/$SFMLGRAPICSLIB" "lib"
-cp "dependencies/SFML/bin/lib/$SFMLWINDOWLIB" "lib"
-cp "dependencies/SFML/bin/lib/$SFMLSYSTEMLIB" "lib"
+cp "build/glfw/src/$GLFWLIBNAME" "lib"
+cp "build/SFML/lib/$SFMLAUDIOLIB" "lib"
+cp "build/SFML/lib/$SFMLGRAPICSLIB" "lib"
+cp "build/SFML/lib/$SFMLWINDOWLIB" "lib"
+cp "build/SFML/lib/$SFMLSYSTEMLIB" "lib"
 
-cp "dependencies/glfw/x64/src/$GLFWLIBNAME" "build/$BUILDNAME"
-cp "dependencies/SFML/bin/lib/$SFMLAUDIOLIB" "build/$BUILDNAME"
-cp "dependencies/SFML/bin/lib/$SFMLGRAPICSLIB" "build/$BUILDNAME"
-cp "dependencies/SFML/bin/lib/$SFMLWINDOWLIB" "build/$BUILDNAME"
-cp "dependencies/SFML/bin/lib/$SFMLSYSTEMLIB" "build/$BUILDNAME"
+cp "build/glfw/src/$GLFWLIBNAME" "build/$BUILDNAME"
+cp "build/SFML/lib/$SFMLAUDIOLIB" "build/$BUILDNAME"
+cp "build/SFML/lib/$SFMLGRAPICSLIB" "build/$BUILDNAME"
+cp "build/SFML/lib/$SFMLWINDOWLIB" "build/$BUILDNAME"
+cp "build/SFML/lib/$SFMLSYSTEMLIB" "build/$BUILDNAME"
 
-cp "dependencies/glfw/x64/src/$GLFWLIBNAME" "deploy"
-cp "dependencies/SFML/bin/lib/$SFMLAUDIOLIB" "deploy"
-cp "dependencies/SFML/bin/lib/$SFMLGRAPICSLIB" "deploy"
-cp "dependencies/SFML/bin/lib/$SFMLWINDOWLIB" "deploy"
-cp "dependencies/SFML/bin/lib/$SFMLSYSTEMLIB" "deploy"
+cp "build/glfw/src/$GLFWLIBNAME" "deploy"
+cp "build/SFML/lib/$SFMLAUDIOLIB" "deploy"
+cp "build/SFML/lib/$SFMLGRAPICSLIB" "deploy"
+cp "build/SFML/lib/$SFMLWINDOWLIB" "deploy"
+cp "build/SFML/lib/$SFMLSYSTEMLIB" "deploy"
 
 cp -r "dependencies/SFML/include/SFML" "include"
 
@@ -105,6 +122,14 @@ cp "deploy/$SFMLSYSTEMLIB" "deploy/$BUILDNAME-$SFMLSYSTEMLIB"
 cd "build/$BUILDNAME"
 cmake -G "Unix Makefiles" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../.."
 make -j2
+if [ $? -eq 0 ]
+then
+  echo "Successfully compiled $PROJECTNAME"
+else
+  echo "Could not compile $PROJECTNAME" >&2
+  cd "../.."
+  exit 3
+fi
 cd "../.."
 cp -r "build/$BUILDNAME/$EXECUTABLE" "deploy"
 
