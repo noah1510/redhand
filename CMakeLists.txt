@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.11 FATAL_ERROR)
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 cmake_policy(SET CMP0072 NEW)
 cmake_policy(VERSION 3.12)
@@ -74,5 +74,5 @@ endif (UNIX)
 
 if (WIN32)
     target_link_libraries(${OUTPUT} glfw3.dll)
-    target_link_libraries(${OUTPUT} sfml-graphics sfml-audio sfml-window sfml-system)
+    target_link_libraries(${OUTPUT} sfml-graphics-2.dll sfml-audio-2.dll sfml-window-2.dll sfml-system-2.dll)
 endif (WIN32)

@@ -14,6 +14,8 @@ PROJECTNAME="greenfoot++"
 if [ "$OSTYPE" == "linux-gnu" ]
 then
     # Linux
+    echo "script running on linux"
+
     GLFWLIBNAME="libglfw.so"
     SFMLAUDIOLIB="libsfml-audio.so" 
     SFMLGRAPICSLIB="libsfml-graphics.so" 
@@ -25,6 +27,8 @@ then
 elif [ "$OSTYPE" == "darwin"* ]
 then
     # Mac OSX
+    echo "script running on mac osx"
+
     GLFWLIBNAME="libglfw.so"
     SFMLAUDIOLIB="libsfml-audio.so" 
     SFMLGRAPICSLIB="libsfml-graphics.so" 
@@ -33,11 +37,13 @@ then
 
     EXECUTABLE="$PROJECTNAME-$BUILDNAME"
         
-elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then
     # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
     # or 
     # POSIX compatibility layer and Linux environment emulation for Windows
+    echo "script running on windows"
+
     GLFWLIB="glfw3.dll"
     SFMLAUDIOLIB="sfml-audio-2.dll" 
     SFMLGRAPICSLIB="sfml-graphics-2.dll" 
@@ -46,11 +52,13 @@ then
 
     EXECUTABLE="$PROJECTNAME-$BUILDNAME.exe"
 
-    alias make='mingw32-make'
+    #alias make='mingw32-make'
 
 else
-        # Unknown os
-        exit 1
+    # Unknown os
+    echo "running on something else."
+    echo "Not a supported OS: $OSTYPE" >&2
+    exit 1
 fi
 
 mkdir -p "build"
