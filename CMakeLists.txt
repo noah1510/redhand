@@ -58,6 +58,7 @@ find_package(OpenGL REQUIRED)
 
 
 add_executable(${OUTPUT} src/glad.c
+                        src/audio/AudioHandler.cpp
                         src/shader.cpp
                         src/texture.cpp
                         src/objects.cpp
@@ -68,6 +69,7 @@ add_executable(${OUTPUT} src/glad.c
 if (UNIX)
     target_link_libraries(${OUTPUT} libglfw.so)
     target_link_libraries(${OUTPUT} dl)
+    target_link_libraries(${OUTPUT} sfml-graphics sfml-audio sfml-window sfml-system)
 endif (UNIX)
 
 if (WIN32)

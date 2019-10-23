@@ -4,10 +4,8 @@
 #include <SFML/Audio.hpp>
 #include <string>
 
-namespace audio
-{
-    class AudioHandler
-    {
+namespace audio{
+    class AudioHandler{
         public:
             AudioHandler();
             ~AudioHandler();

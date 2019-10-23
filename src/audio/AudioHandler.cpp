@@ -1,16 +1,14 @@
 
 #include "AudioHandler.hpp"
 
-namespace audio
-{
-    AudioHandler::AudioHandler()
-    {
+namespace audio{
+    AudioHandler::AudioHandler(){
+
     }
-    AudioHandler::~AudioHandler()
-    {
+    AudioHandler::~AudioHandler(){
+
     }
-    sf::Sound AudioHandler::loadSound(std::string audioFilePath)
-    {
+    sf::Sound AudioHandler::loadSound(std::string audioFilePath){
         sf::SoundBuffer buffer;
         if(!buffer.loadFromFile(audioFilePath))
         {
