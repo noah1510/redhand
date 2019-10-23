@@ -16,7 +16,7 @@ then
     # Linux
     echo "script running on linux"
 
-    GLFWLIBNAME="libglfw.so"
+    GLFWLIB="libglfw.so"
     SFMLAUDIOLIB="libsfml-audio.so" 
     SFMLGRAPICSLIB="libsfml-graphics.so" 
     SFMLWINDOWLIB="libsfml-window.so"
@@ -29,7 +29,7 @@ then
     # Mac OSX
     echo "script running on mac osx"
 
-    GLFWLIBNAME="libglfw.so"
+    GLFWLIB="libglfw.so"
     SFMLAUDIOLIB="libsfml-audio.so" 
     SFMLGRAPICSLIB="libsfml-graphics.so" 
     SFMLWINDOWLIB="libsfml-window.so"
@@ -100,19 +100,19 @@ mkdir -p "lib"
 mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
 
-cp "build/glfw/src/$GLFWLIBNAME" "lib"
+cp "build/glfw/src/$GLFWLIB" "lib"
 cp "build/SFML/lib/$SFMLAUDIOLIB" "lib"
 cp "build/SFML/lib/$SFMLGRAPICSLIB" "lib"
 cp "build/SFML/lib/$SFMLWINDOWLIB" "lib"
 cp "build/SFML/lib/$SFMLSYSTEMLIB" "lib"
 
-cp "build/glfw/src/$GLFWLIBNAME" "build/$BUILDNAME"
+cp "build/glfw/src/$GLFWLIB" "build/$BUILDNAME"
 cp "build/SFML/lib/$SFMLAUDIOLIB" "build/$BUILDNAME"
 cp "build/SFML/lib/$SFMLGRAPICSLIB" "build/$BUILDNAME"
 cp "build/SFML/lib/$SFMLWINDOWLIB" "build/$BUILDNAME"
 cp "build/SFML/lib/$SFMLSYSTEMLIB" "build/$BUILDNAME"
 
-cp "build/glfw/src/$GLFWLIBNAME" "deploy"
+cp "build/glfw/src/$GLFWLIB" "deploy"
 cp "build/SFML/lib/$SFMLAUDIOLIB" "deploy"
 cp "build/SFML/lib/$SFMLGRAPICSLIB" "deploy"
 cp "build/SFML/lib/$SFMLWINDOWLIB" "deploy"
@@ -120,7 +120,7 @@ cp "build/SFML/lib/$SFMLSYSTEMLIB" "deploy"
 
 cp -r "dependencies/SFML/include/SFML" "include"
 
-cp "deploy/$GLFWLIBNAME" "deploy/$BUILDNAME-$GLFWLIBNAME"
+cp "deploy/$GLFWLIB" "deploy/$BUILDNAME-$GLFWLIB"
 cp "deploy/$SFMLAUDIOLIB" "deploy/$BUILDNAME-$SFMLAUDIOLIB"
 cp "deploy/$SFMLGRAPICSLIB" "deploy/$BUILDNAME-$SFMLGRAPICSLIB"
 cp "deploy/$SFMLWINDOWLIB" "deploy/$BUILDNAME-$SFMLWINDOWLIB"
