@@ -17,10 +17,10 @@ then
     echo "script running on linux"
 
     GLFWLIB="libglfw.so"
-    SFMLAUDIOLIB="libsfml-audio.so" 
-    SFMLGRAPICSLIB="libsfml-graphics.so" 
-    SFMLWINDOWLIB="libsfml-window.so"
-    SFMLSYSTEMLIB="libsfml-system.so"
+    SFMLAUDIOLIB="libsfml-audio.so.2.5" 
+    SFMLGRAPICSLIB="libsfml-graphics.so.2.5" 
+    SFMLWINDOWLIB="libsfml-window.so.2.5"
+    SFMLSYSTEMLIB="libsfml-system.so.2.5"
 
     EXECUTABLE="$PROJECTNAME-$BUILDNAME"
 
