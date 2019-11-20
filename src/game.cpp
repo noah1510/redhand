@@ -42,7 +42,8 @@ int createTestworld(world* testWorld){
     //add shaders to world
     if( testWorld->addShader(new shader(
         "../shaders/default.vert",
-        "../shaders/variableColor.frag"
+        "../shaders/variableColor.frag",
+        "variable Color"
         )
     ) == -1){
         return -1;
@@ -50,7 +51,8 @@ int createTestworld(world* testWorld){
 
     if( testWorld->addShader(new shader(
         "../shaders/advanced2.vert",
-        "../shaders/texture.frag"
+        "../shaders/texture.frag",
+        "house"
         )
     ) ==  -1){
         return -1;
@@ -58,7 +60,8 @@ int createTestworld(world* testWorld){
 
     if( testWorld->addShader(new shader(
         "../shaders/default.vert",
-        "../shaders/default.frag"
+        "../shaders/default.frag",
+        "default"
         )
     ) == -1){
         return -1;
@@ -92,10 +95,10 @@ int createTestworld(world* testWorld){
                 2.0f,
                 2.0f,
                 color,
-                1200.0f/testWorld->getTexture(1)->getWidth(),
-                testWorld->getShader(2),
-                testWorld->getTexture(1),
-                GL_STATIC_DRAW
+                testWorld->getShaderByName("default"),
+                testWorld->getTextureByIndex(1),
+                GL_STATIC_DRAW,
+                1200.0f/testWorld->getTextureByIndex(1)->getWidth()
             )
         ) == -1){
             return -3;
@@ -114,7 +117,7 @@ int createTestworld(world* testWorld){
                 edges,
                 iColorSunTwo,
                 oColorSunTwo,
-                testWorld->getShader(2),
+                testWorld->getShaderByName("default"),
                 nullptr
             )
         ) == -1){
@@ -123,53 +126,57 @@ int createTestworld(world* testWorld){
     }
 
     // sun one
-    if( testWorld->addObject(createCircle(NULL, 0.25f, edges, NULL, NULL, testWorld->getShader(2), nullptr)) == -1){
+    if( testWorld->addObject(createCircle(NULL, 0.25f, edges, NULL, NULL, testWorld->getShaderByName("default"), nullptr)) == -1){
         return -3;
     }
 
     //triangle
     {
-        std::vector <float> trig_points = {0.0f,0.5f,0.0f, -0.25f,0.0f,0.0f, 0.25f,0.0f,0.0f};
+        std::vector <float> trig_points = {0.0f,0.0f, 1.0f,0.0f, 0.5f,1.0f};
         std::vector <unsigned int> trig_indicies = {0,1,2};
         std::vector <float> trig_colors = {1.0f,0.0f,0.0f, 0.0f,1.0f,0.0f, 0.0f,0.0f,1.0f};
-        std::vector <float> trig_texels = {5.0f,10.0f, 0.0f,0.0f, 10.0f,0.0f};
+        std::vector <float> trig_texels = {0.0f,0.0f, 1.0f*10.0f,0.0f, 0.5f*10.0f,1.0f*10.0f};
+        std::vector <float> trig_pos = {-0.4f,-0.4f};
         if( testWorld->addObject(
             new object(
                 trig_points,
                 trig_indicies,
                 trig_colors,
-                trig_texels,
-                testWorld->getShader(1),
-                nullptr,
+                testWorld->getShaderByName("variable Color"),
                 GL_STATIC_DRAW,
                 [](shader* shade){
                     glm::mat4 trans = glm::mat4(1.0f);
                     trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
                     trans = glm::translate(trans, glm::vec3(0.25f, 0.25f, 0.0f));
 
-                    unsigned int transformLoc = glGetUniformLocation(shade->ID, "transformation");
+                    unsigned int transformLoc = glGetUniformLocation(shade->getID(), "transformation");
                     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
-                }
+                },
+                0.5f,
+                0.0f,
+                trig_pos,
+                nullptr,
+                trig_texels
             )
         ) == -1){
             return -3;
         }
 
-        testWorld->getObject(3)->setLoopFunction([](GLFWwindow* window, object* obj){
+        testWorld->getObjectByIndex(3)->setLoopFunction([](GLFWwindow* window, object* obj){
             glm::mat4 trans = glm::mat4(1.0f);
             trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 
-            unsigned int transformLoc = glGetUniformLocation(obj->getShader()->ID, "transformation");
+            unsigned int transformLoc = glGetUniformLocation(obj->getShader()->getID(), "transformation");
             glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
         });
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTexture(0),testWorld->getShader(0))) == -1){
+    if( testWorld->addObject(createHouse(testWorld->getTextureByIndex(0),testWorld->getShaderByName("house"))) == -1){
         return -3;
     }
 
-    testWorld->getObject(4)->setLoopFunction(processHouseMovement);
+    testWorld->getObjectByIndex(4)->setLoopFunction(processHouseMovement);
 
     return testWorld->test();
 }

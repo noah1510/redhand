@@ -80,8 +80,24 @@ shader::shader(const char* vertexPath, const char* fragmentPath){
 
 }
 
+shader::shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string name):shader(vertexPath,fragmentPath){
+    shader_name = name;
+}
+
+bool shader::hasErrored(){
+    return errord;
+}
+
+unsigned int shader::getID(){
+    return ID;
+}
+
 void shader::use(){
     glUseProgram(ID);
+}
+
+std::string shader::getName(){
+    return shader_name;
 }
 
 void shader::setBool(const std::string &name, bool value) const{         

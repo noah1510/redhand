@@ -22,9 +22,11 @@ public:
     int removeTexture(int);
     int removeObject(int);
 
-    shader* getShader(int);
-    texture2D* getTexture(int);
-    object* getObject(int);
+    shader* getShaderByIndex(int);
+    texture2D* getTextureByIndex(int);
+    object* getObjectByIndex(int);
+
+    shader* getShaderByName(std::string name);
 
     void tick(GLFWwindow* window);
     int test();
