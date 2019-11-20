@@ -80,7 +80,7 @@ object::object(
     shader* attached_shader,
     int gl_drawing_mode,
 
-    float scaler,
+    std::vector<float> scaler,
     float rotator,
     std::vector<float> postitions
 ):object(points, indices, colors, attached_shader, gl_drawing_mode){
@@ -104,7 +104,7 @@ object::object(
 
     std::function<void(shader*)> routine,
 
-    float scaler,
+    std::vector<float> scaler,
     float rotator,
     std::vector<float> postitions
 ):object(points, indices, colors, attached_shader, gl_drawing_mode,routine){
@@ -126,7 +126,7 @@ object::object(
 
     std::function<void(shader*)> routine,
 
-    float scaler,
+    std::vector<float> scaler,
     float rotator,
     std::vector<float> postitions,
 
@@ -147,7 +147,7 @@ object::object(
 
         std::function<void(shader*)> routine,
 
-        float scaler,
+        std::vector<float> scaler,
         float rotator,
         std::vector<float> postitions,
 
@@ -244,15 +244,15 @@ void object::draw(){
     }
 
     //Create World transformation matrix
-    if (objectVersion > 0){
-        glm::mat4 worldTrans = glm::mat4(1.0f);
-        worldTrans = glm::translate(worldTrans, glm::vec3(object_position[0],object_position[1],0.0f));
-        worldTrans = glm::rotate(worldTrans, glm::radians(object_rotation), glm::vec3(0.0f, 0.0f, 1.0f));
-        worldTrans = glm::scale(worldTrans, glm::vec3(object_scale, object_scale, 1.0f));
+    
+    glm::mat4 worldTrans = glm::mat4(1.0f);
+    worldTrans = glm::translate(worldTrans, glm::vec3(object_position[0],object_position[1],0.0f));
+    worldTrans = glm::rotate(worldTrans, glm::radians(object_rotation), glm::vec3(0.0f, 0.0f, 1.0f));
+    worldTrans = glm::scale(worldTrans, glm::vec3(object_scale.at(0), object_scale.at(1), 1.0f));
 
-        unsigned int transformLoc = glGetUniformLocation(object_shader->getID(), "worldTransformation");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
-    }
+    unsigned int transformLoc = glGetUniformLocation(object_shader->getID(), "worldTransformation");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
+
 
     //run the custom shader routine
     shader_routine(object_shader);
@@ -291,11 +291,35 @@ void object::setPosition(std::vector<float> pos){
     object_position = pos;
 };
 
+void object::move(std::vector<float> delta_pos){
+    if(delta_pos.size() == 2){
+        object_position.at(0) += delta_pos.at(0);
+        object_position.at(1) += delta_pos.at(1);
+    }
+};
+
 float object::getRotation(){
     return object_rotation;
 };
 void object::setRotation(float rot){
     object_rotation = rot;
+
+    while(object_rotation > 360.0f){
+        object_rotation -= 360.0f;
+    }
+    while(object_rotation < 0.0f){
+        object_rotation += 360.0f;
+    }
+};
+void object::rotate(float delta_rot){
+    object_rotation += delta_rot;
+
+    while(object_rotation > 360.0f){
+        object_rotation -= 360.0f;
+    }
+    while(object_rotation < 0.0f){
+        object_rotation += 360.0f;
+    }
 };
 
 object* createHouse(
@@ -305,10 +329,10 @@ object* createHouse(
 ){
     //Vertex Data
     std::vector <float> points = {
-        1.0f, 0.4f,  // top right
+        1.0f, 0.55f,  // top right
         1.0f, 0.0f,  // bottom right
         0.0f, 0.0f,  // bottom left
-        0.0f, 0.4f,  // top left 
+        0.0f, 0.55f,  // top left 
         0.5f, 1.0f,  // top middle
     };
     std::vector <unsigned int> indices = {
@@ -338,7 +362,7 @@ object* createHouse(
         shade->setFloat("ourColor", redValue, greenValue, blueValue, 1.0f);
     };
 
-    return new object(points,indices,colors,shade,GL_DYNAMIC_DRAW,routine,0.5f,0.0f,{0.0f,0.0f},texture,texels);
+    return new object(points,indices,colors,shade,GL_DYNAMIC_DRAW,routine,{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
     
 }
 
@@ -363,16 +387,16 @@ object* createCircle(
     }
 
     //Set default midpoint
-    std::vector<float> position = {0.6f, 0.6f};
+    std::vector<float> position = {0.1f, 0.1f};
     if(midpoint != NULL){
-        position.at(0) = midpoint[0];
-        position.at(1) = midpoint[1];
+        position.at(0) = midpoint[0]-0.5f;
+        position.at(1) = midpoint[1]-0.5f;
     }
 
     //Set to yellow if NULL
     if(innerColor != NULL){
         for(int i = 0;i < 3;i++){
-            colors[i] = innerColor[i];
+            colors.at(i) = innerColor[i];
         }
     }
 
@@ -386,8 +410,8 @@ object* createCircle(
 
     for(int i = 0; i < edges;i++){
         float dx,dy;
-        dx = cosDeg(i*360/edges)/2 + 0.5f;
-        dy = sinDeg(i*360/edges)/2 + 0.5f;
+        dx = cosDeg(i*360/edges)/2.0f + 0.5f;
+        dy = sinDeg(i*360/edges)/2.0f + 0.5f;
 
         points.insert(points.end(), dx);
         points.insert(points.end(), dy);
@@ -405,10 +429,10 @@ object* createCircle(
         indices.insert(indices.end(), 0);
         indices.insert(indices.end(), i + 1);
         indices.insert(indices.end(), i + 2);
-        if(indices[i*3 + 2] == edges + 1){indices[i*3 + 2] = 1;};
+        if(indices.at(i*3 + 2) == edges + 1){indices.at(i*3 + 2) = 1;};
     }  
 
-    return new object(points, indices, colors, shade, GL_STATIC_DRAW, [](shader*){}, radius, 0.0f, position, tex, texels);
+    return new object(points, indices, colors, shade, GL_STATIC_DRAW, [](shader*){}, {radius,radius}, 0.0f, position, tex, texels);
 }
 
 object* createRecktangle(
@@ -421,13 +445,12 @@ object* createRecktangle(
     int DrawingMode,
     float textureScale
 ){
-    float scale = width/height;
 
     std::vector<float> points = {
-        0.0f + width/2.0f,  0.0f,               //top left
-        0.0f + width/2.0f,  0.0f + height/2.0f, //top right
-        0.0f,               0.0f + height/2.0f, //bottom right
-        0.0f,               0.0f                //bottom left
+        0.0f + 1.0f,  0.0f,        //top left
+        0.0f + 1.0f,  0.0f + 1.0f, //top right
+        0.0f,         0.0f + 1.0f, //bottom right
+        0.0f,         0.0f         //bottom left
     };
 
     std::vector<unsigned int> indices = {
@@ -445,15 +468,15 @@ object* createRecktangle(
 
 
     std::vector<float> texels = {
-        textureScale * width/2.0f,  textureScale * 0.0f,        //top left
-        textureScale * width/2.0f,  textureScale * height/2.0f, //top right
-        textureScale * 0.0f,        textureScale * height/2.0f, //bottom right
-        textureScale * 0.0f,        textureScale * 0.0f         //bottom left
+        textureScale * 1.0f,  textureScale * 0.0f,        //top left
+        textureScale * 1.0f,  textureScale * 1.0f, //top right
+        textureScale * 0.0f,  textureScale * 1.0f, //bottom right
+        textureScale * 0.0f,  textureScale * 0.0f         //bottom left
     };
 
     std::vector<float> position_vector = {bottomleft[0],bottomleft[1]};
 
-    return new object(points,indices,colors,shade,DrawingMode,[](shader*){},scale,0.0f,position_vector,tex,texels);
+    return new object(points,indices,colors,shade,DrawingMode,[](shader*){},{width,height},0.0f,position_vector,tex,texels);
 }
 
 float degToRad(float val){

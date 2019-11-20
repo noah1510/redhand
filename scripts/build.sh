@@ -17,10 +17,16 @@ then
     echo "script running on linux"
 
     GLFWLIB="libglfw.so"
-    SFMLAUDIOLIB="libsfml-audio.so.2.5" 
-    SFMLGRAPICSLIB="libsfml-graphics.so.2.5" 
-    SFMLWINDOWLIB="libsfml-window.so.2.5"
-    SFMLSYSTEMLIB="libsfml-system.so.2.5"
+
+    SOURCESFMLAUDIOLIB="libsfml-audio.so.2.5" 
+    SOURCESFMLGRAPICSLIB="libsfml-graphics.so.2.5" 
+    SOURCESFMLWINDOWLIB="libsfml-window.so.2.5"
+    SOURCESFMLSYSTEMLIB="libsfml-system.so.2.5"
+
+    SFMLAUDIOLIB="libsfml-audio.so" 
+    SFMLGRAPICSLIB="libsfml-graphics.so" 
+    SFMLWINDOWLIB="libsfml-window.so"
+    SFMLSYSTEMLIB="libsfml-system.so"
 
     EXECUTABLE="$PROJECTNAME-$BUILDNAME"
 
@@ -45,6 +51,12 @@ then
     echo "script running on windows"
 
     GLFWLIB="glfw3.dll"
+
+    SOURCESFMLAUDIOLIB="sfml-audio-2.dll" 
+    SOURCESFMLGRAPICSLIB="sfml-graphics-2.dll" 
+    SOURCESFMLWINDOWLIB="sfml-window-2.dll"
+    SOURCESFMLSYSTEMLIB="sfml-system-2.dll"
+
     SFMLAUDIOLIB="sfml-audio-2.dll" 
     SFMLGRAPICSLIB="sfml-graphics-2.dll" 
     SFMLWINDOWLIB="sfml-window-2.dll"
@@ -101,30 +113,30 @@ mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
 
 cp "build/glfw/src/$GLFWLIB" "lib"
-cp "build/SFML/lib/$SFMLAUDIOLIB" "lib"
-cp "build/SFML/lib/$SFMLGRAPICSLIB" "lib"
-cp "build/SFML/lib/$SFMLWINDOWLIB" "lib"
-cp "build/SFML/lib/$SFMLSYSTEMLIB" "lib"
+cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "lib/$SFMLAUDIOLIB"
+cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "lib/$SFMLGRAPICSLIB"
+cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "lib/$SFMLWINDOWLIB"
+cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "lib/$SFMLSYSTEMLIB"
 
 cp "build/glfw/src/$GLFWLIB" "build/$BUILDNAME"
-cp "build/SFML/lib/$SFMLAUDIOLIB" "build/$BUILDNAME"
-cp "build/SFML/lib/$SFMLGRAPICSLIB" "build/$BUILDNAME"
-cp "build/SFML/lib/$SFMLWINDOWLIB" "build/$BUILDNAME"
-cp "build/SFML/lib/$SFMLSYSTEMLIB" "build/$BUILDNAME"
+cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "build/$BUILDNAME"
+cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "build/$BUILDNAME"
+cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "build/$BUILDNAME"
+cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "build/$BUILDNAME"
 
 cp "build/glfw/src/$GLFWLIB" "deploy"
-cp "build/SFML/lib/$SFMLAUDIOLIB" "deploy"
-cp "build/SFML/lib/$SFMLGRAPICSLIB" "deploy"
-cp "build/SFML/lib/$SFMLWINDOWLIB" "deploy"
-cp "build/SFML/lib/$SFMLSYSTEMLIB" "deploy"
+cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "deploy"
+cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "deploy"
+cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "deploy"
+cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "deploy"
 
 cp -r "dependencies/SFML/include/SFML" "include"
 
 cp "deploy/$GLFWLIB" "deploy/$BUILDNAME-$GLFWLIB"
-cp "deploy/$SFMLAUDIOLIB" "deploy/$BUILDNAME-$SFMLAUDIOLIB"
-cp "deploy/$SFMLGRAPICSLIB" "deploy/$BUILDNAME-$SFMLGRAPICSLIB"
-cp "deploy/$SFMLWINDOWLIB" "deploy/$BUILDNAME-$SFMLWINDOWLIB"
-cp "deploy/$SFMLSYSTEMLIB" "deploy/$BUILDNAME-$SFMLSYSTEMLIB"
+cp "deploy/$SOURCESFMLAUDIOLIB" "deploy/$BUILDNAME-$SFMLAUDIOLIB"
+cp "deploy/$SOURCESFMLGRAPICSLIB" "deploy/$BUILDNAME-$SFMLGRAPICSLIB"
+cp "deploy/$SOURCESFMLWINDOWLIB" "deploy/$BUILDNAME-$SFMLWINDOWLIB"
+cp "deploy/$SOURCESFMLSYSTEMLIB" "deploy/$BUILDNAME-$SFMLSYSTEMLIB"
 
 #build actual project
 cd "build/$BUILDNAME"

@@ -113,10 +113,16 @@ int main(){
     //close the window + clean up
     glfwTerminate();
 
-    return exitCode;
+    
+    if(exitCode < 0){
+        return -exitCode;
+    }else{
+        return exitCode;
+    }  
+    
 }
 
-/*NOT WORKING AT THe MOMENT*/
+/*NOT WORKING AT THE MOMENT*/
 void setWindowSize(int width, int height){
     glViewport(0, 0, width, height);
 }

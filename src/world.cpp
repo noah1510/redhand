@@ -173,10 +173,21 @@ object* world::getObjectByIndex(int i){
 }
 
 shader* world::getShaderByName(std::string name){
-    for(int i = 0;i < WorldShaders.size();i++){
-        if((WorldShaders.at(i)->getName()).compare(name.c_str())){
-            return WorldShaders.at(i);
+    int i = 0;
+    bool found = false;
+
+    while(i < WorldShaders.size()){
+        if((WorldShaders.at(i)->getName()).compare(name) == 0){
+            found = true;
+            break;    
         }
+        i++;
     }
-    return nullptr;
+
+    if(found){
+        return WorldShaders.at(i);
+    }else{
+        return nullptr;
+    }
+    
 }

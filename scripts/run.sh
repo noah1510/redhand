@@ -45,13 +45,13 @@ fi
 cd "deploy"
 
 #run the executable
-./$EXECUTABLE
+./$EXECUTABLE | tail -l
 
-if [ $? -eq 0 ]
+if [ $? -eq ${PIPESTATUS[0]} ]
 then
   echo "Successfully ran program"
 else
-  echo "Error while executing the program:" >&2
+  echo "Error during execution of the program: ${PIPESTATUS[0]} " >&2
   cd ".."
   exit 2
 fi

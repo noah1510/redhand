@@ -34,7 +34,7 @@ private:
 
 
     std::vector<float> object_position = {0.0f, 0.0f};
-    float object_scale = 1.0f;
+    std::vector<float> object_scale = {1.0f, 1.0f};
     float object_rotation = 0.0f;
 
 public:
@@ -64,7 +64,7 @@ public:
         shader* attached_shader,
         int gl_drawing_mode,
 
-        float scaler,
+        std::vector<float> scaler,
         float rotator,
         std::vector<float> postitions);
 
@@ -78,7 +78,7 @@ public:
 
         std::function<void(shader*)> routine,
 
-        float scaler,
+        std::vector<float> scaler,
         float rotator,
         std::vector<float> postitions);
 
@@ -92,7 +92,7 @@ public:
 
         std::function<void(shader*)> routine,
 
-        float scaler,
+        std::vector<float> scaler,
         float rotator,
         std::vector<float> postitions,
 
@@ -108,7 +108,7 @@ public:
 
         std::function<void(shader*)> routine,
 
-        float scaler,
+        std::vector<float> scaler,
         float rotator,
         std::vector<float> postitions,
 
@@ -131,10 +131,12 @@ public:
     //sets and gets the object position
     std::vector<float> getPosition();
     void setPosition(std::vector<float> pos);
+    void move(std::vector<float> delta_pos);
 
     //sets and gets the rotation in degrees
     float getRotation();
     void setRotation(float rot);
+    void rotate(float delta_rot);
 };
 
 
