@@ -75,7 +75,7 @@ int createTestworld(world* testWorld){
      // Background rectangle
     {
         float bottomLeft[2] = {-1.0f, -1.0f};
-        float color[3] = {1.0f, 1.0f, 1.0f};
+        float color[3] = {0.0f, 0.6f, 1.0f};
         if( testWorld->addObject(
             createRecktangle(
                 bottomLeft,
@@ -85,7 +85,7 @@ int createTestworld(world* testWorld){
                 testWorld->getShaderByName("default"),
                 testWorld->getTextureByIndex(1),
                 GL_STATIC_DRAW,
-                1200.0f/testWorld->getTextureByIndex(1)->getWidth()
+                100.0f
             )
         ) == -1){
             return -3;
@@ -94,14 +94,14 @@ int createTestworld(world* testWorld){
 
      // sun two
     {
-        float posSunTwo[3] = {0.3f, 0.7f, 0.0f};
+        float posSunTwo[2] = {0.6f, 0.6f};
         float iColorSunTwo[3] = {0.0f, 0.8f, 1.0f};
         float oColorSunTwo[3] = {0.8f, 0.0f, 1.0f};
         if( testWorld->addObject(
             createCircle(
                 posSunTwo,
-                0.5f,
-                10,
+                0.6f,
+                edges,
                 iColorSunTwo,
                 oColorSunTwo,
                 testWorld->getShaderByName("default"),
@@ -113,7 +113,8 @@ int createTestworld(world* testWorld){
     }
 
     // sun one
-    if( testWorld->addObject(createCircle(NULL, 0.25f, edges, NULL, NULL, testWorld->getShaderByName("default"), nullptr)) == -1){
+    float posSunOne[2] = {0.8f,0.45f};
+    if( testWorld->addObject(createCircle(posSunOne, 0.35f, edges, NULL, NULL, testWorld->getShaderByName("default"), nullptr)) == -1){
         return -3;
     }
 
@@ -148,7 +149,7 @@ int createTestworld(world* testWorld){
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTextureByIndex(0),testWorld->getShaderByName("default"))) == -1){
+    if( testWorld->addObject(createHouse(testWorld->getTextureByIndex(0),testWorld->getShaderByName("default"),100.0f)) == -1){
         return -3;
     }
 

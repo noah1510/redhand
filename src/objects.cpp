@@ -26,7 +26,7 @@ object::object(
 
         for(int i = 0; i < points.size();i++){
             data.emplace_back(points.at(i));
-            if(i % 2 == 1 && i != 0){
+            if(i % 2 == 1){
                 data.emplace_back(points.at(0.0f));
             }
         }
@@ -162,7 +162,7 @@ object::object(
         shader_routine = [](shader*){};
         LoopFunction = [](GLFWwindow*, object*){};
             
-        int point_size = points.size();
+        int point_size = (int)(1.5f * points.size());
         int colors_size = colors.size();
         int texels_size = points.size();
         if(texels.size() != 0){
@@ -174,15 +174,17 @@ object::object(
         std::vector <float> data;
         for(int i = 0; i < points.size();i++){
             data.emplace_back(points.at(i));
-            if(i % 2 == 1 && i != 0){
+            if(i % 2 == 1){
                 data.emplace_back(points.at(0.0f));
             }
         }
-        data.insert(data.end(), colors.begin(), colors.end());
+
+        data.insert(data.end(),colors.begin(),colors.end());
+
         if(texels.size() != 0){
-            data.insert(data.end(), texels.begin(), texels.end());
+            data.insert(data.end(),texels.begin(),texels.end());
         }else{
-            data.insert(data.end(), points.begin(), points.end());
+            data.insert(data.end(),points.begin(),points.end());
         }
         
 
@@ -243,8 +245,7 @@ void object::draw(){
         object_shader->setInt("useTexture", 0);
     }
 
-    //Create World transformation matrix
-    
+    //Create World transformation matrix  
     glm::mat4 worldTrans = glm::mat4(1.0f);
     worldTrans = glm::translate(worldTrans, glm::vec3(object_position[0],object_position[1],0.0f));
     worldTrans = glm::rotate(worldTrans, glm::radians(object_rotation), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -353,13 +354,7 @@ object* createHouse(
     }
 
     std::function<void(shader*)> routine = [](shader* shade){
-        //color changing
-        float timeValue = glfwGetTime();
-        float redValue = (cos(timeValue) / 2.0f) + 0.5f;
-        float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
-        float blueValue = (sin(timeValue + 3.1415f) / 2.0f) + 0.5f;
-
-        shade->setFloat("ourColor", redValue, greenValue, blueValue, 1.0f);
+        shade->setInt("useTexture", 1);
     };
 
     return new object(points,indices,colors,shade,GL_DYNAMIC_DRAW,routine,{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
@@ -387,10 +382,10 @@ object* createCircle(
     }
 
     //Set default midpoint
-    std::vector<float> position = {0.1f, 0.1f};
+    std::vector<float> position = {0.0f, 0.0f};
     if(midpoint != NULL){
-        position.at(0) = midpoint[0]-0.5f;
-        position.at(1) = midpoint[1]-0.5f;
+        position.at(0) = midpoint[0]-0.5f*radius;
+        position.at(1) = midpoint[1]-0.5f*radius;
     }
 
     //Set to yellow if NULL
@@ -468,10 +463,10 @@ object* createRecktangle(
 
 
     std::vector<float> texels = {
-        textureScale * 1.0f,  textureScale * 0.0f,        //top left
+        textureScale * 1.0f,  textureScale * 0.0f, //top left
         textureScale * 1.0f,  textureScale * 1.0f, //top right
         textureScale * 0.0f,  textureScale * 1.0f, //bottom right
-        textureScale * 0.0f,  textureScale * 0.0f         //bottom left
+        textureScale * 0.0f,  textureScale * 0.0f  //bottom left
     };
 
     std::vector<float> position_vector = {bottomleft[0],bottomleft[1]};
