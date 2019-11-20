@@ -16,7 +16,6 @@
 
 class object{
 private:
-    unsigned int objectVersion = 0;
 
     unsigned int VAO;
     unsigned int VBO;
@@ -26,6 +25,9 @@ private:
 
     shader* object_shader;
     std::vector <texture2D*> object_textures;
+
+    unsigned int textureMode = 0;
+    float colorAlphaValue = 1.0f;
 
     bool errored = false;
     
@@ -137,6 +139,9 @@ public:
     float getRotation();
     void setRotation(float rot);
     void rotate(float delta_rot);
+
+    //set the alpha value of the color
+    void setColorAlpha(float alpha);
 };
 
 

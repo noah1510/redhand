@@ -23,7 +23,7 @@ matrix:
             - libvorbis-dev
             - libopenal-dev
       install: skip
-      script: bash scripts/build.sh "${TRAVIS_JOB_NAME}"
+      script: bash scripts/build.sh -j 4 "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
       os: linux
@@ -41,7 +41,7 @@ matrix:
             - libvorbis-dev
             - libopenal-dev
       install: skip
-      script: bash scripts/build.sh "${TRAVIS_JOB_NAME}"
+      script: bash scripts/build.sh -j 4 "${TRAVIS_JOB_NAME}"
       env: ISOLATED=true
     - stage: should work
       os: windows
@@ -50,7 +50,7 @@ matrix:
       install: 
         - choco install mingw
         - choco install make
-      script: bash scripts/build.sh "${TRAVIS_JOB_NAME}" "gitbash"
+      script: bash scripts/build.sh -j 4 "${TRAVIS_JOB_NAME}" "gitbash"
       env: ISOLATED=true
 
 script_install:
