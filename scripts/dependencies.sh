@@ -29,14 +29,21 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    choco install mingw cmake ninja --yes --verbose --no-progress
-    if [ $? -eq 0 ]
+    if [ $1 -eq "--skip-mingw"]
     then
-        echo "Successfully installed dependencies"
-    else
-        if [ $? -eq 1603 ]
+        choco install cmake ninja --yes --verbose --no-progress
+        if [ $? -eq 0 ]
         then
-            echo "Successfully installed most dependencies"
+            echo "Successfully installed dependencies"
+        else
+            echo "Could not install dependencies" >&2
+            exit 2
+        fi
+    else
+        choco install mingw cmake ninja --yes --verbose --no-progress
+        if [ $? -eq 0 ]
+        then
+            echo "Successfully installed dependencies"
         else
             echo "Could not install dependencies" >&2
             exit 2
