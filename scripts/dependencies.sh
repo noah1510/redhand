@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ "$OSTYPE" == "linux-gnu" ]
 then
     # Linux
@@ -10,7 +12,6 @@ then
     echo "Successfully installed dependencies"
     else
     echo "Could not install dependencies" >&2
-    cd "../.."
     exit 2
     fi
 
@@ -34,7 +35,6 @@ then
     echo "Successfully installed dependencies"
     else
     echo "Could not install dependencies" >&2
-    cd "../.."
     exit 2
     fi
 

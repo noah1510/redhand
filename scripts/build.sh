@@ -1,24 +1,45 @@
 #!/bin/bash
 
-THREATS="3"
+THREADS="3"
+BUILDNAME="main"
+
 #parse parameter
-if [ $1 ]
-then
-  if [ $1 = "-j" ]
-  then
-    THREATS="$(($2+1))"
-    if [ $3 ]
-    then
-      BUILDNAME="$3"
-    else
-      BUILDNAME="main"
-    fi #[ $3 ]
-  else
-    BUILDNAME="$1"
-  fi #[ $1 -eq "-j" ]
-else 
-    BUILDNAME="main"
-fi #[ $1 ]
+pars=$#
+for ((i=1;i<=pars;i+=2))
+do
+  case "$1" in
+    "-o")
+      shift
+      if [ $1 ]
+      then
+        BUILDNAME="$1"
+      else
+        BUILDNAME="main"
+      fi
+      ;;
+    "-j")
+      shift
+      if [ $1 ]
+      then
+        THREADS="$(($1+1))"
+      fi
+      ;;
+    "--help")
+      echo "Usage: scripts/build.sh [options]"
+      echo "Options:"
+      echo "    --help              Display this information"
+      echo "    -j [threadnumber]   Build the project with the specified number of threads."
+      echo "    -o [buildname]      Build the project with the specified buildname defaults to main"
+      echo ""
+      echo "view the source on https://github.com/noah1510/greenfoot-"
+      exit 1
+      ;;
+    *)
+      echo "Invalid option try --help for information on how to use the script"
+      exit 1
+      ;;
+  esac
+done
 
 REPOROOT="$(pwd)"
 PROJECTNAME="greenfoot++"
@@ -85,7 +106,7 @@ else
     exit 1
 fi
 
-echo "number of threats:$THREATS"
+echo "number of THREADS:$THREADS"
 
 mkdir -p "build"
 
@@ -93,7 +114,7 @@ mkdir -p "build"
 mkdir -p "build/glfw"
 cd "build/glfw"
 cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
-ninja -j"$THREATS"
+ninja -j"$THREADS"
 if [ $? -eq 0 ]
 then
   echo "Successfully compiled glfw"
@@ -108,7 +129,7 @@ cd "../.."
 mkdir -p "build/SFML"
 cd "build/SFML"
 cmake -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DBUILD_SHARED_LIBS=ON "../../dependencies/SFML"
-ninja -j"$THREATS"
+ninja -j"$THREADS"
 if [ $? -eq 0 ]
 then
   echo "Successfully compiled SFML"
@@ -162,14 +183,14 @@ cp "deploy/$SOURCESFMLSYSTEMLIB" "deploy/$BUILDNAME-$SFMLSYSTEMLIB"
 #build actual project
 cd "build/$BUILDNAME"
 cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../.."
-ninja -j"$THREATS"
+ninja -j"$THREADS"
 if [ $? -eq 0 ]
 then
   echo "Successfully compiled $PROJECTNAME"
 else
   echo "Could not compile $PROJECTNAME" >&2
   cd "../.."
-  exit 3
+  exit 4
 fi
 cd "../.."
 cp -r "build/$BUILDNAME/$EXECUTABLE" "deploy"

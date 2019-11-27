@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: install dependencies
       run:  bash scripts/dependencies.sh
-    - name: init submodule
-      run:  git submodule update --init
+    - name: setup the project
+      run:  bash scripts/setup.sh
     - name: build
-      run:  bash scripts/build.sh -j 2 $(git rev-list HEAD --count)
+      run:  bash scripts/build.sh -j 2 -o $(git rev-list HEAD --count)
