@@ -29,9 +29,9 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    if [ "$1" == "--skip-mingw"]
+    if [ "$1" == "--ci"]
     then
-        choco install cmake ninja --yes --verbose --no-progress
+        choco install ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"

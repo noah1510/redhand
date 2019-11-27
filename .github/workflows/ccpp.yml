@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: install dependencies
-      run:  bash scripts/dependencies.sh --skip-mingw
+      run:  bash scripts/dependencies.sh --ci
     - name: setup the project
       run:  bash scripts/setup.sh
     - name: build
