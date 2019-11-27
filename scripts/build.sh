@@ -1,12 +1,12 @@
 #!/bin/bash
 
-THREATS="2"
+THREATS="3"
 #parse parameter
 if [ $1 ]
 then
   if [ $1 = "-j" ]
   then
-    THREATS="$2"
+    THREATS="$(($2+1))"
     if [ $3 ]
     then
       BUILDNAME="$3"
@@ -85,13 +85,17 @@ else
     exit 1
 fi
 
+echo "number of threats:$THREATS"
+
 mkdir -p "build"
 
 #compiling glfw
 mkdir -p "build/glfw"
 cd "build/glfw"
-cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
-make -j"$THREATS"
+#cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
+#make -j"$THREATS"
+cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
+ninja -j"$THREATS"
 if [ $? -eq 0 ]
 then
   echo "Successfully compiled glfw"
@@ -105,8 +109,10 @@ cd "../.."
 #compiling SFML
 mkdir -p "build/SFML"
 cd "build/SFML"
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Release" -DBUILD_SHARED_LIBS=ON "../../dependencies/SFML"
-make -j"$THREATS"
+#cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Release" -DBUILD_SHARED_LIBS=ON "../../dependencies/SFML"
+#make -j"$THREATS"
+cmake -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DBUILD_SHARED_LIBS=ON "../../dependencies/SFML"
+ninja -j"$THREATS"
 if [ $? -eq 0 ]
 then
   echo "Successfully compiled SFML"
@@ -159,8 +165,10 @@ cp "deploy/$SOURCESFMLSYSTEMLIB" "deploy/$BUILDNAME-$SFMLSYSTEMLIB"
 
 #build actual project
 cd "build/$BUILDNAME"
-cmake -G "Unix Makefiles" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../.."
-make -j"$THREATS"
+#cmake -G "Unix Makefiles" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../.."
+#make -j"$THREATS"
+cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../.."
+ninja -j"$THREATS"
 if [ $? -eq 0 ]
 then
   echo "Successfully compiled $PROJECTNAME"
