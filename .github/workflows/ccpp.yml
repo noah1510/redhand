@@ -19,4 +19,6 @@ jobs:
     - name: init submodule
       run:  git submodule update --init
     - name: build
-      run:  bash scripts/build.sh
+      env:  
+        BUILDNUMBER: git rev-list --count --remotes
+      run:  bash scripts/build.sh -j 2 $BUILDNUMBER
