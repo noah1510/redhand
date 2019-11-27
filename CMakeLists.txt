@@ -1,7 +1,10 @@
-cmake_minimum_required(VERSION 3.11 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
-cmake_policy(SET CMP0072 NEW)
-cmake_policy(VERSION 3.12)
+
+if(CMAKE_VERSION VERSION_GREATER "3.11.0")
+    cmake_policy(SET CMP0072 NEW)
+    cmake_policy(VERSION 3.11)
+endif()
 
 project("Greenfoot++")
 

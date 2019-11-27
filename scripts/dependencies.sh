@@ -4,7 +4,7 @@ then
     echo "script running on linux"
 
     sudo apt update
-    sudo apt install ninja-build xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev --yes
+    sudo apt install cmake gcc g++ ninja-build xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev --yes
     if [ $? -eq 0 ]
     then
     echo "Successfully installed dependencies"
@@ -28,8 +28,7 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    choco install mingw --yes --verbose
-    choco install ninja --yes --verbose
+    choco install mingw cmake ninja --yes --verbose
     if [ $? -eq 0 ]
     then
     echo "Successfully installed dependencies"
