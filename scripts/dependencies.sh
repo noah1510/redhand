@@ -29,7 +29,7 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    if [ $1 -eq "--skip-mingw"]
+    if [ "$1" == "--skip-mingw"]
     then
         choco install cmake ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
