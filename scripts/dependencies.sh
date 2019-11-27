@@ -5,6 +5,14 @@ then
 
     sudo apt update
     sudo apt installl xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev
+    if [ $? -eq 0 ]
+    then
+    echo "Successfully installed dependencies"
+    else
+    echo "Could not install dependencies" >&2
+    cd "../.."
+    exit 2
+    fi
 
 elif [ "$OSTYPE" == "darwin"* ]
 then
@@ -22,6 +30,14 @@ then
 
     choco install mingw
     choco install make
+    if [ $? -eq 0 ]
+    then
+    echo "Successfully installed dependencies"
+    else
+    echo "Could not install dependencies" >&2
+    cd "../.."
+    exit 2
+    fi
 
 else
     # Unknown os
