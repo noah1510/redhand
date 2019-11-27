@@ -4,7 +4,7 @@ then
     echo "script running on linux"
 
     sudo apt update
-    sudo apt install xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev
+    sudo apt install xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev --yes
     if [ $? -eq 0 ]
     then
     echo "Successfully installed dependencies"

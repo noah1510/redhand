@@ -15,5 +15,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: install dependencies
       run:  bash scripts/dependencies.sh
+    - name: init gitmodules
+      run:  gitmodules update --init
     - name: build
       run:  bash scripts/build.sh
