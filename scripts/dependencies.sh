@@ -29,7 +29,7 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    choco install mingw cmake ninja --yes --verbose
+    choco install mingw cmake ninja --yes --verbose --no-progress
     if [ $? -eq 0 ]
     then
     echo "Successfully installed dependencies"

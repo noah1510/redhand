@@ -19,4 +19,6 @@ jobs:
     - name: setup the project
       run:  bash scripts/setup.sh
     - name: build
-      run:  bash scripts/build.sh -j 2 -o $(git rev-list HEAD --count)
+      env:  
+          BUILDNAME: $(git rev-list HEAD --count)
+      run:  bash scripts/build.sh -j 2 -o $BUILDNAME
