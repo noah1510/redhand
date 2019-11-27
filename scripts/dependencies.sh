@@ -32,10 +32,15 @@ then
     choco install mingw cmake ninja --yes --verbose --no-progress
     if [ $? -eq 0 ]
     then
-    echo "Successfully installed dependencies"
+        echo "Successfully installed dependencies"
     else
-    echo "Could not install dependencies" >&2
-    exit 2
+        if [ $? -eq 1603 ]
+        then
+            echo "Successfully installed most dependencies"
+        else
+            echo "Could not install dependencies" >&2
+            exit 2
+        fi
     fi
 
 else
