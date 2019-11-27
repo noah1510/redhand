@@ -29,7 +29,7 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    if [ "$1" == "--ci"]
+    if [ "$1" == "--ci" ]
     then
         choco install ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
