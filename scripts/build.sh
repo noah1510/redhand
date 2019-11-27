@@ -16,6 +16,7 @@ do
       else
         BUILDNAME="main"
       fi
+      shift
       ;;
     "-j")
       shift
@@ -23,6 +24,7 @@ do
       then
         THREADS="$(($1+1))"
       fi
+      shift
       ;;
     "--help")
       echo "Usage: scripts/build.sh [options]"

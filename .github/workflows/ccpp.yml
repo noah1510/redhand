@@ -19,6 +19,4 @@ jobs:
     - name: setup the project
       run:  bash scripts/setup.sh
     - name: build
-      env:  
-          BUILDNAME: $(git rev-list HEAD --count)
-      run:  bash scripts/build.sh -j 2 -o $BUILDNAME
+      run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
