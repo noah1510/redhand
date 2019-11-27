@@ -92,8 +92,6 @@ mkdir -p "build"
 #compiling glfw
 mkdir -p "build/glfw"
 cd "build/glfw"
-#cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
-#make -j"$THREATS"
 cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
 ninja -j"$THREATS"
 if [ $? -eq 0 ]
@@ -109,8 +107,6 @@ cd "../.."
 #compiling SFML
 mkdir -p "build/SFML"
 cd "build/SFML"
-#cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Release" -DBUILD_SHARED_LIBS=ON "../../dependencies/SFML"
-#make -j"$THREATS"
 cmake -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DBUILD_SHARED_LIBS=ON "../../dependencies/SFML"
 ninja -j"$THREATS"
 if [ $? -eq 0 ]
@@ -165,8 +161,6 @@ cp "deploy/$SOURCESFMLSYSTEMLIB" "deploy/$BUILDNAME-$SFMLSYSTEMLIB"
 
 #build actual project
 cd "build/$BUILDNAME"
-#cmake -G "Unix Makefiles" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../.."
-#make -j"$THREATS"
 cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../.."
 ninja -j"$THREATS"
 if [ $? -eq 0 ]
