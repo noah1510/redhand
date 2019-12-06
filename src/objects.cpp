@@ -1,34 +1,37 @@
 #include "objects.hpp"
 
+//minimal constructor
 object::object(
-    std::vector <float> points, 
-    std::vector <unsigned int> indices,
-    std::vector <float> colors,
-    std::vector <float> texels,
-    shader* attached_shader,
-    texture2D* texture,
-    int gl_drawing_mode
+        std::vector <float> points, 
+        std::vector <unsigned int> indices,
+        std::vector <float> colors,
+        shader* attached_shader,
+        int gl_drawing_mode
 ){
-
-    shade = attached_shader;
-    if(shade == nullptr || shade == NULL){
+    object_shader = attached_shader;
+    if(object_shader == nullptr || object_shader == NULL){
         errored = true;
     }else{
 
-        if(texture != nullptr && texture != NULL){textures.insert(textures.begin(), texture); };
         shader_routine = [](shader*){};
         LoopFunction = [](GLFWwindow*, object*){};
             
-        int point_size = points.size();
+        int point_size = (int)(1.5f * points.size());
         int colors_size = colors.size();
-        int texels_size = texels.size();
+        int texels_size = points.size();
 
         indices_size = indices.size();
 
         std::vector <float> data;
-        data.insert(data.begin(), points.begin(), points.end());
+
+        for(int i = 0; i < points.size();i++){
+            data.emplace_back(points.at(i));
+            if(i % 2 == 1){
+                data.emplace_back(points.at(0.0f));
+            }
+        }
         data.insert(data.end(), colors.begin(), colors.end());
-        data.insert(data.end(), texels.begin(), texels.end());
+        data.insert(data.end(), points.begin(), points.end());
 
         //Initilize the buffers
         glGenVertexArrays(1, &VAO);
@@ -54,46 +57,179 @@ object::object(
         glEnableVertexAttribArray(2);
 
     }
-    
 }
 
+//minimal with shader routine
 object::object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,
     std::vector <float> colors,
-    std::vector <float> texels,
     shader* attached_shader,
-    texture2D* texture,
     int gl_drawing_mode,
+
     std::function<void(shader*)> routine
-):object(points,indices,colors,texels,attached_shader,texture,gl_drawing_mode){
+):object(points,indices,colors,attached_shader,gl_drawing_mode){
     shader_routine = routine;
 }
 
+//minimal with scale,rotation and position
 object::object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,
     std::vector <float> colors,
-    std::vector <float> texels,
     shader* attached_shader,
-    texture2D* texture,
+    int gl_drawing_mode,
+
+    std::vector<float> scaler,
+    float rotator,
+    std::vector<float> postitions
+):object(points, indices, colors, attached_shader, gl_drawing_mode){
+    object_scale = scaler;
+    object_rotation = rotator;
+    if (postitions.size() != 2){
+        object_position = {0.0f, 0.0f};
+    }else{
+        object_position = postitions;
+    }
+    
+}
+
+//minimal with scale,rotation, position and shader routine
+object::object(
+    std::vector <float> points, 
+    std::vector <unsigned int> indices,
+    std::vector <float> colors,
+    shader* attached_shader,
     int gl_drawing_mode,
 
     std::function<void(shader*)> routine,
 
-    float scaler,
+    std::vector<float> scaler,
     float rotator,
     std::vector<float> postitions
-):object(points, indices, colors, texels, attached_shader, texture, gl_drawing_mode, routine){
-    scale = scaler;
-    rotation = rotator;
+):object(points, indices, colors, attached_shader, gl_drawing_mode,routine){
+    object_scale = scaler;
+    object_rotation = rotator;
     if (postitions.size() != 2){
-        errored = true;
+        object_position = {0.0f, 0.0f};
     }
-    position = postitions;
-
-    objectVersion = 1;
+    object_position = postitions;
 }
+
+//full constructor without texels
+object::object(
+    std::vector <float> points, 
+    std::vector <unsigned int> indices,
+    std::vector <float> colors,
+    shader* attached_shader,
+    int gl_drawing_mode,
+
+    std::function<void(shader*)> routine,
+
+    std::vector<float> scaler,
+    float rotator,
+    std::vector<float> postitions,
+
+    texture2D* texture
+):object(points, indices, colors, attached_shader, gl_drawing_mode,routine,scaler,rotator,postitions){
+    if (texture != NULL && texture != nullptr){
+        textureMode = 1;
+        object_textures.emplace_back(texture);
+    }
+}
+
+//full constructor
+object::object(
+        std::vector <float> points, 
+        std::vector <unsigned int> indices,
+        std::vector <float> colors,
+        shader* attached_shader,
+        int gl_drawing_mode,
+
+        std::function<void(shader*)> routine,
+
+        std::vector<float> scaler,
+        float rotator,
+        std::vector<float> postitions,
+
+        texture2D* texture,
+        std::vector <float> texels
+){
+    object_shader = attached_shader;
+    if(object_shader == nullptr || object_shader == NULL || texels.size() != points.size()){
+        errored = true;
+    }else{
+
+        shader_routine = [](shader*){};
+        LoopFunction = [](GLFWwindow*, object*){};
+            
+        int point_size = (int)(1.5f * points.size());
+        int colors_size = colors.size();
+        int texels_size = points.size();
+        if(texels.size() != 0){
+            texels_size = texels.size();
+        }
+        
+        indices_size = indices.size();
+
+        std::vector <float> data;
+        for(int i = 0; i < points.size();i++){
+            data.emplace_back(points.at(i));
+            if(i % 2 == 1){
+                data.emplace_back(points.at(0.0f));
+            }
+        }
+
+        data.insert(data.end(),colors.begin(),colors.end());
+
+        if(texels.size() != 0){
+            data.insert(data.end(),texels.begin(),texels.end());
+        }else{
+            data.insert(data.end(),points.begin(),points.end());
+        }
+        
+
+        //Initilize the buffers
+        glGenVertexArrays(1, &VAO);
+        glGenBuffers(1, &VBO);
+        glGenBuffers(1, &EBO);
+
+        ///Create arrays and buffers
+        glBindVertexArray(VAO);
+
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), gl_drawing_mode);
+
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), gl_drawing_mode);
+
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int)*indices.size(), indices.data(), gl_drawing_mode);
+
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(point_size * sizeof(float)));
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)((point_size + colors_size) * sizeof(float)));
+        glEnableVertexAttribArray(2);
+
+        shader_routine = routine;
+
+        object_rotation = rotator;
+        object_scale = scaler;
+        if (postitions.size() != 2){
+            object_position = {0.0f, 0.0f};
+        }else{
+            object_position = postitions;
+        }
+
+        if (texture != NULL && texture != nullptr){
+            textureMode = 1;
+            object_textures.emplace_back(texture);
+        }
+
+    }
+}
+
 
 object::~object(){
     glDeleteVertexArrays(1, &VAO);
@@ -103,44 +239,53 @@ object::~object(){
 
 void object::draw(){
     //enable texture shader
-    shade->use();
+    object_shader->use();
 
-    shade->setInt("useTexture", 2);
+    //set the uniform variables
+    object_shader->setInt("textureMode", textureMode);
+    object_shader->setFloat("colorAlpha", colorAlphaValue);
+
     //bind texture and draw background
-    if(textures.size() != 0){
-        for(int i = 0;i < textures.size();i++){
-            textures[i]->bind(i);
+    if(textureMode == 1){
+        for(int i = 0;i < object_textures.size();i++){
+            object_textures[i]->bind(i);
         }
-    }else{
-        shade->setInt("useTexture", 0);
     }
 
-    //Create World transformation matrix
-    if (objectVersion > 0){
-        glm::mat4 worldTrans = glm::mat4(1.0f);
-        worldTrans = glm::translate(worldTrans, glm::vec3(position[0],position[1],0.0f));
-        worldTrans = glm::rotate(worldTrans, glm::radians(rotation), glm::vec3(0.0f, 0.0f, 1.0f));
-        worldTrans = glm::scale(worldTrans, glm::vec3(scale, scale, 1.0f));
+    //Create World transformation matrix  
+    glm::mat4 worldTrans = glm::mat4(1.0f);
+    worldTrans = glm::translate(worldTrans, glm::vec3(object_position[0],object_position[1],0.0f));
+    worldTrans = glm::rotate(worldTrans, glm::radians(object_rotation), glm::vec3(0.0f, 0.0f, 1.0f));
+    worldTrans = glm::scale(worldTrans, glm::vec3(object_scale.at(0), object_scale.at(1), 1.0f));
 
-        unsigned int transformLoc = glGetUniformLocation(shade->ID, "worldTransformation");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
-    }
+    unsigned int transformLoc = glGetUniformLocation(object_shader->getID(), "worldTransformation");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
+
 
     //run the custom shader routine
-    shader_routine(shade);
+    shader_routine(object_shader);
 
     //actually draw the object
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices_size, GL_UNSIGNED_INT, 0);
 
+    //reset the uniform values just in case
+    object_shader->setInt("textureMode", 0);
+    object_shader->setFloat("colorAlpha", 1.0f);
 }
 
 bool object::hasErrord(){
     return errored;
 }
 
+void object::setColorAlpha(float alpha){
+    if(alpha >= 0.0f && alpha <= 1.0f){
+        colorAlphaValue = alpha;
+    }
+}
+
 void object::onLoop(GLFWwindow* window){
-    shade->use();
+    object_shader->use();
     LoopFunction(window, this);
 };
 
@@ -152,35 +297,60 @@ void object::setLoopFunction(std::function<void(GLFWwindow* window, object* obj)
 };
 
 shader* object::getShader(){
-    return shade;
+    return object_shader;
 };
 
 std::vector<float> object::getPosition(){
-    return position;
+    return object_position;
 };
 
 void object::setPosition(std::vector<float> pos){
-    position = pos;
+    object_position = pos;
+};
+
+void object::move(std::vector<float> delta_pos){
+    if(delta_pos.size() == 2){
+        object_position.at(0) += delta_pos.at(0);
+        object_position.at(1) += delta_pos.at(1);
+    }
 };
 
 float object::getRotation(){
-    return rotation;
+    return object_rotation;
 };
 void object::setRotation(float rot){
-    rotation = rot;
+    object_rotation = rot;
+
+    while(object_rotation > 360.0f){
+        object_rotation -= 360.0f;
+    }
+    while(object_rotation < 0.0f){
+        object_rotation += 360.0f;
+    }
+};
+void object::rotate(float delta_rot){
+    object_rotation += delta_rot;
+
+    while(object_rotation > 360.0f){
+        object_rotation -= 360.0f;
+    }
+    while(object_rotation < 0.0f){
+        object_rotation += 360.0f;
+    }
 };
 
 object* createHouse(
     texture2D* texture,
-    shader* shade
+    shader* shade,
+    float texture_scale
 ){
     //Vertex Data
     std::vector <float> points = {
-        1.0f,  0.2f, 0.0f,  // top right
-        1.0f, -1.0f, 0.0f,  // bottom right
-        -1.0f, -1.0f, 0.0f,  // bottom left
-        -1.0f,  0.2f, 0.0f,   // top left 
-        0.0f, 1.0f, 0.0f // top middle
+        1.0f, 0.55f,  // top right
+        1.0f, 0.0f,  // bottom right
+        0.0f, 0.0f,  // bottom left
+        0.0f, 0.55f,  // top left 
+        0.5f, 1.0f,  // top middle
     };
     std::vector <unsigned int> indices = {
         0, 1, 3,   // first triangle
@@ -194,25 +364,16 @@ object* createHouse(
         1.0f, 1.0f, 1.0f,
         1.0f, 1.0f, 1.0f };
 
-    std::vector <float> texels = {
-        8.0f, 8.0f,   // top right
-        8.0f, 0.0f,  // bottom right
-        2.0f, 0.0f,  // bottom left
-        2.0f, 8.0f,   // top left 
-        5.0f, 10.0f // top middle
-    };
+    std::vector <float> texels;
+    for(int i = 0;i < points.size();i++){
+        texels.emplace_back(points.at(i)*texture_scale);
+    }
 
     std::function<void(shader*)> routine = [](shader* shade){
-        //color changing
-        float timeValue = glfwGetTime();
-        float redValue = (cos(timeValue) / 2.0f) + 0.5f;
-        float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
-        float blueValue = (sin(timeValue + 3.1415f) / 2.0f) + 0.5f;
-
-        shade->setFloat("ourColor", redValue, greenValue, blueValue, 1.0f);
+        shade->setInt("useTexture", 1);
     };
 
-    return new object(points,indices,colors,texels,shade,texture,GL_DYNAMIC_DRAW,routine,0.5f,0.0f,{0.0f,0.0f});
+    return new object(points,indices,colors,shade,GL_DYNAMIC_DRAW,routine,{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
     
 }
 
@@ -223,29 +384,30 @@ object* createCircle(
     float innerColor[3],
     float outerColor[3],
     shader* shade,
-    texture2D* tex
+    texture2D* tex,
+    float texture_scale
 ){
 
-    std::vector <float> points = {0.0f, 0.0f, 0.0f};
+    std::vector <float> points = {0.5f, 0.5f};
     std::vector <unsigned int> indices;
     std::vector <float> colors = {1.0f, 1.0f, 0.0f};
-    std::vector <float> texels = {0.5f, 0.5f};
+    std::vector <float> texels = {0.5f*texture_scale, 0.5f*texture_scale};
 
     if(edges <= 2){
         edges = 120;
     }
 
     //Set default midpoint
-    std::vector<float> position = {0.6f, 0.6f};
+    std::vector<float> position = {0.0f, 0.0f};
     if(midpoint != NULL){
-        position.at(0) = midpoint[0];
-        position.at(1) = midpoint[1];
+        position.at(0) = midpoint[0]-0.5f*radius;
+        position.at(1) = midpoint[1]-0.5f*radius;
     }
 
     //Set to yellow if NULL
     if(innerColor != NULL){
         for(int i = 0;i < 3;i++){
-            colors[i] = innerColor[i];
+            colors.at(i) = innerColor[i];
         }
     }
 
@@ -259,19 +421,18 @@ object* createCircle(
 
     for(int i = 0; i < edges;i++){
         float dx,dy;
-        dx = cosDeg(i*360/edges);
-        dy = sinDeg(i*360/edges);
+        dx = cosDeg(i*360/edges)/2.0f + 0.5f;
+        dy = sinDeg(i*360/edges)/2.0f + 0.5f;
 
         points.insert(points.end(), dx);
         points.insert(points.end(), dy);
-        points.insert(points.end(), 0.0f);
 
         colors.insert(colors.end(), oColor[0]);
         colors.insert(colors.end(), oColor[1]);
         colors.insert(colors.end(), oColor[2]);
 
-        texels.insert(texels.end(), dx/2 + 0.5f);
-        texels.insert(texels.end(), dy/2 + 0.5f);
+        texels.insert(texels.end(), dx*texture_scale);
+        texels.insert(texels.end(), dy*texture_scale);
 
     }
 
@@ -279,27 +440,28 @@ object* createCircle(
         indices.insert(indices.end(), 0);
         indices.insert(indices.end(), i + 1);
         indices.insert(indices.end(), i + 2);
-        if(indices[i*3 + 2] == edges + 1){indices[i*3 + 2] = 1;};
+        if(indices.at(i*3 + 2) == edges + 1){indices.at(i*3 + 2) = 1;};
     }  
 
-    return new object(points, indices, colors, texels, shade, tex, GL_STATIC_DRAW, [](shader*){}, radius, 0.0f, position);
+    return new object(points, indices, colors, shade, GL_STATIC_DRAW, [](shader*){}, {radius,radius}, 0.0f, position, tex, texels);
 }
 
 object* createRecktangle(
-    float topleft[2],
+    float bottomleft[2],
     float width,
     float height,
     float color[3],
-    float textureScale,
     shader* shade,
     texture2D* tex,
-    int DrawingMode
+    int DrawingMode,
+    float textureScale
 ){
+
     std::vector<float> points = {
-        topleft[0],         topleft[1],          0.0f, //top left
-        topleft[0] + width, topleft[1],          0.0f, //top right
-        topleft[0] + width, topleft[1] - height, 0.0f, //bottom right
-        topleft[0]        , topleft[1] - height, 0.0f, //bottom left
+        0.0f + 1.0f,  0.0f,        //top left
+        0.0f + 1.0f,  0.0f + 1.0f, //top right
+        0.0f,         0.0f + 1.0f, //bottom right
+        0.0f,         0.0f         //bottom left
     };
 
     std::vector<unsigned int> indices = {
@@ -307,21 +469,25 @@ object* createRecktangle(
         0, 2, 3    // second triangle
     };
 
-     std::vector<float> colors;
+    std::vector<float> colors;
+
     for(int i = 0;i < 4;i++){
         colors.emplace_back(color[0]);
         colors.emplace_back(color[1]);
         colors.emplace_back(color[2]);
     }
 
+
     std::vector<float> texels = {
-        ((topleft[0] / 2.0f) + 0.5f) * textureScale,             (topleft[1]) * textureScale,                             //top left
-        (((topleft[0] + width) / 2.0f) + 0.5f) * textureScale,   ((topleft[1] / 2.0f) + 0.5f) * textureScale,             //top right
-        (((topleft[0] + width) / 2.0f) + 0.5f) * textureScale,   (((topleft[1] - height) / 2.0f) + 0.5f) * textureScale,  //bottom right
-        ((topleft[0] / 2.0f) + 0.5f) * textureScale,             (((topleft[1] - height) / 2.0f) + 0.5f) * textureScale,  //bottom left
+        width * textureScale * 1.0f,  height * textureScale * 0.0f, //top left
+        width * textureScale * 1.0f,  height * textureScale * 1.0f, //top right
+        width * textureScale * 0.0f,  height * textureScale * 1.0f, //bottom right
+        width * textureScale * 0.0f,  height * textureScale * 0.0f  //bottom left
     };
 
-    return new object(points,indices,colors,texels,shade,tex,DrawingMode,[](shader*){},1.0f,0.0f,{0.0f,0.0f});
+    std::vector<float> position_vector = {bottomleft[0],bottomleft[1]};
+
+    return new object(points,indices,colors,shade,DrawingMode,[](shader*){},{width,height},0.0f,position_vector,tex,texels);
 }
 
 float degToRad(float val){

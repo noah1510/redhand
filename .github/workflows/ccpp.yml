@@ -1,0 +1,22 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        compiler: [gcc, clang]
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: install dependencies
+      run:  bash scripts/dependencies.sh --ci
+    - name: setup the project
+      run:  bash scripts/setup.sh
+    - name: build
+      run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA

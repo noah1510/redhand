@@ -1,12 +1,16 @@
 .vscode
+.vs
 CMakeCache.txt
 cmake_install.cmake
 CMakeFiles
 
 build
-dependencies/glfw/out
+dependencies/glfw/
+dependencies/SFML/
 lib
 deploy
+include/SFML
+share
 
 textures/*
 !textures/open/

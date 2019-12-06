@@ -18,6 +18,7 @@
 #include "texture.hpp"
 #include "game.hpp"
 #include "world.hpp"
+//#include "audio/AudioHandler.hpp"
 
 //void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void setWindowSize(int width, int height);
@@ -31,6 +32,7 @@ int main(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); //needed for mac
   
     //create window
@@ -54,7 +56,7 @@ int main(){
     //init stb
     initSTB();
 
-    //Create Vector containing all the worlds
+    //Create the initial world
     world* activeWorld = new world();
     exitCode = game_init(activeWorld);
     if(exitCode < 0){
@@ -65,7 +67,7 @@ int main(){
         glfwSetWindowShouldClose(window, true);
         exitCode = -4;
     }
-
+    
     //Clear up
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -111,9 +113,16 @@ int main(){
     //close the window + clean up
     glfwTerminate();
 
-    return exitCode;
+    
+    if(exitCode < 0){
+        return -exitCode;
+    }else{
+        return exitCode;
+    }  
+    
 }
 
+/*NOT WORKING AT THE MOMENT*/
 void setWindowSize(int width, int height){
     glViewport(0, 0, width, height);
 }

@@ -142,7 +142,7 @@ int world::removeObject(int i){
     return 0;
 }
 
-shader* world::getShader(int i){
+shader* world::getShaderByIndex(int i){
     try{
         return WorldShaders.at(i);
     }
@@ -152,7 +152,7 @@ shader* world::getShader(int i){
     }
 }
 
-texture2D* world::getTexture(int i){
+texture2D* world::getTextureByIndex(int i){
     try{
         return WorldTextures.at(i);
     }
@@ -162,7 +162,7 @@ texture2D* world::getTexture(int i){
     }     
 }
 
-object* world::getObject(int i){
+object* world::getObjectByIndex(int i){
     try{
         return WorldObjects.at(i);
     }
@@ -172,3 +172,22 @@ object* world::getObject(int i){
     }
 }
 
+shader* world::getShaderByName(std::string name){
+    int i = 0;
+    bool found = false;
+
+    while(i < WorldShaders.size()){
+        if((WorldShaders.at(i)->getName()).compare(name) == 0){
+            found = true;
+            break;    
+        }
+        i++;
+    }
+
+    if(found){
+        return WorldShaders.at(i);
+    }else{
+        return nullptr;
+    }
+    
+}

@@ -1,7 +1,10 @@
-cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
-cmake_policy(SET CMP0072 NEW)
-cmake_policy(VERSION 3.12)
+
+if(CMAKE_VERSION VERSION_GREATER "3.11.0")
+    cmake_policy(SET CMP0072 NEW)
+    cmake_policy(VERSION 3.11)
+endif()
 
 project("Greenfoot++")
 
@@ -56,7 +59,9 @@ SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS
 
 find_package(OpenGL REQUIRED)
 
+
 add_executable(${OUTPUT} src/glad.c
+                        #src/audio/AudioHandler.cpp
                         src/shader.cpp
                         src/texture.cpp
                         src/objects.cpp
@@ -67,8 +72,10 @@ add_executable(${OUTPUT} src/glad.c
 if (UNIX)
     target_link_libraries(${OUTPUT} libglfw.so)
     target_link_libraries(${OUTPUT} dl)
+    #target_link_libraries(${OUTPUT} sfml-graphics sfml-audio sfml-window sfml-system)
 endif (UNIX)
 
 if (WIN32)
     target_link_libraries(${OUTPUT} glfw3.dll)
+    #target_link_libraries(${OUTPUT} sfml-graphics-2.dll sfml-audio-2.dll sfml-window-2.dll sfml-system-2.dll)
 endif (WIN32)

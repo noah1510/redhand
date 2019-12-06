@@ -16,7 +16,6 @@
 
 class object{
 private:
-    unsigned int objectVersion = 0;
 
     unsigned int VAO;
     unsigned int VBO;
@@ -24,8 +23,11 @@ private:
 
     int indices_size;
 
-    shader* shade;
-    std::vector <texture2D*> textures;
+    shader* object_shader;
+    std::vector <texture2D*> object_textures;
+
+    unsigned int textureMode = 0;
+    float colorAlphaValue = 1.0f;
 
     bool errored = false;
     
@@ -33,9 +35,9 @@ private:
     std::function<void(GLFWwindow* window, object* obj)> LoopFunction;
 
 
-    std::vector<float> position = {0.0f, 0.0f};
-    float scale = 1.0f;
-    float rotation = 0.0f;
+    std::vector<float> object_position = {0.0f, 0.0f};
+    std::vector<float> object_scale = {1.0f, 1.0f};
+    float object_rotation = 0.0f;
 
 public:
     //minimal constructor
@@ -43,40 +45,81 @@ public:
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        std::vector <float> texels,
         shader* attached_shader,
-        texture2D* texture,
         int gl_drawing_mode);
 
-    //constructor with shader_routine
+    //minimal with shader routine
     object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        std::vector <float> texels,
         shader* attached_shader,
-        texture2D* texture,
         int gl_drawing_mode,
 
         std::function<void(shader*)> routine);
 
-    //constructor for objectVersion 1
+    //minimal with scale,rotation and position
     object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        std::vector <float> texels,
         shader* attached_shader,
-        texture2D* texture,
+        int gl_drawing_mode,
+
+        std::vector<float> scaler,
+        float rotator,
+        std::vector<float> postitions);
+
+    //minimal with scale,rotation, position and shader routine
+    object(
+        std::vector <float> points, 
+        std::vector <unsigned int> indices,
+        std::vector <float> colors,
+        shader* attached_shader,
         int gl_drawing_mode,
 
         std::function<void(shader*)> routine,
 
-        float scaler,
+        std::vector<float> scaler,
         float rotator,
         std::vector<float> postitions);
 
+    //full constructor without texels
+    object(
+        std::vector <float> points, 
+        std::vector <unsigned int> indices,
+        std::vector <float> colors,
+        shader* attached_shader,
+        int gl_drawing_mode,
+
+        std::function<void(shader*)> routine,
+
+        std::vector<float> scaler,
+        float rotator,
+        std::vector<float> postitions,
+
+        texture2D* texture);
+
+    //full constructor
+    object(
+        std::vector <float> points, 
+        std::vector <unsigned int> indices,
+        std::vector <float> colors,
+        shader* attached_shader,
+        int gl_drawing_mode,
+
+        std::function<void(shader*)> routine,
+
+        std::vector<float> scaler,
+        float rotator,
+        std::vector<float> postitions,
+
+        texture2D* texture,
+        std::vector <float> texels);
+
     ~object();
+
+    //functions for the object
 
     void setShaderRoutine(std::function<void(shader*)> routine);
     void setLoopFunction(std::function<void(GLFWwindow* window, object* obj)> loop);
@@ -90,36 +133,43 @@ public:
     //sets and gets the object position
     std::vector<float> getPosition();
     void setPosition(std::vector<float> pos);
+    void move(std::vector<float> delta_pos);
 
     //sets and gets the rotation in degrees
     float getRotation();
     void setRotation(float rot);
+    void rotate(float delta_rot);
+
+    //set the alpha value of the color
+    void setColorAlpha(float alpha);
 };
 
 
 object* createHouse(
     texture2D* texture,
-    shader* shade
+    shader* shade,
+    float texture_scale = 1.0f
 );
 
 object* createCircle( 
-    float midpoint[3],
+    float midpoint[2],
     float radius,
     int edges,
     float innerColor[3],
     float outerColor[3],
     shader* shade,
-    texture2D* tex);
+    texture2D* tex,
+    float texture_scale = 1.0f);
 
 object* createRecktangle(
-    float topleft[2],
+    float bottomleft[2],
     float width,
     float height,
     float color[3],
-    float textureScale,
     shader* shade,
     texture2D* tex,
-    int DrawingMode);
+    int DrawingMode,
+    float textureScale = 1.0f);
 
 float degToRad(float val);
 float sinDeg(float deg);
