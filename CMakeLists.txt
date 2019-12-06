@@ -61,7 +61,7 @@ find_package(OpenGL REQUIRED)
 
 
 add_executable(${OUTPUT} src/glad.c
-                        src/audio/AudioHandler.cpp
+                        #src/audio/AudioHandler.cpp
                         src/shader.cpp
                         src/texture.cpp
                         src/objects.cpp
@@ -72,10 +72,10 @@ add_executable(${OUTPUT} src/glad.c
 if (UNIX)
     target_link_libraries(${OUTPUT} libglfw.so)
     target_link_libraries(${OUTPUT} dl)
-    target_link_libraries(${OUTPUT} sfml-graphics sfml-audio sfml-window sfml-system)
+    #target_link_libraries(${OUTPUT} sfml-graphics sfml-audio sfml-window sfml-system)
 endif (UNIX)
 
 if (WIN32)
     target_link_libraries(${OUTPUT} glfw3.dll)
-    target_link_libraries(${OUTPUT} sfml-graphics-2.dll sfml-audio-2.dll sfml-window-2.dll sfml-system-2.dll)
+    #target_link_libraries(${OUTPUT} sfml-graphics-2.dll sfml-audio-2.dll sfml-window-2.dll sfml-system-2.dll)
 endif (WIN32)

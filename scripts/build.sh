@@ -109,6 +109,7 @@ else
 fi
 
 echo "number of THREADS:$THREADS"
+echo "buildname:$BUILDNAME"
 
 mkdir -p "build"
 

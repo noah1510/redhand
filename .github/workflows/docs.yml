@@ -1,0 +1,19 @@
+name: doc generation
+
+on: [push]
+
+jobs:
+  doxygen:
+    runs-on: ubuntu-latest
+    steps:
+    - name: install dependencies
+      run: sudo apt install doxygen
+    - name: generate docs
+      run: doxygen "Doxyfile"
+    - name: Deploy
+      uses: s0/git-publish-subdir-action@master
+      env:
+        REPO: self
+        BRANCH: documentation
+        FOLDER: doc/html
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
