@@ -7,10 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: install dependencies
-      run: sudo apt install doxygen
     - name: generate docs
-      run: doxygen "Doxyfile"
+      run: bash scripts/docs.sh --init
     - name: Deploy
       uses: s0/git-publish-subdir-action@master
       env:
