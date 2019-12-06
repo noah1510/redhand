@@ -6,6 +6,7 @@ jobs:
   doxygen:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v1
     - name: install dependencies
       run: sudo apt install doxygen
     - name: generate docs
