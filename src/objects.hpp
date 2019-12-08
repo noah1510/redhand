@@ -7,12 +7,12 @@
 #include <vector>
 #include <functional>
 
-#include <gitglm/glm/glm.hpp>
-#include <gitglm/glm/gtc/matrix_transform.hpp>
-#include <gitglm/glm/gtc/type_ptr.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <glad/glad.h>
-#include <gitGLFW/glfw3.h>
+#include <GLFW/glfw3.h>
 
 class object{
 private:

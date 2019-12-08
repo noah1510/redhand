@@ -8,9 +8,10 @@ out vec3 vertColor;
 out vec2 TexCoord;
 
 uniform mat4 worldTransformation;
+uniform mat4 camera;
 
 void main(){
-    gl_Position = worldTransformation * vec4(aPos.x, aPos.y, aPos.z, 1.0f);
+    gl_Position = camera * worldTransformation * vec4(aPos.x, aPos.y, aPos.z, 1.0f);
     vertColor = aColor;
     TexCoord = aTexCoord;
 }

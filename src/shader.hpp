@@ -3,7 +3,11 @@
 #pragma once
 
 #include <glad/glad.h> // include glad to get all the required OpenGL headers
-#include <gitGLFW/glfw3.h>
+#include <GLFW/glfw3.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <string>
 #include <fstream>
@@ -18,8 +22,13 @@ private:
     //the name of the shader
     std::string shader_name = "shader";
 
-    //storing if an error happened
+    //string if an error happened
     bool errord = false;
+
+    //These Variables hold the position of the camera
+    glm::vec3 cameraVector = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::mat4 camera = glm::mat4(1.0f);
+
 public: 
 
     // constructor reads and builds the shader
