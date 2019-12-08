@@ -11,7 +11,7 @@ uniform mat4 worldTransformation;
 uniform mat4 camera;
 
 void main(){
-    gl_Position = camera * worldTransformation * vec4(aPos.x, aPos.y, aPos.z, 1.0f);
+    gl_Position = camera * worldTransformation * vec4(aPos.xyz, 1.0f);
     vertColor = aColor;
     TexCoord = aTexCoord;
 }

@@ -67,7 +67,7 @@ public:
     
     void getFloat(const std::string &name, float dest[]) const;
 
-
+    void setCamera();
 };
 
 #endif

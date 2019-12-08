@@ -84,6 +84,14 @@ shader::shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string
     shader_name = name;
 }
 
+void shader::setCamera(){
+    camera = glm::mat4(1.0f);
+    camera = glm::translate(camera, cameraVector); 
+
+    int cameraLoc = glGetUniformLocation(getID(), "camera");
+    glUniformMatrix4fv(cameraLoc, 1, GL_FALSE, glm::value_ptr(camera));
+}
+
 bool shader::hasErrored(){
     return errord;
 }
@@ -94,6 +102,7 @@ unsigned int shader::getID(){
 
 void shader::use(){
     glUseProgram(ID);
+    setCamera();
 }
 
 std::string shader::getName(){
