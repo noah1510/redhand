@@ -1,5 +1,9 @@
 #include "shader.hpp"
 
+shader::shader():shader("../shaders/default.vert","../shaders/default.frag","default"){
+
+}
+
 shader::shader(const char* vertexPath, const char* fragmentPath){
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -84,12 +88,14 @@ shader::shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string
     shader_name = name;
 }
 
-void shader::setCamera(){
-    camera = glm::mat4(1.0f);
-    camera = glm::translate(camera, cameraVector); 
+void shader::setCamera(float pos_x, float pox_y){
+    cameraVector.x = -pos_x;
+    cameraVector.y = -pos_y;
+}
 
-    int cameraLoc = glGetUniformLocation(getID(), "camera");
-    glUniformMatrix4fv(cameraLoc, 1, GL_FALSE, glm::value_ptr(camera));
+void shader::moveCamera(float delta_pos_x, float delta_pox_y){
+    cameraVector.x -= delta_pos_x;
+    cameraVector.y -= delta_pos_y;
 }
 
 bool shader::hasErrored(){
@@ -102,7 +108,12 @@ unsigned int shader::getID(){
 
 void shader::use(){
     glUseProgram(ID);
-    setCamera();
+
+    camera = glm::mat4(1.0f);
+    camera = glm::translate(camera, cameraVector); 
+
+    int cameraLoc = glGetUniformLocation(getID(), "camera");
+    glUniformMatrix4fv(cameraLoc, 1, GL_FALSE, glm::value_ptr(camera));
 }
 
 std::string shader::getName(){
