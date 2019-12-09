@@ -191,3 +191,21 @@ shader* world::getShaderByName(std::string name){
     }
     
 }
+
+void world::setCamera(float pos_x, float pos_y){
+    cameraPosition[0] = pos_x;
+    cameraPosition[1] = pos_y;
+
+    for(int i = 0;i < WorldShaders.size();i++){
+        WorldShaders.at(i)->setCamera(cameraPosition[0], cameraPosition[1]);
+    }
+}
+
+void world::moveCamera(float delta_pos_x, float delta_pos_y){
+    cameraPosition[0] += delta_pos_x;
+    cameraPosition[1] += delta_pos_y;
+
+    for(int i = 0;i < WorldShaders.size();i++){
+        WorldShaders.at(i)->moveCamera(delta_pos_x, delta_pos_y);
+    }    
+}

@@ -20,6 +20,7 @@ int game_loop(
 ){
     //process the input
     processGlobalInput(window);
+    processWorldInput(window, activeWorld);
 
     //clear the bg color
     glClearColor(0.2f,0.3f,0.3f,1.0f);
@@ -159,22 +160,22 @@ int createTestworld(world* testWorld){
 }
 
 void processHouseMovement(GLFWwindow* window, object* obj){
-    //check for button presses and change position
+    //move the house
     std::vector<float> deltaPosition = {0.0f,0.0f};
 
-    if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
+    if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS){
         deltaPosition.at(0) = 0.02f;
-    }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
+    }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS){
         deltaPosition.at(0) = -0.02f;
     }
 
-    if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
+    if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS){
         deltaPosition.at(1) = 0.02f;
-    }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
+    }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS){
         deltaPosition.at(1) = -0.02f;
     }
 
-    obj->move(deltaPosition);
+    obj->move(deltaPosition);    
 
     //check for button presses and change rotation
     float deltaRotation = 0.0f;
@@ -186,6 +187,26 @@ void processHouseMovement(GLFWwindow* window, object* obj){
     }
 
     obj->rotate(deltaRotation);
+
+}
+
+void processWorldInput(GLFWwindow* window, world* activeWorld){
+    //move the camera
+    std::vector<float> deltaCamera = {0.0f,0.0f};
+
+    if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
+        deltaCamera.at(0) = 0.02f;
+    }else if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
+        deltaCamera.at(0) = -0.02f;
+    }
+
+    if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
+        deltaCamera.at(1) = 0.02f;
+    }else if(glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
+        deltaCamera.at(1) = -0.02f;
+    }
+
+    activeWorld->moveCamera(deltaCamera.at(0),deltaCamera.at(1));
 
 }
 
@@ -202,4 +223,6 @@ void processGlobalInput(GLFWwindow* window){
     }
 
 }
+
+
 
