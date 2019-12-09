@@ -88,12 +88,12 @@ shader::shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string
     shader_name = name;
 }
 
-void shader::setCamera(float pos_x, float pox_y){
-    cameraVector.x = -pos_x;
-    cameraVector.y = -pos_y;
+void shader::setCamera(float pos_x, float pos_y){
+    cameraVector.x = - pos_x;
+    cameraVector.y = - pos_y;
 }
 
-void shader::moveCamera(float delta_pos_x, float delta_pox_y){
+void shader::moveCamera(float delta_pos_x, float delta_pos_y){
     cameraVector.x -= delta_pos_x;
     cameraVector.y -= delta_pos_y;
 }

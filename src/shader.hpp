@@ -189,7 +189,7 @@ public:
      * @param pos_x The x coordinate of the camera
      * @param pos_y The y coordinate of the camera
      */
-    void setCamera(float pos_x, float pox_y);
+    void setCamera(float pos_x, float pos_y);
 
     /**
      * This function is used to set the position of the camera.
@@ -197,7 +197,7 @@ public:
      * @param delta_pos_x The amount the camera should move along the x-Axis
      * @param delta_pos_y The amount the camera should move along the y-Axis
      */
-    void moveCamera(float delta_pos_x, float delta_pox_y);
+    void moveCamera(float delta_pos_x, float delta_pos_y);
 };
 
 #endif
