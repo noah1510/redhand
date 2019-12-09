@@ -13,16 +13,56 @@ private:
     float cameraPosition[2] = {0.0f, 0.0f};
 public:
 
+    /**
+     * The constructor will create an empty world which can be filled with objects
+     */
     world();
+
+    /**
+     * The destructor will clean up everything and delete all objects stored in this world.
+     */
     ~world();
 
+    /**
+     * The addShader function will add a shader to the world.
+     * Please add all shader you use for your objects to the world the objects resides in.
+     * Not doing this may easily cause NULL Pointer exceptions and Segmentation faults.
+     */
     int addShader(shader*);
+
+    /**
+     * The addTexture function will add a texture to the world.
+     * Please add all testures you use for your objects to the world the objects resides in.
+     * Not doing this may easily cause NULL Pointer exceptions and Segmentation faults.
+     */
     int addTexture(texture2D*);
+
+    /**
+     * The addObject function will add an object to the world.
+     * All added objects will be drawn on each world tick.
+     */
     int addObject(object*);
 
-    int removeShader(int);
-    int removeTexture(int);
-    int removeObject(int);
+    /**
+     * This function removes a shader from its world and delete the shader.
+     * @param shade a pointer to the shader which should be removed 
+     * @return 0 if everything worked, 1 if no object was found, negative if something bad happened
+    */
+    int removeShader(shader* shade);
+
+    /**
+     * This function removes a texture from its world and delete the texture.
+     * @param tex a pointer to the texture which should be removed 
+     * @return 0 if everything worked, 1 if no object was found, negative if something bad happened
+    */
+    int removeTexture(texture2D* tex);
+
+    /**
+     * This function removes an object from its world and delete the object.
+     * @param obj a pointer to the object which should be removed 
+     * @return 0 if everything worked, 1 if no object was found, negative if something bad happened
+    */
+    int removeObject(object* obj);
 
     shader* getShaderByIndex(int);
     texture2D* getTextureByIndex(int);

@@ -100,46 +100,57 @@ int world::addObject(object* obj){
     }
 }
 
-int world::removeShader(int i){
-    shader* shade = WorldShaders.at(i);
-    WorldShaders.erase(WorldShaders.begin() + i);
-    try{
-        delete shade;
-    }
-    catch(const std::exception& e){
-        std::cout << e.what() << '\n';
-        return -1;
+int world::removeShader(shader* shade){
+    for(int i = 0; i < WorldShaders.size();i++){
+        if(shade == WorldShaders.at(i)){
+            WorldShaders.erase(WorldShaders.begin() + i);
+            try{
+                delete shade;
+            }
+            catch(const std::exception& e){
+                std::cout << e.what() << '\n';
+                return -1;
+            }
+            return 0;
+        }   
     }
 
-    return 0;
+    return 1;    
 }
 
-int world::removeTexture(int i){
-    texture2D* tex = WorldTextures.at(i);
-    WorldTextures.erase(WorldTextures.begin() + i);
-    try{
-        delete tex;
-    }
-    catch(const std::exception& e){
-        std::cout << e.what() << '\n';
-        return -1;
+int world::removeTexture(texture2D* tex){
+    for(int i = 0; i < WorldTextures.size();i++){
+        if(tex == WorldTextures.at(i)){
+            WorldTextures.erase(WorldTextures.begin() + i);
+            try{
+                delete tex;
+            }
+            catch(const std::exception& e){
+                std::cout << e.what() << '\n';
+                return -1;
+            }
+            return 0;
+        }   
     }
 
-    return 0;
+    return 1;
 }
 
-int world::removeObject(int i){
-    object* obj = WorldObjects.at(i);
-    WorldObjects.erase(WorldObjects.begin() + i);
-    try{
-        delete obj;
+int world::removeObject(object* obj){
+    for(int i = 0; i < WorldObjects.size();i++){
+        if(obj == WorldObjects.at(i)){
+            WorldObjects.erase(WorldObjects.begin() + i);
+            try{
+                delete obj;
+            }
+            catch(const std::exception& e){
+                std::cout << e.what() << '\n';
+                return -1;
+            }
+            return 0;
+        }   
     }
-    catch(const std::exception& e){
-        std::cout << e.what() << '\n';
-        return -1;
-    }
-
-    return 0;
+    return 1;
 }
 
 shader* world::getShaderByIndex(int i){
