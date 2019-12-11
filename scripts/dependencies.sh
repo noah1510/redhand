@@ -57,7 +57,7 @@ else
     exit 1
 fi
 
-pip install --user glad
+pip3 install glad
 if [ $? -eq 0 ]
 then
     echo "Successfully installed glad"

@@ -18,8 +18,8 @@ In case the license differs from CC-0 it will also be mentioned there.
 
 ## How to compile/install this project
 
-* [Installation on linux](https://github.com/noah1510/greenfoot-/wiki/Linux-Installation)
-* [Installation on windows](https://github.com/noah1510/greenfoot-/wiki/Windows-Installation)
+* [Installation](https://github.com/noah1510/greenfoot-/wiki/Installation)
+* [Documentaion of the code](https://noah1510.github.io/greenfoot-/)
 
 ### Extra Notes for contibutors
 
