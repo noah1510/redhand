@@ -1,5 +1,9 @@
 #include "shader.hpp"
 
+shader::shader():shader("../shaders/default.vert","../shaders/default.frag","default"){
+
+}
+
 shader::shader(const char* vertexPath, const char* fragmentPath){
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -84,6 +88,22 @@ shader::shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string
     shader_name = name;
 }
 
+void shader::setCamera(float pos_x, float pos_y){
+    cameraVector.x = - pos_x;
+    cameraVector.y = - pos_y;
+
+    camera = glm::mat4(1.0f);
+    camera = glm::translate(camera, cameraVector);
+}
+
+void shader::moveCamera(float delta_pos_x, float delta_pos_y){
+    cameraVector.x -= delta_pos_x;
+    cameraVector.y -= delta_pos_y;
+
+    camera = glm::mat4(1.0f);
+    camera = glm::translate(camera, cameraVector);
+}
+
 bool shader::hasErrored(){
     return errord;
 }
@@ -94,6 +114,14 @@ unsigned int shader::getID(){
 
 void shader::use(){
     glUseProgram(ID);
+
+    int cameraLoc = glGetUniformLocation(getID(), "camera");
+    glUniformMatrix4fv(cameraLoc, 1, GL_FALSE, glm::value_ptr(camera));
+    
+    int projectionLoc = glGetUniformLocation(getID(), "projection");
+    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
+
+    setFloat("textureScale", textureScale.x, textureScale.y);
 }
 
 std::string shader::getName(){
@@ -151,4 +179,12 @@ void shader::setFloat(const std::string &name, float value, float value2, float 
 
 void shader::getFloat(const std::string &name, float dest[]) const{
     glGetUniformfv(ID, glGetUniformLocation(ID, name.c_str()), dest);
+}
+
+void shader::setProjectionmatrix(glm::mat4 projection){
+    projectionMatrix = projection;
+}
+
+void shader::setTextureScale(glm::vec2 scale){
+    textureScale = scale;
 }

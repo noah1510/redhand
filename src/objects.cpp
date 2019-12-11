@@ -134,7 +134,7 @@ object::object(
 ):object(points, indices, colors, attached_shader, gl_drawing_mode,routine,scaler,rotator,postitions){
     if (texture != NULL && texture != nullptr){
         textureMode = 1;
-        object_textures.emplace_back(texture);
+        object_texture = texture;
     }
 }
 
@@ -224,7 +224,7 @@ object::object(
 
         if (texture != NULL && texture != nullptr){
             textureMode = 1;
-            object_textures.emplace_back(texture);
+            object_texture = texture;
         }
 
     }
@@ -237,7 +237,20 @@ object::~object(){
     glDeleteBuffers(1, &EBO);
 }
 
+void object::setScreenSize(int width, int height){
+    if(textureMode == 1 && object_texture != nullptr && object_texture != NULL){
+        texture_scale.x = object_scale.at(0) * width / (object_texture->getWidth() * (width / height + 1.0f));
+        texture_scale.y = object_scale.at(1) * height / (object_texture->getHeight() * (height / width + 1.0f));
+    }  
+}
+
 void object::draw(){
+
+    //if there are textures set the texture scale of the shader
+    if(textureMode == 1){
+        object_shader->setTextureScale(texture_scale);
+    }
+
     //enable texture shader
     object_shader->use();
 
@@ -246,10 +259,8 @@ void object::draw(){
     object_shader->setFloat("colorAlpha", colorAlphaValue);
 
     //bind texture and draw background
-    if(textureMode == 1){
-        for(int i = 0;i < object_textures.size();i++){
-            object_textures[i]->bind(i);
-        }
+    if(textureMode == 1){   
+        object_texture->bind(0);
     }
 
     //Create World transformation matrix  
@@ -260,7 +271,6 @@ void object::draw(){
 
     unsigned int transformLoc = glGetUniformLocation(object_shader->getID(), "worldTransformation");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
-
 
     //run the custom shader routine
     shader_routine(object_shader);
@@ -479,10 +489,10 @@ object* createRecktangle(
 
 
     std::vector<float> texels = {
-        width * textureScale * 1.0f,  height * textureScale * 0.0f, //top left
-        width * textureScale * 1.0f,  height * textureScale * 1.0f, //top right
-        width * textureScale * 0.0f,  height * textureScale * 1.0f, //bottom right
-        width * textureScale * 0.0f,  height * textureScale * 0.0f  //bottom left
+        1.0f,  0.0f, //top left
+        1.0f,  1.0f, //top right
+        0.0f,  1.0f, //bottom right
+        0.0f,  0.0f  //bottom left
     };
 
     std::vector<float> position_vector = {bottomleft[0],bottomleft[1]};

@@ -20,12 +20,20 @@ int game_loop(
 ){
     //process the input
     processGlobalInput(window);
+    processWorldInput(window, activeWorld);
 
     //clear the bg color
     glClearColor(0.2f,0.3f,0.3f,1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
+    //get the current window size
+    int width, height;
+    glfwGetWindowSize(window, &width, &height);
+
     int error = activeWorld->test();
+    activeWorld->setWindowSize(width, height);
+
+    //tick the active world
     activeWorld->tick(window);
 
     //Update the window buffers
@@ -74,18 +82,18 @@ int createTestworld(world* testWorld){
 
      // Background rectangle
     {
-        float bottomLeft[2] = {-1.0f, -1.0f};
+        float bottomLeft[2] = {-100.0f, -100.0f};
         float color[3] = {0.0f, 0.6f, 1.0f};
         if( testWorld->addObject(
             createRecktangle(
                 bottomLeft,
-                2.0f,
-                2.0f,
+                200.0f,
+                200.0f,
                 color,
                 testWorld->getShaderByName("default"),
                 testWorld->getTextureByIndex(1),
                 GL_STATIC_DRAW,
-                0.35f*300.0f/testWorld->getTextureByIndex(1)->getWidth()
+                600.0f*200.0f/testWorld->getTextureByIndex(1)->getWidth()
             )
         ) == -1){
             return -3;
@@ -149,7 +157,7 @@ int createTestworld(world* testWorld){
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTextureByIndex(0),testWorld->getShaderByName("default"),100.0f)) == -1){
+    if( testWorld->addObject(createHouse(testWorld->getTextureByIndex(0),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByIndex(0)->getWidth())) == -1){
         return -3;
     }
 
@@ -159,22 +167,22 @@ int createTestworld(world* testWorld){
 }
 
 void processHouseMovement(GLFWwindow* window, object* obj){
-    //check for button presses and change position
+    //move the house
     std::vector<float> deltaPosition = {0.0f,0.0f};
 
-    if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
+    if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS){
         deltaPosition.at(0) = 0.02f;
-    }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
+    }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS){
         deltaPosition.at(0) = -0.02f;
     }
 
-    if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
+    if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS){
         deltaPosition.at(1) = 0.02f;
-    }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS || glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
+    }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS){
         deltaPosition.at(1) = -0.02f;
     }
 
-    obj->move(deltaPosition);
+    obj->move(deltaPosition);    
 
     //check for button presses and change rotation
     float deltaRotation = 0.0f;
@@ -186,6 +194,26 @@ void processHouseMovement(GLFWwindow* window, object* obj){
     }
 
     obj->rotate(deltaRotation);
+
+}
+
+void processWorldInput(GLFWwindow* window, world* activeWorld){
+    //move the camera
+    std::vector<float> deltaCamera = {0.0f,0.0f};
+
+    if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
+        deltaCamera.at(0) = 0.02f;
+    }else if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
+        deltaCamera.at(0) = -0.02f;
+    }
+
+    if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
+        deltaCamera.at(1) = 0.02f;
+    }else if(glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
+        deltaCamera.at(1) = -0.02f;
+    }
+
+    activeWorld->moveCamera(deltaCamera.at(0),deltaCamera.at(1));
 
 }
 
@@ -202,4 +230,6 @@ void processGlobalInput(GLFWwindow* window){
     }
 
 }
+
+
 

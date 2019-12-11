@@ -10,7 +10,11 @@ dependencies/SFML/
 lib
 deploy
 include/SFML
+include/glm
+include/GLFW
 share
 
 textures/*
 !textures/open/
+
+doc

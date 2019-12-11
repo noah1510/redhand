@@ -1,9 +1,9 @@
 #include <glad/glad.h>
-#include <gitGLFW/glfw3.h>
+#include <GLFW/glfw3.h>
 
-#include <gitglm/glm/glm.hpp>
-#include <gitglm/glm/gtc/matrix_transform.hpp>
-#include <gitglm/glm/gtc/type_ptr.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
 //#include <iterator>
@@ -20,7 +20,7 @@
 #include "world.hpp"
 //#include "audio/AudioHandler.hpp"
 
-//void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void setWindowSize(int width, int height);
 
 int main(){
@@ -32,7 +32,9 @@ int main(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    //glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_SAMPLES, 4);
+    
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); //needed for mac
   
     //create window
@@ -45,7 +47,7 @@ int main(){
     glfwMakeContextCurrent(window);
 
     //register callback function for viewport
-    //glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
 
     //make sure glad works
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
@@ -55,6 +57,9 @@ int main(){
 
     //init stb
     initSTB();
+
+    //enable multisampling
+    glEnable(GL_MULTISAMPLE); 
 
     //Create the initial world
     world* activeWorld = new world();
@@ -124,11 +129,11 @@ int main(){
 
 /*NOT WORKING AT THE MOMENT*/
 void setWindowSize(int width, int height){
-    glViewport(0, 0, width, height);
+    //glViewport(0, 0, width, height);
 }
 
-/*
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height){
     glViewport(0, 0, width, height);
 }
-*/
+

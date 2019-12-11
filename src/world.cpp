@@ -4,6 +4,8 @@ world::world(){
     WorldShaders = std::vector<shader*>(0);
     WorldTextures = std::vector<texture2D*>(0);
     WorldObjects = std::vector<object*>(0);
+
+    setWindowSize(600,600);
 }
 
 world::~world(){
@@ -52,6 +54,25 @@ void world::tick(GLFWwindow* window){
 
 }
 
+void world::setWindowSize(int width, int height){
+
+    if(width != windowWidth || height != windowHeight){
+        windowWidth = width;
+        windowHeight = height;
+
+        projectionMatrix = glm::ortho(-1.0f, (float) width / (float) height, -1.0f, (float) height / (float) width, -10.0f, 10.0f);
+
+        for(int i = 0;i < WorldShaders.size();i++){
+            WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
+        }
+
+        for(int i = 0;i < WorldObjects.size();i++){
+            WorldObjects.at(i)->setScreenSize(width,height);
+        }
+    }
+
+}
+
 int world::test(){
     try{
         int ssize = WorldShaders.size();
@@ -76,6 +97,7 @@ int world::test(){
 int world::addShader(shader* shade){
     WorldShaders.emplace_back(shade);
     if(WorldShaders.back() == shade){
+        shade->setProjectionmatrix(projectionMatrix);
         return 0;
     }else{
         return -1;
@@ -94,52 +116,64 @@ int world::addTexture(texture2D* tex){
 int world::addObject(object* obj){
     WorldObjects.emplace_back(obj);
     if(WorldObjects.back() == obj){
+        obj->setScreenSize(windowWidth,windowHeight);
         return 0;
     }else{
         return -1;
     }
 }
 
-int world::removeShader(int i){
-    shader* shade = WorldShaders.at(i);
-    WorldShaders.erase(WorldShaders.begin() + i);
-    try{
-        delete shade;
-    }
-    catch(const std::exception& e){
-        std::cout << e.what() << '\n';
-        return -1;
+int world::removeShader(shader* shade){
+    for(int i = 0; i < WorldShaders.size();i++){
+        if(shade == WorldShaders.at(i)){
+            WorldShaders.erase(WorldShaders.begin() + i);
+            try{
+                delete shade;
+            }
+            catch(const std::exception& e){
+                std::cout << e.what() << '\n';
+                return -1;
+            }
+            return 0;
+        }   
     }
 
-    return 0;
+    return 1;    
 }
 
-int world::removeTexture(int i){
-    texture2D* tex = WorldTextures.at(i);
-    WorldTextures.erase(WorldTextures.begin() + i);
-    try{
-        delete tex;
-    }
-    catch(const std::exception& e){
-        std::cout << e.what() << '\n';
-        return -1;
+int world::removeTexture(texture2D* tex){
+    for(int i = 0; i < WorldTextures.size();i++){
+        if(tex == WorldTextures.at(i)){
+            WorldTextures.erase(WorldTextures.begin() + i);
+            try{
+                delete tex;
+            }
+            catch(const std::exception& e){
+                std::cout << e.what() << '\n';
+                return -1;
+            }
+            return 0;
+        }   
     }
 
-    return 0;
+    return 1;
 }
 
-int world::removeObject(int i){
-    object* obj = WorldObjects.at(i);
-    WorldObjects.erase(WorldObjects.begin() + i);
-    try{
-        delete obj;
+int world::removeObject(object* obj){
+    for(int i = 0; i < WorldObjects.size();i++){
+        if(obj == WorldObjects.at(i)){
+            WorldObjects.erase(WorldObjects.begin() + i);
+            try{
+                delete obj;
+            }
+            catch(const std::exception& e){
+                std::cout << e.what() << '\n';
+                return -1;
+            }
+            return 0;
+        }   
     }
-    catch(const std::exception& e){
-        std::cout << e.what() << '\n';
-        return -1;
-    }
-
-    return 0;
+    return 1;
 }
 
 shader* world::getShaderByIndex(int i){
@@ -190,4 +224,22 @@ shader* world::getShaderByName(std::string name){
         return nullptr;
     }
     
+}
+
+void world::setCamera(float pos_x, float pos_y){
+    cameraPosition[0] = pos_x;
+    cameraPosition[1] = pos_y;
+
+    for(int i = 0;i < WorldShaders.size();i++){
+        WorldShaders.at(i)->setCamera(cameraPosition[0], cameraPosition[1]);
+    }
+}
+
+void world::moveCamera(float delta_pos_x, float delta_pos_y){
+    cameraPosition[0] += delta_pos_x;
+    cameraPosition[1] += delta_pos_y;
+
+    for(int i = 0;i < WorldShaders.size();i++){
+        WorldShaders.at(i)->moveCamera(delta_pos_x, delta_pos_y);
+    }    
 }

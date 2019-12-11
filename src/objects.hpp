@@ -7,12 +7,12 @@
 #include <vector>
 #include <functional>
 
-#include <gitglm/glm/glm.hpp>
-#include <gitglm/glm/gtc/matrix_transform.hpp>
-#include <gitglm/glm/gtc/type_ptr.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <glad/glad.h>
-#include <gitGLFW/glfw3.h>
+#include <GLFW/glfw3.h>
 
 class object{
 private:
@@ -24,7 +24,7 @@ private:
     int indices_size;
 
     shader* object_shader;
-    std::vector <texture2D*> object_textures;
+    texture2D* object_texture;
 
     unsigned int textureMode = 0;
     float colorAlphaValue = 1.0f;
@@ -38,6 +38,9 @@ private:
     std::vector<float> object_position = {0.0f, 0.0f};
     std::vector<float> object_scale = {1.0f, 1.0f};
     float object_rotation = 0.0f;
+
+    //the scale of the texture attached to this object
+    glm::vec2 texture_scale = glm::vec2(1.0f, 1.0f);
 
 public:
     //minimal constructor
@@ -142,6 +145,14 @@ public:
 
     //set the alpha value of the color
     void setColorAlpha(float alpha);
+
+    /**
+     * Sets the screen size to let the object scale the texture correctly
+     * 
+     * @param width the width of the screen
+     * @param height the height of he screen
+     */
+    void setScreenSize(int width, int height);
 };
 
 

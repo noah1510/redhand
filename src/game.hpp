@@ -14,4 +14,5 @@ int game_loop(
 
 int createTestworld(world* testWorld);
 void processHouseMovement(GLFWwindow* window, object* obj);
+void processWorldInput(GLFWwindow* window, world* activeWorld);
 void processGlobalInput(GLFWwindow* window);
