@@ -6,12 +6,21 @@ then
     echo "script running on linux"
 
     sudo apt update
-    sudo apt install python3-setuptools python-setuptools cmake gcc g++ ninja-build xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev --yes
+    sudo apt install cmake gcc g++ ninja-build xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev --yes
     if [ $? -eq 0 ]
     then
     echo "Successfully installed dependencies"
     else
     echo "Could not install dependencies" >&2
+    exit 2
+    fi
+
+    sudo apt install python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-opengl python-pil python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev
+    if [ $? -eq 0 ]
+    then
+    echo "Successfully installed python dependencies"
+    else
+    echo "Could not install python dependencies" >&2
     exit 2
     fi
 
@@ -57,7 +66,7 @@ else
     exit 1
 fi
 
-pip3 install glad
+pip install glad
 if [ $? -eq 0 ]
 then
     echo "Successfully installed glad"
