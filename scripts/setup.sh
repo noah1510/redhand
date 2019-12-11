@@ -205,6 +205,7 @@ cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "deploy"
 
 cp -r "dependencies/glad/include" "."
+cp -r "dependencies/glad/src/glad.c" "src"
 
 
 echo "Successfully finished setup"
