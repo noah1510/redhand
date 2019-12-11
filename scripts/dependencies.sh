@@ -48,9 +48,8 @@ then
             echo "Could not install dependencies" >&2
             exit 2
         fi
-        PATH = $PATH";C:\\Program Files\\doxygen\\bin\\"
+        PATH = $PATH":/C/Program Files/doxygen/bin/"
         export PATH
-        refreshenv
     else
         choco install doxygen.install mingw cmake ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
