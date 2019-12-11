@@ -3,7 +3,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "audio", "dir_a63dedf81f1e5ea1d42bb45ef831eb8c.html", "dir_a63dedf81f1e5ea1d42bb45ef831eb8c" ],
     [ "game.cpp", "game_8cpp.html", "game_8cpp" ],
     [ "game.hpp", "game_8hpp.html", "game_8hpp" ],
-    [ "glad.c", "glad_8c.html", "glad_8c" ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "objects.cpp", "objects_8cpp.html", "objects_8cpp" ],
     [ "objects.hpp", "objects_8hpp.html", "objects_8hpp" ],

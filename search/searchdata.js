@@ -5,9 +5,7 @@ var indexSectionsWithContent =
   2: "a",
   3: "agmostw",
   4: "abcdfghilmoprstuw~",
-  5: "g",
-  6: "p",
-  7: "s"
+  5: "s"
 };
 
 var indexSectionNames =
@@ -17,9 +15,7 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "variables",
-  6: "typedefs",
-  7: "defines"
+  5: "defines"
 };
 
 var indexSectionLabels =
@@ -29,8 +25,6 @@ var indexSectionLabels =
   2: "Namespaces",
   3: "Files",
   4: "Functions",
-  5: "Variables",
-  6: "Typedefs",
-  7: "Macros"
+  5: "Macros"
 };
 

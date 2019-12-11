@@ -13,7 +13,5 @@ var searchData=
   ['getshaderbyindex',['getShaderByIndex',['../classworld.html#ac75cb98b5966ca9ee5002f7f315ea895',1,'world']]],
   ['getshaderbyname',['getShaderByName',['../classworld.html#a6828c3950208c8ae91dfbabb20ed792f',1,'world']]],
   ['gettexturebyindex',['getTextureByIndex',['../classworld.html#a7a4a6681f2e9d5c0ae2878875bfce0ee',1,'world']]],
-  ['getwidth',['getWidth',['../classtexture2_d.html#acb3f2be669d39bdf5a679096c7ca6a78',1,'texture2D']]],
-  ['gladloadgl',['gladLoadGL',['../glad_8c.html#a137453294a2756a898902ef399b3d437',1,'glad.c']]],
-  ['gladloadglloader',['gladLoadGLLoader',['../glad_8c.html#af70e4674f75bd3bbfedf7979607c65ef',1,'glad.c']]]
+  ['getwidth',['getWidth',['../classtexture2_d.html#acb3f2be669d39bdf5a679096c7ca6a78',1,'texture2D']]]
 ];
