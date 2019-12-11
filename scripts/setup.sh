@@ -204,6 +204,8 @@ cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "deploy"
 
+cp -r "dependencies/glad/include" "."
+
 
 echo "Successfully finished setup"
 exit 0
