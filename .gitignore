@@ -7,14 +7,21 @@ CMakeFiles
 build
 dependencies/glfw/
 dependencies/SFML/
+dependencies/glad
 lib
 deploy
+
 include/SFML
 include/glm
 include/GLFW
+include/glad
+include/KHR
+
 share
 
 textures/*
 !textures/open/
 
 doc
+
+src/glad.c

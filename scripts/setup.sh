@@ -111,6 +111,18 @@ else
     exit 2
 fi
 
+cd "dependencies/gladRepo"
+python -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
+if [ $? -eq 0 ]
+then
+  echo "Successfully initilized glad"
+else
+  echo "Could not initilize glad" >&2
+  cd "../.."
+  exit 3
+fi
+cd "../.."
+
 cp -r "include/gitglm/glm" "include/glm"
 if [ $? -eq 0 ]
 then
@@ -203,6 +215,10 @@ cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "deploy"
+
+
+cp -r "dependencies/glad/include" "."
+cp -r "dependencies/glad/src/glad.c" "src"
 
 
 echo "Successfully finished setup"
