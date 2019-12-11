@@ -26,7 +26,14 @@ int game_loop(
     glClearColor(0.2f,0.3f,0.3f,1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
+    //get the current window size
+    int width, height;
+    glfwGetWindowSize(window, &width, &height);
+
     int error = activeWorld->test();
+    activeWorld->setWindowSize(width, height);
+
+    //tick the active world
     activeWorld->tick(window);
 
     //Update the window buffers
@@ -75,18 +82,18 @@ int createTestworld(world* testWorld){
 
      // Background rectangle
     {
-        float bottomLeft[2] = {-1.0f, -1.0f};
+        float bottomLeft[2] = {-100.0f, -100.0f};
         float color[3] = {0.0f, 0.6f, 1.0f};
         if( testWorld->addObject(
             createRecktangle(
                 bottomLeft,
-                2.0f,
-                2.0f,
+                200.0f,
+                200.0f,
                 color,
                 testWorld->getShaderByName("default"),
                 testWorld->getTextureByIndex(1),
                 GL_STATIC_DRAW,
-                0.35f*300.0f/testWorld->getTextureByIndex(1)->getWidth()
+                800.0f/testWorld->getTextureByIndex(1)->getWidth()
             )
         ) == -1){
             return -3;
@@ -150,7 +157,7 @@ int createTestworld(world* testWorld){
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTextureByIndex(0),testWorld->getShaderByName("default"),100.0f)) == -1){
+    if( testWorld->addObject(createHouse(testWorld->getTextureByIndex(0),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByIndex(0)->getWidth())) == -1){
         return -3;
     }
 

@@ -114,6 +114,11 @@ void shader::use(){
 
     int cameraLoc = glGetUniformLocation(getID(), "camera");
     glUniformMatrix4fv(cameraLoc, 1, GL_FALSE, glm::value_ptr(camera));
+
+    glm::mat4 projection = projectionMatrix;
+    
+    int projectionLoc = glGetUniformLocation(getID(), "projection");
+    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
 }
 
 std::string shader::getName(){
@@ -171,4 +176,8 @@ void shader::setFloat(const std::string &name, float value, float value2, float 
 
 void shader::getFloat(const std::string &name, float dest[]) const{
     glGetUniformfv(ID, glGetUniformLocation(ID, name.c_str()), dest);
+}
+
+void shader::setProjectionmatrix(glm::mat4 projection){
+    projectionMatrix = projection;
 }

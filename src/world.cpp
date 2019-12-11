@@ -4,6 +4,8 @@ world::world(){
     WorldShaders = std::vector<shader*>(0);
     WorldTextures = std::vector<texture2D*>(0);
     WorldObjects = std::vector<object*>(0);
+
+    setWindowSize(600,600);
 }
 
 world::~world(){
@@ -52,6 +54,21 @@ void world::tick(GLFWwindow* window){
 
 }
 
+void world::setWindowSize(int width, int height){
+
+    if(width != windowWidth || height != windowHeight){
+        windowWidth = width;
+        windowHeight = height;
+
+        projectionMatrix = glm::ortho(-1.0f, (float) width / (float) height, -1.0f, (float) height / (float) width, -10.0f, 10.0f);
+
+        for(int i = 0;i < WorldShaders.size();i++){
+            WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
+        }
+    }
+
+}
+
 int world::test(){
     try{
         int ssize = WorldShaders.size();
@@ -76,6 +93,7 @@ int world::test(){
 int world::addShader(shader* shade){
     WorldShaders.emplace_back(shade);
     if(WorldShaders.back() == shade){
+        shade->setProjectionmatrix(projectionMatrix);
         return 0;
     }else{
         return -1;

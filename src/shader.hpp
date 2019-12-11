@@ -16,18 +16,23 @@
 
 class shader{
 private:
-    // the program ID
+    /// the program ID
     unsigned int ID;
 
-    //the name of the shader
+    ///the name of the shader
     std::string shader_name = "shader";
 
-    //string if an error happened
+    ///true if an error happened
     bool errord = false;
 
-    //These Variables hold the position of the camera
+    ///The position of the camera
     glm::vec3 cameraVector = glm::vec3(0.0f, 0.0f, 0.0f);
+
+    ///The camera matrix
     glm::mat4 camera = glm::mat4(1.0f);
+
+    //the projection matrix
+    glm::mat4 projectionMatrix;
 
 public: 
     /** 
@@ -198,6 +203,13 @@ public:
      * @param delta_pos_y The amount the camera should move along the y-Axis
      */
     void moveCamera(float delta_pos_x, float delta_pos_y);
+
+    /**
+     * This function sets the projection matrix of the shader to the given matrix.
+     * 
+     * @param projction the projection matrix which should be used
+     */
+    void setProjectionmatrix(glm::mat4 projection);
 };
 
 #endif

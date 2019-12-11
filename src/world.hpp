@@ -11,6 +11,11 @@ private:
     std::vector <texture2D*> WorldTextures;
 
     float cameraPosition[2] = {0.0f, 0.0f};
+
+    int windowWidth = 600;
+    int windowHeight = 200;
+
+    glm::mat4 projectionMatrix;
 public:
 
     /**
@@ -90,4 +95,12 @@ public:
      * @param delta_pos_y The amount the camera should move along the y-Axis
      */
     void moveCamera(float delta_pos_x, float delta_pos_y);
+
+    /**
+     * This functions sets the window size to construct the projection matrix.
+     * Every time the window size changess this function should be called in order to prevent unwanted stretching of all the objects.
+     * @param width The width of the currently active window
+     * @param height The height of the currently active window
+     */
+    void setWindowSize(int width, int height);
 };

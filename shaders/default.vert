@@ -9,9 +9,10 @@ out vec2 TexCoord;
 
 uniform mat4 worldTransformation;
 uniform mat4 camera;
+uniform mat4 projection;
 
 void main(){
-    gl_Position = camera * worldTransformation * vec4(aPos.xyz, 1.0f);
+    gl_Position = projection * camera * worldTransformation * vec4(aPos.xyz, 1.0f);
     vertColor = aColor;
     TexCoord = aTexCoord;
 }
