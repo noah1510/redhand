@@ -6,7 +6,7 @@ then
     echo "script running on linux"
 
     sudo apt update
-    sudo apt install cmake gcc g++ ninja-build xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev --yes
+    sudo apt install doxygen cmake gcc g++ ninja-build xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev --yes
     if [ $? -eq 0 ]
     then
     echo "Successfully installed dependencies"
@@ -40,7 +40,7 @@ then
 
     if [ "$1" == "--ci" ]
     then
-        choco install ninja --yes --verbose --no-progress
+        choco install doxygen ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
@@ -49,7 +49,7 @@ then
             exit 2
         fi
     else
-        choco install mingw cmake ninja --yes --verbose --no-progress
+        choco install doxygen mingw cmake ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
