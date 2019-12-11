@@ -40,7 +40,7 @@ then
 
     if [ "$1" == "--ci" ]
     then
-        choco install doxygen ninja --yes --verbose --no-progress
+        choco install doxygen.install ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
@@ -49,7 +49,7 @@ then
             exit 2
         fi
     else
-        choco install doxygen mingw cmake ninja --yes --verbose --no-progress
+        choco install doxygen.install mingw cmake ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
