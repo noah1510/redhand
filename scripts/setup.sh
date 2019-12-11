@@ -204,6 +204,9 @@ cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "deploy"
 
+pip install glad
+glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path=dependencies/glad --reproducible --profile core
+
 cp -r "dependencies/glad/include" "."
 cp -r "dependencies/glad/src/glad.c" "src"
 
