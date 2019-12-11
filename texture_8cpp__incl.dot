@@ -10,7 +10,7 @@ digraph "src/texture.cpp"
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="glad/glad.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="gitGLFW/glfw3.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 [label="GLFW/glfw3.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 [label="iostream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

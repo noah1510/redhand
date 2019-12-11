@@ -86,10 +86,10 @@ $(document).ready(function(){initNavTree('main_8cpp.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;glad/glad.h&gt;</code><br />
-<code>#include &lt;gitGLFW/glfw3.h&gt;</code><br />
-<code>#include &lt;gitglm/glm/glm.hpp&gt;</code><br />
-<code>#include &lt;gitglm/glm/gtc/matrix_transform.hpp&gt;</code><br />
-<code>#include &lt;gitglm/glm/gtc/type_ptr.hpp&gt;</code><br />
+<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
+<code>#include &lt;glm/glm.hpp&gt;</code><br />
+<code>#include &lt;glm/gtc/matrix_transform.hpp&gt;</code><br />
+<code>#include &lt;glm/gtc/type_ptr.hpp&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -111,12 +111,50 @@ Include dependency graph for main.cpp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a5180f7bf2b71421af837035824a8c8ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a5180f7bf2b71421af837035824a8c8ac">framebuffer_size_callback</a> (GLFWwindow *window, int width, int height)</td></tr>
+<tr class="separator:a5180f7bf2b71421af837035824a8c8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98fa807bc65617ec6b703f6988e2b500"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a98fa807bc65617ec6b703f6988e2b500">setWindowSize</a> (int width, int height)</td></tr>
 <tr class="separator:a98fa807bc65617ec6b703f6988e2b500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a5180f7bf2b71421af837035824a8c8ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5180f7bf2b71421af837035824a8c8ac">&#9670;&nbsp;</a></span>framebuffer_size_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void framebuffer_size_callback </td>
+          <td>(</td>
+          <td class="paramtype">GLFWwindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00136">136</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -134,7 +172,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00026">26</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="game_8cpp_source.html#l00003">game_init()</a>, <a class="el" href="game_8cpp_source.html#l00016">game_loop()</a>, <a class="el" href="glad_8c_source.html#l01118">gladLoadGLLoader()</a>, and <a class="el" href="texture_8cpp_source.html#l00006">initSTB()</a>.</p>
+<p class="reference">References <a class="el" href="main_8cpp_source.html#l00136">framebuffer_size_callback()</a>, <a class="el" href="game_8cpp_source.html#l00003">game_init()</a>, <a class="el" href="game_8cpp_source.html#l00016">game_loop()</a>, <a class="el" href="glad_8c_source.html#l01118">gladLoadGLLoader()</a>, and <a class="el" href="texture_8cpp_source.html#l00006">initSTB()</a>.</p>
 
 </div>
 </div>
@@ -164,7 +202,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00126">126</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00131">131</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>

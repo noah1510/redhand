@@ -9,9 +9,12 @@ var classworld =
     [ "getShaderByIndex", "classworld.html#ac75cb98b5966ca9ee5002f7f315ea895", null ],
     [ "getShaderByName", "classworld.html#a6828c3950208c8ae91dfbabb20ed792f", null ],
     [ "getTextureByIndex", "classworld.html#a7a4a6681f2e9d5c0ae2878875bfce0ee", null ],
-    [ "removeObject", "classworld.html#a0822746b620b07a886238904abe557ba", null ],
-    [ "removeShader", "classworld.html#a3a63cc4ab01f4eaac0370d55a98ceabd", null ],
-    [ "removeTexture", "classworld.html#a9d1a5548cb5a23bb68e8305aac51ae99", null ],
+    [ "moveCamera", "classworld.html#a481d177f11e4f585b1cc8486e9f843f2", null ],
+    [ "removeObject", "classworld.html#a7c8b989280e81270f2f22c442db86f2a", null ],
+    [ "removeShader", "classworld.html#a96afde3916e6b44512c1eeb915c07711", null ],
+    [ "removeTexture", "classworld.html#a0551d05d9b6481d265d6dbc5fd14d4dc", null ],
+    [ "setCamera", "classworld.html#aacb04e2732f8e1c133e6fbfca8aa9bfa", null ],
+    [ "setWindowSize", "classworld.html#a8f3ca5906a62736f94703eb581ace6e4", null ],
     [ "test", "classworld.html#a0f16efd1800298bcd5d8c608b0f44cc8", null ],
     [ "tick", "classworld.html#a8bc5bea26515cfb0a990f74ec1f03b66", null ]
 ];

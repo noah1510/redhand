@@ -19,5 +19,6 @@ var classobject =
     [ "setLoopFunction", "classobject.html#a6869550d1e3fff4b8858b66184587133", null ],
     [ "setPosition", "classobject.html#a3cde7c88baf69ee008e95cceca56289a", null ],
     [ "setRotation", "classobject.html#a68106258f3d16cb71e654e498ad59609", null ],
+    [ "setScreenSize", "classobject.html#abd4e5c781cb1980eadcd375fe18c82dc", null ],
     [ "setShaderRoutine", "classobject.html#a33bb9ea223f07232e6fed114a79cfb68", null ]
 ];

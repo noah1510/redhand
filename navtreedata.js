@@ -28,8 +28,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_audio_handler_8cpp.html",
-"glad_8c.html#a6e2bc2bdef4934c5d2fa27a8c5afc0b2",
-"main_8cpp.html"
+"glad_8c.html#a67fc3be6cd6075c41297d05d12320692",
+"globals_defs.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

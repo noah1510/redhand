@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['removeobject',['removeObject',['../classworld.html#a0822746b620b07a886238904abe557ba',1,'world']]],
-  ['removeshader',['removeShader',['../classworld.html#a3a63cc4ab01f4eaac0370d55a98ceabd',1,'world']]],
-  ['removetexture',['removeTexture',['../classworld.html#a9d1a5548cb5a23bb68e8305aac51ae99',1,'world']]],
-  ['rotate',['rotate',['../classobject.html#ac9193d4febcb3a90e94b515b549c379c',1,'object']]]
+  ['pfnglxgetprocaddressproc_5fprivate',['PFNGLXGETPROCADDRESSPROC_PRIVATE',['../glad_8c.html#aca765b78242406adec0d1614c5d7036b',1,'glad.c']]],
+  ['processglobalinput',['processGlobalInput',['../game_8cpp.html#ab9f435fea17db8edbc0794122864b986',1,'processGlobalInput(GLFWwindow *window):&#160;game.cpp'],['../game_8hpp.html#ab9f435fea17db8edbc0794122864b986',1,'processGlobalInput(GLFWwindow *window):&#160;game.cpp']]],
+  ['processhousemovement',['processHouseMovement',['../game_8cpp.html#a8cb14eda9d368f9697257de03736944a',1,'processHouseMovement(GLFWwindow *window, object *obj):&#160;game.cpp'],['../game_8hpp.html#a8cb14eda9d368f9697257de03736944a',1,'processHouseMovement(GLFWwindow *window, object *obj):&#160;game.cpp']]],
+  ['processworldinput',['processWorldInput',['../game_8cpp.html#af53e6f75cf50733f6da64de1b899df60',1,'processWorldInput(GLFWwindow *window, world *activeWorld):&#160;game.cpp'],['../game_8hpp.html#af53e6f75cf50733f6da64de1b899df60',1,'processWorldInput(GLFWwindow *window, world *activeWorld):&#160;game.cpp']]]
 ];
