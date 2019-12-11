@@ -65,6 +65,10 @@ void world::setWindowSize(int width, int height){
         for(int i = 0;i < WorldShaders.size();i++){
             WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
         }
+
+        for(int i = 0;i < WorldObjects.size();i++){
+            WorldObjects.at(i)->setScreenSize(width,height);
+        }
     }
 
 }
@@ -112,6 +116,7 @@ int world::addTexture(texture2D* tex){
 int world::addObject(object* obj){
     WorldObjects.emplace_back(obj);
     if(WorldObjects.back() == obj){
+        obj->setScreenSize(windowWidth,windowHeight);
         return 0;
     }else{
         return -1;

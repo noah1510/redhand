@@ -34,6 +34,9 @@ private:
     //the projection matrix
     glm::mat4 projectionMatrix;
 
+    //the texture scale
+    glm::vec2 textureScale = glm::vec2(1.0f, 1.0f);
+
 public: 
     /** 
      * This constructor creates a shader with the default vector and fragment shaders named "default".
@@ -207,9 +210,16 @@ public:
     /**
      * This function sets the projection matrix of the shader to the given matrix.
      * 
-     * @param projction the projection matrix which should be used
+     * @param projection the projection matrix which should be used
      */
     void setProjectionmatrix(glm::mat4 projection);
+
+    /**
+     * This function sets the texture scale of the shader to the given vector.
+     * 
+     * @param scale the texture scale which should be used
+     */
+    void setTextureScale(glm::vec2 scale);
 };
 
 #endif

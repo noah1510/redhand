@@ -33,6 +33,8 @@ int main(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     //glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_SAMPLES, 4);
+    
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); //needed for mac
   
     //create window
@@ -55,6 +57,9 @@ int main(){
 
     //init stb
     initSTB();
+
+    //enable multisampling
+    glEnable(GL_MULTISAMPLE); 
 
     //Create the initial world
     world* activeWorld = new world();

@@ -91,11 +91,17 @@ shader::shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string
 void shader::setCamera(float pos_x, float pos_y){
     cameraVector.x = - pos_x;
     cameraVector.y = - pos_y;
+
+    camera = glm::mat4(1.0f);
+    camera = glm::translate(camera, cameraVector);
 }
 
 void shader::moveCamera(float delta_pos_x, float delta_pos_y){
     cameraVector.x -= delta_pos_x;
     cameraVector.y -= delta_pos_y;
+
+    camera = glm::mat4(1.0f);
+    camera = glm::translate(camera, cameraVector);
 }
 
 bool shader::hasErrored(){
@@ -109,16 +115,13 @@ unsigned int shader::getID(){
 void shader::use(){
     glUseProgram(ID);
 
-    camera = glm::mat4(1.0f);
-    camera = glm::translate(camera, cameraVector); 
-
     int cameraLoc = glGetUniformLocation(getID(), "camera");
     glUniformMatrix4fv(cameraLoc, 1, GL_FALSE, glm::value_ptr(camera));
-
-    glm::mat4 projection = projectionMatrix;
     
     int projectionLoc = glGetUniformLocation(getID(), "projection");
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
+
+    setFloat("textureScale", textureScale.x, textureScale.y);
 }
 
 std::string shader::getName(){
@@ -180,4 +183,8 @@ void shader::getFloat(const std::string &name, float dest[]) const{
 
 void shader::setProjectionmatrix(glm::mat4 projection){
     projectionMatrix = projection;
+}
+
+void shader::setTextureScale(glm::vec2 scale){
+    textureScale = scale;
 }

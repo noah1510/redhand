@@ -93,7 +93,7 @@ int createTestworld(world* testWorld){
                 testWorld->getShaderByName("default"),
                 testWorld->getTextureByIndex(1),
                 GL_STATIC_DRAW,
-                800.0f/testWorld->getTextureByIndex(1)->getWidth()
+                600.0f*200.0f/testWorld->getTextureByIndex(1)->getWidth()
             )
         ) == -1){
             return -3;
