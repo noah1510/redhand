@@ -57,6 +57,13 @@ else
     exit 1
 fi
 
-
+pip install --user glad
+if [ $? -eq 0 ]
+then
+    echo "Successfully installed glad"
+else
+    echo "Could not install glad" >&2
+    exit 2
+fi
 
 exit 0
