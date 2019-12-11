@@ -204,14 +204,17 @@ cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "deploy"
 
-glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path=dependencies/glad --reproducible --profile core
+cd "dependencies/gladRepo"
+python -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path=dependencies/glad --reproducible --profile core
 if [ $? -eq 0 ]
 then
   echo "Successfully initilized glad"
 else
   echo "Could not initilize glad" >&2
+  cd "../.."
   exit 3
 fi
+cd "../.."
 
 cp -r "dependencies/glad/include" "."
 cp -r "dependencies/glad/src/glad.c" "src"
