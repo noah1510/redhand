@@ -21,4 +21,4 @@ jobs:
     - name: build
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: docs
-      run: doxygen
+      run: bash -c doxygen
