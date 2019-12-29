@@ -1,5 +1,5 @@
 
-# Welcome to RedHand ![Build Status](https://github.com/noah1510/redhand/workflows/.github/workflows/ccpp.yml/badge.svg)
+# Welcome to RedHand ![Build Status](https://github.com/noah1510/redhand/workflows/CI/badge.svg)
 
 The goal is to create an easy to use 2D Game engine using C++.
 Its purpose is to give new programmers an easy introduction into game programming and even more abstract topics like object oriented programming and graphics programming in general.
