@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>greenfoot++: object Class Reference</title>
+<title>redhand: object Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">greenfoot++
+   <div id="projectname">redhand
    </div>
   </td>
  </tr>
@@ -134,6 +134,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abd4e5c781cb1980eadcd375fe18c82dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject.html#abd4e5c781cb1980eadcd375fe18c82dc">setScreenSize</a> (int width, int height)</td></tr>
 <tr class="memdesc:abd4e5c781cb1980eadcd375fe18c82dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the screen size to let the object scale the texture correctly.  <a href="#abd4e5c781cb1980eadcd375fe18c82dc">More...</a><br /></td></tr>
 <tr class="separator:abd4e5c781cb1980eadcd375fe18c82dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adab054a62123b41c889e360d1acb8faa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject.html#adab054a62123b41c889e360d1acb8faa">setName</a> (std::string name)</td></tr>
+<tr class="memdesc:adab054a62123b41c889e360d1acb8faa"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sets the name of the game_object to the given string.  <a href="#adab054a62123b41c889e360d1acb8faa">More...</a><br /></td></tr>
+<tr class="separator:adab054a62123b41c889e360d1acb8faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2c9fb29a978171b6f5415693b9b120"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classobject.html#a4b2c9fb29a978171b6f5415693b9b120">getName</a> ()</td></tr>
+<tr class="memdesc:a4b2c9fb29a978171b6f5415693b9b120"><td class="mdescLeft">&#160;</td><td class="mdescRight">This funtion returns the name of the object.  <a href="#a4b2c9fb29a978171b6f5415693b9b120">More...</a><br /></td></tr>
+<tr class="separator:a4b2c9fb29a978171b6f5415693b9b120"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -580,7 +586,28 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="objects_8cpp_source.html#l00247">247</a> of file <a class="el" href="objects_8cpp_source.html">objects.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="texture_8cpp_source.html#l00050">texture2D::bind()</a>, <a class="el" href="shader_8cpp_source.html#l00111">shader::getID()</a>, <a class="el" href="shader_8cpp_source.html#l00164">shader::setFloat()</a>, <a class="el" href="shader_8cpp_source.html#l00147">shader::setInt()</a>, <a class="el" href="shader_8cpp_source.html#l00188">shader::setTextureScale()</a>, and <a class="el" href="shader_8cpp_source.html#l00115">shader::use()</a>.</p>
+<p class="reference">References <a class="el" href="texture_8cpp_source.html#l00074">texture2D::bind()</a>, <a class="el" href="shader_8cpp_source.html#l00111">shader::getID()</a>, <a class="el" href="shader_8cpp_source.html#l00164">shader::setFloat()</a>, <a class="el" href="shader_8cpp_source.html#l00147">shader::setInt()</a>, <a class="el" href="shader_8cpp_source.html#l00188">shader::setTextureScale()</a>, and <a class="el" href="shader_8cpp_source.html#l00115">shader::use()</a>.</p>
+
+</div>
+</div>
+<a id="a4b2c9fb29a978171b6f5415693b9b120"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b2c9fb29a978171b6f5415693b9b120">&#9670;&nbsp;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string object::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This funtion returns the name of the object. </p>
+
+<p class="definition">Definition at line <a class="el" href="objects_8cpp_source.html#l00355">355</a> of file <a class="el" href="objects_8cpp_source.html">objects.cpp</a>.</p>
 
 </div>
 </div>
@@ -762,6 +789,28 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="adab054a62123b41c889e360d1acb8faa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adab054a62123b41c889e360d1acb8faa">&#9670;&nbsp;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void object::setName </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function sets the name of the game_object to the given string. </p>
+
+<p class="definition">Definition at line <a class="el" href="objects_8cpp_source.html#l00352">352</a> of file <a class="el" href="objects_8cpp_source.html">objects.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a3cde7c88baf69ee008e95cceca56289a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3cde7c88baf69ee008e95cceca56289a">&#9670;&nbsp;</a></span>setPosition()</h2>
 
@@ -839,7 +888,7 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="objects_8cpp_source.html#l00240">240</a> of file <a class="el" href="objects_8cpp_source.html">objects.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="texture_8cpp_source.html#l00059">texture2D::getHeight()</a>, and <a class="el" href="texture_8cpp_source.html#l00055">texture2D::getWidth()</a>.</p>
+<p class="reference">References <a class="el" href="texture_8cpp_source.html#l00083">texture2D::getHeight()</a>, and <a class="el" href="texture_8cpp_source.html#l00079">texture2D::getWidth()</a>.</p>
 
 </div>
 </div>

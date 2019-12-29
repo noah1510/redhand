@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "greenfoot++", "index.html", [
+  [ "redhand", "index.html", [
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ]
     ] ],
