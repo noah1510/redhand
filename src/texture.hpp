@@ -31,9 +31,34 @@ private:
     std::string texture_name = "texture";
 
 public:
+    /**
+     * This constructor creates a 2-dimensional texture from a given filename.
+     * @param filename The name of the file to be used.
+     */
     texture2D(const char* filename);
+
+    /**
+     * This constructor creates a 2-dimensional texture from a given filename.
+     * @param filename The name of the file to be used.
+     * @param name The name of the texture object
+     */
     texture2D(const char* filename, std::string name);
+
+    /**
+     * This constructor creates a 2-dimensional texture from a given filename.
+     * @param filename The name of the file to be used.
+     * @param Wrap_S The texture wrapping method in x direction
+     * @param Wrap_T The texture wrapping method in y direction
+     */
     texture2D(const char* filename, int Wrap_S, int Wrap_T);
+
+    /**
+     * This constructor creates a 2-dimensional texture from a given filename.
+     * @param filename The name of the file to be used.
+     * @param Wrap_S The texture wrapping method in x direction
+     * @param Wrap_T The texture wrapping method in y direction
+     * @param name The name of the texture object
+     */
     texture2D(const char* filename, int Wrap_S, int Wrap_T, std::string name);
 
     ///This function returns true if an error has happened
