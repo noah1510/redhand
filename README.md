@@ -1,5 +1,5 @@
 
-# Welcome to Greenfoot++ [![Build Status](https://travis-ci.com/noah1510/greenfoot-.svg?token=2eVNi9H2pzmQyzez9TXo&branch=master)](https://travis-ci.com/noah1510/greenfoot-)
+# Welcome to RedHand ![Build Status](https://github.com/noah1510/redhand/workflows/.github/workflows/ccpp.yml/badge.svg)
 
 The goal is to create an easy to use 2D Game engine using C++.
 Its purpose is to give new programmers an easy introduction into game programming and even more abstract topics like object oriented programming and graphics programming in general.
@@ -13,13 +13,13 @@ While these objects give you a simple way to get started, they also allow you to
 The code is licensed under the LGPL-3.0 License.
 
 All the other stuff, like Textures, Images and Sounds are Licensed under CC-0.
-If they are not made by me, I will publish the source in the [wiki](https://github.com/noah1510/greenfoot-/wiki/External-Sources).
+If they are not made by me, I will publish the source in the [wiki](https://github.com/noah1510/redhand/wiki/External-Sources).
 In case the license differs from CC-0 it will also be mentioned there.
 
 ## How to compile/install this project
 
-* [Installation](https://github.com/noah1510/greenfoot-/wiki/Installation)
-* [Documentaion of the code](https://noah1510.github.io/greenfoot-/)
+* [Installation](https://github.com/noah1510/redhand/wiki/Installation)
+* [Documentaion of the code](https://noah1510.github.io/redhand/)
 
 ### Extra Notes for contibutors
 
