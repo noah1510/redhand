@@ -14,6 +14,22 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+/**
+ * @brief The game_object is a simple object which can be displayed in a world.
+ * It is the first abstraction layer and is a very low level openGL object.
+ * You can create a game_object by specifying all the points, and which points form a triangel.
+ * Each game_object NEEDS a shader in order to work.
+ * Please use a shader which is added to the same world as the game_object in order to prevent errors.
+ * 
+ * The Points specified are all local coordinates.
+ * This means they are in the first sector of a 2 dimensional coordinate system.
+ * If there is any point outside of this range the creation of teh object will fail (TODO).
+ * For each point you must also specify the color of that point.
+ * 
+ * Each game_object has a name which is "game_object" by default.
+ * 
+ * In addition to that the object also holds its position, rotation and scale in world coordinates.
+ */
 class game_object{
 private:
 
@@ -184,6 +200,18 @@ game_object* createCircle(
     texture2D* tex,
     float texture_scale = 1.0f);
 
+/**
+ * @brief Create a rectangular object
+ * @param bottomleft The position of the bottom left Corner in World Coordinates
+ * @param width The width of the rectangle in World Coordinates
+ * @param height The width of the rectangle in World Coordinates
+ * @param color The color of the rectangle (rgb)
+ * @param shade A pointer to the shader that should be used
+ * @param tex (optional) A pointer to the texture that should be used
+ * @param DrawingMode The GL_DRAWING_MODE that should be used (eg. GL_DYNAMIC_DRAW)
+ * @param textureScale The factor by which the texture shoulb be scaled (1.0f if nothig is specified)
+ * @return game_object*
+ */
 game_object* createRecktangle(
     float bottomleft[2],
     float width,
@@ -193,6 +221,8 @@ game_object* createRecktangle(
     texture2D* tex,
     int DrawingMode,
     float textureScale = 1.0f);
+
+
 
 float degToRad(float val);
 float sinDeg(float deg);
