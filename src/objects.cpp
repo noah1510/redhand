@@ -349,6 +349,13 @@ void object::rotate(float delta_rot){
     }
 };
 
+void object::setName(std::string name){
+    object_name = name;
+}
+std::string object::getName(){
+    return object_name;
+}
+
 object* createHouse(
     texture2D* texture,
     shader* shade,

@@ -28,8 +28,6 @@ elif [ "$OSTYPE" == "darwin"* ]
 then
     # Mac OSX
     echo "script running on mac osx"
-
-    
         
 elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then

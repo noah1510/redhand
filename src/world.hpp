@@ -68,15 +68,34 @@ public:
      * @return 0 if everything worked, 1 if no object was found, negative if something bad happened
     */
     int removeObject(object* obj);
-
-    shader* getShaderByIndex(int);
-    texture2D* getTextureByIndex(int);
-    object* getObjectByIndex(int);
-
+    
+    /**
+     * This function returns a pointer to the first shader with the given name
+     * @param name the name of the wanted shader 
+     * @return pointer to the shader if everything worked, nullptr if no shader was found or something went wrong
+     */
     shader* getShaderByName(std::string name);
 
+    /**
+     * This function returns a pointer to the first texture with the given name
+     * @param name the name of the wanted texture 
+     * @return pointer to the texture if everything worked, nullptr if no shader was found or something went wrong
+     */
+    texture2D* getTextureByName(std::string name);
+
+     /**
+     * This function returns a pointer to the first object with the given name
+     * @param name the name of the wanted object 
+     * @return pointer to the object if everything worked, nullptr if no shader was found or something went wrong
+     */
+    object* getObjectByName(std::string name);
+
+    /**
+     * This function executes a world tick and is called for each frame.
+     * All inputs are processed, the physics is calculated and all objects are rendered.
+     * @param window the current active window where everything will be rendered
+     */
     void tick(GLFWwindow* window);
-    int test();
 
     /**
      * This function is used to set the position of the camera.

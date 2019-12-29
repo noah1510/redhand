@@ -29,8 +29,6 @@ int game_loop(
     //get the current window size
     int width, height;
     glfwGetWindowSize(window, &width, &height);
-
-    int error = activeWorld->test();
     activeWorld->setWindowSize(width, height);
 
     //tick the active world
@@ -65,14 +63,16 @@ int createTestworld(world* testWorld){
     //Add textures to world
     if(testWorld->addTexture(
         new texture2D(
-            "../textures/open/crate.png"
+            "../textures/open/crate.png",
+            "house"
         )) == -1){
         return -2;
     }
 
     if(testWorld->addTexture(
         new texture2D(
-            "../textures/open/house.png"
+            "../textures/open/house.png",
+            "bg"
         )) == -1){
         return -2;
     }
@@ -91,14 +91,15 @@ int createTestworld(world* testWorld){
                 200.0f,
                 color,
                 testWorld->getShaderByName("default"),
-                testWorld->getTextureByIndex(1),
+                testWorld->getTextureByName("bg"),
                 GL_STATIC_DRAW,
-                600.0f*200.0f/testWorld->getTextureByIndex(1)->getWidth()
+                600.0f*200.0f/testWorld->getTextureByName("bg")->getWidth()
             )
         ) == -1){
             return -3;
         }
     }
+    testWorld->getObjectByName("game_object")->setName("background");
 
      // sun two
     {
@@ -119,12 +120,14 @@ int createTestworld(world* testWorld){
             return -3;
         }
     }
+    testWorld->getObjectByName("game_object")->setName("sun2");
 
     // sun one
     float posSunOne[2] = {0.8f,0.45f};
     if( testWorld->addObject(createCircle(posSunOne, 0.35f, edges, NULL, NULL, testWorld->getShaderByName("default"), nullptr)) == -1){
         return -3;
     }
+    testWorld->getObjectByName("game_object")->setName("sun1");
 
     //triangle
     {
@@ -150,20 +153,22 @@ int createTestworld(world* testWorld){
         ) == -1){
             return -3;
         }
+        testWorld->getObjectByName("game_object")->setName("trig");
 
-        testWorld->getObjectByIndex(3)->setLoopFunction([](GLFWwindow* window, object* obj){
+        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow* window, object* obj){
             obj->setRotation((float)glfwGetTime()*20.0f);
         });
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTextureByIndex(0),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByIndex(0)->getWidth())) == -1){
+    if( testWorld->addObject(createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) == -1){
         return -3;
     }
+    testWorld->getObjectByName("game_object")->setName("house");
 
-    testWorld->getObjectByIndex(4)->setLoopFunction(processHouseMovement);
+    testWorld->getObjectByName("house")->setLoopFunction(processHouseMovement);
 
-    return testWorld->test();
+    return 0;
 }
 
 void processHouseMovement(GLFWwindow* window, object* obj){

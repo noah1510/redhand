@@ -8,7 +8,7 @@ else
 fi
 
 REPOROOT="$(pwd)"
-PROJECTNAME="greenfoot++"
+PROJECTNAME="redhand"
 
 if [ "$OSTYPE" == "linux-gnu" ]
 then

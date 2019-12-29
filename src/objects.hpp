@@ -42,6 +42,8 @@ private:
     //the scale of the texture attached to this object
     glm::vec2 texture_scale = glm::vec2(1.0f, 1.0f);
 
+    std::string object_name = "game_object";
+
 public:
     //minimal constructor
     object(
@@ -153,6 +155,16 @@ public:
      * @param height the height of he screen
      */
     void setScreenSize(int width, int height);
+
+    /**
+     * This function sets the name of the game_object to the given string.
+     */
+    void setName(std::string name);
+
+    /**
+     * This funtion returns the name of the object.
+     */
+    std::string getName();
 };
 
 

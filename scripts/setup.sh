@@ -21,7 +21,7 @@ do
       echo "    --help              Display this information"
       echo "    -j [threadnumber]   Build the project with the specified number of threads."
       echo ""
-      echo "view the source on https://github.com/noah1510/greenfoot-"
+      echo "view the source on https://github.com/noah1510/redhand"
       exit 1
       ;;
     *)
@@ -32,7 +32,7 @@ do
 done
 
 REPOROOT="$(pwd)"
-PROJECTNAME="greenfoot++"
+PROJECTNAME="redhand"
 
 if [ "$OSTYPE" == "linux-gnu" ]
 then
@@ -40,6 +40,7 @@ then
     echo "script running on linux"
 
     GLFWLIB="libglfw.so"
+    GLFWDEPLOY="libglfw.so.3"
 
     SOURCESFMLAUDIOLIB="libsfml-audio.so.2.5" 
     SOURCESFMLGRAPICSLIB="libsfml-graphics.so.2.5" 
@@ -58,6 +59,7 @@ then
     echo "script running on mac osx"
 
     GLFWLIB="libglfw.so"
+    GLFWDEPLOY="libglfw.so.3"
     SFMLAUDIOLIB="libsfml-audio.so" 
     SFMLGRAPICSLIB="libsfml-graphics.so" 
     SFMLWINDOWLIB="libsfml-window.so"
@@ -72,6 +74,7 @@ then
     echo "script running on windows"
 
     GLFWLIB="glfw3.dll"
+    GLFWDEPLOY="glfw3.dll"
 
     SOURCESFMLAUDIOLIB="sfml-audio-2.dll" 
     SOURCESFMLGRAPICSLIB="sfml-graphics-2.dll" 
@@ -192,6 +195,7 @@ mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
 
 cp "build/glfw/src/$GLFWLIB" "lib"
+cp "build/glfw/src/$GLFWDEPLOY" "deploy"
 
 cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "lib/$SOURCESFMLAUDIOLIB"
 cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "lib/$SOURCESFMLGRAPICSLIB"

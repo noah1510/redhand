@@ -33,7 +33,7 @@ do
       echo "    -j [threadnumber]   Build the project with the specified number of threads."
       echo "    -o [buildname]      Build the project with the specified buildname defaults to main"
       echo ""
-      echo "view the source on https://github.com/noah1510/greenfoot-"
+      echo "view the source on https://github.com/noah1510/redhand"
       exit 1
       ;;
     *)
@@ -44,14 +44,12 @@ do
 done
 
 REPOROOT="$(pwd)"
-PROJECTNAME="greenfoot++"
+PROJECTNAME="redhand"
 
 if [ "$OSTYPE" == "linux-gnu" ]
 then
     # Linux
     echo "script running on linux"
-
-    GLFWLIB="libglfw.so"
 
     EXECUTABLE="$PROJECTNAME-$BUILDNAME"
 
