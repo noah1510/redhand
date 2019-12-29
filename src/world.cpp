@@ -73,27 +73,6 @@ void world::setWindowSize(int width, int height){
 
 }
 
-int world::test(){
-    try{
-        int ssize = WorldShaders.size();
-        int tsize = WorldTextures.size();
-        int osize = WorldObjects.size();
-
-        if(ssize <= 0 || tsize <= 0 || osize <= 0){
-            return -2;
-        }
-
-        if(WorldObjects.at(0) == NULL || WorldObjects.at(0) == nullptr){
-            return -3;
-        }
-
-        return 0;
-    }catch(std::exception e){
-        std::cout << e.what() << std::endl;
-        return -1;
-    }
-}
-
 int world::addShader(shader* shade){
     WorldShaders.emplace_back(shade);
     if(WorldShaders.back() == shade){
@@ -176,36 +155,6 @@ int world::removeObject(object* obj){
     return 1;
 }
 
-shader* world::getShaderByIndex(int i){
-    try{
-        return WorldShaders.at(i);
-    }
-    catch(const std::exception& e){
-        std::cerr << e.what() << '\n';
-        return nullptr;
-    }
-}
-
-texture2D* world::getTextureByIndex(int i){
-    try{
-        return WorldTextures.at(i);
-    }
-    catch(const std::exception& e){
-        std::cerr << e.what() << '\n';
-        return nullptr;
-    }     
-}
-
-object* world::getObjectByIndex(int i){
-    try{
-        return WorldObjects.at(i);
-    }
-    catch(const std::exception& e){
-        std::cerr << e.what() << '\n';
-        return nullptr;
-    }
-}
-
 shader* world::getShaderByName(std::string name){
     int i = 0;
     bool found = false;
@@ -220,6 +169,45 @@ shader* world::getShaderByName(std::string name){
 
     if(found){
         return WorldShaders.at(i);
+    }else{
+        return nullptr;
+    }
+    
+}
+
+texture2D* world::getTextureByName(std::string name){
+    int i = 0;
+    bool found = false;
+    while(i < WorldTextures.size()){
+        if((WorldTextures.at(i)->getName()).compare(name) == 0){
+            found = true;
+            break;    
+        }
+        i++;
+    }
+
+    if(found){
+        return WorldTextures.at(i);
+    }else{
+        return nullptr;
+    }
+    
+}
+
+object* world::getObjectByName(std::string name){
+    int i = 0;
+    bool found = false;
+
+    while(i < WorldObjects.size()){
+        if((WorldObjects.at(i)->getName()).compare(name) == 0){
+            found = true;
+            break;    
+        }
+        i++;
+    }
+
+    if(found){
+        return WorldObjects.at(i);
     }else{
         return nullptr;
     }

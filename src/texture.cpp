@@ -39,6 +39,30 @@ texture2D::texture2D(
     GL_REPEAT
 ){}
 
+texture2D::texture2D(
+    const char* filename, 
+    std::string name
+):texture2D(
+    filename,
+    GL_REPEAT,
+    GL_REPEAT
+){
+    texture_name = name;
+}
+
+texture2D::texture2D(
+    const char* filename,
+     int Wrap_S, 
+     int Wrap_T, 
+     std::string name
+):texture2D(
+    filename,
+    Wrap_S,
+    Wrap_T
+){
+    texture_name = name;
+}
+
 bool texture2D::hasErrord(){
     return errord;
 }
@@ -47,7 +71,7 @@ unsigned int texture2D::getID(){
     return id;
 }
 
-void texture2D::bind(int unit){
+void texture2D::bind(int unit = 0){
     glActiveTexture(GL_TEXTURE0 + unit);
     glBindTexture(GL_TEXTURE_2D, id);
 }
@@ -58,4 +82,11 @@ int texture2D::getWidth(){
 
 int texture2D::getHeight(){
     return height;
+}
+
+void texture2D::setName(std::string name){
+    texture_name = name;
+}
+std::string texture2D::getName(){
+    return texture_name;
 }

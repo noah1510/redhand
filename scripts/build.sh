@@ -51,8 +51,6 @@ then
     # Linux
     echo "script running on linux"
 
-    GLFWLIB="libglfw.so"
-
     EXECUTABLE="$PROJECTNAME-$BUILDNAME"
 
 elif [ "$OSTYPE" == "darwin"* ]
