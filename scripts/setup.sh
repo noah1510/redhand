@@ -195,7 +195,7 @@ mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
 
 cp "build/glfw/src/$GLFWLIB" "lib"
-cp "build/glfw/src/$GLFWDEPLOY" "deploy"
+cp "build/glfw/src/$GLFWDEPLOY" "lib"
 
 cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "lib/$SOURCESFMLAUDIOLIB"
 cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "lib/$SOURCESFMLGRAPICSLIB"
@@ -215,6 +215,7 @@ cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "build/$BUILDNAME"
 cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "build/$BUILDNAME"
 
 cp "build/glfw/src/$GLFWLIB" "deploy"
+cp "build/glfw/src/$GLFWDEPLOY" "deploy"
 cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "deploy"
 cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "deploy"

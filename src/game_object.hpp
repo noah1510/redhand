@@ -14,7 +14,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-class object{
+class game_object{
 private:
 
     unsigned int VAO;
@@ -32,7 +32,7 @@ private:
     bool errored = false;
     
     std::function<void(shader*)> shader_routine;
-    std::function<void(GLFWwindow* window, object* obj)> LoopFunction;
+    std::function<void(GLFWwindow* window, game_object* obj)> LoopFunction;
 
 
     std::vector<float> object_position = {0.0f, 0.0f};
@@ -46,7 +46,7 @@ private:
 
 public:
     //minimal constructor
-    object(
+    game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
@@ -54,7 +54,7 @@ public:
         int gl_drawing_mode);
 
     //minimal with shader routine
-    object(
+    game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
@@ -64,7 +64,7 @@ public:
         std::function<void(shader*)> routine);
 
     //minimal with scale,rotation and position
-    object(
+    game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
@@ -76,7 +76,7 @@ public:
         std::vector<float> postitions);
 
     //minimal with scale,rotation, position and shader routine
-    object(
+    game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
@@ -90,7 +90,7 @@ public:
         std::vector<float> postitions);
 
     //full constructor without texels
-    object(
+    game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
@@ -106,7 +106,7 @@ public:
         texture2D* texture);
 
     //full constructor
-    object(
+    game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
@@ -122,12 +122,12 @@ public:
         texture2D* texture,
         std::vector <float> texels);
 
-    ~object();
+    ~game_object();
 
     //functions for the object
 
     void setShaderRoutine(std::function<void(shader*)> routine);
-    void setLoopFunction(std::function<void(GLFWwindow* window, object* obj)> loop);
+    void setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop);
 
     shader* getShader();
 
@@ -168,13 +168,13 @@ public:
 };
 
 
-object* createHouse(
+game_object* createHouse(
     texture2D* texture,
     shader* shade,
     float texture_scale = 1.0f
 );
 
-object* createCircle( 
+game_object* createCircle( 
     float midpoint[2],
     float radius,
     int edges,
@@ -184,7 +184,7 @@ object* createCircle(
     texture2D* tex,
     float texture_scale = 1.0f);
 
-object* createRecktangle(
+game_object* createRecktangle(
     float bottomleft[2],
     float width,
     float height,

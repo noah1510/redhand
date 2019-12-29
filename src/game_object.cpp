@@ -1,7 +1,7 @@
-#include "objects.hpp"
+#include "game_object.hpp"
 
 //minimal constructor
-object::object(
+game_object::game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
@@ -14,7 +14,7 @@ object::object(
     }else{
 
         shader_routine = [](shader*){};
-        LoopFunction = [](GLFWwindow*, object*){};
+        LoopFunction = [](GLFWwindow*, game_object*){};
             
         int point_size = (int)(1.5f * points.size());
         int colors_size = colors.size();
@@ -60,7 +60,7 @@ object::object(
 }
 
 //minimal with shader routine
-object::object(
+game_object::game_object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,
     std::vector <float> colors,
@@ -68,12 +68,12 @@ object::object(
     int gl_drawing_mode,
 
     std::function<void(shader*)> routine
-):object(points,indices,colors,attached_shader,gl_drawing_mode){
+):game_object(points,indices,colors,attached_shader,gl_drawing_mode){
     shader_routine = routine;
 }
 
 //minimal with scale,rotation and position
-object::object(
+game_object::game_object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,
     std::vector <float> colors,
@@ -83,7 +83,7 @@ object::object(
     std::vector<float> scaler,
     float rotator,
     std::vector<float> postitions
-):object(points, indices, colors, attached_shader, gl_drawing_mode){
+):game_object(points, indices, colors, attached_shader, gl_drawing_mode){
     object_scale = scaler;
     object_rotation = rotator;
     if (postitions.size() != 2){
@@ -95,7 +95,7 @@ object::object(
 }
 
 //minimal with scale,rotation, position and shader routine
-object::object(
+game_object::game_object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,
     std::vector <float> colors,
@@ -107,7 +107,7 @@ object::object(
     std::vector<float> scaler,
     float rotator,
     std::vector<float> postitions
-):object(points, indices, colors, attached_shader, gl_drawing_mode,routine){
+):game_object(points, indices, colors, attached_shader, gl_drawing_mode,routine){
     object_scale = scaler;
     object_rotation = rotator;
     if (postitions.size() != 2){
@@ -117,7 +117,7 @@ object::object(
 }
 
 //full constructor without texels
-object::object(
+game_object::game_object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,
     std::vector <float> colors,
@@ -131,7 +131,7 @@ object::object(
     std::vector<float> postitions,
 
     texture2D* texture
-):object(points, indices, colors, attached_shader, gl_drawing_mode,routine,scaler,rotator,postitions){
+):game_object(points, indices, colors, attached_shader, gl_drawing_mode,routine,scaler,rotator,postitions){
     if (texture != NULL && texture != nullptr){
         textureMode = 1;
         object_texture = texture;
@@ -139,7 +139,7 @@ object::object(
 }
 
 //full constructor
-object::object(
+game_object::game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
@@ -161,7 +161,7 @@ object::object(
     }else{
 
         shader_routine = [](shader*){};
-        LoopFunction = [](GLFWwindow*, object*){};
+        LoopFunction = [](GLFWwindow*, game_object*){};
             
         int point_size = (int)(1.5f * points.size());
         int colors_size = colors.size();
@@ -231,20 +231,20 @@ object::object(
 }
 
 
-object::~object(){
+game_object::~game_object(){
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
 }
 
-void object::setScreenSize(int width, int height){
+void game_object::setScreenSize(int width, int height){
     if(textureMode == 1 && object_texture != nullptr && object_texture != NULL){
         texture_scale.x = object_scale.at(0) * width / (object_texture->getWidth() * (width / height + 1.0f));
         texture_scale.y = object_scale.at(1) * height / (object_texture->getHeight() * (height / width + 1.0f));
     }  
 }
 
-void object::draw(){
+void game_object::draw(){
 
     //if there are textures set the texture scale of the shader
     if(textureMode == 1){
@@ -284,51 +284,51 @@ void object::draw(){
     object_shader->setFloat("colorAlpha", 1.0f);
 }
 
-bool object::hasErrord(){
+bool game_object::hasErrord(){
     return errored;
 }
 
-void object::setColorAlpha(float alpha){
+void game_object::setColorAlpha(float alpha){
     if(alpha >= 0.0f && alpha <= 1.0f){
         colorAlphaValue = alpha;
     }
 }
 
-void object::onLoop(GLFWwindow* window){
+void game_object::onLoop(GLFWwindow* window){
     object_shader->use();
     LoopFunction(window, this);
 };
 
-void object::setShaderRoutine(std::function<void(shader*)> routine){
+void game_object::setShaderRoutine(std::function<void(shader*)> routine){
     shader_routine = routine;
 };
-void object::setLoopFunction(std::function<void(GLFWwindow* window, object* obj)> loop){
+void game_object::setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop){
     LoopFunction = loop;
 };
 
-shader* object::getShader(){
+shader* game_object::getShader(){
     return object_shader;
 };
 
-std::vector<float> object::getPosition(){
+std::vector<float> game_object::getPosition(){
     return object_position;
 };
 
-void object::setPosition(std::vector<float> pos){
+void game_object::setPosition(std::vector<float> pos){
     object_position = pos;
 };
 
-void object::move(std::vector<float> delta_pos){
+void game_object::move(std::vector<float> delta_pos){
     if(delta_pos.size() == 2){
         object_position.at(0) += delta_pos.at(0);
         object_position.at(1) += delta_pos.at(1);
     }
 };
 
-float object::getRotation(){
+float game_object::getRotation(){
     return object_rotation;
 };
-void object::setRotation(float rot){
+void game_object::setRotation(float rot){
     object_rotation = rot;
 
     while(object_rotation > 360.0f){
@@ -338,7 +338,7 @@ void object::setRotation(float rot){
         object_rotation += 360.0f;
     }
 };
-void object::rotate(float delta_rot){
+void game_object::rotate(float delta_rot){
     object_rotation += delta_rot;
 
     while(object_rotation > 360.0f){
@@ -349,14 +349,14 @@ void object::rotate(float delta_rot){
     }
 };
 
-void object::setName(std::string name){
+void game_object::setName(std::string name){
     object_name = name;
 }
-std::string object::getName(){
+std::string game_object::getName(){
     return object_name;
 }
 
-object* createHouse(
+game_object* createHouse(
     texture2D* texture,
     shader* shade,
     float texture_scale
@@ -390,11 +390,11 @@ object* createHouse(
         shade->setInt("useTexture", 1);
     };
 
-    return new object(points,indices,colors,shade,GL_DYNAMIC_DRAW,routine,{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
+    return new game_object(points,indices,colors,shade,GL_DYNAMIC_DRAW,routine,{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
     
 }
 
-object* createCircle( 
+game_object* createCircle( 
     float midpoint[2],
     float radius,
     int edges,
@@ -460,10 +460,10 @@ object* createCircle(
         if(indices.at(i*3 + 2) == edges + 1){indices.at(i*3 + 2) = 1;};
     }  
 
-    return new object(points, indices, colors, shade, GL_STATIC_DRAW, [](shader*){}, {radius,radius}, 0.0f, position, tex, texels);
+    return new game_object(points, indices, colors, shade, GL_STATIC_DRAW, [](shader*){}, {radius,radius}, 0.0f, position, tex, texels);
 }
 
-object* createRecktangle(
+game_object* createRecktangle(
     float bottomleft[2],
     float width,
     float height,
@@ -504,7 +504,7 @@ object* createRecktangle(
 
     std::vector<float> position_vector = {bottomleft[0],bottomleft[1]};
 
-    return new object(points,indices,colors,shade,DrawingMode,[](shader*){},{width,height},0.0f,position_vector,tex,texels);
+    return new game_object(points,indices,colors,shade,DrawingMode,[](shader*){},{width,height},0.0f,position_vector,tex,texels);
 }
 
 float degToRad(float val){

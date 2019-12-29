@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include "objects.hpp"
+#include "game_object.hpp"
 
 class world{
 private:
-    std::vector <object*> WorldObjects;
+    std::vector <game_object*> WorldObjects;
     std::vector <shader*> WorldShaders;
     std::vector <texture2D*> WorldTextures;
 
@@ -46,7 +46,7 @@ public:
      * The addObject function will add an object to the world.
      * All added objects will be drawn on each world tick.
      */
-    int addObject(object*);
+    int addObject(game_object*);
 
     /**
      * This function removes a shader from its world and delete the shader.
@@ -67,7 +67,7 @@ public:
      * @param obj a pointer to the object which should be removed 
      * @return 0 if everything worked, 1 if no object was found, negative if something bad happened
     */
-    int removeObject(object* obj);
+    int removeObject(game_object* obj);
     
     /**
      * This function returns a pointer to the first shader with the given name
@@ -88,7 +88,7 @@ public:
      * @param name the name of the wanted object 
      * @return pointer to the object if everything worked, nullptr if no shader was found or something went wrong
      */
-    object* getObjectByName(std::string name);
+    game_object* getObjectByName(std::string name);
 
     /**
      * This function executes a world tick and is called for each frame.

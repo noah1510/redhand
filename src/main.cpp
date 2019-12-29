@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 
-#include "objects.hpp"
+#include "game_object.hpp"
 #include "shader.hpp"
 #include "texture.hpp"
 #include "game.hpp"

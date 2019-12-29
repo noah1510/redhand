@@ -64,7 +64,7 @@ add_executable(${OUTPUT} src/glad.c
                         #src/audio/AudioHandler.cpp
                         src/shader.cpp
                         src/texture.cpp
-                        src/objects.cpp
+                        src/game_object.cpp
                         src/game.cpp
                         src/world.cpp
                         src/main.cpp)

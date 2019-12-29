@@ -3,7 +3,7 @@
 world::world(){
     WorldShaders = std::vector<shader*>(0);
     WorldTextures = std::vector<texture2D*>(0);
-    WorldObjects = std::vector<object*>(0);
+    WorldObjects = std::vector<game_object*>(0);
 
     setWindowSize(600,600);
 }
@@ -92,7 +92,7 @@ int world::addTexture(texture2D* tex){
     }
 }
 
-int world::addObject(object* obj){
+int world::addObject(game_object* obj){
     WorldObjects.emplace_back(obj);
     if(WorldObjects.back() == obj){
         obj->setScreenSize(windowWidth,windowHeight);
@@ -138,7 +138,7 @@ int world::removeTexture(texture2D* tex){
     return 1;
 }
 
-int world::removeObject(object* obj){
+int world::removeObject(game_object* obj){
     for(int i = 0; i < WorldObjects.size();i++){
         if(obj == WorldObjects.at(i)){
             WorldObjects.erase(WorldObjects.begin() + i);
@@ -194,7 +194,7 @@ texture2D* world::getTextureByName(std::string name){
     
 }
 
-object* world::getObjectByName(std::string name){
+game_object* world::getObjectByName(std::string name){
     int i = 0;
     bool found = false;
 
