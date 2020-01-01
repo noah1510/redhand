@@ -61,6 +61,7 @@ find_package(OpenGL REQUIRED)
 
 
 add_executable(${OUTPUT} src/glad.c
+                        src/math.cpp
                         #src/audio/AudioHandler.cpp
                         src/shader.cpp
                         src/texture.cpp
