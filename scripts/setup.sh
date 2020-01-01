@@ -114,6 +114,16 @@ else
     exit 2
 fi
 
+git-lfs pull
+if [ $? -eq 0 ]
+then
+    echo "Successfully initiated git-lfs"
+else
+    echo "Could not initiate git-lfs" >&2
+    exit 2
+fi
+
+
 cd "dependencies/gladRepo"
 python -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
 if [ $? -eq 0 ]
