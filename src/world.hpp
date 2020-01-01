@@ -6,15 +6,25 @@
 
 class world{
 private:
+    /// This vector holds all the game_objetcs in this world
     std::vector <game_object*> WorldObjects;
+
+    /// This vector holds all the shaders in this world
     std::vector <shader*> WorldShaders;
+
+    /// This vector holds all the textures in this world
     std::vector <texture2D*> WorldTextures;
 
+    /// This array holds the current camera Position
     float cameraPosition[2] = {0.0f, 0.0f};
 
+    /// This variable holds the width of the window in pixels 
     int windowWidth = 600;
+
+    /// This variable holds the height of the window in pixels 
     int windowHeight = 200;
 
+    /// This variable holds the current projection matrix
     glm::mat4 projectionMatrix;
 public:
 

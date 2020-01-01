@@ -506,15 +506,3 @@ game_object* createRecktangle(
 
     return new game_object(points,indices,colors,shade,DrawingMode,[](shader*){},{width,height},0.0f,position_vector,tex,texels);
 }
-
-float degToRad(float val){
-    return val/180*3.1415;
-}
-
-float sinDeg(float deg){
-    return sin(degToRad(deg));
-}
-
-float cosDeg(float deg){
-    return cos(degToRad(deg));
-}
