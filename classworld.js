@@ -2,17 +2,24 @@ var classworld =
 [
     [ "world", "classworld.html#a63d2db8f01d11cc7526225182284d3df", null ],
     [ "~world", "classworld.html#a899a08020e8c624f951537ed38720579", null ],
-    [ "addObject", "classworld.html#a7b55ca23fca335d0f8869b4236d22022", null ],
+    [ "addObject", "classworld.html#a2195eb8a4f160b3906c1bd7d8607547d", null ],
     [ "addShader", "classworld.html#a2f20d75856e6d0466c9cea429f67ddd0", null ],
     [ "addTexture", "classworld.html#a02f10be898f85aac50aca9a9901494a3", null ],
-    [ "getObjectByName", "classworld.html#aa6dc36e581ae8780e6bc31fdff3dc5af", null ],
+    [ "getObjectByName", "classworld.html#a36b1dc63d7823419c9611712c36344cf", null ],
     [ "getShaderByName", "classworld.html#a6828c3950208c8ae91dfbabb20ed792f", null ],
     [ "getTextureByName", "classworld.html#a069f21a4a68de2c8e9ce4758e984e2f7", null ],
     [ "moveCamera", "classworld.html#a481d177f11e4f585b1cc8486e9f843f2", null ],
-    [ "removeObject", "classworld.html#a7c8b989280e81270f2f22c442db86f2a", null ],
+    [ "removeObject", "classworld.html#a8ef4ce247af0fc4769f793fe89cf84dd", null ],
     [ "removeShader", "classworld.html#a96afde3916e6b44512c1eeb915c07711", null ],
     [ "removeTexture", "classworld.html#a0551d05d9b6481d265d6dbc5fd14d4dc", null ],
     [ "setCamera", "classworld.html#aacb04e2732f8e1c133e6fbfca8aa9bfa", null ],
     [ "setWindowSize", "classworld.html#a8f3ca5906a62736f94703eb581ace6e4", null ],
-    [ "tick", "classworld.html#a8bc5bea26515cfb0a990f74ec1f03b66", null ]
+    [ "tick", "classworld.html#a8bc5bea26515cfb0a990f74ec1f03b66", null ],
+    [ "cameraPosition", "classworld.html#a8317785eb74ede9c06fb576289b01379", null ],
+    [ "projectionMatrix", "classworld.html#acea2c47b93cc9f81dc41a4f7f1971796", null ],
+    [ "windowHeight", "classworld.html#a5bfcf9505040386d7e21b687bdf6ce90", null ],
+    [ "windowWidth", "classworld.html#ade551f3cf7fd513f7119807f333b4870", null ],
+    [ "WorldObjects", "classworld.html#a85698b21af6f9a78c0c7fef4817ae067", null ],
+    [ "WorldShaders", "classworld.html#af6cf94ab582c5a432035ef99a0d0f39e", null ],
+    [ "WorldTextures", "classworld.html#ab428a245e4595061cba7eb79e3539e30", null ]
 ];

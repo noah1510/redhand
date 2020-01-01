@@ -81,6 +81,7 @@ $(document).ready(function(){initNavTree('classshader.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classshader-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">shader Class Reference</div>  </div>
@@ -157,12 +158,34 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ace6b5d10f1dee686a3bf7453c2fa7b46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#ace6b5d10f1dee686a3bf7453c2fa7b46">moveCamera</a> (float delta_pos_x, float delta_pos_y)</td></tr>
 <tr class="memdesc:ace6b5d10f1dee686a3bf7453c2fa7b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to set the position of the camera.  <a href="#ace6b5d10f1dee686a3bf7453c2fa7b46">More...</a><br /></td></tr>
 <tr class="separator:ace6b5d10f1dee686a3bf7453c2fa7b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21dbee719d948037b97cf5f0a4f9964f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#a21dbee719d948037b97cf5f0a4f9964f">setProjectionmatrix</a> (glm::mat4 projection)</td></tr>
+<tr class="memitem:a21dbee719d948037b97cf5f0a4f9964f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#a21dbee719d948037b97cf5f0a4f9964f">setProjectionmatrix</a> (glm::mat4 <a class="el" href="default_8vert.html#a6f89a4fbf1a53a21ada7ca66387463a1">projection</a>)</td></tr>
 <tr class="memdesc:a21dbee719d948037b97cf5f0a4f9964f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sets the projection matrix of the shader to the given matrix.  <a href="#a21dbee719d948037b97cf5f0a4f9964f">More...</a><br /></td></tr>
 <tr class="separator:a21dbee719d948037b97cf5f0a4f9964f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69d5f5e5c93067d8e00169f82a19018f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#a69d5f5e5c93067d8e00169f82a19018f">setTextureScale</a> (glm::vec2 scale)</td></tr>
 <tr class="memdesc:a69d5f5e5c93067d8e00169f82a19018f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sets the texture scale of the shader to the given vector.  <a href="#a69d5f5e5c93067d8e00169f82a19018f">More...</a><br /></td></tr>
 <tr class="separator:a69d5f5e5c93067d8e00169f82a19018f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a3978958c45844833fb5d4a1df1f00017"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a></td></tr>
+<tr class="memdesc:a3978958c45844833fb5d4a1df1f00017"><td class="mdescLeft">&#160;</td><td class="mdescRight">the program ID  <a href="#a3978958c45844833fb5d4a1df1f00017">More...</a><br /></td></tr>
+<tr class="separator:a3978958c45844833fb5d4a1df1f00017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a238fb2516c4b68ee3c110911801e98"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#a3a238fb2516c4b68ee3c110911801e98">shader_name</a> = &quot;shader&quot;</td></tr>
+<tr class="memdesc:a3a238fb2516c4b68ee3c110911801e98"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the shader  <a href="#a3a238fb2516c4b68ee3c110911801e98">More...</a><br /></td></tr>
+<tr class="separator:a3a238fb2516c4b68ee3c110911801e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa412a06d11083c01b8288615c262014c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#aa412a06d11083c01b8288615c262014c">errord</a> = false</td></tr>
+<tr class="memdesc:aa412a06d11083c01b8288615c262014c"><td class="mdescLeft">&#160;</td><td class="mdescRight">true if an error happened  <a href="#aa412a06d11083c01b8288615c262014c">More...</a><br /></td></tr>
+<tr class="separator:aa412a06d11083c01b8288615c262014c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae01aec5bf469a7cdea9edb3bedca2efb"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb">cameraVector</a> = glm::vec3(0.0f, 0.0f, 0.0f)</td></tr>
+<tr class="memdesc:ae01aec5bf469a7cdea9edb3bedca2efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position of the camera.  <a href="#ae01aec5bf469a7cdea9edb3bedca2efb">More...</a><br /></td></tr>
+<tr class="separator:ae01aec5bf469a7cdea9edb3bedca2efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1348df9019093c12135c5e157f6d5bc1"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">camera</a> = glm::mat4(1.0f)</td></tr>
+<tr class="memdesc:a1348df9019093c12135c5e157f6d5bc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The camera matrix.  <a href="#a1348df9019093c12135c5e157f6d5bc1">More...</a><br /></td></tr>
+<tr class="separator:a1348df9019093c12135c5e157f6d5bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f9e6e2c05d97ac745c034bf23758103"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#a3f9e6e2c05d97ac745c034bf23758103">projectionMatrix</a></td></tr>
+<tr class="separator:a3f9e6e2c05d97ac745c034bf23758103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ffb94f4fa9c65c91a49b33435aea08d"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html#a8ffb94f4fa9c65c91a49b33435aea08d">textureScale</a> = glm::vec2(1.0f, 1.0f)</td></tr>
+<tr class="separator:a8ffb94f4fa9c65c91a49b33435aea08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -187,6 +210,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00003">3</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00026">errord</a>, and <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;              :<a class="code" href="classshader.html#ace9cdc17fed43ed90a52484720a6da0f">shader</a>(<span class="stringliteral">&quot;../shaders/default.vert&quot;</span>,<span class="stringliteral">&quot;../shaders/default.frag&quot;</span>,<span class="stringliteral">&quot;default&quot;</span>){</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;}</div><div class="ttc" id="classshader_html_ace9cdc17fed43ed90a52484720a6da0f"><div class="ttname"><a href="classshader.html#ace9cdc17fed43ed90a52484720a6da0f">shader::shader</a></div><div class="ttdeci">shader()</div><div class="ttdoc">This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;...</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00003">shader.cpp:3</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a3e44b8e5bb5e887ead44a439a7f96828"></a>
@@ -270,6 +296,10 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00087">87</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">shader_name</a>.</p>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                                                  :<a class="code" href="classshader.html#ace9cdc17fed43ed90a52484720a6da0f">shader</a>(vertexPath,fragmentPath){</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classshader.html#a3a238fb2516c4b68ee3c110911801e98">shader_name</a> = name;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div><div class="ttc" id="classshader_html_ace9cdc17fed43ed90a52484720a6da0f"><div class="ttname"><a href="classshader.html#ace9cdc17fed43ed90a52484720a6da0f">shader::shader</a></div><div class="ttdeci">shader()</div><div class="ttdoc">This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;...</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00003">shader.cpp:3</a></div></div>
+<div class="ttc" id="classshader_html_a3a238fb2516c4b68ee3c110911801e98"><div class="ttname"><a href="classshader.html#a3a238fb2516c4b68ee3c110911801e98">shader::shader_name</a></div><div class="ttdeci">std::string shader_name</div><div class="ttdoc">the name of the shader </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -310,6 +340,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00180">180</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                                                              {</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    glGetUniformfv(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), dest);</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aed208783f4c577978e34b765ad79a0f6"></a>
@@ -331,6 +364,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00111">111</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                          {</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a539035636c756b343c441616a267a842"></a>
@@ -353,6 +389,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00127">127</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">shader_name</a>.</p>
+<div class="fragment"><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                         {</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classshader.html#a3a238fb2516c4b68ee3c110911801e98">shader_name</a>;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div><div class="ttc" id="classshader_html_a3a238fb2516c4b68ee3c110911801e98"><div class="ttname"><a href="classshader.html#a3a238fb2516c4b68ee3c110911801e98">shader::shader_name</a></div><div class="ttdeci">std::string shader_name</div><div class="ttdoc">the name of the shader </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8352a1d1beb9e194fcac8c7b8d8bbba4"></a>
@@ -374,6 +413,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00107">107</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00026">errord</a>.</p>
+<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                       {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classshader.html#aa412a06d11083c01b8288615c262014c">errord</a>;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div><div class="ttc" id="classshader_html_aa412a06d11083c01b8288615c262014c"><div class="ttname"><a href="classshader.html#aa412a06d11083c01b8288615c262014c">shader::errord</a></div><div class="ttdeci">bool errord</div><div class="ttdoc">true if an error happened </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00026">shader.hpp:26</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ace6b5d10f1dee686a3bf7453c2fa7b46"></a>
@@ -413,6 +455,10 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00099">99</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00032">camera</a>, and <a class="el" href="shader_8hpp_source.html#l00029">cameraVector</a>.</p>
+<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                                           {</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb">cameraVector</a>.x -= delta_pos_x;</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb">cameraVector</a>.y -= delta_pos_y;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">camera</a> = glm::mat4(1.0f);</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">camera</a> = glm::translate(<a class="code" href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">camera</a>, <a class="code" href="classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb">cameraVector</a>);</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div><div class="ttc" id="classshader_html_a1348df9019093c12135c5e157f6d5bc1"><div class="ttname"><a href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">shader::camera</a></div><div class="ttdeci">glm::mat4 camera</div><div class="ttdoc">The camera matrix. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00032">shader.hpp:32</a></div></div>
+<div class="ttc" id="classshader_html_ae01aec5bf469a7cdea9edb3bedca2efb"><div class="ttname"><a href="classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb">shader::cameraVector</a></div><div class="ttdeci">glm::vec3 cameraVector</div><div class="ttdoc">The position of the camera. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00029">shader.hpp:29</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad7c6d52c0bda2cf6e969674630c49f5a"></a>
@@ -452,6 +498,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00131">131</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                                           {         </div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    glUniform1i(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value); </div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad907207e3899e39f6b9e0db7af0aae54"></a>
@@ -498,6 +547,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00134">134</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                                                        { </div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    glUniform2i(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value, (int)value2); </div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a15d184259832e3ae357135ad50f44b46"></a>
@@ -551,6 +603,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00138">138</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                                                                     { </div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    glUniform3i(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value, (int)value2, (<span class="keywordtype">int</span>)value3); </div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;} </div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a15440f769d215241a88be42e9f758442"></a>
@@ -611,6 +666,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00142">142</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                                                                                  { </div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    glUniform4i(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value, (int)value2, (<span class="keywordtype">int</span>)value3, (int)value4); </div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;} </div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="afa031ea0f9e491799a4aea60286d1b5a"></a>
@@ -650,6 +708,10 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00091">91</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00032">camera</a>, and <a class="el" href="shader_8hpp_source.html#l00029">cameraVector</a>.</p>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                              {</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb">cameraVector</a>.x = - pos_x;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb">cameraVector</a>.y = - pos_y;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">camera</a> = glm::mat4(1.0f);</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">camera</a> = glm::translate(<a class="code" href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">camera</a>, <a class="code" href="classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb">cameraVector</a>);</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div><div class="ttc" id="classshader_html_a1348df9019093c12135c5e157f6d5bc1"><div class="ttname"><a href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">shader::camera</a></div><div class="ttdeci">glm::mat4 camera</div><div class="ttdoc">The camera matrix. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00032">shader.hpp:32</a></div></div>
+<div class="ttc" id="classshader_html_ae01aec5bf469a7cdea9edb3bedca2efb"><div class="ttname"><a href="classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb">shader::cameraVector</a></div><div class="ttdeci">glm::vec3 cameraVector</div><div class="ttdoc">The position of the camera. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00029">shader.hpp:29</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aaba567584644d5f9a3714039110989f4"></a>
@@ -689,6 +751,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00164">164</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                                             { </div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    glUniform1f(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), value); </div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;} </div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a2f4a9b91d2c44262527de1d700030831"></a>
@@ -735,6 +800,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00168">168</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                                                           { </div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    glUniform2f(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), value, value2); </div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0dee082ec550f9b8763db374a5f3c506"></a>
@@ -788,6 +856,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00172">172</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                                                                         { </div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    glUniform3f(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), value, value2, value3); </div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;} </div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a971fac6cfc1100fe705f39697c1ee190"></a>
@@ -848,6 +919,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00176">176</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                                                                                       { </div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    glUniform4f(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), value, value2, value3, value4); </div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;} </div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a96125bbfeca28ec5fe01217a8249044c"></a>
@@ -887,6 +961,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00147">147</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                                         { </div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    glUniform1i(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), value); </div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae88f5502b2fdec23543f4170a9eae1ee"></a>
@@ -933,6 +1010,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00151">151</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                                                     { </div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    glUniform2i(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), value, value2); </div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="acaba946bc355729e9725679a702edf7a"></a>
@@ -986,6 +1066,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00155">155</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                                                                 { </div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    glUniform3i(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), value, value2, value3); </div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;} </div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a3547e5ea232cd0209090b1520abc5e72"></a>
@@ -1046,6 +1129,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00159">159</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00020">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                                                                             { </div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    glUniform4i(glGetUniformLocation(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>, name.c_str()), value, value2, value3, value4); </div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;} </div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a21dbee719d948037b97cf5f0a4f9964f"></a>
@@ -1074,6 +1160,10 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00184">184</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="default_8vert_source.html#l00012">projection</a>, and <a class="el" href="shader_8hpp_source.html#l00035">projectionMatrix</a>.</p>
+<div class="fragment"><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                                  {</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="classshader.html#a3f9e6e2c05d97ac745c034bf23758103">projectionMatrix</a> = <a class="code" href="default_8vert.html#a6f89a4fbf1a53a21ada7ca66387463a1">projection</a>;</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div><div class="ttc" id="default_8vert_html_a6f89a4fbf1a53a21ada7ca66387463a1"><div class="ttname"><a href="default_8vert.html#a6f89a4fbf1a53a21ada7ca66387463a1">projection</a></div><div class="ttdeci">uniform mat4 projection</div><div class="ttdef"><b>Definition:</b> <a href="default_8vert_source.html#l00012">default.vert:12</a></div></div>
+<div class="ttc" id="classshader_html_a3f9e6e2c05d97ac745c034bf23758103"><div class="ttname"><a href="classshader.html#a3f9e6e2c05d97ac745c034bf23758103">shader::projectionMatrix</a></div><div class="ttdeci">glm::mat4 projectionMatrix</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00035">shader.hpp:35</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a69d5f5e5c93067d8e00169f82a19018f"></a>
@@ -1102,6 +1192,9 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00188">188</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00038">textureScale</a>.</p>
+<div class="fragment"><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                                         {</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="classshader.html#a8ffb94f4fa9c65c91a49b33435aea08d">textureScale</a> = scale;</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div><div class="ttc" id="classshader_html_a8ffb94f4fa9c65c91a49b33435aea08d"><div class="ttname"><a href="classshader.html#a8ffb94f4fa9c65c91a49b33435aea08d">shader::textureScale</a></div><div class="ttdeci">glm::vec2 textureScale</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00038">shader.hpp:38</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="acb2eb6adb68c74fa3508cf71eec68e26"></a>
@@ -1123,7 +1216,199 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00115">115</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8cpp_source.html#l00111">getID()</a>, and <a class="el" href="shader_8cpp_source.html#l00164">setFloat()</a>.</p>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00032">camera</a>, <a class="el" href="shader_8cpp_source.html#l00111">getID()</a>, <a class="el" href="shader_8hpp_source.html#l00020">ID</a>, <a class="el" href="shader_8hpp_source.html#l00035">projectionMatrix</a>, <a class="el" href="shader_8cpp_source.html#l00164">setFloat()</a>, and <a class="el" href="shader_8hpp_source.html#l00038">textureScale</a>.</p>
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                {</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    glUseProgram(<a class="code" href="classshader.html#a3978958c45844833fb5d4a1df1f00017">ID</a>);</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">int</span> cameraLoc = glGetUniformLocation(<a class="code" href="classshader.html#aed208783f4c577978e34b765ad79a0f6">getID</a>(), <span class="stringliteral">&quot;camera&quot;</span>);</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    glUniformMatrix4fv(cameraLoc, 1, GL_FALSE, glm::value_ptr(<a class="code" href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">camera</a>));</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    </div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">int</span> projectionLoc = glGetUniformLocation(<a class="code" href="classshader.html#aed208783f4c577978e34b765ad79a0f6">getID</a>(), <span class="stringliteral">&quot;projection&quot;</span>);</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(<a class="code" href="classshader.html#a3f9e6e2c05d97ac745c034bf23758103">projectionMatrix</a>));</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="classshader.html#aaba567584644d5f9a3714039110989f4">setFloat</a>(<span class="stringliteral">&quot;textureScale&quot;</span>, <a class="code" href="classshader.html#a8ffb94f4fa9c65c91a49b33435aea08d">textureScale</a>.x, <a class="code" href="classshader.html#a8ffb94f4fa9c65c91a49b33435aea08d">textureScale</a>.y);</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div><div class="ttc" id="classshader_html_a3978958c45844833fb5d4a1df1f00017"><div class="ttname"><a href="classshader.html#a3978958c45844833fb5d4a1df1f00017">shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00020">shader.hpp:20</a></div></div>
+<div class="ttc" id="classshader_html_aed208783f4c577978e34b765ad79a0f6"><div class="ttname"><a href="classshader.html#aed208783f4c577978e34b765ad79a0f6">shader::getID</a></div><div class="ttdeci">unsigned int getID()</div><div class="ttdoc">This function returns the ID of the shader for the use in some OpenGL functions. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00111">shader.cpp:111</a></div></div>
+<div class="ttc" id="classshader_html_a1348df9019093c12135c5e157f6d5bc1"><div class="ttname"><a href="classshader.html#a1348df9019093c12135c5e157f6d5bc1">shader::camera</a></div><div class="ttdeci">glm::mat4 camera</div><div class="ttdoc">The camera matrix. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00032">shader.hpp:32</a></div></div>
+<div class="ttc" id="classshader_html_a8ffb94f4fa9c65c91a49b33435aea08d"><div class="ttname"><a href="classshader.html#a8ffb94f4fa9c65c91a49b33435aea08d">shader::textureScale</a></div><div class="ttdeci">glm::vec2 textureScale</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00038">shader.hpp:38</a></div></div>
+<div class="ttc" id="classshader_html_a3f9e6e2c05d97ac745c034bf23758103"><div class="ttname"><a href="classshader.html#a3f9e6e2c05d97ac745c034bf23758103">shader::projectionMatrix</a></div><div class="ttdeci">glm::mat4 projectionMatrix</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00035">shader.hpp:35</a></div></div>
+<div class="ttc" id="classshader_html_aaba567584644d5f9a3714039110989f4"><div class="ttname"><a href="classshader.html#aaba567584644d5f9a3714039110989f4">shader::setFloat</a></div><div class="ttdeci">void setFloat(const std::string &amp;name, float value) const</div><div class="ttdoc">The setFloat functions set a uniform vector of the shader to given values. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00164">shader.cpp:164</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classshader_acb2eb6adb68c74fa3508cf71eec68e26_cgraph.png" border="0" usemap="#classshader_acb2eb6adb68c74fa3508cf71eec68e26_cgraph" alt=""/></div>
+<map name="classshader_acb2eb6adb68c74fa3508cf71eec68e26_cgraph" id="classshader_acb2eb6adb68c74fa3508cf71eec68e26_cgraph">
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1348df9019093c12135c5e157f6d5bc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1348df9019093c12135c5e157f6d5bc1">&#9670;&nbsp;</a></span>camera</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::mat4 shader::camera = glm::mat4(1.0f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The camera matrix. </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00032">32</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae01aec5bf469a7cdea9edb3bedca2efb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae01aec5bf469a7cdea9edb3bedca2efb">&#9670;&nbsp;</a></span>cameraVector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 shader::cameraVector = glm::vec3(0.0f, 0.0f, 0.0f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The position of the camera. </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00029">29</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa412a06d11083c01b8288615c262014c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa412a06d11083c01b8288615c262014c">&#9670;&nbsp;</a></span>errord</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool shader::errord = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>true if an error happened </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00026">26</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3978958c45844833fb5d4a1df1f00017"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3978958c45844833fb5d4a1df1f00017">&#9670;&nbsp;</a></span>ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int shader::ID</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the program ID </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00020">20</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3f9e6e2c05d97ac745c034bf23758103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f9e6e2c05d97ac745c034bf23758103">&#9670;&nbsp;</a></span>projectionMatrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::mat4 shader::projectionMatrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00035">35</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3a238fb2516c4b68ee3c110911801e98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a238fb2516c4b68ee3c110911801e98">&#9670;&nbsp;</a></span>shader_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string shader::shader_name = &quot;shader&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the name of the shader </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00023">23</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8ffb94f4fa9c65c91a49b33435aea08d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ffb94f4fa9c65c91a49b33435aea08d">&#9670;&nbsp;</a></span>textureScale</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec2 shader::textureScale = glm::vec2(1.0f, 1.0f)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00038">38</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
 
 </div>
 </div>

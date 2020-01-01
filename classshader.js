@@ -23,5 +23,12 @@ var classshader =
     [ "setInt", "classshader.html#a3547e5ea232cd0209090b1520abc5e72", null ],
     [ "setProjectionmatrix", "classshader.html#a21dbee719d948037b97cf5f0a4f9964f", null ],
     [ "setTextureScale", "classshader.html#a69d5f5e5c93067d8e00169f82a19018f", null ],
-    [ "use", "classshader.html#acb2eb6adb68c74fa3508cf71eec68e26", null ]
+    [ "use", "classshader.html#acb2eb6adb68c74fa3508cf71eec68e26", null ],
+    [ "camera", "classshader.html#a1348df9019093c12135c5e157f6d5bc1", null ],
+    [ "cameraVector", "classshader.html#ae01aec5bf469a7cdea9edb3bedca2efb", null ],
+    [ "errord", "classshader.html#aa412a06d11083c01b8288615c262014c", null ],
+    [ "ID", "classshader.html#a3978958c45844833fb5d4a1df1f00017", null ],
+    [ "projectionMatrix", "classshader.html#a3f9e6e2c05d97ac745c034bf23758103", null ],
+    [ "shader_name", "classshader.html#a3a238fb2516c4b68ee3c110911801e98", null ],
+    [ "textureScale", "classshader.html#a8ffb94f4fa9c65c91a49b33435aea08d", null ]
 ];

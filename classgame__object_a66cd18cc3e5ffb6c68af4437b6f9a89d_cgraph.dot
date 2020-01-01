@@ -1,0 +1,11 @@
+digraph "game_object::setScreenSize"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node31 [label="game_object::setScreenSize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node31 -> Node32 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node32 [label="texture2D::getHeight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtexture2_d.html#a0afabeffe5265277d117fa722d44d2cb",tooltip="This function retruns the height of the texture. "];
+  Node31 -> Node33 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node33 [label="texture2D::getWidth",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtexture2_d.html#acb3f2be669d39bdf5a679096c7ca6a78",tooltip="This function retruns the width of the texture. "];
+}

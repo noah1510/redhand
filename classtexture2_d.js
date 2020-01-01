@@ -10,5 +10,12 @@ var classtexture2_d =
     [ "getName", "classtexture2_d.html#a35c294c8df05a2dab8b84432150a65c0", null ],
     [ "getWidth", "classtexture2_d.html#acb3f2be669d39bdf5a679096c7ca6a78", null ],
     [ "hasErrord", "classtexture2_d.html#a4fd8242f0fca0ea46ef5f61ffb15b39c", null ],
-    [ "setName", "classtexture2_d.html#a8fe6e7ac68ce5cd763542072b342f818", null ]
+    [ "setName", "classtexture2_d.html#a8fe6e7ac68ce5cd763542072b342f818", null ],
+    [ "errord", "classtexture2_d.html#a4059166cd059534997a7b4d7cedaee74", null ],
+    [ "height", "classtexture2_d.html#a01bb3356a658d5bb951008108eaef182", null ],
+    [ "id", "classtexture2_d.html#ae8b0310efe86c626412008e4c01de107", null ],
+    [ "scale_x", "classtexture2_d.html#a885d0eabf51db4c428c254d4e7fd55ef", null ],
+    [ "scale_y", "classtexture2_d.html#afbadb93ded369e795fff6bdd631b352b", null ],
+    [ "texture_name", "classtexture2_d.html#a07bc682ecb811d367e0a3944c481c59d", null ],
+    [ "width", "classtexture2_d.html#a7a448ed7597b81098f7c080eacc7821e", null ]
 ];

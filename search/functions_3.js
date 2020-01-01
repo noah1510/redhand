@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['degtorad',['degToRad',['../objects_8cpp.html#af29989564294ec8317adf2c73a4e9857',1,'degToRad(float val):&#160;objects.cpp'],['../objects_8hpp.html#af29989564294ec8317adf2c73a4e9857',1,'degToRad(float val):&#160;objects.cpp']]],
-  ['draw',['draw',['../classobject.html#ae8332fa2e09d4909600c5f21b19ef246',1,'object']]]
+  ['draw',['draw',['../classgame__object.html#a8fa3fed27665465bef86604a928b2b23',1,'game_object']]]
 ];

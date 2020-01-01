@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['processglobalinput',['processGlobalInput',['../game_8cpp.html#ab9f435fea17db8edbc0794122864b986',1,'processGlobalInput(GLFWwindow *window):&#160;game.cpp'],['../game_8hpp.html#ab9f435fea17db8edbc0794122864b986',1,'processGlobalInput(GLFWwindow *window):&#160;game.cpp']]],
-  ['processhousemovement',['processHouseMovement',['../game_8cpp.html#a8cb14eda9d368f9697257de03736944a',1,'processHouseMovement(GLFWwindow *window, object *obj):&#160;game.cpp'],['../game_8hpp.html#a8cb14eda9d368f9697257de03736944a',1,'processHouseMovement(GLFWwindow *window, object *obj):&#160;game.cpp']]],
-  ['processworldinput',['processWorldInput',['../game_8cpp.html#af53e6f75cf50733f6da64de1b899df60',1,'processWorldInput(GLFWwindow *window, world *activeWorld):&#160;game.cpp'],['../game_8hpp.html#af53e6f75cf50733f6da64de1b899df60',1,'processWorldInput(GLFWwindow *window, world *activeWorld):&#160;game.cpp']]]
+  ['object_5fname',['object_name',['../classgame__object.html#a57560a498741485bb27feadef1b02269',1,'game_object']]],
+  ['object_5fposition',['object_position',['../classgame__object.html#a8d9e4b59fe35b52991199b2cec4ca21e',1,'game_object']]],
+  ['object_5frotation',['object_rotation',['../classgame__object.html#a7213a5655c6604aa6740e97e3b36100e',1,'game_object']]],
+  ['object_5fscale',['object_scale',['../classgame__object.html#a2559944869d952807edb67e11f22addd',1,'game_object']]],
+  ['object_5fshader',['object_shader',['../classgame__object.html#ad2dda4a261124fbdde1126fda097c188',1,'game_object']]],
+  ['object_5ftexture',['object_texture',['../classgame__object.html#a33cc896de7b127ea746912ab5f1a0506',1,'game_object']]],
+  ['onloop',['onLoop',['../classgame__object.html#a37239afd51b794fe648b3bb1ac89c5b7',1,'game_object']]]
 ];

@@ -8,7 +8,7 @@ digraph "src/game.hpp"
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="vector",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="objects.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$objects_8hpp.html"];
+  Node3 [label="game_object.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game__object_8hpp.html"];
   Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="shader.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$shader_8hpp.html"];
   Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -36,11 +36,14 @@ digraph "src/game.hpp"
   Node14 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node15 [label="cmath",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node15 [label="math.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$math_8hpp.html"];
+  Node15 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="cmath",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node16 [label="functional",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="functional",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node3 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
