@@ -137,7 +137,7 @@ int createTestworld(world* testWorld){
         std::vector <float> trig_texels = {0.0f,0.0f, 1.0f*10.0f,0.0f, 0.5f*10.0f,1.0f*10.0f};
         std::vector <float> trig_pos = {-0.4f,-0.4f};
         if( testWorld->addObject(
-            new object(
+            new game_object(
                 trig_points,
                 trig_indicies,
                 trig_colors,
@@ -155,7 +155,7 @@ int createTestworld(world* testWorld){
         }
         testWorld->getObjectByName("game_object")->setName("trig");
 
-        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow* window, object* obj){
+        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow* window, game_object* obj){
             obj->setRotation((float)glfwGetTime()*20.0f);
         });
     }
@@ -171,7 +171,7 @@ int createTestworld(world* testWorld){
     return 0;
 }
 
-void processHouseMovement(GLFWwindow* window, object* obj){
+void processHouseMovement(GLFWwindow* window, game_object* obj){
     //move the house
     std::vector<float> deltaPosition = {0.0f,0.0f};
 

@@ -15,7 +15,7 @@ private:
     ///the id of the texture
     unsigned int id;
 
-    //the width of the texture
+    ///the width of the texture
     int width;
 
     ///the hight of the texture
