@@ -59,6 +59,17 @@ game_object::game_object(
     }
 }
 
+//minimal with name
+game_object::game_object(
+        std::vector <float> points, 
+        std::vector <unsigned int> indices,
+        std::vector <float> colors,
+        shader* attached_shader,
+        int gl_drawing_mode,
+        std::string name):game_object(points, indices, colors, attached_shader, gl_drawing_mode){
+            object_name = name;
+        }
+
 //minimal with shader routine
 game_object::game_object(
     std::vector <float> points, 

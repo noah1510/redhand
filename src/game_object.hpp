@@ -85,6 +85,15 @@ private:
 
 public:
     //minimal constructor
+    /**
+     * @brief Construct a new game object object
+     * 
+     * @param points An array with all the points this object has in local coordinates
+     * @param indices The indicies which specifiy, which points form a triangle
+     * @param colors The color of the points
+     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
+     * @param gl_drawing_mode The drawing mode of the game_object
+     */
     game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
@@ -92,7 +101,35 @@ public:
         shader* attached_shader,
         int gl_drawing_mode);
 
+    //minimal with name
+    /**
+     * @brief Construct a new game object object
+     * 
+     * @param points An array with all the points this object has in local coordinates
+     * @param indices The indicies which specifiy, which points form a triangle
+     * @param colors The color of the points
+     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
+     * @param gl_drawing_mode The drawing mode of the game_object
+     */
+    game_object(
+        std::vector <float> points, 
+        std::vector <unsigned int> indices,
+        std::vector <float> colors,
+        shader* attached_shader,
+        int gl_drawing_mode,
+        std::string name);
+
     //minimal with shader routine
+    /**
+     * @brief Construct a new game object object
+     * 
+     * @param points An array with all the points this object has in local coordinates
+     * @param indices The indicies which specifiy, which points form a triangle
+     * @param colors The color of the points
+     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
+     * @param gl_drawing_mode The drawing mode of the game_object
+     * @param routine The shader routine which should be used
+     */
     game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
@@ -103,6 +140,18 @@ public:
         std::function<void(shader*)> routine);
 
     //minimal with scale,rotation and position
+    /**
+     * @brief Construct a new game object object
+     * 
+     * @param points An array with all the points this object has in local coordinates
+     * @param indices The indicies which specifiy, which points form a triangle
+     * @param colors The color of the points
+     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
+     * @param gl_drawing_mode The drawing mode of the game_object
+     * @param scaler The scale of the object in world coordinates
+     * @param rotator The rotation of the object in world coordinates
+     * @param postitions The position of the object in world coordinates
+     */
     game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
@@ -115,6 +164,19 @@ public:
         std::vector<float> postitions);
 
     //minimal with scale,rotation, position and shader routine
+    /**
+     * @brief Construct a new game object object
+     * 
+     * @param points An array with all the points this object has in local coordinates
+     * @param indices The indicies which specifiy, which points form a triangle
+     * @param colors The color of the points
+     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
+     * @param gl_drawing_mode The drawing mode of the game_object
+     * @param routine The shader routine which should be used
+     * @param scaler The scale of the object in world coordinates
+     * @param rotator The rotation of the object in world coordinates
+     * @param postitions The position of the object in world coordinates
+     */
     game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
@@ -129,6 +191,20 @@ public:
         std::vector<float> postitions);
 
     //full constructor without texels
+    /**
+     * @brief Construct a new game object object
+     * 
+     * @param points An array with all the points this object has in local coordinates
+     * @param indices The indicies which specifiy, which points form a triangle
+     * @param colors The color of the points
+     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
+     * @param gl_drawing_mode The drawing mode of the game_object
+     * @param routine The shader routine which should be used
+     * @param scaler The scale of the object in world coordinates
+     * @param rotator The rotation of the object in world coordinates
+     * @param postitions The position of the object in world coordinates
+     * @param texture A pointer to the attaches texture
+     */
     game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
@@ -145,6 +221,21 @@ public:
         texture2D* texture);
 
     //full constructor
+    /**
+     * @brief Construct a new game object object
+     * 
+     * @param points An array with all the points this object has in local coordinates
+     * @param indices The indicies which specifiy, which points form a triangle
+     * @param colors The color of the points
+     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
+     * @param gl_drawing_mode The drawing mode of the game_object
+     * @param routine The shader routine which should be used
+     * @param scaler The scale of the object in world coordinates
+     * @param rotator The rotation of the object in world coordinates
+     * @param postitions The position of the object in world coordinates
+     * @param texture A pointer to the attaches texture
+     * @param texels A Vector containing the texture coordinates
+     */
     game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
@@ -161,26 +252,40 @@ public:
         texture2D* texture,
         std::vector <float> texels);
 
+    /**
+     * @brief Destroy the game object
+     */
     ~game_object();
 
-    //functions for the object
-
+    ///This function sets the shader routine to the given function
     void setShaderRoutine(std::function<void(shader*)> routine);
+
+    ///This function sets the loop function to the given function
     void setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop);
 
+    ///This function returns a pointer to the attached shader
     shader* getShader();
 
+    ///This function draws the object on the screen
     void draw();
+
+    ///The loop function of the object
     void onLoop(GLFWwindow* window);
+
+    ///false if no error has happened
     bool hasErrord();
 
-    //sets and gets the object position
+    /**
+     * @brief Get the Position of the object
+     * 
+     * @return std::vector<float> 
+     */
     std::vector<float> getPosition();
 
     /**
      * @brief Set the Position of the object
      * 
-     * @param pos a vector with the new postion of the object
+     * @param pos a vector with the in x and y direction in world scale
      */
     void setPosition(std::vector<float> pos);
 
