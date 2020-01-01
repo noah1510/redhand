@@ -8,7 +8,7 @@ then
     if [ $1 == "--init" ]
     then
         sudo apt update
-        sudo apt install graphviz-dev doxygen --yes
+        sudo apt install graphviz graphviz-dev doxygen --yes
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
