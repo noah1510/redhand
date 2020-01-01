@@ -1,0 +1,5 @@
+<map id="game_object::onLoop" name="game_object::onLoop">
+<area shape="rect" id="node2" href="$classshader.html#acb2eb6adb68c74fa3508cf71eec68e26" title="This function activates the shader and sets the camera position. " alt="" coords="200,31,291,57"/>
+<area shape="rect" id="node3" href="$classshader.html#aed208783f4c577978e34b765ad79a0f6" title="This function returns the ID of the shader for the use in some OpenGL functions. " alt="" coords="346,5,447,32"/>
+<area shape="rect" id="node4" href="$classshader.html#aaba567584644d5f9a3714039110989f4" title="The setFloat functions set a uniform vector of the shader to given values. " alt="" coords="339,56,455,83"/>
+</map>

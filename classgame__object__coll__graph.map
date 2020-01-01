@@ -1,0 +1,4 @@
+<map id="game_object" name="game_object">
+<area shape="rect" id="node2" href="$classshader.html" title="shader" alt="" coords="5,5,67,32"/>
+<area shape="rect" id="node3" href="$classtexture2_d.html" title="texture2D" alt="" coords="113,5,191,32"/>
+</map>

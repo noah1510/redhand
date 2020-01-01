@@ -1,0 +1,4 @@
+<map id="shader::use" name="shader::use">
+<area shape="rect" id="node2" href="$classshader.html#aed208783f4c577978e34b765ad79a0f6" title="This function returns the ID of the shader for the use in some OpenGL functions. " alt="" coords="151,5,253,32"/>
+<area shape="rect" id="node3" href="$classshader.html#aaba567584644d5f9a3714039110989f4" title="The setFloat functions set a uniform vector of the shader to given values. " alt="" coords="144,56,260,83"/>
+</map>

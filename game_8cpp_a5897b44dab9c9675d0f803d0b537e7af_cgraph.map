@@ -1,0 +1,25 @@
+<map id="createTestworld" name="createTestworld">
+<area shape="rect" id="node2" href="$classworld.html#a2195eb8a4f160b3906c1bd7d8607547d" title="The addObject function will add an object to the world. " alt="" coords="208,5,328,32"/>
+<area shape="rect" id="node4" href="$classtexture2_d.html#acb3f2be669d39bdf5a679096c7ca6a78" title="This function retruns the width of the texture. " alt="" coords="655,56,794,83"/>
+<area shape="rect" id="node6" href="$classworld.html#a2f20d75856e6d0466c9cea429f67ddd0" title="The addShader function will add a shader to the world. " alt="" coords="207,107,329,133"/>
+<area shape="rect" id="node8" href="$classworld.html#a02f10be898f85aac50aca9a9901494a3" title="The addTexture function will add a texture to the world. " alt="" coords="205,157,331,184"/>
+<area shape="rect" id="node9" href="$game__object_8cpp.html#acffd79905408b72173decb4743360c09" title="Create a Circle object. " alt="" coords="222,208,314,235"/>
+<area shape="rect" id="node13" href="$game__object_8cpp.html#a7d5bbbe7951a1af8ad62b544337907ea" title="Create a House object. " alt="" coords="220,309,316,336"/>
+<area shape="rect" id="node15" href="$game__object_8cpp.html#af2c710095598ad3fe70484f16f7d70bc" title="Create a rectangular object. " alt="" coords="206,259,330,285"/>
+<area shape="rect" id="node16" href="$classworld.html#a36b1dc63d7823419c9611712c36344cf" title="This function returns a pointer to the first object with the given name. " alt="" coords="184,360,352,387"/>
+<area shape="rect" id="node17" href="$classworld.html#a6828c3950208c8ae91dfbabb20ed792f" title="This function returns a pointer to the first shader with the given name. " alt="" coords="183,411,353,437"/>
+<area shape="rect" id="node18" href="$classworld.html#a069f21a4a68de2c8e9ce4758e984e2f7" title="This function returns a pointer to the first texture with the given name. " alt="" coords="181,461,355,488"/>
+<area shape="rect" id="node19" href="$game_8cpp.html#a3042d3300c8ffe29e3c08604567ecf28" title="processHouseMovement" alt="" coords="185,512,351,539"/>
+<area shape="rect" id="node22" href="$classgame__object.html#a9c3d5c1f36131a62f1f47f758e366d58" title="This function sets the loop function to the given function. " alt="" coords="168,563,368,589"/>
+<area shape="rect" id="node23" href="$classgame__object.html#aac12a73f0b9fd6d8fca8a10912e5a7d0" title="This function sets the name of the game_object to the given string. " alt="" coords="189,613,347,640"/>
+<area shape="rect" id="node24" href="$classgame__object.html#a31176a3880e578c938dca11a512f725f" title="sets the objects rotation by the specified amount in degrees counterclockwise " alt="" coords="183,664,353,691"/>
+<area shape="rect" id="node3" href="$classgame__object.html#a66cd18cc3e5ffb6c68af4437b6f9a89d" title="Sets the screen size to let the object scale the texture correctly. " alt="" coords="416,5,605,32"/>
+<area shape="rect" id="node5" href="$classtexture2_d.html#a0afabeffe5265277d117fa722d44d2cb" title="This function retruns the height of the texture. " alt="" coords="653,5,796,32"/>
+<area shape="rect" id="node7" href="$classshader.html#a21dbee719d948037b97cf5f0a4f9964f" title="This function sets the projection matrix of the shader to the given matrix. " alt="" coords="420,107,601,133"/>
+<area shape="rect" id="node10" href="$math_8cpp.html#ab835f10bb71611820a841ac59bb70cbc" title="This function calculates a cosine with an angle in degrees. " alt="" coords="477,157,544,184"/>
+<area shape="rect" id="node11" href="$math_8cpp.html#ad13ed0f481aee3f3057a8b86fe05c8e6" title="This function calculates a sine with an angle in degrees. " alt="" coords="479,208,542,235"/>
+<area shape="rect" id="node12" href="$classgame__object.html#a58895a96a0691163676878a26f8dfd8e" title="Construct a new game object object. " alt="" coords="421,259,600,285"/>
+<area shape="rect" id="node14" href="$classshader.html#a96125bbfeca28ec5fe01217a8249044c" title="The setInt functions set a uniform vector of the shader to given values. " alt="" coords="459,309,562,336"/>
+<area shape="rect" id="node20" href="$classgame__object.html#ab7809a878f1503a315bcd4a82c907254" title="moves the object by the specified amount " alt="" coords="443,487,579,513"/>
+<area shape="rect" id="node21" href="$classgame__object.html#a0cc8d2eb8e77399cfb33ac1f3c4d65c8" title="Rotates the object by the specified amount in degrees counterclockwise. " alt="" coords="442,537,579,564"/>
+</map>
