@@ -16,8 +16,13 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: install dependencies
-      run:  bash scripts/dependencies.sh --ci
+      run:  |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        bash scripts/dependencies.sh --ci
     - name: setup the project
       run:  bash scripts/setup.sh
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: build
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
