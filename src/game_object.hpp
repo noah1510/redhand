@@ -24,7 +24,7 @@
  * 
  * The Points specified are all local coordinates.
  * This means they are in the first sector of a 2 dimensional coordinate system.
- * \todo If there is any point outside of this range the creation of the object will fail.
+ * If there is any point outside of this range the creation of the object will fail.
  * For each point you must also specify the color of that point.
  * 
  * Each game_object has a name which is "game_object" by default.

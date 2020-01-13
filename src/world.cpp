@@ -74,31 +74,55 @@ void world::setWindowSize(int width, int height){
 }
 
 int world::addShader(shader* shade){
+    if(shade == nullptr || shade == NULL){
+        return -1;
+    }
+
+    if(shade->hasErrored()){
+        return -2;
+    }
+
     WorldShaders.emplace_back(shade);
     if(WorldShaders.back() == shade){
         shade->setProjectionmatrix(projectionMatrix);
         return 0;
     }else{
-        return -1;
+        return -3;
     }
 }
 
 int world::addTexture(texture2D* tex){
+    if(tex == nullptr || tex == NULL){
+        return -1;
+    }
+
+    if(tex->hasErrord()){
+        return -2;
+    }
+
     WorldTextures.emplace_back(tex);
     if(WorldTextures.back() == tex){
         return 0;
     }else{
-        return -1;
+        return -3;
     }
 }
 
 int world::addObject(game_object* obj){
+    if(obj == nullptr || obj == NULL){
+        return -1;
+    }
+
+    if(obj->hasErrord()){
+        return -2;
+    }
+
     WorldObjects.emplace_back(obj);
     if(WorldObjects.back() == obj){
         obj->setScreenSize(windowWidth,windowHeight);
         return 0;
     }else{
-        return -1;
+        return -3;
     }
 }
 
