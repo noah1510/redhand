@@ -7,6 +7,7 @@
 
 void initSTB();
 
+///\todo throw an error if the texture is not found
 class texture2D{
 private:
     ///true if an error happened
