@@ -17,7 +17,7 @@ do
       shift
       ;;
     "--ci")
-      CI = "1"
+      CI="1"
       shift
       ;;
     "--help")
@@ -111,7 +111,7 @@ else
     exit 1
 fi
 
-if [ $CI -eq 0 ]
+if [ $CI -eq "0" ]
 then
   git lfs install
   if [ $? -eq 0 ]
