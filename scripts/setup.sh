@@ -1,6 +1,7 @@
 #!/bin/bash
 
 THREADS="3"
+CI="0"
 
 #parse parameter
 pars=$#
@@ -15,10 +16,15 @@ do
       fi
       shift
       ;;
+    "--ci")
+      CI = "1"
+      shift
+      ;;
     "--help")
       echo "Usage: scripts/build.sh [options]"
       echo "Options:"
       echo "    --help              Display this information"
+      echo "    --ci                To run in CI mode to disable git-lfs pull."
       echo "    -j [threadnumber]   Build the project with the specified number of threads."
       echo ""
       echo "view the source on https://github.com/noah1510/redhand"
@@ -105,22 +111,27 @@ else
     exit 1
 fi
 
-git lfs install
-if [ $? -eq 0 ]
+if [ $CI -eq 0 ]
 then
-    echo "Successfully initiated git-lfs"
-else
-    echo "Could not initiate git-lfs" >&2
-    exit 2
-fi
+  git lfs install
+  if [ $? -eq 0 ]
+  then
+      echo "Successfully initiated git-lfs"
+  else
+      echo "Could not initiate git-lfs" >&2
+      exit 2
+  fi
 
-git-lfs pull
-if [ $? -eq 0 ]
-then
-    echo "Successfully initiated git-lfs"
+  git-lfs pull
+  if [ $? -eq 0 ]
+  then
+      echo "Successfully pulled git-lfs"
+  else
+      echo "Could not pulled git-lfs" >&2
+      exit 2
+  fi
 else
-    echo "Could not initiate git-lfs" >&2
-    exit 2
+  echo "running in ci mode"
 fi
 
 
