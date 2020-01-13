@@ -22,7 +22,5 @@ jobs:
         bash scripts/dependencies.sh --ci
     - name: setup the project
       run:  bash scripts/setup.sh
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: build
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
