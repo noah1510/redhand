@@ -12,6 +12,15 @@ game_object::game_object(
     if(object_shader == nullptr || object_shader == NULL){
         errored = true;
     }else{
+        for(int i = 0; i < points.size(); i++){
+            if(points.at(i) < 0.0f || points.at(i) > 1.0f){
+                errored = true;
+                break;
+            }
+        }
+    }
+
+    if(!errored){
 
         shader_routine = [](shader*){};
         LoopFunction = [](GLFWwindow*, game_object*){};
@@ -143,7 +152,7 @@ game_object::game_object(
 
     texture2D* texture
 ):game_object(points, indices, colors, attached_shader, gl_drawing_mode,routine,scaler,rotator,postitions){
-    if (texture != NULL && texture != nullptr){
+    if (texture != NULL && texture != nullptr && !texture->hasErrord()){
         textureMode = 1;
         object_texture = texture;
     }
@@ -167,17 +176,26 @@ game_object::game_object(
         std::vector <float> texels
 ){
     object_shader = attached_shader;
-    if(object_shader == nullptr || object_shader == NULL || texels.size() != points.size()){
+
+    if(object_shader == nullptr || object_shader == NULL ){
         errored = true;
     }else{
+        for(int i = 0; i < points.size(); i++){
+            if(points.at(i) < 0.0f || points.at(i) > 1.0f){
+                errored = true;
+                break;
+            }
+        }
+    }
 
+    if(!errored){
         shader_routine = [](shader*){};
         LoopFunction = [](GLFWwindow*, game_object*){};
             
         int point_size = (int)(1.5f * points.size());
         int colors_size = colors.size();
         int texels_size = points.size();
-        if(texels.size() != 0){
+        if(texels.size() != 0 && texels.size() == points.size()){
             texels_size = texels.size();
         }
         
@@ -193,7 +211,7 @@ game_object::game_object(
 
         data.insert(data.end(),colors.begin(),colors.end());
 
-        if(texels.size() != 0){
+        if(texels.size() != 0 && texels.size() == points.size()){
             data.insert(data.end(),texels.begin(),texels.end());
         }else{
             data.insert(data.end(),points.begin(),points.end());
@@ -233,7 +251,7 @@ game_object::game_object(
             object_position = postitions;
         }
 
-        if (texture != NULL && texture != nullptr){
+        if (texture != NULL && texture != nullptr && !texture->hasErrord()){
             textureMode = 1;
             object_texture = texture;
         }

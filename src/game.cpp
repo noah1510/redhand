@@ -52,7 +52,7 @@ int createTestworld(world* testWorld){
         "../shaders/default.frag",
         "default"
         )
-    ) == -1){
+    ) < 0){
         return -1;
     }
 
@@ -65,7 +65,7 @@ int createTestworld(world* testWorld){
         new texture2D(
             "../textures/open/crate.png",
             "house"
-        )) == -1){
+        )) < 0){
         return -2;
     }
 
@@ -73,7 +73,7 @@ int createTestworld(world* testWorld){
         new texture2D(
             "../textures/open/house.png",
             "bg"
-        )) == -1){
+        )) < 0){
         return -2;
     }
     
@@ -95,7 +95,7 @@ int createTestworld(world* testWorld){
                 GL_STATIC_DRAW,
                 600.0f*200.0f/testWorld->getTextureByName("bg")->getWidth()
             )
-        ) == -1){
+        ) < 0){
             return -3;
         }
     }
@@ -116,7 +116,7 @@ int createTestworld(world* testWorld){
                 testWorld->getShaderByName("default"),
                 nullptr
             )
-        ) == -1){
+        ) < 0){
             return -3;
         }
     }
@@ -124,7 +124,7 @@ int createTestworld(world* testWorld){
 
     // sun one
     float posSunOne[2] = {0.8f,0.45f};
-    if( testWorld->addObject(createCircle(posSunOne, 0.35f, edges, NULL, NULL, testWorld->getShaderByName("default"), nullptr)) == -1){
+    if( testWorld->addObject(createCircle(posSunOne, 0.35f, edges, NULL, NULL, testWorld->getShaderByName("default"), nullptr)) < 0){
         return -3;
     }
     testWorld->getObjectByName("game_object")->setName("sun1");
@@ -150,7 +150,7 @@ int createTestworld(world* testWorld){
                 nullptr,
                 trig_texels
             )
-        ) == -1){
+        ) < 0){
             return -3;
         }
         testWorld->getObjectByName("game_object")->setName("trig");
@@ -161,7 +161,7 @@ int createTestworld(world* testWorld){
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) == -1){
+    if( testWorld->addObject(createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) < 0){
         return -3;
     }
     testWorld->getObjectByName("game_object")->setName("house");
