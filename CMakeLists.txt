@@ -68,6 +68,7 @@ add_executable(${OUTPUT} src/glad.c
                         src/game_object.cpp
                         src/game.cpp
                         src/world.cpp
+                        src/engine.cpp
                         src/main.cpp)
 
 if (UNIX)
