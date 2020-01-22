@@ -65,6 +65,10 @@ private:
 
     ///The currently active world (nullptr or empty world if none)
     world* activeWorld;
+
+    std::function <int(world*)> worldSetup;
+
+    std::function <int(GLFWwindow*,world*,world*)> physicsLoopFunction;
 public:
     ///The constructor for the engine which constructs the object
     engine();
@@ -78,6 +82,13 @@ public:
      * @param conf The configuration which sould be used (by default DEFAULT_ENGINE_CONFIG)
      */
     void setConfig(engine_config conf);
+
+    /**
+     * @brief Get the current configuration of the engine
+     * 
+     * @return engine_config The current configuration of the engine
+     */
+    engine_config getConfig();
 
     /**
      * @brief This function initilizes the engine like specified in the configuration.
@@ -119,6 +130,31 @@ public:
      * 
      */
     void clearBuffers();
+
+    /**
+     * @brief This function specifies which function to use to fill the initial world of the game
+     * 
+     * @param fillFunction a function which should be used to fill the initial world of the game. It should a negative number is something went wrong and it needs a pointer to an empty world which will be filled as an argument.
+     * @return int a negative value if something went wrong
+     */
+    int setFillWorldFunction( int fillFunction(world*) );
+
+    /**
+     * @brief Set the Loop Function of the engine.
+     * The loop function is the function responible for handeling all the inputs and calcualting all the physics
+     * 
+     * @param loop The loop function which returns a negative number if something went wrong and has three parameters, the currently active window, the currently active world and a pointer to the world which should be used next, which is a nullptr if there should be no change,
+     * @return int the errorCode of the engine will be returned, negative if something bad happened
+     */
+    int setPhysicsLoopFunction( int loop(GLFWwindow*,world*,world*) );
+
+    /**
+     * @brief This function runs the game, the engine handles all the logic to keep everything wunning for you.
+     * @warning This function runs until the game is finished and the game should terminate.
+     * 
+     * @return int negative if something bad happend, otherwise a positive return code
+     */
+    int runGame();
 };
 
 

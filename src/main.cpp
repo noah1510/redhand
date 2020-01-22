@@ -26,57 +26,41 @@
 int main(){
     int exitCode = 0;
 
-    //initilize the engine and exit if error
+    //create the engine object
     engine* gameEngine = new engine();
+
+    //get the current config of the engine
+    engine_config conf = gameEngine->getConfig();
+    
+    //change the configuration and set the new config
+    conf.title = "Redhand Test Game";
+    gameEngine->setConfig(conf);
+
+    //set the function which sets the initial state of the world
+    exitCode = gameEngine->setFillWorldFunction(game_init);
+
+    //set the function which handles all the controls and physics computation
+    exitCode = gameEngine->setPhysicsLoopFunction(game_loop);
+
+    //initilize the game engine
     gameEngine->init();
 
+    //set the exit flags in case something went wrong 
     if(exitCode = gameEngine->getErrorCode()){
         glfwSetWindowShouldClose(gameEngine->getWindow(), true);
-    }
-
-    //Create the initial world
-    gameEngine->setActiveWorld(new world());
-    exitCode = game_init(gameEngine->getActiveWorld());
-    if(exitCode < 0){
-        glfwSetWindowShouldClose(gameEngine->getWindow(), true);
-        exitCode = -3;
-    };
-    if(gameEngine->getActiveWorld() == nullptr){
-        glfwSetWindowShouldClose(gameEngine->getWindow(), true);
-        exitCode = -4;
+    }else{
+        //run the game
+        exitCode = gameEngine->runGame(); 
     }
     
-    //Clear up
-    gameEngine->clearBuffers();
-
-    //render loop
-    while(exitCode < 0 || !glfwWindowShouldClose(gameEngine->getWindow())){
-        //run the game loop
-        world* nextWorld = nullptr;
-        exitCode = game_loop(gameEngine->getWindow(), gameEngine->getActiveWorld(), nextWorld);
-
-        //if negative return exit loop
-        if(exitCode < 0){
-            break;
-        }
-
-        //if !nullptr change world
-        if(nextWorld != nullptr){
-            if(gameEngine->setActiveWorld(nextWorld) < 0){
-                break;
-            }
-        }
-        
-    }
-
-    exitCode = gameEngine->getErrorCode();
-
+    //let the destructor of the engine handle most of the cleanup
     delete gameEngine;
     
+    //return the error code if something bad happened or 0 if everything is fine
     if(exitCode < 0){
         return -exitCode;
     }else{
-        return exitCode;
+        return 0;
     }  
     
 }

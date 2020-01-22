@@ -48,8 +48,8 @@ int createTestworld(world* testWorld){
     //add shaders to world
 
     if( testWorld->addShader(new shader(
-        "../shaders/default.vert",
-        "../shaders/default.frag",
+        "shaders/default.vert",
+        "shaders/default.frag",
         "default"
         )
     ) < 0){
@@ -63,7 +63,7 @@ int createTestworld(world* testWorld){
     //Add textures to world
     if(testWorld->addTexture(
         new texture2D(
-            "../textures/open/crate.png",
+            "textures/open/crate.png",
             "house"
         )) < 0){
         return -2;
@@ -71,7 +71,7 @@ int createTestworld(world* testWorld){
 
     if(testWorld->addTexture(
         new texture2D(
-            "../textures/open/house.png",
+            "textures/open/house.png",
             "bg"
         )) < 0){
         return -2;

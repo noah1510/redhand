@@ -28,6 +28,10 @@ void engine::setConfig(engine_config conf){
     configuration = conf;
 }
 
+engine_config engine::getConfig(){
+    return configuration;
+}
+
 void engine::init(){
     //init glfw
     glfwInit(); 
@@ -63,6 +67,21 @@ void engine::init(){
 
     //enable multisampling
     glEnable(GL_MULTISAMPLE);
+
+    //create an empty world
+    activeWorld = new world();
+
+    //fill that world
+    if( ( errorCode = worldSetup(activeWorld) ) <= 0 ){
+        return;
+    }
+
+    if(activeWorld == nullptr){
+        errorCode = -4;
+        return;
+    }
+
+
 }
 
 world* engine::getActiveWorld(){
@@ -106,6 +125,54 @@ GLFWwindow* engine::getWindow(){
 }
 
 int engine::getErrorCode(){
+    return errorCode;
+}
+
+int engine::setFillWorldFunction( int fillFunction(world*) ){
+    worldSetup = fillFunction;
+
+    return errorCode;
+}
+
+int engine::setPhysicsLoopFunction(int loop(GLFWwindow*,world*,world*)){
+    physicsLoopFunction = loop;
+
+    return errorCode;
+}
+
+int engine::runGame(){
+    //Clear up
+    clearBuffers();
+
+    //while there is no error run the game loop
+    while(errorCode >= 0 ){
+
+        //create a placeholder for the next world
+        world* nextWorld = nullptr;
+
+        //actuallly calculate the physics
+        errorCode = game_loop(window, activeWorld, nextWorld);
+
+        //if there was an error terminate the game
+        if(errorCode < 0){
+            break;
+        }
+
+        //if not a nullptr change world
+        if(nextWorld != nullptr){
+            if(setActiveWorld(nextWorld) < 0){
+                break;
+            }
+        }
+
+        //close the game if the window should be closed
+        if(glfwWindowShouldClose(window)){
+            errorCode = 1;
+            break;
+        }
+        
+    }
+
     return errorCode;
 }
 

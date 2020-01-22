@@ -2,6 +2,7 @@
 
 THREADS="3"
 CI="0"
+VSCODE="0"
 
 #parse parameter
 pars=$#
@@ -20,12 +21,17 @@ do
       CI="1"
       shift
       ;;
+    "--vscode")
+      VSCODE="1"
+      shift
+      ;;
     "--help")
       echo "Usage: scripts/build.sh [options]"
       echo "Options:"
       echo "    --help              Display this information"
       echo "    --ci                To run in CI mode to disable git-lfs pull."
       echo "    -j [threadnumber]   Build the project with the specified number of threads."
+      echo "    --vscode            Addes the configurations for visual studio code to the .vscode folder"
       echo ""
       echo "view the source on https://github.com/noah1510/redhand"
       exit 1
@@ -58,6 +64,12 @@ then
     SFMLWINDOWLIB="libsfml-window.so"
     SFMLSYSTEMLIB="libsfml-system.so"
 
+    if [ $VSCODE -eq "1" ]
+    then
+      mv "configurations/linux/vscode" "configurations/linux/.vscode"
+      cp -r "configurations/linux/.vscode" "."
+    fi
+
 
 elif [ "$OSTYPE" == "darwin"* ]
 then
@@ -70,6 +82,13 @@ then
     SFMLGRAPICSLIB="libsfml-graphics.so" 
     SFMLWINDOWLIB="libsfml-window.so"
     SFMLSYSTEMLIB="libsfml-system.so"
+
+    if [ $VSCODE -eq "1" ]
+    then
+      echo "The configurations are for linux and not guaranteed to work"
+      mv "configurations/linux/vscode" "configurations/linux/.vscode"
+      cp -r "configurations/linux/.vscode" "."
+    fi
 
         
 elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
@@ -92,6 +111,12 @@ then
     SFMLWINDOWLIB="sfml-window-2.dll"
     SFMLSYSTEMLIB="sfml-system-2.dll"
 
+    if [ $VSCODE -eq "1" ]
+    then
+      echo "The configurations are for linux and not guaranteed to work"
+      mv "configurations/linux/vscode" "configurations/linux/.vscode"
+      cp -r "configurations/linux/.vscode" "."
+    fi
 
 else
     # Unknown os

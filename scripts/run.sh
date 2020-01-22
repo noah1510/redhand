@@ -42,10 +42,8 @@ else
     exit 1
 fi
 
-cd "deploy"
-
 #run the executable
-./$EXECUTABLE | tail -l
+./deploy/$EXECUTABLE | tail -l
 
 if [ $? -eq ${PIPESTATUS[0]} ]
 then
