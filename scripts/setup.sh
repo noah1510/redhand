@@ -66,7 +66,6 @@ then
 
     if [ $VSCODE -eq "1" ]
     then
-      mv "configurations/linux/vscode" "configurations/linux/.vscode"
       cp -r "configurations/linux/.vscode" "."
     fi
 
@@ -86,7 +85,6 @@ then
     if [ $VSCODE -eq "1" ]
     then
       echo "The configurations are for linux and not guaranteed to work"
-      mv "configurations/linux/vscode" "configurations/linux/.vscode"
       cp -r "configurations/linux/.vscode" "."
     fi
 
@@ -114,7 +112,6 @@ then
     if [ $VSCODE -eq "1" ]
     then
       echo "The configurations are for linux and not guaranteed to work"
-      mv "configurations/linux/vscode" "configurations/linux/.vscode"
       cp -r "configurations/linux/.vscode" "."
     fi
 
