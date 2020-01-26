@@ -14,6 +14,8 @@
 #include <cmath>
 #include <string>
 #include <vector>
+#include <thread>
+#include <future>
 
 #include "game_object.hpp"
 #include "shader.hpp"
@@ -65,9 +67,28 @@ private:
     ///The currently active world (nullptr or empty world if none)
     world* activeWorld;
 
+    ///a function which creates the initial world
     std::function <int(world*)> worldSetup;
 
+    ///The function which is executed on each physics tick
     std::function <int(engine*,world*,world*)> physicsLoopFunction;
+
+    std::function <void(engine*)> drawingFunction = [](engine* game){
+        //clear the bg color
+        glClearColor(0.2f,0.3f,0.3f,1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        //draw the active world
+        game->getActiveWorld()->draw();
+
+        //Update the window buffers
+        glfwSwapBuffers(game->getWindow());
+        glfwPollEvents(); 
+    };
+
+    //std::thread physicsThread;
+
+    //std::thread drawingThread;
 public:
     ///The constructor for the engine which constructs the object
     engine();

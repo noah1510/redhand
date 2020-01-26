@@ -22,6 +22,11 @@ int main_game_logic(
     processGlobalInput(gameEngine->getWindow());
     processWorldInput(gameEngine->getWindow(), activeWorld);
 
+    //get the current window size
+    int width, height;
+    glfwGetWindowSize(gameEngine->getWindow(), &width, &height);
+    gameEngine->getActiveWorld()->setWindowSize(width, height);
+
     //tick the active world
     activeWorld->tick(gameEngine->getWindow());
 

@@ -151,8 +151,14 @@ int engine::runGame(){
         world* nextWorld = nullptr;
 
         //actuallly calculate the physics
-        errorCode = physicsLoopFunction(this, activeWorld, nextWorld);
+        std::future<int> future_phys_error = std::async(physicsLoopFunction,this,activeWorld,nextWorld);
+        
+        //draw the game
+        drawingFunction(this);
 
+        //get the return code of the physics calculation
+        errorCode = future_phys_error.get();
+        
         //if there was an error terminate the game
         if(errorCode < 0){
             break;
@@ -169,23 +175,7 @@ int engine::runGame(){
         if(glfwWindowShouldClose(window)){
             errorCode = 1;
             break;
-        }
-
-        //clear the bg color
-        glClearColor(0.2f,0.3f,0.3f,1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        //get the current window size
-        int width, height;
-        glfwGetWindowSize(window, &width, &height);
-        activeWorld->setWindowSize(width, height);
-
-        //draw the active world
-        activeWorld->draw();
-
-        //Update the window buffers
-        glfwSwapBuffers(window);
-        glfwPollEvents(); 
+        } 
         
     }
 
