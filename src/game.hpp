@@ -1,16 +1,18 @@
 #pragma once
 
+#include "engine.hpp"
 #include "world.hpp"
 
 int game_init(
     world* startWorld
 );
 
-int game_loop(
-    GLFWwindow* window,
+int main_game_logic(
+    engine* gameEngine,
     world* activeWorld,
     world* nextWorld
 );
+
 
 int createTestworld(world* testWorld);
 void processHouseMovement(GLFWwindow* window, game_object* obj);

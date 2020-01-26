@@ -40,7 +40,7 @@ int main(){
     exitCode = gameEngine->setFillWorldFunction(game_init);
 
     //set the function which handles all the controls and physics computation
-    exitCode = gameEngine->setPhysicsLoopFunction(game_loop);
+    exitCode = gameEngine->setPhysicsLoopFunction(main_game_logic);
 
     //initilize the game engine
     gameEngine->init();

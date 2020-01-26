@@ -13,32 +13,17 @@ int game_init(
     return 0;   
 }
 
-int game_loop(
-    GLFWwindow* window,
+int main_game_logic(
+    engine* gameEngine,
     world* activeWorld,
     world* nextWorld
 ){
     //process the input
-    processGlobalInput(window);
-    processWorldInput(window, activeWorld);
-
-    //clear the bg color
-    glClearColor(0.2f,0.3f,0.3f,1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    //get the current window size
-    int width, height;
-    glfwGetWindowSize(window, &width, &height);
-    activeWorld->setWindowSize(width, height);
+    processGlobalInput(gameEngine->getWindow());
+    processWorldInput(gameEngine->getWindow(), activeWorld);
 
     //tick the active world
-    activeWorld->tick(window);
-
-    //Update the window buffers
-    glfwSwapBuffers(window);
-    glfwPollEvents(); 
-
-    nextWorld = nullptr;
+    activeWorld->tick(gameEngine->getWindow());
 
     return 0;
 

@@ -18,7 +18,6 @@
 #include "game_object.hpp"
 #include "shader.hpp"
 #include "texture.hpp"
-#include "game.hpp"
 #include "world.hpp"
 //#include "audio/AudioHandler.hpp"
 
@@ -68,7 +67,7 @@ private:
 
     std::function <int(world*)> worldSetup;
 
-    std::function <int(GLFWwindow*,world*,world*)> physicsLoopFunction;
+    std::function <int(engine*,world*,world*)> physicsLoopFunction;
 public:
     ///The constructor for the engine which constructs the object
     engine();
@@ -146,7 +145,7 @@ public:
      * @param loop The loop function which returns a negative number if something went wrong and has three parameters, the currently active window, the currently active world and a pointer to the world which should be used next, which is a nullptr if there should be no change,
      * @return int the errorCode of the engine will be returned, negative if something bad happened
      */
-    int setPhysicsLoopFunction( int loop(GLFWwindow*,world*,world*) );
+    int setPhysicsLoopFunction( int loop(engine*,world*,world*) );
 
     /**
      * @brief This function runs the game, the engine handles all the logic to keep everything wunning for you.

@@ -42,16 +42,19 @@ world::~world(){
         std::cout << e.what() << '\n';
     }
     
-    
 }
 
 void world::tick(GLFWwindow* window){
-
     for(int i = 0; i < WorldObjects.size(); i++){
         WorldObjects.at(i)->onLoop(window);
-        WorldObjects.at(i)->draw();
     }
 
+}
+
+void world::draw(){
+    for(int i = 0; i < WorldObjects.size(); i++){
+        WorldObjects.at(i)->draw();
+    }
 }
 
 void world::setWindowSize(int width, int height){

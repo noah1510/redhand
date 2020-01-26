@@ -132,4 +132,10 @@ public:
      * @param height The height of the currently active window
      */
     void setWindowSize(int width, int height);
+
+    /**
+     * @brief draw all the objects in this world
+     * 
+     */
+    void draw();
 };

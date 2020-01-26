@@ -134,7 +134,7 @@ int engine::setFillWorldFunction( int fillFunction(world*) ){
     return errorCode;
 }
 
-int engine::setPhysicsLoopFunction(int loop(GLFWwindow*,world*,world*)){
+int engine::setPhysicsLoopFunction(int loop(engine*,world*,world*)){
     physicsLoopFunction = loop;
 
     return errorCode;
@@ -151,7 +151,7 @@ int engine::runGame(){
         world* nextWorld = nullptr;
 
         //actuallly calculate the physics
-        errorCode = game_loop(window, activeWorld, nextWorld);
+        errorCode = physicsLoopFunction(this, activeWorld, nextWorld);
 
         //if there was an error terminate the game
         if(errorCode < 0){
@@ -170,6 +170,22 @@ int engine::runGame(){
             errorCode = 1;
             break;
         }
+
+        //clear the bg color
+        glClearColor(0.2f,0.3f,0.3f,1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        //get the current window size
+        int width, height;
+        glfwGetWindowSize(window, &width, &height);
+        activeWorld->setWindowSize(width, height);
+
+        //draw the active world
+        activeWorld->draw();
+
+        //Update the window buffers
+        glfwSwapBuffers(window);
+        glfwPollEvents(); 
         
     }
 
