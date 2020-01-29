@@ -24,7 +24,7 @@
 
 
 int main(){
-    int exitCode = 0;
+    securedVariable<int> exitCode;
 
     //create the engine object
     engine* gameEngine = new engine();
@@ -46,8 +46,9 @@ int main(){
     gameEngine->init();
 
     //set the exit flags in case something went wrong 
-    if(exitCode = gameEngine->getErrorCode()){
-        glfwSetWindowShouldClose(gameEngine->getWindow(), true);
+    exitCode = gameEngine->getErrorCode();
+    if(exitCode < 0){
+        gameEngine->stopGame();
     }else{
         //run the game
         exitCode = gameEngine->runGame(); 
@@ -57,11 +58,7 @@ int main(){
     delete gameEngine;
     
     //return the error code if something bad happened or 0 if everything is fine
-    if(exitCode < 0){
-        return -exitCode;
-    }else{
-        return 0;
-    }  
+    return exitCode.abs();
     
 }
 

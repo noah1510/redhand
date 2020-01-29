@@ -16,6 +16,8 @@
 #include <vector>
 #include <thread>
 #include <future>
+#include <memory>
+#include <algorithm>
 
 #include "game_object.hpp"
 #include "shader.hpp"
@@ -71,7 +73,7 @@ private:
     std::function <int(world*)> worldSetup;
 
     ///The function which is executed on each physics tick
-    std::function <int(engine*,world*,world*)> physicsLoopFunction;
+    std::function <int(engine*)> physicsLoopFunction;
 
     std::function <void(engine*)> drawingFunction = [](engine* game){
         //clear the bg color
@@ -86,6 +88,9 @@ private:
         glfwPollEvents(); 
     };
 
+    void runPhysics();
+
+    bool running = false;
     //std::thread physicsThread;
 
     //std::thread drawingThread;
@@ -123,6 +128,14 @@ public:
      * @return int negative if someting went wrong
      */
     int setActiveWorld(world* newWorld);
+
+    /**
+     * @brief change the world to the given new world
+     * 
+     * @param newWorld 
+     * @return int 
+     */
+    int changeWorld(world* newWorld);
 
     /**
      * @brief Get the Active World object
@@ -166,7 +179,7 @@ public:
      * @param loop The loop function which returns a negative number if something went wrong and has three parameters, the currently active window, the currently active world and a pointer to the world which should be used next, which is a nullptr if there should be no change,
      * @return int the errorCode of the engine will be returned, negative if something bad happened
      */
-    int setPhysicsLoopFunction( int loop(engine*,world*,world*) );
+    int setPhysicsLoopFunction( int loop(engine*) );
 
     /**
      * @brief This function runs the game, the engine handles all the logic to keep everything wunning for you.
@@ -175,6 +188,27 @@ public:
      * @return int negative if something bad happend, otherwise a positive return code
      */
     int runGame();
+
+    /**
+     * @brief returns true if the game is running
+     * 
+     * @return true running
+     * @return false not running
+     */
+    bool isRunning();
+
+    /**
+     * @brief stops the game when called
+     * 
+     */
+    void stopGame();
+
+    /**
+     * @brief Get the Physics Function object
+     * 
+     * @return std::function <int(engine*,world*,world*)> 
+     */
+    std::function <int(engine*)> getPhysicsFunction();
 };
 
 

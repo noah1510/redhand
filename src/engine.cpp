@@ -134,50 +134,97 @@ int engine::setFillWorldFunction( int fillFunction(world*) ){
     return errorCode;
 }
 
-int engine::setPhysicsLoopFunction(int loop(engine*,world*,world*)){
+int engine::setPhysicsLoopFunction(int loop(engine*)){
     physicsLoopFunction = loop;
 
     return errorCode;
 }
 
-int engine::runGame(){
-    //Clear up
-    clearBuffers();
+bool engine::isRunning(){
+    if (running){
+        return true;
+    }
+    
+    return false;
+}
 
-    //while there is no error run the game loop
-    while(errorCode >= 0 ){
+void engine::runPhysics(){
+    while (isRunning()){
 
-        //create a placeholder for the next world
-        world* nextWorld = nullptr;
+        //get the new error
+        errorCode = physicsLoopFunction(this);
 
-        //actuallly calculate the physics
-        std::future<int> future_phys_error = std::async(physicsLoopFunction,this,activeWorld,nextWorld);
-        
-        //draw the game
-        drawingFunction(this);
-
-        //get the return code of the physics calculation
-        errorCode = future_phys_error.get();
-        
         //if there was an error terminate the game
         if(errorCode < 0){
+            stopGame();
             break;
         }
+    }
+    
+}
 
-        //if not a nullptr change world
-        if(nextWorld != nullptr){
-            if(setActiveWorld(nextWorld) < 0){
-                break;
-            }
-        }
+void engine::stopGame(){
+    running = false;
+}
 
-        //close the game if the window should be closed
-        if(glfwWindowShouldClose(window)){
-            errorCode = 1;
-            break;
-        } 
+std::function <int(engine*)> engine::getPhysicsFunction(){
+    return physicsLoopFunction;
+}
+
+int engine::changeWorld(world* newWorld){
+    //if not a nullptr change world
+    if(newWorld == nullptr){
+        stopGame();
+        return -5;
         
     }
+    errorCode = setActiveWorld(newWorld);
+    if(errorCode < 0){
+        stopGame();
+        return -6;
+    }
+}
+
+int engine::runGame(){
+    running = true;
+
+    //start the physics thread
+    std::thread physicsThread([](engine* game){
+        while (game->isRunning()){
+            //create a placeholder for the next world
+            world* nextWorld = nullptr;
+
+            std::function <int(engine*)> func = game->getPhysicsFunction();
+            //get the new error
+            int errorCode = func(game);
+
+            //if there was an error terminate the game
+            if(errorCode < 0){
+                game->stopGame();
+                break;
+            }
+
+            //if not a nullptr change world
+            if(nextWorld != nullptr){
+                if(game->setActiveWorld(nextWorld) < 0){
+                    game->stopGame();
+                    break;
+                }
+            }
+        }
+    },this);
+
+    //while there is no error run the game loop
+    while(isRunning()){
+        //Clear up
+        clearBuffers();
+
+        //draw the game
+        drawingFunction(this);
+          
+    }
+
+    physicsThread.join();
 
     return errorCode;
 }

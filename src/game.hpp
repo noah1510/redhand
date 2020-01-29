@@ -8,9 +8,7 @@ int game_init(
 );
 
 int main_game_logic(
-    engine* gameEngine,
-    world* activeWorld,
-    world* nextWorld
+    engine* gameEngine
 );
 
 

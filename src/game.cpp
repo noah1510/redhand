@@ -14,13 +14,16 @@ int game_init(
 }
 
 int main_game_logic(
-    engine* gameEngine,
-    world* activeWorld,
-    world* nextWorld
+    engine* gameEngine
 ){
     //process the input
     processGlobalInput(gameEngine->getWindow());
-    processWorldInput(gameEngine->getWindow(), activeWorld);
+    processWorldInput(gameEngine->getWindow(), gameEngine->getActiveWorld());
+
+    if (glfwWindowShouldClose(gameEngine->getWindow())!= 0){
+        gameEngine->stopGame();
+        return -1;
+    }
 
     //get the current window size
     int width, height;
@@ -28,7 +31,7 @@ int main_game_logic(
     gameEngine->getActiveWorld()->setWindowSize(width, height);
 
     //tick the active world
-    activeWorld->tick(gameEngine->getWindow());
+    gameEngine->getActiveWorld()->tick(gameEngine->getWindow());
 
     return 0;
 
