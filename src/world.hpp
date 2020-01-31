@@ -6,6 +6,9 @@
 
 class world{
 private:
+    ///The mutex for allowing only one thread to acces the world objects at once
+    std::mutex WorldObjectsMutex;
+
     /// This vector holds all the game_objetcs in this world
     std::vector <game_object*> WorldObjects;
 

@@ -45,15 +45,21 @@ world::~world(){
 }
 
 void world::tick(GLFWwindow* window){
-    for(int i = 0; i < WorldObjects.size(); i++){
-        WorldObjects.at(i)->onLoop(window);
+    WorldObjectsMutex.lock();
+
+    for(auto x : WorldObjects){
+        x->onLoop(window);
     }
+
+    WorldObjectsMutex.unlock();
 
 }
 
 void world::draw(){
-    for(int i = 0; i < WorldObjects.size(); i++){
-        WorldObjects.at(i)->draw();
+    std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
+
+    for(auto x : WorldObjects){
+        x->draw();
     }
 }
 
@@ -69,8 +75,10 @@ void world::setWindowSize(int width, int height){
             WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
         }
 
-        for(int i = 0;i < WorldObjects.size();i++){
-            WorldObjects.at(i)->setScreenSize(width,height);
+        std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
+        
+        for(auto x:WorldObjects){
+            x->setScreenSize(width,height);
         }
     }
 
@@ -120,6 +128,8 @@ int world::addObject(game_object* obj){
         return -2;
     }
 
+    std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
+
     WorldObjects.emplace_back(obj);
     if(WorldObjects.back() == obj){
         obj->setScreenSize(windowWidth,windowHeight);
@@ -166,6 +176,8 @@ int world::removeTexture(texture2D* tex){
 }
 
 int world::removeObject(game_object* obj){
+    std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
+
     for(int i = 0; i < WorldObjects.size();i++){
         if(obj == WorldObjects.at(i)){
             WorldObjects.erase(WorldObjects.begin() + i);
@@ -222,22 +234,15 @@ texture2D* world::getTextureByName(std::string name){
 }
 
 game_object* world::getObjectByName(std::string name){
-    int i = 0;
-    bool found = false;
+    std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
 
-    while(i < WorldObjects.size()){
-        if((WorldObjects.at(i)->getName()).compare(name) == 0){
-            found = true;
-            break;    
+    for(auto x:WorldObjects){
+        if(x->getName().compare(name) == 0){
+            return x;
         }
-        i++;
     }
-
-    if(found){
-        return WorldObjects.at(i);
-    }else{
-        return nullptr;
-    }
+    
+    return nullptr;
     
 }
 

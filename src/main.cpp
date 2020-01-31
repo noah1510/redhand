@@ -24,7 +24,7 @@
 
 
 int main(){
-    securedVariable<int> exitCode;
+    int exitCode = 0;
 
     //create the engine object
     engine* gameEngine = new engine();
@@ -58,7 +58,7 @@ int main(){
     delete gameEngine;
     
     //return the error code if something bad happened or 0 if everything is fine
-    return exitCode.abs();
+    return abs(exitCode);
     
 }
 

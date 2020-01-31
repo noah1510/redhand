@@ -83,6 +83,9 @@ private:
     ///The name of the object
     std::string object_name = "game_object";
 
+    ///The lock for the object
+    std::mutex gameObjectLock;
+
 public:
     //minimal constructor
     /**
@@ -328,6 +331,7 @@ public:
      * This funtion returns the name of the object.
      */
     std::string getName();
+
 };
 
 /**

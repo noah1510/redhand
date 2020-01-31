@@ -274,6 +274,7 @@ void game_object::setScreenSize(int width, int height){
 }
 
 void game_object::draw(){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
 
     //if there are textures set the texture scale of the shader
     if(textureMode == 1){
@@ -314,40 +315,49 @@ void game_object::draw(){
 }
 
 bool game_object::hasErrord(){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     return errored;
 }
 
 void game_object::setColorAlpha(float alpha){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     if(alpha >= 0.0f && alpha <= 1.0f){
         colorAlphaValue = alpha;
     }
 }
 
 void game_object::onLoop(GLFWwindow* window){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     object_shader->use();
     LoopFunction(window, this);
 };
 
 void game_object::setShaderRoutine(std::function<void(shader*)> routine){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     shader_routine = routine;
 };
 void game_object::setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     LoopFunction = loop;
 };
 
 shader* game_object::getShader(){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     return object_shader;
 };
 
 std::vector<float> game_object::getPosition(){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     return object_position;
 };
 
 void game_object::setPosition(std::vector<float> pos){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     object_position = pos;
 };
 
 void game_object::move(std::vector<float> delta_pos){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     if(delta_pos.size() == 2){
         object_position.at(0) += delta_pos.at(0);
         object_position.at(1) += delta_pos.at(1);
@@ -355,9 +365,11 @@ void game_object::move(std::vector<float> delta_pos){
 };
 
 float game_object::getRotation(){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     return object_rotation;
 };
 void game_object::setRotation(float rot){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     object_rotation = rot;
 
     while(object_rotation > 360.0f){
@@ -368,6 +380,7 @@ void game_object::setRotation(float rot){
     }
 };
 void game_object::rotate(float delta_rot){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     object_rotation += delta_rot;
 
     while(object_rotation > 360.0f){
@@ -379,9 +392,11 @@ void game_object::rotate(float delta_rot){
 };
 
 void game_object::setName(std::string name){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     object_name = name;
 }
 std::string game_object::getName(){
+    std::scoped_lock<std::mutex> lock(gameObjectLock);
     return object_name;
 }
 

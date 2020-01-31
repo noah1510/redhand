@@ -141,6 +141,8 @@ int engine::setPhysicsLoopFunction(int loop(engine*)){
 }
 
 bool engine::isRunning(){
+    std::scoped_lock<std::mutex> lock(runningMutex);
+
     if (running){
         return true;
     }
@@ -148,28 +150,17 @@ bool engine::isRunning(){
     return false;
 }
 
-void engine::runPhysics(){
-    while (isRunning()){
 
-        //get the new error
-        errorCode = physicsLoopFunction(this);
+void engine::stopGame(int error){
+    std::scoped_lock<std::mutex> lock(runningMutex);
 
-        //if there was an error terminate the game
-        if(errorCode < 0){
-            stopGame();
-            break;
-        }
+    if(error != 0){
+        errorCode = error;
     }
-    
-}
 
-void engine::stopGame(){
     running = false;
 }
 
-std::function <int(engine*)> engine::getPhysicsFunction(){
-    return physicsLoopFunction;
-}
 
 int engine::changeWorld(world* newWorld){
     //if not a nullptr change world
@@ -189,33 +180,33 @@ int engine::runGame(){
     running = true;
 
     //start the physics thread
-    std::thread physicsThread([](engine* game){
-        while (game->isRunning()){
+    std::thread physicsThread([&](){
+        while (isRunning()){
             //create a placeholder for the next world
-            world* nextWorld = nullptr;
+            thread_local world* nextWorld = nullptr;
 
-            std::function <int(engine*)> func = game->getPhysicsFunction();
             //get the new error
-            int errorCode = func(game);
+            thread_local auto localErrorCode = physicsLoopFunction(this);
 
             //if there was an error terminate the game
-            if(errorCode < 0){
-                game->stopGame();
+            if(localErrorCode < 0){
+                stopGame(localErrorCode);
                 break;
             }
 
             //if not a nullptr change world
             if(nextWorld != nullptr){
-                if(game->setActiveWorld(nextWorld) < 0){
-                    game->stopGame();
-                    break;
-                }
+                changeWorld(nextWorld);
             }
+
+            std::this_thread::sleep_for(std::chrono::microseconds(100));
         }
-    },this);
+    });
 
     //while there is no error run the game loop
     while(isRunning()){
+        std::this_thread::sleep_for(std::chrono::microseconds(100));
+
         //Clear up
         clearBuffers();
 

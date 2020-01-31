@@ -9,8 +9,7 @@
 
 #include <iostream>
 //#include <iterator>
-//#include <chrono>
-//#include <thread>
+#include <chrono>
 #include <cmath>
 #include <string>
 #include <vector>
@@ -75,7 +74,7 @@ private:
     ///The function which is executed on each physics tick
     std::function <int(engine*)> physicsLoopFunction;
 
-    std::function <void(engine*)> drawingFunction = [](engine* game){
+    const std::function <void(engine*)> drawingFunction = [](engine* game){
         //clear the bg color
         glClearColor(0.2f,0.3f,0.3f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -88,8 +87,7 @@ private:
         glfwPollEvents(); 
     };
 
-    void runPhysics();
-
+    std::mutex runningMutex;
     bool running = false;
     //std::thread physicsThread;
 
@@ -200,8 +198,9 @@ public:
     /**
      * @brief stops the game when called
      * 
+     * @param error the error code which the game should be set to.
      */
-    void stopGame();
+    void stopGame(int error = 0);
 
     /**
      * @brief Get the Physics Function object

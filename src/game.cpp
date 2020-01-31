@@ -17,7 +17,7 @@ int main_game_logic(
     engine* gameEngine
 ){
     //process the input
-    processGlobalInput(gameEngine->getWindow());
+    processGlobalInput(gameEngine);
     processWorldInput(gameEngine->getWindow(), gameEngine->getActiveWorld());
 
     if (glfwWindowShouldClose(gameEngine->getWindow())!= 0){
@@ -215,9 +215,12 @@ void processWorldInput(GLFWwindow* window, world* activeWorld){
 
 }
 
-void processGlobalInput(GLFWwindow* window){
+void processGlobalInput(engine* game){
+
+    auto window = game->getWindow();
+
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS){
-        glfwSetWindowShouldClose(window, true);
+        game->stopGame();
     }
 
     if(glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_KP_1) == GLFW_PRESS){

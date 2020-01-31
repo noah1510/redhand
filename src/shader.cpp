@@ -89,6 +89,8 @@ shader::shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string
 }
 
 void shader::setCamera(float pos_x, float pos_y){
+    std::scoped_lock<std::mutex> lock(shaderLock);
+
     cameraVector.x = - pos_x;
     cameraVector.y = - pos_y;
 
@@ -97,6 +99,7 @@ void shader::setCamera(float pos_x, float pos_y){
 }
 
 void shader::moveCamera(float delta_pos_x, float delta_pos_y){
+    std::scoped_lock<std::mutex> lock(shaderLock);
     cameraVector.x -= delta_pos_x;
     cameraVector.y -= delta_pos_y;
 
@@ -113,6 +116,8 @@ unsigned int shader::getID(){
 }
 
 void shader::use(){
+    std::scoped_lock<std::mutex> lock(shaderLock);
+
     glUseProgram(ID);
 
     int cameraLoc = glGetUniformLocation(getID(), "camera");
@@ -182,9 +187,11 @@ void shader::getFloat(const std::string &name, float dest[]) const{
 }
 
 void shader::setProjectionmatrix(glm::mat4 projection){
+    std::scoped_lock<std::mutex> lock(shaderLock);
     projectionMatrix = projection;
 }
 
 void shader::setTextureScale(glm::vec2 scale){
+    std::scoped_lock<std::mutex> lock(shaderLock);
     textureScale = scale;
 }
