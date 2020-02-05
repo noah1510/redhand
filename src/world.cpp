@@ -9,6 +9,7 @@ world::world(){
 }
 
 world::~world(){
+    WorldObjectsMutex.lock();
     //delete objects
     try{
         for(int i = 0;i < WorldObjects.size();i++){
@@ -45,22 +46,24 @@ world::~world(){
 }
 
 void world::tick(GLFWwindow* window){
-    WorldObjectsMutex.lock();
+    WorldObjectsMutex.lock_shared();
 
     for(auto x : WorldObjects){
         x->onLoop(window);
     }
 
-    WorldObjectsMutex.unlock();
+    WorldObjectsMutex.unlock_shared();
 
 }
 
 void world::draw(){
-    std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
+    WorldObjectsMutex.lock_shared();
 
     for(auto x : WorldObjects){
         x->draw();
     }
+
+    WorldObjectsMutex.unlock_shared();
 }
 
 void world::setWindowSize(int width, int height){
@@ -75,7 +78,7 @@ void world::setWindowSize(int width, int height){
             WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
         }
 
-        std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
+        std::scoped_lock<std::shared_timed_mutex> lock(WorldObjectsMutex);
         
         for(auto x:WorldObjects){
             x->setScreenSize(width,height);
@@ -128,7 +131,7 @@ int world::addObject(game_object* obj){
         return -2;
     }
 
-    std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
+    std::scoped_lock<std::shared_timed_mutex> lock(WorldObjectsMutex);
 
     WorldObjects.emplace_back(obj);
     if(WorldObjects.back() == obj){
@@ -176,7 +179,7 @@ int world::removeTexture(texture2D* tex){
 }
 
 int world::removeObject(game_object* obj){
-    std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
+    std::scoped_lock<std::shared_timed_mutex> lock(WorldObjectsMutex);
 
     for(int i = 0; i < WorldObjects.size();i++){
         if(obj == WorldObjects.at(i)){
@@ -234,14 +237,16 @@ texture2D* world::getTextureByName(std::string name){
 }
 
 game_object* world::getObjectByName(std::string name){
-    std::scoped_lock<std::mutex> lock(WorldObjectsMutex);
+    WorldObjectsMutex.lock_shared();
 
     for(auto x:WorldObjects){
         if(x->getName().compare(name) == 0){
+            WorldObjectsMutex.unlock_shared();
             return x;
         }
     }
-    
+
+    WorldObjectsMutex.unlock_shared();
     return nullptr;
     
 }

@@ -17,6 +17,8 @@
 #include <future>
 #include <memory>
 #include <algorithm>
+#include <mutex>
+#include <shared_mutex>
 
 #include "game_object.hpp"
 #include "shader.hpp"
@@ -87,7 +89,7 @@ private:
         glfwPollEvents(); 
     };
 
-    std::mutex runningMutex;
+    std::shared_mutex runningReadMutex;
     bool running = false;
     //std::thread physicsThread;
 

@@ -7,6 +7,8 @@
 #include <iostream>
 #include <vector>
 #include <functional>
+#include <mutex>
+#include <shared_mutex>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -53,7 +55,6 @@ private:
     texture2D* object_texture;
 
     ///The texture mode of the object
-    ///
     unsigned int textureMode = 0;
 
     ///The alpha value of the color
@@ -70,21 +71,32 @@ private:
 
     ///The position of the object in World Coordinates
     std::vector<float> object_position = {0.0f, 0.0f};
+    ///lock the position of the object
+    std::shared_timed_mutex positionLock;
 
     ///The scale of the object in World scale
     std::vector<float> object_scale = {1.0f, 1.0f};
+    ///lock the scale of the object
+    std::shared_timed_mutex scaleLock;
 
     ///The rotation of the object in degrees
     float object_rotation = 0.0f;
+    ///lock the rotation of the object
+    std::shared_timed_mutex rotationLock;
 
     ///the scale of the texture attached to this object
     glm::vec2 texture_scale = glm::vec2(1.0f, 1.0f);
+    ///lock the texture scale of the object
+    std::shared_timed_mutex textureScaleLock;
+
 
     ///The name of the object
     std::string object_name = "game_object";
+    ///lock the name of the object
+    std::shared_timed_mutex nameLock;
 
     ///The lock for the object
-    std::mutex gameObjectLock;
+    std::shared_timed_mutex gameObjectLock;
 
 public:
     //minimal constructor
@@ -331,6 +343,13 @@ public:
      * This funtion returns the name of the object.
      */
     std::string getName();
+
+    /**
+     * @brief get the scal of the object
+     * 
+     * @return std::vector<float> [0] = x scale and [1] is y scale
+     */
+    std::vector<float> getScale();
 
 };
 

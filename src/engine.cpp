@@ -141,18 +141,21 @@ int engine::setPhysicsLoopFunction(int loop(engine*)){
 }
 
 bool engine::isRunning(){
-    std::scoped_lock<std::mutex> lock(runningMutex);
+    runningReadMutex.lock_shared();
 
     if (running){
+        runningReadMutex.unlock_shared();
         return true;
     }
+    runningReadMutex.unlock_shared();
     
     return false;
+
 }
 
 
 void engine::stopGame(int error){
-    std::scoped_lock<std::mutex> lock(runningMutex);
+    std::scoped_lock<std::shared_mutex> lock(runningReadMutex);
 
     if(error != 0){
         errorCode = error;
@@ -183,7 +186,7 @@ int engine::runGame(){
     std::thread physicsThread([&](){
         while (isRunning()){
             //create a placeholder for the next world
-            thread_local world* nextWorld = nullptr;
+            world* nextWorld = nullptr;
 
             //get the new error
             thread_local auto localErrorCode = physicsLoopFunction(this);
@@ -199,13 +202,13 @@ int engine::runGame(){
                 changeWorld(nextWorld);
             }
 
-            std::this_thread::sleep_for(std::chrono::microseconds(100));
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     });
 
     //while there is no error run the game loop
     while(isRunning()){
-        std::this_thread::sleep_for(std::chrono::microseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
         //Clear up
         clearBuffers();
