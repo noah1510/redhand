@@ -295,7 +295,7 @@ void game_object::draw(){
     }
 
     //Create World transformation matrix  
-    thread_local glm::mat4 worldTrans = glm::mat4(1.0f);
+    glm::mat4 worldTrans = glm::mat4(1.0f);
     worldTrans = glm::translate(worldTrans, glm::vec3(getPosition().at(0),getPosition().at(1),0.0f));
     worldTrans = glm::rotate(worldTrans, glm::radians(getRotation()), glm::vec3(0.0f, 0.0f, 1.0f));
     worldTrans = glm::scale(worldTrans, glm::vec3(getScale().at(0), getScale().at(1), 1.0f));
@@ -318,49 +318,49 @@ void game_object::draw(){
 }
 
 bool game_object::hasErrord(){
-    std::shared_lock<std::shared_timed_mutex> lock(gameObjectLock);
+    std::shared_lock<std::shared_mutex> lock(gameObjectLock);
     return errored;
 }
 
 void game_object::setColorAlpha(float alpha){
-    std::scoped_lock<std::shared_timed_mutex> lock(gameObjectLock);
+    std::scoped_lock<std::shared_mutex> lock(gameObjectLock);
     if(alpha >= 0.0f && alpha <= 1.0f){
         colorAlphaValue = alpha;
     }
 }
 
 void game_object::onLoop(GLFWwindow* window){
-    std::shared_lock<std::shared_timed_mutex> lock(gameObjectLock);
+    std::shared_lock<std::shared_mutex> lock(gameObjectLock);
     //object_shader->use();
     LoopFunction(window, this);
 };
 
 void game_object::setShaderRoutine(std::function<void(shader*)> routine){
-    std::scoped_lock<std::shared_timed_mutex> lock(gameObjectLock);
+    std::scoped_lock<std::shared_mutex> lock(gameObjectLock);
     shader_routine = routine;
 };
 void game_object::setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop){
-    std::scoped_lock<std::shared_timed_mutex> lock(gameObjectLock);
+    std::scoped_lock<std::shared_mutex> lock(gameObjectLock);
     LoopFunction = loop;
 };
 
 shader* game_object::getShader(){
-    std::shared_lock<std::shared_timed_mutex> lock(gameObjectLock);
+    std::shared_lock<std::shared_mutex> lock(gameObjectLock);
     return object_shader;
 };
 
 std::vector<float> game_object::getPosition(){
-    std::shared_lock<std::shared_timed_mutex> lock(positionLock);
+    std::shared_lock<std::shared_mutex> lock(positionLock);
     return object_position;
 };
 
 void game_object::setPosition(std::vector<float> pos){
-    std::scoped_lock<std::shared_timed_mutex> lock(positionLock);
+    std::scoped_lock<std::shared_mutex> lock(positionLock);
     object_position = pos;
 };
 
 void game_object::move(std::vector<float> delta_pos){
-    std::scoped_lock<std::shared_timed_mutex> lock(positionLock);
+    std::scoped_lock<std::shared_mutex> lock(positionLock);
     if(delta_pos.size() == 2){
         object_position.at(0) += delta_pos.at(0);
         object_position.at(1) += delta_pos.at(1);
@@ -368,15 +368,15 @@ void game_object::move(std::vector<float> delta_pos){
 };
 
 float game_object::getRotation(){
-    std::shared_lock<std::shared_timed_mutex> lock(rotationLock);
+    std::shared_lock<std::shared_mutex> lock(rotationLock);
     return object_rotation;
 };
 std::vector<float> game_object::getScale(){
-    std::shared_lock<std::shared_timed_mutex> lock(scaleLock);
+    std::shared_lock<std::shared_mutex> lock(scaleLock);
     return object_scale;
 };
 void game_object::setRotation(float rot){
-    std::scoped_lock<std::shared_timed_mutex> lock(rotationLock);
+    std::scoped_lock<std::shared_mutex> lock(rotationLock);
     object_rotation = rot;
 
     while(object_rotation > 360.0f){
@@ -387,7 +387,7 @@ void game_object::setRotation(float rot){
     }
 };
 void game_object::rotate(float delta_rot){
-    std::scoped_lock<std::shared_timed_mutex> lock(rotationLock);
+    std::scoped_lock<std::shared_mutex> lock(rotationLock);
     object_rotation += delta_rot;
 
     while(object_rotation > 360.0f){
@@ -399,11 +399,11 @@ void game_object::rotate(float delta_rot){
 };
 
 void game_object::setName(std::string name){
-    std::scoped_lock<std::shared_timed_mutex> lock(nameLock);
+    std::scoped_lock<std::shared_mutex> lock(nameLock);
     object_name = name;
 }
 std::string game_object::getName(){
-    std::shared_lock<std::shared_timed_mutex> lock(nameLock);
+    std::shared_lock<std::shared_mutex> lock(nameLock);
     return object_name;
 }
 

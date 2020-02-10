@@ -189,7 +189,7 @@ int engine::runGame(){
             world* nextWorld = nullptr;
 
             //get the new error
-            thread_local auto localErrorCode = physicsLoopFunction(this);
+            auto localErrorCode = physicsLoopFunction(this);
 
             //if there was an error terminate the game
             if(localErrorCode < 0){
@@ -202,13 +202,13 @@ int engine::runGame(){
                 changeWorld(nextWorld);
             }
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     });
 
     //while there is no error run the game loop
     while(isRunning()){
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(4));
 
         //Clear up
         clearBuffers();

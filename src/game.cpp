@@ -49,6 +49,24 @@ int createTestworld(world* testWorld){
         return -1;
     }
 
+    if( testWorld->addShader(new shader(
+        "shaders/default.vert",
+        "shaders/default.frag",
+        "house"
+        )
+    ) < 0){
+        return -1;
+    }
+
+    if( testWorld->addShader(new shader(
+        "shaders/default.vert",
+        "shaders/default.frag",
+        "trig"
+        )
+    ) < 0){
+        return -1;
+    }
+
     if(testWorld->getShaderByName("default") == nullptr){
         return -20;
     }
@@ -134,7 +152,7 @@ int createTestworld(world* testWorld){
                 trig_points,
                 trig_indicies,
                 trig_colors,
-                testWorld->getShaderByName("default"),
+                testWorld->getShaderByName("trig"),
                 GL_DYNAMIC_DRAW,
                 [](shader* shade){},
                 {0.5f,0.5f},
@@ -154,13 +172,13 @@ int createTestworld(world* testWorld){
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) < 0){
+    if( testWorld->addObject(createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("house"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) < 0){
         return -3;
     }
     testWorld->getObjectByName("game_object")->setName("house");
 
     testWorld->getObjectByName("house")->setLoopFunction(processHouseMovement);
-
+    
     return 0;
 }
 
@@ -169,15 +187,15 @@ void processHouseMovement(GLFWwindow* window, game_object* obj){
     std::vector<float> deltaPosition = {0.0f,0.0f};
 
     if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS){
-        deltaPosition.at(0) = 0.02f;
+        deltaPosition.at(0) = 0.002f;
     }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS){
-        deltaPosition.at(0) = -0.02f;
+        deltaPosition.at(0) = -0.002f;
     }
 
     if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS){
-        deltaPosition.at(1) = 0.02f;
+        deltaPosition.at(1) = 0.002f;
     }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS){
-        deltaPosition.at(1) = -0.02f;
+        deltaPosition.at(1) = -0.002f;
     }
 
     obj->move(deltaPosition);    
@@ -186,9 +204,9 @@ void processHouseMovement(GLFWwindow* window, game_object* obj){
     float deltaRotation = 0.0f;
 
     if(glfwGetKey(window,GLFW_KEY_E) == GLFW_PRESS){
-        deltaRotation = -2.5f;
+        deltaRotation = -0.25f;
     }else if(glfwGetKey(window,GLFW_KEY_Q) == GLFW_PRESS){
-        deltaRotation = 2.5f;
+        deltaRotation = 0.25f;
     }
 
     obj->rotate(deltaRotation);
@@ -200,15 +218,15 @@ void processWorldInput(GLFWwindow* window, world* activeWorld){
     std::vector<float> deltaCamera = {0.0f,0.0f};
 
     if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
-        deltaCamera.at(0) = 0.02f;
+        deltaCamera.at(0) = 0.002f;
     }else if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
-        deltaCamera.at(0) = -0.02f;
+        deltaCamera.at(0) = -0.002f;
     }
 
     if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
-        deltaCamera.at(1) = 0.02f;
+        deltaCamera.at(1) = 0.002f;
     }else if(glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
-        deltaCamera.at(1) = -0.02f;
+        deltaCamera.at(1) = -0.002f;
     }
 
     activeWorld->moveCamera(deltaCamera.at(0),deltaCamera.at(1));

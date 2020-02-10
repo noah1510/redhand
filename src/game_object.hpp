@@ -72,31 +72,31 @@ private:
     ///The position of the object in World Coordinates
     std::vector<float> object_position = {0.0f, 0.0f};
     ///lock the position of the object
-    std::shared_timed_mutex positionLock;
+    std::shared_mutex positionLock;
 
     ///The scale of the object in World scale
     std::vector<float> object_scale = {1.0f, 1.0f};
     ///lock the scale of the object
-    std::shared_timed_mutex scaleLock;
+    std::shared_mutex scaleLock;
 
     ///The rotation of the object in degrees
     float object_rotation = 0.0f;
     ///lock the rotation of the object
-    std::shared_timed_mutex rotationLock;
+    std::shared_mutex rotationLock;
 
     ///the scale of the texture attached to this object
     glm::vec2 texture_scale = glm::vec2(1.0f, 1.0f);
     ///lock the texture scale of the object
-    std::shared_timed_mutex textureScaleLock;
+    std::shared_mutex textureScaleLock;
 
 
     ///The name of the object
     std::string object_name = "game_object";
     ///lock the name of the object
-    std::shared_timed_mutex nameLock;
+    std::shared_mutex nameLock;
 
     ///The lock for the object
-    std::shared_timed_mutex gameObjectLock;
+    std::shared_mutex gameObjectLock;
 
 public:
     //minimal constructor
