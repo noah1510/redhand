@@ -262,9 +262,15 @@ game_object::game_object(
 
 game_object::~game_object(){
     auto lock = std::scoped_lock(gameObjectLock,nameLock,positionLock,rotationLock,textureScaleLock,scaleLock);
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
+    try{
+        glDeleteVertexArrays(1, &VAO);
+        glDeleteBuffers(1, &VBO);
+        glDeleteBuffers(1, &EBO);
+    }
+    catch(const std::exception& e){
+        std::cerr << e.what() << '\n';
+    }
+    
 }
 
 void game_object::setScreenSize(int width, int height){

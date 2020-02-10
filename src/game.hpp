@@ -4,15 +4,15 @@
 #include "world.hpp"
 
 int game_init(
-    world* startWorld
+    std::shared_ptr<world> startWorld
 );
 
 int main_game_logic(
-    engine* gameEngine
+    std::shared_ptr<engine> gameEngine
 );
 
 
-int createTestworld(world* testWorld);
+int createTestworld(std::shared_ptr<world> testWorld);
 void processHouseMovement(GLFWwindow* window, game_object* obj);
-void processWorldInput(GLFWwindow* window, world* activeWorld);
-void processGlobalInput(engine* game);
+void processWorldInput(GLFWwindow* window, std::shared_ptr<world> activeWorld);
+void processGlobalInput(std::shared_ptr<engine> game);

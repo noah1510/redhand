@@ -10,15 +10,7 @@ engine::~engine(){
     glfwSetWindowShouldClose(window, true);
 
     //try clearing up
-    if(activeWorld != nullptr){
-        try{
-            delete activeWorld;
-        }
-        catch(const std::exception& e){
-            std::cout << e.what() << '\n';
-            errorCode = -7;
-        }
-    }
+    activeWorld.reset();
 
     //close the window + clean up
     glfwTerminate();
@@ -69,7 +61,7 @@ void engine::init(){
     glEnable(GL_MULTISAMPLE);
 
     //create an empty world
-    activeWorld = new world();
+    activeWorld = std::shared_ptr<world> (new world());
 
     //fill that world
     if( ( errorCode = worldSetup(activeWorld) ) <= 0 ){
@@ -84,7 +76,7 @@ void engine::init(){
 
 }
 
-world* engine::getActiveWorld(){
+std::shared_ptr<world> engine::getActiveWorld(){
     if(errorCode < 0){
         return nullptr;
     }
@@ -92,21 +84,13 @@ world* engine::getActiveWorld(){
     return activeWorld;
 }
 
-int engine::setActiveWorld(world* newWorld){
+int engine::setActiveWorld(std::shared_ptr<world> newWorld){
     
     if(newWorld != nullptr){
-        if(activeWorld != nullptr){
-            try{
-                delete activeWorld;
-            }
-            catch(const std::exception& e){
-                std::cout << e.what() << '\n';
-                errorCode = -6;
-            }
-        }
+        activeWorld.reset();
+        
         activeWorld = newWorld;
-    }else
-    {
+    }else{
         activeWorld = nullptr;
         errorCode = -7;
     }
@@ -128,13 +112,13 @@ int engine::getErrorCode(){
     return errorCode;
 }
 
-int engine::setFillWorldFunction( int fillFunction(world*) ){
+int engine::setFillWorldFunction( int fillFunction(std::shared_ptr<world>) ){
     worldSetup = fillFunction;
 
     return errorCode;
 }
 
-int engine::setPhysicsLoopFunction(int loop(engine*)){
+int engine::setPhysicsLoopFunction(int loop(std::shared_ptr<engine>)){
     physicsLoopFunction = loop;
 
     return errorCode;
@@ -165,7 +149,7 @@ void engine::stopGame(int error){
 }
 
 
-int engine::changeWorld(world* newWorld){
+int engine::changeWorld(std::shared_ptr<world> newWorld){
     //if not a nullptr change world
     if(newWorld == nullptr){
         stopGame();
@@ -185,11 +169,13 @@ int engine::runGame(){
     //start the physics thread
     std::thread physicsThread([&](){
         while (isRunning()){
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
             //create a placeholder for the next world
-            world* nextWorld = nullptr;
+            std::shared_ptr<world> nextWorld = nullptr;
 
             //get the new error
-            auto localErrorCode = physicsLoopFunction(this);
+            auto localErrorCode = physicsLoopFunction(std::shared_ptr<engine>(this));
 
             //if there was an error terminate the game
             if(localErrorCode < 0){
@@ -202,19 +188,29 @@ int engine::runGame(){
                 changeWorld(nextWorld);
             }
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     });
 
     //while there is no error run the game loop
     while(isRunning()){
-        std::this_thread::sleep_for(std::chrono::milliseconds(4));
 
+        //draw the game
+        
         //Clear up
         clearBuffers();
 
-        //draw the game
-        drawingFunction(this);
+        //clear the bg color
+        glClearColor(0.2f,0.3f,0.3f,1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        //draw the active world
+        getActiveWorld()->draw();
+
+        //Update the window buffers
+        glfwSwapBuffers(getWindow());
+        glfwPollEvents(); 
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(4));
           
     }
 

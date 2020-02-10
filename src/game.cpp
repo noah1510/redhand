@@ -1,7 +1,7 @@
 #include "game.hpp"
 
 int game_init(
-    world* startWorld
+    std::shared_ptr<world> startWorld
 ){
     int exitCode = 0;
 
@@ -14,16 +14,11 @@ int game_init(
 }
 
 int main_game_logic(
-    engine* gameEngine
+    std::shared_ptr<engine> gameEngine
 ){
     //process the input
     processGlobalInput(gameEngine);
     processWorldInput(gameEngine->getWindow(), gameEngine->getActiveWorld());
-
-    if (glfwWindowShouldClose(gameEngine->getWindow())!= 0){
-        gameEngine->stopGame();
-        return -1;
-    }
 
     //get the current window size
     int width, height;
@@ -37,7 +32,7 @@ int main_game_logic(
 
 }
 
-int createTestworld(world* testWorld){
+int createTestworld(std::shared_ptr<world> testWorld){
     //add shaders to world
 
     if( testWorld->addShader(new shader(
@@ -195,7 +190,7 @@ void processHouseMovement(GLFWwindow* window, game_object* obj){
 
 }
 
-void processWorldInput(GLFWwindow* window, world* activeWorld){
+void processWorldInput(GLFWwindow* window, std::shared_ptr<world> activeWorld){
     //move the camera
     std::vector<float> deltaCamera = {0.0f,0.0f};
 
@@ -215,7 +210,7 @@ void processWorldInput(GLFWwindow* window, world* activeWorld){
 
 }
 
-void processGlobalInput(engine* game){
+void processGlobalInput(std::shared_ptr<engine> game){
 
     auto window = game->getWindow();
 

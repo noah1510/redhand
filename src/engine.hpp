@@ -52,6 +52,8 @@ const engine_config DEFAULT_ENGINE_CONFIG = {
     600,
     "RedHand v0.0.1"
 };
+
+
 /**
  * @brief This class basically handles all the setup need for games to work.
  * 
@@ -68,26 +70,15 @@ private:
     int errorCode = 0;
 
     ///The currently active world (nullptr or empty world if none)
-    world* activeWorld;
+    std::shared_ptr<world> activeWorld;
 
     ///a function which creates the initial world
-    std::function <int(world*)> worldSetup;
+    std::function <int(std::shared_ptr<world>)> worldSetup;
 
     ///The function which is executed on each physics tick
-    std::function <int(engine*)> physicsLoopFunction;
+    std::function <int(std::shared_ptr<engine>)> physicsLoopFunction;
 
-    const std::function <void(engine*)> drawingFunction = [](engine* game){
-        //clear the bg color
-        glClearColor(0.2f,0.3f,0.3f,1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        //draw the active world
-        game->getActiveWorld()->draw();
-
-        //Update the window buffers
-        glfwSwapBuffers(game->getWindow());
-        glfwPollEvents(); 
-    };
+    
 
     std::shared_mutex runningReadMutex;
     bool running = false;
@@ -127,7 +118,7 @@ public:
      * @param newWorld a pointer to the world that will be the new active world
      * @return int negative if someting went wrong
      */
-    int setActiveWorld(world* newWorld);
+    int setActiveWorld(std::shared_ptr<world> newWorld);
 
     /**
      * @brief change the world to the given new world
@@ -135,19 +126,19 @@ public:
      * @param newWorld 
      * @return int 
      */
-    int changeWorld(world* newWorld);
+    int changeWorld(std::shared_ptr<world> newWorld);
 
     /**
      * @brief Get the Active World object
      * 
-     * @return world* A pointer to the currently active world
+     * @return std::shared_ptr<world> A pointer to the currently active world
      */
-    world* getActiveWorld();
+    std::shared_ptr<world> getActiveWorld();
 
     /**
      * @brief Get the Window object
      * 
-     * @return * window a pointer to the currently active window
+     * @return GLFWwindow* a pointer to the currently active window
      */
     GLFWwindow* getWindow();
 
@@ -170,7 +161,7 @@ public:
      * @param fillFunction a function which should be used to fill the initial world of the game. It should a negative number is something went wrong and it needs a pointer to an empty world which will be filled as an argument.
      * @return int a negative value if something went wrong
      */
-    int setFillWorldFunction( int fillFunction(world*) );
+    int setFillWorldFunction( int fillFunction(std::shared_ptr<world>) );
 
     /**
      * @brief Set the Loop Function of the engine.
@@ -179,7 +170,7 @@ public:
      * @param loop The loop function which returns a negative number if something went wrong and has three parameters, the currently active window, the currently active world and a pointer to the world which should be used next, which is a nullptr if there should be no change,
      * @return int the errorCode of the engine will be returned, negative if something bad happened
      */
-    int setPhysicsLoopFunction( int loop(engine*) );
+    int setPhysicsLoopFunction( int loop(std::shared_ptr<engine>) );
 
     /**
      * @brief This function runs the game, the engine handles all the logic to keep everything wunning for you.
@@ -207,9 +198,9 @@ public:
     /**
      * @brief Get the Physics Function object
      * 
-     * @return std::function <int(engine*,world*,world*)> 
+     * @return std::function <int(std::shared_ptr<engine>)> 
      */
-    std::function <int(engine*)> getPhysicsFunction();
+    std::function <int(std::shared_ptr<engine>)> getPhysicsFunction();
 };
 
 

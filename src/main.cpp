@@ -27,7 +27,7 @@ int main(){
     int exitCode = 0;
 
     //create the engine object
-    engine* gameEngine = new engine();
+    std::shared_ptr<engine> gameEngine(new engine());
 
     //get the current config of the engine
     engine_config conf = gameEngine->getConfig();
@@ -37,10 +37,10 @@ int main(){
     gameEngine->setConfig(conf);
 
     //set the function which sets the initial state of the world
-    exitCode = gameEngine->setFillWorldFunction(game_init);
+    gameEngine->setFillWorldFunction(game_init);
 
     //set the function which handles all the controls and physics computation
-    exitCode = gameEngine->setPhysicsLoopFunction(main_game_logic);
+    gameEngine->setPhysicsLoopFunction(main_game_logic);
 
     //initilize the game engine
     gameEngine->init();
@@ -53,9 +53,6 @@ int main(){
         //run the game
         exitCode = gameEngine->runGame(); 
     }
-    
-    //let the destructor of the engine handle most of the cleanup
-    delete gameEngine;
     
     //return the error code if something bad happened or 0 if everything is fine
     return abs(exitCode);
