@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cmath>
-#include <mutex>
 
 /** This function calculates a sine with an angle in degrees
  * 
@@ -16,4 +15,3 @@ float sinDeg(float deg);
  * @return float The cosine of that angle
  */
 float cosDeg(float deg);
-

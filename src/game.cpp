@@ -49,24 +49,6 @@ int createTestworld(world* testWorld){
         return -1;
     }
 
-    if( testWorld->addShader(new shader(
-        "shaders/default.vert",
-        "shaders/default.frag",
-        "house"
-        )
-    ) < 0){
-        return -1;
-    }
-
-    if( testWorld->addShader(new shader(
-        "shaders/default.vert",
-        "shaders/default.frag",
-        "trig"
-        )
-    ) < 0){
-        return -1;
-    }
-
     if(testWorld->getShaderByName("default") == nullptr){
         return -20;
     }
@@ -152,7 +134,7 @@ int createTestworld(world* testWorld){
                 trig_points,
                 trig_indicies,
                 trig_colors,
-                testWorld->getShaderByName("trig"),
+                testWorld->getShaderByName("default"),
                 GL_DYNAMIC_DRAW,
                 [](shader* shade){},
                 {0.5f,0.5f},
@@ -172,7 +154,7 @@ int createTestworld(world* testWorld){
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("house"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) < 0){
+    if( testWorld->addObject(createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) < 0){
         return -3;
     }
     testWorld->getObjectByName("game_object")->setName("house");
@@ -241,10 +223,10 @@ void processGlobalInput(engine* game){
         game->stopGame();
     }
 
-    if(glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_KP_1) == GLFW_PRESS){
+    if(glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS){
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     }
-    if(glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_KP_2) == GLFW_PRESS){
+    if(glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS){
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
 
