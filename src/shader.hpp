@@ -13,6 +13,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <mutex>
 
 class shader{
 private:
@@ -36,6 +37,9 @@ private:
 
     //the texture scale
     glm::vec2 textureScale = glm::vec2(1.0f, 1.0f);
+
+    //the mutex lock for this class
+    std::mutex shaderLock;
 
 public: 
     /** 

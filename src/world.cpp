@@ -9,6 +9,7 @@ world::world(){
 }
 
 world::~world(){
+    WorldObjectsMutex.lock();
     //delete objects
     try{
         for(int i = 0;i < WorldObjects.size();i++){
@@ -42,16 +43,27 @@ world::~world(){
         std::cout << e.what() << '\n';
     }
     
-    
 }
 
 void world::tick(GLFWwindow* window){
+    WorldObjectsMutex.lock_shared();
 
-    for(int i = 0; i < WorldObjects.size(); i++){
-        WorldObjects.at(i)->onLoop(window);
-        WorldObjects.at(i)->draw();
+    for(auto x : WorldObjects){
+        x->onLoop(window);
     }
 
+    WorldObjectsMutex.unlock_shared();
+
+}
+
+void world::draw(){
+    WorldObjectsMutex.lock_shared();
+
+    for(auto x : WorldObjects){
+        x->draw();
+    }
+
+    WorldObjectsMutex.unlock_shared();
 }
 
 void world::setWindowSize(int width, int height){
@@ -66,8 +78,10 @@ void world::setWindowSize(int width, int height){
             WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
         }
 
-        for(int i = 0;i < WorldObjects.size();i++){
-            WorldObjects.at(i)->setScreenSize(width,height);
+        std::scoped_lock<std::shared_timed_mutex> lock(WorldObjectsMutex);
+        
+        for(auto x:WorldObjects){
+            x->setScreenSize(width,height);
         }
     }
 
@@ -117,6 +131,8 @@ int world::addObject(game_object* obj){
         return -2;
     }
 
+    std::scoped_lock<std::shared_timed_mutex> lock(WorldObjectsMutex);
+
     WorldObjects.emplace_back(obj);
     if(WorldObjects.back() == obj){
         obj->setScreenSize(windowWidth,windowHeight);
@@ -163,6 +179,8 @@ int world::removeTexture(texture2D* tex){
 }
 
 int world::removeObject(game_object* obj){
+    std::scoped_lock<std::shared_timed_mutex> lock(WorldObjectsMutex);
+
     for(int i = 0; i < WorldObjects.size();i++){
         if(obj == WorldObjects.at(i)){
             WorldObjects.erase(WorldObjects.begin() + i);
@@ -219,22 +237,17 @@ texture2D* world::getTextureByName(std::string name){
 }
 
 game_object* world::getObjectByName(std::string name){
-    int i = 0;
-    bool found = false;
+    WorldObjectsMutex.lock_shared();
 
-    while(i < WorldObjects.size()){
-        if((WorldObjects.at(i)->getName()).compare(name) == 0){
-            found = true;
-            break;    
+    for(auto x:WorldObjects){
+        if(x->getName().compare(name) == 0){
+            WorldObjectsMutex.unlock_shared();
+            return x;
         }
-        i++;
     }
 
-    if(found){
-        return WorldObjects.at(i);
-    }else{
-        return nullptr;
-    }
+    WorldObjectsMutex.unlock_shared();
+    return nullptr;
     
 }
 

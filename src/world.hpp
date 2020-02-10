@@ -6,6 +6,9 @@
 
 class world{
 private:
+    ///The mutex for allowing only one thread to acces the world objects at once
+    std::shared_timed_mutex WorldObjectsMutex;
+
     /// This vector holds all the game_objetcs in this world
     std::vector <game_object*> WorldObjects;
 
@@ -132,4 +135,10 @@ public:
      * @param height The height of the currently active window
      */
     void setWindowSize(int width, int height);
+
+    /**
+     * @brief draw all the objects in this world
+     * 
+     */
+    void draw();
 };

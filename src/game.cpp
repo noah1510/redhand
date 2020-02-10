@@ -13,32 +13,25 @@ int game_init(
     return 0;   
 }
 
-int game_loop(
-    GLFWwindow* window,
-    world* activeWorld,
-    world* nextWorld
+int main_game_logic(
+    engine* gameEngine
 ){
     //process the input
-    processGlobalInput(window);
-    processWorldInput(window, activeWorld);
+    processGlobalInput(gameEngine);
+    processWorldInput(gameEngine->getWindow(), gameEngine->getActiveWorld());
 
-    //clear the bg color
-    glClearColor(0.2f,0.3f,0.3f,1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    if (glfwWindowShouldClose(gameEngine->getWindow())!= 0){
+        gameEngine->stopGame();
+        return -1;
+    }
 
     //get the current window size
     int width, height;
-    glfwGetWindowSize(window, &width, &height);
-    activeWorld->setWindowSize(width, height);
+    glfwGetWindowSize(gameEngine->getWindow(), &width, &height);
+    gameEngine->getActiveWorld()->setWindowSize(width, height);
 
     //tick the active world
-    activeWorld->tick(window);
-
-    //Update the window buffers
-    glfwSwapBuffers(window);
-    glfwPollEvents(); 
-
-    nextWorld = nullptr;
+    gameEngine->getActiveWorld()->tick(gameEngine->getWindow());
 
     return 0;
 
@@ -48,8 +41,8 @@ int createTestworld(world* testWorld){
     //add shaders to world
 
     if( testWorld->addShader(new shader(
-        "../shaders/default.vert",
-        "../shaders/default.frag",
+        "shaders/default.vert",
+        "shaders/default.frag",
         "default"
         )
     ) < 0){
@@ -63,7 +56,7 @@ int createTestworld(world* testWorld){
     //Add textures to world
     if(testWorld->addTexture(
         new texture2D(
-            "../textures/open/crate.png",
+            "textures/open/crate.png",
             "house"
         )) < 0){
         return -2;
@@ -71,7 +64,7 @@ int createTestworld(world* testWorld){
 
     if(testWorld->addTexture(
         new texture2D(
-            "../textures/open/house.png",
+            "textures/open/house.png",
             "bg"
         )) < 0){
         return -2;
@@ -167,7 +160,7 @@ int createTestworld(world* testWorld){
     testWorld->getObjectByName("game_object")->setName("house");
 
     testWorld->getObjectByName("house")->setLoopFunction(processHouseMovement);
-
+    
     return 0;
 }
 
@@ -176,15 +169,15 @@ void processHouseMovement(GLFWwindow* window, game_object* obj){
     std::vector<float> deltaPosition = {0.0f,0.0f};
 
     if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS){
-        deltaPosition.at(0) = 0.02f;
+        deltaPosition.at(0) = 0.002f;
     }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS){
-        deltaPosition.at(0) = -0.02f;
+        deltaPosition.at(0) = -0.002f;
     }
 
     if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS){
-        deltaPosition.at(1) = 0.02f;
+        deltaPosition.at(1) = 0.002f;
     }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS){
-        deltaPosition.at(1) = -0.02f;
+        deltaPosition.at(1) = -0.002f;
     }
 
     obj->move(deltaPosition);    
@@ -193,9 +186,9 @@ void processHouseMovement(GLFWwindow* window, game_object* obj){
     float deltaRotation = 0.0f;
 
     if(glfwGetKey(window,GLFW_KEY_E) == GLFW_PRESS){
-        deltaRotation = -2.5f;
+        deltaRotation = -0.25f;
     }else if(glfwGetKey(window,GLFW_KEY_Q) == GLFW_PRESS){
-        deltaRotation = 2.5f;
+        deltaRotation = 0.25f;
     }
 
     obj->rotate(deltaRotation);
@@ -207,30 +200,33 @@ void processWorldInput(GLFWwindow* window, world* activeWorld){
     std::vector<float> deltaCamera = {0.0f,0.0f};
 
     if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
-        deltaCamera.at(0) = 0.02f;
+        deltaCamera.at(0) = 0.002f;
     }else if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
-        deltaCamera.at(0) = -0.02f;
+        deltaCamera.at(0) = -0.002f;
     }
 
     if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
-        deltaCamera.at(1) = 0.02f;
+        deltaCamera.at(1) = 0.002f;
     }else if(glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
-        deltaCamera.at(1) = -0.02f;
+        deltaCamera.at(1) = -0.002f;
     }
 
     activeWorld->moveCamera(deltaCamera.at(0),deltaCamera.at(1));
 
 }
 
-void processGlobalInput(GLFWwindow* window){
+void processGlobalInput(engine* game){
+
+    auto window = game->getWindow();
+
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS){
-        glfwSetWindowShouldClose(window, true);
+        game->stopGame();
     }
 
-    if(glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_KP_1) == GLFW_PRESS){
+    if(glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS){
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     }
-    if(glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_KP_2) == GLFW_PRESS){
+    if(glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS){
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
 
