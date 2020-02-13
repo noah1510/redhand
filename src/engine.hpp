@@ -26,6 +26,17 @@
 #include "world.hpp"
 //#include "audio/AudioHandler.hpp"
 
+///This string provides a version in a pritable format.
+///The first public version is 0.1.0 and from there it will be couted up.
+///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last release
+#define REDHAND_VERSION_STRING "0.0.1"
+
+///This integere defines the version number.
+///You should use it to check if the version of your game is compatible with the engine.
+///The first public version is 1 and every release will be 1 higher.
+///Look in the documentation to see which features are present in which version of the engine. 
+#define REDHAND_VERSION_NUMBER 0
+
 ///This function will be called every time the window size is changed
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -50,7 +61,7 @@ const engine_config DEFAULT_ENGINE_CONFIG = {
     GL_TRUE,
     600,
     600,
-    "RedHand v0.0.1"
+    REDHAND_VERSION_STRING
 };
 
 
@@ -94,8 +105,14 @@ public:
 
     /**
      * @brief Set the Config of the game engine to the given configuration
-     * 
-     * @param conf The configuration which sould be used (by default DEFAULT_ENGINE_CONFIG)
+     * *Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.ich sould be used (by default DEFAULT_ENGINE_CONFIG)
      */
     void setConfig(engine_config conf);
 
