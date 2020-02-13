@@ -76,7 +76,7 @@ private:
     std::function <int(std::shared_ptr<world>)> worldSetup;
 
     ///The function which is executed on each physics tick
-    std::function <int(std::shared_ptr<engine>)> physicsLoopFunction;
+    std::function <int(engine*)> physicsLoopFunction;
 
     
 
@@ -170,7 +170,7 @@ public:
      * @param loop The loop function which returns a negative number if something went wrong and has three parameters, the currently active window, the currently active world and a pointer to the world which should be used next, which is a nullptr if there should be no change,
      * @return int the errorCode of the engine will be returned, negative if something bad happened
      */
-    int setPhysicsLoopFunction( int loop(std::shared_ptr<engine>) );
+    int setPhysicsLoopFunction( int loop(engine*) );
 
     /**
      * @brief This function runs the game, the engine handles all the logic to keep everything wunning for you.

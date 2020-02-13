@@ -118,7 +118,7 @@ int engine::setFillWorldFunction( int fillFunction(std::shared_ptr<world>) ){
     return errorCode;
 }
 
-int engine::setPhysicsLoopFunction(int loop(std::shared_ptr<engine>)){
+int engine::setPhysicsLoopFunction(int loop(engine*)){
     physicsLoopFunction = loop;
 
     return errorCode;
@@ -175,7 +175,7 @@ int engine::runGame(){
             std::shared_ptr<world> nextWorld = nullptr;
 
             //get the new error
-            auto localErrorCode = physicsLoopFunction(std::shared_ptr<engine>(this));
+            auto localErrorCode = physicsLoopFunction(this);
 
             //if there was an error terminate the game
             if(localErrorCode < 0){

@@ -14,7 +14,7 @@ int game_init(
 }
 
 int main_game_logic(
-    std::shared_ptr<engine> gameEngine
+    engine* gameEngine
 ){
     //process the input
     processGlobalInput(gameEngine);
@@ -210,7 +210,7 @@ void processWorldInput(GLFWwindow* window, std::shared_ptr<world> activeWorld){
 
 }
 
-void processGlobalInput(std::shared_ptr<engine> game){
+void processGlobalInput(engine* game){
 
     auto window = game->getWindow();
 
