@@ -329,15 +329,14 @@ bool game_object::hasErrord(){
 }
 
 void game_object::setColorAlpha(float alpha){
-    std::scoped_lock<std::shared_mutex> lock(gameObjectLock);
     if(alpha >= 0.0f && alpha <= 1.0f){
+        std::scoped_lock<std::shared_mutex> lock(gameObjectLock);
         colorAlphaValue = alpha;
     }
 }
 
 void game_object::onLoop(GLFWwindow* window){
     std::shared_lock<std::shared_mutex> lock(gameObjectLock);
-    //object_shader->use();
     LoopFunction(window, this);
 };
 
@@ -366,8 +365,8 @@ void game_object::setPosition(std::vector<float> pos){
 };
 
 void game_object::move(std::vector<float> delta_pos){
-    std::scoped_lock<std::shared_mutex> lock(positionLock);
     if(delta_pos.size() == 2){
+        std::scoped_lock<std::shared_mutex> lock(positionLock);
         object_position.at(0) += delta_pos.at(0);
         object_position.at(1) += delta_pos.at(1);
     }
@@ -382,24 +381,33 @@ std::vector<float> game_object::getScale(){
     return object_scale;
 };
 void game_object::setRotation(float rot){
+    while(rot >= 360.0f){
+        rot -= 360.0f;
+    }
+    while(rot < 0.0f){
+        rot += 360.0f;
+    }
+
     std::scoped_lock<std::shared_mutex> lock(rotationLock);
     object_rotation = rot;
 
-    while(object_rotation > 360.0f){
-        object_rotation -= 360.0f;
-    }
-    while(object_rotation < 0.0f){
-        object_rotation += 360.0f;
-    }
 };
 void game_object::rotate(float delta_rot){
+
+    while(delta_rot >= 360.0f){
+        delta_rot -= 360.0f;
+    }
+    while(delta_rot < 0.0f){
+        delta_rot += 360.0f;
+    }
+
     std::scoped_lock<std::shared_mutex> lock(rotationLock);
     object_rotation += delta_rot;
 
-    while(object_rotation > 360.0f){
+    if(object_rotation >= 360.0f){
         object_rotation -= 360.0f;
     }
-    while(object_rotation < 0.0f){
+    if(object_rotation < 0.0f){
         object_rotation += 360.0f;
     }
 };
@@ -439,15 +447,12 @@ game_object* createHouse(
         1.0f, 1.0f, 1.0f };
 
     std::vector <float> texels;
-    for(int i = 0;i < points.size();i++){
-        texels.emplace_back(points.at(i)*texture_scale);
+
+    for(auto x:points){
+        texels.emplace_back(x*texture_scale);
     }
 
-    std::function<void(shader*)> routine = [](shader* shade){
-        shade->setInt("useTexture", 1);
-    };
-
-    return new game_object(points,indices,colors,shade,GL_DYNAMIC_DRAW,routine,{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
+    return new game_object(points,indices,colors,shade,GL_DYNAMIC_DRAW,[](shader*){},{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
     
 }
 
