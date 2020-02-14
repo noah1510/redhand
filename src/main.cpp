@@ -36,9 +36,6 @@ int main(){
     conf.title = "Redhand Test Game";
     gameEngine->setConfig(conf);
 
-    //set the function which sets the initial state of the world
-    gameEngine->setFillWorldFunction(game_init);
-
     //set the function which handles all the controls and physics computation
     gameEngine->setPhysicsLoopFunction(main_game_logic);
 
@@ -50,6 +47,9 @@ int main(){
     if(exitCode < 0){
         gameEngine->stopGame();
     }else{
+        exitCode = game_init(gameEngine->getActiveWorld());
+        if(exitCode < 0){return abs(exitCode);};
+        
         //run the game
         exitCode = gameEngine->runGame(); 
     }

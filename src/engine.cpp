@@ -63,16 +63,10 @@ void engine::init(){
     //create an empty world
     activeWorld = std::shared_ptr<world> (new world());
 
-    //fill that world
-    if( ( errorCode = worldSetup(activeWorld) ) <= 0 ){
-        return;
-    }
-
     if(activeWorld == nullptr){
         errorCode = -4;
         return;
     }
-
 
 }
 
@@ -81,7 +75,7 @@ std::shared_ptr<world> engine::getActiveWorld(){
         return nullptr;
     }
 
-    return activeWorld;
+    return std::shared_ptr<world>(activeWorld);
 }
 
 int engine::setActiveWorld(std::shared_ptr<world> newWorld){
@@ -89,13 +83,13 @@ int engine::setActiveWorld(std::shared_ptr<world> newWorld){
     if(newWorld != nullptr){
         activeWorld.reset();
         
-        activeWorld = newWorld;
+        activeWorld = std::shared_ptr<world>(newWorld);
     }else{
         activeWorld = nullptr;
-        errorCode = -7;
+        stopGame(-7);
     }
     
-    return errorCode;
+    return -7;
 
 }
 
@@ -109,12 +103,6 @@ GLFWwindow* engine::getWindow(){
 }
 
 int engine::getErrorCode(){
-    return errorCode;
-}
-
-int engine::setFillWorldFunction( int fillFunction(std::shared_ptr<world>) ){
-    worldSetup = fillFunction;
-
     return errorCode;
 }
 
@@ -152,13 +140,14 @@ void engine::stopGame(int error){
 int engine::changeWorld(std::shared_ptr<world> newWorld){
     //if not a nullptr change world
     if(newWorld == nullptr){
-        stopGame();
+        stopGame(-5);
         return -5;
         
     }
-    errorCode = setActiveWorld(newWorld);
-    if(errorCode < 0){
-        stopGame();
+
+    auto error = setActiveWorld(newWorld);
+    if(error < 0){
+        stopGame(error);
         return -6;
     }
 }

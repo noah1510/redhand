@@ -46,24 +46,21 @@ world::~world(){
 }
 
 void world::tick(GLFWwindow* window){
-    WorldObjectsMutex.lock_shared();
+    std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x : WorldObjects){
         x->onLoop(window);
     }
 
-    WorldObjectsMutex.unlock_shared();
-
 }
 
 void world::draw(){
-    WorldObjectsMutex.lock_shared();
+    std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x : WorldObjects){
         x->draw();
     }
 
-    WorldObjectsMutex.unlock_shared();
 }
 
 void world::setWindowSize(int width, int height){
@@ -78,7 +75,7 @@ void world::setWindowSize(int width, int height){
             WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
         }
 
-        std::scoped_lock<std::shared_timed_mutex> lock(WorldObjectsMutex);
+        std::scoped_lock<std::shared_mutex> lock(WorldObjectsMutex);
         
         for(auto x:WorldObjects){
             x->setScreenSize(width,height);
@@ -99,6 +96,7 @@ int world::addShader(shader* shade){
     WorldShaders.emplace_back(shade);
     if(WorldShaders.back() == shade){
         shade->setProjectionmatrix(projectionMatrix);
+        shade->setCamera(cameraPosition[0], cameraPosition[1]);
         return 0;
     }else{
         return -3;
@@ -131,7 +129,7 @@ int world::addObject(game_object* obj){
         return -2;
     }
 
-    std::scoped_lock<std::shared_timed_mutex> lock(WorldObjectsMutex);
+    std::scoped_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     WorldObjects.emplace_back(obj);
     if(WorldObjects.back() == obj){
@@ -142,111 +140,94 @@ int world::addObject(game_object* obj){
     }
 }
 
-int world::removeShader(shader* shade){
-    for(int i = 0; i < WorldShaders.size();i++){
-        if(shade == WorldShaders.at(i)){
-            WorldShaders.erase(WorldShaders.begin() + i);
+int world::removeShader(std::string name){
+    for(auto x:WorldShaders){
+        if(x->getName().compare(name) == 0){
             try{
-                delete shade;
+                delete x;
             }
             catch(const std::exception& e){
-                std::cout << e.what() << '\n';
+                std::cerr << e.what() << '\n';
                 return -1;
             }
             return 0;
-        }   
+        }
     }
 
     return 1;    
 }
 
-int world::removeTexture(texture2D* tex){
-    for(int i = 0; i < WorldTextures.size();i++){
-        if(tex == WorldTextures.at(i)){
-            WorldTextures.erase(WorldTextures.begin() + i);
+int world::removeTexture(std::string name){
+    for(auto x:WorldTextures){
+        if(x->getName().compare(name) == 0){
             try{
-                delete tex;
+                delete x;
             }
             catch(const std::exception& e){
-                std::cout << e.what() << '\n';
+                std::cerr << e.what() << '\n';
                 return -1;
             }
             return 0;
-        }   
+        }
     }
 
-    return 1;
+    return 1; 
 }
 
-int world::removeObject(game_object* obj){
-    std::scoped_lock<std::shared_timed_mutex> lock(WorldObjectsMutex);
+int world::removeObject(std::string name){
+    std::scoped_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
-    for(int i = 0; i < WorldObjects.size();i++){
-        if(obj == WorldObjects.at(i)){
-            WorldObjects.erase(WorldObjects.begin() + i);
+    for(auto x:WorldObjects){
+        if(x->getName().compare(name) == 0){
             try{
-                delete obj;
+                delete x;
             }
             catch(const std::exception& e){
-                std::cout << e.what() << '\n';
+                std::cerr << e.what() << '\n';
                 return -1;
             }
             return 0;
-        }   
+        }
     }
-    return 1;
+
+    return 1; 
+
 }
 
 shader* world::getShaderByName(std::string name){
-    int i = 0;
-    bool found = false;
 
-    while(i < WorldShaders.size()){
-        if((WorldShaders.at(i)->getName()).compare(name) == 0){
-            found = true;
-            break;    
-        }
-        i++;
+    for(auto x:WorldShaders){
+       if((x->getName()).compare(name) == 0){
+            return x;  
+        } 
     }
 
-    if(found){
-        return WorldShaders.at(i);
-    }else{
-        return nullptr;
-    }
+    return nullptr;
     
 }
 
 texture2D* world::getTextureByName(std::string name){
-    int i = 0;
-    bool found = false;
-    while(i < WorldTextures.size()){
-        if((WorldTextures.at(i)->getName()).compare(name) == 0){
-            found = true;
-            break;    
-        }
-        i++;
+
+    for(auto x:WorldTextures){
+       if((x->getName()).compare(name) == 0){
+            return x;  
+        } 
     }
 
-    if(found){
-        return WorldTextures.at(i);
-    }else{
-        return nullptr;
-    }
+    return nullptr;
+    
     
 }
 
 game_object* world::getObjectByName(std::string name){
-    WorldObjectsMutex.lock_shared();
+    std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x:WorldObjects){
         if(x->getName().compare(name) == 0){
-            WorldObjectsMutex.unlock_shared();
             return x;
         }
     }
 
-    WorldObjectsMutex.unlock_shared();
     return nullptr;
     
 }
@@ -255,8 +236,8 @@ void world::setCamera(float pos_x, float pos_y){
     cameraPosition[0] = pos_x;
     cameraPosition[1] = pos_y;
 
-    for(int i = 0;i < WorldShaders.size();i++){
-        WorldShaders.at(i)->setCamera(cameraPosition[0], cameraPosition[1]);
+    for(auto x : WorldShaders){
+        x->setCamera(cameraPosition[0], cameraPosition[1]);
     }
 }
 
@@ -264,7 +245,7 @@ void world::moveCamera(float delta_pos_x, float delta_pos_y){
     cameraPosition[0] += delta_pos_x;
     cameraPosition[1] += delta_pos_y;
 
-    for(int i = 0;i < WorldShaders.size();i++){
-        WorldShaders.at(i)->moveCamera(delta_pos_x, delta_pos_y);
-    }    
+    for(auto x:WorldShaders){
+        x->moveCamera(delta_pos_x, delta_pos_y);
+    }  
 }

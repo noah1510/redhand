@@ -83,9 +83,6 @@ private:
     ///The currently active world (nullptr or empty world if none)
     std::shared_ptr<world> activeWorld;
 
-    ///a function which creates the initial world
-    std::function <int(std::shared_ptr<world>)> worldSetup;
-
     ///The function which is executed on each physics tick
     std::function <int(engine*)> physicsLoopFunction;
 
@@ -105,19 +102,13 @@ public:
 
     /**
      * @brief Set the Config of the game engine to the given configuration
-     * *Describe the solution you'd like**
-A clear and concise description of what you want to happen.
-
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.ich sould be used (by default DEFAULT_ENGINE_CONFIG)
+     * @version Available since REDHAND_VERSION_NUMBER 1
      */
     void setConfig(engine_config conf);
 
     /**
      * @brief Get the current configuration of the engine
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      * @return engine_config The current configuration of the engine
      */
@@ -125,12 +116,14 @@ Add any other context or screenshots about the feature request here.ich sould be
 
     /**
      * @brief This function initilizes the engine like specified in the configuration.
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      */
     void init();
 
     /**
      * @brief Set the Active World object to the given world
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      * @param newWorld a pointer to the world that will be the new active world
      * @return int negative if someting went wrong
@@ -139,14 +132,16 @@ Add any other context or screenshots about the feature request here.ich sould be
 
     /**
      * @brief change the world to the given new world
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
-     * @param newWorld 
+     * @param newWorld a shared pointer to the new world. An error will accour if it is a nullptr.
      * @return int 
      */
     int changeWorld(std::shared_ptr<world> newWorld);
 
     /**
      * @brief Get the Active World object
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      * @return std::shared_ptr<world> A pointer to the currently active world
      */
@@ -154,6 +149,8 @@ Add any other context or screenshots about the feature request here.ich sould be
 
     /**
      * @brief Get the Window object
+     * @warning will be deprecated in the future only giving access to feautures over methods of the engine
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      * @return GLFWwindow* a pointer to the currently active window
      */
@@ -161,6 +158,7 @@ Add any other context or screenshots about the feature request here.ich sould be
 
     /**
      * @brief this function returns the error code
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      * @return negative if something bad happened
      */
@@ -168,23 +166,18 @@ Add any other context or screenshots about the feature request here.ich sould be
 
     /**
      * @brief This functions clears the currently bound buffers.
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      */
     void clearBuffers();
 
     /**
-     * @brief This function specifies which function to use to fill the initial world of the game
-     * 
-     * @param fillFunction a function which should be used to fill the initial world of the game. It should a negative number is something went wrong and it needs a pointer to an empty world which will be filled as an argument.
-     * @return int a negative value if something went wrong
-     */
-    int setFillWorldFunction( int fillFunction(std::shared_ptr<world>) );
-
-    /**
      * @brief Set the Loop Function of the engine.
-     * The loop function is the function responible for handeling all the inputs and calcualting all the physics
+     * @detail The loop function is the function responible for handeling all the inputs and calcualting all the physics
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
-     * @param loop The loop function which returns a negative number if something went wrong and has three parameters, the currently active window, the currently active world and a pointer to the world which should be used next, which is a nullptr if there should be no change,
+     * @param loop The loop function which returns a negative number if something went wrong and has one parameter, which is a raw pointer to the engine object.
+     * @warning Do no delete the engine object or any of its members inside the physics loop, always modify them using the methods.
      * @return int the errorCode of the engine will be returned, negative if something bad happened
      */
     int setPhysicsLoopFunction( int loop(engine*) );
@@ -192,6 +185,7 @@ Add any other context or screenshots about the feature request here.ich sould be
     /**
      * @brief This function runs the game, the engine handles all the logic to keep everything wunning for you.
      * @warning This function runs until the game is finished and the game should terminate.
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      * @return int negative if something bad happend, otherwise a positive return code
      */
@@ -199,6 +193,7 @@ Add any other context or screenshots about the feature request here.ich sould be
 
     /**
      * @brief returns true if the game is running
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      * @return true running
      * @return false not running
@@ -207,17 +202,12 @@ Add any other context or screenshots about the feature request here.ich sould be
 
     /**
      * @brief stops the game when called
+     * @version Available since REDHAND_VERSION_NUMBER 1
      * 
-     * @param error the error code which the game should be set to.
+     * @param error the error code which the game should be set to, 0 if none is given.
      */
     void stopGame(int error = 0);
 
-    /**
-     * @brief Get the Physics Function object
-     * 
-     * @return std::function <int(std::shared_ptr<engine>)> 
-     */
-    std::function <int(std::shared_ptr<engine>)> getPhysicsFunction();
 };
 
 
