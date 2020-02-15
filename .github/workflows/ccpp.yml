@@ -24,4 +24,4 @@ jobs:
     - name: build library
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
-      run:  bash scripts/testgame.sh -j 2 -o $GITHUB_SHA
+      run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"
