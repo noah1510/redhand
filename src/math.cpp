@@ -1,4 +1,4 @@
-#include "math.hpp"
+#include "redhand/math.hpp"
 
 float sinDeg(float deg){
     return sin(deg/180*3.1415);

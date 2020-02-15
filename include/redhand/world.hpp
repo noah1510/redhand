@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "game_object.hpp"
+#include "redhand/game_object.hpp"
 
 class world{
 private:

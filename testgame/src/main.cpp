@@ -13,14 +13,14 @@
 #include <string>
 #include <vector>
 
-#include "game_object.hpp"
-#include "shader.hpp"
-#include "texture.hpp"
-#include "game.hpp"
-#include "world.hpp"
-#include "engine.hpp"
+#include "redhand/game_object.hpp"
+#include "redhand/shader.hpp"
+#include "redhand/texture.hpp"
+#include "redhand/world.hpp"
+#include "redhand/engine.hpp"
 //#include "audio/AudioHandler.hpp"
 
+#include "game.hpp"
 
 
 int main(){

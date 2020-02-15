@@ -1,4 +1,4 @@
-#include "game_object.hpp"
+#include "redhand/game_object.hpp"
 
 //minimal constructor
 game_object::game_object(

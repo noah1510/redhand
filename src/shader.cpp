@@ -1,4 +1,4 @@
-#include "shader.hpp"
+#include "redhand/shader.hpp"
 
 shader::shader():shader("../shaders/default.vert","../shaders/default.frag","default"){
 

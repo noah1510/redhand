@@ -1,7 +1,7 @@
 #pragma once
 
-#include "engine.hpp"
-#include "world.hpp"
+#include "redhand/engine.hpp"
+#include "redhand/world.hpp"
 
 int game_init(
     std::shared_ptr<world> startWorld
