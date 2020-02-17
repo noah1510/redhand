@@ -1,13 +1,13 @@
-name: create automatic development release
+name: create automatic stable release
 
 on:
   push:
     branches:
-      - dev*
+      - master
 
 jobs:
   pre-release:
-    name: "Pre Release"
+    name: "Stable Release"
     runs-on: "ubuntu-latest"
     if: "!contains(github.event.head_commit.message, 'ci skip')"
 
@@ -28,9 +28,9 @@ jobs:
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
-        prerelease: true
-        title: "Development Build"
+        automatic_release_tag: "stable"
+        prerelease: false
+        title: "Stable Build"
         files: |
           deploy/libredhand.so
           deploy/headers.zip
