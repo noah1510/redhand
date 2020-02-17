@@ -1,4 +1,0 @@
-<map id="game_object::setScreenSize" name="game_object::setScreenSize">
-<area shape="rect" id="node2" href="$classtexture2_d.html#a0afabeffe5265277d117fa722d44d2cb" title="This function retruns the height of the texture. " alt="" coords="243,5,385,32"/>
-<area shape="rect" id="node3" href="$classtexture2_d.html#acb3f2be669d39bdf5a679096c7ca6a78" title="This function retruns the width of the texture. " alt="" coords="245,56,383,83"/>
-</map>

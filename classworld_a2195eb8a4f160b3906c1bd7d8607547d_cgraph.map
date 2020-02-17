@@ -1,5 +1,0 @@
-<map id="world::addObject" name="world::addObject">
-<area shape="rect" id="node2" href="$classgame__object.html#a66cd18cc3e5ffb6c68af4437b6f9a89d" title="Sets the screen size to let the object scale the texture correctly. " alt="" coords="173,31,363,57"/>
-<area shape="rect" id="node3" href="$classtexture2_d.html#a0afabeffe5265277d117fa722d44d2cb" title="This function retruns the height of the texture. " alt="" coords="411,5,553,32"/>
-<area shape="rect" id="node4" href="$classtexture2_d.html#acb3f2be669d39bdf5a679096c7ca6a78" title="This function retruns the width of the texture. " alt="" coords="413,56,551,83"/>
-</map>

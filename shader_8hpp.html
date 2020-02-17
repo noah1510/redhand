@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>redhand: src/shader.hpp File Reference</title>
+<title>redhand: include/redhand/shader.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,7 +80,8 @@ $(document).ready(function(){initNavTree('shader_8hpp.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">shader.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -94,26 +95,28 @@ $(document).ready(function(){initNavTree('shader_8hpp.html','');});
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
+<code>#include &quot;<a class="el" href="math_8hpp_source.html">redhand/math.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for shader.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="shader_8hpp__incl.png" border="0" usemap="#src_2shader_8hpp" alt=""/></div>
-<map name="src_2shader_8hpp" id="src_2shader_8hpp">
+<div class="center"><img src="shader_8hpp__incl.png" border="0" usemap="#include_2redhand_2shader_8hpp" alt=""/></div>
+<map name="include_2redhand_2shader_8hpp" id="include_2redhand_2shader_8hpp">
+<area shape="rect" id="node12" href="math_8hpp.html" title="redhand/math.hpp" alt="" coords="1187,80,1314,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="shader_8hpp__dep__incl.png" border="0" usemap="#src_2shader_8hppdep" alt=""/></div>
-<map name="src_2shader_8hppdep" id="src_2shader_8hppdep">
-<area shape="rect" id="node2" href="game__object_8hpp.html" title="src/game_object.hpp" alt="" coords="303,80,446,107"/>
-<area shape="rect" id="node6" href="main_8cpp.html" title="src/main.cpp" alt="" coords="201,304,298,331"/>
-<area shape="rect" id="node9" href="shader_8cpp.html" title="src/shader.cpp" alt="" coords="577,80,685,107"/>
-<area shape="rect" id="node3" href="world_8hpp.html" title="src/world.hpp" alt="" coords="138,155,238,181"/>
-<area shape="rect" id="node8" href="game__object_8cpp.html" title="src/game_object.cpp" alt="" coords="358,155,501,181"/>
-<area shape="rect" id="node4" href="game_8hpp.html" title="src/game.hpp" alt="" coords="5,229,107,256"/>
-<area shape="rect" id="node7" href="world_8cpp.html" title="src/world.cpp" alt="" coords="182,229,282,256"/>
-<area shape="rect" id="node5" href="game_8cpp.html" title="src/game.cpp" alt="" coords="5,304,107,331"/>
+<div class="center"><img src="shader_8hpp__dep__incl.png" border="0" usemap="#include_2redhand_2shader_8hppdep" alt=""/></div>
+<map name="include_2redhand_2shader_8hppdep" id="include_2redhand_2shader_8hppdep">
+<area shape="rect" id="node2" href="game__object_8hpp.html" title="include/redhand/game\l_object.hpp" alt="" coords="224,80,373,121"/>
+<area shape="rect" id="node3" href="engine_8hpp.html" title="include/redhand/engine.hpp" alt="" coords="294,244,474,271"/>
+<area shape="rect" id="node8" href="shader_8cpp.html" title="src/shader.cpp" alt="" coords="473,87,581,114"/>
+<area shape="rect" id="node5" href="world_8hpp.html" title="include/redhand/world.hpp" alt="" coords="5,169,179,196"/>
+<area shape="rect" id="node7" href="game__object_8cpp.html" title="src/game_object.cpp" alt="" coords="203,169,346,196"/>
+<area shape="rect" id="node4" href="engine_8cpp.html" title="src/engine.cpp" alt="" coords="331,319,437,345"/>
+<area shape="rect" id="node6" href="world_8cpp.html" title="src/world.cpp" alt="" coords="42,244,142,271"/>
 </map>
 </div>
 </div>
@@ -121,7 +124,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshader.html">shader</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html">redhand::shader</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceredhand"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html">redhand</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -129,7 +137,7 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="shader_8hpp.html">shader.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_2bdcf419000696365f47c311814bfb78.html">redhand</a></li><li class="navelem"><a class="el" href="shader_8hpp.html">shader.hpp</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>

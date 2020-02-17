@@ -1,7 +1,6 @@
 var NAVTREE =
 [
   [ "redhand", "index.html", [
-    [ "Todo List", "todo.html", null ],
     [ "Class List", "annotated.html", "annotated" ],
     [ "Class Index", "classes.html", null ],
     [ "Class Members", "functions.html", [
@@ -21,7 +20,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_audio_handler_8cpp.html"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

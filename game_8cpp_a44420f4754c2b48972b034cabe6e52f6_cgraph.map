@@ -1,7 +1,0 @@
-<map id="game_loop" name="game_loop">
-<area shape="rect" id="node2" href="$game_8cpp.html#ab9f435fea17db8edbc0794122864b986" title="processGlobalInput" alt="" coords="147,5,282,32"/>
-<area shape="rect" id="node3" href="$game_8cpp.html#af53e6f75cf50733f6da64de1b899df60" title="processWorldInput" alt="" coords="149,56,280,83"/>
-<area shape="rect" id="node5" href="$classworld.html#a8f3ca5906a62736f94703eb581ace6e4" title="This functions sets the window size to construct the projection matrix. " alt="" coords="139,107,291,133"/>
-<area shape="rect" id="node6" href="$classworld.html#a8bc5bea26515cfb0a990f74ec1f03b66" title="This function executes a world tick and is called for each frame. " alt="" coords="173,157,256,184"/>
-<area shape="rect" id="node4" href="$classworld.html#a481d177f11e4f585b1cc8486e9f843f2" title="This function is used to set the position of the camera. " alt="" coords="339,56,477,83"/>
-</map>

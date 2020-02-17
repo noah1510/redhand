@@ -1,0 +1,4 @@
+<map id="redhand::game_object::setScreenSize" name="redhand::game_object::setScreenSize">
+<area shape="rect" id="node2" href="$classredhand_1_1texture2_d.html#a867fd95f1d6cf985bbce27a5c4f50dcd" title="This function retruns the height of the texture. " alt="" coords="204,5,337,47"/>
+<area shape="rect" id="node3" href="$classredhand_1_1texture2_d.html#a03da3510536848af115d53f52797f69e" title="This function retruns the width of the texture. " alt="" coords="204,71,337,112"/>
+</map>

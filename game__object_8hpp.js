@@ -1,7 +1,7 @@
 var game__object_8hpp =
 [
-    [ "game_object", "classgame__object.html", "classgame__object" ],
-    [ "createCircle", "game__object_8hpp.html#af923e74f965b48fddad84a30f1598038", null ],
-    [ "createHouse", "game__object_8hpp.html#a6574f38c71a39826c6b4374bb1357356", null ],
-    [ "createRecktangle", "game__object_8hpp.html#adbf6082e04c7e1fe43e9fc8b1f403a84", null ]
+    [ "game_object", "classredhand_1_1game__object.html", "classredhand_1_1game__object" ],
+    [ "createCircle", "game__object_8hpp.html#abf9ed3c6fe857ecaebb22a17c881d58c", null ],
+    [ "createHouse", "game__object_8hpp.html#abf5fbd89f2c08289d18080d01a9c3617", null ],
+    [ "createRecktangle", "game__object_8hpp.html#ada0a51eedd78c1898138e34476676ed8", null ]
 ];

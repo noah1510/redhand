@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['main',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp'],['../default_8frag.html#acdef7a1fd863a6d3770c1268cb06add3',1,'main():&#160;default.frag'],['../default_8vert.html#acdef7a1fd863a6d3770c1268cb06add3',1,'main():&#160;default.vert']]],
-  ['main_2ecpp',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['main',['main',['../default_8frag.html#acdef7a1fd863a6d3770c1268cb06add3',1,'main():&#160;default.frag'],['../default_8vert.html#acdef7a1fd863a6d3770c1268cb06add3',1,'main():&#160;default.vert']]],
   ['math_2ecpp',['math.cpp',['../math_8cpp.html',1,'']]],
   ['math_2ehpp',['math.hpp',['../math_8hpp.html',1,'']]],
-  ['move',['move',['../classgame__object.html#ab7809a878f1503a315bcd4a82c907254',1,'game_object']]],
-  ['movecamera',['moveCamera',['../classshader.html#ace6b5d10f1dee686a3bf7453c2fa7b46',1,'shader::moveCamera()'],['../classworld.html#a481d177f11e4f585b1cc8486e9f843f2',1,'world::moveCamera()']]]
+  ['move',['move',['../classredhand_1_1game__object.html#a437ee0c4e36fdba5c09dc8c5bbb745e9',1,'redhand::game_object']]],
+  ['movecamera',['moveCamera',['../classredhand_1_1shader.html#a94f91ee2173fa66e48c284119705cc47',1,'redhand::shader::moveCamera()'],['../classredhand_1_1world.html#ac99caa9256f2d3280ceb46af03e4606c',1,'redhand::world::moveCamera()']]]
 ];

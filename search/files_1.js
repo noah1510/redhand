@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['build_2esh',['build.sh',['../build_8sh.html',1,'']]]
+  ['clean_2esh',['clean.sh',['../clean_8sh.html',1,'']]]
 ];

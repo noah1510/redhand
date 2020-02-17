@@ -1,4 +1,0 @@
-<map id="createHouse" name="createHouse">
-<area shape="rect" id="node2" href="$classgame__object.html#a58895a96a0691163676878a26f8dfd8e" title="Construct a new game object object. " alt="" coords="149,5,328,32"/>
-<area shape="rect" id="node3" href="$classshader.html#a96125bbfeca28ec5fe01217a8249044c" title="The setInt functions set a uniform vector of the shader to given values. " alt="" coords="187,56,290,83"/>
-</map>

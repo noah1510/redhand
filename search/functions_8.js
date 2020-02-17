@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['layout',['layout',['../default_8vert.html#a3a88ac681ca472981d8ef1bb973ba524',1,'default.vert']]],
-  ['loadsound',['loadSound',['../classaudio_1_1_audio_handler.html#a7b5cab191398dcb0e87b4662191ab60f',1,'audio::AudioHandler']]]
+  ['init',['init',['../classredhand_1_1engine.html#a93a23ea94757150f5211357fc2a1cbf1',1,'redhand::engine']]],
+  ['initstb',['initSTB',['../namespaceredhand.html#a23e3126bdac3dd9d38317f257b27409d',1,'redhand']]],
+  ['isrunning',['isRunning',['../classredhand_1_1engine.html#ac737a2269fbdf19e4ab7c5c9387586b2',1,'redhand::engine']]]
 ];
