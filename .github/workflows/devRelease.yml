@@ -6,23 +6,28 @@ on:
       - dev*
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  pre-release:
+    name: "Pre Release"
+    runs-on: "ubuntu-latest"
     if: "!contains(github.event.head_commit.message, 'ci skip')"
-    
+
     steps:
     - uses: actions/checkout@v2
       with: 
         lfs: true
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: install dependencies
+      run:  bash scripts/dependencies.sh --ci
+    - name: setup the project
+      run:  bash scripts/setup.sh --ci
+    - name: build library
+      run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
+    - name: build testgame
+      run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        tag_name: dev-${{ github.sha }}
-        release_name: Development ${{ github.sha }}
-        body: |
-          automatic dev realease for commit ${{ github.sha }}
-        draft: false
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
         prerelease: true
+        title: "Development Build"
+        files: |
+          deploy/*.so
