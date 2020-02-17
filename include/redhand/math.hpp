@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+namespace redhand{
+
 /** This function calculates a sine with an angle in degrees
  * 
  * @param deg The angle in Degrees
@@ -15,3 +17,5 @@ float sinDeg(float deg);
  * @return float The cosine of that angle
  */
 float cosDeg(float deg);
+
+}//end of namespace

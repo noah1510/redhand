@@ -1,5 +1,3 @@
-#ifndef SHADER_H
-#define SHADER_H
 #pragma once
 
 #include <glad/glad.h> // include glad to get all the required OpenGL headers
@@ -14,6 +12,10 @@
 #include <sstream>
 #include <iostream>
 #include <mutex>
+
+#include "redhand/math.hpp"
+
+namespace redhand{
 
 class shader{
 private:
@@ -226,4 +228,4 @@ public:
     void setTextureScale(glm::vec2 scale);
 };
 
-#endif
+}//end of namespace

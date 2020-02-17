@@ -4,15 +4,15 @@
 #include "redhand/world.hpp"
 
 int game_init(
-    std::shared_ptr<world> startWorld
+    std::shared_ptr<redhand::world> startWorld
 );
 
 int main_game_logic(
-    engine* gameEngine
+    redhand::engine* gameEngine
 );
 
 
-int createTestworld(std::shared_ptr<world> testWorld);
-void processHouseMovement(GLFWwindow* window, game_object* obj);
-void processWorldInput(GLFWwindow* window, std::shared_ptr<world> activeWorld);
-void processGlobalInput(engine* game);
+int createTestworld(std::shared_ptr<redhand::world> testWorld);
+void processHouseMovement(GLFWwindow* window, redhand::game_object* obj);
+void processWorldInput(GLFWwindow* window, std::shared_ptr<redhand::world> activeWorld);
+void processGlobalInput(redhand::engine* game);

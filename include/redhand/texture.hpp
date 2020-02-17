@@ -5,6 +5,10 @@
 
 #include <iostream>
 
+#include "redhand/math.hpp"
+
+namespace redhand{
+
 void initSTB();
 
 class texture2D{
@@ -94,3 +98,4 @@ public:
 
 
 
+}//end of namespace

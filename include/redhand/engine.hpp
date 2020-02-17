@@ -20,11 +20,14 @@
 #include <mutex>
 #include <shared_mutex>
 
-#include "game_object.hpp"
-#include "shader.hpp"
-#include "texture.hpp"
-#include "world.hpp"
+#include "redhand/game_object.hpp"
+#include "redhand/shader.hpp"
+#include "redhand/texture.hpp"
+#include "redhand/world.hpp"
+#include "redhand/math.hpp"
 //#include "audio/AudioHandler.hpp"
+
+namespace redhand{
 
 ///This string provides a version in a pritable format.
 ///The first public version is 0.1.0 and from there it will be couted up.
@@ -210,4 +213,4 @@ public:
 
 };
 
-
+}//end of namespace

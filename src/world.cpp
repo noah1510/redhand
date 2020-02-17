@@ -1,6 +1,8 @@
 #include "redhand/world.hpp"
 
-world::world(){
+using namespace redhand;
+
+redhand::world::world(){
     WorldShaders = std::vector<shader*>(0);
     WorldTextures = std::vector<texture2D*>(0);
     WorldObjects = std::vector<game_object*>(0);
@@ -8,7 +10,7 @@ world::world(){
     setWindowSize(600,600);
 }
 
-world::~world(){
+redhand::world::~world(){
     WorldObjectsMutex.lock();
     //delete objects
     try{
@@ -45,7 +47,7 @@ world::~world(){
     
 }
 
-void world::tick(GLFWwindow* window){
+void redhand::world::tick(GLFWwindow* window){
     std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x : WorldObjects){
@@ -54,7 +56,7 @@ void world::tick(GLFWwindow* window){
 
 }
 
-void world::draw(){
+void redhand::world::draw(){
     std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x : WorldObjects){
@@ -63,7 +65,7 @@ void world::draw(){
 
 }
 
-void world::setWindowSize(int width, int height){
+void redhand::world::setWindowSize(int width, int height){
 
     if(width != windowWidth || height != windowHeight){
         windowWidth = width;
@@ -84,7 +86,7 @@ void world::setWindowSize(int width, int height){
 
 }
 
-int world::addShader(shader* shade){
+int redhand::world::addShader(shader* shade){
     if(shade == nullptr || shade == NULL){
         return -1;
     }
@@ -103,7 +105,7 @@ int world::addShader(shader* shade){
     }
 }
 
-int world::addTexture(texture2D* tex){
+int redhand::world::addTexture(texture2D* tex){
     if(tex == nullptr || tex == NULL){
         return -1;
     }
@@ -120,7 +122,7 @@ int world::addTexture(texture2D* tex){
     }
 }
 
-int world::addObject(game_object* obj){
+int redhand::world::addObject(game_object* obj){
     if(obj == nullptr || obj == NULL){
         return -1;
     }
@@ -140,7 +142,7 @@ int world::addObject(game_object* obj){
     }
 }
 
-int world::removeShader(std::string name){
+int redhand::world::removeShader(std::string name){
     for(auto x:WorldShaders){
         if(x->getName().compare(name) == 0){
             try{
@@ -157,7 +159,7 @@ int world::removeShader(std::string name){
     return 1;    
 }
 
-int world::removeTexture(std::string name){
+int redhand::world::removeTexture(std::string name){
     for(auto x:WorldTextures){
         if(x->getName().compare(name) == 0){
             try{
@@ -174,7 +176,7 @@ int world::removeTexture(std::string name){
     return 1; 
 }
 
-int world::removeObject(std::string name){
+int redhand::world::removeObject(std::string name){
     std::scoped_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x:WorldObjects){
@@ -194,7 +196,7 @@ int world::removeObject(std::string name){
 
 }
 
-shader* world::getShaderByName(std::string name){
+shader* redhand::world::getShaderByName(std::string name){
 
     for(auto x:WorldShaders){
        if((x->getName()).compare(name) == 0){
@@ -206,7 +208,7 @@ shader* world::getShaderByName(std::string name){
     
 }
 
-texture2D* world::getTextureByName(std::string name){
+texture2D* redhand::world::getTextureByName(std::string name){
 
     for(auto x:WorldTextures){
        if((x->getName()).compare(name) == 0){
@@ -219,7 +221,7 @@ texture2D* world::getTextureByName(std::string name){
     
 }
 
-game_object* world::getObjectByName(std::string name){
+game_object* redhand::world::getObjectByName(std::string name){
     std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x:WorldObjects){
@@ -232,7 +234,7 @@ game_object* world::getObjectByName(std::string name){
     
 }
 
-void world::setCamera(float pos_x, float pos_y){
+void redhand::world::setCamera(float pos_x, float pos_y){
     cameraPosition[0] = pos_x;
     cameraPosition[1] = pos_y;
 
@@ -241,7 +243,7 @@ void world::setCamera(float pos_x, float pos_y){
     }
 }
 
-void world::moveCamera(float delta_pos_x, float delta_pos_y){
+void redhand::world::moveCamera(float delta_pos_x, float delta_pos_y){
     cameraPosition[0] += delta_pos_x;
     cameraPosition[1] += delta_pos_y;
 

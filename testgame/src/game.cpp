@@ -1,7 +1,7 @@
 #include "game.hpp"
 
 int game_init(
-    std::shared_ptr<world> startWorld
+    std::shared_ptr<redhand::world> startWorld
 ){
     int exitCode = 0;
 
@@ -14,7 +14,7 @@ int game_init(
 }
 
 int main_game_logic(
-    engine* gameEngine
+    redhand::engine* gameEngine
 ){
     //process the input
     processGlobalInput(gameEngine);
@@ -32,10 +32,10 @@ int main_game_logic(
 
 }
 
-int createTestworld(std::shared_ptr<world> testWorld){
+int createTestworld(std::shared_ptr<redhand::world> testWorld){
     //add shaders to world
 
-    if( testWorld->addShader(new shader(
+    if( testWorld->addShader(new redhand::shader(
         "shaders/default.vert",
         "shaders/default.frag",
         "default"
@@ -50,7 +50,7 @@ int createTestworld(std::shared_ptr<world> testWorld){
 
     //Add textures to world
     if(testWorld->addTexture(
-        new texture2D(
+        new redhand::texture2D(
             "textures/open/crate.png",
             "house"
         )) < 0){
@@ -58,7 +58,7 @@ int createTestworld(std::shared_ptr<world> testWorld){
     }
 
     if(testWorld->addTexture(
-        new texture2D(
+        new redhand::texture2D(
             "textures/open/house.png",
             "bg"
         )) < 0){
@@ -73,7 +73,7 @@ int createTestworld(std::shared_ptr<world> testWorld){
         float bottomLeft[2] = {-100.0f, -100.0f};
         float color[3] = {0.0f, 0.6f, 1.0f};
         if( testWorld->addObject(
-            createRecktangle(
+            redhand::createRecktangle(
                 bottomLeft,
                 200.0f,
                 200.0f,
@@ -95,7 +95,7 @@ int createTestworld(std::shared_ptr<world> testWorld){
         float iColorSunTwo[3] = {0.0f, 0.8f, 1.0f};
         float oColorSunTwo[3] = {0.8f, 0.0f, 1.0f};
         if( testWorld->addObject(
-            createCircle(
+            redhand::createCircle(
                 posSunTwo,
                 0.6f,
                 edges,
@@ -112,7 +112,7 @@ int createTestworld(std::shared_ptr<world> testWorld){
 
     // sun one
     float posSunOne[2] = {0.8f,0.45f};
-    if( testWorld->addObject(createCircle(posSunOne, 0.35f, edges, NULL, NULL, testWorld->getShaderByName("default"), nullptr)) < 0){
+    if( testWorld->addObject(redhand::createCircle(posSunOne, 0.35f, edges, NULL, NULL, testWorld->getShaderByName("default"), nullptr)) < 0){
         return -3;
     }
     testWorld->getObjectByName("game_object")->setName("sun1");
@@ -125,13 +125,13 @@ int createTestworld(std::shared_ptr<world> testWorld){
         std::vector <float> trig_texels = {0.0f,0.0f, 1.0f*10.0f,0.0f, 0.5f*10.0f,1.0f*10.0f};
         std::vector <float> trig_pos = {-0.4f,-0.4f};
         if( testWorld->addObject(
-            new game_object(
+            new redhand::game_object(
                 trig_points,
                 trig_indicies,
                 trig_colors,
                 testWorld->getShaderByName("default"),
                 GL_DYNAMIC_DRAW,
-                [](shader* shade){},
+                [](redhand::shader* shade){},
                 {0.5f,0.5f},
                 0.0f,
                 trig_pos,
@@ -143,13 +143,13 @@ int createTestworld(std::shared_ptr<world> testWorld){
         }
         testWorld->getObjectByName("game_object")->setName("trig");
 
-        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow* window, game_object* obj){
+        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow* window, redhand::game_object* obj){
             obj->setRotation((float)glfwGetTime()*20.0f);
         });
     }
 
     //house
-    if( testWorld->addObject(createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) < 0){
+    if( testWorld->addObject(redhand::createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) < 0){
         return -3;
     }
     testWorld->getObjectByName("game_object")->setName("house");
@@ -159,7 +159,7 @@ int createTestworld(std::shared_ptr<world> testWorld){
     return 0;
 }
 
-void processHouseMovement(GLFWwindow* window, game_object* obj){
+void processHouseMovement(GLFWwindow* window, redhand::game_object* obj){
     //move the house
     std::vector<float> deltaPosition = {0.0f,0.0f};
 
@@ -190,7 +190,7 @@ void processHouseMovement(GLFWwindow* window, game_object* obj){
 
 }
 
-void processWorldInput(GLFWwindow* window, std::shared_ptr<world> activeWorld){
+void processWorldInput(GLFWwindow* window, std::shared_ptr<redhand::world> activeWorld){
     //move the camera
     std::vector<float> deltaCamera = {0.0f,0.0f};
 
@@ -210,7 +210,7 @@ void processWorldInput(GLFWwindow* window, std::shared_ptr<world> activeWorld){
 
 }
 
-void processGlobalInput(engine* game){
+void processGlobalInput(redhand::engine* game){
 
     auto window = game->getWindow();
 

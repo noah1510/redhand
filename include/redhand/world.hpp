@@ -4,6 +4,8 @@
 
 #include "redhand/game_object.hpp"
 
+namespace redhand{
+ 
 class world{
 private:
     ///The mutex for allowing only one thread to acces the world objects at once
@@ -142,3 +144,5 @@ public:
      */
     void draw();
 };
+
+}//end of namespace

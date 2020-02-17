@@ -1,10 +1,3 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 #include <iostream>
 //#include <iterator>
 //#include <chrono>
@@ -27,10 +20,10 @@ int main(){
     int exitCode = 0;
 
     //create the engine object
-    std::shared_ptr<engine> gameEngine(new engine());
+    std::shared_ptr<redhand::engine> gameEngine(new redhand::engine());
 
     //get the current config of the engine
-    engine_config conf = gameEngine->getConfig();
+    redhand::engine_config conf = gameEngine->getConfig();
     
     //change the configuration and set the new config
     conf.title = "Redhand Test Game";

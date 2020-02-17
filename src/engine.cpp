@@ -1,12 +1,14 @@
 #include "redhand/engine.hpp"
 
-engine::engine(){
+using namespace redhand;
+
+redhand::engine::engine(){
 
     configuration = DEFAULT_ENGINE_CONFIG;
     
 }
 
-engine::~engine(){
+redhand::engine::~engine(){
     glfwSetWindowShouldClose(window, true);
 
     //try clearing up
@@ -16,15 +18,15 @@ engine::~engine(){
     glfwTerminate();
 }
 
-void engine::setConfig(engine_config conf){
+void redhand::engine::setConfig(engine_config conf){
     configuration = conf;
 }
 
-engine_config engine::getConfig(){
+engine_config redhand::engine::getConfig(){
     return configuration;
 }
 
-void engine::init(){
+void redhand::engine::init(){
     //init glfw
     glfwInit(); 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, configuration.OPENGL_VERSION_MAJOR);
@@ -70,7 +72,7 @@ void engine::init(){
 
 }
 
-std::shared_ptr<world> engine::getActiveWorld(){
+std::shared_ptr<world> redhand::engine::getActiveWorld(){
     if(errorCode < 0){
         return nullptr;
     }
@@ -78,7 +80,7 @@ std::shared_ptr<world> engine::getActiveWorld(){
     return std::shared_ptr<world>(activeWorld);
 }
 
-int engine::setActiveWorld(std::shared_ptr<world> newWorld){
+int redhand::engine::setActiveWorld(std::shared_ptr<world> newWorld){
     
     if(newWorld != nullptr){
         activeWorld.reset();
@@ -93,26 +95,26 @@ int engine::setActiveWorld(std::shared_ptr<world> newWorld){
 
 }
 
-void engine::clearBuffers(){
+void redhand::engine::clearBuffers(){
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 }
 
-GLFWwindow* engine::getWindow(){
+GLFWwindow* redhand::engine::getWindow(){
     return window;
 }
 
-int engine::getErrorCode(){
+int redhand::engine::getErrorCode(){
     return errorCode;
 }
 
-int engine::setPhysicsLoopFunction(int loop(engine*)){
+int redhand::engine::setPhysicsLoopFunction(int loop(engine*)){
     physicsLoopFunction = loop;
 
     return errorCode;
 }
 
-bool engine::isRunning(){
+bool redhand::engine::isRunning(){
     runningReadMutex.lock_shared();
 
     if (running){
@@ -126,7 +128,7 @@ bool engine::isRunning(){
 }
 
 
-void engine::stopGame(int error){
+void redhand::engine::stopGame(int error){
     std::scoped_lock<std::shared_mutex> lock(runningReadMutex);
 
     if(error != 0){
@@ -137,7 +139,7 @@ void engine::stopGame(int error){
 }
 
 
-int engine::changeWorld(std::shared_ptr<world> newWorld){
+int redhand::engine::changeWorld(std::shared_ptr<world> newWorld){
     //if not a nullptr change world
     if(newWorld == nullptr){
         stopGame(-5);
@@ -152,7 +154,7 @@ int engine::changeWorld(std::shared_ptr<world> newWorld){
     }
 }
 
-int engine::runGame(){
+int redhand::engine::runGame(){
     running = true;
 
     //start the physics thread
@@ -208,6 +210,6 @@ int engine::runGame(){
     return errorCode;
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height){
+void redhand::framebuffer_size_callback(GLFWwindow* window, int width, int height){
     glViewport(0, 0, width, height);
 }
