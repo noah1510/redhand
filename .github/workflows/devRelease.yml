@@ -3,7 +3,7 @@ name: create automatic development release
 on:
   push:
     branches:
-      - dev*
+      - master
 
 jobs:
   pre-release:
