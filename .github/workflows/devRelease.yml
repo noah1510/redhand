@@ -19,6 +19,8 @@ jobs:
     - uses: actions/checkout@v1
       with: 
         lfs: true
+    - name: clean tag
+      run: git push --delete origin dev-$GITHUB_SHA
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
@@ -27,8 +29,8 @@ jobs:
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
       run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"
-    - name: pack linux files
-      run: bash scripts/pack.sh lib-${{ matrix.os }}-$GITHUB_SHA
+    - name: pack files
+      run: bash scripts/pack.sh "lib-${{ matrix.os }}-$GITHUB_SHA"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
