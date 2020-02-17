@@ -1,4 +1,4 @@
-name: automatic development realease
+name: create automatic development release
 
 on:
   push:
@@ -7,28 +7,13 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        compiler: [gcc]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     
     steps:
     - uses: actions/checkout@v2
       with: 
         lfs: true
-    - name: install dependencies
-      run:  bash scripts/dependencies.sh --ci
-    - name: setup the project
-      run:  bash scripts/setup.sh --ci
-    - name: build library
-      run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
-    - name: build testgame
-      run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"
-    - name: pack files
-      run: bash scripts/pack.sh "lib-${{ matrix.os }}-$GITHUB_SHA"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -36,18 +21,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: dev-${{ github.sha }}
-        release_name: Release ${{ github.sha }}
+        release_name: Development ${{ github.sha }}
         body: |
-          automativ dev realease
+          automatic dev realease for commit ${{ github.sha }}
         draft: false
         prerelease: true
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./deploy/lib-${{ matrix.os }}-${{ github.sha }}.zip
-        asset_name: lib-${{ matrix.os }}-${{ github.sha }}.zip
-        asset_content_type: application/zip
