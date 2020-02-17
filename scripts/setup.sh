@@ -54,16 +54,6 @@ then
     GLFWLIB="libglfw.so"
     GLFWDEPLOY="libglfw.so.3"
 
-    SOURCESFMLAUDIOLIB="libsfml-audio.so.2.5" 
-    SOURCESFMLGRAPICSLIB="libsfml-graphics.so.2.5" 
-    SOURCESFMLWINDOWLIB="libsfml-window.so.2.5"
-    SOURCESFMLSYSTEMLIB="libsfml-system.so.2.5"
-
-    SFMLAUDIOLIB="libsfml-audio.so" 
-    SFMLGRAPICSLIB="libsfml-graphics.so" 
-    SFMLWINDOWLIB="libsfml-window.so"
-    SFMLSYSTEMLIB="libsfml-system.so"
-
     if [ $VSCODE -eq "1" ]
     then
       cp -r "configurations/linux/.vscode" "."
@@ -76,11 +66,6 @@ then
     echo "script running on mac osx"
 
     GLFWLIB="libglfw.so"
-    GLFWDEPLOY="libglfw.so.3"
-    SFMLAUDIOLIB="libsfml-audio.so" 
-    SFMLGRAPICSLIB="libsfml-graphics.so" 
-    SFMLWINDOWLIB="libsfml-window.so"
-    SFMLSYSTEMLIB="libsfml-system.so"
 
     if [ $VSCODE -eq "1" ]
     then
@@ -98,16 +83,6 @@ then
 
     GLFWLIB="glfw3.dll"
     GLFWDEPLOY="glfw3.dll"
-
-    SOURCESFMLAUDIOLIB="sfml-audio-2.dll" 
-    SOURCESFMLGRAPICSLIB="sfml-graphics-2.dll" 
-    SOURCESFMLWINDOWLIB="sfml-window-2.dll"
-    SOURCESFMLSYSTEMLIB="sfml-system-2.dll"
-
-    SFMLAUDIOLIB="sfml-audio-2.dll" 
-    SFMLGRAPICSLIB="sfml-graphics-2.dll" 
-    SFMLWINDOWLIB="sfml-window-2.dll"
-    SFMLSYSTEMLIB="sfml-system-2.dll"
 
     if [ $VSCODE -eq "1" ]
     then
@@ -178,14 +153,6 @@ else
     exit 2
 fi
 
-cp -r "dependencies/SFML/include/SFML" "include"
-if [ $? -eq 0 ]
-then
-    echo "Successfully copied SFML"
-else
-    echo "Could not copy SFML" >&2
-    exit 2
-fi
 
 cp -r "dependencies/glfw/include/GLFW" "include/GLFW"
 if [ $? -eq 0 ]
@@ -214,24 +181,6 @@ else
 fi
 cd "../.."
 
-#compiling SFML
-mkdir -p "build/SFML"
-cd "build/SFML"
-cmake -G "Ninja" -DCMAKE_BUILD_TYPE="Release" -DBUILD_SHARED_LIBS=ON "../../dependencies/SFML"
-ninja -j"$THREADS"
-
-if [ $? -eq 0 ]
-then
-  echo "Successfully compiled SFML"
-else
-  echo "Could not compile SFML" >&2
-  cd "../.."
-  exit 3
-fi
-cd "../.."
-
-rm -rf "dependencies/SFML/bin"
-
 #copy results
 mkdir -p "lib"
 mkdir -p "build/$BUILDNAME"
@@ -240,30 +189,10 @@ mkdir -p "deploy"
 cp "build/glfw/src/$GLFWLIB" "lib"
 cp "build/glfw/src/$GLFWDEPLOY" "lib"
 
-cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "lib/$SOURCESFMLAUDIOLIB"
-cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "lib/$SOURCESFMLGRAPICSLIB"
-cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "lib/$SOURCESFMLWINDOWLIB"
-cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "lib/$SOURCESFMLSYSTEMLIB"
-
-cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "lib/$SFMLAUDIOLIB"
-cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "lib/$SFMLGRAPICSLIB"
-cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "lib/$SFMLWINDOWLIB"
-cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "lib/$SFMLSYSTEMLIB"
-
-
 cp "build/glfw/src/$GLFWLIB" "build/$BUILDNAME"
-cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "build/$BUILDNAME"
-cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "build/$BUILDNAME"
-cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "build/$BUILDNAME"
-cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "build/$BUILDNAME"
 
 cp "build/glfw/src/$GLFWLIB" "deploy"
 cp "build/glfw/src/$GLFWDEPLOY" "deploy"
-cp "build/SFML/lib/$SOURCESFMLAUDIOLIB" "deploy"
-cp "build/SFML/lib/$SOURCESFMLGRAPICSLIB" "deploy"
-cp "build/SFML/lib/$SOURCESFMLWINDOWLIB" "deploy"
-cp "build/SFML/lib/$SOURCESFMLSYSTEMLIB" "deploy"
-
 
 cp -r "dependencies/glad/include" "."
 cp -r "dependencies/glad/src/glad.c" "src"

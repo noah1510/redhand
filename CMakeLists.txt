@@ -51,7 +51,6 @@ find_package(OpenGL REQUIRED)
 add_library(redhand SHARED
                         src/glad.c
                         src/math.cpp
-                        #src/audio/AudioHandler.cpp
                         src/shader.cpp
                         src/texture.cpp
                         src/game_object.cpp
@@ -61,12 +60,10 @@ add_library(redhand SHARED
 if (UNIX)
     target_link_libraries(redhand libglfw.so)
     target_link_libraries(redhand dl)
-    #target_link_libraries(${OUTPUT} sfml-graphics sfml-audio sfml-window sfml-system)
 endif (UNIX)
 
 if (WIN32)
     target_link_libraries(redhand glfw3.dll)
-    #target_link_libraries(${OUTPUT} sfml-graphics-2.dll sfml-audio-2.dll sfml-window-2.dll sfml-system-2.dll)
 endif (WIN32)
 
 install(TARGETS redhand 
