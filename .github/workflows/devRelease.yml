@@ -26,17 +26,17 @@ jobs:
     - name: build library
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
-      run:  bash scripts/testgame.sh -j 2 -o "testgame-${{ GITHUB_SHA }}"
+      run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"
     - name: pack linux files
-      run: bash scripts/pack.sh lib-${{ matrix.os }}-${{ GITHUB_SHA }}
+      run: bash scripts/pack.sh lib-${{ matrix.os }}-$GITHUB_SHA
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: dev-${{ GITHUB_SHA }}
-        release_name: Release ${{ GITHUB_SHA }}
+        tag_name: dev-$GITHUB_SHA
+        release_name: Release $GITHUB_SHA
         body: |
           automativ dev realease
         draft: false
@@ -48,6 +48,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./deploy/lib-${{ matrix.os }}-${{ GITHUB_SHA }}.zip
-        asset_name: lib-${{ matrix.os }}-${{ GITHUB_SHA }}.zip
+        asset_path: ./deploy/lib-${{ matrix.os }}-$GITHUB_SHA.zip
+        asset_name: lib-${{ matrix.os }}-$GITHUB_SHA.zip
         asset_content_type: application/zip
