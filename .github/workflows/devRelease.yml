@@ -1,4 +1,4 @@
-name: doc generation
+name: automatic development realease
 
 on:
   push:
@@ -27,15 +27,27 @@ jobs:
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
       run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"
+    - name: pack linux files
+      run: zip lib-linux-$GITHUB_SHA deploy/*.so scripts/run.sh shaders
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: dev-$GITHUB_SHA
+        release_name: Release $GITHUB_SHA-
         body: |
           automativ dev realease
         draft: false
         prerelease: true
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./lib-linux-$GITHUB_SHA.zip
+        asset_name: lib-linux-$GITHUB_SHA.zip
+        asset_content_type: application/zip
