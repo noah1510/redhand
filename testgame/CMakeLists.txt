@@ -73,6 +73,6 @@ endif (UNIX)
 
 if (WIN32)
     target_link_libraries(${OUTPUT} glfw3.dll)
-    target_link_libraries(${OUTPUT} redhand.dll)
+    target_link_libraries(${OUTPUT} libredhand.dll)
     #target_link_libraries(${OUTPUT} sfml-graphics-2.dll sfml-audio-2.dll sfml-window-2.dll sfml-system-2.dll)
 endif (WIN32)

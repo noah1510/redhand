@@ -68,7 +68,7 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    LIBRARY="redhand.dll"
+    LIBRARY="libredhand.dll"
 
     #alias make='mingw32-make'
 
