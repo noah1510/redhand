@@ -2,7 +2,7 @@ name: upload automatic development release
 
 on:
   release:
-    types: [published]
+    types: [created]
 
 jobs:
   build:
