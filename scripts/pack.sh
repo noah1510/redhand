@@ -1,13 +1,14 @@
 #!/bin/bash
 
-NAME=$1
+ZIPNAME=$1
 
 if [ "$OSTYPE" == "linux-gnu" ]
 then
     # Linux
     echo "script running on linux"
+    echo "name of the zip:$ZIPNAME"
 
-    zip deploy/$NAME deploy/*.so scripts/run.sh shaders
+    zip deploy/$ZIPNAME deploy/*.so scripts/run.sh shaders
 
 elif [ "$OSTYPE" == "darwin"* ]
 then
