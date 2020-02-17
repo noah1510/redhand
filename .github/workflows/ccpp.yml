@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     strategy:
       fail-fast: false
       matrix:
@@ -21,5 +20,7 @@ jobs:
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
       run:  bash scripts/setup.sh --ci
-    - name: build
+    - name: build library
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
+    - name: build testgame
+      run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"

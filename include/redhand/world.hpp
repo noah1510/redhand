@@ -2,12 +2,14 @@
 
 #include <vector>
 
-#include "game_object.hpp"
+#include "redhand/game_object.hpp"
 
+namespace redhand{
+ 
 class world{
 private:
     ///The mutex for allowing only one thread to acces the world objects at once
-    std::shared_timed_mutex WorldObjectsMutex;
+    std::shared_mutex WorldObjectsMutex;
 
     /// This vector holds all the game_objetcs in this world
     std::vector <game_object*> WorldObjects;
@@ -66,21 +68,21 @@ public:
      * @param shade a pointer to the shader which should be removed 
      * @return 0 if everything worked, 1 if no object was found, negative if something bad happened
     */
-    int removeShader(shader* shade);
+    int removeShader(std::string name);
 
     /**
      * This function removes a texture from its world and delete the texture.
      * @param tex a pointer to the texture which should be removed 
      * @return 0 if everything worked, 1 if no object was found, negative if something bad happened
     */
-    int removeTexture(texture2D* tex);
+    int removeTexture(std::string name);
 
     /**
      * This function removes an object from its world and delete the object.
      * @param obj a pointer to the object which should be removed 
      * @return 0 if everything worked, 1 if no object was found, negative if something bad happened
     */
-    int removeObject(game_object* obj);
+    int removeObject(std::string name);
     
     /**
      * This function returns a pointer to the first shader with the given name
@@ -142,3 +144,5 @@ public:
      */
     void draw();
 };
+
+}//end of namespace

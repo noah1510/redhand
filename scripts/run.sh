@@ -4,7 +4,7 @@ if [ $1 ]
 then
     BUILDNAME="$1"
 else 
-    BUILDNAME="main"
+    BUILDNAME="testgame"
 fi
 
 REPOROOT="$(pwd)"

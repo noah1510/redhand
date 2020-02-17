@@ -1,13 +1,18 @@
-#include "texture.hpp"
+#include "redhand/texture.hpp"
 
+using namespace redhand;
+
+#ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
+#endif
+
 #include "stb/stb_image.h"
 
-void initSTB(){
+void redhand::initSTB(){
     stbi_set_flip_vertically_on_load(true); 
 }
 
-texture2D::texture2D(const char* filename, int Wrap_S, int Wrap_T){
+redhand::texture2D::texture2D(const char* filename, int Wrap_S, int Wrap_T){
     glGenTextures(1, &id);
     glBindTexture(GL_TEXTURE_2D, id);
 
@@ -31,7 +36,7 @@ texture2D::texture2D(const char* filename, int Wrap_S, int Wrap_T){
     stbi_image_free(data);
 }
 
-texture2D::texture2D(
+redhand::texture2D::texture2D(
     const char* filename
 ):texture2D(
     filename,
@@ -39,7 +44,7 @@ texture2D::texture2D(
     GL_REPEAT
 ){}
 
-texture2D::texture2D(
+redhand::texture2D::texture2D(
     const char* filename, 
     std::string name
 ):texture2D(
@@ -50,7 +55,7 @@ texture2D::texture2D(
     texture_name = name;
 }
 
-texture2D::texture2D(
+redhand::texture2D::texture2D(
     const char* filename,
      int Wrap_S, 
      int Wrap_T, 
@@ -63,30 +68,30 @@ texture2D::texture2D(
     texture_name = name;
 }
 
-bool texture2D::hasErrord(){
+bool redhand::texture2D::hasErrord(){
     return errord;
 }
 
-unsigned int texture2D::getID(){
+unsigned int redhand::texture2D::getID(){
     return id;
 }
 
-void texture2D::bind(int unit = 0){
+void redhand::texture2D::bind(int unit = 0){
     glActiveTexture(GL_TEXTURE0 + unit);
     glBindTexture(GL_TEXTURE_2D, id);
 }
 
-int texture2D::getWidth(){
+int redhand::texture2D::getWidth(){
     return width;
 }
 
-int texture2D::getHeight(){
+int redhand::texture2D::getHeight(){
     return height;
 }
 
-void texture2D::setName(std::string name){
+void redhand::texture2D::setName(std::string name){
     texture_name = name;
 }
-std::string texture2D::getName(){
+std::string redhand::texture2D::getName(){
     return texture_name;
 }

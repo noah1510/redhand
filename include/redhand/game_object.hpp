@@ -1,7 +1,7 @@
 #pragma once
-#include "shader.hpp"
-#include "texture.hpp"
-#include "math.hpp"
+#include "redhand/shader.hpp"
+#include "redhand/texture.hpp"
+#include "redhand/math.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -16,6 +16,8 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
+namespace redhand{
 
 /**
  * @brief The game_object is a simple object which can be displayed in a world.
@@ -411,3 +413,5 @@ game_object* createRecktangle(
     texture2D* tex,
     int DrawingMode,
     float textureScale = 1.0f);
+
+}//end of namespace

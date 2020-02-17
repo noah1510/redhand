@@ -10,12 +10,23 @@ BUILDARGS=$@
 ./scripts/build.sh $BUILDARGS
 if [ $? -eq 0 ]
 then
-  echo "Successfully built"
+  echo "Successfully built library"
 else
   echo "Could not build" >&2
   cd "../.."
   set +x
-  exit 4
+  exit 1
+fi
+
+./scripts/testgame.sh $BUILDARGS
+if [ $? -eq 0 ]
+then
+  echo "Successfully built testgame"
+else
+  echo "Could not build" >&2
+  cd "../.."
+  set +x
+  exit 2
 fi
 
 ./scripts/run.sh
@@ -26,5 +37,5 @@ else
   echo "Could not run" >&2
   cd "../.."
   set +x
-  exit 4
+  exit 3
 fi

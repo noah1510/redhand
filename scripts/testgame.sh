@@ -1,7 +1,7 @@
 #!/bin/bash
 
 THREADS="3"
-LIBBUILDNAME="lib"
+BUILDNAME="testgame"
 
 #parse parameter
 pars=$#
@@ -12,9 +12,9 @@ do
       shift
       if [ $1 ]
       then
-        LIBBUILDNAME="$1"
+        BUILDNAME="$1"
       else
-        LIBBUILDNAME="lib"
+        BUILDNAME="lib"
       fi
       shift
       ;;
@@ -52,14 +52,14 @@ then
     # Linux
     echo "script running on linux"
 
-    LIBRARY="libredhand.so"
+    EXECUTABLE="$PROJECTNAME-$BUILDNAME"
 
 elif [ "$OSTYPE" == "darwin"* ]
 then
     # Mac OSX
     echo "script running on mac osx"
 
-    LIBRARY="libredhand.so"
+    EXECUTABLE="$PROJECTNAME-$BUILDNAME"
         
 elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then
@@ -68,7 +68,7 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    LIBRARY="libredhand.dll"
+    EXECUTABLE="$PROJECTNAME-$BUILDNAME.exe"
 
     #alias make='mingw32-make'
 
@@ -80,14 +80,14 @@ else
 fi
 
 echo "number of THREADS:$THREADS"
-echo "buildname:$LIBBUILDNAME"
+echo "buildname:$BUILDNAME"
 
 mkdir -p "build"
 
 #build actual project
-mkdir -p "build/$LIBBUILDNAME"
-cd "build/$LIBBUILDNAME"
-cmake -G "Ninja" -DREPOROOT=$REPOROOT "../.."
+mkdir -p "build/$BUILDNAME"
+cd "build/$BUILDNAME"
+cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../../testgame"
 ninja -j"$THREADS"
 if [ $? -eq 0 ]
 then
@@ -98,8 +98,7 @@ else
   exit 4
 fi
 cd "../.."
-cp -r "build/$LIBBUILDNAME/$LIBRARY" "deploy"
-cp -r "build/$LIBBUILDNAME/$LIBRARY" "lib"
+cp -r "build/$BUILDNAME/$EXECUTABLE" "deploy"
 
 LD_LIBRARY_PATH="$REPOROOT/lib"
 export LD_LIBRARY_PATH
