@@ -1,8 +1,8 @@
 name: doc generation
 
-on: 
-  push:	
-    branches:	
+on:
+  push:
+    branches:
       - master
 
 jobs:

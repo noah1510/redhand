@@ -1,6 +1,9 @@
-name: CI
+name: doc generation
 
-on: [push]
+on:
+  push:
+    branches:
+      - dev*
 
 jobs:
   build:
@@ -8,7 +11,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        compiler: [gcc, clang]
+        compiler: [gcc]
     runs-on: ${{ matrix.os }}
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     
@@ -24,3 +27,15 @@ jobs:
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
       run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: |
+          automativ dev realease
+        draft: false
+        prerelease: true
