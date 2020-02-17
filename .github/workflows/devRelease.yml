@@ -16,11 +16,9 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with: 
         lfs: true
-    - name: clean tag
-      run: git push --delete origin dev-$GITHUB_SHA
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
@@ -37,8 +35,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: dev-$GITHUB_SHA
-        release_name: Release $GITHUB_SHA
+        tag_name: dev-${{ github.sha }}
+        release_name: Release ${{ github.sha }}
         body: |
           automativ dev realease
         draft: false
@@ -50,6 +48,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./deploy/lib-${{ matrix.os }}-$GITHUB_SHA.zip
-        asset_name: lib-${{ matrix.os }}-$GITHUB_SHA.zip
+        asset_path: ./deploy/lib-${{ matrix.os }}-${{ github.sha }}.zip
+        asset_name: lib-${{ matrix.os }}-${{ github.sha }}.zip
         asset_content_type: application/zip
