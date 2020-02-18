@@ -35,16 +35,14 @@ int main_game_logic(
 int createTestworld(std::shared_ptr<redhand::world> testWorld){
     //add shaders to world
 
-    if( testWorld->addShader(new redhand::shader(
-        "shaders/default.vert",
-        "shaders/default.frag",
-        "default"
-        )
-    ) < 0){
+    auto* shader1 = new redhand::shader("default");
+    if( testWorld->addShader(shader1) < 0){
+        std::cerr << "Got error while adding shader" << std::endl;
         return -1;
     }
 
     if(testWorld->getShaderByName("default") == nullptr){
+        std::cerr << "Got nullpointer as shader" << std::endl;
         return -20;
     }
 

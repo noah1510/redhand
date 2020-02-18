@@ -2,7 +2,7 @@
 
 THREADS="3"
 BUILDNAME="testgame"
-
+BUILDLIB="0"
 #parse parameter
 pars=$#
 for ((i=1;i<=pars;i+=2))
@@ -26,13 +26,18 @@ do
       fi
       shift
       ;;
+    "--lib")
+      BUILDLIB="1"
+      shift
+      ;;
     "--help")
-      echo "This script is used to build the shared library and copy it in the deploy folder."
+      echo "This script is used to build the testgame and copy it in the deploy folder."
       echo "Usage: scripts/build.sh [options]"
       echo "Options:"
       echo "    --help              Display this information"
       echo "    -j [threadnumber]   Build the project with the specified number of threads."
       echo "    -o [buildname]      Build the project with the specified buildname defaults to main"
+      echo "    --lib               Also build the library"
       echo ""
       echo "view the source on https://github.com/noah1510/redhand"
       exit 1
@@ -43,6 +48,14 @@ do
       ;;
   esac
 done
+
+if [ "$BUILDLIB" == "1" ]
+then
+  echo "building library"
+  bash scripts/build.sh -j "$THREADS"
+  echo "finished build of lib"
+  echo ""
+fi
 
 REPOROOT="$(pwd)"
 PROJECTNAME="redhand"

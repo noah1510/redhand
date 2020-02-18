@@ -14,6 +14,7 @@
 #include <mutex>
 
 #include "redhand/math.hpp"
+#include "redhand/shaderSource.hpp"
 
 namespace redhand{
 
@@ -27,6 +28,9 @@ private:
 
     ///true if an error happened
     bool errord = false;
+
+    ///true if shader has been fully constructed
+    bool initilized = false;
 
     ///The position of the camera
     glm::vec3 cameraVector = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -50,6 +54,13 @@ public:
     shader();
 
     /**
+     * This constructor creates a shader with a given name.
+     * The default vertex and fragment shaders from the shaderSource.hpp will be used.
+     * @param name The name of the Shader
+     */
+    shader(const char* name);
+
+    /**
      * This constructor creates a shader from a given vertex and fragment shader.
      * The given paths are relative to the executeable.
      * @param vertexPath The Path to the vertex Shader
@@ -65,6 +76,12 @@ public:
      * @param name The name of the Shader
      */
     shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string name);
+
+    std::string loadShaderCodeFromFile(const char* fileLocation);
+
+    unsigned int compileShader(const char* shaderCode, int shaderType);
+
+    void linkShader(unsigned int vertexShader, unsigned int fragmentShader);
 
     /**
      * This function returns true if an error happend during the setup of the shader.
