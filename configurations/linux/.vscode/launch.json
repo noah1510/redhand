@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "g++-7 build and debug active file",
+            "name": "build and debug testgame",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/deploy/redhand-main",
+            "program": "${workspaceFolder}/deploy/redhand-testgame",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -22,7 +22,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "g++-7 build active file",
+            "preLaunchTask": "build testgame",
             "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
