@@ -49,6 +49,12 @@ do
   esac
 done
 
+if [ "$THREADS" == "3" ]
+then
+  THREADS="$(nproc)"
+  THREADS="$(($THREADS+1))"
+fi
+
 if [ "$BUILDLIB" == "1" ]
 then
   echo "building library"
