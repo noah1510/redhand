@@ -152,6 +152,8 @@ int redhand::engine::changeWorld(std::shared_ptr<world> newWorld){
         stopGame(error);
         return -6;
     }
+
+    return 0;
 }
 
 int redhand::engine::runGame(){
