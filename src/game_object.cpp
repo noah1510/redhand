@@ -7,10 +7,10 @@ redhand::game_object::game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode
 ){
-    object_shader = attached_shader;
+    object_shader = std::shared_ptr<redhand::shader>(attached_shader);
     if(object_shader == nullptr || object_shader == NULL){
         errored = true;
     }else{
@@ -24,7 +24,7 @@ redhand::game_object::game_object(
 
     if(!errored){
 
-        shader_routine = [](shader*){};
+        shader_routine = [](std::shared_ptr<redhand::shader>){};
         LoopFunction = [](GLFWwindow*, game_object*){};
             
         int point_size = (int)(1.5f * points.size());
@@ -75,22 +75,23 @@ redhand::game_object::game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode,
-        std::string name):game_object(points, indices, colors, attached_shader, gl_drawing_mode){
+        std::string name
+    ):game_object(points, indices, colors, attached_shader, gl_drawing_mode){
             object_name = name;
         }
 
 //minimal with shader routine
 redhand::game_object::game_object(
-    std::vector <float> points, 
-    std::vector <unsigned int> indices,
-    std::vector <float> colors,
-    shader* attached_shader,
-    int gl_drawing_mode,
+        std::vector <float> points, 
+        std::vector <unsigned int> indices,
+        std::vector <float> colors,
+        std::shared_ptr<redhand::shader> attached_shader,
+        int gl_drawing_mode,
 
-    std::function<void(shader*)> routine
-):game_object(points,indices,colors,attached_shader,gl_drawing_mode){
+        std::function<void(std::shared_ptr<redhand::shader>)> routine
+    ):game_object(points,indices,colors,attached_shader,gl_drawing_mode){
     shader_routine = routine;
 }
 
@@ -99,7 +100,7 @@ redhand::game_object::game_object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,
     std::vector <float> colors,
-    shader* attached_shader,
+    std::shared_ptr<redhand::shader> attached_shader,
     int gl_drawing_mode,
 
     std::vector<float> scaler,
@@ -121,10 +122,10 @@ redhand::game_object::game_object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,
     std::vector <float> colors,
-    shader* attached_shader,
+    std::shared_ptr<redhand::shader> attached_shader,
     int gl_drawing_mode,
 
-    std::function<void(shader*)> routine,
+    std::function<void(std::shared_ptr<redhand::shader>)> routine,
 
     std::vector<float> scaler,
     float rotator,
@@ -143,10 +144,10 @@ redhand::game_object::game_object(
     std::vector <float> points, 
     std::vector <unsigned int> indices,
     std::vector <float> colors,
-    shader* attached_shader,
+    std::shared_ptr<redhand::shader> attached_shader,
     int gl_drawing_mode,
 
-    std::function<void(shader*)> routine,
+    std::function<void(std::shared_ptr<redhand::shader>)> routine,
 
     std::vector<float> scaler,
     float rotator,
@@ -165,10 +166,10 @@ redhand::game_object::game_object(
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode,
 
-        std::function<void(shader*)> routine,
+        std::function<void(std::shared_ptr<redhand::shader>)> routine,
 
         std::vector<float> scaler,
         float rotator,
@@ -177,7 +178,7 @@ redhand::game_object::game_object(
         texture2D* texture,
         std::vector <float> texels
 ){
-    object_shader = attached_shader;
+    object_shader = std::shared_ptr<redhand::shader>(attached_shader);
 
     if(object_shader == nullptr || object_shader == NULL ){
         errored = true;
@@ -191,7 +192,7 @@ redhand::game_object::game_object(
     }
 
     if(!errored){
-        shader_routine = [](shader*){};
+        shader_routine = [](std::shared_ptr<redhand::shader>){};
         LoopFunction = [](GLFWwindow*, game_object*){};
             
         int point_size = (int)(1.5f * points.size());
@@ -312,7 +313,7 @@ void redhand::game_object::draw(){
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
 
     //run the custom shader routine
-    shader_routine(object_shader);
+    shader_routine(std::shared_ptr<redhand::shader>(object_shader));
 
     //actually draw the object
     glBindVertexArray(VAO);
@@ -342,7 +343,7 @@ void redhand::game_object::onLoop(GLFWwindow* window){
     LoopFunction(window, this);
 };
 
-void redhand::game_object::setShaderRoutine(std::function<void(shader*)> routine){
+void redhand::game_object::setShaderRoutine(std::function<void(std::shared_ptr<redhand::shader>)> routine){
     std::scoped_lock<std::shared_mutex> lock(gameObjectLock);
     shader_routine = routine;
 };
@@ -351,9 +352,9 @@ void redhand::game_object::setLoopFunction(std::function<void(GLFWwindow* window
     LoopFunction = loop;
 };
 
-shader* redhand::game_object::getShader(){
+std::shared_ptr<redhand::shader> redhand::game_object::getShader(){
     std::shared_lock<std::shared_mutex> lock(gameObjectLock);
-    return object_shader;
+    return std::shared_ptr<redhand::shader>(object_shader);
 };
 
 std::vector<float> redhand::game_object::getPosition(){
@@ -425,7 +426,7 @@ std::string redhand::game_object::getName(){
 
 game_object* redhand::createHouse(
     texture2D* texture,
-    shader* shade,
+    std::shared_ptr<redhand::shader> shade,
     float texture_scale
 ){
     //Vertex Data
@@ -454,7 +455,7 @@ game_object* redhand::createHouse(
         texels.emplace_back(x*texture_scale);
     }
 
-    return new game_object(points,indices,colors,shade,GL_DYNAMIC_DRAW,[](shader*){},{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
+    return new game_object(points,indices,colors,shade,GL_DYNAMIC_DRAW,[](std::shared_ptr<redhand::shader>){},{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
     
 }
 
@@ -464,7 +465,7 @@ game_object* redhand::createCircle(
     int edges,
     float innerColor[3],
     float outerColor[3],
-    shader* shade,
+    std::shared_ptr<redhand::shader> shade,
     texture2D* tex,
     float texture_scale
 ){
@@ -524,7 +525,7 @@ game_object* redhand::createCircle(
         if(indices.at(i*3 + 2) == edges + 1){indices.at(i*3 + 2) = 1;};
     }  
 
-    return new game_object(points, indices, colors, shade, GL_STATIC_DRAW, [](shader*){}, {radius,radius}, 0.0f, position, tex, texels);
+    return new game_object(points, indices, colors, shade, GL_STATIC_DRAW, [](std::shared_ptr<redhand::shader>){}, {radius,radius}, 0.0f, position, tex, texels);
 }
 
 game_object* redhand::createRecktangle(
@@ -532,7 +533,7 @@ game_object* redhand::createRecktangle(
     float width,
     float height,
     float color[3],
-    shader* shade,
+    std::shared_ptr<redhand::shader> shade,
     texture2D* tex,
     int DrawingMode,
     float textureScale
@@ -568,5 +569,5 @@ game_object* redhand::createRecktangle(
 
     std::vector<float> position_vector = {bottomleft[0],bottomleft[1]};
 
-    return new game_object(points,indices,colors,shade,DrawingMode,[](shader*){},{width,height},0.0f,position_vector,tex,texels);
+    return new game_object(points,indices,colors,shade,DrawingMode,[](std::shared_ptr<redhand::shader>){},{width,height},0.0f,position_vector,tex,texels);
 }

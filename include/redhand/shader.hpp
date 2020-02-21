@@ -100,6 +100,14 @@ public:
     std::string getName();
 
     /**
+     * @brief This function checks if the shader is fully initilized 
+     * 
+     * @return true is fully initilized and ready to use
+     * @return false the shader is not fully initilized
+     */
+    bool isInitilized();
+
+    /**
      * This function returns the ID of the shader for the use in some OpenGL functions.
      */
     unsigned int getID();

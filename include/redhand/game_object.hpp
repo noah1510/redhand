@@ -51,7 +51,7 @@ private:
     int indices_size;
 
     ///The attaced shader
-    shader* object_shader;
+    std::shared_ptr<redhand::shader> object_shader;
 
     ///The attached texture
     texture2D* object_texture;
@@ -66,7 +66,7 @@ private:
     bool errored = false;
     
     ///A custom function which is called just after the shader is activated
-    std::function<void(shader*)> shader_routine;
+    std::function<void(std::shared_ptr<redhand::shader>)> shader_routine;
 
     ///A function that will be called once every tick
     std::function<void(GLFWwindow* window, game_object* obj)> LoopFunction;
@@ -115,7 +115,7 @@ public:
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode);
 
     //minimal with name
@@ -132,7 +132,7 @@ public:
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode,
         std::string name);
 
@@ -151,10 +151,10 @@ public:
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode,
 
-        std::function<void(shader*)> routine);
+        std::function<void(std::shared_ptr<redhand::shader>)> routine);
 
     //minimal with scale,rotation and position
     /**
@@ -173,7 +173,7 @@ public:
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode,
 
         std::vector<float> scaler,
@@ -198,10 +198,10 @@ public:
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode,
 
-        std::function<void(shader*)> routine,
+        std::function<void(std::shared_ptr<redhand::shader>)> routine,
 
         std::vector<float> scaler,
         float rotator,
@@ -226,10 +226,10 @@ public:
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode,
 
-        std::function<void(shader*)> routine,
+        std::function<void(std::shared_ptr<redhand::shader>)> routine,
 
         std::vector<float> scaler,
         float rotator,
@@ -257,10 +257,10 @@ public:
         std::vector <float> points, 
         std::vector <unsigned int> indices,
         std::vector <float> colors,
-        shader* attached_shader,
+        std::shared_ptr<redhand::shader> attached_shader,
         int gl_drawing_mode,
 
-        std::function<void(shader*)> routine,
+        std::function<void(std::shared_ptr<redhand::shader>)> routine,
 
         std::vector<float> scaler,
         float rotator,
@@ -275,13 +275,13 @@ public:
     ~game_object();
 
     ///This function sets the shader routine to the given function
-    void setShaderRoutine(std::function<void(shader*)> routine);
+    void setShaderRoutine(std::function<void(std::shared_ptr<redhand::shader>)> routine);
 
     ///This function sets the loop function to the given function
     void setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop);
 
     ///This function returns a pointer to the attached shader
-    shader* getShader();
+    std::shared_ptr<redhand::shader> getShader();
 
     ///This function draws the object on the screen
     void draw();
@@ -365,7 +365,7 @@ public:
  */
 game_object* createHouse(
     texture2D* texture,
-    shader* shade,
+    std::shared_ptr<redhand::shader> shade,
     float texture_scale = 1.0f
 );
 
@@ -388,7 +388,7 @@ game_object* createCircle(
     int edges,
     float innerColor[3],
     float outerColor[3],
-    shader* shade,
+    std::shared_ptr<redhand::shader> shade,
     texture2D* tex,
     float texture_scale = 1.0f);
 
@@ -409,7 +409,7 @@ game_object* createRecktangle(
     float width,
     float height,
     float color[3],
-    shader* shade,
+    std::shared_ptr<redhand::shader> shade,
     texture2D* tex,
     int DrawingMode,
     float textureScale = 1.0f);

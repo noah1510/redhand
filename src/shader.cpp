@@ -144,6 +144,10 @@ unsigned int shader::getID(){
     return ID;
 }
 
+bool redhand::shader::isInitilized(){
+    return initilized;
+}
+
 void redhand::shader::use(){
     std::scoped_lock<std::mutex> lock(shaderLock);
 

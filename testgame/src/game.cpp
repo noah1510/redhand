@@ -35,7 +35,7 @@ int main_game_logic(
 int createTestworld(std::shared_ptr<redhand::world> testWorld){
     //add shaders to world
 
-    auto* shader1 = new redhand::shader("default");
+    auto shader1 =  std::shared_ptr<redhand::shader>( new redhand::shader("default") );
     if( testWorld->addShader(shader1) < 0){
         std::cerr << "Got error while adding shader" << std::endl;
         return -1;
@@ -129,7 +129,7 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
                 trig_colors,
                 testWorld->getShaderByName("default"),
                 GL_DYNAMIC_DRAW,
-                [](redhand::shader* shade){},
+                [](std::shared_ptr<redhand::shader> shade){},
                 {0.5f,0.5f},
                 0.0f,
                 trig_pos,
