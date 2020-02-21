@@ -212,6 +212,6 @@ int redhand::engine::runGame(){
     return errorCode;
 }
 
-void redhand::framebuffer_size_callback(GLFWwindow* window, int width, int height){
+void redhand::framebuffer_size_callback(GLFWwindow*, int width, int height){
     glViewport(0, 0, width, height);
 }

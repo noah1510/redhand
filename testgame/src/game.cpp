@@ -129,7 +129,7 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
                 trig_colors,
                 testWorld->getShaderByName("default"),
                 GL_DYNAMIC_DRAW,
-                [](std::shared_ptr<redhand::shader> shade){},
+                [](std::shared_ptr<redhand::shader>){},
                 {0.5f,0.5f},
                 0.0f,
                 trig_pos,
@@ -141,7 +141,7 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
         }
         testWorld->getObjectByName("game_object")->setName("trig");
 
-        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow* window, redhand::game_object* obj){
+        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow*, redhand::game_object* obj){
             obj->setRotation((float)glfwGetTime()*20.0f);
         });
     }
