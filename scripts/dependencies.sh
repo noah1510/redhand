@@ -6,7 +6,7 @@ then
     echo "script running on linux"
 
     DOCDEPS="doxygen graphviz-dev"
-    GLFWDEPS="xorg-dev"
+    GLFWDEPS="xorg-dev libgl1-mesa-dev"
     REDHANDDEPS="cmake gcc g++ ninja-build"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-dev"
 
