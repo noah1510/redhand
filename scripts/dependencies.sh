@@ -6,14 +6,14 @@ then
     echo "script running on linux"
 
     DOCDEPS="doxygen graphviz-dev"
-    GLFWDEPS="xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev"
+    GLFWDEPS="xorg-dev"
     REDHANDDEPS="cmake gcc g++ ninja-build"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-dev"
 
     sudo apt update
     if [ "$1" == "--ci" ]
     then
-        sudo apt install $GLFWDEPS $REDHANDDEPS $ADDITIONALDEPS --yes
+        sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS --yes
         if [ $? -eq 0 ]
         then
         echo "Successfully installed dependencies"
