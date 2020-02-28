@@ -35,7 +35,7 @@ int main_game_logic(
 int createTestworld(std::shared_ptr<redhand::world> testWorld){
     //add shaders to world
 
-    auto shader1 =  std::shared_ptr<redhand::shader>( new redhand::shader("default") );
+    auto shader1 =  std::shared_ptr<redhand::shader>( new redhand::shader() );
     if( testWorld->addShader(shader1) < 0){
         std::cerr << "Got error while adding shader" << std::endl;
         return -1;

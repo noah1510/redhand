@@ -5,32 +5,37 @@ using namespace redhand;
 #define VERTEX_SHADER GL_VERTEX_SHADER
 #define FRAGMENT_SHADER GL_FRAGMENT_SHADER
 
-redhand::shader::shader():shader("default"){};
+redhand::shader::shader():shader("default"){
+    createDefaultShader();
+};
 
-redhand::shader::shader(const char* name){
-    // compile shaders
-    auto vertex = compileShader(redhand::DefaultVertexSource,VERTEX_SHADER);
-    auto fragment = compileShader(redhand::DefaultFragmentSource,FRAGMENT_SHADER);
-    
-    //link shaders
-    linkShader(vertex,fragment);
-    
-    // delete the shaders as they're linked into our program now and no longer necessery
-    glDeleteShader(vertex);
-    glDeleteShader(fragment);
-
-    shader_name = name;
+redhand::shader::shader(std::string_view name){
+    shader_name = static_cast<std::string>(name);
 }
 
-redhand::shader::shader(const char* vertexPath, const char* fragmentPath){
-    // 1. retrieve the vertex/fragment source code from filePath
+int redhand::shader::createDefaultShader(){
+    return createShaderFromCode(redhand::DefaultVertexSource,redhand::DefaultFragmentSource);
+}
+
+int redhand::shader::createShaderFromFile(std::string_view vertexPath, std::string_view fragmentPath){
+    //retrieve the vertex/fragment source code from filePath
     auto vertexCode = loadShaderCodeFromFile(vertexPath);
-    auto fragmentCode = loadShaderCodeFromFile(fragmentPath);
+    if(vertexCode.compare("") == 0){return -4;};
 
+    auto fragmentCode = loadShaderCodeFromFile(fragmentPath);
+    if(fragmentCode.compare("") == 0){return -5;};
+
+    return createShaderFromCode(vertexCode, fragmentCode);
+};
+
+int redhand::shader::createShaderFromCode(std::string_view vertexSource, std::string_view fragmentSource){
     // compile shaders
-    auto vertex = compileShader(vertexCode.c_str(),VERTEX_SHADER);
-    auto fragment = compileShader(fragmentCode.c_str(),FRAGMENT_SHADER);
-    
+    auto vertex = compileShader(static_cast<std::string>(vertexSource).c_str(),VERTEX_SHADER);
+    if (vertex == 0){return -1;};
+
+    auto fragment = compileShader(static_cast<std::string>(fragmentSource).c_str(),FRAGMENT_SHADER);
+    if (fragment == 0){return -2;};
+
     //link shaders
     linkShader(vertex,fragment);
     
@@ -38,14 +43,15 @@ redhand::shader::shader(const char* vertexPath, const char* fragmentPath){
     glDeleteShader(vertex);
     glDeleteShader(fragment);
 
+    if(initilized){
+        return 0;
+    }else{
+        return -3;
+    }
 }
 
-redhand::shader::shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string name):shader(vertexPath,fragmentPath){
-    shader_name = name;
-}
-
-std::string redhand::shader::loadShaderCodeFromFile(const char* fileLocation){
-    if(errord){return 0;};
+std::string redhand::shader::loadShaderCodeFromFile(std::string_view fileLocation){
+    if(errord){return "";};
 
     std::string shaderCode;
     std::ifstream ShaderFile;
@@ -53,7 +59,7 @@ std::string redhand::shader::loadShaderCodeFromFile(const char* fileLocation){
     ShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
     try {
         // open files
-        ShaderFile.open(fileLocation);
+        ShaderFile.open(std::string(fileLocation));
         std::stringstream ShaderStream;
         // read file's buffer contents into streams
         ShaderStream << ShaderFile.rdbuf();		
@@ -71,11 +77,14 @@ std::string redhand::shader::loadShaderCodeFromFile(const char* fileLocation){
     return shaderCode;
 }
 
-unsigned int redhand::shader::compileShader(const char* shaderCode, int shaderType){
+unsigned int redhand::shader::compileShader(std::string_view shaderSource, int shaderType){
     if(errord){return 0;};
     // compile the shader and return the location of the result
     int success;
     char infoLog[512];
+
+    auto stringSource = std::string(shaderSource);
+    auto shaderCode = stringSource.c_str();
 
     auto shader = glCreateShader(shaderType);
     glShaderSource(shader, 1, &shaderCode, NULL);
@@ -86,7 +95,9 @@ unsigned int redhand::shader::compileShader(const char* shaderCode, int shaderTy
     if(!success){
         glGetShaderInfoLog(shader, 512, NULL, infoLog);
         std::cerr << "ERROR::SHADER::COMPILATION_FAILED\n" << infoLog << std::endl;
+        std::cerr << "Shader source code:" << shaderCode << std::endl;
         errord = true;
+        return 0;
     };
 
     return shader;
@@ -137,7 +148,10 @@ void redhand::shader::moveCamera(float delta_pos_x, float delta_pos_y){
 }
 
 bool redhand::shader::hasErrored(){
-    return errord;
+    if(!initilized || errord){
+        return true;
+    }
+    
 }
 
 unsigned int shader::getID(){

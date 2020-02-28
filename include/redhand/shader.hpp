@@ -47,6 +47,15 @@ private:
     //the mutex lock for this class
     std::mutex shaderLock;
 
+    ///This function basically just reads a file into a string
+    std::string loadShaderCodeFromFile(std::string_view fileLocation);
+
+    ///This function compiles a given shader source code and returns the id of the compiled shader or 0 if there was an error.
+    unsigned int compileShader(std::string_view shaderCode, int shaderType);
+
+    ///This function links a vertex and fragment shader and if no error happened it will set initilized to true
+    void linkShader(unsigned int vertexShader, unsigned int fragmentShader);
+
 public: 
     /** 
      * This constructor creates a shader with the default vector and fragment shaders named "default".
@@ -58,30 +67,33 @@ public:
      * The default vertex and fragment shaders from the shaderSource.hpp will be used.
      * @param name The name of the Shader
      */
-    shader(const char* name);
+    shader(std::string_view name);
 
     /**
-     * This constructor creates a shader from a given vertex and fragment shader.
-     * The given paths are relative to the executeable.
-     * @param vertexPath The Path to the vertex Shader
-     * @param fragmentPath The Path to the fragment Shader
+     * @brief Create a Shader From a file.
+     * 
+     * @param vertexPath The location of the vertex Shader
+     * @param fragmentPath The location of the Fragment Shader
+     * @return int negative if something went wrong
      */
-    shader(const GLchar* vertexPath, const GLchar* fragmentPath);
+    int createShaderFromFile(std::string_view vertexPath, std::string_view fragmentPath);
 
     /**
-     * This constructor creates a shader from a given vertex and fragment shader and sets a given name.
-     * The given paths are relative to the executeable.
-     * @param vertexPath The Path to the vertex Shader
-     * @param fragmentPath The Path to the fragment Shader
-     * @param name The name of the Shader
+     * @brief Create a Shader From source Code
+     * @warning make sure the location the string_view sees still has the string while the function is executed.
+     * 
+     * @param vertexSource The source code of the vertex shader
+     * @param fragmentSource The source code of the fragment shader
+     * @return int 
      */
-    shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string name);
+    int createShaderFromCode(std::string_view vertexSource, std::string_view fragmentSource);
 
-    std::string loadShaderCodeFromFile(const char* fileLocation);
-
-    unsigned int compileShader(const char* shaderCode, int shaderType);
-
-    void linkShader(unsigned int vertexShader, unsigned int fragmentShader);
+    /**
+     * @brief Initilizes the shader object with the default shader.
+     * 
+     * @return int negative value if anything went wrong
+     */
+    int createDefaultShader();
 
     /**
      * This function returns true if an error happend during the setup of the shader.
