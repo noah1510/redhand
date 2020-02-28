@@ -14,7 +14,7 @@ redhand::game_object::game_object(
     if(object_shader == nullptr || object_shader == NULL){
         errored = true;
     }else{
-        for(int i = 0; i < points.size(); i++){
+        for(unsigned int i = 0; i < points.size(); i++){
             if(points.at(i) < 0.0f || points.at(i) > 1.0f){
                 errored = true;
                 break;
@@ -27,15 +27,14 @@ redhand::game_object::game_object(
         shader_routine = [](std::shared_ptr<redhand::shader>){};
         LoopFunction = [](GLFWwindow*, game_object*){};
             
-        int point_size = (int)(1.5f * points.size());
-        int colors_size = colors.size();
-        int texels_size = points.size();
+        unsigned int point_size = points.size() + points.size()/2;
+        unsigned int colors_size = colors.size();
 
         indices_size = indices.size();
 
         std::vector <float> data;
 
-        for(int i = 0; i < points.size();i++){
+        for(unsigned int i = 0; i < points.size();i++){
             data.emplace_back(points.at(i));
             if(i % 2 == 1){
                 data.emplace_back(points.at(0.0f));
@@ -183,7 +182,7 @@ redhand::game_object::game_object(
     if(object_shader == nullptr || object_shader == NULL ){
         errored = true;
     }else{
-        for(int i = 0; i < points.size(); i++){
+        for(unsigned int i = 0; i < points.size(); i++){
             if(points.at(i) < 0.0f || points.at(i) > 1.0f){
                 errored = true;
                 break;
@@ -195,17 +194,13 @@ redhand::game_object::game_object(
         shader_routine = [](std::shared_ptr<redhand::shader>){};
         LoopFunction = [](GLFWwindow*, game_object*){};
             
-        int point_size = (int)(1.5f * points.size());
-        int colors_size = colors.size();
-        int texels_size = points.size();
-        if(texels.size() != 0 && texels.size() == points.size()){
-            texels_size = texels.size();
-        }
+        unsigned int point_size = points.size() + points.size()/2;
+        unsigned int colors_size = colors.size();
         
         indices_size = indices.size();
 
         std::vector <float> data;
-        for(int i = 0; i < points.size();i++){
+        for(unsigned int i = 0; i < points.size();i++){
             data.emplace_back(points.at(i));
             if(i % 2 == 1){
                 data.emplace_back(points.at(0.0f));
@@ -462,7 +457,7 @@ game_object* redhand::createHouse(
 game_object* redhand::createCircle( 
     float midpoint[2],
     float radius,
-    int edges,
+    unsigned int edges,
     float innerColor[3],
     float outerColor[3],
     std::shared_ptr<redhand::shader> shade,
@@ -501,7 +496,7 @@ game_object* redhand::createCircle(
         }
     }
 
-    for(int i = 0; i < edges;i++){
+    for(unsigned int i = 0; i < edges;i++){
         float dx,dy;
         dx = cosDeg(i*360/edges)/2.0f + 0.5f;
         dy = sinDeg(i*360/edges)/2.0f + 0.5f;
@@ -518,7 +513,7 @@ game_object* redhand::createCircle(
 
     }
 
-    for(int i = 0;i < edges;i++){
+    for(unsigned int i = 0;i < edges;i++){
         indices.insert(indices.end(), 0);
         indices.insert(indices.end(), i + 1);
         indices.insert(indices.end(), i + 2);
@@ -569,5 +564,7 @@ game_object* redhand::createRecktangle(
 
     std::vector<float> position_vector = {bottomleft[0],bottomleft[1]};
 
-    return new game_object(points,indices,colors,shade,DrawingMode,[](std::shared_ptr<redhand::shader>){},{width,height},0.0f,position_vector,tex,texels);
+    auto obj = new game_object(points,indices,colors,shade,DrawingMode,[](std::shared_ptr<redhand::shader>){},{width,height},0.0f,position_vector,tex,texels);
+
+    return obj;
 }

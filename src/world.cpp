@@ -14,7 +14,7 @@ redhand::world::~world(){
     WorldObjectsMutex.lock();
     //delete objects
     try{
-        for(int i = 0;i < WorldObjects.size();i++){
+        for(unsigned int i = 0;i < WorldObjects.size();i++){
             delete WorldObjects.at(i);
         }
         WorldObjects.clear();
@@ -25,7 +25,7 @@ redhand::world::~world(){
 
     //delte textures
     try{
-        for(int i = 0;i < WorldTextures.size();i++){
+        for(unsigned int i = 0;i < WorldTextures.size();i++){
             delete WorldTextures.at(i);
         }
         WorldTextures.clear();
@@ -77,7 +77,7 @@ void redhand::world::setWindowSize(int width, int height){
 
         projectionMatrix = glm::ortho(-1.0f, (float) width / (float) height, -1.0f, (float) height / (float) width, -10.0f, 10.0f);
 
-        for(int i = 0;i < WorldShaders.size();i++){
+        for(unsigned int i = 0;i < WorldShaders.size();i++){
             WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
         }
 
@@ -151,7 +151,7 @@ int redhand::world::addObject(game_object* obj){
 }
 
 int redhand::world::removeShader(std::string name){
-    for(auto i = 0; i < WorldShaders.size();i++){
+    for(unsigned int i = 0; i < WorldShaders.size();i++){
         auto x = WorldShaders.at(i);
         if(x->getName().compare(name) == 0){
             try{

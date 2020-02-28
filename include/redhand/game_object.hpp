@@ -48,7 +48,7 @@ private:
     unsigned int EBO;
 
     /// This is 3 * "number of tirangle" and is important to actually draw those triangles
-    int indices_size;
+    unsigned int indices_size;
 
     ///The attaced shader
     std::shared_ptr<redhand::shader> object_shader;
@@ -385,7 +385,7 @@ game_object* createHouse(
 game_object* createCircle( 
     float midpoint[2],
     float radius,
-    int edges,
+    unsigned int edges,
     float innerColor[3],
     float outerColor[3],
     std::shared_ptr<redhand::shader> shade,

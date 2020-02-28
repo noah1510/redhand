@@ -148,10 +148,7 @@ void redhand::shader::moveCamera(float delta_pos_x, float delta_pos_y){
 }
 
 bool redhand::shader::hasErrored(){
-    if(!initilized || errord){
-        return true;
-    }
-    
+    return !initilized || errord;
 }
 
 unsigned int shader::getID(){
