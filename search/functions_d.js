@@ -14,10 +14,10 @@ var searchData=
   ['setprojectionmatrix',['setProjectionmatrix',['../classredhand_1_1shader.html#acc23f1b4e679661f7e577aa29c49dec7',1,'redhand::shader']]],
   ['setrotation',['setRotation',['../classredhand_1_1game__object.html#a91eb9e945e666ab571be6fe641367076',1,'redhand::game_object']]],
   ['setscreensize',['setScreenSize',['../classredhand_1_1game__object.html#a3247de3fd8cad6f5234704dabbd207d4',1,'redhand::game_object']]],
-  ['setshaderroutine',['setShaderRoutine',['../classredhand_1_1game__object.html#aa09b8375bb0cc2c7546c066b911ecd95',1,'redhand::game_object']]],
+  ['setshaderroutine',['setShaderRoutine',['../classredhand_1_1game__object.html#a9a612842d14baf3d73f06d2166d5d3ef',1,'redhand::game_object']]],
   ['settexturescale',['setTextureScale',['../classredhand_1_1shader.html#a060d311815f8b775785b9102f2c03822',1,'redhand::shader']]],
   ['setwindowsize',['setWindowSize',['../classredhand_1_1world.html#a6a1b807e62d75c36f88c699365984d9f',1,'redhand::world']]],
-  ['shader',['shader',['../classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88',1,'redhand::shader::shader()'],['../classredhand_1_1shader.html#a30d66e486312e79b1ed84416e5824304',1,'redhand::shader::shader(const GLchar *vertexPath, const GLchar *fragmentPath)'],['../classredhand_1_1shader.html#adf1ac37f88a9a0ea83facba1e4aa49d8',1,'redhand::shader::shader(const GLchar *vertexPath, const GLchar *fragmentPath, std::string name)']]],
+  ['shader',['shader',['../classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88',1,'redhand::shader::shader()'],['../classredhand_1_1shader.html#a994b93c09beb388d54b1983a672ba893',1,'redhand::shader::shader(std::string_view name)']]],
   ['sindeg',['sinDeg',['../namespaceredhand.html#ae34e8f79b078f1b4dbecf43d18a2802a',1,'redhand']]],
   ['stopgame',['stopGame',['../classredhand_1_1engine.html#a8b13e25811d03015a9923daaf7d205fa',1,'redhand::engine']]]
 ];

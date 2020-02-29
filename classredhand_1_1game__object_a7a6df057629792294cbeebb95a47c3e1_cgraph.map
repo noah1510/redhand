@@ -1,11 +1,6 @@
 <map id="redhand::game_object::draw" name="redhand::game_object::draw">
-<area shape="rect" id="node2" href="$classredhand_1_1texture2_d.html#a0c8853c4559e7a90a965e90db6bc8d78" title="This function binds the texture to the specified texture unit. " alt="" coords="230,5,363,47"/>
-<area shape="rect" id="node3" href="$classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6" title="This function returns the ID of the shader for the use in some OpenGL functions. " alt="" coords="445,265,600,291"/>
-<area shape="rect" id="node4" href="$classredhand_1_1game__object.html#a146526d5ee568999b7898ac3bd7bdd57" title="Get the Position of the object. " alt="" coords="221,123,372,164"/>
-<area shape="rect" id="node5" href="$classredhand_1_1game__object.html#a758aeed2f46f7f240ee05d43e5640b94" title="gets the rotation in degrees " alt="" coords="221,188,372,229"/>
-<area shape="rect" id="node6" href="$classredhand_1_1game__object.html#ab2b3413bd603729d85e7745d78720f52" title="get the scal of the object " alt="" coords="221,253,372,295"/>
-<area shape="rect" id="node7" href="$classredhand_1_1shader.html#a4d0ffd87d70fa4f51bf22bedf853989f" title="The setFloat functions set a uniform vector of the shader to given values. " alt="" coords="437,374,608,401"/>
-<area shape="rect" id="node8" href="$classredhand_1_1shader.html#a2767bc9b53ba00300f839b3a78503450" title="The setInt functions set a uniform vector of the shader to given values. " alt="" coords="219,370,375,397"/>
-<area shape="rect" id="node9" href="$classredhand_1_1shader.html#a060d311815f8b775785b9102f2c03822" title="This function sets the texture scale of the shader to the given vector. " alt="" coords="204,421,389,463"/>
-<area shape="rect" id="node10" href="$classredhand_1_1shader.html#a953505bf1877b61deeaa271ebb7d3783" title="This function activates the shader and sets the camera position. " alt="" coords="225,319,369,346"/>
+<area shape="rect" id="node2" href="$classredhand_1_1texture2_d.html#a0c8853c4559e7a90a965e90db6bc8d78" title="This function binds the texture to the specified texture unit. " alt="" coords="213,5,346,47"/>
+<area shape="rect" id="node3" href="$classredhand_1_1game__object.html#a146526d5ee568999b7898ac3bd7bdd57" title="Get the Position of the object. " alt="" coords="204,71,355,112"/>
+<area shape="rect" id="node4" href="$classredhand_1_1game__object.html#a758aeed2f46f7f240ee05d43e5640b94" title="gets the rotation in degrees " alt="" coords="204,136,355,177"/>
+<area shape="rect" id="node5" href="$classredhand_1_1game__object.html#ab2b3413bd603729d85e7745d78720f52" title="get the scal of the object " alt="" coords="204,201,355,243"/>
 </map>

@@ -81,6 +81,7 @@ $(document).ready(function(){initNavTree('classredhand_1_1shader.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classredhand_1_1shader-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -95,21 +96,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0349760c18df5c891fae3114bf671f88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">shader</a> ()</td></tr>
 <tr class="memdesc:a0349760c18df5c891fae3114bf671f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a shader with the default vector and fragment shaders named "default".  <a href="#a0349760c18df5c891fae3114bf671f88">More...</a><br /></td></tr>
 <tr class="separator:a0349760c18df5c891fae3114bf671f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30d66e486312e79b1ed84416e5824304"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a30d66e486312e79b1ed84416e5824304">shader</a> (const GLchar *vertexPath, const GLchar *fragmentPath)</td></tr>
-<tr class="memdesc:a30d66e486312e79b1ed84416e5824304"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a shader from a given vertex and fragment shader.  <a href="#a30d66e486312e79b1ed84416e5824304">More...</a><br /></td></tr>
-<tr class="separator:a30d66e486312e79b1ed84416e5824304"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf1ac37f88a9a0ea83facba1e4aa49d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#adf1ac37f88a9a0ea83facba1e4aa49d8">shader</a> (const GLchar *vertexPath, const GLchar *fragmentPath, std::string name)</td></tr>
-<tr class="memdesc:adf1ac37f88a9a0ea83facba1e4aa49d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a shader from a given vertex and fragment shader and sets a given name.  <a href="#adf1ac37f88a9a0ea83facba1e4aa49d8">More...</a><br /></td></tr>
-<tr class="separator:adf1ac37f88a9a0ea83facba1e4aa49d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfb5afb2443d4776d1cd859e3f8c7c4e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#acfb5afb2443d4776d1cd859e3f8c7c4e">~shader</a> ()</td></tr>
+<tr class="memdesc:acfb5afb2443d4776d1cd859e3f8c7c4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the shader object and delete the shader program.  <a href="#acfb5afb2443d4776d1cd859e3f8c7c4e">More...</a><br /></td></tr>
+<tr class="separator:acfb5afb2443d4776d1cd859e3f8c7c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a994b93c09beb388d54b1983a672ba893"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a994b93c09beb388d54b1983a672ba893">shader</a> (std::string_view name)</td></tr>
+<tr class="memdesc:a994b93c09beb388d54b1983a672ba893"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a shader with a given name.  <a href="#a994b93c09beb388d54b1983a672ba893">More...</a><br /></td></tr>
+<tr class="separator:a994b93c09beb388d54b1983a672ba893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b714341e9ab29d6fa2cf2c357d51a0e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a2b714341e9ab29d6fa2cf2c357d51a0e">createShaderFromFile</a> (std::string_view vertexPath, std::string_view fragmentPath)</td></tr>
+<tr class="memdesc:a2b714341e9ab29d6fa2cf2c357d51a0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Shader From a file.  <a href="#a2b714341e9ab29d6fa2cf2c357d51a0e">More...</a><br /></td></tr>
+<tr class="separator:a2b714341e9ab29d6fa2cf2c357d51a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d73488034f3d53043ca270dfed5b123"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a1d73488034f3d53043ca270dfed5b123">createShaderFromCode</a> (std::string_view vertexSource, std::string_view fragmentSource)</td></tr>
+<tr class="memdesc:a1d73488034f3d53043ca270dfed5b123"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Shader From source Code.  <a href="#a1d73488034f3d53043ca270dfed5b123">More...</a><br /></td></tr>
+<tr class="separator:a1d73488034f3d53043ca270dfed5b123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a365dacdd2bfc281b2da897e3ef03538b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b">createDefaultShader</a> ()</td></tr>
+<tr class="memdesc:a365dacdd2bfc281b2da897e3ef03538b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initilizes the shader object with the default shader.  <a href="#a365dacdd2bfc281b2da897e3ef03538b">More...</a><br /></td></tr>
+<tr class="separator:a365dacdd2bfc281b2da897e3ef03538b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4b0e515a71055d8c3938e2a4f0d17d5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#ae4b0e515a71055d8c3938e2a4f0d17d5">hasErrored</a> ()</td></tr>
-<tr class="memdesc:ae4b0e515a71055d8c3938e2a4f0d17d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns true if an error happend during the setup of the shader.  <a href="#ae4b0e515a71055d8c3938e2a4f0d17d5">More...</a><br /></td></tr>
+<tr class="memdesc:ae4b0e515a71055d8c3938e2a4f0d17d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns true if an error happend during the setup of the shader or the shader is not initilized.  <a href="#ae4b0e515a71055d8c3938e2a4f0d17d5">More...</a><br /></td></tr>
 <tr class="separator:ae4b0e515a71055d8c3938e2a4f0d17d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a953505bf1877b61deeaa271ebb7d3783"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a953505bf1877b61deeaa271ebb7d3783">use</a> ()</td></tr>
 <tr class="memdesc:a953505bf1877b61deeaa271ebb7d3783"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function activates the shader and sets the camera position.  <a href="#a953505bf1877b61deeaa271ebb7d3783">More...</a><br /></td></tr>
 <tr class="separator:a953505bf1877b61deeaa271ebb7d3783"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3487eaa230777c23f90e3b9530006e9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#ab3487eaa230777c23f90e3b9530006e9">getName</a> ()</td></tr>
-<tr class="memdesc:ab3487eaa230777c23f90e3b9530006e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function return the name the shader has.  <a href="#ab3487eaa230777c23f90e3b9530006e9">More...</a><br /></td></tr>
-<tr class="separator:ab3487eaa230777c23f90e3b9530006e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad271bf72cc2604469c735b327e871ad7"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#ad271bf72cc2604469c735b327e871ad7">getName</a> ()</td></tr>
+<tr class="memdesc:ad271bf72cc2604469c735b327e871ad7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function return the name the shader has.  <a href="#ad271bf72cc2604469c735b327e871ad7">More...</a><br /></td></tr>
+<tr class="separator:ad271bf72cc2604469c735b327e871ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed208783f4c577978e34b765ad79a0f6"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6">getID</a> ()</td></tr>
 <tr class="memdesc:aed208783f4c577978e34b765ad79a0f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns the ID of the shader for the use in some OpenGL functions.  <a href="#aed208783f4c577978e34b765ad79a0f6">More...</a><br /></td></tr>
 <tr class="separator:aed208783f4c577978e34b765ad79a0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,6 +175,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a060d311815f8b775785b9102f2c03822"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sets the texture scale of the shader to the given vector.  <a href="#a060d311815f8b775785b9102f2c03822">More...</a><br /></td></tr>
 <tr class="separator:a060d311815f8b775785b9102f2c03822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1c8ded7e410bf94c047740e2f49ea7fe"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a1c8ded7e410bf94c047740e2f49ea7fe">loadShaderCodeFromFile</a> (std::string_view fileLocation)</td></tr>
+<tr class="memdesc:a1c8ded7e410bf94c047740e2f49ea7fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function basically just reads a file into a string.  <a href="#a1c8ded7e410bf94c047740e2f49ea7fe">More...</a><br /></td></tr>
+<tr class="separator:a1c8ded7e410bf94c047740e2f49ea7fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84c36b746cac66990d0c36fcb78a7d63"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63">compileShader</a> (std::string_view shaderCode, int shaderType)</td></tr>
+<tr class="memdesc:a84c36b746cac66990d0c36fcb78a7d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function compiles a given shader source code and returns the id of the compiled shader or 0 if there was an error.  <a href="#a84c36b746cac66990d0c36fcb78a7d63">More...</a><br /></td></tr>
+<tr class="separator:a84c36b746cac66990d0c36fcb78a7d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d8b3435844e25e5c723e596c9a00801"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a9d8b3435844e25e5c723e596c9a00801">linkShader</a> (unsigned int vertexShader, unsigned int fragmentShader)</td></tr>
+<tr class="memdesc:a9d8b3435844e25e5c723e596c9a00801"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function links a vertex and fragment shader and if no error happened it will set initilized to true.  <a href="#a9d8b3435844e25e5c723e596c9a00801">More...</a><br /></td></tr>
+<tr class="separator:a9d8b3435844e25e5c723e596c9a00801"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a37e2d5a22014103549e6333d6285ee6f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a></td></tr>
@@ -173,28 +195,52 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a56030f96b6fb9a6d49fdc79569b22743"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a56030f96b6fb9a6d49fdc79569b22743">shader_name</a> = &quot;shader&quot;</td></tr>
 <tr class="memdesc:a56030f96b6fb9a6d49fdc79569b22743"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the shader  <a href="#a56030f96b6fb9a6d49fdc79569b22743">More...</a><br /></td></tr>
 <tr class="separator:a56030f96b6fb9a6d49fdc79569b22743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab603420e6eb20e3d740cccb68819b506"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#ab603420e6eb20e3d740cccb68819b506">mutex_shader_name</a></td></tr>
+<tr class="memdesc:ab603420e6eb20e3d740cccb68819b506"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the shader_name  <a href="#ab603420e6eb20e3d740cccb68819b506">More...</a><br /></td></tr>
+<tr class="separator:ab603420e6eb20e3d740cccb68819b506"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55fce1e2e2e7593808bf18ee62ec620d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">errord</a> = false</td></tr>
 <tr class="memdesc:a55fce1e2e2e7593808bf18ee62ec620d"><td class="mdescLeft">&#160;</td><td class="mdescRight">true if an error happened  <a href="#a55fce1e2e2e7593808bf18ee62ec620d">More...</a><br /></td></tr>
 <tr class="separator:a55fce1e2e2e7593808bf18ee62ec620d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91a88dd4382ea5d20ed13f42e44c8ef8"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a91a88dd4382ea5d20ed13f42e44c8ef8">mutex_errord</a></td></tr>
+<tr class="memdesc:a91a88dd4382ea5d20ed13f42e44c8ef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the errord  <a href="#a91a88dd4382ea5d20ed13f42e44c8ef8">More...</a><br /></td></tr>
+<tr class="separator:a91a88dd4382ea5d20ed13f42e44c8ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ef7300a76bb8799fc87c95874efb1f8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a4ef7300a76bb8799fc87c95874efb1f8">initilized</a> = false</td></tr>
+<tr class="memdesc:a4ef7300a76bb8799fc87c95874efb1f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">true if shader has been fully constructed  <a href="#a4ef7300a76bb8799fc87c95874efb1f8">More...</a><br /></td></tr>
+<tr class="separator:a4ef7300a76bb8799fc87c95874efb1f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3c77eb7ae4a4f28059c9255d4531ba6"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#af3c77eb7ae4a4f28059c9255d4531ba6">mutex_initilized</a></td></tr>
+<tr class="memdesc:af3c77eb7ae4a4f28059c9255d4531ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the initilized  <a href="#af3c77eb7ae4a4f28059c9255d4531ba6">More...</a><br /></td></tr>
+<tr class="separator:af3c77eb7ae4a4f28059c9255d4531ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce41a04340d94b22a55e8a27c047823"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a> = glm::vec3(0.0f, 0.0f, 0.0f)</td></tr>
 <tr class="memdesc:a2ce41a04340d94b22a55e8a27c047823"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position of the camera.  <a href="#a2ce41a04340d94b22a55e8a27c047823">More...</a><br /></td></tr>
 <tr class="separator:a2ce41a04340d94b22a55e8a27c047823"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5de33743a56600ed0eea6ac053ff69db"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a5de33743a56600ed0eea6ac053ff69db">mutex_cameraVector</a></td></tr>
+<tr class="memdesc:a5de33743a56600ed0eea6ac053ff69db"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the cameraVector  <a href="#a5de33743a56600ed0eea6ac053ff69db">More...</a><br /></td></tr>
+<tr class="separator:a5de33743a56600ed0eea6ac053ff69db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e523475ea686a25cb291fdbd0f20892"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a> = glm::mat4(1.0f)</td></tr>
 <tr class="memdesc:a7e523475ea686a25cb291fdbd0f20892"><td class="mdescLeft">&#160;</td><td class="mdescRight">The camera matrix.  <a href="#a7e523475ea686a25cb291fdbd0f20892">More...</a><br /></td></tr>
 <tr class="separator:a7e523475ea686a25cb291fdbd0f20892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f31c2854d1f7dec852ec7ebb720c5ba"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a6f31c2854d1f7dec852ec7ebb720c5ba">mutex_camera</a></td></tr>
+<tr class="memdesc:a6f31c2854d1f7dec852ec7ebb720c5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the camera  <a href="#a6f31c2854d1f7dec852ec7ebb720c5ba">More...</a><br /></td></tr>
+<tr class="separator:a6f31c2854d1f7dec852ec7ebb720c5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae5d82d9790c41d207996971c41a6d36"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#aae5d82d9790c41d207996971c41a6d36">projectionMatrix</a></td></tr>
+<tr class="memdesc:aae5d82d9790c41d207996971c41a6d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">the projection matrix  <a href="#aae5d82d9790c41d207996971c41a6d36">More...</a><br /></td></tr>
 <tr class="separator:aae5d82d9790c41d207996971c41a6d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad78a803b0f8f2693b5a0ddc1c7e7dda2"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#ad78a803b0f8f2693b5a0ddc1c7e7dda2">mutex_projectionMatrix</a></td></tr>
+<tr class="memdesc:ad78a803b0f8f2693b5a0ddc1c7e7dda2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the projectionMatrix  <a href="#ad78a803b0f8f2693b5a0ddc1c7e7dda2">More...</a><br /></td></tr>
+<tr class="separator:ad78a803b0f8f2693b5a0ddc1c7e7dda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d9b7b86281e6c870abe24a42040cbac"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">textureScale</a> = glm::vec2(1.0f, 1.0f)</td></tr>
+<tr class="memdesc:a9d9b7b86281e6c870abe24a42040cbac"><td class="mdescLeft">&#160;</td><td class="mdescRight">the texture scale  <a href="#a9d9b7b86281e6c870abe24a42040cbac">More...</a><br /></td></tr>
 <tr class="separator:a9d9b7b86281e6c870abe24a42040cbac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38793758e5c6784f34593befafd16a0c"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">shaderLock</a></td></tr>
-<tr class="separator:a38793758e5c6784f34593befafd16a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb915c4004c202df7d28ee4c2ed10b65"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html#aeb915c4004c202df7d28ee4c2ed10b65">mutex_textureScale</a></td></tr>
+<tr class="memdesc:aeb915c4004c202df7d28ee4c2ed10b65"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the texture scale  <a href="#aeb915c4004c202df7d28ee4c2ed10b65">More...</a><br /></td></tr>
+<tr class="separator:aeb915c4004c202df7d28ee4c2ed10b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00020">20</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00022">22</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0349760c18df5c891fae3114bf671f88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0349760c18df5c891fae3114bf671f88">&#9670;&nbsp;</a></span>shader() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0349760c18df5c891fae3114bf671f88">&#9670;&nbsp;</a></span>shader() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,15 +256,56 @@ Private Attributes</h2></td></tr>
 
 <p>This constructor creates a shader with the default vector and fragment shaders named "default". </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00005">5</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00022">22</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00029">errord</a>, and <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;                     :<a class="code" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">shader</a>(<span class="stringliteral">&quot;../shaders/default.vert&quot;</span>,<span class="stringliteral">&quot;../shaders/default.frag&quot;</span>,<span class="stringliteral">&quot;default&quot;</span>){</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a0349760c18df5c891fae3114bf671f88"><div class="ttname"><a href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">redhand::shader::shader</a></div><div class="ttdeci">shader()</div><div class="ttdoc">This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;...</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00005">shader.cpp:5</a></div></div>
+<p class="reference">References <a class="el" href="shader_8cpp_source.html#l00030">createDefaultShader()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                     :<a class="code" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">shader</a>(<span class="stringliteral">&quot;default&quot;</span>){</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b">createDefaultShader</a>();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div><div class="ttc" id="classredhand_1_1shader_html_a365dacdd2bfc281b2da897e3ef03538b"><div class="ttname"><a href="classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b">redhand::shader::createDefaultShader</a></div><div class="ttdeci">int createDefaultShader()</div><div class="ttdoc">Initilizes the shader object with the default shader. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00030">shader.cpp:30</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a0349760c18df5c891fae3114bf671f88"><div class="ttname"><a href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">redhand::shader::shader</a></div><div class="ttdeci">shader()</div><div class="ttdoc">This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;...</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00022">shader.cpp:22</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classredhand_1_1shader_a0349760c18df5c891fae3114bf671f88_cgraph.png" border="0" usemap="#classredhand_1_1shader_a0349760c18df5c891fae3114bf671f88_cgraph" alt=""/></div>
+<map name="classredhand_1_1shader_a0349760c18df5c891fae3114bf671f88_cgraph" id="classredhand_1_1shader_a0349760c18df5c891fae3114bf671f88_cgraph">
+<area shape="rect" id="node2" href="classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b" title="Initilizes the shader object with the default shader. " alt="" coords="216,5,417,47"/>
+<area shape="rect" id="node3" href="classredhand_1_1shader.html#a1d73488034f3d53043ca270dfed5b123" title="Create a Shader From source Code. " alt="" coords="465,5,665,47"/>
+<area shape="rect" id="node4" href="classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63" title="This function compiles a given shader source code and returns the id of the compiled shader or 0 if t..." alt="" coords="721,64,889,105"/>
+<area shape="rect" id="node5" href="classredhand_1_1shader.html#a9d8b3435844e25e5c723e596c9a00801" title="This function links a vertex and fragment shader and if no error happened it will set initilized to t..." alt="" coords="713,13,897,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acfb5afb2443d4776d1cd859e3f8c7c4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfb5afb2443d4776d1cd859e3f8c7c4e">&#9670;&nbsp;</a></span>~shader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">redhand::shader::~shader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destroy the shader object and delete the shader program. </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00008">8</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                      {</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">auto</span> lock = {</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#a6f31c2854d1f7dec852ec7ebb720c5ba">mutex_camera</a>),</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#a5de33743a56600ed0eea6ac053ff69db">mutex_cameraVector</a>),</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#a91a88dd4382ea5d20ed13f42e44c8ef8">mutex_errord</a>),</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#af3c77eb7ae4a4f28059c9255d4531ba6">mutex_initilized</a>),</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#ad78a803b0f8f2693b5a0ddc1c7e7dda2">mutex_projectionMatrix</a>),</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#ab603420e6eb20e3d740cccb68819b506">mutex_shader_name</a>),</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#aeb915c4004c202df7d28ee4c2ed10b65">mutex_textureScale</a>)</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    };</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    glDeleteProgram(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_af3c77eb7ae4a4f28059c9255d4531ba6"><div class="ttname"><a href="classredhand_1_1shader.html#af3c77eb7ae4a4f28059c9255d4531ba6">redhand::shader::mutex_initilized</a></div><div class="ttdeci">std::shared_mutex mutex_initilized</div><div class="ttdoc">the mutex for the initilized </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00040">shader.hpp:40</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_ab603420e6eb20e3d740cccb68819b506"><div class="ttname"><a href="classredhand_1_1shader.html#ab603420e6eb20e3d740cccb68819b506">redhand::shader::mutex_shader_name</a></div><div class="ttdeci">std::shared_mutex mutex_shader_name</div><div class="ttdoc">the mutex for the shader_name </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00030">shader.hpp:30</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_aeb915c4004c202df7d28ee4c2ed10b65"><div class="ttname"><a href="classredhand_1_1shader.html#aeb915c4004c202df7d28ee4c2ed10b65">redhand::shader::mutex_textureScale</a></div><div class="ttdeci">std::shared_mutex mutex_textureScale</div><div class="ttdoc">the mutex for the texture scale </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00060">shader.hpp:60</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a5de33743a56600ed0eea6ac053ff69db"><div class="ttname"><a href="classredhand_1_1shader.html#a5de33743a56600ed0eea6ac053ff69db">redhand::shader::mutex_cameraVector</a></div><div class="ttdeci">std::shared_mutex mutex_cameraVector</div><div class="ttdoc">the mutex for the cameraVector </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00045">shader.hpp:45</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_ad78a803b0f8f2693b5a0ddc1c7e7dda2"><div class="ttname"><a href="classredhand_1_1shader.html#ad78a803b0f8f2693b5a0ddc1c7e7dda2">redhand::shader::mutex_projectionMatrix</a></div><div class="ttdeci">std::shared_mutex mutex_projectionMatrix</div><div class="ttdoc">the mutex for the projectionMatrix </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00055">shader.hpp:55</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a91a88dd4382ea5d20ed13f42e44c8ef8"><div class="ttname"><a href="classredhand_1_1shader.html#a91a88dd4382ea5d20ed13f42e44c8ef8">redhand::shader::mutex_errord</a></div><div class="ttdeci">std::shared_mutex mutex_errord</div><div class="ttdoc">the mutex for the errord </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00035">shader.hpp:35</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a6f31c2854d1f7dec852ec7ebb720c5ba"><div class="ttname"><a href="classredhand_1_1shader.html#a6f31c2854d1f7dec852ec7ebb720c5ba">redhand::shader::mutex_camera</a></div><div class="ttdeci">std::shared_mutex mutex_camera</div><div class="ttdoc">the mutex for the camera </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00050">shader.hpp:50</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a30d66e486312e79b1ed84416e5824304"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30d66e486312e79b1ed84416e5824304">&#9670;&nbsp;</a></span>shader() <span class="overload">[2/3]</span></h2>
+<a id="a994b93c09beb388d54b1983a672ba893"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a994b93c09beb388d54b1983a672ba893">&#9670;&nbsp;</a></span>shader() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,13 +313,198 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">redhand::shader::shader </td>
           <td>(</td>
-          <td class="paramtype">const GLchar *&#160;</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This constructor creates a shader with a given name. </p>
+<p>The default vertex and fragment shaders from the <a class="el" href="shader_source_8hpp.html">shaderSource.hpp</a> will be used. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the Shader </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00026">26</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00028">shader_name</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                        {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a56030f96b6fb9a6d49fdc79569b22743">shader_name</a> = <span class="keyword">static_cast&lt;</span>std::string<span class="keyword">&gt;</span>(name);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a56030f96b6fb9a6d49fdc79569b22743"><div class="ttname"><a href="classredhand_1_1shader.html#a56030f96b6fb9a6d49fdc79569b22743">redhand::shader::shader_name</a></div><div class="ttdeci">std::string shader_name</div><div class="ttdoc">the name of the shader </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00028">shader.hpp:28</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a84c36b746cac66990d0c36fcb78a7d63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84c36b746cac66990d0c36fcb78a7d63">&#9670;&nbsp;</a></span>compileShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int redhand::shader::compileShader </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>shaderCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>shaderType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function compiles a given shader source code and returns the id of the compiled shader or 0 if there was an error. </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00094">94</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00033">errord</a>, and <a class="el" href="shader_8cpp_source.html#l00022">shader()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                                                                    {</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">errord</a>){<span class="keywordflow">return</span> 0;};</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// compile the shader and return the location of the result</span></div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">int</span> success;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">char</span> infoLog[512];</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">auto</span> stringSource = std::string(shaderSource);</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">auto</span> shaderCode = stringSource.c_str();</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classredhand_1_1shader.html">shader</a> = glCreateShader(shaderType);</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    glShaderSource(<a class="code" href="classredhand_1_1shader.html">shader</a>, 1, &amp;shaderCode, NULL);</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    glCompileShader(<a class="code" href="classredhand_1_1shader.html">shader</a>);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// print compile errors if anything went wrong</span></div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    glGetShaderiv(<a class="code" href="classredhand_1_1shader.html">shader</a>, GL_COMPILE_STATUS, &amp;success);</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">if</span>(!success){</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        glGetShaderInfoLog(<a class="code" href="classredhand_1_1shader.html">shader</a>, 512, NULL, infoLog);</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::COMPILATION_FAILED\n&quot;</span> &lt;&lt; infoLog &lt;&lt; std::endl;</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;Shader source code:&quot;</span> &lt;&lt; shaderCode &lt;&lt; std::endl;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">errord</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    };</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">shader</a>;</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html"><div class="ttname"><a href="classredhand_1_1shader.html">redhand::shader</a></div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00022">shader.hpp:22</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a0349760c18df5c891fae3114bf671f88"><div class="ttname"><a href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">redhand::shader::shader</a></div><div class="ttdeci">shader()</div><div class="ttdoc">This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;...</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00022">shader.cpp:22</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a55fce1e2e2e7593808bf18ee62ec620d"><div class="ttname"><a href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">redhand::shader::errord</a></div><div class="ttdeci">bool errord</div><div class="ttdoc">true if an error happened </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00033">shader.hpp:33</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classredhand_1_1shader_a84c36b746cac66990d0c36fcb78a7d63_cgraph.png" border="0" usemap="#classredhand_1_1shader_a84c36b746cac66990d0c36fcb78a7d63_cgraph" alt=""/></div>
+<map name="classredhand_1_1shader_a84c36b746cac66990d0c36fcb78a7d63_cgraph" id="classredhand_1_1shader_a84c36b746cac66990d0c36fcb78a7d63_cgraph">
+<area shape="rect" id="node2" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88" title="This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;..." alt="" coords="221,17,384,43"/>
+<area shape="rect" id="node3" href="classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b" title="Initilizes the shader object with the default shader. " alt="" coords="432,5,633,47"/>
+<area shape="rect" id="node4" href="classredhand_1_1shader.html#a1d73488034f3d53043ca270dfed5b123" title="Create a Shader From source Code. " alt="" coords="681,35,881,76"/>
+<area shape="rect" id="node5" href="classredhand_1_1shader.html#a9d8b3435844e25e5c723e596c9a00801" title="This function links a vertex and fragment shader and if no error happened it will set initilized to t..." alt="" coords="929,42,1113,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a365dacdd2bfc281b2da897e3ef03538b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a365dacdd2bfc281b2da897e3ef03538b">&#9670;&nbsp;</a></span>createDefaultShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int redhand::shader::createDefaultShader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initilizes the shader object with the default shader. </p>
+<dl class="section return"><dt>Returns</dt><dd>int negative value if anything went wrong </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00030">30</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="shader_8cpp_source.html#l00045">createShaderFromCode()</a>, <a class="el" href="shader_source_8hpp_source.html#l00005">redhand::DefaultFragmentSource</a>, and <a class="el" href="shader_source_8hpp_source.html#l00027">redhand::DefaultVertexSource</a>.</p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                      {</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classredhand_1_1shader.html#a1d73488034f3d53043ca270dfed5b123">createShaderFromCode</a>(<a class="code" href="namespaceredhand.html#a89b726e7342aec7af7ba4aa857e1a85d">redhand::DefaultVertexSource</a>,<a class="code" href="namespaceredhand.html#a85f4521c351dace88fafe7c2c6c14f05">redhand::DefaultFragmentSource</a>);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div><div class="ttc" id="namespaceredhand_html_a89b726e7342aec7af7ba4aa857e1a85d"><div class="ttname"><a href="namespaceredhand.html#a89b726e7342aec7af7ba4aa857e1a85d">redhand::DefaultVertexSource</a></div><div class="ttdeci">const char DefaultVertexSource[]</div><div class="ttdef"><b>Definition:</b> <a href="shader_source_8hpp_source.html#l00027">shaderSource.hpp:27</a></div></div>
+<div class="ttc" id="namespaceredhand_html_a85f4521c351dace88fafe7c2c6c14f05"><div class="ttname"><a href="namespaceredhand.html#a85f4521c351dace88fafe7c2c6c14f05">redhand::DefaultFragmentSource</a></div><div class="ttdeci">const char DefaultFragmentSource[]</div><div class="ttdef"><b>Definition:</b> <a href="shader_source_8hpp_source.html#l00005">shaderSource.hpp:5</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a1d73488034f3d53043ca270dfed5b123"><div class="ttname"><a href="classredhand_1_1shader.html#a1d73488034f3d53043ca270dfed5b123">redhand::shader::createShaderFromCode</a></div><div class="ttdeci">int createShaderFromCode(std::string_view vertexSource, std::string_view fragmentSource)</div><div class="ttdoc">Create a Shader From source Code. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00045">shader.cpp:45</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classredhand_1_1shader_a365dacdd2bfc281b2da897e3ef03538b_cgraph.png" border="0" usemap="#classredhand_1_1shader_a365dacdd2bfc281b2da897e3ef03538b_cgraph" alt=""/></div>
+<map name="classredhand_1_1shader_a365dacdd2bfc281b2da897e3ef03538b_cgraph" id="classredhand_1_1shader_a365dacdd2bfc281b2da897e3ef03538b_cgraph">
+<area shape="rect" id="node2" href="classredhand_1_1shader.html#a1d73488034f3d53043ca270dfed5b123" title="Create a Shader From source Code. " alt="" coords="255,56,455,97"/>
+<area shape="rect" id="node3" href="classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63" title="This function compiles a given shader source code and returns the id of the compiled shader or 0 if t..." alt="" coords="511,5,679,47"/>
+<area shape="rect" id="node5" href="classredhand_1_1shader.html#a9d8b3435844e25e5c723e596c9a00801" title="This function links a vertex and fragment shader and if no error happened it will set initilized to t..." alt="" coords="503,71,687,98"/>
+<area shape="rect" id="node4" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88" title="This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;..." alt="" coords="735,67,897,94"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1d73488034f3d53043ca270dfed5b123"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d73488034f3d53043ca270dfed5b123">&#9670;&nbsp;</a></span>createShaderFromCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int redhand::shader::createShaderFromCode </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>vertexSource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>fragmentSource</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a Shader From source Code. </p>
+<dl class="section warning"><dt>Warning</dt><dd>make sure the location the string_view sees still has the string while the function is executed.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vertexSource</td><td>The source code of the vertex shader </td></tr>
+    <tr><td class="paramname">fragmentSource</td><td>The source code of the fragment shader </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00045">45</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="shader_8cpp_source.html#l00094">compileShader()</a>, <a class="el" href="shader_8cpp_source.html#l00006">FRAGMENT_SHADER</a>, <a class="el" href="shader_8hpp_source.html#l00038">initilized</a>, <a class="el" href="shader_8cpp_source.html#l00121">linkShader()</a>, and <a class="el" href="shader_8cpp_source.html#l00005">VERTEX_SHADER</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                                                                 {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// compile shaders</span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">auto</span> vertex = <a class="code" href="classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63">compileShader</a>(static_cast&lt;std::string&gt;(vertexSource).c_str(),<a class="code" href="shader_8cpp.html#a61559c4b9e5fc297e461b52230ca3dac">VERTEX_SHADER</a>);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (vertex == 0){<span class="keywordflow">return</span> -1;};</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">auto</span> fragment = <a class="code" href="classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63">compileShader</a>(static_cast&lt;std::string&gt;(fragmentSource).c_str(),<a class="code" href="shader_8cpp.html#ae93178af30f412f0278ae46706197379">FRAGMENT_SHADER</a>);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span> (fragment == 0){<span class="keywordflow">return</span> -2;};</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">//link shaders</span></div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a9d8b3435844e25e5c723e596c9a00801">linkShader</a>(vertex,fragment);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// delete the shaders as they&#39;re linked into our program now and no longer necessery</span></div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    glDeleteShader(vertex);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    glDeleteShader(fragment);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classredhand_1_1shader.html#a4ef7300a76bb8799fc87c95874efb1f8">initilized</a>){</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }<span class="keywordflow">else</span>{</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> -3;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a9d8b3435844e25e5c723e596c9a00801"><div class="ttname"><a href="classredhand_1_1shader.html#a9d8b3435844e25e5c723e596c9a00801">redhand::shader::linkShader</a></div><div class="ttdeci">void linkShader(unsigned int vertexShader, unsigned int fragmentShader)</div><div class="ttdoc">This function links a vertex and fragment shader and if no error happened it will set initilized to t...</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00121">shader.cpp:121</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a4ef7300a76bb8799fc87c95874efb1f8"><div class="ttname"><a href="classredhand_1_1shader.html#a4ef7300a76bb8799fc87c95874efb1f8">redhand::shader::initilized</a></div><div class="ttdeci">bool initilized</div><div class="ttdoc">true if shader has been fully constructed </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00038">shader.hpp:38</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a84c36b746cac66990d0c36fcb78a7d63"><div class="ttname"><a href="classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63">redhand::shader::compileShader</a></div><div class="ttdeci">unsigned int compileShader(std::string_view shaderCode, int shaderType)</div><div class="ttdoc">This function compiles a given shader source code and returns the id of the compiled shader or 0 if t...</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00094">shader.cpp:94</a></div></div>
+<div class="ttc" id="shader_8cpp_html_ae93178af30f412f0278ae46706197379"><div class="ttname"><a href="shader_8cpp.html#ae93178af30f412f0278ae46706197379">FRAGMENT_SHADER</a></div><div class="ttdeci">#define FRAGMENT_SHADER</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00006">shader.cpp:6</a></div></div>
+<div class="ttc" id="shader_8cpp_html_a61559c4b9e5fc297e461b52230ca3dac"><div class="ttname"><a href="shader_8cpp.html#a61559c4b9e5fc297e461b52230ca3dac">VERTEX_SHADER</a></div><div class="ttdeci">#define VERTEX_SHADER</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00005">shader.cpp:5</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classredhand_1_1shader_a1d73488034f3d53043ca270dfed5b123_cgraph.png" border="0" usemap="#classredhand_1_1shader_a1d73488034f3d53043ca270dfed5b123_cgraph" alt=""/></div>
+<map name="classredhand_1_1shader_a1d73488034f3d53043ca270dfed5b123_cgraph" id="classredhand_1_1shader_a1d73488034f3d53043ca270dfed5b123_cgraph">
+<area shape="rect" id="node2" href="classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63" title="This function compiles a given shader source code and returns the id of the compiled shader or 0 if t..." alt="" coords="261,5,429,47"/>
+<area shape="rect" id="node5" href="classredhand_1_1shader.html#a9d8b3435844e25e5c723e596c9a00801" title="This function links a vertex and fragment shader and if no error happened it will set initilized to t..." alt="" coords="253,71,437,98"/>
+<area shape="rect" id="node3" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88" title="This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;..." alt="" coords="485,42,648,69"/>
+<area shape="rect" id="node4" href="classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b" title="Initilizes the shader object with the default shader. " alt="" coords="696,89,897,131"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2b714341e9ab29d6fa2cf2c357d51a0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b714341e9ab29d6fa2cf2c357d51a0e">&#9670;&nbsp;</a></span>createShaderFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int redhand::shader::createShaderFromFile </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
           <td class="paramname"><em>vertexPath</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const GLchar *&#160;</td>
+          <td class="paramtype">std::string_view&#160;</td>
           <td class="paramname"><em>fragmentPath</em>&#160;</td>
         </tr>
         <tr>
@@ -243,68 +515,37 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This constructor creates a shader from a given vertex and fragment shader. </p>
-<p>The given paths are relative to the executeable. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Create a Shader From a file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vertexPath</td><td>The Path to the vertex Shader </td></tr>
-    <tr><td class="paramname">fragmentPath</td><td>The Path to the fragment Shader </td></tr>
+    <tr><td class="paramname">vertexPath</td><td>The location of the vertex Shader </td></tr>
+    <tr><td class="paramname">fragmentPath</td><td>The location of the Fragment Shader </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>int negative if something went wrong </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00034">34</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="shader_8cpp_source.html#l00045">createShaderFromCode()</a>, and <a class="el" href="shader_8cpp_source.html#l00067">loadShaderCodeFromFile()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                                                             {</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//retrieve the vertex/fragment source code from filePath</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">auto</span> vertexCode = <a class="code" href="classredhand_1_1shader.html#a1c8ded7e410bf94c047740e2f49ea7fe">loadShaderCodeFromFile</a>(vertexPath);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span>(vertexCode.compare(<span class="stringliteral">&quot;&quot;</span>) == 0){<span class="keywordflow">return</span> -4;};</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">auto</span> fragmentCode = <a class="code" href="classredhand_1_1shader.html#a1c8ded7e410bf94c047740e2f49ea7fe">loadShaderCodeFromFile</a>(fragmentPath);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span>(fragmentCode.compare(<span class="stringliteral">&quot;&quot;</span>) == 0){<span class="keywordflow">return</span> -5;};</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classredhand_1_1shader.html#a1d73488034f3d53043ca270dfed5b123">createShaderFromCode</a>(vertexCode, fragmentCode);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div><div class="ttc" id="classredhand_1_1shader_html_a1d73488034f3d53043ca270dfed5b123"><div class="ttname"><a href="classredhand_1_1shader.html#a1d73488034f3d53043ca270dfed5b123">redhand::shader::createShaderFromCode</a></div><div class="ttdeci">int createShaderFromCode(std::string_view vertexSource, std::string_view fragmentSource)</div><div class="ttdoc">Create a Shader From source Code. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00045">shader.cpp:45</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a1c8ded7e410bf94c047740e2f49ea7fe"><div class="ttname"><a href="classredhand_1_1shader.html#a1c8ded7e410bf94c047740e2f49ea7fe">redhand::shader::loadShaderCodeFromFile</a></div><div class="ttdeci">std::string loadShaderCodeFromFile(std::string_view fileLocation)</div><div class="ttdoc">This function basically just reads a file into a string. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00067">shader.cpp:67</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classredhand_1_1shader_a2b714341e9ab29d6fa2cf2c357d51a0e_cgraph.png" border="0" usemap="#classredhand_1_1shader_a2b714341e9ab29d6fa2cf2c357d51a0e_cgraph" alt=""/></div>
+<map name="classredhand_1_1shader_a2b714341e9ab29d6fa2cf2c357d51a0e_cgraph" id="classredhand_1_1shader_a2b714341e9ab29d6fa2cf2c357d51a0e_cgraph">
+<area shape="rect" id="node2" href="classredhand_1_1shader.html#a1d73488034f3d53043ca270dfed5b123" title="Create a Shader From source Code. " alt="" coords="253,64,453,105"/>
+<area shape="rect" id="node7" href="classredhand_1_1shader.html#a1c8ded7e410bf94c047740e2f49ea7fe" title="This function basically just reads a file into a string. " alt="" coords="259,129,447,171"/>
+<area shape="rect" id="node3" href="classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63" title="This function compiles a given shader source code and returns the id of the compiled shader or 0 if t..." alt="" coords="509,5,677,47"/>
+<area shape="rect" id="node6" href="classredhand_1_1shader.html#a9d8b3435844e25e5c723e596c9a00801" title="This function links a vertex and fragment shader and if no error happened it will set initilized to t..." alt="" coords="501,71,685,98"/>
+<area shape="rect" id="node4" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88" title="This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;..." alt="" coords="733,42,896,69"/>
+<area shape="rect" id="node5" href="classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b" title="Initilizes the shader object with the default shader. " alt="" coords="944,89,1145,131"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="adf1ac37f88a9a0ea83facba1e4aa49d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf1ac37f88a9a0ea83facba1e4aa49d8">&#9670;&nbsp;</a></span>shader() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">redhand::shader::shader </td>
-          <td>(</td>
-          <td class="paramtype">const GLchar *&#160;</td>
-          <td class="paramname"><em>vertexPath</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const GLchar *&#160;</td>
-          <td class="paramname"><em>fragmentPath</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>This constructor creates a shader from a given vertex and fragment shader and sets a given name. </p>
-<p>The given paths are relative to the executeable. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">vertexPath</td><td>The Path to the vertex Shader </td></tr>
-    <tr><td class="paramname">fragmentPath</td><td>The Path to the fragment Shader </td></tr>
-    <tr><td class="paramname">name</td><td>The name of the Shader </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00089">89</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00026">shader_name</a>.</p>
-<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                                                                         :<a class="code" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">shader</a>(vertexPath,fragmentPath){</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a56030f96b6fb9a6d49fdc79569b22743">shader_name</a> = name;</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a0349760c18df5c891fae3114bf671f88"><div class="ttname"><a href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">redhand::shader::shader</a></div><div class="ttdeci">shader()</div><div class="ttdoc">This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;...</div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00005">shader.cpp:5</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a56030f96b6fb9a6d49fdc79569b22743"><div class="ttname"><a href="classredhand_1_1shader.html#a56030f96b6fb9a6d49fdc79569b22743">redhand::shader::shader_name</a></div><div class="ttdeci">std::string shader_name</div><div class="ttdoc">the name of the shader </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00026">shader.hpp:26</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a418abef329616f860657f24ec28716d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a418abef329616f860657f24ec28716d0">&#9670;&nbsp;</a></span>getFloat()</h2>
 
@@ -340,10 +581,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00187">187</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00266">266</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                                                     {</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    glGetUniformfv(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), dest);</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                                                     {</div><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    glGetUniformfv(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), dest);</div><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -364,21 +605,21 @@ Private Attributes</h2></td></tr>
 
 <p>This function returns the ID of the shader for the use in some OpenGL functions. </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00116">116</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00180">180</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                          {</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>;</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                          {</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>;</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ab3487eaa230777c23f90e3b9530006e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3487eaa230777c23f90e3b9530006e9">&#9670;&nbsp;</a></span>getName()</h2>
+<a id="ad271bf72cc2604469c735b327e871ad7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad271bf72cc2604469c735b327e871ad7">&#9670;&nbsp;</a></span>getName()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string redhand::shader::getName </td>
+          <td class="memname">std::string_view redhand::shader::getName </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -389,10 +630,11 @@ Private Attributes</h2></td></tr>
 <p>This function return the name the shader has. </p>
 <p>It will be "shader" if nothing else was specified. </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00134">134</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00202">202</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00026">shader_name</a>.</p>
-<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                {</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classredhand_1_1shader.html#a56030f96b6fb9a6d49fdc79569b22743">shader_name</a>;</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a56030f96b6fb9a6d49fdc79569b22743"><div class="ttname"><a href="classredhand_1_1shader.html#a56030f96b6fb9a6d49fdc79569b22743">redhand::shader::shader_name</a></div><div class="ttdeci">std::string shader_name</div><div class="ttdoc">the name of the shader </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00026">shader.hpp:26</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00030">mutex_shader_name</a>, and <a class="el" href="shader_8hpp_source.html#l00028">shader_name</a>.</p>
+<div class="fragment"><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                                     {</div><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">auto</span> lock = std::shared_lock(<a class="code" href="classredhand_1_1shader.html#ab603420e6eb20e3d740cccb68819b506">mutex_shader_name</a>);</div><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classredhand_1_1shader.html#a56030f96b6fb9a6d49fdc79569b22743">shader_name</a>;</div><div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_ab603420e6eb20e3d740cccb68819b506"><div class="ttname"><a href="classredhand_1_1shader.html#ab603420e6eb20e3d740cccb68819b506">redhand::shader::mutex_shader_name</a></div><div class="ttdeci">std::shared_mutex mutex_shader_name</div><div class="ttdoc">the mutex for the shader_name </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00030">shader.hpp:30</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a56030f96b6fb9a6d49fdc79569b22743"><div class="ttname"><a href="classredhand_1_1shader.html#a56030f96b6fb9a6d49fdc79569b22743">redhand::shader::shader_name</a></div><div class="ttdeci">std::string shader_name</div><div class="ttdoc">the name of the shader </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00028">shader.hpp:28</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -411,12 +653,93 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function returns true if an error happend during the setup of the shader. </p>
+<p>This function returns true if an error happend during the setup of the shader or the shader is not initilized. </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00112">112</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00171">171</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00029">errord</a>.</p>
-<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                              {</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">errord</a>;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a55fce1e2e2e7593808bf18ee62ec620d"><div class="ttname"><a href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">redhand::shader::errord</a></div><div class="ttdeci">bool errord</div><div class="ttdoc">true if an error happened </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00029">shader.hpp:29</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00033">errord</a>, <a class="el" href="shader_8hpp_source.html#l00038">initilized</a>, <a class="el" href="shader_8hpp_source.html#l00035">mutex_errord</a>, and <a class="el" href="shader_8hpp_source.html#l00040">mutex_initilized</a>.</p>
+<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                              {</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keyword">auto</span> lock = {</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        std::shared_lock(<a class="code" href="classredhand_1_1shader.html#af3c77eb7ae4a4f28059c9255d4531ba6">mutex_initilized</a>),</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        std::shared_lock(<a class="code" href="classredhand_1_1shader.html#a91a88dd4382ea5d20ed13f42e44c8ef8">mutex_errord</a>)</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    };</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="classredhand_1_1shader.html#a4ef7300a76bb8799fc87c95874efb1f8">initilized</a> || <a class="code" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">errord</a>;</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_af3c77eb7ae4a4f28059c9255d4531ba6"><div class="ttname"><a href="classredhand_1_1shader.html#af3c77eb7ae4a4f28059c9255d4531ba6">redhand::shader::mutex_initilized</a></div><div class="ttdeci">std::shared_mutex mutex_initilized</div><div class="ttdoc">the mutex for the initilized </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00040">shader.hpp:40</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a4ef7300a76bb8799fc87c95874efb1f8"><div class="ttname"><a href="classredhand_1_1shader.html#a4ef7300a76bb8799fc87c95874efb1f8">redhand::shader::initilized</a></div><div class="ttdeci">bool initilized</div><div class="ttdoc">true if shader has been fully constructed </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00038">shader.hpp:38</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a55fce1e2e2e7593808bf18ee62ec620d"><div class="ttname"><a href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">redhand::shader::errord</a></div><div class="ttdeci">bool errord</div><div class="ttdoc">true if an error happened </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00033">shader.hpp:33</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a91a88dd4382ea5d20ed13f42e44c8ef8"><div class="ttname"><a href="classredhand_1_1shader.html#a91a88dd4382ea5d20ed13f42e44c8ef8">redhand::shader::mutex_errord</a></div><div class="ttdeci">std::shared_mutex mutex_errord</div><div class="ttdoc">the mutex for the errord </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00035">shader.hpp:35</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9d8b3435844e25e5c723e596c9a00801"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d8b3435844e25e5c723e596c9a00801">&#9670;&nbsp;</a></span>linkShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void redhand::shader::linkShader </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>vertexShader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>fragmentShader</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function links a vertex and fragment shader and if no error happened it will set initilized to true. </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00121">121</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00033">errord</a>, <a class="el" href="shader_8hpp_source.html#l00025">ID</a>, and <a class="el" href="shader_8hpp_source.html#l00038">initilized</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                                                                    {</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">errord</a>){<span class="keywordflow">return</span>;};</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">// create shader Program</span></div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">int</span> success;</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">char</span> infoLog[512];</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a> = glCreateProgram();</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    glAttachShader(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, vertexShader);</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    glAttachShader(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, fragmentShader);</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    glLinkProgram(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>);</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="comment">// print linking errors if any</span></div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    glGetProgramiv(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, GL_LINK_STATUS, &amp;success);</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">if</span>(!success){</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        glGetProgramInfoLog(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, 512, NULL, infoLog);</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::PROGRAM::LINKING_FAILED\n&quot;</span> &lt;&lt; infoLog &lt;&lt; std::endl;</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="code" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">errord</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    </div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a4ef7300a76bb8799fc87c95874efb1f8">initilized</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a4ef7300a76bb8799fc87c95874efb1f8"><div class="ttname"><a href="classredhand_1_1shader.html#a4ef7300a76bb8799fc87c95874efb1f8">redhand::shader::initilized</a></div><div class="ttdeci">bool initilized</div><div class="ttdoc">true if shader has been fully constructed </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00038">shader.hpp:38</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a55fce1e2e2e7593808bf18ee62ec620d"><div class="ttname"><a href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">redhand::shader::errord</a></div><div class="ttdeci">bool errord</div><div class="ttdoc">true if an error happened </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00033">shader.hpp:33</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1c8ded7e410bf94c047740e2f49ea7fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c8ded7e410bf94c047740e2f49ea7fe">&#9670;&nbsp;</a></span>loadShaderCodeFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string redhand::shader::loadShaderCodeFromFile </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>fileLocation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function basically just reads a file into a string. </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00067">67</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00033">errord</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                                                          {</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">errord</a>){<span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;};</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::string shaderCode;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::ifstream ShaderFile;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// ensure ifstream objects can throw exceptions:</span></div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    ShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">try</span> {</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">// open files</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        ShaderFile.open(std::string(fileLocation));</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        std::stringstream ShaderStream;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">// read file&#39;s buffer contents into streams</span></div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        ShaderStream &lt;&lt; ShaderFile.rdbuf();     </div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="comment">// close file handlers</span></div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        ShaderFile.close();</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="comment">// convert stream into string</span></div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        shaderCode  = ShaderStream.str();   </div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">catch</span>(<span class="keyword">const</span> std::ifstream::failure&amp; e){</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ&quot;</span> &lt;&lt; std::endl;</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">errord</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> shaderCode;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a55fce1e2e2e7593808bf18ee62ec620d"><div class="ttname"><a href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">redhand::shader::errord</a></div><div class="ttdeci">bool errord</div><div class="ttdoc">true if an error happened </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00033">shader.hpp:33</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -455,12 +778,13 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00103">103</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00158">158</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00035">camera</a>, <a class="el" href="shader_8hpp_source.html#l00032">cameraVector</a>, and <a class="el" href="shader_8hpp_source.html#l00044">shaderLock</a>.</p>
-<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                                                  {</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::scoped_lock&lt;std::mutex&gt; lock(<a class="code" href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">shaderLock</a>);</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>.x -= delta_pos_x;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>.y -= delta_pos_y;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a> = glm::mat4(1.0f);</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a> = glm::translate(<a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a>, <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>);</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a7e523475ea686a25cb291fdbd0f20892"><div class="ttname"><a href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">redhand::shader::camera</a></div><div class="ttdeci">glm::mat4 camera</div><div class="ttdoc">The camera matrix. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00035">shader.hpp:35</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a38793758e5c6784f34593befafd16a0c"><div class="ttname"><a href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">redhand::shader::shaderLock</a></div><div class="ttdeci">std::mutex shaderLock</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00044">shader.hpp:44</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a2ce41a04340d94b22a55e8a27c047823"><div class="ttname"><a href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">redhand::shader::cameraVector</a></div><div class="ttdeci">glm::vec3 cameraVector</div><div class="ttdoc">The position of the camera. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00032">shader.hpp:32</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00048">camera</a>, <a class="el" href="shader_8hpp_source.html#l00043">cameraVector</a>, <a class="el" href="shader_8hpp_source.html#l00050">mutex_camera</a>, and <a class="el" href="shader_8hpp_source.html#l00045">mutex_cameraVector</a>.</p>
+<div class="fragment"><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                                                  {</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keyword">auto</span> lock = {</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#a5de33743a56600ed0eea6ac053ff69db">mutex_cameraVector</a>),</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#a6f31c2854d1f7dec852ec7ebb720c5ba">mutex_camera</a>)</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    };</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>.x -= delta_pos_x;</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>.y -= delta_pos_y;</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a> = glm::mat4(1.0f);</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a> = glm::translate(<a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a>, <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>);</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a7e523475ea686a25cb291fdbd0f20892"><div class="ttname"><a href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">redhand::shader::camera</a></div><div class="ttdeci">glm::mat4 camera</div><div class="ttdoc">The camera matrix. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00048">shader.hpp:48</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a5de33743a56600ed0eea6ac053ff69db"><div class="ttname"><a href="classredhand_1_1shader.html#a5de33743a56600ed0eea6ac053ff69db">redhand::shader::mutex_cameraVector</a></div><div class="ttdeci">std::shared_mutex mutex_cameraVector</div><div class="ttdoc">the mutex for the cameraVector </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00045">shader.hpp:45</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a2ce41a04340d94b22a55e8a27c047823"><div class="ttname"><a href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">redhand::shader::cameraVector</a></div><div class="ttdeci">glm::vec3 cameraVector</div><div class="ttdoc">The position of the camera. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00043">shader.hpp:43</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a6f31c2854d1f7dec852ec7ebb720c5ba"><div class="ttname"><a href="classredhand_1_1shader.html#a6f31c2854d1f7dec852ec7ebb720c5ba">redhand::shader::mutex_camera</a></div><div class="ttdeci">std::shared_mutex mutex_camera</div><div class="ttdoc">the mutex for the camera </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00050">shader.hpp:50</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -499,10 +823,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00138">138</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00217">217</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                                                  {         </div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    glUniform1i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value); </div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                                                  {         </div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    glUniform1i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value); </div><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -548,10 +872,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00141">141</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00220">220</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                                                                               { </div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    glUniform2i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value, (int)value2); </div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                                                               { </div><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    glUniform2i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value, (int)value2); </div><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -604,10 +928,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00145">145</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00224">224</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                                                                            { </div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    glUniform3i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value, (int)value2, (<span class="keywordtype">int</span>)value3); </div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                                                                                            { </div><div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    glUniform3i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value, (int)value2, (<span class="keywordtype">int</span>)value3); </div><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -667,10 +991,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00149">149</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00228">228</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                                                                                         { </div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    glUniform4i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value, (int)value2, (<span class="keywordtype">int</span>)value3, (int)value4); </div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                                                                                         { </div><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    glUniform4i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), (<span class="keywordtype">int</span>)value, (int)value2, (<span class="keywordtype">int</span>)value3, (int)value4); </div><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -709,12 +1033,13 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00093">93</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00145">145</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00035">camera</a>, <a class="el" href="shader_8hpp_source.html#l00032">cameraVector</a>, and <a class="el" href="shader_8hpp_source.html#l00044">shaderLock</a>.</p>
-<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                     {</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    std::scoped_lock&lt;std::mutex&gt; lock(<a class="code" href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">shaderLock</a>);</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>.x = - pos_x;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>.y = - pos_y;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a> = glm::mat4(1.0f);</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a> = glm::translate(<a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a>, <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>);</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a7e523475ea686a25cb291fdbd0f20892"><div class="ttname"><a href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">redhand::shader::camera</a></div><div class="ttdeci">glm::mat4 camera</div><div class="ttdoc">The camera matrix. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00035">shader.hpp:35</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a38793758e5c6784f34593befafd16a0c"><div class="ttname"><a href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">redhand::shader::shaderLock</a></div><div class="ttdeci">std::mutex shaderLock</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00044">shader.hpp:44</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a2ce41a04340d94b22a55e8a27c047823"><div class="ttname"><a href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">redhand::shader::cameraVector</a></div><div class="ttdeci">glm::vec3 cameraVector</div><div class="ttdoc">The position of the camera. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00032">shader.hpp:32</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00048">camera</a>, <a class="el" href="shader_8hpp_source.html#l00043">cameraVector</a>, <a class="el" href="shader_8hpp_source.html#l00050">mutex_camera</a>, and <a class="el" href="shader_8hpp_source.html#l00045">mutex_cameraVector</a>.</p>
+<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                                     {</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keyword">auto</span> lock = {</div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#a5de33743a56600ed0eea6ac053ff69db">mutex_cameraVector</a>),</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#a6f31c2854d1f7dec852ec7ebb720c5ba">mutex_camera</a>)</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    };</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>.x = - pos_x;</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>.y = - pos_y;</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a> = glm::mat4(1.0f);</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a> = glm::translate(<a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a>, <a class="code" href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">cameraVector</a>);</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a7e523475ea686a25cb291fdbd0f20892"><div class="ttname"><a href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">redhand::shader::camera</a></div><div class="ttdeci">glm::mat4 camera</div><div class="ttdoc">The camera matrix. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00048">shader.hpp:48</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a5de33743a56600ed0eea6ac053ff69db"><div class="ttname"><a href="classredhand_1_1shader.html#a5de33743a56600ed0eea6ac053ff69db">redhand::shader::mutex_cameraVector</a></div><div class="ttdeci">std::shared_mutex mutex_cameraVector</div><div class="ttdoc">the mutex for the cameraVector </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00045">shader.hpp:45</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a2ce41a04340d94b22a55e8a27c047823"><div class="ttname"><a href="classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823">redhand::shader::cameraVector</a></div><div class="ttdeci">glm::vec3 cameraVector</div><div class="ttdoc">The position of the camera. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00043">shader.hpp:43</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a6f31c2854d1f7dec852ec7ebb720c5ba"><div class="ttname"><a href="classredhand_1_1shader.html#a6f31c2854d1f7dec852ec7ebb720c5ba">redhand::shader::mutex_camera</a></div><div class="ttdeci">std::shared_mutex mutex_camera</div><div class="ttdoc">the mutex for the camera </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00050">shader.hpp:50</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -753,10 +1078,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00171">171</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00250">250</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                                                    { </div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    glUniform1f(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value); </div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                                                    { </div><div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    glUniform1f(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value); </div><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -802,10 +1127,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00175">175</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00254">254</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                                                                  { </div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    glUniform2f(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2); </div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                                                                  { </div><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    glUniform2f(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2); </div><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -858,10 +1183,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00179">179</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00258">258</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                                                                                { </div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    glUniform3f(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2, value3); </div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                                                                                { </div><div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    glUniform3f(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2, value3); </div><div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -921,10 +1246,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00183">183</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00262">262</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                                                                                              { </div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    glUniform4f(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2, value3, value4); </div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                                                                                              { </div><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    glUniform4f(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2, value3, value4); </div><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -963,10 +1288,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00154">154</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00233">233</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                                                { </div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    glUniform1i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value); </div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                                                { </div><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    glUniform1i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value); </div><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1012,10 +1337,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00158">158</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00237">237</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                                                            { </div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    glUniform2i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2); </div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                                                            { </div><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    glUniform2i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2); </div><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1068,10 +1393,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00162">162</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00241">241</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                                                                        { </div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    glUniform3i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2, value3); </div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                                                                        { </div><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    glUniform3i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2, value3); </div><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1131,10 +1456,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00166">166</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00245">245</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00023">ID</a>.</p>
-<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                                                                                    { </div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    glUniform4i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2, value3, value4); </div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00025">ID</a>.</p>
+<div class="fragment"><div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                                                                                    { </div><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    glUniform4i(glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>, name.c_str()), value, value2, value3, value4); </div><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;} </div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1162,11 +1487,11 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00191">191</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00207">207</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="default_8vert_source.html#l00012">projection</a>, <a class="el" href="shader_8hpp_source.html#l00038">projectionMatrix</a>, and <a class="el" href="shader_8hpp_source.html#l00044">shaderLock</a>.</p>
-<div class="fragment"><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                                                         {</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    std::scoped_lock&lt;std::mutex&gt; lock(<a class="code" href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">shaderLock</a>);</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="classredhand_1_1shader.html#aae5d82d9790c41d207996971c41a6d36">projectionMatrix</a> = <a class="code" href="default_8vert.html#a6f89a4fbf1a53a21ada7ca66387463a1">projection</a>;</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_aae5d82d9790c41d207996971c41a6d36"><div class="ttname"><a href="classredhand_1_1shader.html#aae5d82d9790c41d207996971c41a6d36">redhand::shader::projectionMatrix</a></div><div class="ttdeci">glm::mat4 projectionMatrix</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00038">shader.hpp:38</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a38793758e5c6784f34593befafd16a0c"><div class="ttname"><a href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">redhand::shader::shaderLock</a></div><div class="ttdeci">std::mutex shaderLock</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00044">shader.hpp:44</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00055">mutex_projectionMatrix</a>, <a class="el" href="default_8vert_source.html#l00012">projection</a>, and <a class="el" href="shader_8hpp_source.html#l00053">projectionMatrix</a>.</p>
+<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                                         {</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keyword">auto</span> lock = std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#ad78a803b0f8f2693b5a0ddc1c7e7dda2">mutex_projectionMatrix</a>);</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="classredhand_1_1shader.html#aae5d82d9790c41d207996971c41a6d36">projectionMatrix</a> = <a class="code" href="default_8vert.html#a6f89a4fbf1a53a21ada7ca66387463a1">projection</a>;</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_aae5d82d9790c41d207996971c41a6d36"><div class="ttname"><a href="classredhand_1_1shader.html#aae5d82d9790c41d207996971c41a6d36">redhand::shader::projectionMatrix</a></div><div class="ttdeci">glm::mat4 projectionMatrix</div><div class="ttdoc">the projection matrix </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00053">shader.hpp:53</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_ad78a803b0f8f2693b5a0ddc1c7e7dda2"><div class="ttname"><a href="classredhand_1_1shader.html#ad78a803b0f8f2693b5a0ddc1c7e7dda2">redhand::shader::mutex_projectionMatrix</a></div><div class="ttdeci">std::shared_mutex mutex_projectionMatrix</div><div class="ttdoc">the mutex for the projectionMatrix </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00055">shader.hpp:55</a></div></div>
 <div class="ttc" id="default_8vert_html_a6f89a4fbf1a53a21ada7ca66387463a1"><div class="ttname"><a href="default_8vert.html#a6f89a4fbf1a53a21ada7ca66387463a1">projection</a></div><div class="ttdeci">uniform mat4 projection</div><div class="ttdef"><b>Definition:</b> <a href="default_8vert_source.html#l00012">default.vert:12</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -1195,11 +1520,11 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00196">196</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00212">212</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00044">shaderLock</a>, and <a class="el" href="shader_8hpp_source.html#l00041">textureScale</a>.</p>
-<div class="fragment"><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                                                {</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    std::scoped_lock&lt;std::mutex&gt; lock(<a class="code" href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">shaderLock</a>);</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">textureScale</a> = scale;</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a9d9b7b86281e6c870abe24a42040cbac"><div class="ttname"><a href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">redhand::shader::textureScale</a></div><div class="ttdeci">glm::vec2 textureScale</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00041">shader.hpp:41</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a38793758e5c6784f34593befafd16a0c"><div class="ttname"><a href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">redhand::shader::shaderLock</a></div><div class="ttdeci">std::mutex shaderLock</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00044">shader.hpp:44</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00060">mutex_textureScale</a>, and <a class="el" href="shader_8hpp_source.html#l00058">textureScale</a>.</p>
+<div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                                                {</div><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keyword">auto</span> lock = std::scoped_lock(<a class="code" href="classredhand_1_1shader.html#aeb915c4004c202df7d28ee4c2ed10b65">mutex_textureScale</a>);</div><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">textureScale</a> = scale;</div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_aeb915c4004c202df7d28ee4c2ed10b65"><div class="ttname"><a href="classredhand_1_1shader.html#aeb915c4004c202df7d28ee4c2ed10b65">redhand::shader::mutex_textureScale</a></div><div class="ttdeci">std::shared_mutex mutex_textureScale</div><div class="ttdoc">the mutex for the texture scale </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00060">shader.hpp:60</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a9d9b7b86281e6c870abe24a42040cbac"><div class="ttname"><a href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">redhand::shader::textureScale</a></div><div class="ttdeci">glm::vec2 textureScale</div><div class="ttdoc">the texture scale </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00058">shader.hpp:58</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1220,16 +1545,18 @@ Private Attributes</h2></td></tr>
 
 <p>This function activates the shader and sets the camera position. </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00120">120</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8cpp_source.html#l00184">184</a> of file <a class="el" href="shader_8cpp_source.html">shader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00035">camera</a>, <a class="el" href="shader_8cpp_source.html#l00116">getID()</a>, <a class="el" href="shader_8hpp_source.html#l00023">ID</a>, <a class="el" href="shader_8hpp_source.html#l00038">projectionMatrix</a>, <a class="el" href="shader_8cpp_source.html#l00171">setFloat()</a>, <a class="el" href="shader_8hpp_source.html#l00044">shaderLock</a>, and <a class="el" href="shader_8hpp_source.html#l00041">textureScale</a>.</p>
-<div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                       {</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    std::scoped_lock&lt;std::mutex&gt; lock(<a class="code" href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">shaderLock</a>);</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    glUseProgram(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>);</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">int</span> cameraLoc = glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6">getID</a>(), <span class="stringliteral">&quot;camera&quot;</span>);</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    glUniformMatrix4fv(cameraLoc, 1, GL_FALSE, glm::value_ptr(<a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a>));</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    </div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">int</span> projectionLoc = glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6">getID</a>(), <span class="stringliteral">&quot;projection&quot;</span>);</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(<a class="code" href="classredhand_1_1shader.html#aae5d82d9790c41d207996971c41a6d36">projectionMatrix</a>));</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a4d0ffd87d70fa4f51bf22bedf853989f">setFloat</a>(<span class="stringliteral">&quot;textureScale&quot;</span>, <a class="code" href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">textureScale</a>.x, <a class="code" href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">textureScale</a>.y);</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00023">shader.hpp:23</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a4d0ffd87d70fa4f51bf22bedf853989f"><div class="ttname"><a href="classredhand_1_1shader.html#a4d0ffd87d70fa4f51bf22bedf853989f">redhand::shader::setFloat</a></div><div class="ttdeci">void setFloat(const std::string &amp;name, float value) const</div><div class="ttdoc">The setFloat functions set a uniform vector of the shader to given values. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00171">shader.cpp:171</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_aae5d82d9790c41d207996971c41a6d36"><div class="ttname"><a href="classredhand_1_1shader.html#aae5d82d9790c41d207996971c41a6d36">redhand::shader::projectionMatrix</a></div><div class="ttdeci">glm::mat4 projectionMatrix</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00038">shader.hpp:38</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a9d9b7b86281e6c870abe24a42040cbac"><div class="ttname"><a href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">redhand::shader::textureScale</a></div><div class="ttdeci">glm::vec2 textureScale</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00041">shader.hpp:41</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a7e523475ea686a25cb291fdbd0f20892"><div class="ttname"><a href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">redhand::shader::camera</a></div><div class="ttdeci">glm::mat4 camera</div><div class="ttdoc">The camera matrix. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00035">shader.hpp:35</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_a38793758e5c6784f34593befafd16a0c"><div class="ttname"><a href="classredhand_1_1shader.html#a38793758e5c6784f34593befafd16a0c">redhand::shader::shaderLock</a></div><div class="ttdeci">std::mutex shaderLock</div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00044">shader.hpp:44</a></div></div>
-<div class="ttc" id="classredhand_1_1shader_html_aed208783f4c577978e34b765ad79a0f6"><div class="ttname"><a href="classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6">redhand::shader::getID</a></div><div class="ttdeci">unsigned int getID()</div><div class="ttdoc">This function returns the ID of the shader for the use in some OpenGL functions. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00116">shader.cpp:116</a></div></div>
+<p class="reference">References <a class="el" href="shader_8hpp_source.html#l00048">camera</a>, <a class="el" href="shader_8cpp_source.html#l00180">getID()</a>, <a class="el" href="shader_8hpp_source.html#l00025">ID</a>, <a class="el" href="shader_8hpp_source.html#l00050">mutex_camera</a>, <a class="el" href="shader_8hpp_source.html#l00055">mutex_projectionMatrix</a>, <a class="el" href="shader_8hpp_source.html#l00060">mutex_textureScale</a>, <a class="el" href="shader_8hpp_source.html#l00053">projectionMatrix</a>, <a class="el" href="shader_8cpp_source.html#l00250">setFloat()</a>, and <a class="el" href="shader_8hpp_source.html#l00058">textureScale</a>.</p>
+<div class="fragment"><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                       {</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keyword">auto</span> lock = {</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        std::shared_lock(<a class="code" href="classredhand_1_1shader.html#a6f31c2854d1f7dec852ec7ebb720c5ba">mutex_camera</a>),</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        std::shared_lock(<a class="code" href="classredhand_1_1shader.html#ad78a803b0f8f2693b5a0ddc1c7e7dda2">mutex_projectionMatrix</a>),</div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        std::shared_lock(<a class="code" href="classredhand_1_1shader.html#aeb915c4004c202df7d28ee4c2ed10b65">mutex_textureScale</a>)</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    };</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    glUseProgram(<a class="code" href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">ID</a>);</div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">int</span> cameraLoc = glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6">getID</a>(), <span class="stringliteral">&quot;camera&quot;</span>);</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    glUniformMatrix4fv(cameraLoc, 1, GL_FALSE, glm::value_ptr(<a class="code" href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">camera</a>));</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    </div><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordtype">int</span> projectionLoc = glGetUniformLocation(<a class="code" href="classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6">getID</a>(), <span class="stringliteral">&quot;projection&quot;</span>);</div><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(<a class="code" href="classredhand_1_1shader.html#aae5d82d9790c41d207996971c41a6d36">projectionMatrix</a>));</div><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="classredhand_1_1shader.html#a4d0ffd87d70fa4f51bf22bedf853989f">setFloat</a>(<span class="stringliteral">&quot;textureScale&quot;</span>, <a class="code" href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">textureScale</a>.x, <a class="code" href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">textureScale</a>.y);</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div><div class="ttc" id="classredhand_1_1shader_html_a37e2d5a22014103549e6333d6285ee6f"><div class="ttname"><a href="classredhand_1_1shader.html#a37e2d5a22014103549e6333d6285ee6f">redhand::shader::ID</a></div><div class="ttdeci">unsigned int ID</div><div class="ttdoc">the program ID </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00025">shader.hpp:25</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a4d0ffd87d70fa4f51bf22bedf853989f"><div class="ttname"><a href="classredhand_1_1shader.html#a4d0ffd87d70fa4f51bf22bedf853989f">redhand::shader::setFloat</a></div><div class="ttdeci">void setFloat(const std::string &amp;name, float value) const</div><div class="ttdoc">The setFloat functions set a uniform vector of the shader to given values. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00250">shader.cpp:250</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_aeb915c4004c202df7d28ee4c2ed10b65"><div class="ttname"><a href="classredhand_1_1shader.html#aeb915c4004c202df7d28ee4c2ed10b65">redhand::shader::mutex_textureScale</a></div><div class="ttdeci">std::shared_mutex mutex_textureScale</div><div class="ttdoc">the mutex for the texture scale </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00060">shader.hpp:60</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_aae5d82d9790c41d207996971c41a6d36"><div class="ttname"><a href="classredhand_1_1shader.html#aae5d82d9790c41d207996971c41a6d36">redhand::shader::projectionMatrix</a></div><div class="ttdeci">glm::mat4 projectionMatrix</div><div class="ttdoc">the projection matrix </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00053">shader.hpp:53</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a9d9b7b86281e6c870abe24a42040cbac"><div class="ttname"><a href="classredhand_1_1shader.html#a9d9b7b86281e6c870abe24a42040cbac">redhand::shader::textureScale</a></div><div class="ttdeci">glm::vec2 textureScale</div><div class="ttdoc">the texture scale </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00058">shader.hpp:58</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a7e523475ea686a25cb291fdbd0f20892"><div class="ttname"><a href="classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892">redhand::shader::camera</a></div><div class="ttdeci">glm::mat4 camera</div><div class="ttdoc">The camera matrix. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00048">shader.hpp:48</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_ad78a803b0f8f2693b5a0ddc1c7e7dda2"><div class="ttname"><a href="classredhand_1_1shader.html#ad78a803b0f8f2693b5a0ddc1c7e7dda2">redhand::shader::mutex_projectionMatrix</a></div><div class="ttdeci">std::shared_mutex mutex_projectionMatrix</div><div class="ttdoc">the mutex for the projectionMatrix </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00055">shader.hpp:55</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_aed208783f4c577978e34b765ad79a0f6"><div class="ttname"><a href="classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6">redhand::shader::getID</a></div><div class="ttdeci">unsigned int getID()</div><div class="ttdoc">This function returns the ID of the shader for the use in some OpenGL functions. </div><div class="ttdef"><b>Definition:</b> <a href="shader_8cpp_source.html#l00180">shader.cpp:180</a></div></div>
+<div class="ttc" id="classredhand_1_1shader_html_a6f31c2854d1f7dec852ec7ebb720c5ba"><div class="ttname"><a href="classredhand_1_1shader.html#a6f31c2854d1f7dec852ec7ebb720c5ba">redhand::shader::mutex_camera</a></div><div class="ttdeci">std::shared_mutex mutex_camera</div><div class="ttdoc">the mutex for the camera </div><div class="ttdef"><b>Definition:</b> <a href="shader_8hpp_source.html#l00050">shader.hpp:50</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1265,7 +1592,7 @@ Here is the call graph for this function:</div>
 
 <p>The camera matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00035">35</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00048">48</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
 
 </div>
 </div>
@@ -1291,7 +1618,7 @@ Here is the call graph for this function:</div>
 
 <p>The position of the camera. </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00032">32</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00043">43</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
 
 </div>
 </div>
@@ -1317,7 +1644,7 @@ Here is the call graph for this function:</div>
 
 <p>true if an error happened </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00029">29</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00033">33</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
 
 </div>
 </div>
@@ -1343,7 +1670,215 @@ Here is the call graph for this function:</div>
 
 <p>the program ID </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00023">23</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00025">25</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4ef7300a76bb8799fc87c95874efb1f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ef7300a76bb8799fc87c95874efb1f8">&#9670;&nbsp;</a></span>initilized</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool redhand::shader::initilized = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>true if shader has been fully constructed </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00038">38</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6f31c2854d1f7dec852ec7ebb720c5ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f31c2854d1f7dec852ec7ebb720c5ba">&#9670;&nbsp;</a></span>mutex_camera</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_mutex redhand::shader::mutex_camera</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the mutex for the camera </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00050">50</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5de33743a56600ed0eea6ac053ff69db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5de33743a56600ed0eea6ac053ff69db">&#9670;&nbsp;</a></span>mutex_cameraVector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_mutex redhand::shader::mutex_cameraVector</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the mutex for the cameraVector </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00045">45</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a91a88dd4382ea5d20ed13f42e44c8ef8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91a88dd4382ea5d20ed13f42e44c8ef8">&#9670;&nbsp;</a></span>mutex_errord</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_mutex redhand::shader::mutex_errord</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the mutex for the errord </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00035">35</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af3c77eb7ae4a4f28059c9255d4531ba6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3c77eb7ae4a4f28059c9255d4531ba6">&#9670;&nbsp;</a></span>mutex_initilized</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_mutex redhand::shader::mutex_initilized</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the mutex for the initilized </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00040">40</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad78a803b0f8f2693b5a0ddc1c7e7dda2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad78a803b0f8f2693b5a0ddc1c7e7dda2">&#9670;&nbsp;</a></span>mutex_projectionMatrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_mutex redhand::shader::mutex_projectionMatrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the mutex for the projectionMatrix </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00055">55</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab603420e6eb20e3d740cccb68819b506"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab603420e6eb20e3d740cccb68819b506">&#9670;&nbsp;</a></span>mutex_shader_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_mutex redhand::shader::mutex_shader_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the mutex for the shader_name </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00030">30</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aeb915c4004c202df7d28ee4c2ed10b65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb915c4004c202df7d28ee4c2ed10b65">&#9670;&nbsp;</a></span>mutex_textureScale</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_mutex redhand::shader::mutex_textureScale</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the mutex for the texture scale </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00060">60</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
 
 </div>
 </div>
@@ -1367,7 +1902,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00038">38</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+<p>the projection matrix </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00053">53</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
 
 </div>
 </div>
@@ -1393,31 +1930,7 @@ Here is the call graph for this function:</div>
 
 <p>the name of the shader </p>
 
-<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00026">26</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a38793758e5c6784f34593befafd16a0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38793758e5c6784f34593befafd16a0c">&#9670;&nbsp;</a></span>shaderLock</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::mutex redhand::shader::shaderLock</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00044">44</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00028">28</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
 
 </div>
 </div>
@@ -1441,7 +1954,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00041">41</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
+<p>the texture scale </p>
+
+<p class="definition">Definition at line <a class="el" href="shader_8hpp_source.html#l00058">58</a> of file <a class="el" href="shader_8hpp_source.html">shader.hpp</a>.</p>
 
 </div>
 </div>
