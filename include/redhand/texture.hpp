@@ -1,9 +1,14 @@
 #pragma once
-#include <string>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+
 
 #include <iostream>
+#include <string>
+#include <mutex>
+#include <shared_mutex>
 
 #include "redhand/math.hpp"
 
@@ -15,24 +20,33 @@ class texture2D{
 private:
     ///true if an error happened
     bool errord = false;
+    ///the mutex for the errord
+    std::shared_mutex mutex_errored;
 
     ///the id of the texture
     unsigned int id;
+    ///the mutex for the id
+    std::shared_mutex mutex_id;
 
     ///the width of the texture
     int width;
+    ///the mutex for the width
+    std::shared_mutex mutex_width;
 
     ///the hight of the texture
     int height;
+    ///the mutex for the height
+    std::shared_mutex mutex_height;
 
-    ///the texture scale in the x direction
-    float scale_x = 1.0f;
-
-    ///the texture scale in the y direction
-    float scale_y = 1.0f;
+    ///The vector holdingg the scale of the texture in both directions
+    glm::vec2 scale = {1.0f, 1.0f};
+    ///the mutex for the errord
+    std::shared_mutex mutex_scale;
 
     ///the name of the texture
     std::string texture_name = "texture";
+    ///the mutex for the texture_name
+    std::shared_mutex mutex_texture_name;
 
 public:
     /**
