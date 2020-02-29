@@ -99,10 +99,6 @@ int redhand::world::addShader( std::shared_ptr<redhand::shader> shade){
         return -2;
     }
 
-    if(!shade->isInitilized()){
-        return -3;
-    }
-
     WorldShaders.emplace_back( std::shared_ptr<redhand::shader>(shade));
     if(WorldShaders.back() == shade){
         shade->setProjectionmatrix(projectionMatrix);

@@ -129,7 +129,10 @@ void redhand::shader::linkShader(unsigned int vertexShader, unsigned int fragmen
 }
 
 void redhand::shader::setCamera(float pos_x, float pos_y){
-    std::scoped_lock<std::mutex> lock(shaderLock);
+    auto lock = {
+        std::scoped_lock(mutex_cameraVector),
+        std::scoped_lock(mutex_camera)
+    };
 
     cameraVector.x = - pos_x;
     cameraVector.y = - pos_y;
@@ -139,7 +142,11 @@ void redhand::shader::setCamera(float pos_x, float pos_y){
 }
 
 void redhand::shader::moveCamera(float delta_pos_x, float delta_pos_y){
-    std::scoped_lock<std::mutex> lock(shaderLock);
+    auto lock = {
+        std::scoped_lock(mutex_cameraVector),
+        std::scoped_lock(mutex_camera)
+    };
+
     cameraVector.x -= delta_pos_x;
     cameraVector.y -= delta_pos_y;
 
@@ -148,6 +155,11 @@ void redhand::shader::moveCamera(float delta_pos_x, float delta_pos_y){
 }
 
 bool redhand::shader::hasErrored(){
+    auto lock = {
+        std::shared_lock(mutex_initilized),
+        std::shared_lock(mutex_errord)
+    };
+
     return !initilized || errord;
 }
 
@@ -155,12 +167,12 @@ unsigned int shader::getID(){
     return ID;
 }
 
-bool redhand::shader::isInitilized(){
-    return initilized;
-}
-
 void redhand::shader::use(){
-    std::scoped_lock<std::mutex> lock(shaderLock);
+    auto lock = {
+        std::shared_lock(mutex_camera),
+        std::shared_lock(mutex_projectionMatrix),
+        std::shared_lock(mutex_textureScale)
+    };
 
     glUseProgram(ID);
 
@@ -173,8 +185,19 @@ void redhand::shader::use(){
     setFloat("textureScale", textureScale.x, textureScale.y);
 }
 
-std::string redhand::shader::getName(){
+std::string_view redhand::shader::getName(){
+    auto lock = std::shared_lock(mutex_shader_name);
     return shader_name;
+}
+
+void redhand::shader::setProjectionmatrix(glm::mat4 projection){
+    auto lock = std::scoped_lock(mutex_projectionMatrix);
+    projectionMatrix = projection;
+}
+
+void redhand::shader::setTextureScale(glm::vec2 scale){
+    auto lock = std::scoped_lock(mutex_textureScale);
+    textureScale = scale;
 }
 
 void redhand::shader::setBool(const std::string &name, bool value) const{         
@@ -228,14 +251,4 @@ void redhand::shader::setFloat(const std::string &name, float value, float value
 
 void redhand::shader::getFloat(const std::string &name, float dest[]) const{
     glGetUniformfv(ID, glGetUniformLocation(ID, name.c_str()), dest);
-}
-
-void redhand::shader::setProjectionmatrix(glm::mat4 projection){
-    std::scoped_lock<std::mutex> lock(shaderLock);
-    projectionMatrix = projection;
-}
-
-void redhand::shader::setTextureScale(glm::vec2 scale){
-    std::scoped_lock<std::mutex> lock(shaderLock);
-    textureScale = scale;
 }

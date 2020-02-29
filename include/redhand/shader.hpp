@@ -12,6 +12,7 @@
 #include <sstream>
 #include <iostream>
 #include <mutex>
+#include <shared_mutex>
 
 #include "redhand/math.hpp"
 #include "redhand/shaderSource.hpp"
@@ -25,27 +26,38 @@ private:
 
     ///the name of the shader
     std::string shader_name = "shader";
+    ///the mutex for the shader_name
+    std::shared_mutex mutex_shader_name;
 
     ///true if an error happened
     bool errord = false;
+    ///the mutex for the errord
+    std::shared_mutex mutex_errord;
 
     ///true if shader has been fully constructed
     bool initilized = false;
+    ///the mutex for the initilized
+    std::shared_mutex mutex_initilized;
 
     ///The position of the camera
     glm::vec3 cameraVector = glm::vec3(0.0f, 0.0f, 0.0f);
+    ///the mutex for the cameraVector
+    std::shared_mutex mutex_cameraVector;
 
     ///The camera matrix
     glm::mat4 camera = glm::mat4(1.0f);
+    ///the mutex for the camera
+    std::shared_mutex mutex_camera;
 
-    //the projection matrix
+    ///the projection matrix
     glm::mat4 projectionMatrix;
+    ///the mutex for the projectionMatrix
+    std::shared_mutex mutex_projectionMatrix;
 
-    //the texture scale
+    ///the texture scale
     glm::vec2 textureScale = glm::vec2(1.0f, 1.0f);
-
-    //the mutex lock for this class
-    std::mutex shaderLock;
+    ///the mutex for the texture scale
+    std::shared_mutex mutex_textureScale;
 
     ///This function basically just reads a file into a string
     std::string loadShaderCodeFromFile(std::string_view fileLocation);
@@ -96,7 +108,7 @@ public:
     int createDefaultShader();
 
     /**
-     * This function returns true if an error happend during the setup of the shader.
+     * This function returns true if an error happend during the setup of the shader or the shader is not initilized.
      */
     bool hasErrored();
 
@@ -109,15 +121,7 @@ public:
      * This function return the name the shader has.
      * It will be "shader" if nothing else was specified.
      */
-    std::string getName();
-
-    /**
-     * @brief This function checks if the shader is fully initilized 
-     * 
-     * @return true is fully initilized and ready to use
-     * @return false the shader is not fully initilized
-     */
-    bool isInitilized();
+    std::string_view getName();
 
     /**
      * This function returns the ID of the shader for the use in some OpenGL functions.
