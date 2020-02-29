@@ -82,7 +82,7 @@ std::string redhand::shader::loadShaderCodeFromFile(std::string_view fileLocatio
         // convert stream into string
         shaderCode  = ShaderStream.str();	
     }
-    catch(std::ifstream::failure e){
+    catch(std::ifstream::failure){
         std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
         errord = true;
         return "";
