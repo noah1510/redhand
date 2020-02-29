@@ -5,6 +5,20 @@ using namespace redhand;
 #define VERTEX_SHADER GL_VERTEX_SHADER
 #define FRAGMENT_SHADER GL_FRAGMENT_SHADER
 
+redhand::shader::~shader(){
+    auto lock = {
+        std::scoped_lock(mutex_camera),
+        std::scoped_lock(mutex_cameraVector),
+        std::scoped_lock(mutex_errord),
+        std::scoped_lock(mutex_initilized),
+        std::scoped_lock(mutex_projectionMatrix),
+        std::scoped_lock(mutex_shader_name),
+        std::scoped_lock(mutex_textureScale)
+    };
+
+    glDeleteProgram(ID);
+}
+
 redhand::shader::shader():shader("default"){
     createDefaultShader();
 };

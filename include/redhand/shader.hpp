@@ -75,6 +75,12 @@ public:
     shader();
 
     /**
+     * @brief Destroy the shader object and delete the shader program
+     * 
+     */
+    ~shader();
+
+    /**
      * This constructor creates a shader with a given name.
      * The default vertex and fragment shaders from the shaderSource.hpp will be used.
      * @param name The name of the Shader
