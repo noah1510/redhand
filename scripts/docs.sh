@@ -37,7 +37,7 @@ then
 
         if [ "$2" == "--ci" ]
         then
-            choco install doxygen --yes --verbose --no-progress
+            choco install doxygen.install --yes --verbose --no-progress
             if [ $? -eq 0 ]
             then
                 echo "Successfully installed dependencies"
@@ -46,7 +46,7 @@ then
                 exit 2
             fi
         else
-            choco install doxygen --yes --verbose --no-progress
+            choco install doxygen.install --yes --verbose --no-progress
             if [ $? -eq 0 ]
             then
                 echo "Successfully installed dependencies"

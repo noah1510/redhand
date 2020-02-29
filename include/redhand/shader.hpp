@@ -12,8 +12,10 @@
 #include <sstream>
 #include <iostream>
 #include <mutex>
+#include <shared_mutex>
 
 #include "redhand/math.hpp"
+#include "redhand/shaderSource.hpp"
 
 namespace redhand{
 
@@ -24,24 +26,47 @@ private:
 
     ///the name of the shader
     std::string shader_name = "shader";
+    ///the mutex for the shader_name
+    std::shared_mutex mutex_shader_name;
 
     ///true if an error happened
     bool errord = false;
+    ///the mutex for the errord
+    std::shared_mutex mutex_errord;
+
+    ///true if shader has been fully constructed
+    bool initilized = false;
+    ///the mutex for the initilized
+    std::shared_mutex mutex_initilized;
 
     ///The position of the camera
     glm::vec3 cameraVector = glm::vec3(0.0f, 0.0f, 0.0f);
+    ///the mutex for the cameraVector
+    std::shared_mutex mutex_cameraVector;
 
     ///The camera matrix
     glm::mat4 camera = glm::mat4(1.0f);
+    ///the mutex for the camera
+    std::shared_mutex mutex_camera;
 
-    //the projection matrix
+    ///the projection matrix
     glm::mat4 projectionMatrix;
+    ///the mutex for the projectionMatrix
+    std::shared_mutex mutex_projectionMatrix;
 
-    //the texture scale
+    ///the texture scale
     glm::vec2 textureScale = glm::vec2(1.0f, 1.0f);
+    ///the mutex for the texture scale
+    std::shared_mutex mutex_textureScale;
 
-    //the mutex lock for this class
-    std::mutex shaderLock;
+    ///This function basically just reads a file into a string
+    std::string loadShaderCodeFromFile(std::string_view fileLocation);
+
+    ///This function compiles a given shader source code and returns the id of the compiled shader or 0 if there was an error.
+    unsigned int compileShader(std::string_view shaderCode, int shaderType);
+
+    ///This function links a vertex and fragment shader and if no error happened it will set initilized to true
+    void linkShader(unsigned int vertexShader, unsigned int fragmentShader);
 
 public: 
     /** 
@@ -50,24 +75,46 @@ public:
     shader();
 
     /**
-     * This constructor creates a shader from a given vertex and fragment shader.
-     * The given paths are relative to the executeable.
-     * @param vertexPath The Path to the vertex Shader
-     * @param fragmentPath The Path to the fragment Shader
+     * @brief Destroy the shader object and delete the shader program
+     * 
      */
-    shader(const GLchar* vertexPath, const GLchar* fragmentPath);
+    ~shader();
 
     /**
-     * This constructor creates a shader from a given vertex and fragment shader and sets a given name.
-     * The given paths are relative to the executeable.
-     * @param vertexPath The Path to the vertex Shader
-     * @param fragmentPath The Path to the fragment Shader
+     * This constructor creates a shader with a given name.
+     * The default vertex and fragment shaders from the shaderSource.hpp will be used.
      * @param name The name of the Shader
      */
-    shader(const GLchar* vertexPath, const GLchar* fragmentPath, std::string name);
+    shader(std::string_view name);
 
     /**
-     * This function returns true if an error happend during the setup of the shader.
+     * @brief Create a Shader From a file.
+     * 
+     * @param vertexPath The location of the vertex Shader
+     * @param fragmentPath The location of the Fragment Shader
+     * @return int negative if something went wrong
+     */
+    int createShaderFromFile(std::string_view vertexPath, std::string_view fragmentPath);
+
+    /**
+     * @brief Create a Shader From source Code
+     * @warning make sure the location the string_view sees still has the string while the function is executed.
+     * 
+     * @param vertexSource The source code of the vertex shader
+     * @param fragmentSource The source code of the fragment shader
+     * @return int 
+     */
+    int createShaderFromCode(std::string_view vertexSource, std::string_view fragmentSource);
+
+    /**
+     * @brief Initilizes the shader object with the default shader.
+     * 
+     * @return int negative value if anything went wrong
+     */
+    int createDefaultShader();
+
+    /**
+     * This function returns true if an error happend during the setup of the shader or the shader is not initilized.
      */
     bool hasErrored();
 
@@ -80,7 +127,7 @@ public:
      * This function return the name the shader has.
      * It will be "shader" if nothing else was specified.
      */
-    std::string getName();
+    std::string_view getName();
 
     /**
      * This function returns the ID of the shader for the use in some OpenGL functions.

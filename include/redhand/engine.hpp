@@ -41,7 +41,7 @@ namespace redhand{
 #define REDHAND_VERSION_NUMBER 0
 
 ///This function will be called every time the window size is changed
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebuffer_size_callback(GLFWwindow*, int width, int height);
 
 typedef struct{
     int OPENGL_VERSION_MAJOR;

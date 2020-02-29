@@ -34,4 +34,3 @@ jobs:
         files: |
           deploy/libredhand.so
           deploy/headers.zip
-          deploy/redhand-testgame-${{ github.sha }}

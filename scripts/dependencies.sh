@@ -6,18 +6,30 @@ then
     echo "script running on linux"
 
     DOCDEPS="doxygen graphviz-dev"
-    GLFWDEPS="xorg-dev libgl1-mesa-dev libflac++-dev libogg-dev libudev-dev libvorbis-dev libopenal-dev"
+    GLFWDEPS="xorg-dev libgl1-mesa-dev"
     REDHANDDEPS="cmake gcc g++ ninja-build"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-dev"
 
     sudo apt update
-    sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS $ADDITIONALDEPS --yes
-    if [ $? -eq 0 ]
+    if [ "$1" == "--ci" ]
     then
-    echo "Successfully installed dependencies"
+        sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS --yes
+        if [ $? -eq 0 ]
+        then
+        echo "Successfully installed dependencies"
+        else
+        echo "Could not install dependencies" >&2
+        exit 2
+        fi
     else
-    echo "Could not install dependencies" >&2
-    exit 2
+        sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS $ADDITIONALDEPS --yes
+        if [ $? -eq 0 ]
+        then
+        echo "Successfully installed dependencies"
+        else
+        echo "Could not install dependencies" >&2
+        exit 2
+        fi
     fi
 
 elif [ "$OSTYPE" == "darwin"* ]
@@ -34,7 +46,7 @@ then
 
     if [ "$1" == "--ci" ]
     then
-        choco install doxygen.install ninja --yes --verbose --no-progress
+        choco install ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"

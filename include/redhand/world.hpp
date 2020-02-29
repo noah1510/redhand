@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <thread>
 
 #include "redhand/game_object.hpp"
 
@@ -15,7 +16,7 @@ private:
     std::vector <game_object*> WorldObjects;
 
     /// This vector holds all the shaders in this world
-    std::vector <shader*> WorldShaders;
+    std::vector < std::shared_ptr<redhand::shader> > WorldShaders;
 
     /// This vector holds all the textures in this world
     std::vector <texture2D*> WorldTextures;
@@ -48,7 +49,7 @@ public:
      * Please add all shader you use for your objects to the world the objects resides in.
      * Not doing this may easily cause NULL Pointer exceptions and Segmentation faults.
      */
-    int addShader(shader*);
+    int addShader(std::shared_ptr<redhand::shader>);
 
     /**
      * The addTexture function will add a texture to the world.
@@ -89,7 +90,7 @@ public:
      * @param name the name of the wanted shader 
      * @return pointer to the shader if everything worked, nullptr if no shader was found or something went wrong
      */
-    shader* getShaderByName(std::string name);
+     std::shared_ptr<redhand::shader> getShaderByName(std::string name);
 
     /**
      * This function returns a pointer to the first texture with the given name

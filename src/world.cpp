@@ -3,7 +3,7 @@
 using namespace redhand;
 
 redhand::world::world(){
-    WorldShaders = std::vector<shader*>(0);
+    WorldShaders = std::vector< std::shared_ptr<redhand::shader>>(0);
     WorldTextures = std::vector<texture2D*>(0);
     WorldObjects = std::vector<game_object*>(0);
 
@@ -14,7 +14,7 @@ redhand::world::~world(){
     WorldObjectsMutex.lock();
     //delete objects
     try{
-        for(int i = 0;i < WorldObjects.size();i++){
+        for(unsigned int i = 0;i < WorldObjects.size();i++){
             delete WorldObjects.at(i);
         }
         WorldObjects.clear();
@@ -25,7 +25,7 @@ redhand::world::~world(){
 
     //delte textures
     try{
-        for(int i = 0;i < WorldTextures.size();i++){
+        for(unsigned int i = 0;i < WorldTextures.size();i++){
             delete WorldTextures.at(i);
         }
         WorldTextures.clear();
@@ -36,8 +36,12 @@ redhand::world::~world(){
 
     //delete shaders
     try{
-        for(int i = 0;i < WorldShaders.size();i++){
-            delete WorldShaders.at(i);
+        for(auto x:WorldShaders){
+            if (x.use_count() > 1){
+                std::cout << "still having references:" << x.use_count() << std::endl;
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            }
+            x.reset();
         }
         WorldShaders.clear();
     }
@@ -73,7 +77,7 @@ void redhand::world::setWindowSize(int width, int height){
 
         projectionMatrix = glm::ortho(-1.0f, (float) width / (float) height, -1.0f, (float) height / (float) width, -10.0f, 10.0f);
 
-        for(int i = 0;i < WorldShaders.size();i++){
+        for(unsigned int i = 0;i < WorldShaders.size();i++){
             WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
         }
 
@@ -86,7 +90,7 @@ void redhand::world::setWindowSize(int width, int height){
 
 }
 
-int redhand::world::addShader(shader* shade){
+int redhand::world::addShader( std::shared_ptr<redhand::shader> shade){
     if(shade == nullptr || shade == NULL){
         return -1;
     }
@@ -95,13 +99,13 @@ int redhand::world::addShader(shader* shade){
         return -2;
     }
 
-    WorldShaders.emplace_back(shade);
+    WorldShaders.emplace_back( std::shared_ptr<redhand::shader>(shade));
     if(WorldShaders.back() == shade){
         shade->setProjectionmatrix(projectionMatrix);
         shade->setCamera(cameraPosition[0], cameraPosition[1]);
         return 0;
     }else{
-        return -3;
+        return -4;
     }
 }
 
@@ -143,10 +147,11 @@ int redhand::world::addObject(game_object* obj){
 }
 
 int redhand::world::removeShader(std::string name){
-    for(auto x:WorldShaders){
+    for(unsigned int i = 0; i < WorldShaders.size();i++){
+        auto x = WorldShaders.at(i);
         if(x->getName().compare(name) == 0){
             try{
-                delete x;
+                WorldShaders.erase(WorldShaders.begin() + i);
             }
             catch(const std::exception& e){
                 std::cerr << e.what() << '\n';
@@ -196,11 +201,11 @@ int redhand::world::removeObject(std::string name){
 
 }
 
-shader* redhand::world::getShaderByName(std::string name){
+ std::shared_ptr<redhand::shader> redhand::world::getShaderByName(std::string name){
 
     for(auto x:WorldShaders){
        if((x->getName()).compare(name) == 0){
-            return x;  
+            return  std::shared_ptr<redhand::shader>(x);  
         } 
     }
 

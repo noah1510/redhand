@@ -2,11 +2,12 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "g++-7 build active file",
-            "command": "${workspaceFolder}/scripts/build.sh",
+            "label": "build testgame",
+            "command": "${workspaceFolder}/scripts/testgame.sh",
             "args": [
                 "-j",
-                "8"
+                "8",
+                "--lib"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

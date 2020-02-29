@@ -152,6 +152,8 @@ int redhand::engine::changeWorld(std::shared_ptr<world> newWorld){
         stopGame(error);
         return -6;
     }
+
+    return 0;
 }
 
 int redhand::engine::runGame(){
@@ -210,6 +212,6 @@ int redhand::engine::runGame(){
     return errorCode;
 }
 
-void redhand::framebuffer_size_callback(GLFWwindow* window, int width, int height){
+void redhand::framebuffer_size_callback(GLFWwindow*, int width, int height){
     glViewport(0, 0, width, height);
 }

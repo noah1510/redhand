@@ -35,16 +35,14 @@ int main_game_logic(
 int createTestworld(std::shared_ptr<redhand::world> testWorld){
     //add shaders to world
 
-    if( testWorld->addShader(new redhand::shader(
-        "shaders/default.vert",
-        "shaders/default.frag",
-        "default"
-        )
-    ) < 0){
+    auto shader1 =  std::shared_ptr<redhand::shader>( new redhand::shader() );
+    if( testWorld->addShader(shader1) < 0){
+        std::cerr << "Got error while adding shader" << std::endl;
         return -1;
     }
 
     if(testWorld->getShaderByName("default") == nullptr){
+        std::cerr << "Got nullpointer as shader" << std::endl;
         return -20;
     }
 
@@ -131,7 +129,7 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
                 trig_colors,
                 testWorld->getShaderByName("default"),
                 GL_DYNAMIC_DRAW,
-                [](redhand::shader* shade){},
+                [](std::shared_ptr<redhand::shader>){},
                 {0.5f,0.5f},
                 0.0f,
                 trig_pos,
@@ -143,7 +141,7 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
         }
         testWorld->getObjectByName("game_object")->setName("trig");
 
-        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow* window, redhand::game_object* obj){
+        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow*, redhand::game_object* obj){
             obj->setRotation((float)glfwGetTime()*20.0f);
         });
     }
