@@ -2,16 +2,56 @@
     "tasks": [
         {
             "type": "shell",
+            "label": "build library",
+            "command": "${workspaceFolder}/scripts/build.sh",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "clean and build library",
+            "command": "${workspaceFolder}/scripts/clean.sh",
+            "args": [
+                "&&",
+                "${workspaceFolder}/scripts/setup.sh",
+                "&&",
+                "${workspaceFolder}/scripts/build.sh"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build"
+        },
+        {
+            "type": "shell",
             "label": "build testgame",
             "command": "${workspaceFolder}/scripts/testgame.sh",
             "args": [
-                "-j",
-                "8",
                 "--lib"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
-            }
+            },
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "clean and build testgame",
+            "command": "${workspaceFolder}/scripts/clean.sh",
+            "args": [
+                "&&",
+                "${workspaceFolder}/scripts/setup.sh",
+                "&&",
+                "${workspaceFolder}/scripts/testgame.sh",
+                "--lib"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build"
         }
     ],
     "version": "2.0.0"

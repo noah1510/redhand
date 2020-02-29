@@ -98,7 +98,17 @@ void redhand::texture2D::setName(std::string name){
     auto lock = std::scoped_lock(mutex_texture_name);
     texture_name = name;
 }
-std::string redhand::texture2D::getName(){
+std::string_view redhand::texture2D::getName(){
     auto lock = std::shared_lock(mutex_texture_name);
     return texture_name;
+}
+
+glm::vec2 redhand::texture2D::getTextureScale(){
+    auto lock = std::shared_lock(mutex_scale);
+    return scale;
+}
+
+void redhand::texture2D::setTextureScale(glm::vec2 scaler){
+    auto lock = std::scoped_lock(mutex_scale);
+    scale = scaler;
 }

@@ -107,7 +107,21 @@ public:
     /**
      * This funtion returns the name of the object.
      */
-    std::string getName();
+    std::string_view getName();
+
+    /**
+     * @brief Get the Texture Scale of the texture
+     * 
+     * @return glm::vec2 The amount each texture coordinate is multiplied with for each direction
+     */
+    glm::vec2 getTextureScale();
+
+    /**
+     * @brief Set the Texture Scale of the object to the given vector
+     * 
+     * @param scale The amount each texture coordinate should be multiplied with for each direction.
+     */
+    void setTextureScale(glm::vec2 scale);
 };
 
 
