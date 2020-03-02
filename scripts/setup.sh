@@ -3,6 +3,8 @@
 THREADS="3"
 CI="0"
 VSCODE="0"
+BUILDGLFW="0"
+BUILDGLM="0"
 
 #parse parameter
 pars=$#
@@ -89,6 +91,8 @@ then
 
     GLFWLIB="glfw3.dll"
     GLFWDEPLOY="glfw3.dll"
+    BUILDGLFW="1"
+    BUILDGLM="1"
 
     if [ $VSCODE -eq "1" ]
     then
@@ -105,12 +109,45 @@ fi
 
 echo "number of THREADS:$THREADS"
 
-git submodule update --init
+if [ "$BUILDGLM" == "1" ]
+then
+  git submodule update --init include/gitglm
+  if [ $? -eq 0 ]
+  then
+    echo "Successfully initiated glm"
+  else
+    echo "Could not initiate glm" >&2
+    exit 1
+  fi
+fi
+
+if [ "$BUILDGLFW" == "1" ]
+then
+  git submodule update --init dependencies/glfw
+  if [ $? -eq 0 ]
+  then
+    echo "Successfully initiated glfw"
+  else
+    echo "Could not initiate glfw" >&2
+    exit 1
+  fi
+fi
+
+git submodule update --init include/stb
 if [ $? -eq 0 ]
 then
-    echo "Successfully initiated submodules"
+    echo "Successfully initiated stb"
 else
-    echo "Could not initiate submodules" >&2
+    echo "Could not initiate stb" >&2
+    exit 1
+fi
+
+git submodule update --init dependencies/gladRepo
+if [ $? -eq 0 ]
+then
+    echo "Successfully initiated glad"
+else
+    echo "Could not initiate glad" >&2
     exit 1
 fi
 
@@ -150,55 +187,66 @@ else
 fi
 cd "../.."
 
-cp -r "include/gitglm/glm" "include/glm"
-if [ $? -eq 0 ]
+if [ "$BUILDGLM" == "1" ]
 then
-    echo "Successfully copied glm"
-else
-    echo "Could not copy glm" >&2
-    exit 2
+  cp -r "include/gitglm/glm" "include/glm"
+  if [ $? -eq 0 ]
+  then
+      echo "Successfully copied glm"
+  else
+      echo "Could not copy glm" >&2
+      exit 2
+  fi
 fi
 
-
-cp -r "dependencies/glfw/include/GLFW" "include/GLFW"
-if [ $? -eq 0 ]
+if [ "$BUILDGLFW" == "1" ]
 then
-    echo "Successfully copied GLFW"
-else
-    echo "Could not copy GLFW" >&2
-    exit 2
+  cp -r "dependencies/glfw/include/GLFW" "include/GLFW"
+  if [ $? -eq 0 ]
+  then
+      echo "Successfully copied GLFW"
+  else
+      echo "Could not copy GLFW" >&2
+      exit 2
+  fi
 fi
 
 mkdir -p "build"
 
 #compiling glfw
-mkdir -p "build/glfw"
-cd "build/glfw"
-cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
-ninja -j"$THREADS"
-
-if [ $? -eq 0 ]
+if [ "$BUILDGLFW" == "1" ]
 then
-  echo "Successfully compiled glfw"
-else
-  echo "Could not compile glfw" >&2
+  mkdir -p "build/glfw"
+  cd "build/glfw"
+  cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
+  ninja -j"$THREADS"
+
+  if [ $? -eq 0 ]
+  then
+    echo "Successfully compiled glfw"
+  else
+    echo "Could not compile glfw" >&2
+    cd "../.."
+    exit 2
+  fi
   cd "../.."
-  exit 2
 fi
-cd "../.."
 
 #copy results
 mkdir -p "lib"
 mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
 
-cp "build/glfw/src/$GLFWLIB" "lib"
-cp "build/glfw/src/$GLFWDEPLOY" "lib"
+if [ "$BUILDGLFW" == "1" ]
+then
+  cp "build/glfw/src/$GLFWLIB" "lib"
+  cp "build/glfw/src/$GLFWDEPLOY" "lib"
 
-cp "build/glfw/src/$GLFWLIB" "build/$BUILDNAME"
+  cp "build/glfw/src/$GLFWLIB" "build/$BUILDNAME"
 
-cp "build/glfw/src/$GLFWLIB" "deploy"
-cp "build/glfw/src/$GLFWDEPLOY" "deploy"
+  cp "build/glfw/src/$GLFWLIB" "deploy"
+  cp "build/glfw/src/$GLFWDEPLOY" "deploy"
+fi
 
 cp -r "dependencies/glad/include" "."
 cp -r "dependencies/glad/src/glad.c" "src"

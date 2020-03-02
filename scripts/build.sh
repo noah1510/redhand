@@ -2,6 +2,7 @@
 
 THREADS="3"
 LIBBUILDNAME="lib"
+SETUP="0"
 
 #parse parameter
 pars=$#
@@ -25,6 +26,10 @@ do
         THREADS="$(($1+1))"
       fi
       shift
+      ;;
+    "--setup")
+      shift
+      SETUP="1"
       ;;
     "--help")
       echo "This script is used to build the shared library and copy it in the deploy folder."
@@ -53,6 +58,11 @@ fi
 REPOROOT="$(pwd)"
 PROJECTNAME="redhand"
 
+if [ "$SETUP" == "1" ]
+then
+    ./scripts/setup.sh
+fi
+
 if [ "$OSTYPE" == "linux-gnu" ]
 then
     # Linux
@@ -66,7 +76,7 @@ then
     echo "script running on mac osx"
 
     LIBRARY="libredhand.so"
-        
+
 elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then
     # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)

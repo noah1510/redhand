@@ -18,7 +18,6 @@ else (REPOROOT)
 endif (REPOROOT)
 
 include_directories(${ROOTDIR}/include/)
-link_directories(${ROOTDIR}/lib/)
 
 if (UNIX)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
@@ -47,7 +46,6 @@ SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS
 
 find_package(OpenGL REQUIRED)
 
-
 add_library(redhand SHARED
                         src/glad.c
                         src/math.cpp
@@ -58,17 +56,23 @@ add_library(redhand SHARED
                         src/engine.cpp)
 
 if (UNIX)
-    target_link_libraries(redhand libglfw.so)
+    find_library(GLFW
+        NAMES libglfw.so.3 libglfw.so glfw libglfw.so.3.2
+        HINTS /usr/lib/x86_64-linux-gnu/ )
+    target_link_libraries(redhand ${GLFW})
     target_link_libraries(redhand dl)
 endif (UNIX)
 
 if (WIN32)
-    target_link_libraries(redhand glfw3.dll)
+    find_library(GLFW
+        NAMES glfw3.dll glfw.dll libglfw.dll glfw
+        HINTS ${ROOTDIR}/lib/ )
+    target_link_libraries(redhand ${GLFW})
 endif (WIN32)
 
-install(TARGETS redhand 
+install(TARGETS redhand
         LIBRARY DESTINATION .
-        PUBLIC_HEADER DESTINATION ${REPOROOT}/include/redhand)  
-        
+        PUBLIC_HEADER DESTINATION ${REPOROOT}/include/redhand)
+
 file(GLOB HEADERS src/*.hpp)
 install(FILES ${HEADERS} DESTINATION ${REPOROOT}/include/redhand)
