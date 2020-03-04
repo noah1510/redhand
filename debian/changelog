@@ -1,5 +1,11 @@
-libredhand (0.0.1) unstable; urgency=medium
+libredhand (0.0.2) bionic; urgency=medium
 
-  * Initial Release.
+  * Fixing package creation.
 
- -- Noa Sakurajin <noasakurajin@web.de>  Mon, 02 Mar 2020 11:41:33 +0100
+ -- Noa Sakurajin <noasakurajin@web.de>  Wed, 04 Mar 2020 20:25:48 +0100
+
+libredhand (0.0.1) bionic; urgency=medium
+
+  * Marking package for bionic
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Mon, 02 Mar 2020 18:07:34 +0100

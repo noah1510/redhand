@@ -58,8 +58,7 @@ binary: build
 	dh_builddeb
 
 build:
-	bash scripts/dependencies.sh --ci
-	bash scripts/setup.sh
+	bash scripts/setup.sh --deb --ci
 	dh_testdir
 	dh_auto_configure
 	dh_auto_build

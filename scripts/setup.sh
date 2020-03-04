@@ -5,10 +5,11 @@ CI="0"
 VSCODE="0"
 BUILDGLFW="0"
 BUILDGLM="0"
+PACKAGEBUILD="0"
 
 #parse parameter
 pars=$#
-for ((i=1;i<=pars;i+=2))
+for ((i=1;i<=pars;i+=1))
 do
   case "$1" in
     "-j")
@@ -18,6 +19,7 @@ do
         THREADS="$(($1+1))"
       fi
       shift
+      i++
       ;;
     "--ci")
       CI="1"
@@ -25,6 +27,10 @@ do
       ;;
     "--vscode")
       VSCODE="1"
+      shift
+      ;;
+    "--deb")
+      PACKAGEBUILD="1"
       shift
       ;;
     "--help")
@@ -133,25 +139,31 @@ then
   fi
 fi
 
-git submodule update --init include/stb
-if [ $? -eq 0 ]
+if [ "$PACKAGEBUILD" == "0" ]
 then
-    echo "Successfully initiated stb"
-else
-    echo "Could not initiate stb" >&2
-    exit 1
+    git submodule update --init include/stb
+    if [ $? -eq 0 ]
+    then
+        echo "Successfully initiated stb"
+    else
+        echo "Could not initiate stb" >&2
+        exit 1
+    fi
 fi
 
-git submodule update --init dependencies/gladRepo
-if [ $? -eq 0 ]
+if [ "$PACKAGEBUILD" == "0" ]
 then
-    echo "Successfully initiated glad"
-else
-    echo "Could not initiate glad" >&2
-    exit 1
+    git submodule update --init dependencies/gladRepo
+    if [ $? -eq 0 ]
+    then
+        echo "Successfully initiated glad"
+    else
+        echo "Could not initiate glad" >&2
+        exit 1
+    fi
 fi
 
-if [ $CI -eq "0" ]
+if [ "$CI" == "0" ]
 then
   git lfs install
   if [ $? -eq 0 ]

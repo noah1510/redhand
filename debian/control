@@ -1,7 +1,7 @@
 Source: libredhand
 Priority: optional
 Maintainer: Noa Sakurajin <noasakurajin@web.de>
-Build-Depends: debhelper (>= 10), cmake (>= 3.10.2),  gcc (>= 7.4.0), libglfw3 (>=3.2.1-1), libglm-dev (>=0.9.0)
+Build-Depends: debhelper, dh-make, cmake,  gcc, g++, fakeroot, libglfw3, libglfw3-dev, libglm-dev, bash, python, git, libgl1-mesa-dev
 Standards-Version: 4.1.2
 Section: libs
 #Homepage: <insert the upstream URL, if relevant>
