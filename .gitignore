@@ -33,9 +33,8 @@ debian/*
 !debian/source
 !debian/compat
 !debian/copyright
-
-
-
+!debian/libredhand-dev.install
+!libredhand-doc.manpages
 
 doc
 
