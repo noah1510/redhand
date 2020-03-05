@@ -21,7 +21,7 @@ jobs:
     - name: build library
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
-      run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"
+      run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - name: compress header files
       run: zip deploy/headers.zip include/redhand/**
     - uses: "marvinpinto/action-automatic-releases@latest"
