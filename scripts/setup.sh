@@ -19,7 +19,7 @@ do
         THREADS="$(($1+1))"
       fi
       shift
-      i++
+      i+=1
       ;;
     "--ci")
       CI="1"
