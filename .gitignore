@@ -35,6 +35,14 @@ debian/*
 !debian/copyright
 !debian/libredhand-dev.install
 !libredhand-doc.manpages
+*.deb
+*.ddeb
+*.changes
+*.build
+*.dsc
+*.buildinfo
+*.tar.xz
+*.tar.gz
 
 doc
 

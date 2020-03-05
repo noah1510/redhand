@@ -40,6 +40,7 @@ do
       echo "    --ci                To run in CI mode to disable git-lfs pull."
       echo "    -j [threadnumber]   Build the project with the specified number of threads."
       echo "    --vscode            Addes the configurations for visual studio code to the .vscode folder"
+      echo "    --deb               The setup to create debian packages (!!!only intended for the debhelper!!!)"
       echo ""
       echo "view the source on https://github.com/noah1510/redhand"
       exit 1

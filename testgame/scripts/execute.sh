@@ -18,7 +18,7 @@ else
   exit 1
 fi
 
-./scripts/testgame.sh $BUILDARGS
+./testgame/scripts/build.sh $BUILDARGS
 if [ $? -eq 0 ]
 then
   echo "Successfully built testgame"
@@ -29,7 +29,7 @@ else
   exit 2
 fi
 
-./scripts/run.sh
+./testgame/scripts/run.sh
 if [ $? -eq 0 ]
 then
   echo "Successfully ran"

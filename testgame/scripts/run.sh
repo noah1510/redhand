@@ -50,9 +50,7 @@ then
   echo "Successfully ran program"
 else
   echo "Error during execution of the program: ${PIPESTATUS[0]} " >&2
-  cd ".."
   exit 2
 fi
 
-cd ".."
 exit 0

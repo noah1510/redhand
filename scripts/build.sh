@@ -3,10 +3,11 @@
 THREADS="3"
 LIBBUILDNAME="lib"
 SETUP="0"
+PACKAGE="0"
 
 #parse parameter
 pars=$#
-for ((i=1;i<=pars;i+=2))
+for ((i=1;i<=pars;i+=1))
 do
   case "$1" in
     "-o")
@@ -18,6 +19,7 @@ do
         LIBBUILDNAME="lib"
       fi
       shift
+      i++
       ;;
     "-j")
       shift
@@ -26,10 +28,15 @@ do
         THREADS="$(($1+1))"
       fi
       shift
+      i++
       ;;
     "--setup")
       shift
       SETUP="1"
+      ;;
+    "--deb")
+      shift
+      PACKAGE="1"
       ;;
     "--help")
       echo "This script is used to build the shared library and copy it in the deploy folder."
@@ -38,6 +45,8 @@ do
       echo "    --help              Display this information"
       echo "    -j [threadnumber]   Build the project with the specified number of threads."
       echo "    -o [buildname]      Build the project with the specified buildname defaults to main"
+      echo "    --setup             Also execute the setup script to prepare all dependencies"
+      echo "    --deb               Build the library as debian package"
       echo ""
       echo "view the source on https://github.com/noah1510/redhand"
       exit 1
@@ -98,24 +107,32 @@ fi
 echo "number of THREADS:$THREADS"
 echo "buildname:$LIBBUILDNAME"
 
-mkdir -p "build"
-
-#build actual project
-mkdir -p "build/$LIBBUILDNAME"
-cd "build/$LIBBUILDNAME"
-cmake -G "Ninja" -DREPOROOT=$REPOROOT "../.."
-ninja -j"$THREADS"
-if [ $? -eq 0 ]
+if [ "$PACKAGE" == "1" ]
 then
-  echo "Successfully compiled $PROJECTNAME"
-else
-  echo "Could not compile $PROJECTNAME" >&2
-  cd "../.."
-  exit 4
-fi
-cd "../.."
-cp -r "build/$LIBBUILDNAME/$LIBRARY" "deploy"
-cp -r "build/$LIBBUILDNAME/$LIBRARY" "lib"
 
-LD_LIBRARY_PATH="$REPOROOT/lib"
-export LD_LIBRARY_PATH
+  debuild -sa
+
+else
+
+  mkdir -p "build"
+
+  #build actual project
+  mkdir -p "build/$LIBBUILDNAME"
+  cd "build/$LIBBUILDNAME"
+  cmake -G "Ninja" -DREPOROOT=$REPOROOT "../.."
+  ninja -j"$THREADS"
+  if [ $? -eq 0 ]
+  then
+    echo "Successfully compiled $PROJECTNAME"
+  else
+    echo "Could not compile $PROJECTNAME" >&2
+    cd "../.."
+    exit 4
+  fi
+  cd "../.."
+  cp -r "build/$LIBBUILDNAME/$LIBRARY" "deploy"
+  cp -r "build/$LIBBUILDNAME/$LIBRARY" "lib"
+
+  LD_LIBRARY_PATH="$REPOROOT/lib"
+  export LD_LIBRARY_PATH
+fi
