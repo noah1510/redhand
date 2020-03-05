@@ -18,7 +18,7 @@ jobs:
     - name: setup the project
       run:  bash scripts/setup.sh --ci
     - name: install additional dependencies
-      run: sudo apt install gpg debhelper dput
+      run: sudo apt install gpg debhelper dput coreutils
     - name: congigure gpg key and environment
       run: \
         base64 -d ${{ secrets.GPG_KEY }} | gpg --import 
