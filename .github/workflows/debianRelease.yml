@@ -18,7 +18,7 @@ jobs:
     - name: setup the project
       run:  bash scripts/setup.sh --ci
     - name: install additional dependencies
-      run: sudo apt install gpg debhelper dput openssl libdistro-info-perl
+      run: sudo apt install gpg debhelper dput openssl libdistro-info-perl dh-make graphviz
     - name: configure gpg key and environment
       run: 
         echo "${{ secrets.GPG_KEY }}" | openssl enc -base64 -d | gpg --import && 
