@@ -7,7 +7,7 @@ on:
 
 jobs:
   setup:
-    name: setup
+    name: build and publish deb
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
@@ -19,9 +19,9 @@ jobs:
       run:  bash scripts/setup.sh --ci
     - name: install additional dependencies
       run: sudo apt install gpg debhelper dput coreutils
-    - name: congigure gpg key and environment
+    - name: configure gpg key and environment
       run: \
-        base64 -d ${{ secrets.GPG_KEY }} | gpg --import 
+        openssl enc -base64 -d ${{ secrets.GPG_KEY }} | gpg --import 
         echo "DEBUILD_DPKG_BUILDPACKAGE_OPTS=\"-k0xA82A68B9A35079F860E1C6ADB5B78B08943AE8A6\"" > ~/.devscripts
         echo "export DEBFULLNAME=\"Github actions bot\" \n export DEBEMAIL=\"noasakurajin@web.de\"" > ~/.bashrc
     - name: update release version
