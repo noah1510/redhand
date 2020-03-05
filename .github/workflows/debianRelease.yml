@@ -18,7 +18,7 @@ jobs:
     - name: setup the project
       run:  bash scripts/setup.sh --ci
     - name: install additional dependencies
-      run: sudo apt install gpg debhelper dput openssl
+      run: sudo apt install gpg debhelper dput openssl libdistro-info-perl
     - name: configure gpg key and environment
       run: 
         echo "${{ secrets.GPG_KEY }}" | openssl enc -base64 -d | gpg --import && 
@@ -26,9 +26,7 @@ jobs:
         echo "export DEBFULLNAME=\"Github actions bot\" \n export DEBEMAIL=\"noasakurajin@web.de\"" > ~/.bashrc 
     - name: update release version
       run: 
-        dch -l+git"$GITHUB_SHA" &&
-        dch -r &&
-        dch --append ${{ github.event.head_commit.message }}
+        dch --distribution bionic -l+git"$GITHUB_SHA" ${{ github.event.head_commit.message }}
     - name: build package
       run: debuild -S -sa
     - name: publish package

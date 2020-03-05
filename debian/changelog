@@ -1,8 +1,8 @@
-libredhand (0.0.2+4) UNRELEASED; urgency=medium
+libredhand (0.0.2+4) bionic; urgency=medium
 
   * updated dependencies and scripts
 
- -- Noa Sakurajin <noasakurajin@web.de>  Thu, 05 Mar 2020 17:07:23 +0100
+ -- Noa Sakurajin <noasakurajin@web.de>  Thu, 05 Mar 2020 19:39:36 +0100
 
 libredhand (0.0.2+3) bionic; urgency=medium
 
