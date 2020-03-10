@@ -58,8 +58,9 @@ jobs:
         echo "DEBUILD_DPKG_BUILDPACKAGE_OPTS=\"-k0xA82A68B9A35079F860E1C6ADB5B78B08943AE8A6\"" > ~/.devscripts 
         echo "export DEBFULLNAME=\"Github actions bot\" \n export DEBEMAIL=\"noasakurajin@web.de\"" > ~/.bashrc 
     - name: update release version
-      run: 
-        dch --distribution bionic -l+git"$GITHUB_SHA" ${{ tojson(' $latestRelease ').body }}
+      run: |
+        MESSAGE=$( ${{ tojson(' $latestRelease ') }} | jq '.body' )
+        dch --distribution bionic -l+git"$GITHUB_SHA" $MESSAGE
     - name: build package
       run: debuild -S -sa
     - name: publish package
