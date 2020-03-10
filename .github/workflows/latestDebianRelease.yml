@@ -16,7 +16,7 @@ jobs:
     - name: set env
       shell: bash
       run: |
-        LATEST=$(curl --user noah1510:${secrets.GITHUB_TOKEN} https://api.github.com/repos/noah1510/redhand/releases/tags/latest)
+        LATEST=$(curl --user noah1510:${{secrets.GITHUB_TOKEN}} https://api.github.com/repos/noah1510/redhand/releases/tags/latest)
         echo ::set-env name=latestRelease::$LATEST
     - name: print latest description
       shell: bash
