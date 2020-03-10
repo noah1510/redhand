@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with: 
-        lfs: true
+        lfs: false
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
@@ -60,7 +60,7 @@ jobs:
     - name: update release version
       run: |
         MESSAGE=$( echo $latestRelease | jq '.body' )
-        dch --distribution bionic -l+git"$GITHUB_SHA" $MESSAGE
+        dch --distribution bionic -l+git$(date +%Y:%m:%d:%T) $MESSAGE
     - name: build package
       run: debuild -S -sa
     - name: publish package
