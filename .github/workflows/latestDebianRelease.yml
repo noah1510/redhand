@@ -9,13 +9,13 @@ jobs:
   pre-release:
     name: "Pre Release"
     runs-on: "windows-latest"
-    env:
-      latestRelease: ${{ toJson(' curl --user noah1510:${`{ secrets.GITHUB_TOKEN }`} https://api.github.com/repos/noah1510/redhand/releases/tags/latest ') }}
-
     steps:
     - uses: actions/checkout@v2
       with: 
         lfs: true
+    - name: set env
+      run: |
+        echo ::set-env name=latestRelease${{ toJson(' curl --user noah1510:${`{ secrets.GITHUB_TOKEN }`} https://api.github.com/repos/noah1510/redhand/releases/tags/latest ') }}
     - name: print latest description
       run: echo $latestRelease
     - name: install dependencies
