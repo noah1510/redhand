@@ -59,7 +59,7 @@ jobs:
         echo "export DEBFULLNAME=\"Github actions bot\" \n export DEBEMAIL=\"noasakurajin@web.de\"" > ~/.bashrc 
     - name: update release version
       run: |
-        MESSAGE=$( ${{ tojson(' $latestRelease ') }} | jq '.body' )
+        MESSAGE=$( echo '$latestRelease' | jq '.body' )
         dch --distribution bionic -l+git"$GITHUB_SHA" $MESSAGE
     - name: build package
       run: debuild -S -sa
