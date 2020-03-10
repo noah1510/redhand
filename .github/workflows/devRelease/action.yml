@@ -1,10 +1,9 @@
-name: create automatic development release
-
+name: "automatic development release"
+description: "creates an automatic release to latest tag"
 inputs:
   repoToken:
     description: "GitHub secret token"
     required: true
-
 jobs:
   pre-release:
     name: "Pre Release"
