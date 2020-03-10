@@ -5,7 +5,7 @@ BUILDNAME="testgame"
 BUILDLIB="0"
 #parse parameter
 pars=$#
-for ((i=1;i<=pars;i+=2))
+for ((i=1;i<=pars;i+=1))
 do
   case "$1" in
     "-o")
@@ -16,6 +16,7 @@ do
       else
         BUILDNAME="lib"
       fi
+      i+=1
       shift
       ;;
     "-j")
@@ -25,6 +26,7 @@ do
         THREADS="$(($1+1))"
       fi
       shift
+      i+=1
       ;;
     "--lib")
       BUILDLIB="1"

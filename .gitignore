@@ -19,10 +19,30 @@ include/GLFW
 include/glad
 include/KHR
 
+obj-x86_64-linux-gnu
 share
 
 textures/*
 !textures/open/
+
+debian/*
+!debian/control
+!debian/rules
+!debian/libredhand.install
+!debian/changelog
+!debian/source
+!debian/compat
+!debian/copyright
+!debian/libredhand-dev.install
+!libredhand-doc.manpages
+*.deb
+*.ddeb
+*.changes
+*.build
+*.dsc
+*.buildinfo
+*.tar.xz
+*.tar.gz
 
 doc
 

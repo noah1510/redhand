@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       with: 
-        lfs: true
+        lfs: false
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
@@ -23,4 +23,4 @@ jobs:
     - name: build library
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
-      run:  bash scripts/testgame.sh -j 2 -o "testgame-$GITHUB_SHA"
+      run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"

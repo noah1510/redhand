@@ -1,0 +1,47 @@
+Source: libredhand
+Priority: optional
+Maintainer: Noa Sakurajin <noasakurajin@web.de>
+Build-Depends: debhelper, dh-make, cmake,  gcc (>= 7.0.0), g++ (>= 7.0.0), fakeroot, libglfw3, libglfw3-dev, libglm-dev, python, git, libgl1-mesa-dev, doxygen, graphviz
+Standards-Version: 4.1.2
+Section: libs
+#Homepage: <insert the upstream URL, if relevant>
+Vcs-Git: https://github.com/noah1510/redhand
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/libredhand.git
+
+Package: libredhand
+Architecture: amd64
+Section: libs
+Multi-Arch: same
+Depends: libglfw3, libglm-dev
+Recommends: libredhand-doc
+Description: a small and easy to use game development library
+
+Package: libredhand-dev
+Architecture: amd64
+Section: libs
+Depends: libredhand (= ${binary:Version}), ${misc:Depends}, libglfw3-dev, libgl1-mesa-dev
+Suggests: libredhand-dbg
+Recommends: libredhand-doc
+Multi-Arch: same
+Description: libredhand: detached development headers
+ This package contains the detached development headers for the libredhand
+
+
+Package: libredhand-dbg
+Architecture: amd64
+Section: debug
+Depends: libredhand-dev (= ${binary:Version}), ${misc:Depends}
+Recommends: libredhand-doc
+Multi-Arch: same
+Description: libredhand: detached debug symbold
+ This package contains the detached debug symbols for the libredhand
+
+
+Package: libredhand-doc
+Architecture: amd64
+Section: debug
+Priority: optional
+Multi-Arch: same
+Depends: libredhand (= ${binary:Version}), ${misc:Depends}, man
+Description: libredhand: detached documentations
+ This package contains the detached documentation for the libredhand.

@@ -27,6 +27,7 @@ int main(){
     
     //change the configuration and set the new config
     conf.title = "Redhand Test Game";
+    conf.RESIZABLE = true;
     gameEngine->setConfig(conf);
 
     //set the function which handles all the controls and physics computation

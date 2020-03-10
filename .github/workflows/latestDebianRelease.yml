@@ -1,0 +1,70 @@
+name: create automatic debian release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  pre-release:
+    name: "windows latest release"
+    runs-on: "windows-latest"
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        lfs: false
+    - name: install dependencies
+      run:  bash scripts/dependencies.sh --ci
+    - name: setup the project
+      run:  bash scripts/setup.sh --ci
+    - name: build library
+      run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
+    - name: compress header files
+      run: 7z a -r deploy/headers.zip include/redhand/**
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
+        files: |
+          deploy/libredhand.dll
+          deploy/headers.zip
+  setup:
+    needs: pre-release
+    name: build and publish deb
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        lfs: false
+    - name: set env
+      shell: bash
+      run: |
+        LATEST=$(curl --user noah1510:${{secrets.GITHUB_TOKEN}} https://api.github.com/repos/noah1510/redhand/releases/tags/latest)
+        echo ::set-env name=latestRelease::$LATEST
+    - name: print latest description
+      shell: bash
+      run: echo ${{ toJson(' $latestRelease ')}}
+    - name: install dependencies
+      run:  bash scripts/dependencies.sh --ci
+    - name: setup the project
+      run:  bash scripts/setup.sh --ci
+    - name: install additional dependencies
+      run: sudo apt install gpg debhelper dput openssl libdistro-info-perl dh-make graphviz
+    - name: configure gpg key and environment
+      run: |
+        echo "${{ secrets.GPG_SECRET_KEY }}" | openssl enc -base64 -d | gpg --import 
+        echo "DEBUILD_DPKG_BUILDPACKAGE_OPTS=\"-k0xA82A68B9A35079F860E1C6ADB5B78B08943AE8A6\"" > ~/.devscripts 
+        echo "export DEBFULLNAME=\"Github actions bot\" \n export DEBEMAIL=\"noasakurajin@web.de\"" > ~/.bashrc 
+    - name: update release version
+      run: |
+        MESSAGE=$( echo $latestRelease | jq '.body' )
+        dch --distribution bionic -l+git$(date +%Y.%m%d.%H%M%S) $MESSAGE
+    - name: build package
+      run: debuild -S -sa
+    - name: publish package
+      run: dput ppa:noasakurajin/libredhand-latest ../*.changes
+
+
+

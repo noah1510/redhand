@@ -283,7 +283,7 @@ void redhand::game_object::draw(){
 
     //if there are textures set the texture scale of the shader
     if(textureMode == 1){
-        object_shader->setTextureScale(texture_scale);
+        object_shader->setTextureScale(object_texture->getTextureScale());
     }
 
     //enable texture shader
@@ -563,6 +563,10 @@ game_object* redhand::createRecktangle(
     };
 
     std::vector<float> position_vector = {bottomleft[0],bottomleft[1]};
+
+    if(tex != nullptr){
+        tex->setTextureScale(glm::vec2{textureScale,textureScale});
+    }
 
     auto obj = new game_object(points,indices,colors,shade,DrawingMode,[](std::shared_ptr<redhand::shader>){},{width,height},0.0f,position_vector,tex,texels);
 
