@@ -60,7 +60,7 @@ jobs:
     - name: update release version
       run: |
         MESSAGE=$( echo $latestRelease | jq '.body' )
-        dch --create --empty --distribution bionic -l+git$(date +%Y.%m%d.%H%M%S) $MESSAGE
+        dch --distribution bionic -l+git$(date +%Y.%m%d.%H%M%S) $MESSAGE
     - name: build package
       run: debuild -S -sa
     - name: publish package
