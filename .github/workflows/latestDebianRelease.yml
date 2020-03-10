@@ -9,6 +9,7 @@ jobs:
   pre-release:
     name: "windows latest release"
     runs-on: "windows-latest"
+    if: "!contains(github.event.head_commit.message, 'auto-release')"
     steps:
     - uses: actions/checkout@v2
       with: 
@@ -61,6 +62,9 @@ jobs:
       run: |
         MESSAGE=$( echo $latestRelease | jq '.body' )
         dch --distribution bionic -l+git$(date +%Y.%m%d.%H%M%S) $MESSAGE
+    - uses: stefanzweifel/git-auto-commit-action@v4.1.0
+      with:
+        commit_message: skip ci auto-release updated changelog
     - name: build package
       run: debuild -S -sa
     - name: publish package
