@@ -21,7 +21,7 @@ jobs:
       run: sudo apt install gpg debhelper dput openssl libdistro-info-perl dh-make graphviz
     - name: configure gpg key and environment
       run: 
-        echo "${{ secrets.GPG_KEY }}" | openssl enc -base64 -d | gpg --import && 
+        echo "${{ secrets.GPG_SECRET_KEY }}" | openssl enc -base64 -d | gpg --import && 
         echo "DEBUILD_DPKG_BUILDPACKAGE_OPTS=\"-k0xA82A68B9A35079F860E1C6ADB5B78B08943AE8A6\"" > ~/.devscripts && 
         echo "export DEBFULLNAME=\"Github actions bot\" \n export DEBEMAIL=\"noasakurajin@web.de\"" > ~/.bashrc 
     - name: update release version
