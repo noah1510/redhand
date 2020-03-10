@@ -66,6 +66,9 @@ jobs:
       with:
         commit_message: skip ci auto-release updated changelog
         branch: changelog
+        file_pattern: debian/changelog
+        repository: .
+        commit_options: '--no-verify --signoff'
     - name: push changes
       run: git push
     - name: build package
