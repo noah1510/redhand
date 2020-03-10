@@ -7,7 +7,7 @@ on:
 
 jobs:
   pre-release:
-    name: "Pre Release"
+    name: "windows latest release"
     runs-on: "windows-latest"
     steps:
     - uses: actions/checkout@v2
@@ -59,7 +59,7 @@ jobs:
         echo "export DEBFULLNAME=\"Github actions bot\" \n export DEBEMAIL=\"noasakurajin@web.de\"" > ~/.bashrc 
     - name: update release version
       run: |
-        MESSAGE=$( echo '$latestRelease' | jq '.body' )
+        MESSAGE=$( echo $latestRelease | jq '.body' )
         dch --distribution bionic -l+git"$GITHUB_SHA" $MESSAGE
     - name: build package
       run: debuild -S -sa
