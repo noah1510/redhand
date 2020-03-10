@@ -15,7 +15,7 @@ jobs:
       with: 
         lfs: true
     - name: print latest description
-      run: echo "${{ toJson(' curl --user "noah1510:${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/noah1510/redhand/releases/tags/latest ') }}""
+      run: echo ${{ toJson(' curl --user "noah1510:${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/noah1510/redhand/releases/tags/latest ') }}
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
