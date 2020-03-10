@@ -45,7 +45,7 @@ jobs:
         echo ::set-env name=latestRelease::$LATEST
     - name: print latest description
       shell: bash
-      run: echo ${{ toJson( $latestRelease )}}
+      run: echo ${{ toJson(' $latestRelease ')}}
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
@@ -59,7 +59,7 @@ jobs:
         echo "export DEBFULLNAME=\"Github actions bot\" \n export DEBEMAIL=\"noasakurajin@web.de\"" > ~/.bashrc 
     - name: update release version
       run: 
-        dch --distribution bionic -l+git"$GITHUB_SHA" ${{ tojson('./latest.json').body }}
+        dch --distribution bionic -l+git"$GITHUB_SHA" ${{ tojson(' $latestRelease ').body }}
     - name: build package
       run: debuild -S -sa
     - name: publish package
