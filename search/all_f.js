@@ -1,8 +1,7 @@
 var searchData=
 [
   ['samples',['SAMPLES',['../structredhand_1_1engine__config.html#a0e9435c59f4be9a1ee6864e54222fc5e',1,'redhand::engine_config']]],
-  ['scale_5fx',['scale_x',['../classredhand_1_1texture2_d.html#ae543468159455cb6a3a21cb6f95651e4',1,'redhand::texture2D']]],
-  ['scale_5fy',['scale_y',['../classredhand_1_1texture2_d.html#ae6f5648d1412f6d29da67b1599d28485',1,'redhand::texture2D']]],
+  ['scale',['scale',['../classredhand_1_1texture2_d.html#aa6815c151726b1484ce98233aea1c3b5',1,'redhand::texture2D']]],
   ['scalelock',['scaleLock',['../classredhand_1_1game__object.html#a70eef9258276954d3ded836b94bd76af',1,'redhand::game_object']]],
   ['setactiveworld',['setActiveWorld',['../classredhand_1_1engine.html#a370bc247c39c33e06dda5d63bcd425f5',1,'redhand::engine']]],
   ['setbool',['setBool',['../classredhand_1_1shader.html#a584bc9d1d0fe5ada3e325e79a9f2bbd3',1,'redhand::shader::setBool(const std::string &amp;name, bool value) const'],['../classredhand_1_1shader.html#a019ac0cefe5010f2e9148793d1638372',1,'redhand::shader::setBool(const std::string &amp;name, bool value, bool value2) const'],['../classredhand_1_1shader.html#abb3352f74a425cd40e2843960846a860',1,'redhand::shader::setBool(const std::string &amp;name, bool value, bool value2, bool value3) const'],['../classredhand_1_1shader.html#ab3e3ed6c50817e6e160877b3eddb936f',1,'redhand::shader::setBool(const std::string &amp;name, bool value, bool value2, bool value3, bool value4) const']]],
@@ -19,8 +18,7 @@ var searchData=
   ['setrotation',['setRotation',['../classredhand_1_1game__object.html#a91eb9e945e666ab571be6fe641367076',1,'redhand::game_object']]],
   ['setscreensize',['setScreenSize',['../classredhand_1_1game__object.html#a3247de3fd8cad6f5234704dabbd207d4',1,'redhand::game_object']]],
   ['setshaderroutine',['setShaderRoutine',['../classredhand_1_1game__object.html#a9a612842d14baf3d73f06d2166d5d3ef',1,'redhand::game_object']]],
-  ['settexturescale',['setTextureScale',['../classredhand_1_1shader.html#a060d311815f8b775785b9102f2c03822',1,'redhand::shader']]],
-  ['setup_2esh',['setup.sh',['../setup_8sh.html',1,'']]],
+  ['settexturescale',['setTextureScale',['../classredhand_1_1shader.html#a060d311815f8b775785b9102f2c03822',1,'redhand::shader::setTextureScale()'],['../classredhand_1_1texture2_d.html#abce63791ed8bbd51259d24e1d1d342e1',1,'redhand::texture2D::setTextureScale()']]],
   ['setwindowsize',['setWindowSize',['../classredhand_1_1world.html#a6a1b807e62d75c36f88c699365984d9f',1,'redhand::world']]],
   ['shader',['shader',['../classredhand_1_1shader.html',1,'redhand::shader'],['../classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88',1,'redhand::shader::shader()'],['../classredhand_1_1shader.html#a994b93c09beb388d54b1983a672ba893',1,'redhand::shader::shader(std::string_view name)']]],
   ['shader_2ecpp',['shader.cpp',['../shader_8cpp.html',1,'']]],

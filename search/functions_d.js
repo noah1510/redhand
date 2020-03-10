@@ -15,7 +15,7 @@ var searchData=
   ['setrotation',['setRotation',['../classredhand_1_1game__object.html#a91eb9e945e666ab571be6fe641367076',1,'redhand::game_object']]],
   ['setscreensize',['setScreenSize',['../classredhand_1_1game__object.html#a3247de3fd8cad6f5234704dabbd207d4',1,'redhand::game_object']]],
   ['setshaderroutine',['setShaderRoutine',['../classredhand_1_1game__object.html#a9a612842d14baf3d73f06d2166d5d3ef',1,'redhand::game_object']]],
-  ['settexturescale',['setTextureScale',['../classredhand_1_1shader.html#a060d311815f8b775785b9102f2c03822',1,'redhand::shader']]],
+  ['settexturescale',['setTextureScale',['../classredhand_1_1shader.html#a060d311815f8b775785b9102f2c03822',1,'redhand::shader::setTextureScale()'],['../classredhand_1_1texture2_d.html#abce63791ed8bbd51259d24e1d1d342e1',1,'redhand::texture2D::setTextureScale()']]],
   ['setwindowsize',['setWindowSize',['../classredhand_1_1world.html#a6a1b807e62d75c36f88c699365984d9f',1,'redhand::world']]],
   ['shader',['shader',['../classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88',1,'redhand::shader::shader()'],['../classredhand_1_1shader.html#a994b93c09beb388d54b1983a672ba893',1,'redhand::shader::shader(std::string_view name)']]],
   ['sindeg',['sinDeg',['../namespaceredhand.html#ae34e8f79b078f1b4dbecf43d18a2802a',1,'redhand']]],

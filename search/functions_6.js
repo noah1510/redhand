@@ -7,7 +7,7 @@ var searchData=
   ['getfloat',['getFloat',['../classredhand_1_1shader.html#a418abef329616f860657f24ec28716d0',1,'redhand::shader']]],
   ['getheight',['getHeight',['../classredhand_1_1texture2_d.html#a867fd95f1d6cf985bbce27a5c4f50dcd',1,'redhand::texture2D']]],
   ['getid',['getID',['../classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6',1,'redhand::shader::getID()'],['../classredhand_1_1texture2_d.html#a88ee9e51358735d215bd7b98ebe3f556',1,'redhand::texture2D::getID()']]],
-  ['getname',['getName',['../classredhand_1_1game__object.html#a2cbbbd0da38180fcb6d30d76b42b778a',1,'redhand::game_object::getName()'],['../classredhand_1_1shader.html#ad271bf72cc2604469c735b327e871ad7',1,'redhand::shader::getName()'],['../classredhand_1_1texture2_d.html#a1dfbaab92095147507e5e91157a123ff',1,'redhand::texture2D::getName()']]],
+  ['getname',['getName',['../classredhand_1_1game__object.html#a2cbbbd0da38180fcb6d30d76b42b778a',1,'redhand::game_object::getName()'],['../classredhand_1_1shader.html#ad271bf72cc2604469c735b327e871ad7',1,'redhand::shader::getName()'],['../classredhand_1_1texture2_d.html#a652ca271c7dbace99adb39918ba26f94',1,'redhand::texture2D::getName()']]],
   ['getobjectbyname',['getObjectByName',['../classredhand_1_1world.html#a4d68d83a12684ca8e6e28865cf24a23d',1,'redhand::world']]],
   ['getposition',['getPosition',['../classredhand_1_1game__object.html#a146526d5ee568999b7898ac3bd7bdd57',1,'redhand::game_object']]],
   ['getrotation',['getRotation',['../classredhand_1_1game__object.html#a758aeed2f46f7f240ee05d43e5640b94',1,'redhand::game_object']]],
@@ -15,6 +15,7 @@ var searchData=
   ['getshader',['getShader',['../classredhand_1_1game__object.html#a473b4adc64bc004e4de4d2e6b2cecd22',1,'redhand::game_object']]],
   ['getshaderbyname',['getShaderByName',['../classredhand_1_1world.html#ae01663f1b19d766a99823e5fda867307',1,'redhand::world']]],
   ['gettexturebyname',['getTextureByName',['../classredhand_1_1world.html#a25cbad591ef89fd8fa5a4ab23820d873',1,'redhand::world']]],
+  ['gettexturescale',['getTextureScale',['../classredhand_1_1texture2_d.html#a9dc40bde0ad412a828de3f91432d2444',1,'redhand::texture2D']]],
   ['getwidth',['getWidth',['../classredhand_1_1texture2_d.html#a03da3510536848af115d53f52797f69e',1,'redhand::texture2D']]],
   ['getwindow',['getWindow',['../classredhand_1_1engine.html#ad6fd3ba1224e1f67fbf5356c7137428d',1,'redhand::engine']]]
 ];
