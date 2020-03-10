@@ -14,10 +14,8 @@ jobs:
     - uses: actions/checkout@v2
       with: 
         lfs: true
-    - name: get latest release info
-      run: curl https://api.github.com/repos/noah1510/redhand/releases/latest > latest.json
     - name: print latest description
-      run: ${{ toJson('./latest.json') }}
+      run: ${{ toJson(curl https://api.github.com/repos/noah1510/redhand/releases/latest) }}
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
