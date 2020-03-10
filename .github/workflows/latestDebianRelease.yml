@@ -17,7 +17,7 @@ jobs:
     - name: get latest release info
       run: curl https://api.github.com/repos/noah1510/redhand/releases/latest > latest.json
     - name: print latest description
-      run: tojson('./latest.json')
+      run: ${{ toJson('./latest.json') }}
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
