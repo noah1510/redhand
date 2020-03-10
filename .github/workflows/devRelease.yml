@@ -1,14 +1,9 @@
 name: create automatic development release
 
-on:
-  push:
-    branches:
-      - master
-
 jobs:
   pre-release:
     name: "Pre Release"
-    runs-on: "ubuntu-latest"
+    runs-on: "windows-latest"
 
     steps:
     - uses: actions/checkout@v2
@@ -20,8 +15,6 @@ jobs:
       run:  bash scripts/setup.sh --ci
     - name: build library
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
-    - name: build testgame
-      run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - name: compress header files
       run: zip deploy/headers.zip include/redhand/**
     - uses: "marvinpinto/action-automatic-releases@latest"
@@ -31,5 +24,5 @@ jobs:
         prerelease: true
         title: "Development Build"
         files: |
-          deploy/libredhand.so
+          deploy/libredhand.dll
           deploy/headers.zip
