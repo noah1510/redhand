@@ -24,7 +24,7 @@ jobs:
       run: zip deploy/headers.zip include/redhand/**
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-	repo_token: repoToken
+        repo_token: repoToken
         automatic_release_tag: "latest"
         prerelease: true
         title: "Development Build"

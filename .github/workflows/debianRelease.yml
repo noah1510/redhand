@@ -12,10 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with: 
-        lfs: true
+        lfs: false
     - uses: ./.github/workflows/devRelease
       with: 
-	repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        repoToken: "${{ secrets.GITHUB_TOKEN }}"
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
