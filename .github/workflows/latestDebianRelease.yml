@@ -65,6 +65,7 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4.1.0
       with:
         commit_message: skip ci auto-release updated changelog
+        branch: changelog
     - name: push changes
       run: git push
     - name: build package
