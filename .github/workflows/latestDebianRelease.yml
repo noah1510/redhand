@@ -15,7 +15,7 @@ jobs:
       with: 
         lfs: true
     - name: print latest description
-      run: ${{ toJson(curl https://api.github.com/repos/noah1510/redhand/releases/latest) }}
+      run: ${{ toJson('curl https://api.github.com/repos/noah1510/redhand/releases/latest') }}
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
