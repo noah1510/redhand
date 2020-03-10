@@ -15,7 +15,7 @@ jobs:
         lfs: true
     - name: set env
       run: |
-        echo ::set-env name=latestRelease::${{ toJson($(curl --user noah1510:${`{ secrets.GITHUB_TOKEN }`} https://api.github.com/repos/noah1510/redhand/releases/tags/latest)) }}
+        echo ::set-env name=latestRelease::${{ toJson(' curl --user noah1510:${secrets.GITHUB_TOKEN} https://api.github.com/repos/noah1510/redhand/releases/tags/latest ') }}
     - name: print latest description
       run: echo $latestRelease
     - name: install dependencies
