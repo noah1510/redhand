@@ -3,7 +3,7 @@ name: create automatic debian release
 on:
   push:
     branches:
-      - dev-noa
+      - master
 
 jobs:
   setup:
@@ -30,7 +30,7 @@ jobs:
     - name: build package
       run: debuild -S -sa
     - name: publish package
-      run: dput ppa:noasakurajin/libredhand ../*.changes
+      run: dput ppa:noasakurajin/libredhand-latest ../*.changes
 
 
 
