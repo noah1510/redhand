@@ -32,7 +32,7 @@ namespace redhand{
 ///This string provides a version in a pritable format.
 ///The first public version is 0.1.0 and from there it will be couted up.
 ///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last release
-#define REDHAND_VERSION_STRING "0.0.1"
+#define REDHAND_VERSION_STRING "0.0.2"
 
 ///This integere defines the version number.
 ///You should use it to check if the version of your game is compatible with the engine.

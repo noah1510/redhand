@@ -3,7 +3,7 @@ name: create automatic debian release
 on:
   push:
     branches:
-      - dev-noa
+      - master
 
 jobs:
   pre-release:
