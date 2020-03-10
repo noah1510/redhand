@@ -1,7 +1,7 @@
 name: create automatic development release
 
 inputs:
-  repo_token:
+  repoToken:
     description: "GitHub secret token"
     required: true
 
@@ -24,7 +24,7 @@ jobs:
       run: zip deploy/headers.zip include/redhand/**
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        repo_token: "${{ repo_token }}"
+	repo_token: repoToken
         automatic_release_tag: "latest"
         prerelease: true
         title: "Development Build"
