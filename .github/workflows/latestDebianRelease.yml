@@ -69,8 +69,6 @@ jobs:
         file_pattern: debian/changelog
         repository: .
         commit_options: '--no-verify --signoff'
-    - name: push changes
-      run: git push
     - name: build package
       run: debuild -S -sa
     - name: publish package
