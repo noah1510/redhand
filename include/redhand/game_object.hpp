@@ -20,6 +20,47 @@
 namespace redhand{
 
 /**
+ * @brief This struct specifies all the properties of a game_object.
+ * 
+ */
+typedef struct{
+    ///A vector containing all the points of the game_object, with each array being one point.
+    std::vector <std::array<float, 2> >                     points_coordinates;
+    ///A vector specifiying which points (their index) form an triangle, with each array being a triangle.
+    std::vector <std::array<unsigned int, 3> >              triangle_indices;
+    ///A vector specifiying the color of each point, with each array being one color.
+    std::vector <std::array<float, 3> >                     point_colors;
+    ///A vector containing all the texture coordinates of each point, with each array being one texture coordinate.
+    std::vector <std::array<float, 2> >                     texture_coordinates;
+    ///A shared pointer on the shader that should be used by this object.
+    std::shared_ptr<redhand::shader>                        attached_shader;
+    ///A shared pointer on the texture that should be used by this object.
+    std::shared_ptr<texture2D>                              attached_texture;
+    ///The scaling factor of the game_object along the x and y axis.
+    std::array<float,2>                                     scale;
+    ///The rotation around the bottom left in degrees.
+    float                                                   rotation;
+    ///The position of the object in world coordinates
+    std::array<float,2>                                     postition;
+    ///The drawing mode of the internal gpu buffer.
+    int                                                     gl_drawing_mode;
+    
+} game_object_properties;
+
+const game_object_properties DEFAULT_GAME_OBJECT_PROPERTIES = {
+    {{0.0f,0.0f},{1.0f,0.0f},{0.0f,1.0f}},
+    {{0,1,2}},
+    {{1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f},{0.0f,0.0f,1.0f}},
+    {},
+    nullptr,
+    nullptr,
+    {2.0f,2.0f},
+    0,
+    {-1.0f,-1.0f},
+    GL_STATIC_DRAW
+};
+
+/**
  * @brief The game_object is a simple object which can be displayed in a world.
  * It is the first abstraction layer and is a very low level openGL object.
  * You can create a game_object by specifying all the points, and which points form a triangel.
