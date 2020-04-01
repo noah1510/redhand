@@ -35,123 +35,97 @@ int main_game_logic(
 int createTestworld(std::shared_ptr<redhand::world> testWorld){
     //add shaders to world
 
-    auto shader1 =  std::shared_ptr<redhand::shader>( new redhand::shader() );
-    if( testWorld->addShader(shader1) < 0){
+    auto shader1 = std::make_unique<redhand::shader>();
+    if( testWorld->addShader(std::move(shader1)) < 0){
         std::cerr << "Got error while adding shader" << std::endl;
-        return -1;
+        return -10;
     }
 
     if(testWorld->getShaderByName("default") == nullptr){
         std::cerr << "Got nullpointer as shader" << std::endl;
-        return -20;
+        return -11;
     }
 
     //Add textures to world
-    if(testWorld->addTexture(
-        new redhand::texture2D(
-            "textures/open/crate.png",
-            "house"
-        )) < 0){
-        return -2;
+    auto tex0 = std::unique_ptr<redhand::texture2D>(new redhand::texture2D("textures/open/crate.png","house"));
+    if(testWorld->addTexture(std::move(tex0)) < 0){
+        return -20;
     }
 
-    if(testWorld->addTexture(
-        new redhand::texture2D(
-            "textures/open/house.png",
-            "bg"
-        )) < 0){
-        return -2;
+    auto tex1 = std::unique_ptr<redhand::texture2D>(new redhand::texture2D("textures/open/house.png","bg"));
+    if(testWorld->addTexture(std::move(tex1)) < 0){
+        return -21;
     }
     
     //creating the objects and add them to the world
     int edges = 240;
 
-     // Background rectangle
-    {
-        float bottomLeft[2] = {-100.0f, -100.0f};
-        float color[3] = {0.0f, 0.6f, 1.0f};
-        if( testWorld->addObject(
-            redhand::createRecktangle(
-                bottomLeft,
-                200.0f,
-                200.0f,
-                color,
-                testWorld->getShaderByName("default"),
-                testWorld->getTextureByName("bg"),
-                GL_STATIC_DRAW,
-                600.0f*200.0f/testWorld->getTextureByName("bg")->getWidth()
-            )
-        ) < 0){
-            return -3;
-        }
+    // Background rectangle 
+    if( testWorld->addObject(
+        redhand::createRectangle(
+            {-100.0f, -100.0f},
+            200.0f,
+            200.0f,
+            {0.0f, 0.6f, 1.0f},
+            testWorld->getShaderByName("default"),
+            testWorld->getTextureByName("bg"),
+            GL_STATIC_DRAW,
+            600.0f*200.0f/testWorld->getTextureByName("bg")->getWidth()
+        )
+    ) < 0){
+        return -3;
     }
     testWorld->getObjectByName("game_object")->setName("background");
 
      // sun two
-    {
-        float posSunTwo[2] = {0.6f, 0.6f};
-        float iColorSunTwo[3] = {0.0f, 0.8f, 1.0f};
-        float oColorSunTwo[3] = {0.8f, 0.0f, 1.0f};
-        if( testWorld->addObject(
-            redhand::createCircle(
-                posSunTwo,
-                0.6f,
-                edges,
-                iColorSunTwo,
-                oColorSunTwo,
-                testWorld->getShaderByName("default"),
-                nullptr
-            )
-        ) < 0){
-            return -3;
-        }
+    if( testWorld->addObject(
+        redhand::createCircle(
+            {0.6f, 0.6f},
+            0.6f,
+            edges,
+            {0.0f, 0.8f, 1.0f},
+            {0.8f, 0.0f, 1.0f},
+            testWorld->getShaderByName("default"),
+            nullptr
+        )
+    ) < 0){
+        return -3;
     }
     testWorld->getObjectByName("game_object")->setName("sun2");
 
     // sun one
-    float posSunOne[2] = {0.8f,0.45f};
-    if( testWorld->addObject(redhand::createCircle(posSunOne, 0.35f, edges, NULL, NULL, testWorld->getShaderByName("default"), nullptr)) < 0){
+    if( testWorld->addObject(redhand::createCircle({0.8f,0.45f}, 0.35f, edges, {}, {}, testWorld->getShaderByName("default"), nullptr)) < 0){
         return -3;
     }
     testWorld->getObjectByName("game_object")->setName("sun1");
 
     //triangle
-    {
-        std::vector <float> trig_points = {0.0f,0.0f, 1.0f,0.0f, 0.5f,1.0f};
-        std::vector <unsigned int> trig_indicies = {0,1,2};
-        std::vector <float> trig_colors = {1.0f,0.0f,0.0f, 0.0f,1.0f,0.0f, 0.0f,0.0f,1.0f};
-        std::vector <float> trig_texels = {0.0f,0.0f, 1.0f*10.0f,0.0f, 0.5f*10.0f,1.0f*10.0f};
-        std::vector <float> trig_pos = {-0.4f,-0.4f};
-        if( testWorld->addObject(
-            new redhand::game_object(
-                trig_points,
-                trig_indicies,
-                trig_colors,
-                testWorld->getShaderByName("default"),
-                GL_DYNAMIC_DRAW,
-                [](std::shared_ptr<redhand::shader>){},
-                {0.5f,0.5f},
-                0.0f,
-                trig_pos,
-                nullptr,
-                trig_texels
-            )
-        ) < 0){
-            return -3;
-        }
-        testWorld->getObjectByName("game_object")->setName("trig");
-
-        testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow*, redhand::game_object* obj){
-            obj->setRotation((float)glfwGetTime()*20.0f);
-        });
+    auto trig_properties = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
+    trig_properties.points_coordinates = {{0.0f,0.0f}, {1.0f,0.0f}, {0.5f,1.0f}};
+    trig_properties.triangle_indices = {{0,1,2}};
+    trig_properties.point_colors = {{1.0f,0.0f,0.0f}, {0.0f,1.0f,0.0f}, {0.0f,0.0f,1.0f}};
+    trig_properties.texture_coordinates = {{0.0f,0.0f}, {1.0f*10.0f,0.0f}, {0.5f*10.0f,1.0f*10.0f}};
+    trig_properties.postition = {-0.4f,-0.4f};
+    trig_properties.name = "trig";
+    trig_properties.attached_shader = testWorld->getShaderByName("default");
+    trig_properties.scale = {0.5f,0.5f};
+    
+    if( testWorld->addObject(std::unique_ptr<redhand::game_object>(new redhand::game_object(trig_properties)) ) < 0){
+        return -3;
     }
 
+    testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow*, redhand::game_object* obj){
+        obj->setRotation((float)glfwGetTime()*20.0f);
+    });
+    
+
     //house
-    if( testWorld->addObject(redhand::createHouse(testWorld->getTextureByName("house"),testWorld->getShaderByName("default"),(800.0f*0.45)/testWorld->getTextureByName("house")->getWidth())) < 0){
+    if( testWorld->addObject(
+        createHouse(testWorld->getTextureByName("house"), testWorld->getShaderByName("default"))
+    ) < 0){
         return -3;
     }
     testWorld->getObjectByName("game_object")->setName("house");
-
     testWorld->getObjectByName("house")->setLoopFunction(processHouseMovement);
     
     return 0;
@@ -159,7 +133,7 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
 
 void processHouseMovement(GLFWwindow* window, redhand::game_object* obj){
     //move the house
-    std::vector<float> deltaPosition = {0.0f,0.0f};
+    std::array<float,2> deltaPosition = {0.0f,0.0f};
 
     if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS){
         deltaPosition.at(0) = 0.002f;
@@ -190,7 +164,7 @@ void processHouseMovement(GLFWwindow* window, redhand::game_object* obj){
 
 void processWorldInput(GLFWwindow* window, std::shared_ptr<redhand::world> activeWorld){
     //move the camera
-    std::vector<float> deltaCamera = {0.0f,0.0f};
+    std::array<float,2> deltaCamera = {0.0f,0.0f};
 
     if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
         deltaCamera.at(0) = 0.002f;

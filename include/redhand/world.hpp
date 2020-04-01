@@ -13,13 +13,13 @@ private:
     std::shared_mutex WorldObjectsMutex;
 
     /// This vector holds all the game_objetcs in this world
-    std::vector <game_object*> WorldObjects;
+    std::vector <std::shared_ptr<game_object> > WorldObjects;
 
     /// This vector holds all the shaders in this world
-    std::vector < std::shared_ptr<redhand::shader> > WorldShaders;
+    std::vector <std::shared_ptr<redhand::shader> > WorldShaders;
 
     /// This vector holds all the textures in this world
-    std::vector <texture2D*> WorldTextures;
+    std::vector <std::shared_ptr <redhand::texture2D> > WorldTextures;
 
     /// This array holds the current camera Position
     float cameraPosition[2] = {0.0f, 0.0f};
@@ -49,20 +49,20 @@ public:
      * Please add all shader you use for your objects to the world the objects resides in.
      * Not doing this may easily cause NULL Pointer exceptions and Segmentation faults.
      */
-    int addShader(std::shared_ptr<redhand::shader>);
+    int addShader(std::unique_ptr<redhand::shader>);
 
     /**
      * The addTexture function will add a texture to the world.
      * Please add all testures you use for your objects to the world the objects resides in.
      * Not doing this may easily cause NULL Pointer exceptions and Segmentation faults.
      */
-    int addTexture(texture2D*);
+    int addTexture(std::unique_ptr<redhand::texture2D>);
 
     /**
      * The addObject function will add an object to the world.
      * All added objects will be drawn on each world tick.
      */
-    int addObject(game_object*);
+    int addObject(std::unique_ptr<redhand::game_object>);
 
     /**
      * This function removes a shader from its world and delete the shader.
@@ -97,14 +97,14 @@ public:
      * @param name the name of the wanted texture 
      * @return pointer to the texture if everything worked, nullptr if no shader was found or something went wrong
      */
-    texture2D* getTextureByName(std::string name);
+    std::shared_ptr<texture2D> getTextureByName(std::string name);
 
      /**
      * This function returns a pointer to the first object with the given name
      * @param name the name of the wanted object 
      * @return pointer to the object if everything worked, nullptr if no shader was found or something went wrong
      */
-    game_object* getObjectByName(std::string name);
+    std::shared_ptr<game_object> getObjectByName(std::string name);
 
     /**
      * This function executes a world tick and is called for each frame.

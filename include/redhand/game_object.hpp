@@ -241,7 +241,7 @@ public:
  * @param texture_scale The factor by which the texture shoulb be scaled (1.0f if nothig is specified)
  * @return game_object* 
  */
-std::unique_ptr<redhand::game_object> redhand::createCircle( 
+std::unique_ptr<redhand::game_object> createCircle( 
     std::array<float,2> midpoint,
     float radius,
     unsigned int edges,
@@ -250,7 +250,7 @@ std::unique_ptr<redhand::game_object> redhand::createCircle(
     std::shared_ptr<redhand::shader> shade,
     std::shared_ptr<redhand::texture2D> tex,
     float texture_scale = 1.0f
-)
+);
 
 /**
  * @brief Create a rectangular object
@@ -264,14 +264,15 @@ std::unique_ptr<redhand::game_object> redhand::createCircle(
  * @param textureScale The factor by which the texture shoulb be scaled (1.0f if nothig is specified)
  * @return game_object*
  */
-game_object* createRecktangle(
-    float bottomleft[2],
+std::unique_ptr<redhand::game_object> createRectangle(
+    std::array<float,2> bottomleft,
     float width,
     float height,
-    float color[3],
+    std::array<float,3> color,
     std::shared_ptr<redhand::shader> shade,
-    texture2D* tex,
+    std::shared_ptr<redhand::texture2D> tex,
     int DrawingMode,
-    float textureScale = 1.0f);
+    float textureScale = 1.0f
+);
 
 }//end of namespace
