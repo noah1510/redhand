@@ -42,7 +42,7 @@ void framebuffer_size_callback(GLFWwindow*, int width, int height);
 
 /**
  * @brief This struct specifies all the properties of the game engine.
- * @note Please create a costum configuration by first setting your variable to redhand::DEFAULT_ENGINE_CONFIG.
+ * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_ENGINE_CONFIG.
  */
 typedef struct{
     ///The newest version of OpenGL which may be used

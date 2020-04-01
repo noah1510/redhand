@@ -225,5 +225,45 @@ void processGlobalInput(redhand::engine* game){
 
 }
 
+std::unique_ptr<redhand::game_object> createHouse(
+    std::shared_ptr<redhand::texture2D> texture,
+    std::shared_ptr<redhand::shader> shade
+){
+
+    auto settings = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
+
+    settings.attached_shader = shade;
+    settings.attached_texture = texture;
+
+
+    settings.points_coordinates = {
+        {1.0f, 0.55f},  // top right
+        {1.0f, 0.0f},  // bottom right
+        {0.0f, 0.0f},  // bottom left
+        {0.0f, 0.55f},  // top left 
+        {0.5f, 1.0f}  // top middle
+    };
+
+    settings.triangle_indices = {
+        {0, 1, 3},   // first triangle
+        {1, 2, 3},    // second triangle
+        {0, 3, 4}     //third triangle
+    };
+
+    settings.point_colors = {
+        {1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f} 
+    };
+
+    settings.postition = {0.5f,0.5f};
+
+    auto ptr = std::unique_ptr<redhand::game_object>(new redhand::game_object(settings));
+
+    return ptr;
+    
+}
 
 

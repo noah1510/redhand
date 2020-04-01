@@ -2,219 +2,111 @@
 
 using namespace redhand;
 
-//minimal constructor
-redhand::game_object::game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode
-){
-    object_shader = std::shared_ptr<redhand::shader>(attached_shader);
-    if(object_shader == nullptr || object_shader == NULL){
-        errored = true;
-    }else{
-        for(unsigned int i = 0; i < points.size(); i++){
-            if(points.at(i) < 0.0f || points.at(i) > 1.0f){
-                errored = true;
-                break;
-            }
-        }
-    }
-
-    if(!errored){
-
-        shader_routine = [](std::shared_ptr<redhand::shader>){};
-        LoopFunction = [](GLFWwindow*, game_object*){};
-            
-        unsigned int point_size = points.size() + points.size()/2;
-        unsigned int colors_size = colors.size();
-
-        indices_size = indices.size();
-
-        std::vector <float> data;
-
-        for(unsigned int i = 0; i < points.size();i++){
-            data.emplace_back(points.at(i));
-            if(i % 2 == 1){
-                data.emplace_back(points.at(0.0f));
-            }
-        }
-        data.insert(data.end(), colors.begin(), colors.end());
-        data.insert(data.end(), points.begin(), points.end());
-
-        //Initilize the buffers
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
-        glGenBuffers(1, &EBO);
-
-        ///Create arrays and buffers
-        glBindVertexArray(VAO);
-
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), gl_drawing_mode);
-
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), gl_drawing_mode);
-
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int)*indices.size(), indices.data(), gl_drawing_mode);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(point_size * sizeof(float)));
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)((point_size + colors_size) * sizeof(float)));
-        glEnableVertexAttribArray(2);
-
-    }
-}
-
-//minimal with name
-redhand::game_object::game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode,
-        std::string name
-    ):game_object(points, indices, colors, attached_shader, gl_drawing_mode){
-            object_name = name;
-        }
-
-//minimal with shader routine
-redhand::game_object::game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode,
-
-        std::function<void(std::shared_ptr<redhand::shader>)> routine
-    ):game_object(points,indices,colors,attached_shader,gl_drawing_mode){
-    shader_routine = routine;
-}
-
-//minimal with scale,rotation and position
-redhand::game_object::game_object(
-    std::vector <float> points, 
-    std::vector <unsigned int> indices,
-    std::vector <float> colors,
-    std::shared_ptr<redhand::shader> attached_shader,
-    int gl_drawing_mode,
-
-    std::vector<float> scaler,
-    float rotator,
-    std::vector<float> postitions
-):game_object(points, indices, colors, attached_shader, gl_drawing_mode){
-    object_scale = scaler;
-    object_rotation = rotator;
-    if (postitions.size() != 2){
-        object_position = {0.0f, 0.0f};
-    }else{
-        object_position = postitions;
-    }
-    
-}
-
-//minimal with scale,rotation, position and shader routine
-redhand::game_object::game_object(
-    std::vector <float> points, 
-    std::vector <unsigned int> indices,
-    std::vector <float> colors,
-    std::shared_ptr<redhand::shader> attached_shader,
-    int gl_drawing_mode,
-
-    std::function<void(std::shared_ptr<redhand::shader>)> routine,
-
-    std::vector<float> scaler,
-    float rotator,
-    std::vector<float> postitions
-):game_object(points, indices, colors, attached_shader, gl_drawing_mode,routine){
-    object_scale = scaler;
-    object_rotation = rotator;
-    if (postitions.size() != 2){
-        object_position = {0.0f, 0.0f};
-    }
-    object_position = postitions;
-}
-
-//full constructor without texels
-redhand::game_object::game_object(
-    std::vector <float> points, 
-    std::vector <unsigned int> indices,
-    std::vector <float> colors,
-    std::shared_ptr<redhand::shader> attached_shader,
-    int gl_drawing_mode,
-
-    std::function<void(std::shared_ptr<redhand::shader>)> routine,
-
-    std::vector<float> scaler,
-    float rotator,
-    std::vector<float> postitions,
-
-    texture2D* texture
-):game_object(points, indices, colors, attached_shader, gl_drawing_mode,routine,scaler,rotator,postitions){
-    if (texture != NULL && texture != nullptr && !texture->hasErrord()){
-        textureMode = 1;
-        object_texture = texture;
-    }
-}
-
 //full constructor
-redhand::game_object::game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode,
+redhand::game_object::game_object(game_object_properties properties ){
+    object_properties = properties;
 
-        std::function<void(std::shared_ptr<redhand::shader>)> routine,
+    auto fut1 = std::async(std::launch::async,[&](){
+        auto lock = std::shared_lock(mutex_object_properties);
 
-        std::vector<float> scaler,
-        float rotator,
-        std::vector<float> postitions,
+        if(object_properties.attached_shader == nullptr || object_properties.attached_shader == NULL ){
+            std::cerr << "ERROR::REDHAND::GAME_OBJECT::NO_SHADER" << std::endl;
+            triggerError();
+        }
 
-        texture2D* texture,
-        std::vector <float> texels
-){
-    object_shader = std::shared_ptr<redhand::shader>(attached_shader);
+        if(object_properties.triangle_indices.size() == 0){
+            std::cerr << "ERROR::REDHAND::GAME_OBJECT::NO_TRIANGLES" << std::endl;
+            triggerError();
+        }
+    });
 
-    if(object_shader == nullptr || object_shader == NULL ){
-        errored = true;
-    }else{
-        for(unsigned int i = 0; i < points.size(); i++){
-            if(points.at(i) < 0.0f || points.at(i) > 1.0f){
-                errored = true;
+    auto fut2 = std::async(std::launch::async,[&](){
+        auto lock = std::shared_lock(mutex_object_properties);
+        
+        for(unsigned int i = 0; i < object_properties.points_coordinates.size(); i++){
+            auto less0 = std::async(std::launch::async,[&](){
+                if(object_properties.points_coordinates.at(i).at(0) < 0.0f){
+                    triggerError();
+                    std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
+                }
+            });
+
+            auto more0 = std::async(std::launch::async,[&](){
+                if(object_properties.points_coordinates.at(i).at(0) > 1.0f){
+                    triggerError();
+                    std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
+                }
+            });
+
+            auto less1 = std::async(std::launch::async,[&](){
+                if(object_properties.points_coordinates.at(i).at(1) < 0.0f){
+                    triggerError();
+                    std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
+                }
+            });
+
+            auto more1 = std::async(std::launch::async,[&](){
+                if(object_properties.points_coordinates.at(i).at(1) > 1.0f){
+                    triggerError();
+                    std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
+                }
+            });
+
+            less0.wait();
+            more0.wait();
+            less1.wait();
+            more1.wait();
+
+            if(hasErrord()){
                 break;
             }
+
         }
-    }
+    });
 
-    if(!errored){
-        shader_routine = [](std::shared_ptr<redhand::shader>){};
-        LoopFunction = [](GLFWwindow*, game_object*){};
-            
-        unsigned int point_size = points.size() + points.size()/2;
-        unsigned int colors_size = colors.size();
-        
-        indices_size = indices.size();
+    fut1.wait();
+    fut2.wait();
 
-        std::vector <float> data;
-        for(unsigned int i = 0; i < points.size();i++){
-            data.emplace_back(points.at(i));
-            if(i % 2 == 1){
-                data.emplace_back(points.at(0.0f));
+    if(!has_errored){
+        loop_function = [](GLFWwindow*, game_object*){};
+
+        data.reserve(
+                object_properties.points_coordinates.size()*3 //size of points
+            +   object_properties.points_coordinates.size()*3 //size of colors
+            +   object_properties.points_coordinates.size()*2 //size of texels
+        );   
+
+        for(unsigned int i = 0; i < object_properties.points_coordinates.size();i++){
+            data.push_back(object_properties.points_coordinates.at(i).at(0));
+            data.push_back(object_properties.points_coordinates.at(i).at(1));
+            data.push_back(0.0f);
+        }
+
+        if(object_properties.point_colors.size() != object_properties.points_coordinates.size()){
+            for(unsigned int i = 0; i < object_properties.points_coordinates.size();i++){
+                data.push_back(0.0f);
+                data.push_back(0.0f);
+                data.push_back(0.0f);
+            }
+        }else{
+            for(unsigned int i = 0;i < object_properties.points_coordinates.size();i++){
+                data.push_back(object_properties.point_colors.at(i).at(0));
+                data.push_back(object_properties.point_colors.at(i).at(1));
+                data.push_back(object_properties.point_colors.at(i).at(2));
             }
         }
 
-        data.insert(data.end(),colors.begin(),colors.end());
-
-        if(texels.size() != 0 && texels.size() == points.size()){
-            data.insert(data.end(),texels.begin(),texels.end());
+        if(object_properties.texture_coordinates.size() == object_properties.points_coordinates.size()){
+            for(unsigned int i = 0;i < object_properties.points_coordinates.size();i++){
+                data.push_back(object_properties.texture_coordinates.at(i).at(0));
+                data.push_back(object_properties.texture_coordinates.at(i).at(1));
+            };
         }else{
-            data.insert(data.end(),points.begin(),points.end());
-        }
-        
+            for(unsigned int i = 0;i < object_properties.points_coordinates.size();i++){
+                data.push_back(object_properties.points_coordinates.at(i).at(0));
+                data.push_back(object_properties.points_coordinates.at(i).at(1));
+            }
+        }      
 
         //Initilize the buffers
         glGenVertexArrays(1, &VAO);
@@ -225,41 +117,31 @@ redhand::game_object::game_object(
         glBindVertexArray(VAO);
 
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), gl_drawing_mode);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), object_properties.gl_drawing_mode);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), gl_drawing_mode);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), object_properties.gl_drawing_mode);
 
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int)*indices.size(), indices.data(), gl_drawing_mode);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int)*object_properties.triangle_indices.size(), object_properties.triangle_indices.data(), object_properties.gl_drawing_mode);
 
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(point_size * sizeof(float)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(object_properties.points_coordinates.size() * 3 * sizeof(float)));
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)((point_size + colors_size) * sizeof(float)));
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)((object_properties.points_coordinates.size() * 6) * sizeof(float)));
         glEnableVertexAttribArray(2);
 
-        shader_routine = routine;
-
-        object_rotation = rotator;
-        object_scale = scaler;
-        if (postitions.size() != 2){
-            object_position = {0.0f, 0.0f};
-        }else{
-            object_position = postitions;
-        }
-
-        if (texture != NULL && texture != nullptr && !texture->hasErrord()){
-            textureMode = 1;
-            object_texture = texture;
-        }
+        if (    object_properties.attached_texture != NULL 
+            &&  object_properties.attached_texture != nullptr 
+            &&  !object_properties.attached_texture->hasErrord()
+        ){ texture_mode = 1; };
 
     }
 }
 
 
 redhand::game_object::~game_object(){
-    auto lock = std::scoped_lock(gameObjectLock,nameLock,positionLock,rotationLock,textureScaleLock,scaleLock);
+    auto lock = std::scoped_lock(mutex_game_object,mutex_has_errored,mutex_loop_function,mutex_object_properties);
     try{
         glDeleteVertexArrays(1, &VAO);
         glDeleteBuffers(1, &VBO);
@@ -272,30 +154,30 @@ redhand::game_object::~game_object(){
 }
 
 void redhand::game_object::setScreenSize(int width, int height){
-    if(textureMode == 1 && object_texture != nullptr && object_texture != NULL){
-        texture_scale.x = object_scale.at(0) * width / (object_texture->getWidth() * (width / height + 1.0f));
-        texture_scale.y = object_scale.at(1) * height / (object_texture->getHeight() * (height / width + 1.0f));
+    if(texture_mode == 1 && object_properties.attached_texture != nullptr && object_properties.attached_texture != NULL){
+        object_properties.texture_scale.x = object_properties.scale.at(0) * width / (object_properties.attached_texture->getWidth() * (width / height + 1.0f));
+        object_properties.texture_scale.y = object_properties.scale.at(1) * height / (object_properties.attached_texture->getHeight() * (height / width + 1.0f));
     }  
 }
 
 void redhand::game_object::draw(){
-    auto lock = std::shared_lock(gameObjectLock);
+    auto lock = std::shared_lock(mutex_object_properties);
 
     //if there are textures set the texture scale of the shader
-    if(textureMode == 1){
-        object_shader->setTextureScale(object_texture->getTextureScale());
+    if(texture_mode == 1){
+        object_properties.attached_shader->setTextureScale(object_properties.attached_texture->getTextureScale());
     }
 
     //enable texture shader
-    object_shader->use();
+    object_properties.attached_shader->use();
 
     //set the uniform variables
-    object_shader->setInt("textureMode", textureMode);
-    object_shader->setFloat("colorAlpha", colorAlphaValue);
+    object_properties.attached_shader->setInt("textureMode", texture_mode);
+    object_properties.attached_shader->setFloat("colorAlpha", object_properties.alpha_value);
 
     //bind texture and draw background
-    if(textureMode == 1){   
-        object_texture->bind(0);
+    if(texture_mode == 1){   
+        object_properties.attached_texture->bind(0);
     }
 
     //Create World transformation matrix  
@@ -304,79 +186,85 @@ void redhand::game_object::draw(){
     worldTrans = glm::rotate(worldTrans, glm::radians(getRotation()), glm::vec3(0.0f, 0.0f, 1.0f));
     worldTrans = glm::scale(worldTrans, glm::vec3(getScale().at(0), getScale().at(1), 1.0f));
 
-    unsigned int transformLoc = glGetUniformLocation(object_shader->getID(), "worldTransformation");
+    unsigned int transformLoc = glGetUniformLocation(object_properties.attached_shader->getID(), "worldTransformation");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(worldTrans));
-
-    //run the custom shader routine
-    shader_routine(std::shared_ptr<redhand::shader>(object_shader));
 
     //actually draw the object
     glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, indices_size, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, object_properties.triangle_indices.size(), GL_UNSIGNED_INT, 0);
 
     //reset the uniform values just in case
-    object_shader->setInt("textureMode", 0);
-    object_shader->setFloat("colorAlpha", 1.0f);
+    object_properties.attached_shader->setInt("textureMode", 0);
+    object_properties.attached_shader->setFloat("colorAlpha", 1.0f);
 
 
 }
 
 bool redhand::game_object::hasErrord(){
-    std::shared_lock<std::shared_mutex> lock(gameObjectLock);
-    return errored;
+    std::shared_lock<std::shared_mutex> lock(mutex_has_errored);
+
+    return has_errored;
+}
+
+void redhand::game_object::triggerError(){
+    std::scoped_lock<std::shared_mutex> lock(mutex_has_errored);
+
+    has_errored = true;
 }
 
 void redhand::game_object::setColorAlpha(float alpha){
     if(alpha >= 0.0f && alpha <= 1.0f){
-        std::scoped_lock<std::shared_mutex> lock(gameObjectLock);
-        colorAlphaValue = alpha;
+        std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
+        object_properties.alpha_value = alpha;
     }
 }
 
 void redhand::game_object::onLoop(GLFWwindow* window){
-    std::shared_lock<std::shared_mutex> lock(gameObjectLock);
-    LoopFunction(window, this);
+    std::shared_lock<std::shared_mutex> lock(mutex_loop_function);
+
+    loop_function(window, this);
 };
 
-void redhand::game_object::setShaderRoutine(std::function<void(std::shared_ptr<redhand::shader>)> routine){
-    std::scoped_lock<std::shared_mutex> lock(gameObjectLock);
-    shader_routine = routine;
-};
 void redhand::game_object::setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop){
-    std::scoped_lock<std::shared_mutex> lock(gameObjectLock);
-    LoopFunction = loop;
+    std::scoped_lock<std::shared_mutex> lock(mutex_loop_function);
+
+    loop_function = loop;
 };
 
 std::shared_ptr<redhand::shader> redhand::game_object::getShader(){
-    std::shared_lock<std::shared_mutex> lock(gameObjectLock);
-    return std::shared_ptr<redhand::shader>(object_shader);
+    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    return std::shared_ptr<redhand::shader>(object_properties.attached_shader);
 };
 
-std::vector<float> redhand::game_object::getPosition(){
-    std::shared_lock<std::shared_mutex> lock(positionLock);
-    return object_position;
+std::array<float,2> redhand::game_object::getPosition(){
+    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    return object_properties.postition;
 };
 
-void redhand::game_object::setPosition(std::vector<float> pos){
-    std::scoped_lock<std::shared_mutex> lock(positionLock);
-    object_position = pos;
+void redhand::game_object::setPosition(std::array<float,2> pos){
+    std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    object_properties.postition = pos;
 };
 
-void redhand::game_object::move(std::vector<float> delta_pos){
-    if(delta_pos.size() == 2){
-        std::scoped_lock<std::shared_mutex> lock(positionLock);
-        object_position.at(0) += delta_pos.at(0);
-        object_position.at(1) += delta_pos.at(1);
-    }
+void redhand::game_object::move(std::array<float,2> delta_pos){
+    std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    object_properties.postition.at(0) += delta_pos.at(0);
+    object_properties.postition.at(1) += delta_pos.at(1);
 };
 
 float redhand::game_object::getRotation(){
-    std::shared_lock<std::shared_mutex> lock(rotationLock);
-    return object_rotation;
+    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    return object_properties.rotation;
 };
-std::vector<float> redhand::game_object::getScale(){
-    std::shared_lock<std::shared_mutex> lock(scaleLock);
-    return object_scale;
+std::array<float,2> redhand::game_object::getScale(){
+    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    return object_properties.scale;
 };
 void redhand::game_object::setRotation(float rot){
     while(rot >= 360.0f){
@@ -386,8 +274,9 @@ void redhand::game_object::setRotation(float rot){
         rot += 360.0f;
     }
 
-    std::scoped_lock<std::shared_mutex> lock(rotationLock);
-    object_rotation = rot;
+    std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    object_properties.rotation = rot;
 
 };
 void redhand::game_object::rotate(float delta_rot){
@@ -399,137 +288,107 @@ void redhand::game_object::rotate(float delta_rot){
         delta_rot += 360.0f;
     }
 
-    std::scoped_lock<std::shared_mutex> lock(rotationLock);
-    object_rotation += delta_rot;
+    std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
 
-    if(object_rotation >= 360.0f){
-        object_rotation -= 360.0f;
-    }
-    if(object_rotation < 0.0f){
-        object_rotation += 360.0f;
-    }
+    object_properties.rotation += delta_rot;
+
+    if(object_properties.rotation >= 360.0f){
+        object_properties.rotation -= 360.0f;
+    }else if(object_properties.rotation < 0.0f){
+        object_properties.rotation += 360.0f;
+    };
+
 };
 
 void redhand::game_object::setName(std::string name){
-    std::scoped_lock<std::shared_mutex> lock(nameLock);
-    object_name = name;
+    std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    object_properties.name = name;
 }
-std::string redhand::game_object::getName(){
-    std::shared_lock<std::shared_mutex> lock(nameLock);
-    return object_name;
-}
+std::string_view redhand::game_object::getName(){
+    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
 
-game_object* redhand::createHouse(
-    texture2D* texture,
-    std::shared_ptr<redhand::shader> shade,
-    float texture_scale
-){
-    //Vertex Data
-    std::vector <float> points = {
-        1.0f, 0.55f,  // top right
-        1.0f, 0.0f,  // bottom right
-        0.0f, 0.0f,  // bottom left
-        0.0f, 0.55f,  // top left 
-        0.5f, 1.0f,  // top middle
-    };
-    std::vector <unsigned int> indices = {
-        0, 1, 3,   // first triangle
-        1, 2, 3,    // second triangle
-        0, 3, 4     //third triangle
-    };
-    std::vector <float> colors = {
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f };
-
-    std::vector <float> texels;
-
-    for(auto x:points){
-        texels.emplace_back(x*texture_scale);
-    }
-
-    return new game_object(points,indices,colors,shade,GL_DYNAMIC_DRAW,[](std::shared_ptr<redhand::shader>){},{0.5f,0.5f},0.0f,{0.0f,0.0f},texture,texels);
-    
+    return object_properties.name;
 }
 
-game_object* redhand::createCircle( 
-    float midpoint[2],
+std::unique_ptr<redhand::game_object> redhand::createCircle( 
+    std::array<float,2> midpoint,
     float radius,
     unsigned int edges,
-    float innerColor[3],
-    float outerColor[3],
+    std::array<float,3> innerColor,
+    std::array<float,3> outerColor,
     std::shared_ptr<redhand::shader> shade,
-    texture2D* tex,
+    std::shared_ptr<redhand::texture2D> tex,
     float texture_scale
 ){
 
-    std::vector <float> points = {0.5f, 0.5f};
-    std::vector <unsigned int> indices;
-    std::vector <float> colors = {1.0f, 1.0f, 0.0f};
-    std::vector <float> texels = {0.5f*texture_scale, 0.5f*texture_scale};
+    auto settings = DEFAULT_GAME_OBJECT_PROPERTIES;
+
+    settings.points_coordinates = {{0.5f, 0.5f}};
+    settings.point_colors = {{1.0f, 1.0f, 0.0f}};
+    settings.texture_coordinates = {{0.5f, 0.5f}};
 
     if(edges <= 2){
         edges = 120;
     }
 
     //Set default midpoint
-    std::vector<float> position = {0.0f, 0.0f};
-    if(midpoint != NULL){
-        position.at(0) = midpoint[0]-0.5f*radius;
-        position.at(1) = midpoint[1]-0.5f*radius;
+    settings.postition = {{0.0f, 0.0f}};
+    if(midpoint.size == 2){
+        settings.postition.at(0) = midpoint[0]-0.5f*radius;
+        settings.postition.at(1) = midpoint[1]-0.5f*radius;
     }
 
     //Set to yellow if NULL
-    if(innerColor != NULL){
+    if(innerColor.size() == 2){
         for(int i = 0;i < 3;i++){
-            colors.at(i) = innerColor[i];
+            settings.point_colors.at(0).at(i) = innerColor[i];
         }
     }
 
     //Set to orange if NULL
-    float oColor[3] = {1.0f, 0.3f, 0.0f};
-    if(outerColor != NULL){
+    std::array<float,3> oColor = {1.0f, 0.3f, 0.0f};
+    if(outerColor.size == 3){
         for(int i = 0;i < 3;i++){
             oColor[i] = outerColor[i];
         }
     }
+
+    settings.points_coordinates.reserve(edges);
+    settings.point_colors.reserve(edges);
+    settings.texture_coordinates.reserve(edges);
+    settings.triangle_indices.reserve(edges);
 
     for(unsigned int i = 0; i < edges;i++){
         float dx,dy;
         dx = cosDeg(i*360/edges)/2.0f + 0.5f;
         dy = sinDeg(i*360/edges)/2.0f + 0.5f;
 
-        points.insert(points.end(), dx);
-        points.insert(points.end(), dy);
-
-        colors.insert(colors.end(), oColor[0]);
-        colors.insert(colors.end(), oColor[1]);
-        colors.insert(colors.end(), oColor[2]);
-
-        texels.insert(texels.end(), dx*texture_scale);
-        texels.insert(texels.end(), dy*texture_scale);
-
+        settings.points_coordinates.push_back({dx,dy});
+        settings.point_colors.push_back(oColor);
+        settings.texture_coordinates.push_back({dx*texture_scale,dy*texture_scale})
     }
 
     for(unsigned int i = 0;i < edges;i++){
-        indices.insert(indices.end(), 0);
-        indices.insert(indices.end(), i + 1);
-        indices.insert(indices.end(), i + 2);
-        if(indices.at(i*3 + 2) == edges + 1){indices.at(i*3 + 2) = 1;};
+        settings.triangle_indices.push_back({0,i+1,i+2});
+        if(settings.triangle_indices.at(i).at(2) == edges + 1){settings.triangle_indices.at(i).at(2) = 1;};
     }  
 
-    return new game_object(points, indices, colors, shade, GL_STATIC_DRAW, [](std::shared_ptr<redhand::shader>){}, {radius,radius}, 0.0f, position, tex, texels);
+    settings.points_coordinates.shrink_to_fit();
+    settings.point_colors.shrink_to_fit();
+    settings.texture_coordinates.shrink_to_fit();
+    settings.triangle_indices.shrink_to_fit();
+
+    return std::unique_ptr<redhand::game_object>(new game_object(settings));
 }
 
-game_object* redhand::createRecktangle(
+std::unique_ptr<redhand::game_object> redhand::createRecktangle(
     float bottomleft[2],
     float width,
     float height,
     float color[3],
     std::shared_ptr<redhand::shader> shade,
-    texture2D* tex,
+    std::shared_ptr<redhand::texture2D> tex,
     int DrawingMode,
     float textureScale
 ){
