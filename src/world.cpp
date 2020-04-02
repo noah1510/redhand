@@ -15,10 +15,6 @@ redhand::world::~world(){
     //delete objects
     try{
         for(auto x:WorldObjects){
-            if (x.use_count() > 1){
-                std::cout << "still having references:" << x.use_count() << std::endl;
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
-            }
             x.reset();
         }
         WorldObjects.clear();
@@ -30,10 +26,6 @@ redhand::world::~world(){
     //delte textures
     try{
         for(auto x:WorldTextures){
-            if (x.use_count() > 1){
-                std::cout << "still having references:" << x.use_count() << std::endl;
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
-            }
             x.reset();
         }
         WorldTextures.clear();
@@ -45,10 +37,6 @@ redhand::world::~world(){
     //delete shaders
     try{
         for(auto x:WorldShaders){
-            if (x.use_count() > 1){
-                std::cout << "still having references:" << x.use_count() << std::endl;
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
-            }
             x.reset();
         }
         WorldShaders.clear();

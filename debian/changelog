@@ -1,3 +1,9 @@
+libredhand (0.0.6) bionic; urgency=medium
+
+  * finished refactoring of game_object
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Thu, 02 Apr 2020 15:23:55 +0200
+
 libredhand (0.0.2+5) bionic; urgency=medium
 
   * small fixes to automatic build
