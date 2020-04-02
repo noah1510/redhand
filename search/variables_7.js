@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loopfunction',['LoopFunction',['../classredhand_1_1game__object.html#a9f4210c5edbe60fd11f81d93d060dd56',1,'redhand::game_object']]]
+  ['loop_5ffunction',['loop_function',['../classredhand_1_1game__object.html#a817f26135b7bb7330e1c480a087c7c04',1,'redhand::game_object']]]
 ];

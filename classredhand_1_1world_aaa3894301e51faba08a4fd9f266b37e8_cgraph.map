@@ -1,6 +1,0 @@
-<map id="redhand::world::addObject" name="redhand::world::addObject">
-<area shape="rect" id="node2" href="$classredhand_1_1game__object.html#a530a55556a3ee963556c919e5f524c10" title="false if no error has happened " alt="" coords="228,5,379,47"/>
-<area shape="rect" id="node3" href="$classredhand_1_1game__object.html#a3247de3fd8cad6f5234704dabbd207d4" title="Sets the screen size to let the object scale the texture correctly. " alt="" coords="228,71,379,112"/>
-<area shape="rect" id="node4" href="$classredhand_1_1texture2_d.html#a867fd95f1d6cf985bbce27a5c4f50dcd" title="This function retruns the height of the texture. " alt="" coords="427,37,560,79"/>
-<area shape="rect" id="node5" href="$classredhand_1_1texture2_d.html#a03da3510536848af115d53f52797f69e" title="This function retruns the width of the texture. " alt="" coords="427,103,560,144"/>
-</map>

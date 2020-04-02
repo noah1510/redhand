@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gameobjectlock',['gameObjectLock',['../classredhand_1_1game__object.html#a84dff7cc5c35fc39030c3991bcd60a27',1,'redhand::game_object']]]
+  ['gl_5fdrawing_5fmode',['gl_drawing_mode',['../structredhand_1_1game__object__properties.html#aa5b48ab349ed9204dfce81c66793b692',1,'redhand::game_object_properties']]]
 ];

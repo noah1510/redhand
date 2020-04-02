@@ -29,9 +29,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.2</span>
+   &#160;<span id="projectnumber">0.0.5</span>
    </div>
-   <div id="projectbrief">Asmalleasytousegamedevelopmentlibrary</div>
+   <div id="projectbrief">A small easy to use game development library</div>
   </td>
  </tr>
  </tbody>
@@ -96,9 +96,13 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class basically handles all the setup need for games to work.  <a href="classredhand_1_1engine.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1engine__config.html">engine_config</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct specifies all the properties of the game engine.  <a href="structredhand_1_1engine__config.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1game__object.html">game_object</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a> is a simple object which can be displayed in a world.  <a href="classredhand_1_1game__object.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html">game_object_properties</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct specifies all the properties of a <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>.  <a href="structredhand_1_1game__object__properties.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html">shader</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,15 +116,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ab95b24b0e20cce1e97f173eb74d8d2a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#ab95b24b0e20cce1e97f173eb74d8d2a8">framebuffer_size_callback</a> (GLFWwindow *, int width, int height)</td></tr>
 <tr class="memdesc:ab95b24b0e20cce1e97f173eb74d8d2a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will be called every time the window size is changed.  <a href="#ab95b24b0e20cce1e97f173eb74d8d2a8">More...</a><br /></td></tr>
 <tr class="separator:ab95b24b0e20cce1e97f173eb74d8d2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cf1d7507476705302fefc3568775cf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredhand_1_1game__object.html">game_object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a4cf1d7507476705302fefc3568775cf0">createHouse</a> (<a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> *texture, std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, float texture_scale=1.0f)</td></tr>
-<tr class="memdesc:a4cf1d7507476705302fefc3568775cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a House object.  <a href="#a4cf1d7507476705302fefc3568775cf0">More...</a><br /></td></tr>
-<tr class="separator:a4cf1d7507476705302fefc3568775cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63c34fda901658230937fcc50e85a937"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredhand_1_1game__object.html">game_object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a63c34fda901658230937fcc50e85a937">createCircle</a> (float midpoint[2], float radius, unsigned int edges, float innerColor[3], float outerColor[3], std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, <a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> *tex, float texture_scale=1.0f)</td></tr>
-<tr class="memdesc:a63c34fda901658230937fcc50e85a937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Circle object.  <a href="#a63c34fda901658230937fcc50e85a937">More...</a><br /></td></tr>
-<tr class="separator:a63c34fda901658230937fcc50e85a937"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d9e1e8631e69c21b331bcba4c272db8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredhand_1_1game__object.html">game_object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a1d9e1e8631e69c21b331bcba4c272db8">createRecktangle</a> (float bottomleft[2], float width, float height, float color[3], std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, <a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> *tex, int DrawingMode, float textureScale=1.0f)</td></tr>
-<tr class="memdesc:a1d9e1e8631e69c21b331bcba4c272db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a rectangular object.  <a href="#a1d9e1e8631e69c21b331bcba4c272db8">More...</a><br /></td></tr>
-<tr class="separator:a1d9e1e8631e69c21b331bcba4c272db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c4caa8e286ebd6aba41a04a606df6aa"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a8c4caa8e286ebd6aba41a04a606df6aa">createCircle</a> (std::array&lt; float, 2 &gt; midpoint, float radius, unsigned int edges, std::array&lt; float, 3 &gt; innerColor, std::array&lt; float, 3 &gt; outerColor, std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; tex, std::string name, float texture_scale=1.0f)</td></tr>
+<tr class="memdesc:a8c4caa8e286ebd6aba41a04a606df6aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Circle object.  <a href="#a8c4caa8e286ebd6aba41a04a606df6aa">More...</a><br /></td></tr>
+<tr class="separator:a8c4caa8e286ebd6aba41a04a606df6aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d1767916fe650a8093e21ddcd663887"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a7d1767916fe650a8093e21ddcd663887">createRectangle</a> (std::array&lt; float, 2 &gt; bottomleft, float width, float height, std::array&lt; float, 3 &gt; color, std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; tex, int DrawingMode, std::string name, float textureScale=1.0f)</td></tr>
+<tr class="memdesc:a7d1767916fe650a8093e21ddcd663887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a rectangular object.  <a href="#a7d1767916fe650a8093e21ddcd663887">More...</a><br /></td></tr>
+<tr class="separator:a7d1767916fe650a8093e21ddcd663887"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae34e8f79b078f1b4dbecf43d18a2802a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#ae34e8f79b078f1b4dbecf43d18a2802a">sinDeg</a> (float deg)</td></tr>
 <tr class="memdesc:ae34e8f79b078f1b4dbecf43d18a2802a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function calculates a sine with an angle in degrees.  <a href="#ae34e8f79b078f1b4dbecf43d18a2802a">More...</a><br /></td></tr>
 <tr class="separator:ae34e8f79b078f1b4dbecf43d18a2802a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,8 +133,19 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a9d97421fe7a319c9f5ff8a99a2d0d103"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a9d97421fe7a319c9f5ff8a99a2d0d103">OPENGL_CORE_PROFILE</a> = GLFW_OPENGL_CORE_PROFILE</td></tr>
+<tr class="separator:a9d97421fe7a319c9f5ff8a99a2d0d103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a72ba2fe45b898f5108b553ca4a72ed59">DONT_CARE</a> = GLFW_DONT_CARE</td></tr>
+<tr class="separator:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a06deea17f14de7be4c1dbfdbaf49f7"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a2a06deea17f14de7be4c1dbfdbaf49f7">REDHAND_VERSION_STRING</a> = &quot;0.0.6&quot;</td></tr>
+<tr class="memdesc:a2a06deea17f14de7be4c1dbfdbaf49f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This string provides a version in a pritable format.  <a href="#a2a06deea17f14de7be4c1dbfdbaf49f7">More...</a><br /></td></tr>
+<tr class="separator:a2a06deea17f14de7be4c1dbfdbaf49f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61dd684bf860b95bfdac37b230eb7237"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structredhand_1_1engine__config.html">engine_config</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a61dd684bf860b95bfdac37b230eb7237">DEFAULT_ENGINE_CONFIG</a></td></tr>
+<tr class="memdesc:a61dd684bf860b95bfdac37b230eb7237"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default configuration of the engine.  <a href="#a61dd684bf860b95bfdac37b230eb7237">More...</a><br /></td></tr>
 <tr class="separator:a61dd684bf860b95bfdac37b230eb7237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ad4254bd7bf636c1a82d1c7996ab81"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structredhand_1_1game__object__properties.html">game_object_properties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a96ad4254bd7bf636c1a82d1c7996ab81">DEFAULT_GAME_OBJECT_PROPERTIES</a></td></tr>
+<tr class="memdesc:a96ad4254bd7bf636c1a82d1c7996ab81"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default properties for a <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>.  <a href="#a96ad4254bd7bf636c1a82d1c7996ab81">More...</a><br /></td></tr>
+<tr class="separator:a96ad4254bd7bf636c1a82d1c7996ab81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85f4521c351dace88fafe7c2c6c14f05"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a85f4521c351dace88fafe7c2c6c14f05">DefaultFragmentSource</a> []</td></tr>
 <tr class="separator:a85f4521c351dace88fafe7c2c6c14f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89b726e7342aec7af7ba4aa857e1a85d"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a89b726e7342aec7af7ba4aa857e1a85d">DefaultVertexSource</a> []</td></tr>
@@ -169,17 +181,17 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a63c34fda901658230937fcc50e85a937"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63c34fda901658230937fcc50e85a937">&#9670;&nbsp;</a></span>createCircle()</h2>
+<a id="a8c4caa8e286ebd6aba41a04a606df6aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c4caa8e286ebd6aba41a04a606df6aa">&#9670;&nbsp;</a></span>createCircle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classredhand_1_1game__object.html">game_object</a> * redhand::createCircle </td>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt; redhand::createCircle </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>midpoint</em>[2], </td>
+          <td class="paramtype">std::array&lt; float, 2 &gt;&#160;</td>
+          <td class="paramname"><em>midpoint</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -196,14 +208,14 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>innerColor</em>[3], </td>
+          <td class="paramtype">std::array&lt; float, 3 &gt;&#160;</td>
+          <td class="paramname"><em>innerColor</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>outerColor</em>[3], </td>
+          <td class="paramtype">std::array&lt; float, 3 &gt;&#160;</td>
+          <td class="paramname"><em>outerColor</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -214,8 +226,14 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> *&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt;&#160;</td>
           <td class="paramname"><em>tex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -247,90 +265,32 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>game_object* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8cpp_source.html#l00457">457</a> of file <a class="el" href="game__object_8cpp_source.html">game_object.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__object_8cpp_source.html#l00354">354</a> of file <a class="el" href="game__object_8cpp_source.html">game_object.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="math_8cpp_source.html#l00009">cosDeg()</a>, <a class="el" href="game__object_8cpp_source.html#l00006">redhand::game_object::game_object()</a>, <a class="el" href="math_8cpp_source.html#l00005">sinDeg()</a>, and <a class="el" href="game__object_8hpp_source.html#l00090">redhand::game_object::texture_scale</a>.</p>
+<p class="reference">References <a class="el" href="math_8cpp_source.html#l00009">cosDeg()</a>, <a class="el" href="game__object_8hpp_source.html#l00065">DEFAULT_GAME_OBJECT_PROPERTIES</a>, <a class="el" href="game__object_8hpp_source.html#l00031">redhand::game_object_properties::points_coordinates</a>, and <a class="el" href="math_8cpp_source.html#l00005">sinDeg()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceredhand_a63c34fda901658230937fcc50e85a937_cgraph.png" border="0" usemap="#namespaceredhand_a63c34fda901658230937fcc50e85a937_cgraph" alt=""/></div>
-<map name="namespaceredhand_a63c34fda901658230937fcc50e85a937_cgraph" id="namespaceredhand_a63c34fda901658230937fcc50e85a937_cgraph">
-<area shape="rect" id="node2" href="namespaceredhand.html#a1b2ac3e9266a94535968adc5cbc8e104" title="This function calculates a cosine with an angle in degrees. " alt="" coords="215,5,336,32"/>
-<area shape="rect" id="node3" href="classredhand_1_1game__object.html#a7189f0aee7e14d1c369187cd1e89e7ac" title="Construct a new game object object. " alt="" coords="200,57,351,98"/>
-<area shape="rect" id="node4" href="namespaceredhand.html#ae34e8f79b078f1b4dbecf43d18a2802a" title="This function calculates a sine with an angle in degrees. " alt="" coords="217,123,334,149"/>
+<div class="center"><img src="namespaceredhand_a8c4caa8e286ebd6aba41a04a606df6aa_cgraph.png" border="0" usemap="#namespaceredhand_a8c4caa8e286ebd6aba41a04a606df6aa_cgraph" alt=""/></div>
+<map name="namespaceredhand_a8c4caa8e286ebd6aba41a04a606df6aa_cgraph" id="namespaceredhand_a8c4caa8e286ebd6aba41a04a606df6aa_cgraph">
+<area shape="rect" id="node2" href="namespaceredhand.html#a1b2ac3e9266a94535968adc5cbc8e104" title="This function calculates a cosine with an angle in degrees. " alt="" coords="200,5,321,32"/>
+<area shape="rect" id="node3" href="namespaceredhand.html#ae34e8f79b078f1b4dbecf43d18a2802a" title="This function calculates a sine with an angle in degrees. " alt="" coords="202,56,319,83"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a4cf1d7507476705302fefc3568775cf0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cf1d7507476705302fefc3568775cf0">&#9670;&nbsp;</a></span>createHouse()</h2>
+<a id="a7d1767916fe650a8093e21ddcd663887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d1767916fe650a8093e21ddcd663887">&#9670;&nbsp;</a></span>createRectangle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classredhand_1_1game__object.html">game_object</a> * redhand::createHouse </td>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt; redhand::createRectangle </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> *&#160;</td>
-          <td class="paramname"><em>texture</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt;&#160;</td>
-          <td class="paramname"><em>shade</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>texture_scale</em> = <code>1.0f</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Create a House object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">texture</td><td>A pointer to the texture that should be used (nullptr if none) </td></tr>
-    <tr><td class="paramname">shade</td><td>A pointer to the shader that should be used </td></tr>
-    <tr><td class="paramname">texture_scale</td><td>The factor by which the texture shoulb be scaled (1.0f if nothig is specified) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>game_object* </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="game__object_8cpp_source.html#l00422">422</a> of file <a class="el" href="game__object_8cpp_source.html">game_object.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="game__object_8cpp_source.html#l00006">redhand::game_object::game_object()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespaceredhand_a4cf1d7507476705302fefc3568775cf0_cgraph.png" border="0" usemap="#namespaceredhand_a4cf1d7507476705302fefc3568775cf0_cgraph" alt=""/></div>
-<map name="namespaceredhand_a4cf1d7507476705302fefc3568775cf0_cgraph" id="namespaceredhand_a4cf1d7507476705302fefc3568775cf0_cgraph">
-<area shape="rect" id="node2" href="classredhand_1_1game__object.html#a7189f0aee7e14d1c369187cd1e89e7ac" title="Construct a new game object object. " alt="" coords="204,5,355,47"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a1d9e1e8631e69c21b331bcba4c272db8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d9e1e8631e69c21b331bcba4c272db8">&#9670;&nbsp;</a></span>createRecktangle()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classredhand_1_1game__object.html">game_object</a> * redhand::createRecktangle </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>bottomleft</em>[2], </td>
+          <td class="paramtype">std::array&lt; float, 2 &gt;&#160;</td>
+          <td class="paramname"><em>bottomleft</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -347,8 +307,8 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>color</em>[3], </td>
+          <td class="paramtype">std::array&lt; float, 3 &gt;&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -359,7 +319,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> *&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt;&#160;</td>
           <td class="paramname"><em>tex</em>, </td>
         </tr>
         <tr>
@@ -367,6 +327,12 @@ Here is the call graph for this function:</div>
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>DrawingMode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -398,18 +364,9 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>game_object* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8cpp_source.html#l00526">526</a> of file <a class="el" href="game__object_8cpp_source.html">game_object.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__object_8cpp_source.html#l00419">419</a> of file <a class="el" href="game__object_8cpp_source.html">game_object.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="game__object_8cpp_source.html#l00006">redhand::game_object::game_object()</a>, and <a class="el" href="texture_8cpp_source.html#l00111">redhand::texture2D::setTextureScale()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespaceredhand_a1d9e1e8631e69c21b331bcba4c272db8_cgraph.png" border="0" usemap="#namespaceredhand_a1d9e1e8631e69c21b331bcba4c272db8_cgraph" alt=""/></div>
-<map name="namespaceredhand_a1d9e1e8631e69c21b331bcba4c272db8_cgraph" id="namespaceredhand_a1d9e1e8631e69c21b331bcba4c272db8_cgraph">
-<area shape="rect" id="node2" href="classredhand_1_1game__object.html#a7189f0aee7e14d1c369187cd1e89e7ac" title="Construct a new game object object. " alt="" coords="232,5,383,47"/>
-<area shape="rect" id="node3" href="classredhand_1_1texture2_d.html#abce63791ed8bbd51259d24e1d1d342e1" title="Set the Texture Scale of the object to the given vector. " alt="" coords="241,71,374,112"/>
-</map>
-</div>
+<p class="reference">References <a class="el" href="game__object_8hpp_source.html#l00039">redhand::game_object_properties::attached_shader</a>, and <a class="el" href="game__object_8hpp_source.html#l00065">DEFAULT_GAME_OBJECT_PROPERTIES</a>.</p>
 
 </div>
 </div>
@@ -511,9 +468,31 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    3,</div><div class="line">    3,</div><div class="line">    GLFW_OPENGL_CORE_PROFILE,</div><div class="line">    4,</div><div class="line">    GL_FALSE,</div><div class="line">    GL_TRUE,</div><div class="line">    600,</div><div class="line">    600,</div><div class="line">    <a class="code" href="engine_8hpp.html#a35000b59fd1cfd5ee01103a1b87b2c61">REDHAND_VERSION_STRING</a></div><div class="line">}</div><div class="ttc" id="engine_8hpp_html_a35000b59fd1cfd5ee01103a1b87b2c61"><div class="ttname"><a href="engine_8hpp.html#a35000b59fd1cfd5ee01103a1b87b2c61">REDHAND_VERSION_STRING</a></div><div class="ttdeci">#define REDHAND_VERSION_STRING</div><div class="ttdoc">This string provides a version in a pritable format. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8hpp_source.html#l00035">engine.hpp:35</a></div></div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    3,</div><div class="line">    3,</div><div class="line">    <a class="code" href="namespaceredhand.html#a9d97421fe7a319c9f5ff8a99a2d0d103">redhand::OPENGL_CORE_PROFILE</a>,</div><div class="line">    4,</div><div class="line">    GL_FALSE,</div><div class="line">    GL_TRUE,</div><div class="line">    600,</div><div class="line">    600,</div><div class="line">    <a class="code" href="namespaceredhand.html#a2a06deea17f14de7be4c1dbfdbaf49f7">redhand::REDHAND_VERSION_STRING</a></div><div class="line">}</div><div class="ttc" id="namespaceredhand_html_a9d97421fe7a319c9f5ff8a99a2d0d103"><div class="ttname"><a href="namespaceredhand.html#a9d97421fe7a319c9f5ff8a99a2d0d103">redhand::OPENGL_CORE_PROFILE</a></div><div class="ttdeci">const auto OPENGL_CORE_PROFILE</div><div class="ttdef"><b>Definition:</b> <a href="engine_8hpp_source.html#l00032">engine.hpp:32</a></div></div>
+<div class="ttc" id="namespaceredhand_html_a2a06deea17f14de7be4c1dbfdbaf49f7"><div class="ttname"><a href="namespaceredhand.html#a2a06deea17f14de7be4c1dbfdbaf49f7">redhand::REDHAND_VERSION_STRING</a></div><div class="ttdeci">const auto REDHAND_VERSION_STRING</div><div class="ttdoc">This string provides a version in a pritable format. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8hpp_source.html#l00038">engine.hpp:38</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="engine_8hpp_source.html#l00058">58</a> of file <a class="el" href="engine_8hpp_source.html">engine.hpp</a>.</p>
+<p>The default configuration of the engine. </p>
+
+<p class="definition">Definition at line <a class="el" href="engine_8hpp_source.html#l00071">71</a> of file <a class="el" href="engine_8hpp_source.html">engine.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a96ad4254bd7bf636c1a82d1c7996ab81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ad4254bd7bf636c1a82d1c7996ab81">&#9670;&nbsp;</a></span>DEFAULT_GAME_OBJECT_PROPERTIES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structredhand_1_1game__object__properties.html">game_object_properties</a> redhand::DEFAULT_GAME_OBJECT_PROPERTIES</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    {{0.0f,0.0f},{1.0f,0.0f},{0.0f,1.0f}},</div><div class="line">    {{0,1,2}},</div><div class="line">    {{1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f},{0.0f,0.0f,1.0f}},</div><div class="line">    {},</div><div class="line">    <span class="keyword">nullptr</span>,</div><div class="line">    <span class="keyword">nullptr</span>,</div><div class="line">    {2.0f,2.0f},</div><div class="line">    0,</div><div class="line">    {-1.0f,-1.0f},</div><div class="line">    GL_STATIC_DRAW,</div><div class="line">    <span class="stringliteral">&quot;game_object&quot;</span>,</div><div class="line">    {1.0f,1.0f},</div><div class="line">    1.0f</div><div class="line">}</div></div><!-- fragment -->
+<p>The default properties for a <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>. </p>
+<p>Set your custom properties to this first and then override the values you need to change to make sure you don't forget any parameter, </p>
+
+<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00065">65</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
 
 </div>
 </div>
@@ -546,6 +525,57 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line"><span class="stringliteral">&quot;#version 330 core\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n layout (location = 0) in vec3 aPos;\</span></div><div class="line"><span class="stringliteral">\n layout (location = 1) in vec3 aColor;\</span></div><div class="line"><span class="stringliteral">\n layout (location = 2) in vec2 aTexCoord;\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n out vec3 vertColor;\</span></div><div class="line"><span class="stringliteral">\n out vec2 TexCoord;\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n uniform mat4 worldTransformation;\</span></div><div class="line"><span class="stringliteral">\n uniform mat4 camera;\</span></div><div class="line"><span class="stringliteral">\n uniform mat4 projection;\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n void main(){\</span></div><div class="line"><span class="stringliteral">\n     gl_Position = projection * camera * worldTransformation * vec4(aPos.xyz, 1.0f);\</span></div><div class="line"><span class="stringliteral">\n     vertColor = aColor;\</span></div><div class="line"><span class="stringliteral">\n     TexCoord = aTexCoord;\</span></div><div class="line"><span class="stringliteral">\n }\</span></div><div class="line"><span class="stringliteral">\0&quot;</span></div></div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="shader_source_8hpp_source.html#l00027">27</a> of file <a class="el" href="shader_source_8hpp_source.html">shaderSource.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a72ba2fe45b898f5108b553ca4a72ed59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72ba2fe45b898f5108b553ca4a72ed59">&#9670;&nbsp;</a></span>DONT_CARE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto redhand::DONT_CARE = GLFW_DONT_CARE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="engine_8hpp_source.html#l00033">33</a> of file <a class="el" href="engine_8hpp_source.html">engine.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9d97421fe7a319c9f5ff8a99a2d0d103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d97421fe7a319c9f5ff8a99a2d0d103">&#9670;&nbsp;</a></span>OPENGL_CORE_PROFILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto redhand::OPENGL_CORE_PROFILE = GLFW_OPENGL_CORE_PROFILE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="engine_8hpp_source.html#l00032">32</a> of file <a class="el" href="engine_8hpp_source.html">engine.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2a06deea17f14de7be4c1dbfdbaf49f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a06deea17f14de7be4c1dbfdbaf49f7">&#9670;&nbsp;</a></span>REDHAND_VERSION_STRING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto redhand::REDHAND_VERSION_STRING = &quot;0.0.6&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This string provides a version in a pritable format. </p>
+<p>The first public version is 0.1.0 and from there it will be couted up. There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release </p>
+
+<p class="definition">Definition at line <a class="el" href="engine_8hpp_source.html#l00038">38</a> of file <a class="el" href="engine_8hpp_source.html">engine.hpp</a>.</p>
 
 </div>
 </div>

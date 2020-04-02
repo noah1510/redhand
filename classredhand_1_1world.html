@@ -29,9 +29,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.2</span>
+   &#160;<span id="projectnumber">0.0.5</span>
    </div>
-   <div id="projectbrief">Asmalleasytousegamedevelopmentlibrary</div>
+   <div id="projectbrief">A small easy to use game development library</div>
   </td>
  </tr>
  </tbody>
@@ -100,15 +100,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a730f9b3926af3f116a6e15b81753c274"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a730f9b3926af3f116a6e15b81753c274">~world</a> ()</td></tr>
 <tr class="memdesc:a730f9b3926af3f116a6e15b81753c274"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor will clean up everything and delete all objects stored in this world.  <a href="#a730f9b3926af3f116a6e15b81753c274">More...</a><br /></td></tr>
 <tr class="separator:a730f9b3926af3f116a6e15b81753c274"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04d287eb05c32bfca6785d1161f215cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a04d287eb05c32bfca6785d1161f215cd">addShader</a> (std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt;)</td></tr>
-<tr class="memdesc:a04d287eb05c32bfca6785d1161f215cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addShader function will add a shader to the world.  <a href="#a04d287eb05c32bfca6785d1161f215cd">More...</a><br /></td></tr>
-<tr class="separator:a04d287eb05c32bfca6785d1161f215cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab63bcb887f296c9f3b4f5e94094faa2e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#ab63bcb887f296c9f3b4f5e94094faa2e">addTexture</a> (<a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> *)</td></tr>
-<tr class="memdesc:ab63bcb887f296c9f3b4f5e94094faa2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addTexture function will add a texture to the world.  <a href="#ab63bcb887f296c9f3b4f5e94094faa2e">More...</a><br /></td></tr>
-<tr class="separator:ab63bcb887f296c9f3b4f5e94094faa2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa3894301e51faba08a4fd9f266b37e8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#aaa3894301e51faba08a4fd9f266b37e8">addObject</a> (<a class="el" href="classredhand_1_1game__object.html">game_object</a> *)</td></tr>
-<tr class="memdesc:aaa3894301e51faba08a4fd9f266b37e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addObject function will add an object to the world.  <a href="#aaa3894301e51faba08a4fd9f266b37e8">More...</a><br /></td></tr>
-<tr class="separator:aaa3894301e51faba08a4fd9f266b37e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a243ef5928749689cbdf971797035fab8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a243ef5928749689cbdf971797035fab8">addShader</a> (std::unique_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt;)</td></tr>
+<tr class="memdesc:a243ef5928749689cbdf971797035fab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addShader function will add a shader to the world.  <a href="#a243ef5928749689cbdf971797035fab8">More...</a><br /></td></tr>
+<tr class="separator:a243ef5928749689cbdf971797035fab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59fe3820a30d2c0922184dba0c6d7055"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a59fe3820a30d2c0922184dba0c6d7055">addTexture</a> (std::unique_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt;)</td></tr>
+<tr class="memdesc:a59fe3820a30d2c0922184dba0c6d7055"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addTexture function will add a texture to the world.  <a href="#a59fe3820a30d2c0922184dba0c6d7055">More...</a><br /></td></tr>
+<tr class="separator:a59fe3820a30d2c0922184dba0c6d7055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8179f34456c85c9834d1c40509b7fcd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#ac8179f34456c85c9834d1c40509b7fcd">addObject</a> (std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;)</td></tr>
+<tr class="memdesc:ac8179f34456c85c9834d1c40509b7fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addObject function will add an object to the world.  <a href="#ac8179f34456c85c9834d1c40509b7fcd">More...</a><br /></td></tr>
+<tr class="separator:ac8179f34456c85c9834d1c40509b7fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a15c13d41a872211111abceaf9e44ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a7a15c13d41a872211111abceaf9e44ed">removeShader</a> (std::string name)</td></tr>
 <tr class="memdesc:a7a15c13d41a872211111abceaf9e44ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function removes a shader from its world and delete the shader.  <a href="#a7a15c13d41a872211111abceaf9e44ed">More...</a><br /></td></tr>
 <tr class="separator:a7a15c13d41a872211111abceaf9e44ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,12 +121,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae01663f1b19d766a99823e5fda867307"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#ae01663f1b19d766a99823e5fda867307">getShaderByName</a> (std::string name)</td></tr>
 <tr class="memdesc:ae01663f1b19d766a99823e5fda867307"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns a pointer to the first shader with the given name.  <a href="#ae01663f1b19d766a99823e5fda867307">More...</a><br /></td></tr>
 <tr class="separator:ae01663f1b19d766a99823e5fda867307"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25cbad591ef89fd8fa5a4ab23820d873"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a25cbad591ef89fd8fa5a4ab23820d873">getTextureByName</a> (std::string name)</td></tr>
-<tr class="memdesc:a25cbad591ef89fd8fa5a4ab23820d873"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns a pointer to the first texture with the given name.  <a href="#a25cbad591ef89fd8fa5a4ab23820d873">More...</a><br /></td></tr>
-<tr class="separator:a25cbad591ef89fd8fa5a4ab23820d873"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d68d83a12684ca8e6e28865cf24a23d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredhand_1_1game__object.html">game_object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a4d68d83a12684ca8e6e28865cf24a23d">getObjectByName</a> (std::string name)</td></tr>
-<tr class="memdesc:a4d68d83a12684ca8e6e28865cf24a23d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns a pointer to the first object with the given name.  <a href="#a4d68d83a12684ca8e6e28865cf24a23d">More...</a><br /></td></tr>
-<tr class="separator:a4d68d83a12684ca8e6e28865cf24a23d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0ed1a9c6b2684ab5220d1c11a492a26"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#ae0ed1a9c6b2684ab5220d1c11a492a26">getTextureByName</a> (std::string name)</td></tr>
+<tr class="memdesc:ae0ed1a9c6b2684ab5220d1c11a492a26"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns a pointer to the first texture with the given name.  <a href="#ae0ed1a9c6b2684ab5220d1c11a492a26">More...</a><br /></td></tr>
+<tr class="separator:ae0ed1a9c6b2684ab5220d1c11a492a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a997a4872aba71a860efda5a50a3294a7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">game_object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a997a4872aba71a860efda5a50a3294a7">getObjectByName</a> (std::string name)</td></tr>
+<tr class="memdesc:a997a4872aba71a860efda5a50a3294a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns a pointer to the first object with the given name.  <a href="#a997a4872aba71a860efda5a50a3294a7">More...</a><br /></td></tr>
+<tr class="separator:a997a4872aba71a860efda5a50a3294a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae14f52c71c7b8e95bfc022be604950d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#ae14f52c71c7b8e95bfc022be604950d9">tick</a> (GLFWwindow *window)</td></tr>
 <tr class="memdesc:ae14f52c71c7b8e95bfc022be604950d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function executes a world tick and is called for each frame.  <a href="#ae14f52c71c7b8e95bfc022be604950d9">More...</a><br /></td></tr>
 <tr class="separator:ae14f52c71c7b8e95bfc022be604950d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,22 +148,22 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a029f3069cf44e6e0d75296a4436ae9ad"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a029f3069cf44e6e0d75296a4436ae9ad">WorldObjectsMutex</a></td></tr>
 <tr class="memdesc:a029f3069cf44e6e0d75296a4436ae9ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mutex for allowing only one thread to acces the world objects at once.  <a href="#a029f3069cf44e6e0d75296a4436ae9ad">More...</a><br /></td></tr>
 <tr class="separator:a029f3069cf44e6e0d75296a4436ae9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf3fc9c5d2f6e3235b5967314c06a59d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classredhand_1_1game__object.html">game_object</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#aaf3fc9c5d2f6e3235b5967314c06a59d">WorldObjects</a></td></tr>
-<tr class="memdesc:aaf3fc9c5d2f6e3235b5967314c06a59d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector holds all the game_objetcs in this world.  <a href="#aaf3fc9c5d2f6e3235b5967314c06a59d">More...</a><br /></td></tr>
-<tr class="separator:aaf3fc9c5d2f6e3235b5967314c06a59d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc74a654cb8f873060d4c6985097ecfc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#abc74a654cb8f873060d4c6985097ecfc">WorldShaders</a></td></tr>
-<tr class="memdesc:abc74a654cb8f873060d4c6985097ecfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector holds all the shaders in this world.  <a href="#abc74a654cb8f873060d4c6985097ecfc">More...</a><br /></td></tr>
-<tr class="separator:abc74a654cb8f873060d4c6985097ecfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe9d360b4a8dc631c77d46ddeb084f2f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#abe9d360b4a8dc631c77d46ddeb084f2f">WorldTextures</a></td></tr>
-<tr class="memdesc:abe9d360b4a8dc631c77d46ddeb084f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector holds all the textures in this world.  <a href="#abe9d360b4a8dc631c77d46ddeb084f2f">More...</a><br /></td></tr>
-<tr class="separator:abe9d360b4a8dc631c77d46ddeb084f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cfae9de04dbe106d582d98f4d8561c3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">game_object</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a0cfae9de04dbe106d582d98f4d8561c3">WorldObjects</a></td></tr>
+<tr class="memdesc:a0cfae9de04dbe106d582d98f4d8561c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector holds all the game_objetcs in this world.  <a href="#a0cfae9de04dbe106d582d98f4d8561c3">More...</a><br /></td></tr>
+<tr class="separator:a0cfae9de04dbe106d582d98f4d8561c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35dd32f7d444d33bf3f2c9ddc7edc349"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a35dd32f7d444d33bf3f2c9ddc7edc349">WorldShaders</a></td></tr>
+<tr class="memdesc:a35dd32f7d444d33bf3f2c9ddc7edc349"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector holds all the shaders in this world.  <a href="#a35dd32f7d444d33bf3f2c9ddc7edc349">More...</a><br /></td></tr>
+<tr class="separator:a35dd32f7d444d33bf3f2c9ddc7edc349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dc941d1bbabc518b0ffa16fd4acb41d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a9dc941d1bbabc518b0ffa16fd4acb41d">WorldTextures</a></td></tr>
+<tr class="memdesc:a9dc941d1bbabc518b0ffa16fd4acb41d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector holds all the textures in this world.  <a href="#a9dc941d1bbabc518b0ffa16fd4acb41d">More...</a><br /></td></tr>
+<tr class="separator:a9dc941d1bbabc518b0ffa16fd4acb41d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5bf0907f060fdde02c04ddcc9c95d96"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#ab5bf0907f060fdde02c04ddcc9c95d96">cameraPosition</a> [2] = {0.0f, 0.0f}</td></tr>
 <tr class="memdesc:ab5bf0907f060fdde02c04ddcc9c95d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">This array holds the current camera Position.  <a href="#ab5bf0907f060fdde02c04ddcc9c95d96">More...</a><br /></td></tr>
 <tr class="separator:ab5bf0907f060fdde02c04ddcc9c95d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19d1d8f218edaf2c2111db128910b7bb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a19d1d8f218edaf2c2111db128910b7bb">windowWidth</a> = 600</td></tr>
+<tr class="memitem:a19d1d8f218edaf2c2111db128910b7bb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a19d1d8f218edaf2c2111db128910b7bb">windowWidth</a> = 0</td></tr>
 <tr class="memdesc:a19d1d8f218edaf2c2111db128910b7bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This variable holds the width of the window in pixels.  <a href="#a19d1d8f218edaf2c2111db128910b7bb">More...</a><br /></td></tr>
 <tr class="separator:a19d1d8f218edaf2c2111db128910b7bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84d857595cb79da68418e8224517a7b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a84d857595cb79da68418e8224517a7b9">windowHeight</a> = 200</td></tr>
+<tr class="memitem:a84d857595cb79da68418e8224517a7b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#a84d857595cb79da68418e8224517a7b9">windowHeight</a> = 0</td></tr>
 <tr class="memdesc:a84d857595cb79da68418e8224517a7b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This variable holds the height of the window in pixels.  <a href="#a84d857595cb79da68418e8224517a7b9">More...</a><br /></td></tr>
 <tr class="separator:a84d857595cb79da68418e8224517a7b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac88bee7aa6c1ba9f1220a2094e913bab"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world.html#ac88bee7aa6c1ba9f1220a2094e913bab">projectionMatrix</a></td></tr>
@@ -217,8 +217,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aaa3894301e51faba08a4fd9f266b37e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa3894301e51faba08a4fd9f266b37e8">&#9670;&nbsp;</a></span>addObject()</h2>
+<a id="ac8179f34456c85c9834d1c40509b7fcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8179f34456c85c9834d1c40509b7fcd">&#9670;&nbsp;</a></span>addObject()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,8 +226,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">int redhand::world::addObject </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classredhand_1_1game__object.html">game_object</a> *&#160;</td>
-          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -236,25 +236,12 @@ Private Attributes</h2></td></tr>
 <p>The addObject function will add an object to the world. </p>
 <p>All added objects will be drawn on each world tick. </p>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00129">129</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="game__object_8cpp_source.html#l00324">redhand::game_object::hasErrord()</a>, and <a class="el" href="game__object_8cpp_source.html#l00274">redhand::game_object::setScreenSize()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classredhand_1_1world_aaa3894301e51faba08a4fd9f266b37e8_cgraph.png" border="0" usemap="#classredhand_1_1world_aaa3894301e51faba08a4fd9f266b37e8_cgraph" alt=""/></div>
-<map name="classredhand_1_1world_aaa3894301e51faba08a4fd9f266b37e8_cgraph" id="classredhand_1_1world_aaa3894301e51faba08a4fd9f266b37e8_cgraph">
-<area shape="rect" id="node2" href="classredhand_1_1game__object.html#a530a55556a3ee963556c919e5f524c10" title="false if no error has happened " alt="" coords="228,5,379,47"/>
-<area shape="rect" id="node3" href="classredhand_1_1game__object.html#a3247de3fd8cad6f5234704dabbd207d4" title="Sets the screen size to let the object scale the texture correctly. " alt="" coords="228,71,379,112"/>
-<area shape="rect" id="node4" href="classredhand_1_1texture2_d.html#a867fd95f1d6cf985bbce27a5c4f50dcd" title="This function retruns the height of the texture. " alt="" coords="427,37,560,79"/>
-<area shape="rect" id="node5" href="classredhand_1_1texture2_d.html#a03da3510536848af115d53f52797f69e" title="This function retruns the width of the texture. " alt="" coords="427,103,560,144"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00125">125</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a04d287eb05c32bfca6785d1161f215cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04d287eb05c32bfca6785d1161f215cd">&#9670;&nbsp;</a></span>addShader()</h2>
+<a id="a243ef5928749689cbdf971797035fab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a243ef5928749689cbdf971797035fab8">&#9670;&nbsp;</a></span>addShader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -262,7 +249,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">int redhand::world::addShader </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt;&#160;</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt;&#160;</td>
           <td class="paramname"><em>shade</em></td><td>)</td>
           <td></td>
         </tr>
@@ -272,12 +259,12 @@ Here is the call graph for this function:</div>
 <p>The addShader function will add a shader to the world. </p>
 <p>Please add all shader you use for your objects to the world the objects resides in. Not doing this may easily cause NULL Pointer exceptions and Segmentation faults. </p>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00093">93</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00089">89</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ab63bcb887f296c9f3b4f5e94094faa2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab63bcb887f296c9f3b4f5e94094faa2e">&#9670;&nbsp;</a></span>addTexture()</h2>
+<a id="a59fe3820a30d2c0922184dba0c6d7055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59fe3820a30d2c0922184dba0c6d7055">&#9670;&nbsp;</a></span>addTexture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -285,7 +272,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">int redhand::world::addTexture </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> *&#160;</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt;&#160;</td>
           <td class="paramname"><em>tex</em></td><td>)</td>
           <td></td>
         </tr>
@@ -295,17 +282,7 @@ Here is the call graph for this function:</div>
 <p>The addTexture function will add a texture to the world. </p>
 <p>Please add all testures you use for your objects to the world the objects resides in. Not doing this may easily cause NULL Pointer exceptions and Segmentation faults. </p>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00112">112</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8cpp_source.html#l00071">redhand::texture2D::hasErrord()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classredhand_1_1world_ab63bcb887f296c9f3b4f5e94094faa2e_cgraph.png" border="0" usemap="#classredhand_1_1world_ab63bcb887f296c9f3b4f5e94094faa2e_cgraph" alt=""/></div>
-<map name="classredhand_1_1world_ab63bcb887f296c9f3b4f5e94094faa2e_cgraph" id="classredhand_1_1world_ab63bcb887f296c9f3b4f5e94094faa2e_cgraph">
-<area shape="rect" id="node2" href="classredhand_1_1texture2_d.html#ae1e2a52213b11b1d5b797b82dd222d0f" title="This function returns true if an error has happened. " alt="" coords="233,5,367,47"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00108">108</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -326,18 +303,18 @@ Here is the call graph for this function:</div>
 
 <p>draw all the objects in this world </p>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00063">63</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00059">59</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a4d68d83a12684ca8e6e28865cf24a23d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d68d83a12684ca8e6e28865cf24a23d">&#9670;&nbsp;</a></span>getObjectByName()</h2>
+<a id="a997a4872aba71a860efda5a50a3294a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a997a4872aba71a860efda5a50a3294a7">&#9670;&nbsp;</a></span>getObjectByName()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classredhand_1_1game__object.html">game_object</a> * redhand::world::getObjectByName </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt; redhand::world::getObjectByName </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
@@ -355,7 +332,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the object if everything worked, nullptr if no shader was found or something went wrong </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00229">229</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00230">230</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -384,18 +361,18 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the shader if everything worked, nullptr if no shader was found or something went wrong </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00204">204</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00205">205</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a25cbad591ef89fd8fa5a4ab23820d873"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25cbad591ef89fd8fa5a4ab23820d873">&#9670;&nbsp;</a></span>getTextureByName()</h2>
+<a id="ae0ed1a9c6b2684ab5220d1c11a492a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0ed1a9c6b2684ab5220d1c11a492a26">&#9670;&nbsp;</a></span>getTextureByName()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> * redhand::world::getTextureByName </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; redhand::world::getTextureByName </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
@@ -413,7 +390,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the texture if everything worked, nullptr if no shader was found or something went wrong </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00216">216</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00217">217</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -452,7 +429,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00251">251</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00252">252</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -481,7 +458,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if everything worked, 1 if no object was found, negative if something bad happened </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00184">184</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00183">183</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -510,7 +487,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if everything worked, 1 if no object was found, negative if something bad happened </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00149">149</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00145">145</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -539,7 +516,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if everything worked, 1 if no object was found, negative if something bad happened </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00167">167</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00164">164</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -578,7 +555,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00242">242</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00243">243</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -617,7 +594,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00072">72</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00068">68</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -645,7 +622,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00054">54</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8cpp_source.html#l00050">50</a> of file <a class="el" href="world_8cpp_source.html">world.cpp</a>.</p>
 
 </div>
 </div>
@@ -712,7 +689,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int redhand::world::windowHeight = 200</td>
+          <td class="memname">int redhand::world::windowHeight = 0</td>
         </tr>
       </table>
   </td>
@@ -738,7 +715,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int redhand::world::windowWidth = 600</td>
+          <td class="memname">int redhand::world::windowWidth = 0</td>
         </tr>
       </table>
   </td>
@@ -754,8 +731,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="aaf3fc9c5d2f6e3235b5967314c06a59d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf3fc9c5d2f6e3235b5967314c06a59d">&#9670;&nbsp;</a></span>WorldObjects</h2>
+<a id="a0cfae9de04dbe106d582d98f4d8561c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cfae9de04dbe106d582d98f4d8561c3">&#9670;&nbsp;</a></span>WorldObjects</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -764,7 +741,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="classredhand_1_1game__object.html">game_object</a>*&gt; redhand::world::WorldObjects</td>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classredhand_1_1game__object.html">game_object</a>&gt; &gt; redhand::world::WorldObjects</td>
         </tr>
       </table>
   </td>
@@ -806,8 +783,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="abc74a654cb8f873060d4c6985097ecfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc74a654cb8f873060d4c6985097ecfc">&#9670;&nbsp;</a></span>WorldShaders</h2>
+<a id="a35dd32f7d444d33bf3f2c9ddc7edc349"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35dd32f7d444d33bf3f2c9ddc7edc349">&#9670;&nbsp;</a></span>WorldShaders</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -816,7 +793,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::shared_ptr&lt;<a class="el" href="classredhand_1_1shader.html">redhand::shader</a>&gt; &gt; redhand::world::WorldShaders</td>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classredhand_1_1shader.html">redhand::shader</a>&gt; &gt; redhand::world::WorldShaders</td>
         </tr>
       </table>
   </td>
@@ -832,8 +809,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="abe9d360b4a8dc631c77d46ddeb084f2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe9d360b4a8dc631c77d46ddeb084f2f">&#9670;&nbsp;</a></span>WorldTextures</h2>
+<a id="a9dc941d1bbabc518b0ffa16fd4acb41d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dc941d1bbabc518b0ffa16fd4acb41d">&#9670;&nbsp;</a></span>WorldTextures</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -842,7 +819,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="classredhand_1_1texture2_d.html">texture2D</a>*&gt; redhand::world::WorldTextures</td>
+          <td class="memname">std::vector&lt;std::shared_ptr &lt;<a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a>&gt; &gt; redhand::world::WorldTextures</td>
         </tr>
       </table>
   </td>

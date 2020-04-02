@@ -1,4 +1,0 @@
-<map id="redhand::createRecktangle" name="redhand::createRecktangle">
-<area shape="rect" id="node2" href="$classredhand_1_1game__object.html#a7189f0aee7e14d1c369187cd1e89e7ac" title="Construct a new game object object. " alt="" coords="232,5,383,47"/>
-<area shape="rect" id="node3" href="$classredhand_1_1texture2_d.html#abce63791ed8bbd51259d24e1d1d342e1" title="Set the Texture Scale of the object to the given vector. " alt="" coords="241,71,374,112"/>
-</map>

@@ -1,7 +1,8 @@
 var game__object_8hpp =
 [
+    [ "game_object_properties", "structredhand_1_1game__object__properties.html", "structredhand_1_1game__object__properties" ],
     [ "game_object", "classredhand_1_1game__object.html", "classredhand_1_1game__object" ],
-    [ "createCircle", "game__object_8hpp.html#a63c34fda901658230937fcc50e85a937", null ],
-    [ "createHouse", "game__object_8hpp.html#a4cf1d7507476705302fefc3568775cf0", null ],
-    [ "createRecktangle", "game__object_8hpp.html#a1d9e1e8631e69c21b331bcba4c272db8", null ]
+    [ "createCircle", "game__object_8hpp.html#a8c4caa8e286ebd6aba41a04a606df6aa", null ],
+    [ "createRectangle", "game__object_8hpp.html#a7d1767916fe650a8093e21ddcd663887", null ],
+    [ "DEFAULT_GAME_OBJECT_PROPERTIES", "game__object_8hpp.html#a96ad4254bd7bf636c1a82d1c7996ab81", null ]
 ];

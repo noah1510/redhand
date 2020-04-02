@@ -29,9 +29,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.2</span>
+   &#160;<span id="projectnumber">0.0.5</span>
    </div>
-   <div id="projectbrief">Asmalleasytousegamedevelopmentlibrary</div>
+   <div id="projectbrief">A small easy to use game development library</div>
   </td>
  </tr>
  </tbody>
@@ -88,14 +88,14 @@ $(document).ready(function(){initNavTree('classredhand_1_1world.html','');});
 
 <p>This is the complete list of members for <a class="el" href="classredhand_1_1world.html">redhand::world</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#aaa3894301e51faba08a4fd9f266b37e8">addObject</a>(game_object *)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#a04d287eb05c32bfca6785d1161f215cd">addShader</a>(std::shared_ptr&lt; redhand::shader &gt;)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#ab63bcb887f296c9f3b4f5e94094faa2e">addTexture</a>(texture2D *)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#ac8179f34456c85c9834d1c40509b7fcd">addObject</a>(std::unique_ptr&lt; redhand::game_object &gt;)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#a243ef5928749689cbdf971797035fab8">addShader</a>(std::unique_ptr&lt; redhand::shader &gt;)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#a59fe3820a30d2c0922184dba0c6d7055">addTexture</a>(std::unique_ptr&lt; redhand::texture2D &gt;)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#ab5bf0907f060fdde02c04ddcc9c95d96">cameraPosition</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#a387dc93339d7446349f24fcc0c08907a">draw</a>()</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#a4d68d83a12684ca8e6e28865cf24a23d">getObjectByName</a>(std::string name)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#a997a4872aba71a860efda5a50a3294a7">getObjectByName</a>(std::string name)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#ae01663f1b19d766a99823e5fda867307">getShaderByName</a>(std::string name)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#a25cbad591ef89fd8fa5a4ab23820d873">getTextureByName</a>(std::string name)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#ae0ed1a9c6b2684ab5220d1c11a492a26">getTextureByName</a>(std::string name)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#ac99caa9256f2d3280ceb46af03e4606c">moveCamera</a>(float delta_pos_x, float delta_pos_y)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#ac88bee7aa6c1ba9f1220a2094e913bab">projectionMatrix</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#ac7c8ae0dd9020a783e8dd17f2f011597">removeObject</a>(std::string name)</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
@@ -107,10 +107,10 @@ $(document).ready(function(){initNavTree('classredhand_1_1world.html','');});
   <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#a84d857595cb79da68418e8224517a7b9">windowHeight</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#a19d1d8f218edaf2c2111db128910b7bb">windowWidth</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#acf054ab26b490248a6ef1eaa53b74c4c">world</a>()</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#aaf3fc9c5d2f6e3235b5967314c06a59d">WorldObjects</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#a0cfae9de04dbe106d582d98f4d8561c3">WorldObjects</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#a029f3069cf44e6e0d75296a4436ae9ad">WorldObjectsMutex</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#abc74a654cb8f873060d4c6985097ecfc">WorldShaders</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#abe9d360b4a8dc631c77d46ddeb084f2f">WorldTextures</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#a35dd32f7d444d33bf3f2c9ddc7edc349">WorldShaders</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classredhand_1_1world.html#a9dc941d1bbabc518b0ffa16fd4acb41d">WorldTextures</a></td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="classredhand_1_1world.html#a730f9b3926af3f116a6e15b81753c274">~world</a>()</td><td class="entry"><a class="el" href="classredhand_1_1world.html">redhand::world</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->

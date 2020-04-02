@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['namelock',['nameLock',['../classredhand_1_1game__object.html#a9aa01e8da91fe83e25738f9423d740ce',1,'redhand::game_object']]]
+  ['name',['name',['../structredhand_1_1game__object__properties.html#aa8c482f3ee6ee0da3a2d83f786a47daf',1,'redhand::game_object_properties']]]
 ];
