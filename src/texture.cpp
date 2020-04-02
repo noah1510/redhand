@@ -78,7 +78,7 @@ unsigned int redhand::texture2D::getID(){
     return id;
 }
 
-void redhand::texture2D::bind(int unit = 0){
+void redhand::texture2D::bind(int unit){
     auto lock = std::shared_lock(mutex_id);
     glActiveTexture(GL_TEXTURE0 + unit);
     glBindTexture(GL_TEXTURE_2D, id);
@@ -101,14 +101,4 @@ void redhand::texture2D::setName(std::string name){
 std::string_view redhand::texture2D::getName(){
     auto lock = std::shared_lock(mutex_texture_name);
     return texture_name;
-}
-
-glm::vec2 redhand::texture2D::getTextureScale(){
-    auto lock = std::shared_lock(mutex_scale);
-    return scale;
-}
-
-void redhand::texture2D::setTextureScale(glm::vec2 scaler){
-    auto lock = std::scoped_lock(mutex_scale);
-    scale = scaler;
 }

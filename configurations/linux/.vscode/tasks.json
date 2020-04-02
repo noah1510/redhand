@@ -28,7 +28,7 @@
         {
             "type": "shell",
             "label": "build testgame",
-            "command": "${workspaceFolder}/scripts/testgame.sh",
+            "command": "${workspaceFolder}/testgame/scripts/build.sh",
             "args": [
                 "--lib"
             ],
@@ -45,7 +45,7 @@
                 "&&",
                 "${workspaceFolder}/scripts/setup.sh",
                 "&&",
-                "${workspaceFolder}/scripts/testgame.sh",
+                "${workspaceFolder}/testgame/scripts/build.sh",
                 "--lib"
             ],
             "options": {

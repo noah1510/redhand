@@ -108,7 +108,7 @@ mkdir -p "build"
 #build actual project
 mkdir -p "build/$BUILDNAME"
 cd "build/$BUILDNAME"
-cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT "../../testgame"
+cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT -DREDHAND_LOCATION="deploy/libredhand.so" "../../testgame"
 ninja -j"$THREADS"
 if [ $? -eq 0 ]
 then
@@ -120,6 +120,3 @@ else
 fi
 cd "../.."
 cp -r "build/$BUILDNAME/$EXECUTABLE" "deploy"
-
-LD_LIBRARY_PATH="$REPOROOT/lib"
-export LD_LIBRARY_PATH

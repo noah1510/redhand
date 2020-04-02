@@ -117,7 +117,7 @@ int redhand::engine::setPhysicsLoopFunction(int loop(engine*)){
 bool redhand::engine::isRunning(){
     runningReadMutex.lock_shared();
 
-    if (running){
+    if (running && glfwWindowShouldClose(this->window) == 0){
         runningReadMutex.unlock_shared();
         return true;
     }

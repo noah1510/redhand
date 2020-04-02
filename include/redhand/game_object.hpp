@@ -9,6 +9,9 @@
 #include <functional>
 #include <mutex>
 #include <shared_mutex>
+#include <future>
+#include <memory>
+#include <thread>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -18,6 +21,62 @@
 #include <GLFW/glfw3.h>
 
 namespace redhand{
+
+/**
+ * @brief This struct specifies all the properties of a game_object.
+ * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_GAME_OBJECT_PROPERTIES.
+ */
+typedef struct{
+    ///A vector containing all the points of the game_object, with each array being one point.
+    std::vector <std::array<float, 2> >                     points_coordinates;
+    ///A vector specifiying which points (their index) form an triangle, with each array being a triangle.
+    std::vector <std::array<unsigned int, 3> >              triangle_indices;
+    ///A vector specifiying the color of each point, with each array being one color.
+    std::vector <std::array<float, 3> >                     point_colors;
+    ///A vector containing all the texture coordinates of each point, with each array being one texture coordinate.
+    std::vector <std::array<float, 2> >                     texture_coordinates;
+    ///A shared pointer on the shader that should be used by this object.
+    std::shared_ptr<redhand::shader>                        attached_shader;
+    ///A shared pointer on the texture that should be used by this object.
+    std::shared_ptr<texture2D>                              attached_texture;
+    ///The scaling factor of the game_object along the x and y axis.
+    std::array<float,2>                                     scale;
+    ///The rotation around the bottom left in degrees.
+    float                                                   rotation;
+    ///The position of the object in world coordinates
+    std::array<float,2>                                     postition;
+    ///The drawing mode of the internal gpu buffer.
+    int                                                     gl_drawing_mode;
+    ///The name of the game_object
+    std::string                                             name;
+    ///The scaling factor of the attached texture along the x and y axis.
+    ///@note this is not the real texture scale this is more like a multiplier for it.
+    glm::vec2                                               texture_scale;
+    ///THe alpha value of this game_object
+    float                                                   alpha_value;                                
+    
+} game_object_properties;
+
+/**
+ * @brief The default properties for a game_object.
+ * @detailed Set your custom properties to this first and then override the values you need to change to make sure you don't forget any parameter,
+ * 
+ */
+const game_object_properties DEFAULT_GAME_OBJECT_PROPERTIES = {
+    {{0.0f,0.0f},{1.0f,0.0f},{0.0f,1.0f}},
+    {{0,1,2}},
+    {{1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f},{0.0f,0.0f,1.0f}},
+    {},
+    nullptr,
+    nullptr,
+    {2.0f,2.0f},
+    0,
+    {-1.0f,-1.0f},
+    GL_STATIC_DRAW,
+    "game_object",
+    {1.0f,1.0f},
+    1.0f
+};
 
 /**
  * @brief The game_object is a simple object which can be displayed in a world.
@@ -47,227 +106,58 @@ private:
     ///The identifier of the Element Buffer Object
     unsigned int EBO;
 
-    /// This is 3 * "number of tirangle" and is important to actually draw those triangles
-    unsigned int indices_size;
-
-    ///The attaced shader
-    std::shared_ptr<redhand::shader> object_shader;
-
-    ///The attached texture
-    texture2D* object_texture;
+    ///This array stores the data of all the vertecies
+    std::vector <float> data;
+    ///lock the point_data of the object
+    std::shared_mutex mutex_data;
 
     ///The texture mode of the object
-    unsigned int textureMode = 0;
-
-    ///The alpha value of the color
-    float colorAlphaValue = 1.0f;
+    unsigned int texture_mode = 0;
+    ///lock the texture_mode of the object
+    std::shared_mutex mutex_texture_mode;
 
     ///false if no error happened
-    bool errored = false;
-    
-    ///A custom function which is called just after the shader is activated
-    std::function<void(std::shared_ptr<redhand::shader>)> shader_routine;
+    bool has_errored = false;
+    ///lock the has_errored of the object
+    std::shared_mutex mutex_has_errored;
 
     ///A function that will be called once every tick
-    std::function<void(GLFWwindow* window, game_object* obj)> LoopFunction;
+    std::function<void(GLFWwindow* window, game_object* obj)> loop_function;
+    ///lock the loop_function of the object
+    std::shared_mutex mutex_loop_function;
 
-    ///The position of the object in World Coordinates
-    std::vector<float> object_position = {0.0f, 0.0f};
-    ///lock the position of the object
-    std::shared_mutex positionLock;
+    ///The properties of this object
+    redhand::game_object_properties object_properties;
+    ///lock the properties of the object
+    std::shared_mutex mutex_object_properties;
 
-    ///The scale of the object in World scale
-    std::vector<float> object_scale = {1.0f, 1.0f};
-    ///lock the scale of the object
-    std::shared_mutex scaleLock;
-
-    ///The rotation of the object in degrees
-    float object_rotation = 0.0f;
-    ///lock the rotation of the object
-    std::shared_mutex rotationLock;
-
-    ///the scale of the texture attached to this object
-    glm::vec2 texture_scale = glm::vec2(1.0f, 1.0f);
-    ///lock the texture scale of the object
-    std::shared_mutex textureScaleLock;
-
-
-    ///The name of the object
-    std::string object_name = "game_object";
-    ///lock the name of the object
-    std::shared_mutex nameLock;
+    ///The scaling factor of the attached texture along the x and y axis.
+    glm::vec2 texture_scale;
+    ///lock the texture_scale of the object
+    std::shared_mutex mutex_texture_scale;
 
     ///The lock for the object
-    std::shared_mutex gameObjectLock;
+    std::shared_mutex mutex_game_object;
+
+    ///The matrix for the world transformation (rotation,scaling and moving)
+    glm::mat4 world_transformation = glm::mat4(1.0f);
+    ///lock the world_transformation of the object
+    std::shared_mutex mutex_world_transformation;
+
+    /**
+     * @brief this function updates the world_transformation matrix using the game_object_properties.
+     * 
+     */
+    void updateWorldTransformation();
 
 public:
-    //minimal constructor
+
     /**
-     * @brief Construct a new game object object
-     * 
-     * @param points An array with all the points this object has in local coordinates
-     * @param indices The indicies which specifiy, which points form a triangle
-     * @param colors The color of the points
-     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
-     * @param gl_drawing_mode The drawing mode of the game_object
+     * @brief Construct a new game object object form a given set of properties.
+     * @note the attached shader may not be a nullptr and at least one triangle should be specified.
+     * @param properties The properties that should be used.
      */
-    game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode);
-
-    //minimal with name
-    /**
-     * @brief Construct a new game object object
-     * 
-     * @param points An array with all the points this object has in local coordinates
-     * @param indices The indicies which specifiy, which points form a triangle
-     * @param colors The color of the points
-     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
-     * @param gl_drawing_mode The drawing mode of the game_object
-     */
-    game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode,
-        std::string name);
-
-    //minimal with shader routine
-    /**
-     * @brief Construct a new game object object
-     * 
-     * @param points An array with all the points this object has in local coordinates
-     * @param indices The indicies which specifiy, which points form a triangle
-     * @param colors The color of the points
-     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
-     * @param gl_drawing_mode The drawing mode of the game_object
-     * @param routine The shader routine which should be used
-     */
-    game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode,
-
-        std::function<void(std::shared_ptr<redhand::shader>)> routine);
-
-    //minimal with scale,rotation and position
-    /**
-     * @brief Construct a new game object object
-     * 
-     * @param points An array with all the points this object has in local coordinates
-     * @param indices The indicies which specifiy, which points form a triangle
-     * @param colors The color of the points
-     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
-     * @param gl_drawing_mode The drawing mode of the game_object
-     * @param scaler The scale of the object in world coordinates
-     * @param rotator The rotation of the object in world coordinates
-     * @param postitions The position of the object in world coordinates
-     */
-    game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode,
-
-        std::vector<float> scaler,
-        float rotator,
-        std::vector<float> postitions);
-
-    //minimal with scale,rotation, position and shader routine
-    /**
-     * @brief Construct a new game object object
-     * 
-     * @param points An array with all the points this object has in local coordinates
-     * @param indices The indicies which specifiy, which points form a triangle
-     * @param colors The color of the points
-     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
-     * @param gl_drawing_mode The drawing mode of the game_object
-     * @param routine The shader routine which should be used
-     * @param scaler The scale of the object in world coordinates
-     * @param rotator The rotation of the object in world coordinates
-     * @param postitions The position of the object in world coordinates
-     */
-    game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode,
-
-        std::function<void(std::shared_ptr<redhand::shader>)> routine,
-
-        std::vector<float> scaler,
-        float rotator,
-        std::vector<float> postitions);
-
-    //full constructor without texels
-    /**
-     * @brief Construct a new game object object
-     * 
-     * @param points An array with all the points this object has in local coordinates
-     * @param indices The indicies which specifiy, which points form a triangle
-     * @param colors The color of the points
-     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
-     * @param gl_drawing_mode The drawing mode of the game_object
-     * @param routine The shader routine which should be used
-     * @param scaler The scale of the object in world coordinates
-     * @param rotator The rotation of the object in world coordinates
-     * @param postitions The position of the object in world coordinates
-     * @param texture A pointer to the attaches texture
-     */
-    game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode,
-
-        std::function<void(std::shared_ptr<redhand::shader>)> routine,
-
-        std::vector<float> scaler,
-        float rotator,
-        std::vector<float> postitions,
-
-        texture2D* texture);
-
-    //full constructor
-    /**
-     * @brief Construct a new game object object
-     * 
-     * @param points An array with all the points this object has in local coordinates
-     * @param indices The indicies which specifiy, which points form a triangle
-     * @param colors The color of the points
-     * @param attached_shader A pointer to the attached shader \note the shader should be added to the same world
-     * @param gl_drawing_mode The drawing mode of the game_object
-     * @param routine The shader routine which should be used
-     * @param scaler The scale of the object in world coordinates
-     * @param rotator The rotation of the object in world coordinates
-     * @param postitions The position of the object in world coordinates
-     * @param texture A pointer to the attaches texture
-     * @param texels A Vector containing the texture coordinates
-     */
-    game_object(
-        std::vector <float> points, 
-        std::vector <unsigned int> indices,
-        std::vector <float> colors,
-        std::shared_ptr<redhand::shader> attached_shader,
-        int gl_drawing_mode,
-
-        std::function<void(std::shared_ptr<redhand::shader>)> routine,
-
-        std::vector<float> scaler,
-        float rotator,
-        std::vector<float> postitions,
-
-        texture2D* texture,
-        std::vector <float> texels);
+    game_object(game_object_properties properties);
 
     /**
      * @brief Destroy the game object
@@ -277,7 +167,11 @@ public:
     ///This function sets the shader routine to the given function
     void setShaderRoutine(std::function<void(std::shared_ptr<redhand::shader>)> routine);
 
-    ///This function sets the loop function to the given function
+    /**
+     * @brief Set the Loop Function which is called on every physics render call.
+     * 
+     * @param loop either a lambda function or a function pointer to the loop function that should be used.
+     */
     void setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop);
 
     ///This function returns a pointer to the attached shader
@@ -292,26 +186,28 @@ public:
     ///false if no error has happened
     bool hasErrord();
 
+    void triggerError();
+
     /**
      * @brief Get the Position of the object
      * 
-     * @return std::vector<float> 
+     * @return std::array<float,2> 
      */
-    std::vector<float> getPosition();
+    std::array<float,2> getPosition();
 
     /**
      * @brief Set the Position of the object
      * 
      * @param pos a vector with the in x and y direction in world scale
      */
-    void setPosition(std::vector<float> pos);
+    void setPosition(std::array<float,2> pos);
 
     /**
      * @brief moves the object by the specified amount
      * 
      * @param delta_pos a vector with the difference in x and y direction in world scale
      */
-    void move(std::vector<float> delta_pos);
+    void move(std::array<float,2> delta_pos);
 
     ///gets the rotation in degrees
     float getRotation();
@@ -344,30 +240,16 @@ public:
     /**
      * This funtion returns the name of the object.
      */
-    std::string getName();
+    std::string_view getName();
 
     /**
      * @brief get the scal of the object
      * 
-     * @return std::vector<float> [0] = x scale and [1] is y scale
+     * @return std::array<float,2> [0] = x scale and [1] is y scale
      */
-    std::vector<float> getScale();
+    std::array<float,2> getScale();
 
 };
-
-/**
- * @brief Create a House object
- * 
- * @param texture A pointer to the texture that should be used (nullptr if none)
- * @param shade A pointer to the shader that should be used
- * @param texture_scale The factor by which the texture shoulb be scaled (1.0f if nothig is specified)
- * @return game_object* 
- */
-game_object* createHouse(
-    texture2D* texture,
-    std::shared_ptr<redhand::shader> shade,
-    float texture_scale = 1.0f
-);
 
 /**
  * @brief Create a Circle object
@@ -382,15 +264,17 @@ game_object* createHouse(
  * @param texture_scale The factor by which the texture shoulb be scaled (1.0f if nothig is specified)
  * @return game_object* 
  */
-game_object* createCircle( 
-    float midpoint[2],
+std::unique_ptr<redhand::game_object> createCircle( 
+    std::array<float,2> midpoint,
     float radius,
     unsigned int edges,
-    float innerColor[3],
-    float outerColor[3],
+    std::array<float,3> innerColor,
+    std::array<float,3> outerColor,
     std::shared_ptr<redhand::shader> shade,
-    texture2D* tex,
-    float texture_scale = 1.0f);
+    std::shared_ptr<redhand::texture2D> tex,
+    std::string name,
+    float texture_scale = 1.0f
+);
 
 /**
  * @brief Create a rectangular object
@@ -404,14 +288,16 @@ game_object* createCircle(
  * @param textureScale The factor by which the texture shoulb be scaled (1.0f if nothig is specified)
  * @return game_object*
  */
-game_object* createRecktangle(
-    float bottomleft[2],
+std::unique_ptr<redhand::game_object> createRectangle(
+    std::array<float,2> bottomleft,
     float width,
     float height,
-    float color[3],
+    std::array<float,3> color,
     std::shared_ptr<redhand::shader> shade,
-    texture2D* tex,
+    std::shared_ptr<redhand::texture2D> tex,
     int DrawingMode,
-    float textureScale = 1.0f);
+    std::string name,
+    float textureScale = 1.0f
+);
 
 }//end of namespace
