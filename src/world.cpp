@@ -148,6 +148,7 @@ int redhand::world::removeShader(std::string name){
         if(x->getName().compare(name) == 0){
             try{
                 WorldShaders.erase(WorldShaders.begin() + i);
+                break;
             }
             catch(const std::exception& e){
                 std::cerr << e.what() << '\n';
@@ -166,6 +167,7 @@ int redhand::world::removeTexture(std::string name){
         if(x->getName().compare(name) == 0){
             try{
                 WorldTextures.erase(WorldTextures.begin() + i);
+                break;
             }
             catch(const std::exception& e){
                 std::cerr << e.what() << '\n';
@@ -186,6 +188,7 @@ int redhand::world::removeObject(std::string name){
         if(x->getName().compare(name) == 0){
             try{
                 WorldObjects.erase(WorldObjects.begin() + i);
+                break;
             }
             catch(const std::exception& e){
                 std::cerr << e.what() << '\n';

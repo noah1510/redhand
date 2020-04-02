@@ -97,7 +97,6 @@ unsigned int redhand::shader::compileShader(std::string_view shaderSource, int s
     if(errord){return 0;};
     // compile the shader and return the location of the result
     int success;
-    char infoLog[512];
 
     auto stringSource = std::string(shaderSource);
     auto shaderCode = stringSource.c_str();
@@ -109,6 +108,7 @@ unsigned int redhand::shader::compileShader(std::string_view shaderSource, int s
     // print compile errors if anything went wrong
     glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
     if(!success){
+        char infoLog[512];
         glGetShaderInfoLog(shader, 512, NULL, infoLog);
         std::cerr << "ERROR::SHADER::COMPILATION_FAILED\n" << infoLog << std::endl;
         std::cerr << "Shader source code:" << shaderCode << std::endl;
@@ -125,7 +125,6 @@ void redhand::shader::linkShader(unsigned int vertexShader, unsigned int fragmen
 
     // create shader Program
     int success;
-    char infoLog[512];
 
     ID = glCreateProgram();
     glAttachShader(ID, vertexShader);
@@ -135,6 +134,7 @@ void redhand::shader::linkShader(unsigned int vertexShader, unsigned int fragmen
     // print linking errors if any
     glGetProgramiv(ID, GL_LINK_STATUS, &success);
     if(!success){
+        char infoLog[512];
         glGetProgramInfoLog(ID, 512, NULL, infoLog);
         std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
         errord = true;
