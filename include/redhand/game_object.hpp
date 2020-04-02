@@ -10,6 +10,7 @@
 #include <mutex>
 #include <shared_mutex>
 #include <future>
+#include <memory>
 #include <thread>
 
 #include <glm/glm.hpp>
@@ -48,13 +49,19 @@ typedef struct{
     int                                                     gl_drawing_mode;
     ///The name of the game_object
     std::string                                             name;
-    ///The scaling factor of the attached texture along the x and y axis. 
+    ///The scaling factor of the attached texture along the x and y axis.
+    ///@note this is not the real texture scale this is more like a multiplier for it.
     glm::vec2                                               texture_scale;
     ///THe alpha value of this game_object
-    float                                                   alpha_value;
+    float                                                   alpha_value;                                
     
 } game_object_properties;
 
+/**
+ * @brief The default properties for a game_object.
+ * @detailed Set your custom properties to this first and then override the values you need to change to make sure you don't forget any parameter,
+ * 
+ */
 const game_object_properties DEFAULT_GAME_OBJECT_PROPERTIES = {
     {{0.0f,0.0f},{1.0f,0.0f},{0.0f,1.0f}},
     {{0,1,2}},
@@ -120,12 +127,28 @@ private:
     std::shared_mutex mutex_loop_function;
 
     ///The properties of this object
-    redhand::game_object_properties object_properties = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
+    redhand::game_object_properties object_properties;
     ///lock the properties of the object
     std::shared_mutex mutex_object_properties;
 
+    ///The scaling factor of the attached texture along the x and y axis.
+    glm::vec2 texture_scale;
+    ///lock the texture_scale of the object
+    std::shared_mutex mutex_texture_scale;
+
     ///The lock for the object
     std::shared_mutex mutex_game_object;
+
+    ///The matrix for the world transformation (rotation,scaling and moving)
+    glm::mat4 world_transformation = glm::mat4(1.0f);
+    ///lock the world_transformation of the object
+    std::shared_mutex mutex_world_transformation;
+
+    /**
+     * @brief this function updates the world_transformation matrix using the game_object_properties.
+     * 
+     */
+    void updateWorldTransformation();
 
 public:
 
@@ -249,6 +272,7 @@ std::unique_ptr<redhand::game_object> createCircle(
     std::array<float,3> outerColor,
     std::shared_ptr<redhand::shader> shade,
     std::shared_ptr<redhand::texture2D> tex,
+    std::string name,
     float texture_scale = 1.0f
 );
 
@@ -272,6 +296,7 @@ std::unique_ptr<redhand::game_object> createRectangle(
     std::shared_ptr<redhand::shader> shade,
     std::shared_ptr<redhand::texture2D> tex,
     int DrawingMode,
+    std::string name,
     float textureScale = 1.0f
 );
 

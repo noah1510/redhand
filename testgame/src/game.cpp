@@ -35,7 +35,7 @@ int main_game_logic(
 int createTestworld(std::shared_ptr<redhand::world> testWorld){
     //add shaders to world
 
-    auto shader1 = std::make_unique<redhand::shader>();
+    auto shader1 = std::unique_ptr<redhand::shader>(new redhand::shader());
     if( testWorld->addShader(std::move(shader1)) < 0){
         std::cerr << "Got error while adding shader" << std::endl;
         return -10;
@@ -70,12 +70,12 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
             testWorld->getShaderByName("default"),
             testWorld->getTextureByName("bg"),
             GL_STATIC_DRAW,
-            600.0f*200.0f/testWorld->getTextureByName("bg")->getWidth()
+            "background",
+            1.25f
         )
     ) < 0){
         return -3;
     }
-    testWorld->getObjectByName("game_object")->setName("background");
 
      // sun two
     if( testWorld->addObject(
@@ -86,18 +86,17 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
             {0.0f, 0.8f, 1.0f},
             {0.8f, 0.0f, 1.0f},
             testWorld->getShaderByName("default"),
-            nullptr
+            nullptr,
+            "sun2"
         )
     ) < 0){
         return -3;
     }
-    testWorld->getObjectByName("game_object")->setName("sun2");
 
     // sun one
-    if( testWorld->addObject(redhand::createCircle({0.8f,0.45f}, 0.35f, edges, {}, {}, testWorld->getShaderByName("default"), nullptr)) < 0){
+    if( testWorld->addObject(redhand::createCircle({0.8f,0.45f}, 0.35f, edges, {1.0f,1.0f,0.0f}, {1.0f,0.5f,0.0f}, testWorld->getShaderByName("default"), nullptr, "sun1")) < 0){
         return -3;
     }
-    testWorld->getObjectByName("game_object")->setName("sun1");
 
     //triangle
     auto trig_properties = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
@@ -125,7 +124,6 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
     ) < 0){
         return -3;
     }
-    testWorld->getObjectByName("game_object")->setName("house");
     testWorld->getObjectByName("house")->setLoopFunction(processHouseMovement);
     
     return 0;
@@ -208,7 +206,7 @@ std::unique_ptr<redhand::game_object> createHouse(
 
     settings.attached_shader = shade;
     settings.attached_texture = texture;
-
+    settings.name = "house";
 
     settings.points_coordinates = {
         {1.0f, 0.55f},  // top right
@@ -232,11 +230,12 @@ std::unique_ptr<redhand::game_object> createHouse(
         {1.0f, 1.0f, 1.0f} 
     };
 
-    settings.postition = {0.5f,0.5f};
+    settings.postition = {-0.1f,-0.1f};
+    settings.scale = {0.5f,0.5f};
 
     auto ptr = std::unique_ptr<redhand::game_object>(new redhand::game_object(settings));
 
-    return ptr;
+    return std::move(ptr);
     
 }
 

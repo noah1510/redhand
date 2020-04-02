@@ -25,10 +25,10 @@ private:
     float cameraPosition[2] = {0.0f, 0.0f};
 
     /// This variable holds the width of the window in pixels 
-    int windowWidth = 600;
+    int windowWidth = 0;
 
     /// This variable holds the height of the window in pixels 
-    int windowHeight = 200;
+    int windowHeight = 0;
 
     /// This variable holds the current projection matrix
     glm::mat4 projectionMatrix;

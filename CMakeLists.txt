@@ -6,7 +6,7 @@ if(CMAKE_VERSION VERSION_GREATER "3.11.0")
     cmake_policy(VERSION 3.11)
 endif()
 
-project(redhand VERSION 0.0.1 DESCRIPTION "a small 2D game engine")
+project(redhand VERSION "0.0.6" DESCRIPTION "a small 2D game engine")
 
 option(OUTPUTFILE "Name of file to output")
 option(REPOROOT "Path of the root of the repo")

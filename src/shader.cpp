@@ -20,7 +20,9 @@ redhand::shader::~shader(){
 }
 
 redhand::shader::shader():shader("default"){
-    createDefaultShader();
+    if(createDefaultShader() < 0){
+        errord = true;
+    };
 };
 
 redhand::shader::shader(std::string_view name){

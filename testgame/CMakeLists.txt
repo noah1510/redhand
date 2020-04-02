@@ -6,19 +6,20 @@ if(CMAKE_VERSION VERSION_GREATER "3.11.0")
     cmake_policy(VERSION 3.11)
 endif()
 
-project("redhand")
+project("redhand-testgame")
 
 option(OUTPUTFILE "Name of file to output")
 option(REPOROOT "Path of the root of the repo")
+option(REDHAND_LOCATION "The exact locataion of the libredhand file relative to reporoot")
 
 if (REPOROOT)
-    SET(ROOTDIR ${REPOROOT})
+    SET(CMAKE_PREFIX_PATH ${REPOROOT})
 else (REPOROOT)
-    SET(ROOTDIR ${CMAKE_CURRENT_BINARY_DIR}/..)
+    SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
 
-include_directories(${ROOTDIR}/include/)
-link_directories(${ROOTDIR}/lib/)
+include_directories(${CMAKE_PREFIX_PATH}/include/)
+link_directories(${CMAKE_PREFIX_PATH}/lib/)
 
 if (UNIX)
     if (OUTPUTFILE)
@@ -61,13 +62,27 @@ find_package(OpenGL REQUIRED)
 
 
 add_executable(${OUTPUT} 
-${ROOTDIR}/testgame/src/game.cpp
-${ROOTDIR}/testgame/src/main.cpp)
+${CMAKE_PREFIX_PATH}/testgame/src/game.cpp
+${CMAKE_PREFIX_PATH}/testgame/src/main.cpp)
 
 if (UNIX)
-    target_link_libraries(${OUTPUT} libglfw.so)
+    find_library(GLFW
+        NAMES libglfw.so.3 libglfw.so glfw libglfw.so.3.2
+        HINTS /usr/lib/x86_64-linux-gnu/ ${CMAKE_PREFIX_PATH}/deploy/)
+    
+    target_link_libraries(${OUTPUT} ${GLFW})
     target_link_libraries(${OUTPUT} dl)
-    target_link_libraries(${OUTPUT} libredhand.so)
+    
+    if(REDHAND_LOCATION)
+        message("using custom REDHAND_LOCATION")
+        target_link_libraries(${OUTPUT} ${CMAKE_PREFIX_PATH}/${REDHAND_LOCATION})
+    else()
+        find_library(REDHAND
+            NAMES libredhand.so redhand
+            HINTS "${CMAKE_PREFIX_PATH}/lib/")   
+
+        target_link_libraries(${OUTPUT} ${REDHAND})
+    endif(REDHAND_LOCATION)
     #target_link_libraries(${OUTPUT} sfml-graphics sfml-audio sfml-window sfml-system)
 endif (UNIX)
 

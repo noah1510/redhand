@@ -38,11 +38,6 @@ private:
     ///the mutex for the height
     std::shared_mutex mutex_height;
 
-    ///The vector holdingg the scale of the texture in both directions
-    glm::vec2 scale = {1.0f, 1.0f};
-    ///the mutex for the errord
-    std::shared_mutex mutex_scale;
-
     ///the name of the texture
     std::string texture_name = "texture";
     ///the mutex for the texture_name
@@ -87,7 +82,7 @@ public:
 
     ///This function binds the texture to the specified texture unit
     ///@param unit The index of the texture unit the texture will be bound to (0 by default)
-    void bind(int unit);
+    void bind(int unit = 0);
 
     /**
      * This function retruns the width of the texture
@@ -109,19 +104,6 @@ public:
      */
     std::string_view getName();
 
-    /**
-     * @brief Get the Texture Scale of the texture
-     * 
-     * @return glm::vec2 The amount each texture coordinate is multiplied with for each direction
-     */
-    glm::vec2 getTextureScale();
-
-    /**
-     * @brief Set the Texture Scale of the object to the given vector
-     * 
-     * @param scale The amount each texture coordinate should be multiplied with for each direction.
-     */
-    void setTextureScale(glm::vec2 scale);
 };
 
 

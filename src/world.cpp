@@ -107,12 +107,10 @@ int redhand::world::addShader( std::unique_ptr<redhand::shader> shade){
         return -2;
     }
 
-    auto local = std::move(shade);
-
-    WorldShaders.emplace_back( std::shared_ptr<redhand::shader>(local.release()));
+    WorldShaders.emplace_back( std::shared_ptr<redhand::shader>(std::move(shade)));
     if(WorldShaders.back() != nullptr){
-        shade->setProjectionmatrix(projectionMatrix);
-        shade->setCamera(cameraPosition[0], cameraPosition[1]);
+        WorldShaders.back()->setProjectionmatrix(projectionMatrix);
+        WorldShaders.back()->setCamera(cameraPosition[0], cameraPosition[1]);
         return 0;
     }else{
         return -4;
@@ -128,9 +126,7 @@ int redhand::world::addTexture(std::unique_ptr<redhand::texture2D> tex){
         return -2;
     }
 
-    auto local = std::move(tex);
-
-    WorldTextures.emplace_back(std::shared_ptr<redhand::texture2D>(local.release()));
+    WorldTextures.emplace_back(std::shared_ptr<redhand::texture2D>(std::move(tex)));
     if(WorldTextures.back() != nullptr){
         return 0;
     }else{
@@ -151,7 +147,7 @@ int redhand::world::addObject(std::unique_ptr<game_object> obj){
 
     WorldObjects.emplace_back(std::shared_ptr<redhand::game_object>(std::move(obj)));
     if(WorldObjects.back() != nullptr){
-        obj->setScreenSize(windowWidth,windowHeight);
+        WorldObjects.back()->setScreenSize(windowWidth,windowHeight);
         return 0;
     }else{
         return -3;
