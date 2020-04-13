@@ -7,13 +7,14 @@ then
 
     DOCDEPS="doxygen graphviz-dev"
     GLFWDEPS="xorg-dev libgl1-mesa-dev"
+    OPENAL="zlib1g-dev libcunit1-dev libcunit1-dev libasound2-dev libpulse-dev pulseaudio libaudio-dev"
     REDHANDDEPS="cmake gcc g++ ninja-build libglm-dev libglfw3 libglfw3-dev devscripts"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-dev"
 
     sudo apt update
     if [ "$1" == "--ci" ]
     then
-        sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS --yes
+        sudo apt install $DOCDEPS $GLFWDEPS $OPENAL $REDHANDDEPS --yes
         if [ $? -eq 0 ]
         then
         echo "Successfully installed dependencies"
@@ -22,7 +23,7 @@ then
         exit 2
         fi
     else
-        sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS $ADDITIONALDEPS --yes
+        sudo apt install $DOCDEPS $GLFWDEPS $OPENAL $REDHANDDEPS $ADDITIONALDEPS --yes
         if [ $? -eq 0 ]
         then
         echo "Successfully installed dependencies"

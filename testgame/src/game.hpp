@@ -2,6 +2,8 @@
 
 #include "redhand/engine.hpp"
 #include "redhand/world.hpp"
+#include "redhand/audio/AudioHandler.hpp"
+
 
 int game_init(
     std::shared_ptr<redhand::world> startWorld

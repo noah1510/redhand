@@ -69,6 +69,9 @@ then
     GLFWLIB="libglfw.so"
     GLFWDEPLOY="libglfw.so.3"
 
+    AL_LIB="libopenal.so"
+    AL_DEPLOY="libopenal.so.1.20.1"
+
     if [ $VSCODE -eq "1" ]
     then
       cp -r "configurations/linux/.vscode" "."
@@ -138,6 +141,15 @@ then
     echo "Could not initiate glfw" >&2
     exit 1
   fi
+fi
+
+git submodule update --init dependencies/openal-soft
+if [ $? -eq 0 ]
+then
+  echo "Successfully initiated OpenAL"
+else
+  echo "Could not initiate OpenAL" >&2
+  exit 1
 fi
 
 if [ "$PACKAGEBUILD" == "0" ]
@@ -224,6 +236,16 @@ then
   fi
 fi
 
+cp -r "dependencies/openal-soft/include/AL" "include/AL"
+if [ $? -eq 0 ]
+then
+    echo "Successfully copied OpenAL"
+else
+    echo "Could not copy OpenAL" >&2
+    exit 2
+fi
+
+
 mkdir -p "build"
 
 #compiling glfw
@@ -245,6 +267,23 @@ then
   cd "../.."
 fi
 
+
+# Compile OpenAL-soft
+mkdir -p "build/AL"
+cd "build/AL"
+cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/openal-soft"
+ninja -j"$THREADS"
+
+if [ $? -eq 0 ]
+then
+  echo "Successfully compiled OpenAL"
+else
+  echo "Could not compile OpenAL" >&2
+  cd "../.."
+  exit 2
+fi
+cd "../.."
+
 #copy results
 mkdir -p "lib"
 mkdir -p "build/$BUILDNAME"
@@ -260,6 +299,15 @@ then
   cp "build/glfw/src/$GLFWLIB" "deploy"
   cp "build/glfw/src/$GLFWDEPLOY" "deploy"
 fi
+
+# OpenAL
+cp "build/AL/$AL_LIB" "lib"
+cp "build/AL/$AL_DEPLOY" "lib"
+
+cp "build/AL/$AL_LIB" "build/$BUILDNAME"
+
+cp "build/AL/$AL_LIB" "deploy"
+cp "build/AL/$AL_DEPLOY" "deploy"
 
 cp -r "dependencies/glad/include" "."
 cp -r "dependencies/glad/src/glad.c" "src"

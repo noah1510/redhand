@@ -71,6 +71,7 @@ if (UNIX)
         HINTS /usr/lib/x86_64-linux-gnu/ ${CMAKE_PREFIX_PATH}/deploy/)
     
     target_link_libraries(${OUTPUT} ${GLFW})
+    target_link_libraries(${OUTPUT} libopenal.so libopenal.so.1.20.1)
     target_link_libraries(${OUTPUT} dl)
     
     if(REDHAND_LOCATION)

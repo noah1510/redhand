@@ -10,6 +10,7 @@ int game_init(
         return exitCode;
     }
 
+
     return 0;   
 }
 
@@ -28,6 +29,9 @@ int main_game_logic(
     //tick the active world
     gameEngine->getActiveWorld()->tick(gameEngine->getWindow());
 
+    redhand::AudioHandler audioHandler;
+    audioHandler.PlaySound("sounds/test.wav");
+    
     return 0;
 
 }
@@ -126,6 +130,7 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
     }
     testWorld->getObjectByName("house")->setLoopFunction(processHouseMovement);
     
+
     return 0;
 }
 

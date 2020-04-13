@@ -10,3 +10,6 @@
 [submodule "dependencies/gladRepo"]
 	path = dependencies/gladRepo
 	url = https://github.com/Dav1dde/glad
+[submodule "dependencies/openal-soft"]
+	path = dependencies/openal-soft
+	url = https://github.com/kcat/openal-soft.git

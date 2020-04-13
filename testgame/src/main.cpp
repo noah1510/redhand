@@ -11,7 +11,6 @@
 #include "redhand/texture.hpp"
 #include "redhand/world.hpp"
 #include "redhand/engine.hpp"
-//#include "audio/AudioHandler.hpp"
 
 #include "game.hpp"
 
