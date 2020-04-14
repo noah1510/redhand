@@ -28,7 +28,7 @@ void playSound(){
         mutex_isPlayingSound.unlock();
 
         redhand::AudioHandler audioHandler;
-        audioHandler.PlaySound("sounds/test.wav"); 
+        audioHandler.playSound("sounds/test.wav"); 
 
         mutex_isPlayingSound.lock();
         isPlayingSound = false;

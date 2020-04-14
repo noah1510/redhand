@@ -1,6 +1,5 @@
-#pragma once
 #include <stdio.h>
-#include <string>
+#include <string.h>
 #include <iostream>
 
 #include <AL/al.h>
@@ -8,14 +7,22 @@
 
 #include <audio/wave.h>
 
-namespace redhand{
-    class AudioHandler{
+namespace redhand
+{
+    class AudioHandler
+    {
         private:
-            void CheckErrors();
+            void checkErrors();
             static inline ALenum to_al_format(short channels, short samples);
+            void createDefaultDevice(ALCdevice *device);
+            
+            ALCdevice *device;
+            ALCenum error;
+
         public:
             AudioHandler();
             //~AudioHandler();
-            void PlaySound(const char*);
+            static void listAudioDevices(const ALCchar *devices);
+            void playSound(const char*);
     };
 }
