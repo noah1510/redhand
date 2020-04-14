@@ -25,7 +25,7 @@
 #include "redhand/texture.hpp"
 #include "redhand/world.hpp"
 #include "redhand/math.hpp"
-//#include "audio/AudioHandler.hpp"
+#include "redhand/AudioHandler.hpp"
 
 namespace redhand{
 

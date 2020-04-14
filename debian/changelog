@@ -1,3 +1,9 @@
+libredhand (0.0.7) bionic; urgency=medium
+
+  * added initial audio implementation
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Tue, 14 Apr 2020 10:29:20 +0200
+
 libredhand (0.0.6) bionic; urgency=medium
 
   * finished refactoring of game_object

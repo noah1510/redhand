@@ -1,8 +1,16 @@
 #!/bin/bash
 
+USEMANGOHUD="0"
+
 if [ $1 ]
 then
-    BUILDNAME="$1"
+    if [ "$1" == "--mangohud" ]
+    then
+        USEMANGOHUD="1"
+        BUILDNAME="testgame"
+    else
+        BUILDNAME="$1"
+    fi
 else 
     BUILDNAME="testgame"
 fi
@@ -44,7 +52,12 @@ else
 fi
 
 #run the executable
-./deploy/$EXECUTABLE | tail -l
+if [ "$USEMANGOHUD" == "0" ]
+then
+    ./deploy/$EXECUTABLE | tail -l
+else
+    mangohud deploy/$EXECUTABLE
+fi
 
 if [ $? -eq ${PIPESTATUS[0]} ]
 then

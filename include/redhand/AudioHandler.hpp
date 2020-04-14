@@ -1,3 +1,4 @@
+#pragma once
 #include <stdio.h>
 #include <string>
 #include <iostream>
@@ -7,10 +8,8 @@
 
 #include <audio/wave.h>
 
-namespace redhand
-{
-    class AudioHandler
-    {
+namespace redhand{
+    class AudioHandler{
         private:
             void CheckErrors();
             static inline ALenum to_al_format(short channels, short samples);

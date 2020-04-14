@@ -1,5 +1,43 @@
 #include "game.hpp"
 
+//should be part of the engine
+bool isPlayingSound = false;
+//should be part of the engine
+std::mutex mutex_isPlayingSound;
+//should be part of the engine
+std::thread audioThread;
+
+//This function should be part of the engine and the audio handler
+void stopSound(){
+     
+    mutex_isPlayingSound.lock();
+    if(isPlayingSound){
+        audioThread.join();
+        isPlayingSound = false;
+        mutex_isPlayingSound.unlock();
+    }
+    mutex_isPlayingSound.unlock();
+    
+}
+//This function should be part of the engine
+void playSound(){
+    
+    mutex_isPlayingSound.lock();
+    if(!isPlayingSound){
+        isPlayingSound = true;
+        mutex_isPlayingSound.unlock();
+
+        redhand::AudioHandler audioHandler;
+        audioHandler.PlaySound("sounds/test.wav"); 
+
+        mutex_isPlayingSound.lock();
+        isPlayingSound = false;
+        mutex_isPlayingSound.unlock();
+    }
+    mutex_isPlayingSound.unlock();
+    
+}
+
 int game_init(
     std::shared_ptr<redhand::world> startWorld
 ){
@@ -10,6 +48,7 @@ int game_init(
         return exitCode;
     }
 
+    audioThread = std::thread(playSound);
 
     return 0;   
 }
@@ -29,8 +68,14 @@ int main_game_logic(
     //tick the active world
     gameEngine->getActiveWorld()->tick(gameEngine->getWindow());
 
-    redhand::AudioHandler audioHandler;
-    audioHandler.PlaySound("sounds/test.wav");
+    //The next seven lines should be handled by the engine. The only call will be gameEngine.playSound(Soundfile)
+    mutex_isPlayingSound.lock();
+    bool playing = isPlayingSound;
+    mutex_isPlayingSound.unlock();
+
+    if(!playing){
+        audioThread = std::thread(playSound);    
+    }
     
     return 0;
 

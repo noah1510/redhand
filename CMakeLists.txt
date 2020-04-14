@@ -54,7 +54,7 @@ add_library(redhand SHARED
                         src/game_object.cpp
                         src/world.cpp
                         src/engine.cpp
-                        src/audio/AudioHandler.cpp)
+                        src/AudioHandler.cpp)
 
 if (UNIX)
     find_library(GLFW
@@ -63,9 +63,12 @@ if (UNIX)
     find_library(libaudio
         NAMES libaudio.so
         HINTS /usr/lib/x86_64-linux-gnu/ )
+    find_library(OPENAL
+        NAMES libopenal.so
+        HINTS /usr/lib/ ${REPOROOT}/lib)
     target_link_libraries(redhand ${GLFW})
     target_link_libraries(redhand ${libaudio})
-    target_link_libraries(redhand libopenal.so libopenal.so.1.20.1)
+    target_link_libraries(redhand ${OPENAL})
     target_link_libraries(redhand dl)
 endif (UNIX)
 
@@ -73,7 +76,11 @@ if (WIN32)
     find_library(GLFW
         NAMES glfw3.dll glfw.dll libglfw.dll glfw
         HINTS ${ROOTDIR}/lib/ )
+    find_library(OPENAL
+        NAMES openal.dll openal
+        HINTS ${ROOTDIR}/lib/ )
     target_link_libraries(redhand ${GLFW})
+    target_link_libraries(redhand ${OPENAL})
 endif (WIN32)
 
 install(TARGETS redhand

@@ -2,8 +2,12 @@
 
 #include "redhand/engine.hpp"
 #include "redhand/world.hpp"
-#include "redhand/audio/AudioHandler.hpp"
+#include "redhand/AudioHandler.hpp"
 
+//This function should be part of the engine
+void stopSound();
+//This function should be part of the engine
+void playSound();
 
 int game_init(
     std::shared_ptr<redhand::world> startWorld

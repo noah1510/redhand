@@ -101,8 +101,13 @@ then
 
     GLFWLIB="glfw3.dll"
     GLFWDEPLOY="glfw3.dll"
+
+    AL_LIB="openal.dll"
+    AL_DEPLOY="openal.dll"
+
     BUILDGLFW="1"
     BUILDGLM="1"
+    BUILDOPENAL="1"
 
     if [ $VSCODE -eq "1" ]
     then
@@ -143,15 +148,6 @@ then
   fi
 fi
 
-git submodule update --init dependencies/openal-soft
-if [ $? -eq 0 ]
-then
-  echo "Successfully initiated OpenAL"
-else
-  echo "Could not initiate OpenAL" >&2
-  exit 1
-fi
-
 if [ "$PACKAGEBUILD" == "0" ]
 then
     git submodule update --init include/stb
@@ -161,6 +157,15 @@ then
     else
         echo "Could not initiate stb" >&2
         exit 1
+    fi
+
+    git submodule update --init dependencies/openal-soft
+    if [ $? -eq 0 ]
+    then
+      echo "Successfully initiated OpenAL"
+    else
+      echo "Could not initiate OpenAL" >&2
+      exit 1
     fi
 fi
 
@@ -236,16 +241,6 @@ then
   fi
 fi
 
-cp -r "dependencies/openal-soft/include/AL" "include/AL"
-if [ $? -eq 0 ]
-then
-    echo "Successfully copied OpenAL"
-else
-    echo "Could not copy OpenAL" >&2
-    exit 2
-fi
-
-
 mkdir -p "build"
 
 #compiling glfw
@@ -268,21 +263,33 @@ then
 fi
 
 
-# Compile OpenAL-soft
-mkdir -p "build/AL"
-cd "build/AL"
-cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/openal-soft"
-ninja -j"$THREADS"
-
-if [ $? -eq 0 ]
+if [ "$BUILDOPENAL" == "1" ]
 then
-  echo "Successfully compiled OpenAL"
-else
-  echo "Could not compile OpenAL" >&2
+  # Compile OpenAL-soft
+  cp -r "dependencies/openal-soft/include/AL" "include/AL"
+  if [ $? -eq 0 ]
+  then
+      echo "Successfully copied OpenAL"
+  else
+      echo "Could not copy OpenAL" >&2
+      exit 2
+  fi
+
+  mkdir -p "build/AL"
+  cd "build/AL"
+  cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/openal-soft"
+  ninja -j"$THREADS"
+
+  if [ $? -eq 0 ]
+  then
+    echo "Successfully compiled OpenAL"
+  else
+    echo "Could not compile OpenAL" >&2
+    cd "../.."
+    exit 2
+  fi
   cd "../.."
-  exit 2
 fi
-cd "../.."
 
 #copy results
 mkdir -p "lib"
@@ -300,18 +307,21 @@ then
   cp "build/glfw/src/$GLFWDEPLOY" "deploy"
 fi
 
-# OpenAL
-cp "build/AL/$AL_LIB" "lib"
-cp "build/AL/$AL_DEPLOY" "lib"
+if [ "$BUILDOPENAL" == "1" ]
+then
+  # OpenAL
+  cp "build/AL/$AL_LIB" "lib"
+  cp "build/AL/$AL_DEPLOY" "lib"
 
-cp "build/AL/$AL_LIB" "build/$BUILDNAME"
+  cp "build/AL/$AL_LIB" "build/$BUILDNAME"
 
-cp "build/AL/$AL_LIB" "deploy"
-cp "build/AL/$AL_DEPLOY" "deploy"
+  cp "build/AL/$AL_LIB" "deploy"
+  cp "build/AL/$AL_DEPLOY" "deploy"
+
+fi
 
 cp -r "dependencies/glad/include" "."
 cp -r "dependencies/glad/src/glad.c" "src"
-
 
 echo "Successfully finished setup"
 exit 0

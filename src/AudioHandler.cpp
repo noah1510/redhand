@@ -1,46 +1,41 @@
-#include "redhand/audio/AudioHandler.hpp"
+#include "redhand/AudioHandler.hpp"
 
 using namespace redhand;
 
 ALCenum error;
 
-AudioHandler::AudioHandler()
-{
-    
+AudioHandler::AudioHandler() {
 }
 
-inline ALenum AudioHandler::to_al_format(short channels, short samples)
-{
+inline ALenum AudioHandler::to_al_format(short channels, short samples) {
     bool stereo = (channels > 1);
 
     switch (samples) {
     case 16:
-            if (stereo)
-                    return AL_FORMAT_STEREO16;
-            else
-                    return AL_FORMAT_MONO16;
+        if (stereo)
+            return AL_FORMAT_STEREO16;
+        else
+            return AL_FORMAT_MONO16;
     case 8:
-            if (stereo)
-                    return AL_FORMAT_STEREO8;
-            else
-                    return AL_FORMAT_MONO8;
+        if (stereo)
+            return AL_FORMAT_STEREO8;
+        else
+            return AL_FORMAT_MONO8;
     default:
-            return -1;
+        return -1;
     }
 }
 
-void AudioHandler::CheckErrors()
-{
+void AudioHandler::CheckErrors() {
     error = alGetError();
-    if (error != AL_NO_ERROR)
+    if (error != AL_NO_ERROR){
         std::cout << "There was an error" << std::endl;
+    }
 }
 
-
-void AudioHandler::PlaySound(const char* sound_dir)
-{
+void AudioHandler::PlaySound(const char *sound_dir) {
     ALint source_state;
-    
+
     alGetError();
 
     ALCdevice *device;
@@ -55,7 +50,6 @@ void AudioHandler::PlaySound(const char* sound_dir)
         std::cout << "Failed to make context" << std::endl;
 
     CheckErrors();
-    
 
     ALuint source;
 
@@ -73,12 +67,10 @@ void AudioHandler::PlaySound(const char* sound_dir)
     alSourcei(source, AL_LOOPING, AL_FALSE);
     CheckErrors();
 
-
     ALuint buffer;
 
     alGenBuffers((ALuint)1, &buffer);
     CheckErrors();
-
 
     WaveInfo *wave;
     char *bufferData;
@@ -88,26 +80,26 @@ void AudioHandler::PlaySound(const char* sound_dir)
     //std::cout << wave << std::endl;
     if (!wave) {
         fprintf(stderr, "failed to read wave file\n");
-            //std::cout << "failed to read wave file\n" << stderr << std::endl;
+        //std::cout << "failed to read wave file\n" << stderr << std::endl;
     }
 
     ret = WaveSeekFile(0, wave);
     if (ret) {
-            fprintf(stderr, "failed to seek wave file\n");
+        fprintf(stderr, "failed to seek wave file\n");
     }
 
-    bufferData = (char *) malloc(wave->dataSize);
+    bufferData = (char *)malloc(wave->dataSize);
     if (!bufferData) {
-            perror("malloc");
+        perror("malloc");
     }
 
     ret = WaveReadFile(bufferData, wave->dataSize, wave);
-    if (ret != (int) wave->dataSize) {
-            fprintf(stderr, "short read: %d, want: %d\n", ret, wave->dataSize);
+    if (ret != (int)wave->dataSize) {
+        fprintf(stderr, "short read: %d, want: %d\n", ret, wave->dataSize);
     }
 
     alBufferData(buffer, to_al_format(wave->channels, wave->bitsPerSample),
-                bufferData, wave->dataSize, wave->sampleRate);
+                 bufferData, wave->dataSize, wave->sampleRate);
     CheckErrors();
 
     alSourcei(source, AL_BUFFER, buffer);
@@ -117,19 +109,16 @@ void AudioHandler::PlaySound(const char* sound_dir)
     CheckErrors();
 
     alGetSourcei(source, AL_SOURCE_STATE, &source_state);
-	CheckErrors();
-	while (source_state == AL_PLAYING) {
-		alGetSourcei(source, AL_SOURCE_STATE, &source_state);
-		CheckErrors();
-	}
+    CheckErrors();
+    while (source_state == AL_PLAYING) {
+        alGetSourcei(source, AL_SOURCE_STATE, &source_state);
+        CheckErrors();
+    }
 
     alDeleteSources(1, &source);
-	alDeleteBuffers(1, &buffer);
-	device = alcGetContextsDevice(context);
-	alcMakeContextCurrent(NULL);
-	alcDestroyContext(context);
-	alcCloseDevice(device);
+    alDeleteBuffers(1, &buffer);
+    device = alcGetContextsDevice(context);
+    alcMakeContextCurrent(NULL);
+    alcDestroyContext(context);
+    alcCloseDevice(device);
 }
-
-
-

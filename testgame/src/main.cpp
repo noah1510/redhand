@@ -41,12 +41,17 @@ int main(){
         gameEngine->stopGame();
     }else{
         exitCode = game_init(gameEngine->getActiveWorld());
-        if(exitCode < 0){return abs(exitCode);};
+        if(exitCode < 0){
+            stopSound();
+            return abs(exitCode);
+        };
         
         //run the game
         exitCode = gameEngine->runGame(); 
     }
     
+    //stop the sound thread (will be part of the engine)
+    stopSound();
     //return the error code if something bad happened or 0 if everything is fine
     return abs(exitCode);
     
