@@ -1,4 +1,4 @@
-#include "redhand/audio/AudioHandler.hpp"
+#include "redhand/AudioHandler.hpp"
 
 using namespace redhand;
 
