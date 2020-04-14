@@ -18,6 +18,7 @@ include/glm
 include/GLFW
 include/glad
 include/KHR
+include/AL
 
 obj-x86_64-linux-gnu
 share
