@@ -47,7 +47,7 @@ then
 
     if [ "$1" == "--ci" ]
     then
-        choco install openalsdk --yes --verbose --no-progress
+        choco install ninja openalsdk --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
