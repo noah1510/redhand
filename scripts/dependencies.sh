@@ -47,7 +47,7 @@ then
 
     if [ "$1" == "--ci" ]
     then
-        choco install qt-sdk-windows-x86-mingw_opengl --yes --verbose --no-progress
+        choco install openalsdk --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"

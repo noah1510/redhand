@@ -107,7 +107,7 @@ then
 
     BUILDGLFW="1"
     BUILDGLM="1"
-    BUILDOPENAL="1"
+    BUILDOPENAL="0"
 
     if [ $VSCODE -eq "1" ]
     then
