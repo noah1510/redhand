@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 if [ $1 ]
 then
@@ -40,6 +41,7 @@ else
     # Unknown os
     echo "running on something else."
     echo "Not a supported OS: $OSTYPE" >&2
+    set +x
     exit 1
 fi
 
@@ -51,7 +53,9 @@ then
   echo "Successfully ran program"
 else
   echo "Error during execution of the program: ${PIPESTATUS[0]} " >&2
+  set +x
   exit 2
 fi
 
+set +x
 exit 0

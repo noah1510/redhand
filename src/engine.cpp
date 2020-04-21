@@ -168,7 +168,8 @@ int redhand::engine::runGame(){
             std::shared_ptr<world> nextWorld = nullptr;
 
             //get the new error
-            auto localErrorCode = physicsLoopFunction(this);
+            int localErrorCode = 0;
+            localErrorCode = physicsLoopFunction(this);
 
             //if there was an error terminate the game
             if(localErrorCode < 0){

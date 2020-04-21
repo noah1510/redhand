@@ -7,7 +7,7 @@ BUILDARGS=$@
 #    BUILDARGS="$BUILDARGS $i"
 #done
 
-./scripts/build.sh $BUILDARGS
+sh ./scripts/build.sh $BUILDARGS
 if [ $? -eq 0 ]
 then
   echo "Successfully built library"
@@ -18,7 +18,7 @@ else
   exit 1
 fi
 
-./testgame/scripts/build.sh $BUILDARGS
+sh ./testgame/scripts/build.sh $BUILDARGS
 if [ $? -eq 0 ]
 then
   echo "Successfully built testgame"
@@ -29,7 +29,7 @@ else
   exit 2
 fi
 
-./testgame/scripts/run.sh
+sh ./testgame/scripts/run.sh
 if [ $? -eq 0 ]
 then
   echo "Successfully ran"

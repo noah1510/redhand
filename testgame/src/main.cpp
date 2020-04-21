@@ -19,6 +19,9 @@
 int main(){
     int exitCode = 0;
 
+    std::cout << "libredhand_version:" << redhand::REDHAND_VERSION_STRING << std::endl;
+    assert(redhand::REDHAND_VERSION_STRING.compare("0.0.6") > 0 );
+
     //create the engine object
     std::shared_ptr<redhand::engine> gameEngine(new redhand::engine());
 

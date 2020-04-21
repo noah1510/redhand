@@ -69,7 +69,7 @@ PROJECTNAME="redhand"
 
 if [ "$SETUP" == "1" ]
 then
-    ./scripts/setup.sh
+    sh ./scripts/setup.sh
 fi
 
 if [ "$OSTYPE" == "linux-gnu" ]
