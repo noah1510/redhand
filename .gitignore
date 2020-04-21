@@ -45,5 +45,6 @@ debian/*
 *.tar.gz
 
 doc
+!doc/markdown
 
 src/glad.c

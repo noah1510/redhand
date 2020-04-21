@@ -11,6 +11,7 @@ While these objects give you a simple way to get started, they also allow you to
 ## License information
 
 The code is licensed under the LGPL-3.0 License.
+You can find the full information [here](https://github.com/noah1510/redhand/blob/master/debian/copyright).
 
 All the other stuff, like Textures, Images and Sounds are Licensed under CC-0.
 If they are not made by me, I will publish the source in the [wiki](https://github.com/noah1510/redhand/wiki/External-Sources).
@@ -18,8 +19,25 @@ In case the license differs from CC-0 it will also be mentioned there.
 
 ## How to compile/install this project
 
-* [Installation](https://github.com/noah1510/redhand/wiki/Installation)
-* [Documentaion of the code](https://noah1510.github.io/redhand/)
+There are two release types tagged and latest.
+The tagged version is generally more stable and tested while the latest version has all the features but might break some games.
+
+### Ubuntu (bionic) based distributions
+
+There are two personal package archieves you can choose from:
+
+* [libredhand tagged](https://launchpad.net/~noasakurajin/+archive/ubuntu/libredhand)
+* [libredhand latest](https://launchpad.net/~noasakurajin/+archive/ubuntu/libredhand-latest)
+
+### Windows
+
+You can download the either the latest or the last tagged realese form [github](https://github.com/noah1510/redhand/releases).
+The dlls are automatically compiled and uploaded on every tagged and versioned commit.
+
+### Manually compiling the project
+
+* [Installation](md_doc_markdown_install.html)
+* [Documentaion of the code](namespaceredhand.html)
 
 ### Extra Notes for contibutors
 

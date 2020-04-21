@@ -9,6 +9,14 @@ Files: debian/*
 Copyright: 2020 Noa Sakurajin <noasakurajin@web.de>
 License: LGPL-3.0
 
+Files: textures/open/crate.png
+Copyright: Luke.RUSTLTD <https://opengameart.org/users/lukerustltd>
+License: CC-0
+
+Files: textures/open/house.png
+Copyright: Rattel <https://opengameart.org/users/rattel>
+License: CC-0
+
 License: LGPL-3.0
        GNU LESSER GENERAL PUBLIC LICENSE
                            Version 3, 29 June 2007
