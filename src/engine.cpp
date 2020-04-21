@@ -3,9 +3,7 @@
 using namespace redhand;
 
 redhand::engine::engine(){
-
-    configuration = DEFAULT_ENGINE_CONFIG;
-    
+    setConfig(DEFAULT_ENGINE_CONFIG);
 }
 
 redhand::engine::~engine(){
@@ -20,6 +18,7 @@ redhand::engine::~engine(){
 
 void redhand::engine::setConfig(engine_config conf){
     configuration = conf;
+    configuration.redhand_version = "0.0.7";
 }
 
 engine_config redhand::engine::getConfig(){

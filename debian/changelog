@@ -1,3 +1,9 @@
+libredhand (0.0.7) bionic; urgency=medium
+
+  * updated library version variable
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Tue, 21 Apr 2020 15:27:28 +0200
+
 libredhand (0.0.6) bionic; urgency=medium
 
   * finished refactoring of game_object

@@ -19,15 +19,15 @@
 int main(){
     int exitCode = 0;
 
-    std::cout << "libredhand_version:" << redhand::REDHAND_VERSION_STRING << std::endl;
-    assert(redhand::REDHAND_VERSION_STRING.compare("0.0.6") > 0 );
-
     //create the engine object
     std::shared_ptr<redhand::engine> gameEngine(new redhand::engine());
 
     //get the current config of the engine
     redhand::engine_config conf = gameEngine->getConfig();
-    
+
+    //just make sure the version higher than 0.0.6
+    assert(conf.redhand_version.compare("0.0.6") > 0);
+
     //change the configuration and set the new config
     conf.title = "Redhand Test Game";
     conf.RESIZABLE = true;
