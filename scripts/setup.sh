@@ -252,13 +252,13 @@ mkdir -p "deploy"
 
 if [ "$BUILDGLFW" == "1" ]
 then
-  cp "build/glfw/$GLFWLIB" "lib"
-  cp "build/glfw/$GLFWDEPLOY" "lib"
+  cp "build/glfw/src/$GLFWLIB" "lib"
+  cp "build/glfw/src/$GLFWDEPLOY" "lib"
 
-  cp "build/glfw/$GLFWLIB" "build/$BUILDNAME"
+  cp "build/glfw/src/$GLFWLIB" "build/$BUILDNAME"
 
-  cp "build/glfw/$GLFWLIB" "deploy"
-  cp "build/glfw/$GLFWDEPLOY" "deploy"
+  cp "build/glfw/src/$GLFWLIB" "deploy"
+  cp "build/glfw/src/$GLFWDEPLOY" "deploy"
 fi
 
 cp -r "dependencies/glad/include" "."
