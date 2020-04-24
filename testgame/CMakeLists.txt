@@ -79,7 +79,7 @@ if (UNIX)
     else()
         find_library(REDHAND
             NAMES libredhand.so redhand
-            HINTS "${CMAKE_PREFIX_PATH}/lib/")   
+            HINTS "${CMAKE_PREFIX_PATH}/lib/" "${CMAKE_PREFIX_PATH}/deploy/" "${CMAKE_PREFIX_PATH}")   
 
         target_link_libraries(${OUTPUT} ${REDHAND})
     endif(REDHAND_LOCATION)
@@ -87,7 +87,16 @@ if (UNIX)
 endif (UNIX)
 
 if (WIN32)
-    target_link_libraries(${OUTPUT} glfw3.dll)
-    target_link_libraries(${OUTPUT} libredhand.dll)
+    find_library(GLFW
+    NAMES glfw3.dll glfw glfw3
+    HINTS "${CMAKE_PREFIX_PATH}/lib/" "${CMAKE_PREFIX_PATH}/deploy/" "${CMAKE_PREFIX_PATH}")   
+
+    target_link_libraries(${OUTPUT} ${GLFW})
+
+    find_library(REDHAND
+        NAMES redhand redhand.dll
+        HINTS "${CMAKE_PREFIX_PATH}/lib/" "${CMAKE_PREFIX_PATH}/deploy/" "${CMAKE_PREFIX_PATH}")   
+
+    target_link_libraries(${OUTPUT} ${REDHAND})
     #target_link_libraries(${OUTPUT} sfml-graphics-2.dll sfml-audio-2.dll sfml-window-2.dll sfml-system-2.dll)
 endif (WIN32)

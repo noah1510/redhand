@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glad/glad.h> // include glad to get all the required OpenGL headers
+#include <redhand/glad/glad.h> // include glad to get all the required OpenGL headers
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>

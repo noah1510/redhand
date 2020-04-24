@@ -74,6 +74,7 @@ then
     echo "script running on linux"
 
     EXECUTABLE="$PROJECTNAME-$BUILDNAME"
+    REDHAND_LOCATION="deploy/libredhand.so"
 
 elif [ "$OSTYPE" == "darwin"* ]
 then
@@ -108,7 +109,7 @@ mkdir -p "build"
 #build actual project
 mkdir -p "build/$BUILDNAME"
 cd "build/$BUILDNAME"
-cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT -DREDHAND_LOCATION="deploy/libredhand.so" "../../testgame"
+cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT -DREDHAND_LOCATION="$REDHAND_LOCATION" "../../testgame"
 ninja -j"$THREADS"
 if [ $? -eq 0 ]
 then

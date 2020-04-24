@@ -1,3 +1,9 @@
+libredhand (0.0.8) bionic; urgency=medium
+
+  * added missing khrplatform.h and glad.h to package (redhand/glad/gald.h to avoid possible conflicts)
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Fri, 24 Apr 2020 16:16:48 +0200
+
 libredhand (0.0.7) bionic; urgency=medium
 
   * updated library version variable
