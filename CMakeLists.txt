@@ -65,9 +65,10 @@ endif (UNIX)
 
 if (WIN32)
     find_library(GLFW
-        NAMES glfw3.dll glfw.dll libglfw.dll glfw
-        HINTS ${ROOTDIR}/lib/ )
-    target_link_libraries(redhand ${GLFW})
+    NAMES glfw3.dll glfw glfw3
+    HINTS "${CMAKE_PREFIX_PATH}/lib/" "${CMAKE_PREFIX_PATH}/deploy/" "${CMAKE_PREFIX_PATH}")   
+
+    target_link_libraries(${OUTPUT} ${GLFW})
 endif (WIN32)
 
 install(TARGETS redhand
