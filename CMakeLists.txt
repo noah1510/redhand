@@ -12,12 +12,12 @@ option(OUTPUTFILE "Name of file to output")
 option(REPOROOT "Path of the root of the repo")
 
 if (REPOROOT)
-    SET(ROOTDIR ${REPOROOT})
+    SET(CMAKE_PREFIX_PATH ${REPOROOT})
 else (REPOROOT)
-    SET(ROOTDIR ${CMAKE_CURRENT_BINARY_DIR}/..)
+    SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
 
-include_directories(${ROOTDIR}/include/)
+include_directories(${CMAKE_PREFIX_PATH}/include/)
 
 if (UNIX)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")

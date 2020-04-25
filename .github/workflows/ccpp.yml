@@ -31,4 +31,4 @@ jobs:
       if: failure()
       with:
         name: build-artifact-${{ matrix.os }}-${{ matrix.compiler }}
-        path: build-artifact.zip
+        path: .
