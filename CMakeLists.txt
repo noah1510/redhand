@@ -59,10 +59,6 @@ if (UNIX)
 endif (UNIX)
 
 if (WIN32)
-    #find_library(GLFW
-    #NAMES glfw3.dll glfw glfw3
-    #HINTS "${CMAKE_PREFIX_PATH}/lib/" "${CMAKE_PREFIX_PATH}/deploy/" "${CMAKE_PREFIX_PATH}")   
-
     target_link_libraries(redhand ${CMAKE_PREFIX_PATH}/lib/glfw3.dll)
 endif (WIN32)
 
