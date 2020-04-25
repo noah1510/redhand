@@ -59,16 +59,16 @@ if (UNIX)
 endif (UNIX)
 
 if (WIN32)
-    find_library(GLFW
-    NAMES glfw3.dll glfw glfw3
-    HINTS "${CMAKE_PREFIX_PATH}/lib/" "${CMAKE_PREFIX_PATH}/deploy/" "${CMAKE_PREFIX_PATH}")   
+    #find_library(GLFW
+    #NAMES glfw3.dll glfw glfw3
+    #HINTS "${CMAKE_PREFIX_PATH}/lib/" "${CMAKE_PREFIX_PATH}/deploy/" "${CMAKE_PREFIX_PATH}")   
 
-    target_link_libraries(${OUTPUT} ${GLFW})
+    target_link_libraries(redhand ${CMAKE_PREFIX_PATH}/lib/glfw3.dll)
 endif (WIN32)
 
 install(TARGETS redhand
         LIBRARY DESTINATION .
-        PUBLIC_HEADER DESTINATION ${REPOROOT}/include/redhand)
+        PUBLIC_HEADER DESTINATION ${CMAKE_PREFIX_PATH}/include/redhand)
 
 file(GLOB HEADERS src/*.hpp)
-install(FILES ${HEADERS} DESTINATION ${REPOROOT}/include/redhand)
+install(FILES ${HEADERS} DESTINATION ${CMAKE_PREFIX_PATH}/include/redhand)
