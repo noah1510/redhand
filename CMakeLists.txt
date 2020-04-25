@@ -18,6 +18,7 @@ else (REPOROOT)
 endif (REPOROOT)
 
 include_directories(${CMAKE_PREFIX_PATH}/include/)
+link_directories(${CMAKE_PREFIX_PATH}/lib/)
 
 if (UNIX)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
@@ -26,12 +27,6 @@ endif (UNIX)
 if (WIN32)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread")
 endif (WIN32)
-
-find_program(CCACHE_FOUND ccache)
-if(CCACHE_FOUND)
-    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
-    set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
-endif(CCACHE_FOUND)
 
 SET(GCC_COVERAGE_COMPILE_FLAGS "-std=c++17 -g -O0 -Wall -Wextra")
 SET(GC_COVERAGE_COMPILE_FLAGS "-g -O0")
