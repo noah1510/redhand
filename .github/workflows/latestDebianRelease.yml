@@ -72,6 +72,8 @@ jobs:
       run: debuild -S -sa
     - name: publish package
       run: dput ppa:noasakurajin/libredhand-latest ../*b1_source.changes
+    - name: reset changelog
+      run: git checkout -- debian/changelog
     - name: update focal release version
       run: |
         MESSAGE="automatic focal build"
@@ -80,6 +82,8 @@ jobs:
       run: debuild -S -sa
     - name: publish package
       run: dput ppa:noasakurajin/libredhand-latest ../*f1_source.changes
+    - name: reset changelog
+      run: git checkout -- debian/changelog
 
 
 
