@@ -1,13 +1,46 @@
 #!/bin/bash
 set -x
 
-BUILDARGS=$@
-#for i in "$@"
-#do
-#    BUILDARGS="$BUILDARGS $i"
-#done
+if [ "$1" == "--setup" ]
+then
+  bash ./scripts/setup.sh
+  if [ $? -eq 0 ]
+  then
+    echo "Successfully ran setup"
+  else
+    echo "setup failed" >&2
+    cd "../.."
+    set +x
+    exit 10
+  fi
+fi
 
-./scripts/build.sh $BUILDARGS
+if [ "$1" == "--init" ]
+then
+  bash ./scripts/dependencies.sh
+  if [ $? -eq 0 ]
+  then
+    echo "Successfully installed dependencies"
+  else
+    echo "could not install dependencies" >&2
+    cd "../.."
+    set +x
+    exit 10
+  fi
+
+  bash ./scripts/setup.sh
+  if [ $? -eq 0 ]
+  then
+    echo "Successfully ran setup"
+  else
+    echo "setup failed" >&2
+    cd "../.."
+    set +x
+    exit 10
+  fi
+fi
+
+bash ./scripts/build.sh
 if [ $? -eq 0 ]
 then
   echo "Successfully built library"
@@ -18,7 +51,7 @@ else
   exit 1
 fi
 
-./testgame/scripts/build.sh $BUILDARGS
+bash ./testgame/scripts/build.sh
 if [ $? -eq 0 ]
 then
   echo "Successfully built testgame"
@@ -29,7 +62,7 @@ else
   exit 2
 fi
 
-./testgame/scripts/run.sh
+bash ./testgame/scripts/run.sh
 if [ $? -eq 0 ]
 then
   echo "Successfully ran"

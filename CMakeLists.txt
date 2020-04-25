@@ -6,18 +6,19 @@ if(CMAKE_VERSION VERSION_GREATER "3.11.0")
     cmake_policy(VERSION 3.11)
 endif()
 
-project(redhand VERSION "0.0.6" DESCRIPTION "a small 2D game engine")
+project(redhand VERSION "0.0.8" DESCRIPTION "a small 2D game engine")
 
 option(OUTPUTFILE "Name of file to output")
 option(REPOROOT "Path of the root of the repo")
 
 if (REPOROOT)
-    SET(ROOTDIR ${REPOROOT})
+    SET(CMAKE_PREFIX_PATH ${REPOROOT})
 else (REPOROOT)
-    SET(ROOTDIR ${CMAKE_CURRENT_BINARY_DIR}/..)
+    SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
 
-include_directories(${ROOTDIR}/include/)
+include_directories(${CMAKE_PREFIX_PATH}/include/)
+link_directories(${CMAKE_PREFIX_PATH}/lib/)
 
 if (UNIX)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
@@ -26,12 +27,6 @@ endif (UNIX)
 if (WIN32)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread")
 endif (WIN32)
-
-find_program(CCACHE_FOUND ccache)
-if(CCACHE_FOUND)
-    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
-    set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
-endif(CCACHE_FOUND)
 
 SET(GCC_COVERAGE_COMPILE_FLAGS "-std=c++17 -g -O0 -Wall -Wextra")
 SET(GC_COVERAGE_COMPILE_FLAGS "-g -O0")
@@ -64,15 +59,12 @@ if (UNIX)
 endif (UNIX)
 
 if (WIN32)
-    find_library(GLFW
-        NAMES glfw3.dll glfw.dll libglfw.dll glfw
-        HINTS ${ROOTDIR}/lib/ )
-    target_link_libraries(redhand ${GLFW})
+    target_link_libraries(redhand ${CMAKE_PREFIX_PATH}/lib/glfw3.dll)
 endif (WIN32)
 
 install(TARGETS redhand
         LIBRARY DESTINATION .
-        PUBLIC_HEADER DESTINATION ${REPOROOT}/include/redhand)
+        PUBLIC_HEADER DESTINATION ${CMAKE_PREFIX_PATH}/include/redhand)
 
 file(GLOB HEADERS src/*.hpp)
-install(FILES ${HEADERS} DESTINATION ${REPOROOT}/include/redhand)
+install(FILES ${HEADERS} DESTINATION ${CMAKE_PREFIX_PATH}/include/redhand)

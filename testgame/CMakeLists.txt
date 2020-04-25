@@ -39,16 +39,8 @@ if (WIN32)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread")
 endif (WIN32)
 
-find_program(CCACHE_FOUND ccache)
-if(CCACHE_FOUND)
-    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
-    set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
-endif(CCACHE_FOUND)
-
 SET(GCC_COVERAGE_COMPILE_FLAGS "-std=c++17 -g -O0 -Wall -Wextra")
 SET(GC_COVERAGE_COMPILE_FLAGS "-g -O0")
-
-
 
 SET(GCC_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 SET(GCC_C_FLAGS  "${CMAKE_C_FLAGS} ${GC_COVERAGE_COMPILE_FLAGS}")
@@ -79,15 +71,14 @@ if (UNIX)
     else()
         find_library(REDHAND
             NAMES libredhand.so redhand
-            HINTS "${CMAKE_PREFIX_PATH}/lib/")   
+            HINTS "${CMAKE_PREFIX_PATH}/lib/" "${CMAKE_PREFIX_PATH}/deploy/" "${CMAKE_PREFIX_PATH}")   
 
         target_link_libraries(${OUTPUT} ${REDHAND})
     endif(REDHAND_LOCATION)
-    #target_link_libraries(${OUTPUT} sfml-graphics sfml-audio sfml-window sfml-system)
 endif (UNIX)
 
 if (WIN32)
-    target_link_libraries(${OUTPUT} glfw3.dll)
-    target_link_libraries(${OUTPUT} libredhand.dll)
-    #target_link_libraries(${OUTPUT} sfml-graphics-2.dll sfml-audio-2.dll sfml-window-2.dll sfml-system-2.dll)
+    target_link_libraries(${OUTPUT} "${CMAKE_PREFIX_PATH}/lib/glfw3.dll") 
+
+    target_link_libraries(${OUTPUT} "${CMAKE_PREFIX_PATH}/lib/libredhand.dll")
 endif (WIN32)

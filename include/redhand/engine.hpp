@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glad/glad.h>
+#include <redhand/glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
@@ -35,7 +35,7 @@ const auto DONT_CARE = GLFW_DONT_CARE;
 ///This string provides a version in a pritable format.
 ///The first public version is 0.1.0 and from there it will be couted up.
 ///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release
-const auto REDHAND_VERSION_STRING = "0.0.6";
+const std::string REDHAND_HEADER_VERSION = "0.0.9";
 
 ///This function will be called every time the window size is changed
 void framebuffer_size_callback(GLFWwindow*, int width, int height);
@@ -64,6 +64,8 @@ typedef struct{
     unsigned int window_height;
     ///the window title
     std::string title;
+    ///the current redhand version (will be overwritten by the contructor)
+    std::string redhand_version;
 }engine_config;
 
 
@@ -77,7 +79,8 @@ const engine_config DEFAULT_ENGINE_CONFIG = {
     GL_TRUE,
     600,
     600,
-    redhand::REDHAND_VERSION_STRING
+    redhand::REDHAND_HEADER_VERSION,
+    redhand::REDHAND_HEADER_VERSION
 };
 
 

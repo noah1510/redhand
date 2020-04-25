@@ -24,7 +24,10 @@ int main(){
 
     //get the current config of the engine
     redhand::engine_config conf = gameEngine->getConfig();
-    
+
+    //just make sure the version higher than 0.0.8
+    assert(conf.redhand_version.compare("0.0.8") > 0);
+
     //change the configuration and set the new config
     conf.title = "Redhand Test Game";
     conf.RESIZABLE = true;

@@ -18,6 +18,8 @@ include/glm
 include/GLFW
 include/glad
 include/KHR
+include/redhand/glad
+include/redhand/KHR
 
 obj-x86_64-linux-gnu
 share
@@ -44,6 +46,9 @@ debian/*
 *.tar.xz
 *.tar.gz
 
-doc
+doc/html
+doc/def
+doc/man
+!doc/markdown
 
 src/glad.c

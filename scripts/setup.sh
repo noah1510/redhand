@@ -225,6 +225,9 @@ then
 fi
 
 mkdir -p "build"
+mkdir -p "lib"
+mkdir -p "build/$BUILDNAME"
+mkdir -p "deploy"
 
 #compiling glfw
 if [ "$BUILDGLFW" == "1" ]
@@ -243,15 +246,7 @@ then
     exit 2
   fi
   cd "../.."
-fi
 
-#copy results
-mkdir -p "lib"
-mkdir -p "build/$BUILDNAME"
-mkdir -p "deploy"
-
-if [ "$BUILDGLFW" == "1" ]
-then
   cp "build/glfw/src/$GLFWLIB" "lib"
   cp "build/glfw/src/$GLFWDEPLOY" "lib"
 
@@ -259,11 +254,16 @@ then
 
   cp "build/glfw/src/$GLFWLIB" "deploy"
   cp "build/glfw/src/$GLFWDEPLOY" "deploy"
+
 fi
 
+#copy results
 cp -r "dependencies/glad/include" "."
+mkdir -p "include/redhand/glad"
+mkdir -p "include/redhand/KHR"
+cp -r "dependencies/glad/include/glad/glad.h" "include/redhand/glad"
+cp -r "dependencies/glad/include/KHR/khrplatform.h" "include/redhand/KHR"
 cp -r "dependencies/glad/src/glad.c" "src"
-
 
 echo "Successfully finished setup"
 exit 0

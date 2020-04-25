@@ -24,3 +24,8 @@ jobs:
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: build-artifact-${{ matrix.os }}-${{ matrix.compiler }}
+        path: .

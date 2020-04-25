@@ -4,6 +4,7 @@ THREADS="3"
 LIBBUILDNAME="lib"
 SETUP="0"
 PACKAGE="0"
+INITILIZE="0"
 
 #parse parameter
 pars=$#
@@ -34,6 +35,11 @@ do
       shift
       SETUP="1"
       ;;
+    "--init")
+      shift
+      SETUP="1"
+      INITILIZE="1"
+      ;;
     "--deb")
       shift
       PACKAGE="1"
@@ -46,6 +52,7 @@ do
       echo "    -j [threadnumber]   Build the project with the specified number of threads."
       echo "    -o [buildname]      Build the project with the specified buildname defaults to main"
       echo "    --setup             Also execute the setup script to prepare all dependencies"
+      echo "    --init              Also execute the setup and dependencies scripts to prepare and install all dependencies"
       echo "    --deb               Build the library as debian package"
       echo ""
       echo "view the source on https://github.com/noah1510/redhand"
@@ -67,9 +74,14 @@ fi
 REPOROOT="$(pwd)"
 PROJECTNAME="redhand"
 
+if [ "$INITILIZE" == "1" ]
+then
+    bash ./scripts/dependencies.sh
+fi
+
 if [ "$SETUP" == "1" ]
 then
-    ./scripts/setup.sh
+    bash ./scripts/setup.sh
 fi
 
 if [ "$OSTYPE" == "linux-gnu" ]

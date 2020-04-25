@@ -1,0 +1,9 @@
+{ 
+  BasedOnStyle: LLVM,
+  UseTab: Never,
+  IndentWidth: 4,
+  TabWidth: 4,
+  BreakBeforeBraces: Attach,
+  IndentCaseLabels: false,
+  ColumnLimit: 0,
+}
