@@ -46,7 +46,9 @@ debian/*
 *.tar.xz
 *.tar.gz
 
-doc
+doc/html
+doc/def
+doc/man
 !doc/markdown
 
 src/glad.c

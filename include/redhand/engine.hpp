@@ -35,7 +35,7 @@ const auto DONT_CARE = GLFW_DONT_CARE;
 ///This string provides a version in a pritable format.
 ///The first public version is 0.1.0 and from there it will be couted up.
 ///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release
-const std::string REDHAND_HEADER_VERSION = "0.0.7";
+const std::string REDHAND_HEADER_VERSION = "0.0.9";
 
 ///This function will be called every time the window size is changed
 void framebuffer_size_callback(GLFWwindow*, int width, int height);

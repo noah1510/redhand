@@ -8,14 +8,13 @@ The used OpenGL APIs are GLFW and glad so this project should run on all operati
 This Project provides several functions and objects that make it easier to start building your own games.
 While these objects give you a simple way to get started, they also allow you to insert advanced OpenGL commands.
 
+You can find all the documentation [here](https://noah1510.github.io/redhand/).
+
 ## License information
 
 The code is licensed under the LGPL-3.0 License.
-You can find the full information [here](https://github.com/noah1510/redhand/blob/master/debian/copyright).
-
 All the other stuff, like Textures, Images and Sounds are Licensed under CC-0.
-If they are not made by me, I will publish the source in the [wiki](https://github.com/noah1510/redhand/wiki/External-Sources).
-In case the license differs from CC-0 it will also be mentioned there.
+You can find the full information [here](https://github.com/noah1510/redhand/blob/master/debian/copyright).
 
 ## How to compile/install this project
 

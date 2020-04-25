@@ -16,12 +16,12 @@ redhand::engine::~engine(){
     glfwTerminate();
 }
 
-void redhand::engine::setConfig(engine_config conf){
+void redhand::engine::setConfig(redhand::engine_config conf){
     configuration = conf;
-    configuration.redhand_version = "0.0.7";
+    configuration.redhand_version = redhand::REDHAND_HEADER_VERSION;
 }
 
-engine_config redhand::engine::getConfig(){
+redhand::engine_config redhand::engine::getConfig(){
     return configuration;
 }
 
@@ -71,20 +71,20 @@ void redhand::engine::init(){
 
 }
 
-std::shared_ptr<world> redhand::engine::getActiveWorld(){
+std::shared_ptr<redhand::world> redhand::engine::getActiveWorld(){
     if(errorCode < 0){
         return nullptr;
     }
 
-    return std::shared_ptr<world>(activeWorld);
+    return std::shared_ptr<redhand::world>(activeWorld);
 }
 
-int redhand::engine::setActiveWorld(std::shared_ptr<world> newWorld){
+int redhand::engine::setActiveWorld(std::shared_ptr<redhand::world> newWorld){
     
     if(newWorld != nullptr){
         activeWorld.reset();
         
-        activeWorld = std::shared_ptr<world>(newWorld);
+        activeWorld = std::shared_ptr<redhand::world>(newWorld);
     }else{
         activeWorld = nullptr;
         stopGame(-7);
@@ -107,7 +107,7 @@ int redhand::engine::getErrorCode(){
     return errorCode;
 }
 
-int redhand::engine::setPhysicsLoopFunction(int loop(engine*)){
+int redhand::engine::setPhysicsLoopFunction(int loop(redhand::engine*)){
     physicsLoopFunction = loop;
 
     return errorCode;
