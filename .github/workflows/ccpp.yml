@@ -24,3 +24,10 @@ jobs:
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
+    - name: create build artifact
+      run: 7z a -r build-artifact.zip .
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: build-artifact
+        path: build-artifact.zip
