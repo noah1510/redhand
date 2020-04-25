@@ -71,7 +71,7 @@ jobs:
     - name: build package
       run: debuild -S -sa
     - name: publish package
-      run: dput ppa:noasakurajin/libredhand-latest ../*b1.changes
+      run: dput ppa:noasakurajin/libredhand-latest ../*b1_source.changes
     - name: update focal release version
       run: |
         MESSAGE="automatic focal build"
@@ -79,7 +79,7 @@ jobs:
     - name: build package
       run: debuild -S -sa
     - name: publish package
-      run: dput ppa:noasakurajin/libredhand-latest ../*f1.changes
+      run: dput ppa:noasakurajin/libredhand-latest ../*f1_source.changes
 
 
 
