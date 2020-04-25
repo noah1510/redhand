@@ -1,7 +1,7 @@
 <map id="include/redhand/world.hpp" name="include/redhand/world.hpp">
 <area shape="rect" id="node4" href="$game__object_8hpp.html" title="redhand/game_object.hpp" alt="" coords="503,80,673,107"/>
 <area shape="rect" id="node5" href="$shader_8hpp.html" title="redhand/shader.hpp" alt="" coords="863,155,999,181"/>
-<area shape="rect" id="node17" href="$math_8hpp.html" title="redhand/math.hpp" alt="" coords="35,229,162,256"/>
+<area shape="rect" id="node17" href="$math_8hpp.html" title="redhand/math.hpp" alt="" coords="10,229,137,256"/>
 <area shape="rect" id="node20" href="$texture_8hpp.html" title="redhand/texture.hpp" alt="" coords="374,155,511,181"/>
-<area shape="rect" id="node19" href="$shader_source_8hpp.html" title="redhand/shaderSource.hpp" alt="" coords="1115,229,1293,256"/>
+<area shape="rect" id="node19" href="$shader_source_8hpp.html" title="redhand/shaderSource.hpp" alt="" coords="1139,229,1317,256"/>
 </map>

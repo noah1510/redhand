@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['math_2ecpp',['math.cpp',['../math_8cpp.html',1,'']]],
-  ['math_2ehpp',['math.hpp',['../math_8hpp.html',1,'']]]
+  ['install_2emd',['install.md',['../install_8md.html',1,'']]]
 ];

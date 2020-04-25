@@ -1,6 +1,8 @@
 var NAVTREE =
 [
   [ "libredhand", "index.html", [
+    [ "Welcome to RedHand ![Build Status](https://github.com/noah1510/redhand/workflows/CI/badge.svg)", "index.html", null ],
+    [ "Manual installation", "md_doc_markdown_install.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [

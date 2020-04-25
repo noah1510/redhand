@@ -6,5 +6,5 @@ var engine_8hpp =
     [ "DEFAULT_ENGINE_CONFIG", "engine_8hpp.html#a61dd684bf860b95bfdac37b230eb7237", null ],
     [ "DONT_CARE", "engine_8hpp.html#a72ba2fe45b898f5108b553ca4a72ed59", null ],
     [ "OPENGL_CORE_PROFILE", "engine_8hpp.html#a9d97421fe7a319c9f5ff8a99a2d0d103", null ],
-    [ "REDHAND_VERSION_STRING", "engine_8hpp.html#a2a06deea17f14de7be4c1dbfdbaf49f7", null ]
+    [ "REDHAND_HEADER_VERSION", "engine_8hpp.html#a76b9afa08e6105875a3aa4a05a5282b7", null ]
 ];
