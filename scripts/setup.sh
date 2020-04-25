@@ -259,6 +259,8 @@ fi
 
 #copy results
 cp -r "dependencies/glad/include" "."
+mkdir -p "include/redhand/glad"
+mkdir -p "include/redhand/KHR"
 cp -r "dependencies/glad/include/glad/glad.h" "include/redhand/glad"
 cp -r "dependencies/glad/include/KHR/khrplatform.h" "include/redhand/KHR"
 cp -r "dependencies/glad/src/glad.c" "src"
