@@ -1,3 +1,9 @@
+libredhand (0.0.10) bionic; urgency=medium
+
+  * reworked textures
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Thu, 30 Apr 2020 16:07:24 +0200
+
 libredhand (0.0.9) bionic; urgency=medium
 
   * Updated copyright and minor fixes
