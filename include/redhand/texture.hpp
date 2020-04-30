@@ -14,6 +14,20 @@
 
 namespace redhand{
 
+typedef struct{
+
+std::string name;
+
+std::string file_location;
+
+int Wrap_S;
+
+int Wrap_T;
+
+int data_type;
+
+} image_properties;
+
 void initSTB();
 
 class texture2D{

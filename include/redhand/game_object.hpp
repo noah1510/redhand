@@ -53,7 +53,9 @@ typedef struct{
     ///@note this is not the real texture scale this is more like a multiplier for it.
     glm::vec2                                               texture_scale;
     ///THe alpha value of this game_object
-    float                                                   alpha_value;                                
+    float                                                   alpha_value;
+    ///Enable automatic scaling of texture (might be buggy)
+    bool                                                    automatic_scaling;                                
     
 } game_object_properties;
 
@@ -75,7 +77,8 @@ const game_object_properties DEFAULT_GAME_OBJECT_PROPERTIES = {
     GL_STATIC_DRAW,
     "game_object",
     {1.0f,1.0f},
-    1.0f
+    1.0f,
+    false
 };
 
 /**

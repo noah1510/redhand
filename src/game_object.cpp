@@ -176,8 +176,13 @@ void redhand::game_object::setScreenSize(int width, int height){
     auto lock2 = std::shared_lock(mutex_texture_mode);
     if(texture_mode == 1){
         auto lock3 = std::scoped_lock(mutex_texture_scale);
-        texture_scale.x = local_object_properties.texture_scale.x * local_object_properties.scale.at(0) * width / (local_object_properties.attached_texture->getWidth() * (width / height + 1.0f));
-        texture_scale.y = local_object_properties.texture_scale.y * local_object_properties.scale.at(1) * height / (local_object_properties.attached_texture->getHeight() * (height / width + 1.0f));
+        if(object_properties.automatic_scaling){
+            texture_scale.x = local_object_properties.texture_scale.x * local_object_properties.scale.at(0) * width / (local_object_properties.attached_texture->getWidth() * (width / height + 1.0f));
+            texture_scale.y = local_object_properties.texture_scale.y * local_object_properties.scale.at(1) * height / (local_object_properties.attached_texture->getHeight() * (height / width + 1.0f));
+        }else{
+            texture_scale.x = local_object_properties.texture_scale.x;
+            texture_scale.y = local_object_properties.texture_scale.y;
+        }
     }  
 }
 
