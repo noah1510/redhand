@@ -177,8 +177,8 @@ void redhand::game_object::setScreenSize(int width, int height){
     if(texture_mode == 1){
         auto lock3 = std::scoped_lock(mutex_texture_scale);
         if(object_properties.automatic_scaling){
-            texture_scale.x = local_object_properties.texture_scale.x * local_object_properties.scale.at(0) * width / (local_object_properties.attached_texture->getWidth() * (width / height + 1.0f));
-            texture_scale.y = local_object_properties.texture_scale.y * local_object_properties.scale.at(1) * height / (local_object_properties.attached_texture->getHeight() * (height / width + 1.0f));
+            texture_scale.x = local_object_properties.texture_scale.x * local_object_properties.scale.at(0);
+            texture_scale.y = local_object_properties.texture_scale.y * local_object_properties.scale.at(1);
         }else{
             texture_scale.x = local_object_properties.texture_scale.x;
             texture_scale.y = local_object_properties.texture_scale.y;
@@ -467,12 +467,19 @@ std::unique_ptr<redhand::game_object> redhand::createRectangle(
 ){
 
     auto settings = DEFAULT_GAME_OBJECT_PROPERTIES;
+
+    if(texture_scale <= 0.0f){
+        settings.texture_scale = {-texture_scale,-texture_scale};
+        settings.automatic_scaling = true;
+    }else{
+        settings.texture_scale = {texture_scale,texture_scale};
+    }
+    
     settings.attached_shader = shade;
     settings.attached_texture = tex;
     settings.gl_drawing_mode = DrawingMode;
     settings.scale.at(0) = width;
     settings.scale.at(1) = height;
-    settings.texture_scale = {texture_scale,texture_scale};
     settings.name = name;
 
     settings.points_coordinates = {
