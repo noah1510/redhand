@@ -71,7 +71,7 @@ int createTestworld(std::shared_ptr<redhand::world> testWorld){
             testWorld->getTextureByName("bg"),
             GL_STATIC_DRAW,
             "background",
-            1.25f
+            -1.0f
         )
     ) < 0){
         return -3;

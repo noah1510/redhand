@@ -50,5 +50,6 @@ doc/html
 doc/def
 doc/man
 !doc/markdown
+!logo
 
 src/glad.c

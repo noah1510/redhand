@@ -12,21 +12,21 @@ void redhand::initSTB(){
     stbi_set_flip_vertically_on_load(true); 
 }
 
-redhand::texture2D::texture2D(const char* filename, int Wrap_S, int Wrap_T){
+void redhand::texture2D::initTexture2D(){
     glGenTextures(1, &id);
     glBindTexture(GL_TEXTURE_2D, id);
 
     // set the texture wrapping/filtering options (on the currently bound texture object)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, Wrap_S);	
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, Wrap_T);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, texture_properties.wrap_S);	
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, texture_properties.wrap_T);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, texture_properties.texture_min_filter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, texture_properties.texture_max_filter);
+
     // load and generate the texture
     int nrChannels;
-    unsigned char *data = stbi_load(filename, &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load(texture_properties.file_location.c_str(), &width, &height, &nrChannels, 0);
     if (data){
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glTexImage2D(GL_TEXTURE_2D, 0, texture_properties.internal_data_type, width, height, 0, texture_properties.data_type, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else{
@@ -36,36 +36,20 @@ redhand::texture2D::texture2D(const char* filename, int Wrap_S, int Wrap_T){
     stbi_image_free(data);
 }
 
-redhand::texture2D::texture2D(
-    const char* filename
-):texture2D(
-    filename,
-    GL_REPEAT,
-    GL_REPEAT
-){}
+///@todo add file checks
+redhand::texture2D::texture2D(image_properties prop){
 
-redhand::texture2D::texture2D(
-    const char* filename, 
-    std::string name
-):texture2D(
-    filename,
-    GL_REPEAT,
-    GL_REPEAT
-){
-    texture_name = name;
+    texture_properties = prop;
+
+    initTexture2D();
 }
 
-redhand::texture2D::texture2D(
-    const char* filename,
-    int Wrap_S, 
-    int Wrap_T, 
-    std::string name
-):texture2D(
-    filename,
-    Wrap_S,
-    Wrap_T
-){
-    texture_name = name;
+redhand::texture2D::texture2D(std::string file_location, std::string texture_name){
+
+    texture_properties.name = texture_name;
+    texture_properties.file_location = file_location;
+
+    initTexture2D();
 }
 
 bool redhand::texture2D::hasErrord(){
@@ -94,11 +78,7 @@ int redhand::texture2D::getHeight(){
     return height;
 }
 
-void redhand::texture2D::setName(std::string name){
-    auto lock = std::scoped_lock(mutex_texture_name);
-    texture_name = name;
-}
 std::string_view redhand::texture2D::getName(){
-    auto lock = std::shared_lock(mutex_texture_name);
-    return texture_name;
+    auto lock = std::shared_lock(mutex_texture_properties);
+    return texture_properties.name;
 }
