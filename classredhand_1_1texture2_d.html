@@ -27,9 +27,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.9</span>
+   &#160;<span id="projectnumber">0.0.10</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -83,6 +84,7 @@ $(document).ready(function(){initNavTree('classredhand_1_1texture2_d.html','');}
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classredhand_1_1texture2_d-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -91,21 +93,23 @@ $(document).ready(function(){initNavTree('classredhand_1_1texture2_d.html','');}
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="texture_8hpp_source.html">texture.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for redhand::texture2D:</div>
+<div class="dyncontent">
+<div class="center"><img src="classredhand_1_1texture2_d__coll__graph.png" border="0" usemap="#redhand_1_1texture2_d_coll__map" alt="Collaboration graph"/></div>
+<map name="redhand_1_1texture2_d_coll__map" id="redhand_1_1texture2_d_coll__map">
+<area shape="rect" id="node2" href="structredhand_1_1image__properties.html" title="This struct stores all the information needed to create a 2 dimensional image from a file..." alt="" coords="5,5,180,32"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4fbe0964d78088c06b276f75c2664770"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a4fbe0964d78088c06b276f75c2664770">texture2D</a> (const char *filename)</td></tr>
-<tr class="memdesc:a4fbe0964d78088c06b276f75c2664770"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a 2-dimensional texture from a given filename.  <a href="#a4fbe0964d78088c06b276f75c2664770">More...</a><br /></td></tr>
-<tr class="separator:a4fbe0964d78088c06b276f75c2664770"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a950fbe7f162091e0993d453c036fc24a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a950fbe7f162091e0993d453c036fc24a">texture2D</a> (const char *filename, std::string name)</td></tr>
-<tr class="memdesc:a950fbe7f162091e0993d453c036fc24a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a 2-dimensional texture from a given filename.  <a href="#a950fbe7f162091e0993d453c036fc24a">More...</a><br /></td></tr>
-<tr class="separator:a950fbe7f162091e0993d453c036fc24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96f4fc3e5eceba06158306de0a1c1a23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a96f4fc3e5eceba06158306de0a1c1a23">texture2D</a> (const char *filename, int Wrap_S, int Wrap_T)</td></tr>
-<tr class="memdesc:a96f4fc3e5eceba06158306de0a1c1a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a 2-dimensional texture from a given filename.  <a href="#a96f4fc3e5eceba06158306de0a1c1a23">More...</a><br /></td></tr>
-<tr class="separator:a96f4fc3e5eceba06158306de0a1c1a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5cb62bfc4ea2e801cfadfa80f751633"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#af5cb62bfc4ea2e801cfadfa80f751633">texture2D</a> (const char *filename, int Wrap_S, int Wrap_T, std::string name)</td></tr>
-<tr class="memdesc:af5cb62bfc4ea2e801cfadfa80f751633"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a 2-dimensional texture from a given filename.  <a href="#af5cb62bfc4ea2e801cfadfa80f751633">More...</a><br /></td></tr>
-<tr class="separator:af5cb62bfc4ea2e801cfadfa80f751633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54e4d3b378f5f44d70b7b6c8479391f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a54e4d3b378f5f44d70b7b6c8479391f6">texture2D</a> (<a class="el" href="structredhand_1_1image__properties.html">image_properties</a> prop)</td></tr>
+<tr class="memdesc:a54e4d3b378f5f44d70b7b6c8479391f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a 2-dimensional texture from a given filename.  <a href="#a54e4d3b378f5f44d70b7b6c8479391f6">More...</a><br /></td></tr>
+<tr class="separator:a54e4d3b378f5f44d70b7b6c8479391f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13c1c78a152a8152256da1f5ed60db6b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a13c1c78a152a8152256da1f5ed60db6b">texture2D</a> (std::string file_location, std::string texture_name)</td></tr>
+<tr class="memdesc:a13c1c78a152a8152256da1f5ed60db6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor creates a 2-dimensional texture from a given filename and texture name.  <a href="#a13c1c78a152a8152256da1f5ed60db6b">More...</a><br /></td></tr>
+<tr class="separator:a13c1c78a152a8152256da1f5ed60db6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1e2a52213b11b1d5b797b82dd222d0f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#ae1e2a52213b11b1d5b797b82dd222d0f">hasErrord</a> ()</td></tr>
 <tr class="memdesc:ae1e2a52213b11b1d5b797b82dd222d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns true if an error has happened.  <a href="#ae1e2a52213b11b1d5b797b82dd222d0f">More...</a><br /></td></tr>
 <tr class="separator:ae1e2a52213b11b1d5b797b82dd222d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,12 +125,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a867fd95f1d6cf985bbce27a5c4f50dcd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a867fd95f1d6cf985bbce27a5c4f50dcd">getHeight</a> ()</td></tr>
 <tr class="memdesc:a867fd95f1d6cf985bbce27a5c4f50dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function retruns the height of the texture.  <a href="#a867fd95f1d6cf985bbce27a5c4f50dcd">More...</a><br /></td></tr>
 <tr class="separator:a867fd95f1d6cf985bbce27a5c4f50dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afef39ecedb7b581cdd1c6618fa010d0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#afef39ecedb7b581cdd1c6618fa010d0d">setName</a> (std::string name)</td></tr>
-<tr class="memdesc:afef39ecedb7b581cdd1c6618fa010d0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function sets the name of the <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a> to the given string.  <a href="#afef39ecedb7b581cdd1c6618fa010d0d">More...</a><br /></td></tr>
-<tr class="separator:afef39ecedb7b581cdd1c6618fa010d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a652ca271c7dbace99adb39918ba26f94"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a652ca271c7dbace99adb39918ba26f94">getName</a> ()</td></tr>
 <tr class="memdesc:a652ca271c7dbace99adb39918ba26f94"><td class="mdescLeft">&#160;</td><td class="mdescRight">This funtion returns the name of the object.  <a href="#a652ca271c7dbace99adb39918ba26f94">More...</a><br /></td></tr>
 <tr class="separator:a652ca271c7dbace99adb39918ba26f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab4ef5c1815653017d78bec665dcc527d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#ab4ef5c1815653017d78bec665dcc527d">initTexture2D</a> ()</td></tr>
+<tr class="memdesc:ab4ef5c1815653017d78bec665dcc527d"><td class="mdescLeft">&#160;</td><td class="mdescRight">initilizes the texture  <a href="#ab4ef5c1815653017d78bec665dcc527d">More...</a><br /></td></tr>
+<tr class="separator:ab4ef5c1815653017d78bec665dcc527d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -154,19 +161,19 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a00fbe6a36fa13a1b5b4c8a2b7c98acdf"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a00fbe6a36fa13a1b5b4c8a2b7c98acdf">mutex_height</a></td></tr>
 <tr class="memdesc:a00fbe6a36fa13a1b5b4c8a2b7c98acdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the height  <a href="#a00fbe6a36fa13a1b5b4c8a2b7c98acdf">More...</a><br /></td></tr>
 <tr class="separator:a00fbe6a36fa13a1b5b4c8a2b7c98acdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fc5fcc2cada35237adb1f6b321a6db2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a9fc5fcc2cada35237adb1f6b321a6db2">texture_name</a> = &quot;texture&quot;</td></tr>
-<tr class="memdesc:a9fc5fcc2cada35237adb1f6b321a6db2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the texture  <a href="#a9fc5fcc2cada35237adb1f6b321a6db2">More...</a><br /></td></tr>
-<tr class="separator:a9fc5fcc2cada35237adb1f6b321a6db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1221c4005c71742d01feab1cd621ba2"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#af1221c4005c71742d01feab1cd621ba2">mutex_texture_name</a></td></tr>
-<tr class="memdesc:af1221c4005c71742d01feab1cd621ba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the texture_name  <a href="#af1221c4005c71742d01feab1cd621ba2">More...</a><br /></td></tr>
-<tr class="separator:af1221c4005c71742d01feab1cd621ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a575952e07c262247e3f8109ab2b6dacb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structredhand_1_1image__properties.html">image_properties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a575952e07c262247e3f8109ab2b6dacb">texture_properties</a> = <a class="el" href="namespaceredhand.html#a011649e8eeb0b334eff41e87ea7ad5b4">DEFAULT_IMAGE_PROPERTIES</a></td></tr>
+<tr class="memdesc:a575952e07c262247e3f8109ab2b6dacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the properties of the texture  <a href="#a575952e07c262247e3f8109ab2b6dacb">More...</a><br /></td></tr>
+<tr class="separator:a575952e07c262247e3f8109ab2b6dacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518881c6a5f403abee52c9c23de4d4f0"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html#a518881c6a5f403abee52c9c23de4d4f0">mutex_texture_properties</a></td></tr>
+<tr class="memdesc:a518881c6a5f403abee52c9c23de4d4f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">the mutex for the texture_properties  <a href="#a518881c6a5f403abee52c9c23de4d4f0">More...</a><br /></td></tr>
+<tr class="separator:a518881c6a5f403abee52c9c23de4d4f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00019">19</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00065">65</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4fbe0964d78088c06b276f75c2664770"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fbe0964d78088c06b276f75c2664770">&#9670;&nbsp;</a></span>texture2D() <span class="overload">[1/4]</span></h2>
+<a id="a54e4d3b378f5f44d70b7b6c8479391f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e4d3b378f5f44d70b7b6c8479391f6">&#9670;&nbsp;</a></span>texture2D() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,8 +181,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">redhand::texture2D::texture2D </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structredhand_1_1image__properties.html">image_properties</a>&#160;</td>
+          <td class="paramname"><em>prop</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -184,17 +191,18 @@ Private Attributes</h2></td></tr>
 <p>This constructor creates a 2-dimensional texture from a given filename. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filename</td><td>The name of the file to be used. </td></tr>
+    <tr><td class="paramname">prop</td><td>The properties that should be used to create the image.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>add file checks </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00039">39</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00040">40</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a950fbe7f162091e0993d453c036fc24a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a950fbe7f162091e0993d453c036fc24a">&#9670;&nbsp;</a></span>texture2D() <span class="overload">[2/4]</span></h2>
+<a id="a13c1c78a152a8152256da1f5ed60db6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13c1c78a152a8152256da1f5ed60db6b">&#9670;&nbsp;</a></span>texture2D() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,14 +210,14 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">redhand::texture2D::texture2D </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>filename</em>, </td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>file_location</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
+          <td class="paramname"><em>texture_name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -219,119 +227,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This constructor creates a 2-dimensional texture from a given filename. </p>
+<p>This constructor creates a 2-dimensional texture from a given filename and texture name. </p>
+<p>All other properties are the DEFAULT_IMAGE_PROPERTIES</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filename</td><td>The name of the file to be used. </td></tr>
-    <tr><td class="paramname">name</td><td>The name of the texture object </td></tr>
+    <tr><td class="paramname">file_location</td><td>the location of the file </td></tr>
+    <tr><td class="paramname">texture_name</td><td>the internale name of the texture </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00047">47</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8hpp_source.html#l00042">texture_name</a>.</p>
-
-</div>
-</div>
-<a id="a96f4fc3e5eceba06158306de0a1c1a23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96f4fc3e5eceba06158306de0a1c1a23">&#9670;&nbsp;</a></span>texture2D() <span class="overload">[3/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">redhand::texture2D::texture2D </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>filename</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>Wrap_S</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>Wrap_T</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>This constructor creates a 2-dimensional texture from a given filename. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filename</td><td>The name of the file to be used. </td></tr>
-    <tr><td class="paramname">Wrap_S</td><td>The texture wrapping method in x direction </td></tr>
-    <tr><td class="paramname">Wrap_T</td><td>The texture wrapping method in y direction </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00015">15</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-</div>
-</div>
-<a id="af5cb62bfc4ea2e801cfadfa80f751633"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5cb62bfc4ea2e801cfadfa80f751633">&#9670;&nbsp;</a></span>texture2D() <span class="overload">[4/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">redhand::texture2D::texture2D </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>filename</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>Wrap_S</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>Wrap_T</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>This constructor creates a 2-dimensional texture from a given filename. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filename</td><td>The name of the file to be used. </td></tr>
-    <tr><td class="paramname">Wrap_S</td><td>The texture wrapping method in x direction </td></tr>
-    <tr><td class="paramname">Wrap_T</td><td>The texture wrapping method in y direction </td></tr>
-    <tr><td class="paramname">name</td><td>The name of the texture object </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00058">58</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8hpp_source.html#l00042">texture_name</a>.</p>
 
 </div>
 </div>
@@ -360,9 +266,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00081">81</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8hpp_source.html#l00029">mutex_id</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00065">65</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -383,9 +287,7 @@ Private Attributes</h2></td></tr>
 
 <p>This function retruns the height of the texture. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00092">92</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8hpp_source.html#l00037">height</a>, and <a class="el" href="texture_8hpp_source.html#l00039">mutex_height</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00076">76</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -406,9 +308,7 @@ Private Attributes</h2></td></tr>
 
 <p>This function returns the ID of the texture so that it can be activated by shaders. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00076">76</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8hpp_source.html#l00027">id</a>, and <a class="el" href="texture_8hpp_source.html#l00029">mutex_id</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00060">60</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -429,9 +329,7 @@ Private Attributes</h2></td></tr>
 
 <p>This funtion returns the name of the object. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00101">101</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8hpp_source.html#l00044">mutex_texture_name</a>, and <a class="el" href="texture_8hpp_source.html#l00042">texture_name</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00081">81</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -452,9 +350,7 @@ Private Attributes</h2></td></tr>
 
 <p>This function retruns the width of the texture. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00087">87</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8hpp_source.html#l00034">mutex_width</a>, and <a class="el" href="texture_8hpp_source.html#l00032">width</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00071">71</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -475,33 +371,36 @@ Private Attributes</h2></td></tr>
 
 <p>This function returns true if an error has happened. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00071">71</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8hpp_source.html#l00022">errord</a>, and <a class="el" href="texture_8hpp_source.html#l00024">mutex_errored</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00055">55</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
-<a id="afef39ecedb7b581cdd1c6618fa010d0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afef39ecedb7b581cdd1c6618fa010d0d">&#9670;&nbsp;</a></span>setName()</h2>
+<a id="ab4ef5c1815653017d78bec665dcc527d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4ef5c1815653017d78bec665dcc527d">&#9670;&nbsp;</a></span>initTexture2D()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void redhand::texture2D::setName </td>
+          <td class="memname">void redhand::texture2D::initTexture2D </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>This function sets the name of the <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a> to the given string. </p>
+<p>initilizes the texture </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00097">97</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="texture_8hpp_source.html#l00044">mutex_texture_name</a>, and <a class="el" href="texture_8hpp_source.html#l00042">texture_name</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00015">15</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -528,7 +427,7 @@ Private Attributes</h2></td></tr>
 
 <p>true if an error happened </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00022">22</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00068">68</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>
@@ -554,7 +453,7 @@ Private Attributes</h2></td></tr>
 
 <p>the hight of the texture </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00037">37</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00083">83</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>
@@ -580,7 +479,7 @@ Private Attributes</h2></td></tr>
 
 <p>the id of the texture </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00027">27</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00073">73</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>
@@ -606,7 +505,7 @@ Private Attributes</h2></td></tr>
 
 <p>the mutex for the errord </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00024">24</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00070">70</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>
@@ -632,7 +531,7 @@ Private Attributes</h2></td></tr>
 
 <p>the mutex for the height </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00039">39</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00085">85</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>
@@ -658,12 +557,12 @@ Private Attributes</h2></td></tr>
 
 <p>the mutex for the id </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00029">29</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00075">75</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af1221c4005c71742d01feab1cd621ba2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1221c4005c71742d01feab1cd621ba2">&#9670;&nbsp;</a></span>mutex_texture_name</h2>
+<a id="a518881c6a5f403abee52c9c23de4d4f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a518881c6a5f403abee52c9c23de4d4f0">&#9670;&nbsp;</a></span>mutex_texture_properties</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -672,7 +571,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_mutex redhand::texture2D::mutex_texture_name</td>
+          <td class="memname">std::shared_mutex redhand::texture2D::mutex_texture_properties</td>
         </tr>
       </table>
   </td>
@@ -682,9 +581,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>the mutex for the texture_name </p>
+<p>the mutex for the texture_properties </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00044">44</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00090">90</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>
@@ -710,12 +609,12 @@ Private Attributes</h2></td></tr>
 
 <p>the mutex for the width </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00034">34</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00080">80</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9fc5fcc2cada35237adb1f6b321a6db2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fc5fcc2cada35237adb1f6b321a6db2">&#9670;&nbsp;</a></span>texture_name</h2>
+<a id="a575952e07c262247e3f8109ab2b6dacb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a575952e07c262247e3f8109ab2b6dacb">&#9670;&nbsp;</a></span>texture_properties</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -724,7 +623,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string redhand::texture2D::texture_name = &quot;texture&quot;</td>
+          <td class="memname"><a class="el" href="structredhand_1_1image__properties.html">image_properties</a> redhand::texture2D::texture_properties = <a class="el" href="namespaceredhand.html#a011649e8eeb0b334eff41e87ea7ad5b4">DEFAULT_IMAGE_PROPERTIES</a></td>
         </tr>
       </table>
   </td>
@@ -734,9 +633,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>the name of the texture </p>
+<p>the properties of the texture </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00042">42</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00088">88</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>
@@ -762,7 +661,7 @@ Private Attributes</h2></td></tr>
 
 <p>the width of the texture </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00032">32</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8hpp_source.html#l00078">78</a> of file <a class="el" href="texture_8hpp_source.html">texture.hpp</a>.</p>
 
 </div>
 </div>

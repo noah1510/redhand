@@ -20,7 +20,7 @@ var searchData=
   ['mutex_5fprojectionmatrix',['mutex_projectionMatrix',['../classredhand_1_1shader.html#ad78a803b0f8f2693b5a0ddc1c7e7dda2',1,'redhand::shader']]],
   ['mutex_5fshader_5fname',['mutex_shader_name',['../classredhand_1_1shader.html#ab603420e6eb20e3d740cccb68819b506',1,'redhand::shader']]],
   ['mutex_5ftexture_5fmode',['mutex_texture_mode',['../classredhand_1_1game__object.html#ad968664d6a78e19e369b3c5c5b04d678',1,'redhand::game_object']]],
-  ['mutex_5ftexture_5fname',['mutex_texture_name',['../classredhand_1_1texture2_d.html#af1221c4005c71742d01feab1cd621ba2',1,'redhand::texture2D']]],
+  ['mutex_5ftexture_5fproperties',['mutex_texture_properties',['../classredhand_1_1texture2_d.html#a518881c6a5f403abee52c9c23de4d4f0',1,'redhand::texture2D']]],
   ['mutex_5ftexture_5fscale',['mutex_texture_scale',['../classredhand_1_1game__object.html#a57a941136950c891f1fae0a3517e8b9b',1,'redhand::game_object']]],
   ['mutex_5ftexturescale',['mutex_textureScale',['../classredhand_1_1shader.html#aeb915c4004c202df7d28ee4c2ed10b65',1,'redhand::shader']]],
   ['mutex_5fwidth',['mutex_width',['../classredhand_1_1texture2_d.html#a06f905b53f3dd88ef35399c3b409191e',1,'redhand::texture2D']]],

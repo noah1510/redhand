@@ -3,6 +3,7 @@ var structredhand_1_1game__object__properties =
     [ "alpha_value", "structredhand_1_1game__object__properties.html#a4ff25eda12cd60299361b911504fe557", null ],
     [ "attached_shader", "structredhand_1_1game__object__properties.html#afc0b418ce6d599896de4e57a0612a31d", null ],
     [ "attached_texture", "structredhand_1_1game__object__properties.html#a22b1b9f3c4d8a0bf9574f363b974a013", null ],
+    [ "automatic_scaling", "structredhand_1_1game__object__properties.html#a59b125f67d0ee1f6d611bf1ee807ca2b", null ],
     [ "gl_drawing_mode", "structredhand_1_1game__object__properties.html#aa5b48ab349ed9204dfce81c66793b692", null ],
     [ "name", "structredhand_1_1game__object__properties.html#aa8c482f3ee6ee0da3a2d83f786a47daf", null ],
     [ "point_colors", "structredhand_1_1game__object__properties.html#acada0682e17d30b70b9751a2ab1c703d", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['shader',['shader',['../classredhand_1_1shader.html',1,'redhand']]]
+  ['image_5fproperties',['image_properties',['../structredhand_1_1image__properties.html',1,'redhand']]]
 ];

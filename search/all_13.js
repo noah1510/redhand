@@ -14,5 +14,7 @@ var searchData=
   ['worldobjects',['WorldObjects',['../classredhand_1_1world.html#a0cfae9de04dbe106d582d98f4d8561c3',1,'redhand::world']]],
   ['worldobjectsmutex',['WorldObjectsMutex',['../classredhand_1_1world.html#a029f3069cf44e6e0d75296a4436ae9ad',1,'redhand::world']]],
   ['worldshaders',['WorldShaders',['../classredhand_1_1world.html#a35dd32f7d444d33bf3f2c9ddc7edc349',1,'redhand::world']]],
-  ['worldtextures',['WorldTextures',['../classredhand_1_1world.html#a9dc941d1bbabc518b0ffa16fd4acb41d',1,'redhand::world']]]
+  ['worldtextures',['WorldTextures',['../classredhand_1_1world.html#a9dc941d1bbabc518b0ffa16fd4acb41d',1,'redhand::world']]],
+  ['wrap_5fs',['wrap_S',['../structredhand_1_1image__properties.html#a77df7223296cfbf24160c8767dc2cb4d',1,'redhand::image_properties']]],
+  ['wrap_5ft',['wrap_T',['../structredhand_1_1image__properties.html#a9518f1e1176c8a220c593a6fc1f7ebb1',1,'redhand::image_properties']]]
 ];

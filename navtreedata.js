@@ -3,6 +3,7 @@ var NAVTREE =
   [ "libredhand", "index.html", [
     [ "Welcome to RedHand ![Build Status](https://github.com/noah1510/redhand/workflows/CI/badge.svg)", "index.html", null ],
     [ "Manual installation", "md_doc_markdown_install.html", null ],
+    [ "Todo List", "todo.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -32,7 +33,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"annotated.html",
+"todo.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

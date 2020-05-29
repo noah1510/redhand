@@ -27,9 +27,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.9</span>
+   &#160;<span id="projectnumber">0.0.10</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -105,6 +106,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>attached_texture
 : <a class="el" href="structredhand_1_1game__object__properties.html#a22b1b9f3c4d8a0bf9574f363b974a013">redhand::game_object_properties</a>
 </li>
+<li>automatic_scaling
+: <a class="el" href="structredhand_1_1game__object__properties.html#a59b125f67d0ee1f6d611bf1ee807ca2b">redhand::game_object_properties</a>
+</li>
 </ul>
 
 
@@ -137,6 +141,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>configuration
 : <a class="el" href="classredhand_1_1engine.html#a457a9eb54f15248558f25ce8d93076b6">redhand::engine</a>
 </li>
+<li>create_mipmap
+: <a class="el" href="structredhand_1_1image__properties.html#a40d3c3507afce7eac0e863ee1952cb9c">redhand::image_properties</a>
+</li>
 <li>createDefaultShader()
 : <a class="el" href="classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b">redhand::shader</a>
 </li>
@@ -152,6 +159,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>data
 : <a class="el" href="classredhand_1_1game__object.html#aef5c0148c65f6379460045b97560b019">redhand::game_object</a>
+</li>
+<li>data_type
+: <a class="el" href="structredhand_1_1image__properties.html#a4c3559e2219043af1698e1f68511ad79">redhand::image_properties</a>
 </li>
 <li>draw()
 : <a class="el" href="classredhand_1_1game__object.html#a7a6df057629792294cbeebb95a47c3e1">redhand::game_object</a>
@@ -173,6 +183,13 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>errord
 : <a class="el" href="classredhand_1_1shader.html#a55fce1e2e2e7593808bf18ee62ec620d">redhand::shader</a>
 , <a class="el" href="classredhand_1_1texture2_d.html#a01abde439f23a33ab630b49ad68f40a6">redhand::texture2D</a>
+</li>
+</ul>
+
+
+<h3><a id="index_f"></a>- f -</h3><ul>
+<li>file_location
+: <a class="el" href="structredhand_1_1image__properties.html#a47c3d15297ae8fb173bd545521475ac6">redhand::image_properties</a>
 </li>
 </ul>
 
@@ -268,6 +285,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>initilized
 : <a class="el" href="classredhand_1_1shader.html#a4ef7300a76bb8799fc87c95874efb1f8">redhand::shader</a>
 </li>
+<li>initTexture2D()
+: <a class="el" href="classredhand_1_1texture2_d.html#ab4ef5c1815653017d78bec665dcc527d">redhand::texture2D</a>
+</li>
+<li>internal_data_type
+: <a class="el" href="structredhand_1_1image__properties.html#a3b57b6a7e96917c31b51fa995a6e2fb6">redhand::image_properties</a>
+</li>
 <li>isRunning()
 : <a class="el" href="classredhand_1_1engine.html#ac737a2269fbdf19e4ab7c5c9387586b2">redhand::engine</a>
 </li>
@@ -340,8 +363,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>mutex_texture_mode
 : <a class="el" href="classredhand_1_1game__object.html#ad968664d6a78e19e369b3c5c5b04d678">redhand::game_object</a>
 </li>
-<li>mutex_texture_name
-: <a class="el" href="classredhand_1_1texture2_d.html#af1221c4005c71742d01feab1cd621ba2">redhand::texture2D</a>
+<li>mutex_texture_properties
+: <a class="el" href="classredhand_1_1texture2_d.html#a518881c6a5f403abee52c9c23de4d4f0">redhand::texture2D</a>
 </li>
 <li>mutex_texture_scale
 : <a class="el" href="classredhand_1_1game__object.html#a57a941136950c891f1fae0a3517e8b9b">redhand::game_object</a>
@@ -361,6 +384,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>name
 : <a class="el" href="structredhand_1_1game__object__properties.html#aa8c482f3ee6ee0da3a2d83f786a47daf">redhand::game_object_properties</a>
+, <a class="el" href="structredhand_1_1image__properties.html#ae70c7567c43278cabde37707a2baba5b">redhand::image_properties</a>
 </li>
 </ul>
 
@@ -468,14 +492,13 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classredhand_1_1shader.html#a4d0ffd87d70fa4f51bf22bedf853989f">redhand::shader</a>
 </li>
 <li>setInt()
-: <a class="el" href="classredhand_1_1shader.html#a2767bc9b53ba00300f839b3a78503450">redhand::shader</a>
+: <a class="el" href="classredhand_1_1shader.html#a7945456e677eac3f4da18773a305475a">redhand::shader</a>
 </li>
 <li>setLoopFunction()
 : <a class="el" href="classredhand_1_1game__object.html#a880faa8230c774573fdcf07727899772">redhand::game_object</a>
 </li>
 <li>setName()
 : <a class="el" href="classredhand_1_1game__object.html#aa2aca5069459e8788cacf4658e54bd5a">redhand::game_object</a>
-, <a class="el" href="classredhand_1_1texture2_d.html#afef39ecedb7b581cdd1c6618fa010d0d">redhand::texture2D</a>
 </li>
 <li>setPhysicsLoopFunction()
 : <a class="el" href="classredhand_1_1engine.html#aa8380940fa4191248e7543c0ffaba2d8">redhand::engine</a>
@@ -515,16 +538,22 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <h3><a id="index_t"></a>- t -</h3><ul>
 <li>texture2D()
-: <a class="el" href="classredhand_1_1texture2_d.html#a4fbe0964d78088c06b276f75c2664770">redhand::texture2D</a>
+: <a class="el" href="classredhand_1_1texture2_d.html#a54e4d3b378f5f44d70b7b6c8479391f6">redhand::texture2D</a>
 </li>
 <li>texture_coordinates
 : <a class="el" href="structredhand_1_1game__object__properties.html#a672a53302f8bee317f37a63e7c90cabc">redhand::game_object_properties</a>
 </li>
+<li>texture_max_filter
+: <a class="el" href="structredhand_1_1image__properties.html#a12c1ab36d5a8144c0690b18ced962afc">redhand::image_properties</a>
+</li>
+<li>texture_min_filter
+: <a class="el" href="structredhand_1_1image__properties.html#add42eb1ffc0c82977e345423fc888c73">redhand::image_properties</a>
+</li>
 <li>texture_mode
 : <a class="el" href="classredhand_1_1game__object.html#aad06542b2ce4b3c854ad477072c1ab8f">redhand::game_object</a>
 </li>
-<li>texture_name
-: <a class="el" href="classredhand_1_1texture2_d.html#a9fc5fcc2cada35237adb1f6b321a6db2">redhand::texture2D</a>
+<li>texture_properties
+: <a class="el" href="classredhand_1_1texture2_d.html#a575952e07c262247e3f8109ab2b6dacb">redhand::texture2D</a>
 </li>
 <li>texture_scale
 : <a class="el" href="classredhand_1_1game__object.html#aa57a19d7542de74d015f72713021e9f8">redhand::game_object</a>
@@ -604,6 +633,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>WorldTextures
 : <a class="el" href="classredhand_1_1world.html#a9dc941d1bbabc518b0ffa16fd4acb41d">redhand::world</a>
+</li>
+<li>wrap_S
+: <a class="el" href="structredhand_1_1image__properties.html#a77df7223296cfbf24160c8767dc2cb4d">redhand::image_properties</a>
+</li>
+<li>wrap_T
+: <a class="el" href="structredhand_1_1image__properties.html#a9518f1e1176c8a220c593a6fc1f7ebb1">redhand::image_properties</a>
 </li>
 </ul>
 
