@@ -1,7 +1,7 @@
 #include "game.hpp"
 
 int game_init(
-    std::shared_ptr<redhand::world> startWorld
+    std::shared_ptr<redhand::complex_world> startWorld
 ){
     int exitCode = 0;
 
@@ -32,7 +32,7 @@ int main_game_logic(
 
 }
 
-int createTestworld(std::shared_ptr<redhand::world> testWorld){
+int createTestworld(std::shared_ptr<redhand::complex_world> testWorld){
     //add shaders to world
 
     auto shader1 = std::unique_ptr<redhand::shader>(new redhand::shader());
@@ -160,7 +160,7 @@ void processHouseMovement(GLFWwindow* window, redhand::game_object* obj){
 
 }
 
-void processWorldInput(GLFWwindow* window, std::shared_ptr<redhand::world> activeWorld){
+void processWorldInput(GLFWwindow* window, std::shared_ptr<redhand::complex_world> activeWorld){
     //move the camera
     std::array<float,2> deltaCamera = {0.0f,0.0f};
 

@@ -1,8 +1,8 @@
-#include "redhand/world.hpp"
+#include "redhand/complex_world.hpp"
 
 using namespace redhand;
 
-redhand::world::world(){
+redhand::complex_world::complex_world(){
     WorldShaders = std::vector< std::shared_ptr<redhand::shader>>(0);
     WorldTextures = std::vector< std::shared_ptr<redhand::texture2D>>(0);
     WorldObjects = std::vector< std::shared_ptr<redhand::game_object>>(0);
@@ -10,7 +10,7 @@ redhand::world::world(){
     setWindowSize(600,600);
 }
 
-redhand::world::~world(){
+redhand::complex_world::~complex_world(){
     WorldObjectsMutex.lock();
     //delete objects
     try{
@@ -47,7 +47,7 @@ redhand::world::~world(){
     
 }
 
-void redhand::world::tick(GLFWwindow* window){
+void redhand::complex_world::tick(GLFWwindow* window){
     std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x : WorldObjects){
@@ -56,7 +56,7 @@ void redhand::world::tick(GLFWwindow* window){
 
 }
 
-void redhand::world::draw(){
+void redhand::complex_world::draw(){
     std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x : WorldObjects){
@@ -65,7 +65,7 @@ void redhand::world::draw(){
 
 }
 
-void redhand::world::setWindowSize(int width, int height){
+void redhand::complex_world::setWindowSize(int width, int height){
 
     if(width != windowWidth || height != windowHeight){
         windowWidth = width;
@@ -86,7 +86,7 @@ void redhand::world::setWindowSize(int width, int height){
 
 }
 
-int redhand::world::addShader( std::unique_ptr<redhand::shader> shade){
+int redhand::complex_world::addShader( std::unique_ptr<redhand::shader> shade){
     if(shade == nullptr || shade == NULL){
         return -1;
     }
@@ -105,7 +105,7 @@ int redhand::world::addShader( std::unique_ptr<redhand::shader> shade){
     }
 }
 
-int redhand::world::addTexture(std::unique_ptr<redhand::texture2D> tex){
+int redhand::complex_world::addTexture(std::unique_ptr<redhand::texture2D> tex){
     if(tex == nullptr || tex == NULL){
         return -1;
     }
@@ -122,7 +122,7 @@ int redhand::world::addTexture(std::unique_ptr<redhand::texture2D> tex){
     }
 }
 
-int redhand::world::addObject(std::unique_ptr<game_object> obj){
+int redhand::complex_world::addObject(std::unique_ptr<game_object> obj){
     if(obj == nullptr || obj == NULL){
         return -1;
     }
@@ -142,7 +142,7 @@ int redhand::world::addObject(std::unique_ptr<game_object> obj){
     }
 }
 
-int redhand::world::removeShader(std::string name){
+int redhand::complex_world::removeShader(std::string name){
     for(unsigned int i = 0; i < WorldShaders.size();i++){
         auto x = WorldShaders.at(i);
         if(x->getName().compare(name) == 0){
@@ -161,7 +161,7 @@ int redhand::world::removeShader(std::string name){
     return 1;    
 }
 
-int redhand::world::removeTexture(std::string name){
+int redhand::complex_world::removeTexture(std::string name){
     for(unsigned int i = 0; i < WorldTextures.size();i++){
         auto x = WorldTextures.at(i);
         if(x->getName().compare(name) == 0){
@@ -180,7 +180,7 @@ int redhand::world::removeTexture(std::string name){
     return 1; 
 }
 
-int redhand::world::removeObject(std::string name){
+int redhand::complex_world::removeObject(std::string name){
     std::scoped_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(unsigned int i = 0; i < WorldObjects.size();i++){
@@ -202,7 +202,7 @@ int redhand::world::removeObject(std::string name){
 
 }
 
- std::shared_ptr<redhand::shader> redhand::world::getShaderByName(std::string name){
+ std::shared_ptr<redhand::shader> redhand::complex_world::getShaderByName(std::string name){
 
     for(auto x:WorldShaders){
        if((x->getName()).compare(name) == 0){
@@ -214,7 +214,7 @@ int redhand::world::removeObject(std::string name){
     
 }
 
-std::shared_ptr<redhand::texture2D> redhand::world::getTextureByName(std::string name){
+std::shared_ptr<redhand::texture2D> redhand::complex_world::getTextureByName(std::string name){
 
     for(auto x:WorldTextures){
        if((x->getName()).compare(name) == 0){
@@ -227,7 +227,7 @@ std::shared_ptr<redhand::texture2D> redhand::world::getTextureByName(std::string
     
 }
 
-std::shared_ptr<redhand::game_object> redhand::world::getObjectByName(std::string name){
+std::shared_ptr<redhand::game_object> redhand::complex_world::getObjectByName(std::string name){
     std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
     for(auto x:WorldObjects){
@@ -240,7 +240,7 @@ std::shared_ptr<redhand::game_object> redhand::world::getObjectByName(std::strin
     
 }
 
-void redhand::world::setCamera(float pos_x, float pos_y){
+void redhand::complex_world::setCamera(float pos_x, float pos_y){
     cameraPosition[0] = pos_x;
     cameraPosition[1] = pos_y;
 
@@ -249,7 +249,7 @@ void redhand::world::setCamera(float pos_x, float pos_y){
     }
 }
 
-void redhand::world::moveCamera(float delta_pos_x, float delta_pos_y){
+void redhand::complex_world::moveCamera(float delta_pos_x, float delta_pos_y){
     cameraPosition[0] += delta_pos_x;
     cameraPosition[1] += delta_pos_y;
 

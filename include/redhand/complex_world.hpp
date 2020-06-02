@@ -7,7 +7,7 @@
 
 namespace redhand{
  
-class world{
+class complex_world{
 private:
     ///The mutex for allowing only one thread to acces the world objects at once
     std::shared_mutex WorldObjectsMutex;
@@ -37,12 +37,12 @@ public:
     /**
      * The constructor will create an empty world which can be filled with objects
      */
-    world();
+    complex_world();
 
     /**
      * The destructor will clean up everything and delete all objects stored in this world.
      */
-    ~world();
+    ~complex_world();
 
     /**
      * The addShader function will add a shader to the world.

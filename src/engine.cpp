@@ -62,7 +62,7 @@ void redhand::engine::init(){
     glEnable(GL_MULTISAMPLE);
 
     //create an empty world
-    activeWorld = std::shared_ptr<world> (new world());
+    activeWorld = std::shared_ptr<complex_world> (new complex_world());
 
     if(activeWorld == nullptr){
         errorCode = -4;
@@ -71,20 +71,20 @@ void redhand::engine::init(){
 
 }
 
-std::shared_ptr<redhand::world> redhand::engine::getActiveWorld(){
+std::shared_ptr<redhand::complex_world> redhand::engine::getActiveWorld(){
     if(errorCode < 0){
         return nullptr;
     }
 
-    return std::shared_ptr<redhand::world>(activeWorld);
+    return std::shared_ptr<redhand::complex_world>(activeWorld);
 }
 
-int redhand::engine::setActiveWorld(std::shared_ptr<redhand::world> newWorld){
+int redhand::engine::setActiveWorld(std::shared_ptr<redhand::complex_world> newWorld){
     
     if(newWorld != nullptr){
         activeWorld.reset();
         
-        activeWorld = std::shared_ptr<redhand::world>(newWorld);
+        activeWorld = std::shared_ptr<redhand::complex_world>(newWorld);
     }else{
         activeWorld = nullptr;
         stopGame(-7);
@@ -138,7 +138,7 @@ void redhand::engine::stopGame(int error){
 }
 
 
-int redhand::engine::changeWorld(std::shared_ptr<world> newWorld){
+int redhand::engine::changeWorld(std::shared_ptr<complex_world> newWorld){
     //if not a nullptr change world
     if(newWorld == nullptr){
         stopGame(-5);
@@ -164,7 +164,7 @@ int redhand::engine::runGame(){
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
             //create a placeholder for the next world
-            std::shared_ptr<world> nextWorld = nullptr;
+            std::shared_ptr<complex_world> nextWorld = nullptr;
 
             //get the new error
             int localErrorCode = 0;

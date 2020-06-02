@@ -23,7 +23,7 @@
 #include "redhand/game_object.hpp"
 #include "redhand/shader.hpp"
 #include "redhand/texture.hpp"
-#include "redhand/world.hpp"
+#include "redhand/complex_world.hpp"
 #include "redhand/math.hpp"
 //#include "audio/AudioHandler.hpp"
 
@@ -100,7 +100,7 @@ private:
     int errorCode = 0;
 
     ///The currently active world (nullptr or empty world if none)
-    std::shared_ptr<world> activeWorld;
+    std::shared_ptr<complex_world> activeWorld;
 
     ///The function which is executed on each physics tick
     std::function <int(engine*)> physicsLoopFunction;
@@ -146,7 +146,7 @@ public:
      * @param newWorld a pointer to the world that will be the new active world
      * @return int negative if someting went wrong
      */
-    int setActiveWorld(std::shared_ptr<world> newWorld);
+    int setActiveWorld(std::shared_ptr<complex_world> newWorld);
 
     /**
      * @brief change the world to the given new world
@@ -155,7 +155,7 @@ public:
      * @param newWorld a shared pointer to the new world. An error will accour if it is a nullptr.
      * @return int 
      */
-    int changeWorld(std::shared_ptr<world> newWorld);
+    int changeWorld(std::shared_ptr<complex_world> newWorld);
 
     /**
      * @brief Get the Active World object
@@ -163,7 +163,7 @@ public:
      * 
      * @return std::shared_ptr<world> A pointer to the currently active world
      */
-    std::shared_ptr<world> getActiveWorld();
+    std::shared_ptr<complex_world> getActiveWorld();
 
     /**
      * @brief Get the Window object
