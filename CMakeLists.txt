@@ -44,6 +44,7 @@ find_package(OpenGL REQUIRED)
 add_library(redhand SHARED
                         src/glad.c
                         src/math.cpp
+                        src/event/event.cpp
                         src/shader.cpp
                         src/texture.cpp
                         src/game_object.cpp
