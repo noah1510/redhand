@@ -25,6 +25,8 @@
 #include "redhand/texture.hpp"
 #include "redhand/complex_world.hpp"
 #include "redhand/math.hpp"
+#include "redhand/event/event.hpp"
+#include "redhand/event/game_loop_event.hpp"
 //#include "audio/AudioHandler.hpp"
 
 namespace redhand{

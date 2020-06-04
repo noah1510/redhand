@@ -1,3 +1,5 @@
+#pragma once
+
 #include <memory>
 
 namespace redhand{
@@ -18,14 +20,18 @@ namespace redhand{
              * 
              * @param raiser 
              */
-            event(T* raiser);
+            event(T* raiser){
+                m_raiser = raiser;
+            };
 
             /**
              * @brief Get the Raiser of the event
              * 
              * @return T* a pointer to the raiser of the event
              */
-            T* getRaiser();
+            T* getRaiser(){
+                return m_raiser;
+            };
     };    
 
 } // namespace redhand

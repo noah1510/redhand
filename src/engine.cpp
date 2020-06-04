@@ -140,7 +140,17 @@ int redhand::engine::runGame(){
     //start the physics thread
     std::thread physicsThread([&](){
         while (isRunning()){
+
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+            //Set the last time
+            static auto last_time = std::chrono::system_clock::now();
+            
+            auto this_time = std::chrono::system_clock::now();
+
+            auto diff = this_time-last_time;
+
+            auto evt = game_loop_event<redhand::engine>(this, diff);
 
             //get the new error
             int localErrorCode = 0;
