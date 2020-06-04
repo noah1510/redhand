@@ -1,7 +1,7 @@
 #pragma once
 
 #include "redhand/engine.hpp"
-#include "redhand/world.hpp"
+#include "redhand/complex_world.hpp"
 
 int game_init(
     std::shared_ptr<redhand::complex_world> startWorld

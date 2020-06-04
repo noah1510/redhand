@@ -9,7 +9,7 @@
 #include "redhand/game_object.hpp"
 #include "redhand/shader.hpp"
 #include "redhand/texture.hpp"
-#include "redhand/world.hpp"
+#include "redhand/complex_world.hpp"
 #include "redhand/engine.hpp"
 //#include "audio/AudioHandler.hpp"
 
