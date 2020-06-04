@@ -102,6 +102,9 @@ private:
     ///The currently active world (nullptr or empty world if none)
     std::shared_ptr<complex_world> activeWorld;
 
+    ///The next world that will be switched to in the next game tick
+    std::shared_ptr<complex_world> nextWorld;
+
     ///The function which is executed on each physics tick
     std::function <int(engine*)> physicsLoopFunction;
 
@@ -138,15 +141,6 @@ public:
      * 
      */
     void init();
-
-    /**
-     * @brief Set the Active World object to the given world
-     * @version Available since REDHAND_VERSION_NUMBER 1
-     * 
-     * @param newWorld a pointer to the world that will be the new active world
-     * @return int negative if someting went wrong
-     */
-    int setActiveWorld(std::shared_ptr<complex_world> newWorld);
 
     /**
      * @brief change the world to the given new world

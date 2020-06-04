@@ -79,21 +79,6 @@ std::shared_ptr<redhand::complex_world> redhand::engine::getActiveWorld(){
     return std::shared_ptr<redhand::complex_world>(activeWorld);
 }
 
-int redhand::engine::setActiveWorld(std::shared_ptr<redhand::complex_world> newWorld){
-    
-    if(newWorld != nullptr){
-        activeWorld.reset();
-        
-        activeWorld = std::shared_ptr<redhand::complex_world>(newWorld);
-    }else{
-        activeWorld = nullptr;
-        stopGame(-7);
-    }
-    
-    return -7;
-
-}
-
 void redhand::engine::clearBuffers(){
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -141,16 +126,10 @@ void redhand::engine::stopGame(int error){
 int redhand::engine::changeWorld(std::shared_ptr<complex_world> newWorld){
     //if not a nullptr change world
     if(newWorld == nullptr){
-        stopGame(-5);
         return -5;
-        
     }
 
-    auto error = setActiveWorld(newWorld);
-    if(error < 0){
-        stopGame(error);
-        return -6;
-    }
+    nextWorld = newWorld;
 
     return 0;
 }
@@ -162,9 +141,6 @@ int redhand::engine::runGame(){
     std::thread physicsThread([&](){
         while (isRunning()){
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-            //create a placeholder for the next world
-            std::shared_ptr<complex_world> nextWorld = nullptr;
 
             //get the new error
             int localErrorCode = 0;
@@ -178,7 +154,9 @@ int redhand::engine::runGame(){
 
             //if not a nullptr change world
             if(nextWorld != nullptr){
-                changeWorld(nextWorld);
+                activeWorld.reset();
+                activeWorld = nextWorld;
+                nextWorld = nullptr;
             }
 
         }
