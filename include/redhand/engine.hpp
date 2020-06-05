@@ -107,8 +107,7 @@ private:
     ///The next world that will be switched to in the next game tick
     std::shared_ptr<complex_world> nextWorld;
 
-    ///The function which is executed on each physics tick
-    std::function <int(engine*)> physicsLoopFunction;
+    std::unordered_multimap<std::string, std::function <int ( redhand::game_loop_event<engine> )> > game_loop_handlers;
 
     std::shared_mutex runningReadMutex;
 
@@ -186,15 +185,29 @@ public:
     void clearBuffers();
 
     /**
-     * @brief Set the Loop Function of the engine.
-     * @detail The loop function is the function responible for handeling all the inputs and calcualting all the physics
-     * @version Available since REDHAND_VERSION_NUMBER 1
+     * @brief Add a new game_loop_event handler to the engine, to get called every game tick the handler_key is func.
+     * @note The tick function of the current world is added by default.
      * 
-     * @param loop The loop function which returns a negative number if something went wrong and has one parameter, which is a raw pointer to the engine object.
-     * @warning Do no delete the engine object or any of its members inside the physics loop, always modify them using the methods.
-     * @return int the errorCode of the engine will be returned, negative if something bad happened
+     * @param handle The function that should handle the game_loop_event raised by the engine. 
      */
-    int setPhysicsLoopFunction( int loop(engine*) );
+    void addGameLoopHandler(std::function < int ( redhand::game_loop_event<engine> ) > handle);
+
+    /**
+     * @brief Add a new game_loop_event handler to the engine, to get called every game tick.
+     * @note The tick function of the current world is added by default.
+     * 
+     * @param handle The function that should handle the game_loop_event raised by the engine. 
+     * @param handler_key A handler_key of your choice except for "".
+     */
+    void addGameLoopHandler(std::function < int ( redhand::game_loop_event<engine> ) > handle, std::string handler_key);
+
+    /**
+     * @brief remove a handler with a given key
+     * 
+     * @param handler_key the key of the function
+     * @return int 0 if successful -1 if key not found
+     */
+    int removeGameLoopHandler(std::string handler_key);
 
     /**
      * @brief This function runs the game, the engine handles all the logic to keep everything wunning for you.

@@ -1,4 +1,6 @@
 #include "redhand/complex_world.hpp"
+#include "redhand/engine.hpp"
+#include "redhand/game_object.hpp"
 
 using namespace redhand;
 
@@ -47,9 +49,16 @@ redhand::complex_world::~complex_world(){
     
 }
 
-void redhand::complex_world::tick(GLFWwindow* window){
-    std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
+void redhand::complex_world::tick(redhand::game_loop_event<redhand::engine> evt){
+    
+    auto window = evt.getRaiser()->getWindow();
 
+    //update window size
+    int width = 0, height = 0;
+    glfwGetWindowSize(window, &width, &height);
+    setWindowSize(width, height);
+
+    std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
     for(auto x : WorldObjects){
         x->onLoop(window);
     }

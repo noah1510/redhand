@@ -92,10 +92,23 @@ int redhand::engine::getErrorCode(){
     return errorCode;
 }
 
-int redhand::engine::setPhysicsLoopFunction(int loop(redhand::engine*)){
-    physicsLoopFunction = loop;
+void redhand::engine::addGameLoopHandler(std::function < int ( redhand::game_loop_event<engine> ) > handle){
+    addGameLoopHandler(handle,"func");
+}
 
-    return errorCode;
+void redhand::engine::addGameLoopHandler(std::function < int ( redhand::game_loop_event<engine> ) > handle, std::string handler_key){
+    game_loop_handlers.insert(std::make_pair<>(handler_key,handle));
+}
+
+int redhand::engine::removeGameLoopHandler(std::string handler_key){
+    auto it = game_loop_handlers.find(handler_key);
+
+    if(it == game_loop_handlers.end()){
+        return -1;
+    }
+
+    game_loop_handlers.erase(it);
+    return 0;
 }
 
 bool redhand::engine::isRunning(){
@@ -154,7 +167,10 @@ int redhand::engine::runGame(){
 
             //get the new error
             int localErrorCode = 0;
-            localErrorCode = physicsLoopFunction(this);
+            for(auto x : game_loop_handlers){
+                localErrorCode = x.second(evt);
+                if(localErrorCode != 0){break;};
+            }
 
             //if there was an error terminate the game
             if(localErrorCode < 0){

@@ -6,7 +6,7 @@
 
 namespace redhand{
     template <class T>
-    class game_loop_event : redhand::event<T>{
+    class game_loop_event : public redhand::event<T>{
         private:
             ///The time difference compared to the last call of the game_loop.
             std::chrono::nanoseconds m_delta_t;

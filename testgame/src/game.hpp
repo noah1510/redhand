@@ -8,7 +8,7 @@ int game_init(
 );
 
 int main_game_logic(
-    redhand::engine* gameEngine
+    redhand::game_loop_event<redhand::engine> evt
 );
 
 int createTestworld(std::shared_ptr<redhand::complex_world> testWorld);

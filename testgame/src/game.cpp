@@ -14,19 +14,14 @@ int game_init(
 }
 
 int main_game_logic(
-    redhand::engine* gameEngine
+    redhand::game_loop_event<redhand::engine> evt
 ){
+    //get the engine form the event
+    auto gameEngine = evt.getRaiser();
+
     //process the input
     processGlobalInput(gameEngine);
     processWorldInput(gameEngine->getWindow(), gameEngine->getActiveWorld());
-
-    //get the current window size
-    int width, height;
-    glfwGetWindowSize(gameEngine->getWindow(), &width, &height);
-    gameEngine->getActiveWorld()->setWindowSize(width, height);
-
-    //tick the active world
-    gameEngine->getActiveWorld()->tick(gameEngine->getWindow());
 
     return 0;
 

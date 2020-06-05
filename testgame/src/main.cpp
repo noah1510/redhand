@@ -34,7 +34,7 @@ int main(){
     gameEngine->setConfig(conf);
 
     //set the function which handles all the controls and physics computation
-    gameEngine->setPhysicsLoopFunction(main_game_logic);
+    gameEngine->addGameLoopHandler(main_game_logic,"main_logic");
 
     //initilize the game engine
     gameEngine->init();

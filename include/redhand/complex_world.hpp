@@ -2,11 +2,27 @@
 
 #include <vector>
 #include <thread>
+#include <memory>
+#include <mutex>
+#include <shared_mutex>
 
-#include "redhand/game_object.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+#include <redhand/glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include "redhand/event/game_loop_event.hpp"
 
 namespace redhand{
- 
+    
+class engine;
+class game_object;
+class texture2D;
+class shader;
+
+
 class complex_world{
 private:
     ///The mutex for allowing only one thread to acces the world objects at once
@@ -109,9 +125,9 @@ public:
     /**
      * This function executes a world tick and is called for each frame.
      * All inputs are processed, the physics is calculated and all objects are rendered.
-     * @param window the current active window where everything will be rendered
+     * @param evt the game tick event
      */
-    void tick(GLFWwindow* window);
+    void tick(redhand::game_loop_event<redhand::engine> evt);
 
     /**
      * This function is used to set the position of the camera.
