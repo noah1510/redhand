@@ -1,6 +1,8 @@
 #include "redhand/complex_world.hpp"
 #include "redhand/engine.hpp"
 #include "redhand/game_object.hpp"
+#include "redhand/shader.hpp"
+#include "redhand/texture.hpp"
 
 using namespace redhand;
 

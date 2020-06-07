@@ -1,4 +1,6 @@
 #include "redhand/game_object.hpp"
+#include "redhand/shader.hpp"
+#include "redhand/texture.hpp"
 
 using namespace redhand;
 

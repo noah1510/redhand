@@ -19,17 +19,19 @@
 #include <algorithm>
 #include <mutex>
 #include <shared_mutex>
+#include <unordered_map>
 
-#include "redhand/game_object.hpp"
-#include "redhand/shader.hpp"
-#include "redhand/texture.hpp"
-#include "redhand/complex_world.hpp"
 #include "redhand/math.hpp"
 #include "redhand/event/event.hpp"
 #include "redhand/event/game_loop_event.hpp"
 //#include "audio/AudioHandler.hpp"
 
 namespace redhand{
+
+class complex_world;
+class game_object;
+class texture2D;
+class shader;
 
 const auto OPENGL_CORE_PROFILE = GLFW_OPENGL_CORE_PROFILE;
 const auto DONT_CARE = GLFW_DONT_CARE;

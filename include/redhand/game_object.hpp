@@ -1,6 +1,4 @@
 #pragma once
-#include "redhand/shader.hpp"
-#include "redhand/texture.hpp"
 #include "redhand/math.hpp"
 
 #include <cmath>
@@ -21,6 +19,9 @@
 #include <GLFW/glfw3.h>
 
 namespace redhand{
+
+class texture2D;
+class shader;
 
 /**
  * @brief This struct specifies all the properties of a game_object.

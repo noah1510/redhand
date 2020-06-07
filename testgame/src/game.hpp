@@ -2,6 +2,9 @@
 
 #include "redhand/engine.hpp"
 #include "redhand/complex_world.hpp"
+#include "redhand/game_object.hpp"
+#include "redhand/shader.hpp"
+#include "redhand/texture.hpp"
 
 int game_init(
     std::shared_ptr<redhand::complex_world> startWorld
