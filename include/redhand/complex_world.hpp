@@ -10,7 +10,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include <redhand/glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include "redhand/event/game_loop_event.hpp"
@@ -127,7 +126,7 @@ public:
      * All inputs are processed, the physics is calculated and all objects are rendered.
      * @param evt the game tick event
      */
-    void tick(redhand::game_loop_event<redhand::engine> evt);
+    void tick(redhand::game_loop_event evt);
 
     /**
      * This function is used to set the position of the camera.

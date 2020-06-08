@@ -1,8 +1,11 @@
+#include <redhand/glad/glad.h>
+
 #include "redhand/engine.hpp"
 #include "redhand/game_object.hpp"
 #include "redhand/shader.hpp"
 #include "redhand/texture.hpp"
 #include "redhand/complex_world.hpp"
+#include "redhand/input.hpp"
 
 using namespace redhand;
 
@@ -50,7 +53,11 @@ void redhand::engine::init(){
     glfwMakeContextCurrent(window);
 
     //register callback function for viewport
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); 
+
+    //register engine to input system
+    input_system& in_sys = input_system::getInstance();
+    in_sys.registerEngine(this);
 
     //make sure glad works
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
@@ -96,11 +103,11 @@ int redhand::engine::getErrorCode(){
     return errorCode;
 }
 
-void redhand::engine::addGameLoopHandler(std::function < int ( redhand::game_loop_event<engine> ) > handle){
+void redhand::engine::addGameLoopHandler(std::function < int ( redhand::game_loop_event ) > handle){
     addGameLoopHandler(handle,"func");
 }
 
-void redhand::engine::addGameLoopHandler(std::function < int ( redhand::game_loop_event<engine> ) > handle, std::string handler_key){
+void redhand::engine::addGameLoopHandler(std::function < int ( redhand::game_loop_event ) > handle, std::string handler_key){
     game_loop_handlers.insert(std::make_pair<>(handler_key,handle));
 }
 
@@ -158,7 +165,7 @@ int redhand::engine::runGame(){
     std::thread physicsThread([&](){
         while (isRunning()){
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            std::this_thread::sleep_for(std::chrono::microseconds(100));
 
             //Set the last time
             static auto last_time = std::chrono::system_clock::now();
@@ -167,7 +174,12 @@ int redhand::engine::runGame(){
 
             auto diff = this_time-last_time;
 
-            auto evt = game_loop_event<redhand::engine>(this, diff);
+            if(diff < std::chrono::milliseconds(1000/60)){
+                continue;
+            }
+
+            auto evt = game_loop_event(this, diff);
+            glfwPollEvents();
 
             //get the new error
             int localErrorCode = 0;
@@ -191,6 +203,8 @@ int redhand::engine::runGame(){
                 activeWorld = nextWorld;
                 nextWorld = nullptr;
             }
+
+            last_time = this_time;
 
         }
     });

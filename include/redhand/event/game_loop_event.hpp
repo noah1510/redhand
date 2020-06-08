@@ -5,8 +5,10 @@
 #include <chrono>
 
 namespace redhand{
-    template <class T>
-    class game_loop_event : public redhand::event<T>{
+
+    class engine;
+
+    class game_loop_event : public redhand::event<engine>{
         private:
             ///The time difference compared to the last call of the game_loop.
             std::chrono::nanoseconds m_delta_t;
@@ -18,7 +20,7 @@ namespace redhand{
              * @param raiser a pointer to the object that raised the event
              * @param delta_t the time difference to the last game_loop_event
              */
-            game_loop_event(T* raiser, std::chrono::nanoseconds delta_t):event<T>(raiser){
+            game_loop_event(engine* raiser, std::chrono::nanoseconds delta_t):event<engine>(raiser){
                 m_delta_t = delta_t;
             };
 

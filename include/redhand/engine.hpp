@@ -1,6 +1,5 @@
 #pragma once
 
-#include <redhand/glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
@@ -22,8 +21,10 @@
 #include <unordered_map>
 
 #include "redhand/math.hpp"
+
 #include "redhand/event/event.hpp"
 #include "redhand/event/game_loop_event.hpp"
+
 //#include "audio/AudioHandler.hpp"
 
 namespace redhand{
@@ -109,7 +110,7 @@ private:
     ///The next world that will be switched to in the next game tick
     std::shared_ptr<complex_world> nextWorld;
 
-    std::unordered_multimap<std::string, std::function <int ( redhand::game_loop_event<engine> )> > game_loop_handlers;
+    std::unordered_multimap<std::string, std::function <int ( redhand::game_loop_event )> > game_loop_handlers;
 
     std::shared_mutex runningReadMutex;
 
@@ -192,7 +193,7 @@ public:
      * 
      * @param handle The function that should handle the game_loop_event raised by the engine. 
      */
-    void addGameLoopHandler(std::function < int ( redhand::game_loop_event<engine> ) > handle);
+    void addGameLoopHandler(std::function < int ( redhand::game_loop_event ) > handle);
 
     /**
      * @brief Add a new game_loop_event handler to the engine, to get called every game tick.
@@ -201,7 +202,7 @@ public:
      * @param handle The function that should handle the game_loop_event raised by the engine. 
      * @param handler_key A handler_key of your choice except for "".
      */
-    void addGameLoopHandler(std::function < int ( redhand::game_loop_event<engine> ) > handle, std::string handler_key);
+    void addGameLoopHandler(std::function < int ( redhand::game_loop_event ) > handle, std::string handler_key);
 
     /**
      * @brief remove a handler with a given key

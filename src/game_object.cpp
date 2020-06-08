@@ -1,3 +1,5 @@
+#include <redhand/glad/glad.h>
+
 #include "redhand/game_object.hpp"
 #include "redhand/shader.hpp"
 #include "redhand/texture.hpp"
@@ -167,7 +169,7 @@ redhand::game_object::~game_object(){
 
 }
 
-void redhand::game_object::setScreenSize(int width, int height){
+void redhand::game_object::setScreenSize(int, int){
     auto lock1 = std::shared_lock(mutex_object_properties);
     if(object_properties.attached_texture == nullptr || object_properties.attached_texture == NULL){
         return;

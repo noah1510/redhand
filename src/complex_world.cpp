@@ -1,3 +1,5 @@
+#include <redhand/glad/glad.h>
+
 #include "redhand/complex_world.hpp"
 #include "redhand/engine.hpp"
 #include "redhand/game_object.hpp"
@@ -51,7 +53,7 @@ redhand::complex_world::~complex_world(){
     
 }
 
-void redhand::complex_world::tick(redhand::game_loop_event<redhand::engine> evt){
+void redhand::complex_world::tick(redhand::game_loop_event evt){
     
     auto window = evt.getRaiser()->getWindow();
 

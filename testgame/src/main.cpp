@@ -35,6 +35,8 @@ int main(){
 
     //set the function which handles all the controls and physics computation
     gameEngine->addGameLoopHandler(main_game_logic,"main_logic");
+    gameEngine->addGameLoopHandler(processGlobalInput, "global_input");
+    gameEngine->addGameLoopHandler(processWorldInput, "camera_movement");
 
     //initilize the game engine
     gameEngine->init();

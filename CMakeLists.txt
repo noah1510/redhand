@@ -48,6 +48,7 @@ add_library(redhand SHARED
                         src/texture.cpp
                         src/game_object.cpp
                         src/complex_world.cpp
+                        src/input.cpp
                         src/engine.cpp)
 
 if (UNIX)

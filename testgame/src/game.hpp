@@ -5,19 +5,20 @@
 #include "redhand/game_object.hpp"
 #include "redhand/shader.hpp"
 #include "redhand/texture.hpp"
+#include "redhand/input.hpp"
 
 int game_init(
     std::shared_ptr<redhand::complex_world> startWorld
 );
 
 int main_game_logic(
-    redhand::game_loop_event<redhand::engine> evt
+    redhand::game_loop_event evt
 );
 
 int createTestworld(std::shared_ptr<redhand::complex_world> testWorld);
-void processHouseMovement(GLFWwindow* window, redhand::game_object* obj);
-void processWorldInput(GLFWwindow* window, std::shared_ptr<redhand::complex_world> activeWorld);
-void processGlobalInput(redhand::engine* game);
+int processHouseMovement(redhand::game_loop_event evt);
+int processWorldInput(redhand::game_loop_event evt);
+int processGlobalInput(redhand::game_loop_event evt);
 
 std::unique_ptr<redhand::game_object> createHouse(
     std::shared_ptr<redhand::texture2D> texture,

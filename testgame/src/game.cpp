@@ -14,14 +14,9 @@ int game_init(
 }
 
 int main_game_logic(
-    redhand::game_loop_event<redhand::engine> evt
+    redhand::game_loop_event
 ){
-    //get the engine form the event
-    auto gameEngine = evt.getRaiser();
 
-    //process the input
-    processGlobalInput(gameEngine);
-    processWorldInput(gameEngine->getWindow(), gameEngine->getActiveWorld());
 
     return 0;
 
@@ -110,7 +105,7 @@ int createTestworld(std::shared_ptr<redhand::complex_world> testWorld){
     }
 
     testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow*, redhand::game_object* obj){
-        obj->rotate(0.1f);
+        obj->rotate(1.0f);
     });
     
 
@@ -120,70 +115,94 @@ int createTestworld(std::shared_ptr<redhand::complex_world> testWorld){
     ) < 0){
         return -3;
     }
-    testWorld->getObjectByName("house")->setLoopFunction(processHouseMovement);
+
+    auto main = redhand::input_system::getEngine();
+    if (main != nullptr){
+        main->addGameLoopHandler(processHouseMovement,"house");
+    }
     
     return 0;
 }
 
-void processHouseMovement(GLFWwindow* window, redhand::game_object* obj){
+int processHouseMovement(redhand::game_loop_event evt){
     //move the house
+    auto ctrl = evt.getRaiser();
+    auto house = ctrl->getActiveWorld()->getObjectByName("house");
 
-    if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS){
-        obj->move({0.002f,0.0f});
-    }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS){
-        obj->move({-0.002f,0.0f});
+    if(house == nullptr){
+        return 0;
     }
 
-    if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS){
-        obj->move({0.0f,0.002f});
-    }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS){
-        obj->move({0.0f,-0.002f});
+    if( redhand::input_system::static_isKeyPressed(redhand::KEY_RIGHT) ){
+        house->move({0.02f,0.0f});
+    }else if(redhand::input_system::static_isKeyPressed(redhand::KEY_LEFT)){
+        house->move({-0.02f,0.0f});
+    }
+
+    if(redhand::input_system::static_isKeyPressed(redhand::KEY_UP)){
+        house->move({0.0f,0.02f});
+    }else if(redhand::input_system::static_isKeyPressed(redhand::KEY_DOWN)){
+        house->move({0.0f,-0.02f});
     } 
 
     //check for button presses and change rotation
 
-    if(glfwGetKey(window,GLFW_KEY_E) == GLFW_PRESS){
-        obj->rotate(-0.25f);
-    }else if(glfwGetKey(window,GLFW_KEY_Q) == GLFW_PRESS){
-        obj->rotate(0.25f);
+    if(redhand::input_system::static_isKeyPressed(redhand::KEY_E)){
+        house->rotate(-2.5f);
+    }else if(redhand::input_system::static_isKeyPressed(redhand::KEY_Q)){
+        house->rotate(2.5f);
     }
+
+    return 0;
 
 }
 
-void processWorldInput(GLFWwindow* window, std::shared_ptr<redhand::complex_world> activeWorld){
+int processWorldInput(redhand::game_loop_event evt){
+
+    auto activeWorld = evt.getRaiser()->getActiveWorld();
+    if(activeWorld == nullptr){
+        return 0;
+    }
+
     //move the camera
     std::array<float,2> deltaCamera = {0.0f,0.0f};
 
-    if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
-        deltaCamera.at(0) = 0.002f;
-    }else if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
-        deltaCamera.at(0) = -0.002f;
+    if( redhand::input_system::static_isKeyPressed(redhand::KEY_D) ){
+        deltaCamera.at(0) = 0.02f;
+    }else if( redhand::input_system::static_isKeyPressed(redhand::KEY_A) ){
+        deltaCamera.at(0) = -0.02f;
     }
 
-    if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
-        deltaCamera.at(1) = 0.002f;
-    }else if(glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
-        deltaCamera.at(1) = -0.002f;
+    if( redhand::input_system::static_isKeyPressed(redhand::KEY_W) ){
+        deltaCamera.at(1) = 0.02f;
+    }else if( redhand::input_system::static_isKeyPressed(redhand::KEY_S) ){
+        deltaCamera.at(1) = -0.02f;
     }
 
     activeWorld->moveCamera(deltaCamera.at(0),deltaCamera.at(1));
 
+    return 0;
+
 }
 
-void processGlobalInput(redhand::engine* game){
+int processGlobalInput(redhand::game_loop_event evt){
 
-    auto window = game->getWindow();
-
-    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS){
-        game->stopGame();
+    if(evt.getRaiser() == nullptr){
+        return -12;
     }
 
-    if(glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS){
+    if(redhand::input_system::static_isKeyPressed(redhand::KEY_ESCAPE)){
+        evt.getRaiser()->stopGame();
+    }
+
+    /*if(glfwGetKey(window, GLFW_KEY_F1) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS){
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     }
     if(glfwGetKey(window, GLFW_KEY_F2) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS){
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    }
+    }*/
+
+    return 0;
 
 }
 

@@ -1,3 +1,5 @@
+#include <redhand/glad/glad.h>
+
 #include "redhand/shader.hpp"
 
 using namespace redhand;

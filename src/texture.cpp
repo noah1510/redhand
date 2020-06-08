@@ -1,3 +1,4 @@
+#include <redhand/glad/glad.h>
 #include "redhand/texture.hpp"
 
 using namespace redhand;
