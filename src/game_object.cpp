@@ -245,16 +245,27 @@ void redhand::game_object::updateWorldTransformation(){
         local_object_properties.postition.at(1),0.0f)
     );
 
+    local_world_transformation = glm::scale(
+        local_world_transformation, 
+        glm::vec3(local_object_properties.scale.at(0), local_object_properties.scale.at(1), 1.0f)
+    );
+
+    local_world_transformation = glm::translate(
+        local_world_transformation, 
+        glm::vec3(local_object_properties.rotation_point,0.0f)
+    );
+
     local_world_transformation = glm::rotate(
         local_world_transformation, 
         glm::radians(local_object_properties.rotation), 
         glm::vec3(0.0f, 0.0f, 1.0f)
     );
 
-    local_world_transformation = glm::scale(
+    local_world_transformation = glm::translate(
         local_world_transformation, 
-        glm::vec3(local_object_properties.scale.at(0), local_object_properties.scale.at(1), 1.0f)
+        glm::vec3(-local_object_properties.rotation_point,0.0f)
     );
+
 
     auto lock2 = std::scoped_lock(mutex_world_transformation);
     world_transformation = local_world_transformation;

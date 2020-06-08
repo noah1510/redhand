@@ -171,9 +171,12 @@ int redhand::engine::runGame(){
 
             //get the new error
             int localErrorCode = 0;
+
+            activeWorld->tick(evt);
+
             for(auto x : game_loop_handlers){
+                if(localErrorCode < 0){break;};
                 localErrorCode = x.second(evt);
-                if(localErrorCode != 0){break;};
             }
 
             //if there was an error terminate the game

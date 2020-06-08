@@ -61,8 +61,8 @@ void redhand::complex_world::tick(redhand::game_loop_event<redhand::engine> evt)
     setWindowSize(width, height);
 
     std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
-    for(auto x : WorldObjects){
-        x->onLoop(window);
+    for(unsigned int i = 0;i < WorldObjects.size();i++){
+        WorldObjects.at(i)->onLoop(window);
     }
 
 }

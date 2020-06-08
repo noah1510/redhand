@@ -56,7 +56,9 @@ typedef struct{
     ///THe alpha value of this game_object
     float                                                   alpha_value;
     ///Enable automatic scaling of texture (might be buggy)
-    bool                                                    automatic_scaling;                                
+    bool                                                    automatic_scaling;           
+    ///The point which the object should use as rotation axis
+    glm::vec2                                               rotation_point;                     
     
 } game_object_properties;
 
@@ -79,7 +81,8 @@ const game_object_properties DEFAULT_GAME_OBJECT_PROPERTIES = {
     "game_object",
     {1.0f,1.0f},
     1.0f,
-    false
+    false,
+    {0.5f,0.5f}
 };
 
 /**

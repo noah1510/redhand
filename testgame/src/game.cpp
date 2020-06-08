@@ -103,13 +103,14 @@ int createTestworld(std::shared_ptr<redhand::complex_world> testWorld){
     trig_properties.name = "trig";
     trig_properties.attached_shader = testWorld->getShaderByName("default");
     trig_properties.scale = {0.5f,0.5f};
+    trig_properties.rotation_point = {0.0f,0.0f};
     
     if( testWorld->addObject(std::unique_ptr<redhand::game_object>(new redhand::game_object(trig_properties)) ) < 0){
         return -3;
     }
 
     testWorld->getObjectByName("trig")->setLoopFunction([](GLFWwindow*, redhand::game_object* obj){
-        obj->setRotation((float)glfwGetTime()*20.0f);
+        obj->rotate(0.1f);
     });
     
 
@@ -126,32 +127,26 @@ int createTestworld(std::shared_ptr<redhand::complex_world> testWorld){
 
 void processHouseMovement(GLFWwindow* window, redhand::game_object* obj){
     //move the house
-    std::array<float,2> deltaPosition = {0.0f,0.0f};
 
     if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS){
-        deltaPosition.at(0) = 0.002f;
+        obj->move({0.002f,0.0f});
     }else if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS){
-        deltaPosition.at(0) = -0.002f;
+        obj->move({-0.002f,0.0f});
     }
 
     if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS){
-        deltaPosition.at(1) = 0.002f;
+        obj->move({0.0f,0.002f});
     }else if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS){
-        deltaPosition.at(1) = -0.002f;
-    }
-
-    obj->move(deltaPosition);    
+        obj->move({0.0f,-0.002f});
+    } 
 
     //check for button presses and change rotation
-    float deltaRotation = 0.0f;
 
     if(glfwGetKey(window,GLFW_KEY_E) == GLFW_PRESS){
-        deltaRotation = -0.25f;
+        obj->rotate(-0.25f);
     }else if(glfwGetKey(window,GLFW_KEY_Q) == GLFW_PRESS){
-        deltaRotation = 0.25f;
+        obj->rotate(0.25f);
     }
-
-    obj->rotate(deltaRotation);
 
 }
 
