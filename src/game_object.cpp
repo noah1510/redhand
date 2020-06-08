@@ -6,53 +6,71 @@
 
 using namespace redhand;
 
-//full constructor
-redhand::game_object::game_object(game_object_properties properties ){
-    object_properties = properties;
+bool redhand::game_object::checkObjectProperties(game_object_properties properties){
+    std::mutex errorMutex;
+    bool Error = false;
 
     auto fut1 = std::async(std::launch::async,[&](){
-        if(object_properties.attached_shader == nullptr || object_properties.attached_shader == NULL ){
+        if(properties.attached_shader == nullptr || properties.attached_shader == NULL ){
             std::cerr << "ERROR::REDHAND::GAME_OBJECT::NO_SHADER" << std::endl;
-            triggerError();
+            errorMutex.lock();
+            Error = true;
+            errorMutex.unlock();
         }
 
-        if(object_properties.triangle_indices.size() == 0){
+        if(properties.triangle_indices.size() == 0){
             std::cerr << "ERROR::REDHAND::GAME_OBJECT::NO_TRIANGLES" << std::endl;
-            triggerError();
+            errorMutex.lock();
+            Error = true;
+            errorMutex.unlock();
         }
     });
         
     auto less = std::async(std::launch::async,[&](){
-        for(unsigned int i = 0; i < object_properties.points_coordinates.size(); i++){
-            if(object_properties.points_coordinates.at(i).at(0) < 0.0f){
-                triggerError();
+        for(unsigned int i = 0; i < properties.points_coordinates.size(); i++){
+            if(properties.points_coordinates.at(i).at(0) < 0.0f){
                 std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
+                errorMutex.lock();
+                Error = true;
+                errorMutex.unlock();
             }
-            if(object_properties.points_coordinates.at(i).at(1) < 0.0f){
-                triggerError();
+            if(properties.points_coordinates.at(i).at(1) < 0.0f){
                 std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
+                errorMutex.lock();
+                Error = true;
+                errorMutex.unlock();
             }
 
-            if(hasErrord()){
+            errorMutex.lock();
+            if(Error){
+                errorMutex.unlock();
                 break;
             }
+            errorMutex.unlock();
         }
     });
 
     auto more = std::async(std::launch::async,[&](){
         for(unsigned int i = 0; i < object_properties.points_coordinates.size(); i++){
-            if(object_properties.points_coordinates.at(i).at(0) > 1.0f){
-                triggerError();
+            if(properties.points_coordinates.at(i).at(0) > 1.0f){
                 std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
+                errorMutex.lock();
+                Error = true;
+                errorMutex.unlock();
             }
-            if(object_properties.points_coordinates.at(i).at(1) > 1.0f){
-                triggerError();
+            if(properties.points_coordinates.at(i).at(1) > 1.0f){
                 std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
+                errorMutex.lock();
+                Error = true;
+                errorMutex.unlock();
             }
 
-            if(hasErrord()){
+            errorMutex.lock();
+            if(Error){
+                errorMutex.unlock();
                 break;
             }
+            errorMutex.unlock();
         }
     });
 
@@ -60,86 +78,101 @@ redhand::game_object::game_object(game_object_properties properties ){
     more.wait();
     fut1.wait();
 
-    if(!has_errored){
-        loop_function = [](GLFWwindow*, game_object*){};
+    return Error;
 
-        data.reserve(
-                object_properties.points_coordinates.size()*3 //size of points
-            +   object_properties.points_coordinates.size()*3 //size of colors
-            +   object_properties.points_coordinates.size()*2 //size of texels
-        );   
+}
 
+void redhand::game_object::updateBuffers(){
+
+    if(checkObjectProperties(object_properties)){
+        return;
+    }
+
+    //Initilize the buffers
+    if(!glad_glIsVertexArray(VAO)){glGenVertexArrays(1, &VAO);};
+    if(!glad_glIsBuffer(VBO)){glGenBuffers(1, &VBO);};
+    if(!glad_glIsBuffer(EBO)){glGenBuffers(1, &EBO);};
+    
+
+    data.reserve(
+            object_properties.points_coordinates.size()*3 //size of points
+        +   object_properties.points_coordinates.size()*3 //size of colors
+        +   object_properties.points_coordinates.size()*2 //size of texels
+    );   
+
+    for(unsigned int i = 0; i < object_properties.points_coordinates.size();i++){
+        data.push_back(object_properties.points_coordinates.at(i).at(0));
+        data.push_back(object_properties.points_coordinates.at(i).at(1));
+        data.push_back(0.0f);
+    }
+
+    if(object_properties.point_colors.size() != object_properties.points_coordinates.size()){
         for(unsigned int i = 0; i < object_properties.points_coordinates.size();i++){
-            data.push_back(object_properties.points_coordinates.at(i).at(0));
-            data.push_back(object_properties.points_coordinates.at(i).at(1));
+            data.push_back(0.0f);
+            data.push_back(0.0f);
             data.push_back(0.0f);
         }
-
-        if(object_properties.point_colors.size() != object_properties.points_coordinates.size()){
-            for(unsigned int i = 0; i < object_properties.points_coordinates.size();i++){
-                data.push_back(0.0f);
-                data.push_back(0.0f);
-                data.push_back(0.0f);
-            }
-        }else{
-            for(unsigned int i = 0;i < object_properties.points_coordinates.size();i++){
-                data.push_back(object_properties.point_colors.at(i).at(0));
-                data.push_back(object_properties.point_colors.at(i).at(1));
-                data.push_back(object_properties.point_colors.at(i).at(2));
-            }
+    }else{
+        for(unsigned int i = 0;i < object_properties.points_coordinates.size();i++){
+            data.push_back(object_properties.point_colors.at(i).at(0));
+            data.push_back(object_properties.point_colors.at(i).at(1));
+            data.push_back(object_properties.point_colors.at(i).at(2));
         }
-
-        if(object_properties.texture_coordinates.size() == object_properties.points_coordinates.size()){
-            for(unsigned int i = 0;i < object_properties.points_coordinates.size();i++){
-                data.push_back(object_properties.texture_coordinates.at(i).at(0));
-                data.push_back(object_properties.texture_coordinates.at(i).at(1));
-            };
-        }else{
-            for(unsigned int i = 0;i < object_properties.points_coordinates.size();i++){
-                data.push_back(object_properties.points_coordinates.at(i).at(0));
-                data.push_back(object_properties.points_coordinates.at(i).at(1));
-            }
-        }      
-
-        std::vector<unsigned int> trigs;
-        trigs.reserve(object_properties.triangle_indices.size()*3);
-        for(unsigned int i = 0; i < object_properties.triangle_indices.size();i++){
-            trigs.push_back(object_properties.triangle_indices.at(i).at(0));
-            trigs.push_back(object_properties.triangle_indices.at(i).at(1));
-            trigs.push_back(object_properties.triangle_indices.at(i).at(2));
-        }
-
-        //Initilize the buffers
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
-        glGenBuffers(1, &EBO);
-
-        ///Create arrays and buffers
-        glBindVertexArray(VAO);
-
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), object_properties.gl_drawing_mode);
-
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), object_properties.gl_drawing_mode);
-
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*trigs.size(), trigs.data(), object_properties.gl_drawing_mode);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(object_properties.points_coordinates.size() * 3 * sizeof(float)));
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)((object_properties.points_coordinates.size() * 6) * sizeof(float)));
-        glEnableVertexAttribArray(2);
-
-        if (    object_properties.attached_texture != NULL 
-            &&  object_properties.attached_texture != nullptr 
-            &&  !object_properties.attached_texture->hasErrord()
-        ){ texture_mode = 1; };
-
-        updateWorldTransformation();
-
     }
+
+    if(object_properties.texture_coordinates.size() == object_properties.points_coordinates.size()){
+        for(unsigned int i = 0;i < object_properties.points_coordinates.size();i++){
+            data.push_back(object_properties.texture_coordinates.at(i).at(0));
+            data.push_back(object_properties.texture_coordinates.at(i).at(1));
+        };
+    }else{
+        for(unsigned int i = 0;i < object_properties.points_coordinates.size();i++){
+            data.push_back(object_properties.points_coordinates.at(i).at(0));
+            data.push_back(object_properties.points_coordinates.at(i).at(1));
+        }
+    }      
+
+    std::vector<unsigned int> trigs;
+    trigs.reserve(object_properties.triangle_indices.size()*3);
+    for(unsigned int i = 0; i < object_properties.triangle_indices.size();i++){
+        trigs.push_back(object_properties.triangle_indices.at(i).at(0));
+        trigs.push_back(object_properties.triangle_indices.at(i).at(1));
+        trigs.push_back(object_properties.triangle_indices.at(i).at(2));
+    }
+
+
+    ///Create arrays and buffers
+    glBindVertexArray(VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), object_properties.gl_drawing_mode);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float)*data.size(), data.data(), object_properties.gl_drawing_mode);
+
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*trigs.size(), trigs.data(), object_properties.gl_drawing_mode);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(object_properties.points_coordinates.size() * 3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)((object_properties.points_coordinates.size() * 6) * sizeof(float)));
+    glEnableVertexAttribArray(2);
+
+    if (    object_properties.attached_texture != NULL 
+        &&  object_properties.attached_texture != nullptr 
+        &&  !object_properties.attached_texture->hasErrord()
+    ){ texture_mode = 1; };
+
+    updateWorldTransformation();
+
+}
+
+//full constructor
+redhand::game_object::game_object(game_object_properties properties ){
+    object_properties = properties;
+
+    updateBuffers();
 }
 
 
@@ -150,7 +183,6 @@ redhand::game_object::~game_object(){
     auto lock = std::scoped_lock(
         mutex_game_object,
         mutex_has_errored,
-        mutex_loop_function,
         mutex_object_properties,
         mutex_texture_scale,
         mutex_world_transformation,
@@ -292,16 +324,8 @@ void redhand::game_object::setColorAlpha(float alpha){
     }
 }
 
-void redhand::game_object::onLoop(GLFWwindow* window){    
-    std::shared_lock<std::shared_mutex> lock(mutex_loop_function);
-
-    loop_function(window, this);
-};
-
-void redhand::game_object::setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop){  
-    std::scoped_lock<std::shared_mutex> lock(mutex_loop_function);
-
-    loop_function = loop;
+void redhand::game_object::onLoop(redhand::game_loop_event){    
+    
 };
 
 std::shared_ptr<redhand::shader> redhand::game_object::getShader(){
@@ -518,3 +542,5 @@ std::unique_ptr<redhand::game_object> redhand::createRectangle(
     
     return std::unique_ptr<redhand::game_object>(new game_object(settings));
 }
+
+

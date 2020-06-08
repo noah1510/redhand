@@ -153,9 +153,14 @@ int redhand::engine::changeWorld(std::shared_ptr<complex_world> newWorld){
         return -5;
     }
 
-    nextWorld = newWorld;
-
-    return 0;
+    if(!isRunning()){
+        activeWorld = newWorld;
+        errorCode = activeWorld->onCreate(redhand::event<engine>(this));
+    }else{
+        nextWorld = newWorld;
+    }
+    
+    return errorCode;
 }
 
 int redhand::engine::runGame(){
@@ -195,13 +200,20 @@ int redhand::engine::runGame(){
             if(localErrorCode < 0){
                 stopGame(localErrorCode);
                 break;
-            }
+            }       
 
             //if not a nullptr change world
             if(nextWorld != nullptr){
                 activeWorld.reset();
                 activeWorld = nextWorld;
                 nextWorld = nullptr;
+                localErrorCode = activeWorld->onCreate(redhand::event<engine>(this));
+
+                //if there was an error terminate the game
+                if(localErrorCode < 0){
+                    stopGame(localErrorCode);
+                    break;
+                }
             }
 
             last_time = this_time;

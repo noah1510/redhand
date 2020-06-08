@@ -64,7 +64,7 @@ void redhand::complex_world::tick(redhand::game_loop_event evt){
 
     std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
     for(unsigned int i = 0;i < WorldObjects.size();i++){
-        WorldObjects.at(i)->onLoop(window);
+        WorldObjects.at(i)->onLoop(evt);
     }
 
 }
@@ -269,4 +269,8 @@ void redhand::complex_world::moveCamera(float delta_pos_x, float delta_pos_y){
     for(auto x:WorldShaders){
         x->moveCamera(delta_pos_x, delta_pos_y);
     }  
+}
+
+int redhand::complex_world::onCreate(redhand::event<redhand::engine>){
+    return 0;
 }

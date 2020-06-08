@@ -55,6 +55,8 @@ find_package(OpenGL REQUIRED)
 
 add_executable(${OUTPUT} 
 ${CMAKE_PREFIX_PATH}/testgame/src/game.cpp
+${CMAKE_PREFIX_PATH}/testgame/src/test_world.cpp
+${CMAKE_PREFIX_PATH}/testgame/src/test_objects.cpp
 ${CMAKE_PREFIX_PATH}/testgame/src/main.cpp)
 
 if (UNIX)
