@@ -1,5 +1,13 @@
 
-# Welcome to RedHand ![Build Status](https://github.com/noah1510/redhand/workflows/CI/badge.svg)
+<h1 align="center"> Welcome to RedHand </h1>
+
+<h2 align="center">
+<a href="https://github.com/noah1510/redhand/blob/master/License"><img src="https://img.shields.io/github/license/noah1510/redhand.svg" alt="GitHub license" /></a>
+<img src="https://github.com/noah1510/redhand/workflows/CI/badge.svg" alt="build status" />
+<a href="https://frontend.code-inspector.com/project/5322/dashboard"><img src="https://www.code-inspector.com/project/5322/score/svg" alt="code quality" /></a>
+<a href="https://discord.gg/awjW3aG"><img src="https://discordapp.com/api/guilds/691968013234339881/widget.png" alt="Discord" /></a>
+<a href="https://GitHub.com/noah1510/redhand/releases/"><img src="https://img.shields.io/github/v/release/noah1510/redhand.svg" alt="stable release" /></a>
+</h2>
 
 The goal is to create an easy to use 2D Game engine using C++.
 Its purpose is to give new programmers an easy introduction into game programming and even more abstract topics like object oriented programming and graphics programming in general.
