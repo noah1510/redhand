@@ -66,8 +66,8 @@ void redhand::engine::init(){
         return;
     }
 
-    //init stb
-    initSTB();
+    //init image loading library
+    initImageLoader();
 
     //enable multisampling
     glEnable(GL_MULTISAMPLE);

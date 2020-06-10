@@ -3,7 +3,7 @@
 house::house(
     std::shared_ptr<redhand::texture2D> texture,
     std::shared_ptr<redhand::shader> shade
-):game_object(redhand::DEFAULT_GAME_OBJECT_PROPERTIES){
+){
 
     auto settings = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
 

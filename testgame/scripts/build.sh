@@ -109,7 +109,7 @@ mkdir -p "build"
 #build actual project
 mkdir -p "build/$BUILDNAME"
 cd "build/$BUILDNAME"
-cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT -DREDHAND_LOCATION="$REDHAND_LOCATION" "../../testgame"
+cmake -G "Ninja"  -D CMAKE_C_COMPILER=gcc-9 -D CMAKE_CXX_COMPILER=g++-9 -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT -DREDHAND_LOCATION="$REDHAND_LOCATION" "../../testgame"
 ninja -j"$THREADS"
 if [ $? -eq 0 ]
 then

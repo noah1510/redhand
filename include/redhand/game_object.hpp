@@ -158,6 +158,12 @@ protected:
      */
     void updateBuffers();
 
+    /**
+     * @brief Construct an empty game_object, no buffers are initilized and not configuration set.
+     * 
+     */
+    game_object();
+
 public:
 
     /**

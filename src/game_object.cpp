@@ -12,7 +12,7 @@ bool redhand::game_object::checkObjectProperties(game_object_properties properti
 
     auto fut1 = std::async(std::launch::async,[&](){
         if(properties.attached_shader == nullptr || properties.attached_shader == NULL ){
-            std::cerr << "ERROR::REDHAND::GAME_OBJECT::NO_SHADER" << std::endl;
+            std::cerr << "ERROR::REDHAND::GAME_OBJECT::NO_SHADER in object " << properties.name << std::endl;
             errorMutex.lock();
             Error = true;
             errorMutex.unlock();
@@ -167,6 +167,8 @@ void redhand::game_object::updateBuffers(){
     updateWorldTransformation();
 
 }
+
+redhand::game_object::game_object(){}
 
 //full constructor
 redhand::game_object::game_object(game_object_properties properties ){

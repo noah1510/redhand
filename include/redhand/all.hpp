@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2020
  * 
  */
+#include <Magick++.h>
 
 #include "redhand/complex_world.hpp"
 #include "redhand/engine.hpp"

@@ -18,7 +18,7 @@ else (REPOROOT)
     SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
 
-include_directories(${CMAKE_PREFIX_PATH}/include/)
+include_directories(${CMAKE_PREFIX_PATH}/include/ /usr/include/GraphicsMagick)
 link_directories(${CMAKE_PREFIX_PATH}/lib/)
 
 if (UNIX)
@@ -28,6 +28,7 @@ if (UNIX)
         SET(OUTPUT "main.out")
     endif (OUTPUTFILE)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
+    SET(GCC_COVERAGE_LINK_FLAGS "${GCC_COVERAGE_LINK_FLAGS} -I/usr/include/GraphicsMagick -L/usr/lib -L/usr/lib/X11 -lGraphicsMagick++ -lGraphicsMagick -ljbig -lwebp -lwebpmux -llcms2 -ltiff -lfreetype -ljpeg -lpng16 -lwmflite -lXext -lSM -lICE -lX11 -llzma -lbz2 -lxml2 -lz -lm -lgomp -lpthread")
 endif (UNIX)
 
 if (WIN32)

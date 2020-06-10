@@ -6,10 +6,11 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/include/**",
                 "${workspaceFolder}/src/**",
-                "${workspaceFolder}/include"
+                "${workspaceFolder}/include",
+                "/usr/include/GraphicsMagick"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/g++",
+            "compilerPath": "/usr/bin/g++-9",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-x64",

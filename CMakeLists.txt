@@ -17,11 +17,12 @@ else (REPOROOT)
     SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
 
-include_directories(${CMAKE_PREFIX_PATH}/include/)
+include_directories(${CMAKE_PREFIX_PATH}/include/ /usr/include/GraphicsMagick)
 link_directories(${CMAKE_PREFIX_PATH}/lib/)
 
 if (UNIX)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
+    SET(GCC_COVERAGE_LINK_FLAGS "${GCC_COVERAGE_LINK_FLAGS} -lGraphicsMagick++ -lGraphicsMagick -ljbig -lwebp -lwebpmux -llcms2 -ltiff -lfreetype -ljpeg -lpng16 -lwmflite -lXext -lSM -lICE -lX11 -llzma -lbz2 -lxml2 -lz -lm -lgomp -lpthread")
 endif (UNIX)
 
 if (WIN32)
@@ -56,6 +57,11 @@ if (UNIX)
         NAMES libglfw.so.3 libglfw.so glfw libglfw.so.3.2
         HINTS /usr/lib/x86_64-linux-gnu/ )
     target_link_libraries(redhand ${GLFW})
+
+    find_library(MAGICK
+        NAMES GraphicsMagick++ libGraphicsMagick++.so
+        HINTS /usr/lib/ )
+    target_link_libraries(redhand ${MAGICK})
     target_link_libraries(redhand dl)
 endif (UNIX)
 

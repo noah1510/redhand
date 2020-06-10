@@ -142,18 +142,6 @@ fi
 
 if [ "$PACKAGEBUILD" == "0" ]
 then
-    git submodule update --init include/stb
-    if [ $? -eq 0 ]
-    then
-        echo "Successfully initiated stb"
-    else
-        echo "Could not initiate stb" >&2
-        exit 1
-    fi
-fi
-
-if [ "$PACKAGEBUILD" == "0" ]
-then
     git submodule update --init dependencies/gladRepo
     if [ $? -eq 0 ]
     then
