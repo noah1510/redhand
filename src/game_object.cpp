@@ -274,6 +274,14 @@ void redhand::game_object::updateWorldTransformation(){
     auto local_object_properties = object_properties;
     lock1.unlock();
 
+    glm::mat4 scale = glm::mat4(1.0f);
+    scale = glm::scale(
+        scale, 
+        glm::vec3(local_object_properties.scale.at(0), local_object_properties.scale.at(1), 1.0f)
+    );
+    auto delta = scale * glm::vec4(local_object_properties.rotation_point,0.0f,1.0f);
+
+
     glm::mat4 local_world_transformation = glm::mat4(1.0f);
     local_world_transformation = glm::translate(
         local_world_transformation, 
@@ -281,14 +289,9 @@ void redhand::game_object::updateWorldTransformation(){
         local_object_properties.postition.at(1),0.0f)
     );
 
-    local_world_transformation = glm::scale(
-        local_world_transformation, 
-        glm::vec3(local_object_properties.scale.at(0), local_object_properties.scale.at(1), 1.0f)
-    );
-
     local_world_transformation = glm::translate(
         local_world_transformation, 
-        glm::vec3(local_object_properties.rotation_point,0.0f)
+        glm::vec3(delta)
     );
 
     local_world_transformation = glm::rotate(
@@ -299,7 +302,12 @@ void redhand::game_object::updateWorldTransformation(){
 
     local_world_transformation = glm::translate(
         local_world_transformation, 
-        glm::vec3(-local_object_properties.rotation_point,0.0f)
+        glm::vec3(-delta)
+    );
+
+    local_world_transformation = glm::scale(
+        local_world_transformation, 
+        glm::vec3(local_object_properties.scale.at(0), local_object_properties.scale.at(1), 1.0f)
     );
 
 

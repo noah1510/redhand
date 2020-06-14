@@ -22,6 +22,11 @@ int test_world::onCreate(redhand::event<redhand::engine>){
     if(this->addTexture(std::move(tex1)) < 0){
         return -21;
     }
+
+    auto tex2 = std::unique_ptr<redhand::texture2D>(new redhand::texture2D("logo/redhand.svg.png","hand"));
+    if(this->addTexture(std::move(tex2)) < 0){
+        return -22;
+    }
     
     //creating the objects and add them to the world
     int edges = 240;
@@ -83,6 +88,13 @@ int test_world::onCreate(redhand::event<redhand::engine>){
     //house
     if( this->addObject(
         std::move( std::unique_ptr<redhand::game_object>( new house( this->getTextureByName("house"), this->getShaderByName("default"))))
+    ) < 0){
+        return -3;
+    }
+
+    //hand
+    if( this->addObject(
+        std::move( std::unique_ptr<redhand::game_object>( new hand( this->getTextureByName("hand"), this->getShaderByName("default"))))
     ) < 0){
         return -3;
     }

@@ -25,10 +25,8 @@ void redhand::texture2D::initTexture2D(){
     }
 
     //Format data
+    image_data->flip();
     image_data->depth(8);
-    image_data->quantizeColors();
-    image_data->compressType(Magick::NoCompression);
-    image_data->type(Magick::TrueColorMatteType);
     image_data->magick("RGBA");
 
     //copy image to blob
@@ -36,12 +34,12 @@ void redhand::texture2D::initTexture2D(){
     image_data->write(&data, "RGBA");
 
     //update the dimensions
-    int width = image_data->columns();
-    int height = image_data->rows();
+    width = image_data->columns();
+    height = image_data->rows();
 
     //create opengl texture
     if (data.length() != 0){
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.data());
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.data());
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else{
@@ -53,6 +51,8 @@ void redhand::texture2D::initTexture2D(){
     if(!texture_properties.keep_image_data){
         image_data.release();
     }
+
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 ///@todo add file checks
