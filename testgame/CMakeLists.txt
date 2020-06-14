@@ -18,7 +18,10 @@ else (REPOROOT)
     SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
 
-include_directories(${CMAKE_PREFIX_PATH}/include/ /usr/include/GraphicsMagick)
+find_package(OpenGL REQUIRED)
+find_package(ImageMagick COMPONENTS Magick++ REQUIRED)
+
+include_directories(${CMAKE_PREFIX_PATH}/include/ ${ImageMagick_INCLUDE_DIRS})
 link_directories(${CMAKE_PREFIX_PATH}/lib/)
 
 if (UNIX)
@@ -51,14 +54,14 @@ SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} ${GC_COVERAGE_COMPILE_FLAGS}")
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
-find_package(OpenGL REQUIRED)
-
 
 add_executable(${OUTPUT} 
 ${CMAKE_PREFIX_PATH}/testgame/src/game.cpp
 ${CMAKE_PREFIX_PATH}/testgame/src/test_world.cpp
 ${CMAKE_PREFIX_PATH}/testgame/src/test_objects.cpp
 ${CMAKE_PREFIX_PATH}/testgame/src/main.cpp)
+
+target_link_libraries(${OUTPUT} ${ImageMagick_LIBRARIES})
 
 if (UNIX)
     find_library(GLFW

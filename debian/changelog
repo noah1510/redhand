@@ -1,3 +1,13 @@
+libredhand (0.0.11) bionic; urgency=medium
+
+  * started implementation of event based function model
+
+  * switched from stb to libmagick++
+
+  * building with gcc > 9
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Wed, 10 Jun 2020 14:02:31 +0200
+
 libredhand (0.0.10) bionic; urgency=medium
 
   * reworked textures
