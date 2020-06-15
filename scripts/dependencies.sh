@@ -46,6 +46,15 @@ then
 
     if [ "$1" == "--ci" ]
     then
+        choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
+        if [ $? -eq 0 ]
+        then
+            echo "Successfully installed magick"
+        else
+            echo "Could not install magick" >&2
+            exit 2
+        fi
+        
         choco install ninja --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
@@ -55,7 +64,7 @@ then
             exit 2
         fi
     else
-        choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick.app
+        choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
         if [ $? -eq 0 ]
         then
             echo "Successfully installed magick"
