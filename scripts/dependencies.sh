@@ -7,7 +7,7 @@ then
 
     DOCDEPS="doxygen graphviz-dev"
     GLFWDEPS="xorg-dev libgl1-mesa-dev"
-    REDHANDDEPS="cmake gcc-9 g++-9 ninja-build libglm-dev libglfw3 libglfw3-dev devscripts"
+    REDHANDDEPS="cmake gcc-9 g++-9 ninja-build libglm-dev libglfw3 libglfw3-dev devscripts libmagick++-dev"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-dev"
 
     sudo apt update
@@ -55,7 +55,16 @@ then
             exit 2
         fi
     else
-        choco install doxygen.install mingw cmake ninja --yes --verbose --no-progress
+        choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick.app
+        if [ $? -eq 0 ]
+        then
+            echo "Successfully installed magick"
+        else
+            echo "Could not install magick" >&2
+            exit 2
+        fi
+
+        choco install doxygen.install mingw cmake ninja  --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
