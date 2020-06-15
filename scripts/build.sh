@@ -91,6 +91,9 @@ then
 
     LIBRARY="libredhand.so"
 
+    export CC="gcc-9"
+    export CXX="g++-9"
+
 elif [ "$OSTYPE" == "darwin"* ]
 then
     # Mac OSX
@@ -131,7 +134,7 @@ else
   #build actual project
   mkdir -p "build/$LIBBUILDNAME"
   cd "build/$LIBBUILDNAME"
-  cmake -G "Ninja" -D CMAKE_C_COMPILER=gcc-9 -D CMAKE_CXX_COMPILER=g++-9 -DREPOROOT=$REPOROOT "../.."
+  cmake -G "Ninja" -DREPOROOT=$REPOROOT "../.."
   ninja -j"$THREADS"
   if [ $? -eq 0 ]
   then
