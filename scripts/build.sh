@@ -110,6 +110,9 @@ then
 
     LIBRARY="libredhand.dll"
 
+    export CC="clang"
+    export CXX="clang++"
+
     #alias make='mingw32-make'
 
 else

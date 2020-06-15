@@ -55,7 +55,7 @@ then
             exit 2
         fi
         
-        choco install ninja --yes --verbose --no-progress
+        choco install ninja llvm --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
