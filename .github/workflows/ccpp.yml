@@ -8,8 +8,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        compiler: [gcc, clang]
     runs-on: ${{ matrix.os }}
+    env:
+      CC: C:\msys64\gcc
+      CXX: C:\msys64\g++
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     
     steps:
