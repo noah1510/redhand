@@ -9,15 +9,17 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-    env:
-      CC: C:\msys64\gcc
-      CXX: C:\msys64\g++
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     
     steps:
     - uses: actions/checkout@v1
       with: 
         lfs: false
+    - name: update windows compiler
+      run: |
+        echo "::set-env name=CC::C:\msys64\bin\gcc"
+        echo "::set-env name=CXX::C:\msys64\bin\g++"
+      if: matrix.os == 'windows-latest'
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
