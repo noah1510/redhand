@@ -24,6 +24,7 @@ jobs:
   pre-release:
     name: "windows latest release"
     runs-on: "windows-latest"
+    compiler: clang
     steps:
     - uses: actions/checkout@v2
       with: 

@@ -12,6 +12,15 @@ option(OUTPUTFILE "Name of file to output")
 option(REPOROOT "Path of the root of the repo")
 option(REDHAND_LOCATION "The exact locataion of the libredhand file relative to reporoot")
 
+set(CMAKE_REQUIRED_FLAGS "-std=c++11")
+
+include(CheckIncludeFileCXX)
+CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)
+
+if(!HAVE_FILESYSTEM)
+    message( FATAL_ERROR "compiler does not have c++ <filesystem> support please install a newer version." )
+endif()
+
 if (REPOROOT)
     SET(CMAKE_PREFIX_PATH ${REPOROOT})
 else (REPOROOT)

@@ -1,9 +1,19 @@
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
+cmake_policy(SET CMP0067 NEW)
 
 if(CMAKE_VERSION VERSION_GREATER "3.11.0")
     cmake_policy(SET CMP0072 NEW)
     cmake_policy(VERSION 3.11)
+endif()
+
+set(CMAKE_REQUIRED_FLAGS "-std=c++11")
+
+include(CheckIncludeFileCXX)
+CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)
+
+if(!HAVE_FILESYSTEM)
+    message( FATAL_ERROR "compiler does not have c++ <filesystem> support please install a newer version." )
 endif()
 
 project(redhand VERSION "0.0.8" DESCRIPTION "a small 2D game engine")
