@@ -9,6 +9,9 @@ endif()
 
 set(CMAKE_REQUIRED_FLAGS "-std=c++11")
 
+find_package(OpenGL REQUIRED)
+find_package(ImageMagick COMPONENTS Magick++ REQUIRED)
+
 include(CheckIncludeFileCXX)
 CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)
 
@@ -26,9 +29,6 @@ if (REPOROOT)
 else (REPOROOT)
     SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
-
-find_package(OpenGL REQUIRED)
-find_package(ImageMagick COMPONENTS Magick++ REQUIRED)
 
 include_directories(${CMAKE_PREFIX_PATH}/include/ ${ImageMagick_INCLUDE_DIRS})
 link_directories(${CMAKE_PREFIX_PATH}/lib/)
