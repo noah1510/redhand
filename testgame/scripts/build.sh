@@ -95,6 +95,9 @@ then
 
     EXECUTABLE="$PROJECTNAME-$BUILDNAME.exe"
 
+    export CC="clang-9"
+    export CXX="clang++-9"
+
     #alias make='mingw32-make'
 
 else

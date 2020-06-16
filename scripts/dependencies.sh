@@ -46,7 +46,7 @@ then
 
     if [ "$1" == "--ci" ]
     then
-        choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
+        choco install imagemagick  -PackageParameters InstallDevelopmentHeaders=true  --yes --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed magick"
@@ -55,14 +55,24 @@ then
             exit 2
         fi
         
-        choco install ninja llvm --yes --verbose --no-progress
+        choco install ninja --yes --no-progress
         if [ $? -eq 0 ]
         then
-            echo "Successfully installed dependencies"
+            echo "Successfully installed ninja"
         else
-            echo "Could not install dependencies" >&2
+            echo "Could not install ninja" >&2
             exit 2
         fi
+
+        choco install llvm --version 9.0.1 --yes --no-progress
+        if [ $? -eq 0 ]
+        then
+            echo "Successfully installed llvm"
+        else
+            echo "Could not install llvm" >&2
+            exit 2
+        fi
+
     else
         choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
         if [ $? -eq 0 ]

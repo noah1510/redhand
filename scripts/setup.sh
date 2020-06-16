@@ -107,6 +107,9 @@ then
       cp -r "configurations/linux/.vscode" "."
     fi
 
+    export CC="clang-9"
+    export CXX="clang++-9"
+
 else
     # Unknown os
     echo "running on something else."
