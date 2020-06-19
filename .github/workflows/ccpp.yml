@@ -24,7 +24,7 @@ jobs:
     - name: setup the project
       run:  bash scripts/setup.sh --ci
     - name: build library
-      run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
+      run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
     - name: build testgame
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - uses: actions/upload-artifact@v1

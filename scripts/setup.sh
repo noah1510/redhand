@@ -52,6 +52,11 @@ do
   esac
 done
 
+if [ "$REDHAND_CI" == "1" ]
+then
+    CI="1"
+fi
+
 if [ "$THREADS" == "3" ]
 then
   THREADS="$(nproc)"

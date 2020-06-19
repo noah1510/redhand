@@ -1,5 +1,17 @@
 #!/bin/bash
 
+CI="0"
+
+if [ "$1" == "--ci" ]
+then
+    CI="1"
+fi
+
+if [ "$REDHAND_CI" == "1" ]
+then
+    CI="1"
+fi
+
 if [ "$OSTYPE" == "linux-gnu" ]
 then
     # Linux
@@ -11,7 +23,7 @@ then
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-dev"
 
     sudo apt update
-    if [ "$1" == "--ci" ]
+    if [ "$CI" == "1" ]
     then
         sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS --yes
         if [ $? -eq 0 ]
@@ -44,7 +56,7 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    if [ "$1" == "--ci" ]
+    if [ "$CI" == "1" ]
     then
         choco install imagemagick  -PackageParameters InstallDevelopmentHeaders=true  --yes --no-progress
         if [ $? -eq 0 ]
