@@ -7,18 +7,6 @@ if(CMAKE_VERSION VERSION_GREATER "3.11.0")
     cmake_policy(VERSION 3.11)
 endif()
 
-set(CMAKE_REQUIRED_FLAGS "-std=c++11")
-
-find_package(OpenGL REQUIRED)
-find_package(ImageMagick COMPONENTS Magick++ REQUIRED)
-
-include(CheckIncludeFileCXX)
-CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)
-
-if(!HAVE_FILESYSTEM)
-    message( FATAL_ERROR "compiler does not have c++ <filesystem> support please install a newer version." )
-endif()
-
 project(redhand VERSION "0.0.8" DESCRIPTION "a small 2D game engine")
 
 option(OUTPUTFILE "Name of file to output")
@@ -30,8 +18,22 @@ else (REPOROOT)
     SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
 
-include_directories(${CMAKE_PREFIX_PATH}/include/ ${ImageMagick_INCLUDE_DIRS})
+include_directories(${CMAKE_PREFIX_PATH}/include/)
 link_directories(${CMAKE_PREFIX_PATH}/lib/)
+
+set(CMAKE_REQUIRED_FLAGS "-std=c++11")
+
+find_package(OpenGL REQUIRED)
+
+find_package(ImageMagick COMPONENTS Magick++ REQUIRED)
+include_directories(${ImageMagick_INCLUDE_DIRS})
+
+include(CheckIncludeFileCXX)
+CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)
+
+if(!HAVE_FILESYSTEM)
+    message( FATAL_ERROR "compiler does not have c++ <filesystem> support please install a newer version." )
+endif()
 
 if (UNIX)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")

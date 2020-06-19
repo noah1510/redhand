@@ -7,7 +7,7 @@ then
 
     DOCDEPS="doxygen graphviz-dev"
     GLFWDEPS="xorg-dev libgl1-mesa-dev"
-    REDHANDDEPS="cmake gcc-9 g++-9 ninja-build libglm-dev libglfw3 libglfw3-dev devscripts libmagick++-dev"
+    REDHANDDEPS="cmake clang-9 clang++-9 ninja-build libglm-dev libglfw3 libglfw3-dev devscripts libmagick++-dev"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-dev"
 
     sudo apt update

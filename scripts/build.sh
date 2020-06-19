@@ -91,8 +91,8 @@ then
 
     LIBRARY="libredhand.so"
 
-    export CC="gcc-9"
-    export CXX="g++-9"
+    export CC="clang-9"
+    export CXX="clang++-9"
 
 elif [ "$OSTYPE" == "darwin"* ]
 then
@@ -109,9 +109,6 @@ then
     echo "script running on windows"
 
     LIBRARY="libredhand.dll"
-
-    export CC="clang"
-    export CXX="clang++"
 
     #alias make='mingw32-make'
 
