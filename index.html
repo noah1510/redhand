@@ -102,11 +102,12 @@ $(document).ready(function(){initNavTree('index.html','');});
 <li><a href="https://launchpad.net/~noasakurajin/+archive/ubuntu/libredhand-latest">libredhand latest</a></li>
 </ul>
 <h3>Windows</h3>
-<p>You can download the either the latest or the last tagged realese form <a href="https://github.com/noah1510/redhand/releases">github</a>. The dlls are automatically compiled and uploaded on every tagged and versioned commit.</p>
+<p>For an mostly automated install check the <a href="https://noah1510.github.io/redhand/md_doc_markdown_install.html">manual Installation</a>.</p>
+<p>You can download the either the latest or the last tagged realese form <a href="https://github.com/noah1510/redhand/releases">github</a>. The dlls are automatically compiled and uploaded on every tagged and versioned commit. You can just include those dlls and the headers to you project to build your program using redhand. You might also need to install glfw to get it working properly <b>Make sure your C++ compiler supports the <code>&lt;filesystem&gt;</code> include (gcc &gt; 9.2.0 or llvm &gt; 9) since redhand needs it</b></p>
 <h3>Manually compiling the project</h3>
 <ul>
-<li><a href="md_doc_markdown_install.html">Installation</a></li>
-<li><a href="namespaceredhand.html">Documentaion of the code</a></li>
+<li><a href="https://noah1510.github.io/redhand/md_doc_markdown_install.html">Installation</a></li>
+<li><a href="https://noah1510.github.io/redhand/namespaceredhand.html">Documentaion of the code</a></li>
 </ul>
 <h3>Extra Notes for contibutors</h3>
 <p>All changes have to be made on the dev branch and merged to master via a pull request. Open a Terminal in the folder where you cloned the repository to, type <code>git checkout dev</code> and you are ready to go. To update the branch from master first type <code>git fetch</code> then <code>git rebase origin/master</code>. The CI has to succeed in compiling before you are allowd to push your changes to master.</p>
