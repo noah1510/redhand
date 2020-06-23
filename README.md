@@ -38,13 +38,18 @@ There are two personal package archieves you can choose from:
 
 ### Windows
 
+For an mostly automated install check the [manual Installation](https://noah1510.github.io/redhand/md_doc_markdown_install.html).
+
 You can download the either the latest or the last tagged realese form [github](https://github.com/noah1510/redhand/releases).
 The dlls are automatically compiled and uploaded on every tagged and versioned commit.
+You can just include those dlls and the headers to you project to build your program using redhand.
+You might also need to install glfw to get it working properly
+**Make sure your C++ compiler supports the `<filesystem>` include (gcc > 9.2.0 or llvm > 9) since redhand needs it**
 
 ### Manually compiling the project
 
-* [Installation](md_doc_markdown_install.html)
-* [Documentaion of the code](namespaceredhand.html)
+* [Installation](https://noah1510.github.io/redhand/md_doc_markdown_install.html)
+* [Documentaion of the code](https://noah1510.github.io/redhand/namespaceredhand.html)
 
 ### Extra Notes for contibutors
 
