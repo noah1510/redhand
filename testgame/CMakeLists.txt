@@ -33,6 +33,9 @@ link_directories(${CMAKE_PREFIX_PATH}/lib/)
 #search for opengl
 find_package(OpenGL REQUIRED)
 
+#search for glfw
+find_package(glfw3 REQUIRED)
+
 #search for glib and vips
 find_package(PkgConfig REQUIRED)
 pkg_search_module(GLIB REQUIRED glib-2.0)
