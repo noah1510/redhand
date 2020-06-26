@@ -36,7 +36,7 @@ jobs:
         lfs: false
     - uses: msys2/setup-msys2@v1
       with:
-      update: true
+        update: true
     - name: install dependencies
       shell: msys2 {0}
       run:  bash scripts/dependencies.sh --ci
