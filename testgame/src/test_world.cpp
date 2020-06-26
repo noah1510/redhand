@@ -40,7 +40,7 @@ int test_world::onCreate(redhand::event<redhand::engine>){
             {0.0f, 0.6f, 1.0f},
             this->getShaderByName("default"),
             this->getTextureByName("bg"),
-            GL_STATIC_DRAW,
+            redhand::STATIC_DRAW,
             "background",
             -1.0f
         )

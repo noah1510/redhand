@@ -41,7 +41,7 @@ house::house(
 
 }
 
-void house::onLoop(redhand::game_loop_event evt){
+void house::onLoop(redhand::game_loop_event){
     //move the house
 
     if( redhand::input_system::static_isKeyPressed(redhand::KEY_RIGHT) ){
