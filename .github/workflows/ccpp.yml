@@ -26,7 +26,7 @@ jobs:
       with:
         name: build-artifact-linux
         path: .
-build-windows:
+  build-windows:
     runs-on: windows-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     
