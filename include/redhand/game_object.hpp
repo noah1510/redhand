@@ -23,6 +23,7 @@ namespace redhand{
 class texture2D;
 class shader;
 
+const int STATIC_DRAW = 0x88E4;
 /**
  * @brief This struct specifies all the properties of a game_object.
  * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_GAME_OBJECT_PROPERTIES.
@@ -77,7 +78,7 @@ const game_object_properties DEFAULT_GAME_OBJECT_PROPERTIES = {
     {2.0f,2.0f},
     0,
     {-1.0f,-1.0f},
-    GL_STATIC_DRAW,
+    STATIC_DRAW,
     "game_object",
     {1.0f,1.0f},
     1.0f,
