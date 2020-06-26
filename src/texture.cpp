@@ -4,7 +4,7 @@
 using namespace redhand;
 
 void redhand::initImageLoader(){
-    Magick::InitializeMagick(nullptr);
+    //Magick::InitializeMagick(MAGIC_LOCATION);
 }
 
 void redhand::texture2D::initTexture2D(){
@@ -21,7 +21,7 @@ void redhand::texture2D::initTexture2D(){
 
     //get the image if it is only temporary
     if(!texture_properties.keep_image_data){
-        image_data = std::unique_ptr<Magick::Image>(new Magick::Image(texture_properties.file_location.string()));
+        image_data = std::unique_ptr<cv::Image>(new cv::Image(texture_properties.file_location.string()));
     }
 
     //Format data

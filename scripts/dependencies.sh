@@ -19,7 +19,7 @@ then
 
     DOCDEPS="doxygen graphviz-dev"
     GLFWDEPS="xorg-dev libgl1-mesa-dev"
-    REDHANDDEPS="cmake clang-9 clang++-9 ninja-build libglm-dev libglfw3 libglfw3-dev devscripts libmagick++-dev"
+    REDHANDDEPS="cmake clang-9 clang++-9 ninja-build libglm-dev libglfw3 libglfw3-dev devscripts libopencv+-dev"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-dev"
 
     sudo apt update
@@ -58,14 +58,14 @@ then
 
     if [ "$CI" == "1" ]
     then
-        choco install imagemagick  -PackageParameters InstallDevelopmentHeaders=true  --yes --no-progress
-        if [ $? -eq 0 ]
-        then
-            echo "Successfully installed magick"
-        else
-            echo "Could not install magick" >&2
-            exit 2
-        fi
+        #choco install imagemagick  -PackageParameters InstallDevelopmentHeaders=true  --yes --no-progress
+        #if [ $? -eq 0 ]
+        #then
+        #    echo "Successfully installed magick"
+        #else
+        #    echo "Could not install magick" >&2
+        #    exit 2
+        #fi
         
         choco install ninja --yes --no-progress
         if [ $? -eq 0 ]
@@ -86,14 +86,14 @@ then
         fi
 
     else
-        choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
-        if [ $? -eq 0 ]
-        then
-            echo "Successfully installed magick"
-        else
-            echo "Could not install magick" >&2
-            exit 2
-        fi
+        #choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
+        #if [ $? -eq 0 ]
+        #then
+        #    echo "Successfully installed magick"
+        #else
+        #    echo "Could not install magick" >&2
+        #    exit 2
+        #fi
 
         choco install doxygen.install mingw cmake ninja llvm --yes --verbose --no-progress
         if [ $? -eq 0 ]
@@ -107,7 +107,7 @@ then
 elif [ "$OSTYPE" == "msys" ]
 then
     pacman -S --noconfirm pactoys
-    pacboy -S --noconfirm ninja:x clang:x cmake:x imagemagick:x doxygen:x glfw:x glm:x graphviz:x 
+    pacboy -S --noconfirm ninja:x clang:x cmake:x opencv:x doxygen:x glfw:x glm:x graphviz:x 
 else
     # Unknown os
     echo "running on something else."

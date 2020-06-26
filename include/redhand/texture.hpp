@@ -2,7 +2,7 @@
 
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
-#include <Magick++.h>
+#include <opencv2/opencv.hpp>
 
 #include <iostream>
 #include <string>
@@ -86,7 +86,7 @@ private:
 
     ///The underlying image data stored in the ram nullptr if none.
     ///This also allows for fast transformation of the texture without touching the shader.
-    std::unique_ptr<Magick::Image> image_data;
+    std::unique_ptr<cv::Image> image_data;
 
 public:
     /**

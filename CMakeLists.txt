@@ -7,34 +7,25 @@ if(CMAKE_VERSION VERSION_GREATER "3.11.0")
     cmake_policy(VERSION 3.11)
 endif()
 
-project(redhand VERSION "0.0.8" DESCRIPTION "a small 2D game engine")
+project(redhand VERSION "0.0.11" DESCRIPTION "a small 2D game engine")
 
 set(CMAKE_CXX_STANDARD 17)
 
 option(OUTPUTFILE "Name of file to output")
-option(REPOROOT "Path of the root of the repo")
+option(REPOROOT "Path of the root of the repo" "${CMAKE_CURRENT_BINARY_DIR}/..")
+option(BUILDGLFW "allow manual compiling of glfw" "1")
 
-if (REPOROOT)
-    SET(CMAKE_PREFIX_PATH ${REPOROOT})
-else (REPOROOT)
-    SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
-endif (REPOROOT)
+SET(CMAKE_PREFIX_PATH ${REPOROOT})
 
-if(BUILDGLFW)
-    if (${BUILDGLFW} MATCHES  "1")
-        set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-        set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-        set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-        add_subdirectory("dependencies/glfw/")
-    else(${BUILDGLFW} MATCHES  "1")
-        find_package(glfw3 REQUIRED)
-    endif (${BUILDGLFW} MATCHES  "1")
-else(BUILDGLFW)
+if (${BUILDGLFW} EQUAL  "0")
+    find_package(glfw3 REQUIRED)
+else()
     set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
     set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
     set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
     add_subdirectory("dependencies/glfw/")
-endif(BUILDGLFW)
+endif()
+
 
 include_directories(${CMAKE_PREFIX_PATH}/include/)
 link_directories(${CMAKE_PREFIX_PATH}/lib/)
@@ -43,8 +34,8 @@ set(CMAKE_REQUIRED_FLAGS "-std=c++11")
 
 find_package(OpenGL REQUIRED)
 
-find_package(ImageMagick COMPONENTS Magick++ REQUIRED)
-include_directories(${ImageMagick_INCLUDE_DIRS})
+find_package( OpenCV REQUIRED )
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 include(CheckIncludeFileCXX)
 CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)
@@ -82,21 +73,12 @@ add_library(redhand SHARED
                         src/input.cpp
                         src/engine.cpp)
 
-target_link_libraries(redhand ${ImageMagick_LIBRARIES})
+target_link_libraries(redhand ${OpenCV_LIBRARIES})
 target_link_libraries(redhand OpenGL::GL)
 target_link_libraries(redhand glfw)
 
 
 if (UNIX)
-    #find_library(GLFW
-    #    NAMES libglfw.so.3 libglfw.so glfw libglfw.so.3.2
-    #    HINTS /usr/lib/x86_64-linux-gnu/ )
-    #target_link_libraries(redhand ${GLFW})
-
-    #find_library(MAGICK
-    #    NAMES "GraphicsMagick++" "libGraphicsMagick++.so" "Magick++" "libMagick++.so"
-    #    HINTS /usr/lib/ /usr/lib/x86_64-linux-gnu/ )
-    #target_link_libraries(redhand ${MAGICK}) 
     target_link_libraries(redhand dl)
 endif (UNIX)
 
