@@ -2,7 +2,7 @@
 
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
-#include <opencv2/opencv.hpp>
+#include <vips/vips8>
 
 #include <iostream>
 #include <string>
@@ -86,7 +86,9 @@ private:
 
     ///The underlying image data stored in the ram nullptr if none.
     ///This also allows for fast transformation of the texture without touching the shader.
-    std::unique_ptr<cv::Image> image_data;
+    vips::VImage image_data;
+
+    //std::unique_ptr<vips::VImage> image_data;
 
 public:
     /**

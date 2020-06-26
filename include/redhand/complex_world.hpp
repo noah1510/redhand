@@ -58,7 +58,7 @@ public:
     /**
      * The destructor will clean up everything and delete all objects stored in this world.
      */
-    ~complex_world();
+    virtual ~complex_world();
 
     /**
      * The addShader function will add a shader to the world.

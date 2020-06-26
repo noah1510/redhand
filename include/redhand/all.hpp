@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2020
  * 
  */
-#include <Magick++.h>
+#include <vips/vips8>
 
 #include "redhand/complex_world.hpp"
 #include "redhand/engine.hpp"

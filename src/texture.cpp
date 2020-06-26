@@ -4,7 +4,7 @@
 using namespace redhand;
 
 void redhand::initImageLoader(){
-    //Magick::InitializeMagick(MAGIC_LOCATION);
+    vips_init("");
 }
 
 void redhand::texture2D::initTexture2D(){
@@ -21,9 +21,21 @@ void redhand::texture2D::initTexture2D(){
 
     //get the image if it is only temporary
     if(!texture_properties.keep_image_data){
-        image_data = std::unique_ptr<cv::Image>(new cv::Image(texture_properties.file_location.string()));
+        image_data = vips::VImage::new_from_file (
+            texture_properties.file_location.string().c_str(),
+            vips::VImage::option ()->set ("access", VIPS_ACCESS_SEQUENTIAL)
+        );
+
+        //image_data = std::unique_ptr<vips::VImage>(std::move(Texture));
+        //Texture = nullptr;
     }
 
+    image_data.set("format", VIPS_FORMAT_UCHAR);
+    image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
+
+    image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
+
+        /*
     //Format data
     image_data->flip();
     image_data->depth(8);
@@ -31,15 +43,15 @@ void redhand::texture2D::initTexture2D(){
 
     //copy image to blob
     Magick::Blob data;
-    image_data->write(&data, "RGBA");
+    image_data->write(&data, "RGBA");*/
 
     //update the dimensions
-    width = image_data->columns();
-    height = image_data->rows();
+    width = image_data.width();
+    height = image_data.height();
 
     //create opengl texture
-    if (data.length() != 0){
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.data());
+    if (image_data.data() != nullptr){
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data.data());
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else{
@@ -49,7 +61,8 @@ void redhand::texture2D::initTexture2D(){
 
     //If the image should not be kept delete it
     if(!texture_properties.keep_image_data){
-        image_data.release();
+        //image_data.release();
+        image_data = nullptr;
     }
 
     glBindTexture(GL_TEXTURE_2D, 0);
@@ -64,7 +77,10 @@ redhand::texture2D::texture2D(image_properties prop){
     }
 
     if(texture_properties.keep_image_data){
-        image_data = std::unique_ptr<Magick::Image>(new Magick::Image(texture_properties.file_location.string()));
+        image_data = vips::VImage::new_from_file (
+            texture_properties.file_location.string().c_str(),
+            vips::VImage::option ()->set ("access", VIPS_ACCESS_SEQUENTIAL)
+        );
     }
 
     initTexture2D();
@@ -80,14 +96,18 @@ redhand::texture2D::texture2D(std::string file_location, std::string texture_nam
     }
 
     if(texture_properties.keep_image_data){
-        image_data = std::unique_ptr<Magick::Image>(new Magick::Image(texture_properties.file_location.string()));
+        image_data = vips::VImage::new_from_file (
+            texture_properties.file_location.string().c_str(),
+            vips::VImage::option ()->set ("access", VIPS_ACCESS_SEQUENTIAL)
+        );
     }
 
     initTexture2D();
 }
 
 redhand::texture2D::~texture2D(){
-    image_data.release();
+    //image_data.release();
+    //image_data = nullptr;
 }
 
 bool redhand::texture2D::hasErrord(){

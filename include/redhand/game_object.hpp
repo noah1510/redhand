@@ -176,7 +176,7 @@ public:
     /**
      * @brief Destroy the game object
      */
-    ~game_object();
+    virtual ~game_object();
 
     /**
      * @brief Checks the provided properties for errors
