@@ -98,6 +98,7 @@ then
     echo "script running on linux"
 
     LIBRARY="libredhand.so"
+    BUILDGLFW="0"
 
     export CC="clang-9"
     export CXX="clang++-9"
@@ -109,7 +110,7 @@ then
 
     LIBRARY="libredhand.so"
 
-elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
+elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then
     # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
     # or 
@@ -126,6 +127,14 @@ then
         export CC="C:/Program Files/LLVM/bin/clang.exe"
         export CXX="C:/Program Files/LLVM/bin/clang++.exe"
     fi
+
+elif [ "$OSTYPE" == "msys" ]
+then
+    echo "script running on windows"
+
+    LIBRARY="libredhand.dll"
+
+    BUILDGLFW="0"
 
 else
     # Unknown os
