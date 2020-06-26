@@ -5,6 +5,7 @@ LIBBUILDNAME="lib"
 SETUP="0"
 PACKAGE="0"
 INITILIZE="0"
+BUILDGLFW="0"
 export REDHAND_CI="0"
 
 #parse parameter
@@ -117,16 +118,14 @@ then
 
     LIBRARY="libredhand.dll"
 
+    BUILDGLFW="1"
 
     if [ "$REDHAND_CI" == "1" ]
     then
         ls "C:/ProgramData/chocolatey/bin"
-        export CC="C:/ProgramData/chocolatey/bin/clang.exe"
-        export CXX="C:/ProgramData/chocolatey/bin/clang++.exe"
+        export CC="C:/Program Files/LLVM/bin/clang.exe"
+        export CXX="C:/Program Files/LLVM/bin/clang++.exe"
     fi
-    
-
-    #alias make='mingw32-make'
 
 else
     # Unknown os
@@ -150,7 +149,7 @@ else
   #build actual project
   mkdir -p "build/$LIBBUILDNAME"
   cd "build/$LIBBUILDNAME"
-  cmake -G "Ninja" -DREPOROOT=$REPOROOT "../.."
+  cmake -G "Ninja" -DBUILDGLFW=$BUILDGLFW -DREPOROOT=$REPOROOT "../.."
   ninja -j"$THREADS"
   if [ $? -eq 0 ]
   then

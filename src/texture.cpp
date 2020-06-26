@@ -21,7 +21,7 @@ void redhand::texture2D::initTexture2D(){
 
     //get the image if it is only temporary
     if(!texture_properties.keep_image_data){
-        image_data = std::unique_ptr<Magick::Image>(new Magick::Image(texture_properties.file_location));
+        image_data = std::unique_ptr<Magick::Image>(new Magick::Image(texture_properties.file_location.string()));
     }
 
     //Format data
@@ -64,7 +64,7 @@ redhand::texture2D::texture2D(image_properties prop){
     }
 
     if(texture_properties.keep_image_data){
-        image_data = std::unique_ptr<Magick::Image>(new Magick::Image(texture_properties.file_location));
+        image_data = std::unique_ptr<Magick::Image>(new Magick::Image(texture_properties.file_location.string()));
     }
 
     initTexture2D();
@@ -80,7 +80,7 @@ redhand::texture2D::texture2D(std::string file_location, std::string texture_nam
     }
 
     if(texture_properties.keep_image_data){
-        image_data = std::unique_ptr<Magick::Image>(new Magick::Image(texture_properties.file_location));
+        image_data = std::unique_ptr<Magick::Image>(new Magick::Image(texture_properties.file_location.string()));
     }
 
     initTexture2D();

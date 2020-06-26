@@ -49,7 +49,7 @@ then
     # Mac OSX
     echo "script running on mac osx"
         
-elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
+elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then
     # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
     # or 
@@ -76,7 +76,7 @@ then
             exit 2
         fi
 
-        choco install llvm --version 9.0.1 --yes --no-progress
+        choco install llvm --yes --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed llvm"
@@ -95,7 +95,7 @@ then
             exit 2
         fi
 
-        choco install doxygen.install mingw cmake ninja  --yes --verbose --no-progress
+        choco install doxygen.install mingw cmake ninja llvm --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
@@ -104,7 +104,10 @@ then
             exit 2
         fi
     fi
-
+elif [ "$OSTYPE" == "msys" ]
+then
+    pacman -S --noconfirm pactoys
+    pacboy -S --noconfirm ninja:x clang:x cmake:x imagemagick:x doxygen:x glfw:x glm:x graphviz:x 
 else
     # Unknown os
     echo "running on something else."

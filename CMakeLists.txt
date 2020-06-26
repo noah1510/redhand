@@ -9,6 +9,8 @@ endif()
 
 project(redhand VERSION "0.0.8" DESCRIPTION "a small 2D game engine")
 
+set(CMAKE_CXX_STANDARD 17)
+
 option(OUTPUTFILE "Name of file to output")
 option(REPOROOT "Path of the root of the repo")
 
@@ -17,6 +19,22 @@ if (REPOROOT)
 else (REPOROOT)
     SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
+
+if(BUILDGLFW)
+    if (${BUILDGLFW} MATCHES  "1")
+        set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+        set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+        set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+        add_subdirectory("dependencies/glfw/")
+    else(${BUILDGLFW} MATCHES  "1")
+        find_package(glfw3 REQUIRED)
+    endif (${BUILDGLFW} MATCHES  "1")
+else(BUILDGLFW)
+    set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+    set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+    set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+    add_subdirectory("dependencies/glfw/")
+endif(BUILDGLFW)
 
 include_directories(${CMAKE_PREFIX_PATH}/include/)
 link_directories(${CMAKE_PREFIX_PATH}/lib/)
@@ -37,7 +55,6 @@ endif()
 
 if (UNIX)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread -ldl -lGL -lrt -lXrandr -lXxf86vm -lXi -lXinerama -lX11")
-    SET(GCC_COVERAGE_LINK_FLAGS "${GCC_COVERAGE_LINK_FLAGS} -lGraphicsMagick++ -lGraphicsMagick -ljbig -lwebp -lwebpmux -llcms2 -ltiff -lfreetype -ljpeg -lpng16 -lwmflite -lXext -lSM -lICE -lX11 -llzma -lbz2 -lxml2 -lz -lm -lgomp -lpthread")
 endif (UNIX)
 
 if (WIN32)
@@ -66,12 +83,15 @@ add_library(redhand SHARED
                         src/engine.cpp)
 
 target_link_libraries(redhand ${ImageMagick_LIBRARIES})
+target_link_libraries(redhand OpenGL::GL)
+target_link_libraries(redhand glfw)
+
 
 if (UNIX)
-    find_library(GLFW
-        NAMES libglfw.so.3 libglfw.so glfw libglfw.so.3.2
-        HINTS /usr/lib/x86_64-linux-gnu/ )
-    target_link_libraries(redhand ${GLFW})
+    #find_library(GLFW
+    #    NAMES libglfw.so.3 libglfw.so glfw libglfw.so.3.2
+    #    HINTS /usr/lib/x86_64-linux-gnu/ )
+    #target_link_libraries(redhand ${GLFW})
 
     #find_library(MAGICK
     #    NAMES "GraphicsMagick++" "libGraphicsMagick++.so" "Magick++" "libMagick++.so"
@@ -81,7 +101,7 @@ if (UNIX)
 endif (UNIX)
 
 if (WIN32)
-    target_link_libraries(redhand ${CMAKE_PREFIX_PATH}/lib/glfw3.dll)
+    #target_link_libraries(redhand ${CMAKE_PREFIX_PATH}/lib/glfw3.dll)
 endif (WIN32)
 
 install(TARGETS redhand
