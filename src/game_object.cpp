@@ -7,76 +7,44 @@
 using namespace redhand;
 
 bool redhand::game_object::checkObjectProperties(game_object_properties properties){
-    std::mutex errorMutex;
+    std::shared_mutex errorMutex;
     bool Error = false;
 
-    auto fut1 = std::async(std::launch::async,[&](){
-        if(properties.attached_shader == nullptr || properties.attached_shader == NULL ){
-            std::cerr << "ERROR::REDHAND::GAME_OBJECT::NO_SHADER in object " << properties.name << std::endl;
-            errorMutex.lock();
-            Error = true;
-            errorMutex.unlock();
-        }
-
-        if(properties.triangle_indices.size() == 0){
-            std::cerr << "ERROR::REDHAND::GAME_OBJECT::NO_TRIANGLES" << std::endl;
-            errorMutex.lock();
-            Error = true;
-            errorMutex.unlock();
-        }
-    });
+    if(properties.triangle_indices.size() == 0){
+        std::cerr << "ERROR::REDHAND::GAME_OBJECT::NO_TRIANGLES" << std::endl;
+        Error = true;
+    }
         
     auto less = std::async(std::launch::async,[&](){
         for(unsigned int i = 0; i < properties.points_coordinates.size(); i++){
-            if(properties.points_coordinates.at(i).at(0) < 0.0f){
+            if(properties.points_coordinates.at(i).at(0) < 0.0f || properties.points_coordinates.at(i).at(1) < 0.0f){
                 std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
-                errorMutex.lock();
+                auto lock = std::scoped_lock(errorMutex);
                 Error = true;
-                errorMutex.unlock();
-            }
-            if(properties.points_coordinates.at(i).at(1) < 0.0f){
-                std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
-                errorMutex.lock();
-                Error = true;
-                errorMutex.unlock();
-            }
-
-            errorMutex.lock();
-            if(Error){
-                errorMutex.unlock();
                 break;
             }
-            errorMutex.unlock();
+
+            auto lock = std::shared_lock(errorMutex);
+            if(Error){ break; };
         }
     });
 
     auto more = std::async(std::launch::async,[&](){
         for(unsigned int i = 0; i < object_properties.points_coordinates.size(); i++){
-            if(properties.points_coordinates.at(i).at(0) > 1.0f){
+            if(properties.points_coordinates.at(i).at(0) > 1.0f || properties.points_coordinates.at(i).at(1) > 1.0f){
                 std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
-                errorMutex.lock();
+                auto lock = std::scoped_lock(errorMutex);
                 Error = true;
-                errorMutex.unlock();
-            }
-            if(properties.points_coordinates.at(i).at(1) > 1.0f){
-                std::cerr << "ERROR::REDHAND::GAME_OBJECT::INVALID_LOCAL_COORDINATE" << std::endl;
-                errorMutex.lock();
-                Error = true;
-                errorMutex.unlock();
-            }
-
-            errorMutex.lock();
-            if(Error){
-                errorMutex.unlock();
                 break;
             }
-            errorMutex.unlock();
+
+            auto lock = std::shared_lock(errorMutex);
+            if(Error){ break; };
         }
     });
 
     less.wait();
     more.wait();
-    fut1.wait();
 
     return Error;
 
@@ -84,22 +52,27 @@ bool redhand::game_object::checkObjectProperties(game_object_properties properti
 
 void redhand::game_object::updateBuffers(){
 
+    //check the object properties for an error
     if(checkObjectProperties(object_properties)){
         return;
     }
+
+    //lock the object properties
+    auto lock = std::shared_lock(mutex_object_properties);
 
     //Initilize the buffers
     if(!glad_glIsVertexArray(VAO)){glGenVertexArrays(1, &VAO);};
     if(!glad_glIsBuffer(VBO)){glGenBuffers(1, &VBO);};
     if(!glad_glIsBuffer(EBO)){glGenBuffers(1, &EBO);};
     
-
+    //Reserve the needed size in the vecctor
     data.reserve(
             object_properties.points_coordinates.size()*3 //size of points
         +   object_properties.points_coordinates.size()*3 //size of colors
         +   object_properties.points_coordinates.size()*2 //size of texels
     );   
 
+    //copy everything to the data vector
     for(unsigned int i = 0; i < object_properties.points_coordinates.size();i++){
         data.push_back(object_properties.points_coordinates.at(i).at(0));
         data.push_back(object_properties.points_coordinates.at(i).at(1));
@@ -132,6 +105,7 @@ void redhand::game_object::updateBuffers(){
         }
     }      
 
+    //create the vector containing the indicies
     std::vector<unsigned int> trigs;
     trigs.reserve(object_properties.triangle_indices.size()*3);
     for(unsigned int i = 0; i < object_properties.triangle_indices.size();i++){
@@ -139,7 +113,6 @@ void redhand::game_object::updateBuffers(){
         trigs.push_back(object_properties.triangle_indices.at(i).at(1));
         trigs.push_back(object_properties.triangle_indices.at(i).at(2));
     }
-
 
     ///Create arrays and buffers
     glBindVertexArray(VAO);
@@ -163,6 +136,8 @@ void redhand::game_object::updateBuffers(){
         &&  object_properties.attached_texture != nullptr 
         &&  !object_properties.attached_texture->hasErrord()
     ){ texture_mode = 1; };
+
+    lock.unlock();
 
     updateWorldTransformation();
 
