@@ -10,12 +10,13 @@ Build-Depends:
     libglfw3, 
     libglfw3-dev, 
     libglm-dev, 
-    python, 
+    python3, 
     git, 
     libgl1-mesa-dev, 
     doxygen, 
     graphviz,
-    libmagick++-dev
+    libvips-dev,
+    python3-pip
 Standards-Version: 4.1.2
 Section: libs
 #Homepage: <insert the upstream URL, if relevant>
@@ -26,14 +27,14 @@ Package: libredhand
 Architecture: amd64
 Section: libs
 Multi-Arch: same
-Depends: libglfw3, libglm-dev, libmagick++-dev, ${misc:Depends}
+Depends: libglfw3, libglm-dev, libvips-dev, ${misc:Depends}
 Recommends: libredhand-doc
 Description: a small and easy to use game development library
 
 Package: libredhand-dev
 Architecture: amd64
 Section: libs
-Depends: libredhand (= ${binary:Version}), ${misc:Depends}, libglfw3-dev, libgl1-mesa-dev, libmagick++-dev
+Depends: libredhand (= ${binary:Version}), ${misc:Depends}, libglfw3-dev, libgl1-mesa-dev, libvips-dev
 Suggests: libredhand-dbg
 Recommends: libredhand-doc
 Multi-Arch: same

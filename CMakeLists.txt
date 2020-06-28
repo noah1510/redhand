@@ -19,11 +19,13 @@ option(BUILDGLFW "allow manual compiling of glfw" "1")
 
 #set the reporoot var
 SET(CMAKE_PREFIX_PATH ${REPOROOT})
+message("Repo base path is ${CMAKE_PREFIX_PATH}")
 
 #add glfw to build if needed
 if (${BUILDGLFW} EQUAL  "0")
     find_package(glfw3 REQUIRED)
 else()
+    message("Manually building glfw")
     set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
     set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
     set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
@@ -86,6 +88,7 @@ add_library(redhand SHARED
     src/engine.cpp)
 
     #include glib and link libraries
+target_include_directories(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/)
 target_include_directories(redhand PRIVATE ${GLIB_INCLUDE_DIRS})
 target_link_libraries(redhand ${GLIB_LDFLAGS})
 target_link_libraries(redhand OpenGL::GL)

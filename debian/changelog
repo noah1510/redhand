@@ -2,7 +2,7 @@ libredhand (0.0.11) bionic; urgency=medium
 
   * started implementation of event based function model
 
-  * switched from stb to libmagick++
+  * switched from stb to vips
 
   * building with gcc > 9
 

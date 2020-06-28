@@ -20,7 +20,7 @@ build:
 	bash scripts/setup.sh --deb --ci
 	bash scripts/docs.sh
 	dh_testdir
-	dh_auto_configure
+	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)"
 	dh_auto_build
 	dh_auto_test
 
@@ -33,10 +33,6 @@ clean:
 override_dh_strip:
 	dh_strip --dbg-package=libredhand-dbg
 
-# dh_make generated override targets
-# This is example for Cmake (See https://bugs.debian.org/641051 )
-#override_dh_auto_configure:
-#	dh_auto_configure --  
 
 %:
 	dh $@

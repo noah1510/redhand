@@ -25,23 +25,31 @@ jobs:
   pre-release:
     name: "windows latest release"
     runs-on: "windows-latest"
-    compiler: clang
     steps:
     - uses: actions/checkout@v2
       with: 
         lfs: false
+    - uses: msys2/setup-msys2@v1
+      with:
+        update: true
     - name: install dependencies
+      shell: msys2 {0}
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
+      shell: msys2 {0}
       run:  bash scripts/setup.sh --ci
     - name: build library
+      shell: msys2 {0}
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: compress header files
+      shell: msys2 {0}
       run: 7z a -r deploy/headers.zip include/redhand/**
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        title: "tagged release"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
         files: |
           deploy/libredhand.dll
           deploy/headers.zip

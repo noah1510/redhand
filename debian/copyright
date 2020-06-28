@@ -2,7 +2,7 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: libredhand
 
 Files: *
-Copyright: 2020 Noa Sakurajin noasakurajin@web.de
+Copyright: 2020 Noa Sakurajin <noasakurajin@web.de>
 License: LGPL-3.0
 
 Files: debian/*
