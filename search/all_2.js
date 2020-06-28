@@ -1,11 +1,15 @@
 var searchData=
 [
   ['camera',['camera',['../classredhand_1_1shader.html#a7e523475ea686a25cb291fdbd0f20892',1,'redhand::shader']]],
-  ['cameraposition',['cameraPosition',['../classredhand_1_1world.html#ab5bf0907f060fdde02c04ddcc9c95d96',1,'redhand::world']]],
+  ['cameraposition',['cameraPosition',['../classredhand_1_1complex__world.html#a431625fba54eeebe4411b43bc778ef07',1,'redhand::complex_world']]],
   ['cameravector',['cameraVector',['../classredhand_1_1shader.html#a2ce41a04340d94b22a55e8a27c047823',1,'redhand::shader']]],
-  ['changeworld',['changeWorld',['../classredhand_1_1engine.html#a19acfa08dfc9115af586ad61cda02bc9',1,'redhand::engine']]],
+  ['changeworld',['changeWorld',['../classredhand_1_1engine.html#a336f636afef915d61fbb3e1520fb64df',1,'redhand::engine']]],
+  ['checkobjectproperties',['checkObjectProperties',['../classredhand_1_1game__object.html#aab09e1d3997643975240945894f32627',1,'redhand::game_object']]],
   ['clearbuffers',['clearBuffers',['../classredhand_1_1engine.html#a33ceb20cf20a716d69d684b15f417763',1,'redhand::engine']]],
   ['compileshader',['compileShader',['../classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63',1,'redhand::shader']]],
+  ['complex_5fworld',['complex_world',['../classredhand_1_1complex__world.html',1,'redhand::complex_world'],['../classredhand_1_1complex__world.html#a38d68b2855b62c2f427b9f6a679013ab',1,'redhand::complex_world::complex_world()']]],
+  ['complex_5fworld_2ecpp',['complex_world.cpp',['../complex__world_8cpp.html',1,'']]],
+  ['complex_5fworld_2ehpp',['complex_world.hpp',['../complex__world_8hpp.html',1,'']]],
   ['configuration',['configuration',['../classredhand_1_1engine.html#a457a9eb54f15248558f25ce8d93076b6',1,'redhand::engine']]],
   ['cosdeg',['cosDeg',['../namespaceredhand.html#a1b2ac3e9266a94535968adc5cbc8e104',1,'redhand']]],
   ['create_5fmipmap',['create_mipmap',['../structredhand_1_1image__properties.html#a40d3c3507afce7eac0e863ee1952cb9c',1,'redhand::image_properties']]],

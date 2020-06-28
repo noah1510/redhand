@@ -10,6 +10,7 @@ var structredhand_1_1game__object__properties =
     [ "points_coordinates", "structredhand_1_1game__object__properties.html#aee84254af87496bdf5bb9892ecd515fe", null ],
     [ "postition", "structredhand_1_1game__object__properties.html#a39e684a6b386913de5ec35e44e3abaf6", null ],
     [ "rotation", "structredhand_1_1game__object__properties.html#a93266223760de22a99a6788d4433380c", null ],
+    [ "rotation_point", "structredhand_1_1game__object__properties.html#afc9d5a712e4b6ba666c694252fc6265b", null ],
     [ "scale", "structredhand_1_1game__object__properties.html#a5ddae5f23e040c13ac84c3927218d32f", null ],
     [ "texture_coordinates", "structredhand_1_1game__object__properties.html#a672a53302f8bee317f37a63e7c90cabc", null ],
     [ "texture_scale", "structredhand_1_1game__object__properties.html#ac70c165789bc0ef7aa8f2243d412b7a0", null ],

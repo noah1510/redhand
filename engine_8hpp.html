@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.10</span>
+   &#160;<span id="projectnumber">0.0.11</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -91,8 +91,7 @@ $(document).ready(function(){initNavTree('engine_8hpp.html','');});
 <div class="title">engine.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;redhand/glad/glad.h&gt;</code><br />
-<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;GLFW/glfw3.h&gt;</code><br />
 <code>#include &lt;glm/glm.hpp&gt;</code><br />
 <code>#include &lt;glm/gtc/matrix_transform.hpp&gt;</code><br />
 <code>#include &lt;glm/gtc/type_ptr.hpp&gt;</code><br />
@@ -107,22 +106,18 @@ $(document).ready(function(){initNavTree('engine_8hpp.html','');});
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;shared_mutex&gt;</code><br />
-<code>#include &quot;<a class="el" href="game__object_8hpp_source.html">redhand/game_object.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="shader_8hpp_source.html">redhand/shader.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="texture_8hpp_source.html">redhand/texture.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="world_8hpp_source.html">redhand/world.hpp</a>&quot;</code><br />
+<code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &quot;<a class="el" href="math_8hpp_source.html">redhand/math.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="event_8hpp_source.html">redhand/event/event.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game__loop__event_8hpp_source.html">redhand/event/game_loop_event.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for engine.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="engine_8hpp__incl.png" border="0" usemap="#include_2redhand_2engine_8hpp" alt=""/></div>
 <map name="include_2redhand_2engine_8hpp" id="include_2redhand_2engine_8hpp">
-<area shape="rect" id="node18" href="game__object_8hpp.html" title="redhand/game_object.hpp" alt="" coords="1250,155,1420,181"/>
-<area shape="rect" id="node19" href="shader_8hpp.html" title="redhand/shader.hpp" alt="" coords="623,229,759,256"/>
-<area shape="rect" id="node22" href="math_8hpp.html" title="redhand/math.hpp" alt="" coords="1606,304,1733,331"/>
-<area shape="rect" id="node24" href="texture_8hpp.html" title="redhand/texture.hpp" alt="" coords="1160,229,1297,256"/>
-<area shape="rect" id="node26" href="world_8hpp.html" title="redhand/world.hpp" alt="" coords="1844,80,1972,107"/>
-<area shape="rect" id="node23" href="shader_source_8hpp.html" title="redhand/shaderSource.hpp" alt="" coords="426,304,604,331"/>
+<area shape="rect" id="node18" href="math_8hpp.html" title="redhand/math.hpp" alt="" coords="731,87,858,114"/>
+<area shape="rect" id="node19" href="event_8hpp.html" title="redhand/event/event.hpp" alt="" coords="1823,169,1988,196"/>
+<area shape="rect" id="node20" href="game__loop__event_8hpp.html" title="redhand/event/game\l_loop_event.hpp" alt="" coords="1806,80,1946,121"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -130,7 +125,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="engine_8hpp__dep__incl.png" border="0" usemap="#include_2redhand_2engine_8hppdep" alt=""/></div>
 <map name="include_2redhand_2engine_8hppdep" id="include_2redhand_2engine_8hppdep">
-<area shape="rect" id="node2" href="engine_8cpp.html" title="src/engine.cpp" alt="" coords="42,80,149,107"/>
+<area shape="rect" id="node2" href="complex__world_8cpp.html" title="src/complex_world.cpp" alt="" coords="5,80,161,107"/>
+<area shape="rect" id="node3" href="engine_8cpp.html" title="src/engine.cpp" alt="" coords="186,80,293,107"/>
+<area shape="rect" id="node4" href="input_8cpp.html" title="src/input.cpp" alt="" coords="317,80,415,107"/>
+<area shape="rect" id="node5" href="all_8hpp.html" title="Include this header to include all redhand headers. " alt="" coords="439,80,594,107"/>
 </map>
 </div>
 </div>
@@ -162,7 +160,7 @@ Variables</h2></td></tr>
 <tr class="separator:a9d97421fe7a319c9f5ff8a99a2d0d103"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a72ba2fe45b898f5108b553ca4a72ed59">redhand::DONT_CARE</a> = GLFW_DONT_CARE</td></tr>
 <tr class="separator:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76b9afa08e6105875a3aa4a05a5282b7"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a76b9afa08e6105875a3aa4a05a5282b7">redhand::REDHAND_HEADER_VERSION</a> = &quot;0.0.10&quot;</td></tr>
+<tr class="memitem:a76b9afa08e6105875a3aa4a05a5282b7"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a76b9afa08e6105875a3aa4a05a5282b7">redhand::REDHAND_HEADER_VERSION</a> = &quot;0.0.11&quot;</td></tr>
 <tr class="memdesc:a76b9afa08e6105875a3aa4a05a5282b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This string provides a version in a pritable format.  <a href="namespaceredhand.html#a76b9afa08e6105875a3aa4a05a5282b7">More...</a><br /></td></tr>
 <tr class="separator:a76b9afa08e6105875a3aa4a05a5282b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61dd684bf860b95bfdac37b230eb7237"><td class="memItemLeft" align="right" valign="top">const engine_config&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a61dd684bf860b95bfdac37b230eb7237">redhand::DEFAULT_ENGINE_CONFIG</a></td></tr>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loop_5ffunction',['loop_function',['../classredhand_1_1game__object.html#a817f26135b7bb7330e1c480a087c7c04',1,'redhand::game_object']]]
+  ['keep_5fimage_5fdata',['keep_image_data',['../structredhand_1_1image__properties.html#a7d4f7854f71798708c369988cc21d601',1,'redhand::image_properties']]]
 ];

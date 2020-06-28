@@ -1,6 +1,5 @@
 <map id="include/redhand/game_object.hpp" name="include/redhand/game_object.hpp">
-<area shape="rect" id="node2" href="$shader_8hpp.html" title="redhand/shader.hpp" alt="" coords="729,95,865,121"/>
-<area shape="rect" id="node14" href="$math_8hpp.html" title="redhand/math.hpp" alt="" coords="593,169,719,196"/>
-<area shape="rect" id="node17" href="$texture_8hpp.html" title="redhand/texture.hpp" alt="" coords="466,95,603,121"/>
-<area shape="rect" id="node16" href="$shader_source_8hpp.html" title="redhand/shaderSource.hpp" alt="" coords="917,169,1094,196"/>
+<area shape="rect" id="node2" href="$math_8hpp.html" title="redhand/math.hpp" alt="" coords="5,102,132,129"/>
+<area shape="rect" id="node4" href="$game__loop__event_8hpp.html" title="redhand/event/game\l_loop_event.hpp" alt="" coords="225,95,365,136"/>
+<area shape="rect" id="node5" href="$event_8hpp.html" title="redhand/event/event.hpp" alt="" coords="115,184,281,211"/>
 </map>

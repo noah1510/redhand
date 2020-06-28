@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.10</span>
+   &#160;<span id="projectnumber">0.0.11</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -85,14 +85,17 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 &#160;
 
 <h3><a id="index_a"></a>- a -</h3><ul>
+<li>addGameLoopHandler()
+: <a class="el" href="classredhand_1_1engine.html#a8ec7e8282c9e1f18061aff2107cdd6c5">redhand::engine</a>
+</li>
 <li>addObject()
-: <a class="el" href="classredhand_1_1world.html#ac8179f34456c85c9834d1c40509b7fcd">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#a1ed693d6bd543050c017edcdc50ec966">redhand::complex_world</a>
 </li>
 <li>addShader()
-: <a class="el" href="classredhand_1_1world.html#a243ef5928749689cbdf971797035fab8">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#a6607a10dadb97ab824f1e5503b536a95">redhand::complex_world</a>
 </li>
 <li>addTexture()
-: <a class="el" href="classredhand_1_1world.html#a59fe3820a30d2c0922184dba0c6d7055">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#ae6407394b53a175e8be7083dcddfe6cc">redhand::complex_world</a>
 </li>
 </ul>
 
@@ -106,13 +109,19 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>changeWorld()
-: <a class="el" href="classredhand_1_1engine.html#a19acfa08dfc9115af586ad61cda02bc9">redhand::engine</a>
+: <a class="el" href="classredhand_1_1engine.html#a336f636afef915d61fbb3e1520fb64df">redhand::engine</a>
+</li>
+<li>checkObjectProperties()
+: <a class="el" href="classredhand_1_1game__object.html#aab09e1d3997643975240945894f32627">redhand::game_object</a>
 </li>
 <li>clearBuffers()
 : <a class="el" href="classredhand_1_1engine.html#a33ceb20cf20a716d69d684b15f417763">redhand::engine</a>
 </li>
 <li>compileShader()
 : <a class="el" href="classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63">redhand::shader</a>
+</li>
+<li>complex_world()
+: <a class="el" href="classredhand_1_1complex__world.html#a38d68b2855b62c2f427b9f6a679013ab">redhand::complex_world</a>
 </li>
 <li>createDefaultShader()
 : <a class="el" href="classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b">redhand::shader</a>
@@ -128,8 +137,11 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>draw()
-: <a class="el" href="classredhand_1_1game__object.html#a7a6df057629792294cbeebb95a47c3e1">redhand::game_object</a>
-, <a class="el" href="classredhand_1_1world.html#a387dc93339d7446349f24fcc0c08907a">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#a2eede1ee9e64ce426bb48bec3ade4c40">redhand::complex_world</a>
+, <a class="el" href="classredhand_1_1game__object.html#a7a6df057629792294cbeebb95a47c3e1">redhand::game_object</a>
+</li>
+<li>drawing_event()
+: <a class="el" href="classredhand_1_1drawing__event.html#acfec2f2f5bc409a2e970781c3ed19fbf">redhand::drawing_event&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -138,24 +150,36 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>engine()
 : <a class="el" href="classredhand_1_1engine.html#a68b0e46c6a098074281e29224d641ab9">redhand::engine</a>
 </li>
+<li>event()
+: <a class="el" href="classredhand_1_1event.html#abf647bed27118313e93438fc9bcfdafb">redhand::event&lt; T &gt;</a>
+</li>
 </ul>
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>game_loop_event()
+: <a class="el" href="classredhand_1_1game__loop__event.html#acfbc37ce6134e0ee0fcc9bb4ff373e47">redhand::game_loop_event</a>
+</li>
 <li>game_object()
-: <a class="el" href="classredhand_1_1game__object.html#a6996cc21ee5cc717bcb221a8f52a8f09">redhand::game_object</a>
+: <a class="el" href="classredhand_1_1game__object.html#aab41ed616ff2c349605ee7d26fde12ef">redhand::game_object</a>
 </li>
 <li>getActiveWorld()
-: <a class="el" href="classredhand_1_1engine.html#a561818ddeb5ed4a46bba6e9a62548104">redhand::engine</a>
+: <a class="el" href="classredhand_1_1engine.html#ab6ab98cb4550b85dee1bb5227aa23e71">redhand::engine</a>
 </li>
 <li>getConfig()
 : <a class="el" href="classredhand_1_1engine.html#a3f3bc08a02e336d89f56e0a4d23c220b">redhand::engine</a>
+</li>
+<li>getEngine()
+: <a class="el" href="classredhand_1_1input__system.html#adc61588e8d46e6db0223a36ec0a90376">redhand::input_system</a>
 </li>
 <li>getErrorCode()
 : <a class="el" href="classredhand_1_1engine.html#ae0db640ed7abd2295547ae84c719333a">redhand::engine</a>
 </li>
 <li>getFloat()
 : <a class="el" href="classredhand_1_1shader.html#a418abef329616f860657f24ec28716d0">redhand::shader</a>
+</li>
+<li>getFrameTime()
+: <a class="el" href="classredhand_1_1game__loop__event.html#a8b884e2c64e15c768e42babeb2348f3b">redhand::game_loop_event</a>
 </li>
 <li>getHeight()
 : <a class="el" href="classredhand_1_1texture2_d.html#a867fd95f1d6cf985bbce27a5c4f50dcd">redhand::texture2D</a>
@@ -164,16 +188,25 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="classredhand_1_1shader.html#aed208783f4c577978e34b765ad79a0f6">redhand::shader</a>
 , <a class="el" href="classredhand_1_1texture2_d.html#a88ee9e51358735d215bd7b98ebe3f556">redhand::texture2D</a>
 </li>
+<li>getInstance()
+: <a class="el" href="classredhand_1_1input__system.html#a8cea2fa63bcb11f0059250c7f54d2c9a">redhand::input_system</a>
+</li>
+<li>getKeyAction()
+: <a class="el" href="classredhand_1_1input__system.html#aa49da9ce2018a0d935d6a79e3f1682d5">redhand::input_system</a>
+</li>
 <li>getName()
 : <a class="el" href="classredhand_1_1game__object.html#a41b81e0a7a449c75e0289cf20aacb9a6">redhand::game_object</a>
 , <a class="el" href="classredhand_1_1shader.html#ad271bf72cc2604469c735b327e871ad7">redhand::shader</a>
 , <a class="el" href="classredhand_1_1texture2_d.html#a652ca271c7dbace99adb39918ba26f94">redhand::texture2D</a>
 </li>
 <li>getObjectByName()
-: <a class="el" href="classredhand_1_1world.html#a997a4872aba71a860efda5a50a3294a7">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#a975d51a2c10282b0324269b6c99d0634">redhand::complex_world</a>
 </li>
 <li>getPosition()
 : <a class="el" href="classredhand_1_1game__object.html#ac96accee11394b88519406b5bff15417">redhand::game_object</a>
+</li>
+<li>getRaiser()
+: <a class="el" href="classredhand_1_1event.html#a699ee6f7d34b2c12e392600114bd8a2f">redhand::event&lt; T &gt;</a>
 </li>
 <li>getRotation()
 : <a class="el" href="classredhand_1_1game__object.html#a758aeed2f46f7f240ee05d43e5640b94">redhand::game_object</a>
@@ -185,10 +218,10 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="classredhand_1_1game__object.html#a473b4adc64bc004e4de4d2e6b2cecd22">redhand::game_object</a>
 </li>
 <li>getShaderByName()
-: <a class="el" href="classredhand_1_1world.html#ae01663f1b19d766a99823e5fda867307">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#a1830213351a5b31c1bc2edffd58731fa">redhand::complex_world</a>
 </li>
 <li>getTextureByName()
-: <a class="el" href="classredhand_1_1world.html#ae0ed1a9c6b2684ab5220d1c11a492a26">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#a089c9e46f5025b2449766b1e3503bcb7">redhand::complex_world</a>
 </li>
 <li>getWidth()
 : <a class="el" href="classredhand_1_1texture2_d.html#a03da3510536848af115d53f52797f69e">redhand::texture2D</a>
@@ -217,6 +250,12 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>initTexture2D()
 : <a class="el" href="classredhand_1_1texture2_d.html#ab4ef5c1815653017d78bec665dcc527d">redhand::texture2D</a>
 </li>
+<li>input_system()
+: <a class="el" href="classredhand_1_1input__system.html#ad7cf0e975d6c9fe697ad2441bb05430a">redhand::input_system</a>
+</li>
+<li>isKeyPressed()
+: <a class="el" href="classredhand_1_1input__system.html#aa321d0c7966b915027b17b679be7f6e0">redhand::input_system</a>
+</li>
 <li>isRunning()
 : <a class="el" href="classredhand_1_1engine.html#ac737a2269fbdf19e4ab7c5c9387586b2">redhand::engine</a>
 </li>
@@ -238,28 +277,40 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="classredhand_1_1game__object.html#a201dd07646d4e7765419e64951f52afc">redhand::game_object</a>
 </li>
 <li>moveCamera()
-: <a class="el" href="classredhand_1_1shader.html#a94f91ee2173fa66e48c284119705cc47">redhand::shader</a>
-, <a class="el" href="classredhand_1_1world.html#ac99caa9256f2d3280ceb46af03e4606c">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#a7d643d4cc5ef57fd69c69c30a6f4c091">redhand::complex_world</a>
+, <a class="el" href="classredhand_1_1shader.html#a94f91ee2173fa66e48c284119705cc47">redhand::shader</a>
 </li>
 </ul>
 
 
 <h3><a id="index_o"></a>- o -</h3><ul>
+<li>onCreate()
+: <a class="el" href="classredhand_1_1complex__world.html#a96e5a18fe42dcd4abfd7182c9fe336fc">redhand::complex_world</a>
+</li>
 <li>onLoop()
-: <a class="el" href="classredhand_1_1game__object.html#afae2ebfb61f74d1514585c094590166d">redhand::game_object</a>
+: <a class="el" href="classredhand_1_1game__object.html#afec99bf6093b6d40410cab899998cb4b">redhand::game_object</a>
+</li>
+<li>operator=()
+: <a class="el" href="classredhand_1_1input__system.html#aaa7f51df507c6a328b6cf72f07ae862f">redhand::input_system</a>
 </li>
 </ul>
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>registerEngine()
+: <a class="el" href="classredhand_1_1input__system.html#a66493981098d2d6c6a0c4bb735886319">redhand::input_system</a>
+</li>
+<li>removeGameLoopHandler()
+: <a class="el" href="classredhand_1_1engine.html#a67515f84015f680bfb2226505ec7db99">redhand::engine</a>
+</li>
 <li>removeObject()
-: <a class="el" href="classredhand_1_1world.html#ac7c8ae0dd9020a783e8dd17f2f011597">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#ad2812631aad73f823a9c6ed0c73d7b52">redhand::complex_world</a>
 </li>
 <li>removeShader()
-: <a class="el" href="classredhand_1_1world.html#a7a15c13d41a872211111abceaf9e44ed">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#a510db1ca2384538c1f4649a6abae2111">redhand::complex_world</a>
 </li>
 <li>removeTexture()
-: <a class="el" href="classredhand_1_1world.html#a75743a500bbd7c8135f17475bad8e05b">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#af8c54d33de31a227b5db5b50347ad66d">redhand::complex_world</a>
 </li>
 <li>rotate()
 : <a class="el" href="classredhand_1_1game__object.html#a554d2a51a8632d4983d8572495fd8c0e">redhand::game_object</a>
@@ -271,15 +322,12 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
-<li>setActiveWorld()
-: <a class="el" href="classredhand_1_1engine.html#a370bc247c39c33e06dda5d63bcd425f5">redhand::engine</a>
-</li>
 <li>setBool()
 : <a class="el" href="classredhand_1_1shader.html#a584bc9d1d0fe5ada3e325e79a9f2bbd3">redhand::shader</a>
 </li>
 <li>setCamera()
-: <a class="el" href="classredhand_1_1shader.html#a45396a4779693d28861f6d6ca8365f17">redhand::shader</a>
-, <a class="el" href="classredhand_1_1world.html#a686b37aa96175d04ea883dc5d067a140">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#ac794c3f38b3c61d6df350796a9e19910">redhand::complex_world</a>
+, <a class="el" href="classredhand_1_1shader.html#a45396a4779693d28861f6d6ca8365f17">redhand::shader</a>
 </li>
 <li>setColorAlpha()
 : <a class="el" href="classredhand_1_1game__object.html#a50043cf76df037d260c171a6783a1189">redhand::game_object</a>
@@ -291,16 +339,10 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="classredhand_1_1shader.html#a4d0ffd87d70fa4f51bf22bedf853989f">redhand::shader</a>
 </li>
 <li>setInt()
-: <a class="el" href="classredhand_1_1shader.html#a41590dceaf59a641bad2a27718eb02a8">redhand::shader</a>
-</li>
-<li>setLoopFunction()
-: <a class="el" href="classredhand_1_1game__object.html#a880faa8230c774573fdcf07727899772">redhand::game_object</a>
+: <a class="el" href="classredhand_1_1shader.html#a2767bc9b53ba00300f839b3a78503450">redhand::shader</a>
 </li>
 <li>setName()
 : <a class="el" href="classredhand_1_1game__object.html#aa2aca5069459e8788cacf4658e54bd5a">redhand::game_object</a>
-</li>
-<li>setPhysicsLoopFunction()
-: <a class="el" href="classredhand_1_1engine.html#aa8380940fa4191248e7543c0ffaba2d8">redhand::engine</a>
 </li>
 <li>setPosition()
 : <a class="el" href="classredhand_1_1game__object.html#a2c49e1e95e7d03e0bad8e77d59a13f05">redhand::game_object</a>
@@ -314,17 +356,20 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>setScreenSize()
 : <a class="el" href="classredhand_1_1game__object.html#a3247de3fd8cad6f5234704dabbd207d4">redhand::game_object</a>
 </li>
-<li>setShaderRoutine()
-: <a class="el" href="classredhand_1_1game__object.html#a9a612842d14baf3d73f06d2166d5d3ef">redhand::game_object</a>
-</li>
 <li>setTextureScale()
 : <a class="el" href="classredhand_1_1shader.html#a060d311815f8b775785b9102f2c03822">redhand::shader</a>
 </li>
 <li>setWindowSize()
-: <a class="el" href="classredhand_1_1world.html#a6a1b807e62d75c36f88c699365984d9f">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#af15dfb0cf5b1c9dd76e8208e2a2d14c6">redhand::complex_world</a>
 </li>
 <li>shader()
 : <a class="el" href="classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88">redhand::shader</a>
+</li>
+<li>static_getKeyAction()
+: <a class="el" href="classredhand_1_1input__system.html#aa44a99981f08a096bf4f0d792a08176a">redhand::input_system</a>
+</li>
+<li>static_isKeyPressed()
+: <a class="el" href="classredhand_1_1input__system.html#ae7961b7067a3a57952123661ee722a72">redhand::input_system</a>
 </li>
 <li>stopGame()
 : <a class="el" href="classredhand_1_1engine.html#a8b13e25811d03015a9923daaf7d205fa">redhand::engine</a>
@@ -337,7 +382,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="classredhand_1_1texture2_d.html#a54e4d3b378f5f44d70b7b6c8479391f6">redhand::texture2D</a>
 </li>
 <li>tick()
-: <a class="el" href="classredhand_1_1world.html#ae14f52c71c7b8e95bfc022be604950d9">redhand::world</a>
+: <a class="el" href="classredhand_1_1complex__world.html#a6e1694305d9e80390fedd20446554a5f">redhand::complex_world</a>
 </li>
 <li>triggerError()
 : <a class="el" href="classredhand_1_1game__object.html#ad2f6d57523b9e997bcf91158956ec647">redhand::game_object</a>
@@ -346,6 +391,9 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 
 
 <h3><a id="index_u"></a>- u -</h3><ul>
+<li>updateBuffers()
+: <a class="el" href="classredhand_1_1game__object.html#a8a97024841d47d60a770cdc986938a77">redhand::game_object</a>
+</li>
 <li>updateWorldTransformation()
 : <a class="el" href="classredhand_1_1game__object.html#aceaf38ebc2758daefdf5ebe8ad066f2a">redhand::game_object</a>
 </li>
@@ -355,14 +403,10 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </ul>
 
 
-<h3><a id="index_w"></a>- w -</h3><ul>
-<li>world()
-: <a class="el" href="classredhand_1_1world.html#acf054ab26b490248a6ef1eaa53b74c4c">redhand::world</a>
-</li>
-</ul>
-
-
 <h3><a id="index_0x7e"></a>- ~ -</h3><ul>
+<li>~complex_world()
+: <a class="el" href="classredhand_1_1complex__world.html#ae96a564860021b1b835b210512e5930f">redhand::complex_world</a>
+</li>
 <li>~engine()
 : <a class="el" href="classredhand_1_1engine.html#a3d6ac63b8f8e4f46bcefbd5d75a57233">redhand::engine</a>
 </li>
@@ -372,8 +416,8 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>~shader()
 : <a class="el" href="classredhand_1_1shader.html#acfb5afb2443d4776d1cd859e3f8c7c4e">redhand::shader</a>
 </li>
-<li>~world()
-: <a class="el" href="classredhand_1_1world.html#a730f9b3926af3f116a6e15b81753c274">redhand::world</a>
+<li>~texture2D()
+: <a class="el" href="classredhand_1_1texture2_d.html#a44247745536bb785056fd89b00dfd7e1">redhand::texture2D</a>
 </li>
 </ul>
 </div><!-- contents -->

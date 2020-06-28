@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.10</span>
+   &#160;<span id="projectnumber">0.0.11</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -85,26 +85,26 @@ $(document).ready(function(){initNavTree('texture_8hpp.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">texture.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;redhand/glad/glad.h&gt;</code><br />
-<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;GLFW/glfw3.h&gt;</code><br />
 <code>#include &lt;glm/glm.hpp&gt;</code><br />
+<code>#include &lt;vips/vips8&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;shared_mutex&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
 <code>#include &quot;<a class="el" href="math_8hpp_source.html">redhand/math.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for texture.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="texture_8hpp__incl.png" border="0" usemap="#include_2redhand_2texture_8hpp" alt=""/></div>
 <map name="include_2redhand_2texture_8hpp" id="include_2redhand_2texture_8hpp">
-<area shape="rect" id="node9" href="math_8hpp.html" title="redhand/math.hpp" alt="" coords="800,80,927,107"/>
+<area shape="rect" id="node10" href="math_8hpp.html" title="redhand/math.hpp" alt="" coords="854,80,981,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -112,13 +112,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="texture_8hpp__dep__incl.png" border="0" usemap="#include_2redhand_2texture_8hppdep" alt=""/></div>
 <map name="include_2redhand_2texture_8hppdep" id="include_2redhand_2texture_8hppdep">
-<area shape="rect" id="node2" href="game__object_8hpp.html" title="include/redhand/game\l_object.hpp" alt="" coords="224,80,373,121"/>
-<area shape="rect" id="node3" href="engine_8hpp.html" title="include/redhand/engine.hpp" alt="" coords="294,244,474,271"/>
-<area shape="rect" id="node8" href="texture_8cpp.html" title="src/texture.cpp" alt="" coords="472,87,581,114"/>
-<area shape="rect" id="node5" href="world_8hpp.html" title="include/redhand/world.hpp" alt="" coords="5,169,179,196"/>
-<area shape="rect" id="node7" href="game__object_8cpp.html" title="src/game_object.cpp" alt="" coords="203,169,346,196"/>
-<area shape="rect" id="node4" href="engine_8cpp.html" title="src/engine.cpp" alt="" coords="331,319,437,345"/>
-<area shape="rect" id="node6" href="world_8cpp.html" title="src/world.cpp" alt="" coords="42,244,142,271"/>
+<area shape="rect" id="node2" href="complex__world_8cpp.html" title="src/complex_world.cpp" alt="" coords="5,80,161,107"/>
+<area shape="rect" id="node3" href="engine_8cpp.html" title="src/engine.cpp" alt="" coords="186,80,293,107"/>
+<area shape="rect" id="node4" href="game__object_8cpp.html" title="src/game_object.cpp" alt="" coords="317,80,460,107"/>
+<area shape="rect" id="node5" href="texture_8cpp.html" title="src/texture.cpp" alt="" coords="485,80,594,107"/>
+<area shape="rect" id="node6" href="all_8hpp.html" title="Include this header to include all redhand headers. " alt="" coords="618,80,773,107"/>
 </map>
 </div>
 </div>
@@ -139,13 +137,8 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a23e3126bdac3dd9d38317f257b27409d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a23e3126bdac3dd9d38317f257b27409d">redhand::initSTB</a> ()</td></tr>
-<tr class="separator:a23e3126bdac3dd9d38317f257b27409d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a011649e8eeb0b334eff41e87ea7ad5b4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structredhand_1_1image__properties.html">redhand::image_properties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a011649e8eeb0b334eff41e87ea7ad5b4">redhand::DEFAULT_IMAGE_PROPERTIES</a></td></tr>
-<tr class="separator:a011649e8eeb0b334eff41e87ea7ad5b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2e18f1e9f9c20dac61dd83f92798ba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#af2e18f1e9f9c20dac61dd83f92798ba3">redhand::initImageLoader</a> ()</td></tr>
+<tr class="separator:af2e18f1e9f9c20dac61dd83f92798ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
