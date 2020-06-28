@@ -11,7 +11,6 @@ endif()
 #the project name and version
 project(redhand VERSION "0.0.11" DESCRIPTION "a small 2D game engine")
 
-
 #the available build options
 option(OUTPUTFILE "Name of file to output")
 option(REPOROOT "Path of the root of the repo" "${CMAKE_CURRENT_BINARY_DIR}/..")
@@ -48,11 +47,15 @@ find_package(PkgConfig REQUIRED)
 pkg_search_module(GLIB REQUIRED glib-2.0)
 pkg_check_modules(VIPS vips-cpp REQUIRED)
 
+if (UNIX)
+    include_directories(/usr/include/c++/10)
+endif()
+
 #Search for filesystem header
 include(CheckIncludeFileCXX)
 CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)
 
-if(!HAVE_FILESYSTEM)
+if(NOT HAVE_FILESYSTEM)
     message( FATAL_ERROR "compiler does not have c++ <filesystem> support please install a newer version." )
 endif()
 

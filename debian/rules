@@ -12,15 +12,12 @@
 #export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
 # package maintainers to append LDFLAGS
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
-export CC=clang-9
-export CXX=clang++-9
-
 
 build:
 	bash scripts/setup.sh --deb --ci
 	bash scripts/docs.sh
 	dh_testdir
-	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)"
+	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER=/usr/bin/clang-10 -DCMAKE_CXX_COMPILER=/usr/bin/clang++-10
 	dh_auto_build
 	dh_auto_test
 

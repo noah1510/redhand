@@ -5,18 +5,19 @@ Build-Depends:
     debhelper, 
     dh-make, 
     cmake,  
-    clang-9,
+    clang-10,
+    libclang-10-dev,
+    g++-10,
     fakeroot, 
-    libglfw3, 
     libglfw3-dev, 
+    xorg-dev,
     libglm-dev, 
     python3, 
     git, 
     libgl1-mesa-dev, 
     doxygen, 
     graphviz,
-    libvips-dev,
-    python3-pip
+    libvips-dev
 Standards-Version: 4.1.2
 Section: libs
 #Homepage: <insert the upstream URL, if relevant>
