@@ -9,10 +9,12 @@
 #include "redhand/game_object.hpp"
 #include "redhand/shader.hpp"
 #include "redhand/texture.hpp"
-#include "redhand/world.hpp"
+#include "redhand/complex_world.hpp"
 #include "redhand/engine.hpp"
 //#include "audio/AudioHandler.hpp"
 
+#include "test_world.hpp"
+#include "test_objects.hpp"
 #include "game.hpp"
 
 
@@ -34,19 +36,18 @@ int main(){
     gameEngine->setConfig(conf);
 
     //set the function which handles all the controls and physics computation
-    gameEngine->setPhysicsLoopFunction(main_game_logic);
+    gameEngine->addGameLoopHandler(processGlobalInput, "global_input");
 
     //initilize the game engine
     gameEngine->init();
+
+    gameEngine->changeWorld(std::shared_ptr<redhand::complex_world>(new test_world()));
 
     //set the exit flags in case something went wrong 
     exitCode = gameEngine->getErrorCode();
     if(exitCode < 0){
         gameEngine->stopGame();
-    }else{
-        exitCode = game_init(gameEngine->getActiveWorld());
-        if(exitCode < 0){return abs(exitCode);};
-        
+    }else{        
         //run the game
         exitCode = gameEngine->runGame(); 
     }

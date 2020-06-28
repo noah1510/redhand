@@ -1,7 +1,6 @@
 #pragma once
-#include "redhand/shader.hpp"
-#include "redhand/texture.hpp"
 #include "redhand/math.hpp"
+#include "redhand/event/game_loop_event.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -17,11 +16,14 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include <redhand/glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace redhand{
 
+class texture2D;
+class shader;
+
+const int STATIC_DRAW = 0x88E4;
 /**
  * @brief This struct specifies all the properties of a game_object.
  * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_GAME_OBJECT_PROPERTIES.
@@ -55,7 +57,9 @@ typedef struct{
     ///THe alpha value of this game_object
     float                                                   alpha_value;
     ///Enable automatic scaling of texture (might be buggy)
-    bool                                                    automatic_scaling;                                
+    bool                                                    automatic_scaling;           
+    ///The point which the object should use as rotation axis
+    glm::vec2                                               rotation_point;                     
     
 } game_object_properties;
 
@@ -74,11 +78,12 @@ const game_object_properties DEFAULT_GAME_OBJECT_PROPERTIES = {
     {2.0f,2.0f},
     0,
     {-1.0f,-1.0f},
-    GL_STATIC_DRAW,
+    STATIC_DRAW,
     "game_object",
     {1.0f,1.0f},
     1.0f,
-    false
+    false,
+    {0.5f,0.5f}
 };
 
 /**
@@ -98,16 +103,16 @@ const game_object_properties DEFAULT_GAME_OBJECT_PROPERTIES = {
  * In addition to that the object also holds its position, rotation and scale in world coordinates.
  */
 class game_object{
-private:
+protected:
 
     /// The identifier of the Video Array Object
-    unsigned int VAO;
+    unsigned int VAO = GL_INVALID_VALUE;
 
     ///The identifier of the Video Buffer Object
-    unsigned int VBO;
+    unsigned int VBO = GL_INVALID_VALUE;
 
     ///The identifier of the Element Buffer Object
-    unsigned int EBO;
+    unsigned int EBO = GL_INVALID_VALUE;
 
     ///This array stores the data of all the vertecies
     std::vector <float> data;
@@ -123,11 +128,6 @@ private:
     bool has_errored = false;
     ///lock the has_errored of the object
     std::shared_mutex mutex_has_errored;
-
-    ///A function that will be called once every tick
-    std::function<void(GLFWwindow* window, game_object* obj)> loop_function;
-    ///lock the loop_function of the object
-    std::shared_mutex mutex_loop_function;
 
     ///The properties of this object
     redhand::game_object_properties object_properties;
@@ -151,7 +151,19 @@ private:
      * @brief this function updates the world_transformation matrix using the game_object_properties.
      * 
      */
-    void updateWorldTransformation();
+    virtual void updateWorldTransformation();
+
+    /**
+     * @brief this function refreshed the gpu buffers
+     * 
+     */
+    void updateBuffers();
+
+    /**
+     * @brief Construct an empty game_object, no buffers are initilized and not configuration set.
+     * 
+     */
+    game_object();
 
 public:
 
@@ -165,67 +177,66 @@ public:
     /**
      * @brief Destroy the game object
      */
-    ~game_object();
-
-    ///This function sets the shader routine to the given function
-    void setShaderRoutine(std::function<void(std::shared_ptr<redhand::shader>)> routine);
+    virtual ~game_object();
 
     /**
-     * @brief Set the Loop Function which is called on every physics render call.
+     * @brief Checks the provided properties for errors
      * 
-     * @param loop either a lambda function or a function pointer to the loop function that should be used.
+     * @param properties the properties that should be checked
+     * @return true the properties have an error
+     * @return false there is no error in the properties
      */
-    void setLoopFunction(std::function<void(GLFWwindow* window, game_object* obj)> loop);
+    bool checkObjectProperties(game_object_properties properties);
 
     ///This function returns a pointer to the attached shader
     std::shared_ptr<redhand::shader> getShader();
 
     ///This function draws the object on the screen
-    void draw();
+    virtual void draw();
 
     ///The loop function of the object
-    void onLoop(GLFWwindow* window);
+    virtual void onLoop(game_loop_event evt);
 
     ///false if no error has happened
     bool hasErrord();
 
-    void triggerError();
+    virtual void triggerError();
 
     /**
      * @brief Get the Position of the object
      * 
      * @return std::array<float,2> 
      */
-    std::array<float,2> getPosition();
+    virtual std::array<float,2> getPosition();
 
     /**
      * @brief Set the Position of the object
      * 
      * @param pos a vector with the in x and y direction in world scale
      */
-    void setPosition(std::array<float,2> pos);
+    virtual void setPosition(std::array<float,2> pos);
 
     /**
      * @brief moves the object by the specified amount
      * 
      * @param delta_pos a vector with the difference in x and y direction in world scale
      */
-    void move(std::array<float,2> delta_pos);
+    virtual void move(std::array<float,2> delta_pos);
 
     ///gets the rotation in degrees
-    float getRotation();
+    virtual float getRotation();
 
     ///sets the objects rotation by the specified amount in degrees counterclockwise
     ///@param rot the new rotation in degrees
-    void setRotation(float rot);
+    virtual void setRotation(float rot);
 
     ///Rotates the object by the specified amount in degrees counterclockwise
     ///@param the difference in rotation in degrees
-    void rotate(float delta_rot);
+    virtual void rotate(float delta_rot);
 
     ///set the alpha value of the color
     ///@param alpha The new alpha value of the color
-    void setColorAlpha(float alpha);
+    virtual void setColorAlpha(float alpha);
 
     /**
      * Sets the screen size to let the object scale the texture correctly
@@ -233,12 +244,12 @@ public:
      * @param width the width of the screen
      * @param height the height of he screen
      */
-    void setScreenSize(int width, int height);
+    virtual void setScreenSize(int width, int height);
 
     /**
      * This function sets the name of the game_object to the given string.
      */
-    void setName(std::string name);
+    virtual void setName(std::string name);
 
     /**
      * This funtion returns the name of the object.

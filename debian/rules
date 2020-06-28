@@ -12,14 +12,15 @@
 #export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
 # package maintainers to append LDFLAGS
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
-
+export CC=clang-9
+export CXX=clang++-9
 
 
 build:
 	bash scripts/setup.sh --deb --ci
 	bash scripts/docs.sh
 	dh_testdir
-	dh_auto_configure
+	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)"
 	dh_auto_build
 	dh_auto_test
 
@@ -32,12 +33,6 @@ clean:
 override_dh_strip:
 	dh_strip --dbg-package=libredhand-dbg
 
+
 %:
 	dh $@
-
-
-# dh_make generated override targets
-# This is example for Cmake (See https://bugs.debian.org/641051 )
-#override_dh_auto_configure:
-#	dh_auto_configure -- #	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
-

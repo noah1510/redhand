@@ -1,3 +1,4 @@
+#specify cmake version and flags
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 
@@ -6,21 +7,52 @@ if(CMAKE_VERSION VERSION_GREATER "3.11.0")
     cmake_policy(VERSION 3.11)
 endif()
 
+#the project name
 project("redhand-testgame")
 
+#the available build options
 option(OUTPUTFILE "Name of file to output")
 option(REPOROOT "Path of the root of the repo")
 option(REDHAND_LOCATION "The exact locataion of the libredhand file relative to reporoot")
 
+#set the reporoot var
 if (REPOROOT)
     SET(CMAKE_PREFIX_PATH ${REPOROOT})
 else (REPOROOT)
     SET(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR}/..)
 endif (REPOROOT)
 
+#set c++ standard to c++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_REQUIRED_FLAGS "-std=c++17")
+
+#include and link project folders
 include_directories(${CMAKE_PREFIX_PATH}/include/)
 link_directories(${CMAKE_PREFIX_PATH}/lib/)
 
+#search for opengl
+find_package(OpenGL REQUIRED)
+
+#search for glfw
+find_package(glfw3 REQUIRED)
+
+#search for glib and vips
+find_package(PkgConfig REQUIRED)
+pkg_search_module(GLIB REQUIRED glib-2.0)
+pkg_check_modules(VIPS vips-cpp REQUIRED)
+
+#Search for filesystem header
+include(CheckIncludeFileCXX)
+CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)
+
+if(!HAVE_FILESYSTEM)
+    message( FATAL_ERROR "compiler does not have c++ <filesystem> support please install a newer version." )
+endif()
+
+include(CheckIncludeFileCXX)
+CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)
+
+# Set output compiler flags
 if (UNIX)
     if (OUTPUTFILE)
         SET(OUTPUT ${OUTPUTFILE})
@@ -50,19 +82,24 @@ SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} ${GC_COVERAGE_COMPILE_FLAGS}")
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
-find_package(OpenGL REQUIRED)
-
-
+#add executable name
 add_executable(${OUTPUT} 
-${CMAKE_PREFIX_PATH}/testgame/src/game.cpp
-${CMAKE_PREFIX_PATH}/testgame/src/main.cpp)
+    ${CMAKE_PREFIX_PATH}/testgame/src/game.cpp
+    ${CMAKE_PREFIX_PATH}/testgame/src/test_world.cpp
+    ${CMAKE_PREFIX_PATH}/testgame/src/test_objects.cpp
+    ${CMAKE_PREFIX_PATH}/testgame/src/main.cpp
+)
+
+#include glib and link libraries
+target_include_directories(${OUTPUT} PRIVATE ${GLIB_INCLUDE_DIRS})
+target_link_libraries(${OUTPUT} ${GLIB_LDFLAGS})
+target_link_libraries(${OUTPUT} OpenGL::GL)
+target_link_libraries(${OUTPUT} glfw)
+target_include_directories(${OUTPUT} PRIVATE ${VIPS_INCLUDE_DIRS})
+target_link_libraries(${OUTPUT} ${VIPS_LDFLAGS})
+
 
 if (UNIX)
-    find_library(GLFW
-        NAMES libglfw.so.3 libglfw.so glfw libglfw.so.3.2
-        HINTS /usr/lib/x86_64-linux-gnu/ ${CMAKE_PREFIX_PATH}/deploy/)
-    
-    target_link_libraries(${OUTPUT} ${GLFW})
     target_link_libraries(${OUTPUT} dl)
     
     if(REDHAND_LOCATION)
@@ -78,7 +115,5 @@ if (UNIX)
 endif (UNIX)
 
 if (WIN32)
-    target_link_libraries(${OUTPUT} "${CMAKE_PREFIX_PATH}/lib/glfw3.dll") 
-
     target_link_libraries(${OUTPUT} "${CMAKE_PREFIX_PATH}/lib/libredhand.dll")
 endif (WIN32)

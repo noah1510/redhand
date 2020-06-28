@@ -1,4 +1,11 @@
+#include <redhand/glad/glad.h>
+
 #include "redhand/engine.hpp"
+#include "redhand/game_object.hpp"
+#include "redhand/shader.hpp"
+#include "redhand/texture.hpp"
+#include "redhand/complex_world.hpp"
+#include "redhand/input.hpp"
 
 using namespace redhand;
 
@@ -46,7 +53,11 @@ void redhand::engine::init(){
     glfwMakeContextCurrent(window);
 
     //register callback function for viewport
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); 
+
+    //register engine to input system
+    input_system& in_sys = input_system::getInstance();
+    in_sys.registerEngine(this);
 
     //make sure glad works
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
@@ -55,14 +66,14 @@ void redhand::engine::init(){
         return;
     }
 
-    //init stb
-    initSTB();
+    //init image loading library
+    initImageLoader();
 
     //enable multisampling
     glEnable(GL_MULTISAMPLE);
 
     //create an empty world
-    activeWorld = std::shared_ptr<world> (new world());
+    activeWorld = std::shared_ptr<complex_world> (new complex_world());
 
     if(activeWorld == nullptr){
         errorCode = -4;
@@ -71,27 +82,12 @@ void redhand::engine::init(){
 
 }
 
-std::shared_ptr<redhand::world> redhand::engine::getActiveWorld(){
+std::shared_ptr<redhand::complex_world> redhand::engine::getActiveWorld(){
     if(errorCode < 0){
         return nullptr;
     }
 
-    return std::shared_ptr<redhand::world>(activeWorld);
-}
-
-int redhand::engine::setActiveWorld(std::shared_ptr<redhand::world> newWorld){
-    
-    if(newWorld != nullptr){
-        activeWorld.reset();
-        
-        activeWorld = std::shared_ptr<redhand::world>(newWorld);
-    }else{
-        activeWorld = nullptr;
-        stopGame(-7);
-    }
-    
-    return -7;
-
+    return std::shared_ptr<redhand::complex_world>(activeWorld);
 }
 
 void redhand::engine::clearBuffers(){
@@ -107,10 +103,23 @@ int redhand::engine::getErrorCode(){
     return errorCode;
 }
 
-int redhand::engine::setPhysicsLoopFunction(int loop(redhand::engine*)){
-    physicsLoopFunction = loop;
+void redhand::engine::addGameLoopHandler(std::function < int ( redhand::game_loop_event ) > handle){
+    addGameLoopHandler(handle,"func");
+}
 
-    return errorCode;
+void redhand::engine::addGameLoopHandler(std::function < int ( redhand::game_loop_event ) > handle, std::string handler_key){
+    game_loop_handlers.insert(std::make_pair<>(handler_key,handle));
+}
+
+int redhand::engine::removeGameLoopHandler(std::string handler_key){
+    auto it = game_loop_handlers.find(handler_key);
+
+    if(it == game_loop_handlers.end()){
+        return -1;
+    }
+
+    game_loop_handlers.erase(it);
+    return 0;
 }
 
 bool redhand::engine::isRunning(){
@@ -138,21 +147,20 @@ void redhand::engine::stopGame(int error){
 }
 
 
-int redhand::engine::changeWorld(std::shared_ptr<world> newWorld){
+int redhand::engine::changeWorld(std::shared_ptr<complex_world> newWorld){
     //if not a nullptr change world
     if(newWorld == nullptr){
-        stopGame(-5);
         return -5;
-        
     }
 
-    auto error = setActiveWorld(newWorld);
-    if(error < 0){
-        stopGame(error);
-        return -6;
+    if(!isRunning()){
+        activeWorld = newWorld;
+        errorCode = activeWorld->onCreate(redhand::event<engine>(this));
+    }else{
+        nextWorld = newWorld;
     }
-
-    return 0;
+    
+    return errorCode;
 }
 
 int redhand::engine::runGame(){
@@ -161,25 +169,54 @@ int redhand::engine::runGame(){
     //start the physics thread
     std::thread physicsThread([&](){
         while (isRunning()){
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-            //create a placeholder for the next world
-            std::shared_ptr<world> nextWorld = nullptr;
+            std::this_thread::sleep_for(std::chrono::microseconds(100));
+
+            //Set the last time
+            static auto last_time = std::chrono::system_clock::now();
+            
+            auto this_time = std::chrono::system_clock::now();
+
+            auto diff = this_time-last_time;
+
+            if(diff < std::chrono::milliseconds(1000/60)){
+                continue;
+            }
+
+            auto evt = game_loop_event(this, diff);
+            glfwPollEvents();
 
             //get the new error
             int localErrorCode = 0;
-            localErrorCode = physicsLoopFunction(this);
+
+            activeWorld->tick(evt);
+
+            for(auto x : game_loop_handlers){
+                if(localErrorCode < 0){break;};
+                localErrorCode = x.second(evt);
+            }
 
             //if there was an error terminate the game
             if(localErrorCode < 0){
                 stopGame(localErrorCode);
                 break;
-            }
+            }       
 
             //if not a nullptr change world
             if(nextWorld != nullptr){
-                changeWorld(nextWorld);
+                activeWorld.reset();
+                activeWorld = nextWorld;
+                nextWorld = nullptr;
+                localErrorCode = activeWorld->onCreate(redhand::event<engine>(this));
+
+                //if there was an error terminate the game
+                if(localErrorCode < 0){
+                    stopGame(localErrorCode);
+                    break;
+                }
             }
+
+            last_time = this_time;
 
         }
     });

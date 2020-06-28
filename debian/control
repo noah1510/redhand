@@ -1,7 +1,22 @@
 Source: libredhand
 Priority: optional
 Maintainer: Noa Sakurajin <noasakurajin@web.de>
-Build-Depends: debhelper, dh-make, cmake,  gcc (>= 7.0.0), g++ (>= 7.0.0), fakeroot, libglfw3, libglfw3-dev, libglm-dev, python, git, libgl1-mesa-dev, doxygen, graphviz
+Build-Depends: 
+    debhelper, 
+    dh-make, 
+    cmake,  
+    clang-9,
+    fakeroot, 
+    libglfw3, 
+    libglfw3-dev, 
+    libglm-dev, 
+    python3, 
+    git, 
+    libgl1-mesa-dev, 
+    doxygen, 
+    graphviz,
+    libvips-dev,
+    python3-pip
 Standards-Version: 4.1.2
 Section: libs
 #Homepage: <insert the upstream URL, if relevant>
@@ -12,14 +27,14 @@ Package: libredhand
 Architecture: amd64
 Section: libs
 Multi-Arch: same
-Depends: libglfw3, libglm-dev
+Depends: libglfw3, libglm-dev, libvips-dev, ${misc:Depends}
 Recommends: libredhand-doc
 Description: a small and easy to use game development library
 
 Package: libredhand-dev
 Architecture: amd64
 Section: libs
-Depends: libredhand (= ${binary:Version}), ${misc:Depends}, libglfw3-dev, libgl1-mesa-dev
+Depends: libredhand (= ${binary:Version}), ${misc:Depends}, libglfw3-dev, libgl1-mesa-dev, libvips-dev
 Suggests: libredhand-dbg
 Recommends: libredhand-doc
 Multi-Arch: same

@@ -1,5 +1,5 @@
 
-<h1 align="center"> Welcome to RedHand </h1>
+<h1 align="center"> <img src="https://github.com/noah1510/redhand/blob/dev-noa/logo/redhand.svg" alt="logo" height="40pt" /> Welcome to RedHand  </h1>
 
 <h2 align="center">
 <a href="https://github.com/noah1510/redhand/blob/master/License"><img src="https://img.shields.io/github/license/noah1510/redhand.svg" alt="GitHub license" /></a>
@@ -12,7 +12,8 @@
 The goal is to create an easy to use 2D Game engine using C++.
 Its purpose is to give new programmers an easy introduction into game programming and even more abstract topics like object oriented programming and graphics programming in general.
 The used OpenGL APIs are GLFW and glad so this project should run on all operating systems.
-
+**This Project is still in the alpha phase and there might be srastic changes to the codebase and API causing your Programs to break with an update.
+Backwards compatibility will be a consideration after the release of version 0.1.0 everything prior to that might include drastic changes!**
 This Project provides several functions and objects that make it easier to start building your own games.
 While these objects give you a simple way to get started, they also allow you to insert advanced OpenGL commands.
 

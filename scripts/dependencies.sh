@@ -1,5 +1,17 @@
 #!/bin/bash
 
+CI="0"
+
+if [ "$1" == "--ci" ]
+then
+    CI="1"
+fi
+
+if [ "$REDHAND_CI" == "1" ]
+then
+    CI="1"
+fi
+
 if [ "$OSTYPE" == "linux-gnu" ]
 then
     # Linux
@@ -7,11 +19,11 @@ then
 
     DOCDEPS="doxygen graphviz-dev"
     GLFWDEPS="xorg-dev libgl1-mesa-dev"
-    REDHANDDEPS="cmake gcc g++ ninja-build libglm-dev libglfw3 libglfw3-dev devscripts"
+    REDHANDDEPS="cmake clang-9 clang++-9 ninja-build libglm-dev libglfw3 libglfw3-dev devscripts libvips-dev"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-dev"
 
     sudo apt update
-    if [ "$1" == "--ci" ]
+    if [ "$CI" == "1" ]
     then
         sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS --yes
         if [ $? -eq 0 ]
@@ -37,25 +49,53 @@ then
     # Mac OSX
     echo "script running on mac osx"
         
-elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
+elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then
     # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
     # or 
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    if [ "$1" == "--ci" ]
+    if [ "$CI" == "1" ]
     then
-        choco install ninja --yes --verbose --no-progress
+        #choco install imagemagick  -PackageParameters InstallDevelopmentHeaders=true  --yes --no-progress
+        #if [ $? -eq 0 ]
+        #then
+        #    echo "Successfully installed magick"
+        #else
+        #    echo "Could not install magick" >&2
+        #    exit 2
+        #fi
+        
+        choco install ninja --yes --no-progress
         if [ $? -eq 0 ]
         then
-            echo "Successfully installed dependencies"
+            echo "Successfully installed ninja"
         else
-            echo "Could not install dependencies" >&2
+            echo "Could not install ninja" >&2
             exit 2
         fi
+
+        choco install llvm --yes --no-progress
+        if [ $? -eq 0 ]
+        then
+            echo "Successfully installed llvm"
+        else
+            echo "Could not install llvm" >&2
+            exit 2
+        fi
+
     else
-        choco install doxygen.install mingw cmake ninja --yes --verbose --no-progress
+        #choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
+        #if [ $? -eq 0 ]
+        #then
+        #    echo "Successfully installed magick"
+        #else
+        #    echo "Could not install magick" >&2
+        #    exit 2
+        #fi
+
+        choco install doxygen.install mingw cmake ninja llvm --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
@@ -64,7 +104,10 @@ then
             exit 2
         fi
     fi
-
+elif [ "$OSTYPE" == "msys" ]
+then
+    pacman -S --noconfirm pactoys git
+    pacboy -S --noconfirm ninja:x clang:x cmake:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x
 else
     # Unknown os
     echo "running on something else."

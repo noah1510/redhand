@@ -76,6 +76,9 @@ then
     EXECUTABLE="$PROJECTNAME-$BUILDNAME"
     REDHAND_LOCATION="deploy/libredhand.so"
 
+    export CC="clang-9"
+    export CXX="clang++-9"
+
 elif [ "$OSTYPE" == "darwin"* ]
 then
     # Mac OSX
@@ -91,7 +94,7 @@ then
     echo "script running on windows"
 
     EXECUTABLE="$PROJECTNAME-$BUILDNAME.exe"
-
+    
     #alias make='mingw32-make'
 
 else

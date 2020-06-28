@@ -52,6 +52,11 @@ do
   esac
 done
 
+if [ "$REDHAND_CI" == "1" ]
+then
+    CI="1"
+fi
+
 if [ "$THREADS" == "3" ]
 then
   THREADS="$(nproc)"
@@ -89,7 +94,7 @@ then
     fi
 
         
-elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
+elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then
     # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
     # or 
@@ -107,6 +112,14 @@ then
       cp -r "configurations/linux/.vscode" "."
     fi
 
+    #export CC="C:/Program Files/LLVM/bin/clang.exe"
+    #export CXX="C:/Program Files/LLVM/bin/clang++.exe"
+elif [  "$OSTYPE" == "msys" ]
+then
+    echo "script running on windows"
+    
+    BUILDGLFW="0"
+    BUILDGLM="0"
 else
     # Unknown os
     echo "running on something else."
@@ -142,19 +155,16 @@ fi
 
 if [ "$PACKAGEBUILD" == "0" ]
 then
-    git submodule update --init include/stb
+    git submodule update --init dependencies/gladRepo
     if [ $? -eq 0 ]
     then
-        echo "Successfully initiated stb"
+        echo "Successfully initiated glad"
     else
-        echo "Could not initiate stb" >&2
+        echo "Could not initiate glad" >&2
         exit 1
     fi
-fi
-
-if [ "$PACKAGEBUILD" == "0" ]
-then
-    git submodule update --init dependencies/gladRepo
+else
+    python3 -m pip install --user glad
     if [ $? -eq 0 ]
     then
         echo "Successfully initiated glad"
@@ -166,7 +176,7 @@ fi
 
 if [ "$CI" == "0" ]
 then
-  git lfs install
+  #git lfs install
   if [ $? -eq 0 ]
   then
       echo "Successfully initiated git-lfs"
@@ -175,7 +185,7 @@ then
       exit 2
   fi
 
-  git-lfs pull
+  #git-lfs pull
   if [ $? -eq 0 ]
   then
       echo "Successfully pulled git-lfs"
@@ -230,32 +240,32 @@ mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
 
 #compiling glfw
-if [ "$BUILDGLFW" == "1" ]
-then
-  mkdir -p "build/glfw"
-  cd "build/glfw"
-  cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
-  ninja -j"$THREADS"
+#if [ "$BUILDGLFW" == "1" ]
+#then
+#  mkdir -p "build/glfw"
+#  cd "build/glfw"
+#  cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
+#  ninja -j"$THREADS"
 
-  if [ $? -eq 0 ]
-  then
-    echo "Successfully compiled glfw"
-  else
-    echo "Could not compile glfw" >&2
-    cd "../.."
-    exit 2
-  fi
-  cd "../.."
+#  if [ $? -eq 0 ]
+#  then
+#    echo "Successfully compiled glfw"
+#  else
+#    echo "Could not compile glfw" >&2
+#    cd "../.."
+#    exit 2
+#  fi
+#  cd "../.."
 
-  cp "build/glfw/src/$GLFWLIB" "lib"
-  cp "build/glfw/src/$GLFWDEPLOY" "lib"
+#  cp "build/glfw/src/$GLFWLIB" "lib"
+#  cp "build/glfw/src/$GLFWDEPLOY" "lib"
 
-  cp "build/glfw/src/$GLFWLIB" "build/$BUILDNAME"
+#  cp "build/glfw/src/$GLFWLIB" "build/$BUILDNAME"
 
-  cp "build/glfw/src/$GLFWLIB" "deploy"
-  cp "build/glfw/src/$GLFWDEPLOY" "deploy"
+#  cp "build/glfw/src/$GLFWLIB" "deploy"
+#  cp "build/glfw/src/$GLFWDEPLOY" "deploy"
 
-fi
+#fi
 
 #copy results
 cp -r "dependencies/glad/include" "."

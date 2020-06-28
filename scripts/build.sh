@@ -5,6 +5,8 @@ LIBBUILDNAME="lib"
 SETUP="0"
 PACKAGE="0"
 INITILIZE="0"
+BUILDGLFW="0"
+export REDHAND_CI="0"
 
 #parse parameter
 pars=$#
@@ -44,6 +46,11 @@ do
       shift
       PACKAGE="1"
       ;;
+    "--ci")
+      shift
+      REDHAND_CI="1"
+      export REDHAND_CI
+      ;;
     "--help")
       echo "This script is used to build the shared library and copy it in the deploy folder."
       echo "Usage: scripts/build.sh [options]"
@@ -54,6 +61,7 @@ do
       echo "    --setup             Also execute the setup script to prepare all dependencies"
       echo "    --init              Also execute the setup and dependencies scripts to prepare and install all dependencies"
       echo "    --deb               Build the library as debian package"
+      echo "    --ci                Build the library in an CI (manually sets the CC and CXX for win)"
       echo ""
       echo "view the source on https://github.com/noah1510/redhand"
       exit 1
@@ -90,6 +98,10 @@ then
     echo "script running on linux"
 
     LIBRARY="libredhand.so"
+    BUILDGLFW="0"
+
+    export CC="clang-9"
+    export CXX="clang++-9"
 
 elif [ "$OSTYPE" == "darwin"* ]
 then
@@ -98,7 +110,7 @@ then
 
     LIBRARY="libredhand.so"
 
-elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
+elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then
     # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
     # or 
@@ -107,7 +119,22 @@ then
 
     LIBRARY="libredhand.dll"
 
-    #alias make='mingw32-make'
+    BUILDGLFW="1"
+
+    if [ "$REDHAND_CI" == "1" ]
+    then
+        ls "C:/ProgramData/chocolatey/bin"
+        export CC="C:/Program Files/LLVM/bin/clang.exe"
+        export CXX="C:/Program Files/LLVM/bin/clang++.exe"
+    fi
+
+elif [ "$OSTYPE" == "msys" ]
+then
+    echo "script running on windows"
+
+    LIBRARY="libredhand.dll"
+
+    BUILDGLFW="0"
 
 else
     # Unknown os
@@ -131,7 +158,7 @@ else
   #build actual project
   mkdir -p "build/$LIBBUILDNAME"
   cd "build/$LIBBUILDNAME"
-  cmake -G "Ninja" -DREPOROOT=$REPOROOT "../.."
+  cmake -G "Ninja" -DBUILDGLFW=$BUILDGLFW -DREPOROOT=$REPOROOT "../.."
   ninja -j"$THREADS"
   if [ $? -eq 0 ]
   then

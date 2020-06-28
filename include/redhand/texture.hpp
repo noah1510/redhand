@@ -1,14 +1,14 @@
 #pragma once
 
-#include <redhand/glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
-
+#include <vips/vips8>
 
 #include <iostream>
 #include <string>
 #include <mutex>
 #include <shared_mutex>
+#include <filesystem>
 
 #include "redhand/math.hpp"
 
@@ -20,47 +20,39 @@ namespace redhand{
  */
 typedef struct{
     ///The name of the image
-    std::string name;
+    std::string name = "texture";
 
     ///The location of the image file
-    std::string file_location;
+    std::filesystem::path file_location;
 
-    ///
-    int wrap_S;
+    ///The wrap mode in x direction
+    int wrap_S = GL_TEXTURE_WRAP_S;
 
-    ///
-    int wrap_T;
+    ///The wrap mode in y direction
+    int wrap_T = GL_TEXTURE_WRAP_T;
 
-    ///
-    int texture_min_filter;
+    ///The scaling type when downscaling the image
+    int texture_min_filter = GL_LINEAR_MIPMAP_LINEAR;
 
-    ///
-    int texture_max_filter;
+    ///The scaling type when upscaling the image
+    int texture_max_filter = GL_LINEAR;
 
     ///The data type of the image
-    int data_type;
+    int data_type = GL_RGBA;
 
     ///True if the program should create mipmaps
-    bool create_mipmap;
+    bool create_mipmap = true;
 
     ///The internal data type that should be used
-    int internal_data_type;
+    int internal_data_type = GL_RGBA;
+
+    ///If flase image_data will always be a nullptr. 
+    ///This allows for much less memory usage but before transforming the texture the image has to be copied from the gpu to the ram costing some time.
+    bool keep_image_data = true;
 
 } image_properties;
 
-const redhand::image_properties DEFAULT_IMAGE_PROPERTIES = {
-    "texture",
-    "",
-    GL_TEXTURE_WRAP_S,
-    GL_TEXTURE_WRAP_T,
-    GL_LINEAR_MIPMAP_LINEAR,
-    GL_LINEAR,
-    GL_RGBA,
-    true,
-    GL_RGBA
-};
-
-void initSTB();
+void initImageLoader();
 
 class texture2D{
 private:
@@ -70,7 +62,7 @@ private:
     std::shared_mutex mutex_errored;
 
     ///the id of the texture
-    unsigned int id;
+    unsigned int id = 0;
     ///the mutex for the id
     std::shared_mutex mutex_id;
 
@@ -85,12 +77,18 @@ private:
     std::shared_mutex mutex_height;
 
     ///the properties of the texture
-    image_properties texture_properties = DEFAULT_IMAGE_PROPERTIES;
+    image_properties texture_properties;
     ///the mutex for the texture_properties
     std::shared_mutex mutex_texture_properties;
 
     ///initilizes the texture
     void initTexture2D();
+
+    ///The underlying image data stored in the ram nullptr if none.
+    ///This also allows for fast transformation of the texture without touching the shader.
+    vips::VImage image_data;
+
+    //std::unique_ptr<vips::VImage> image_data;
 
 public:
     /**
@@ -107,6 +105,12 @@ public:
      * @param texture_name the internale name of the texture
      */
     texture2D(std::string file_location, std::string texture_name);
+
+    /**
+     * @brief Destroy the texture2D object and cleans the memory
+     * 
+     */
+    ~texture2D();
 
     ///This function returns true if an error has happened
     bool hasErrord();

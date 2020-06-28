@@ -1,9 +1,6 @@
 [submodule "include/gitglm"]
 	path = include/gitglm
 	url = https://github.com/g-truc/glm
-[submodule "include/stb"]
-	path = include/stb
-	url = https://github.com/nothings/stb.git
 [submodule "dependencies/glfw"]
 	path = dependencies/glfw
 	url = https://github.com/glfw/glfw.git

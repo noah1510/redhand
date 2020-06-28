@@ -3,33 +3,54 @@ name: CI
 on: [push]
 
 jobs:
-  build:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+  build-linux:
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     
     steps:
     - uses: actions/checkout@v1
       with: 
         lfs: false
-    - name: update windows compiler
-      run: |
-        echo "::set-env name=CC::C:\msys64\bin\gcc"
-        echo "::set-env name=CXX::C:\msys64\bin\g++"
-      if: matrix.os == 'windows-latest'
+    - name: add required ppa
+      run: sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test && sudo apt update
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
       run:  bash scripts/setup.sh --ci
     - name: build library
-      run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
+      run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
     - name: build testgame
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
-        name: build-artifact-${{ matrix.os }}-${{ matrix.compiler }}
+        name: build-artifact-linux
+        path: .
+  build-windows:
+    runs-on: windows-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+    
+    steps:
+    - uses: actions/checkout@v1
+      with: 
+        lfs: false
+    - uses: msys2/setup-msys2@v1
+      with:
+        update: true
+    - name: install dependencies
+      shell: msys2 {0}
+      run:  bash scripts/dependencies.sh --ci
+    - name: setup the project
+      shell: msys2 {0}
+      run:  bash scripts/setup.sh --ci
+    - name: build library
+      shell: msys2 {0}
+      run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
+    - name: build testgame
+      shell: msys2 {0}
+      run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: build-artifact-${{ matrix.os }}
         path: .

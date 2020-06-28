@@ -1,6 +1,5 @@
 #pragma once
 
-#include <redhand/glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
@@ -19,15 +18,21 @@
 #include <algorithm>
 #include <mutex>
 #include <shared_mutex>
+#include <unordered_map>
 
-#include "redhand/game_object.hpp"
-#include "redhand/shader.hpp"
-#include "redhand/texture.hpp"
-#include "redhand/world.hpp"
 #include "redhand/math.hpp"
+
+#include "redhand/event/event.hpp"
+#include "redhand/event/game_loop_event.hpp"
+
 //#include "audio/AudioHandler.hpp"
 
 namespace redhand{
+
+class complex_world;
+class game_object;
+class texture2D;
+class shader;
 
 const auto OPENGL_CORE_PROFILE = GLFW_OPENGL_CORE_PROFILE;
 const auto DONT_CARE = GLFW_DONT_CARE;
@@ -35,7 +40,7 @@ const auto DONT_CARE = GLFW_DONT_CARE;
 ///This string provides a version in a pritable format.
 ///The first public version is 0.1.0 and from there it will be couted up.
 ///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release
-const std::string REDHAND_HEADER_VERSION = "0.0.10";
+const std::string REDHAND_HEADER_VERSION = "0.0.11";
 
 ///This function will be called every time the window size is changed
 void framebuffer_size_callback(GLFWwindow*, int width, int height);
@@ -100,10 +105,12 @@ private:
     int errorCode = 0;
 
     ///The currently active world (nullptr or empty world if none)
-    std::shared_ptr<world> activeWorld;
+    std::shared_ptr<complex_world> activeWorld;
 
-    ///The function which is executed on each physics tick
-    std::function <int(engine*)> physicsLoopFunction;
+    ///The next world that will be switched to in the next game tick
+    std::shared_ptr<complex_world> nextWorld;
+
+    std::unordered_multimap<std::string, std::function <int ( redhand::game_loop_event )> > game_loop_handlers;
 
     std::shared_mutex runningReadMutex;
 
@@ -140,22 +147,13 @@ public:
     void init();
 
     /**
-     * @brief Set the Active World object to the given world
-     * @version Available since REDHAND_VERSION_NUMBER 1
-     * 
-     * @param newWorld a pointer to the world that will be the new active world
-     * @return int negative if someting went wrong
-     */
-    int setActiveWorld(std::shared_ptr<world> newWorld);
-
-    /**
      * @brief change the world to the given new world
      * @version Available since REDHAND_VERSION_NUMBER 1
      * 
      * @param newWorld a shared pointer to the new world. An error will accour if it is a nullptr.
      * @return int 
      */
-    int changeWorld(std::shared_ptr<world> newWorld);
+    int changeWorld(std::shared_ptr<complex_world> newWorld);
 
     /**
      * @brief Get the Active World object
@@ -163,7 +161,7 @@ public:
      * 
      * @return std::shared_ptr<world> A pointer to the currently active world
      */
-    std::shared_ptr<world> getActiveWorld();
+    std::shared_ptr<complex_world> getActiveWorld();
 
     /**
      * @brief Get the Window object
@@ -190,15 +188,29 @@ public:
     void clearBuffers();
 
     /**
-     * @brief Set the Loop Function of the engine.
-     * @detail The loop function is the function responible for handeling all the inputs and calcualting all the physics
-     * @version Available since REDHAND_VERSION_NUMBER 1
+     * @brief Add a new game_loop_event handler to the engine, to get called every game tick the handler_key is func.
+     * @note The tick function of the current world is added by default.
      * 
-     * @param loop The loop function which returns a negative number if something went wrong and has one parameter, which is a raw pointer to the engine object.
-     * @warning Do no delete the engine object or any of its members inside the physics loop, always modify them using the methods.
-     * @return int the errorCode of the engine will be returned, negative if something bad happened
+     * @param handle The function that should handle the game_loop_event raised by the engine. 
      */
-    int setPhysicsLoopFunction( int loop(engine*) );
+    void addGameLoopHandler(std::function < int ( redhand::game_loop_event ) > handle);
+
+    /**
+     * @brief Add a new game_loop_event handler to the engine, to get called every game tick.
+     * @note The tick function of the current world is added by default.
+     * 
+     * @param handle The function that should handle the game_loop_event raised by the engine. 
+     * @param handler_key A handler_key of your choice except for "".
+     */
+    void addGameLoopHandler(std::function < int ( redhand::game_loop_event ) > handle, std::string handler_key);
+
+    /**
+     * @brief remove a handler with a given key
+     * 
+     * @param handler_key the key of the function
+     * @return int 0 if successful -1 if key not found
+     */
+    int removeGameLoopHandler(std::string handler_key);
 
     /**
      * @brief This function runs the game, the engine handles all the logic to keep everything wunning for you.
