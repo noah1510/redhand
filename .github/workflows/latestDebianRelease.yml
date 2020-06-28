@@ -52,7 +52,6 @@ jobs:
           deploy/libredhand.dll
           deploy/headers.zip
   setup:
-    needs: pre-release
     name: build and publish deb
     runs-on: ubuntu-18.04
     steps:
