@@ -163,15 +163,7 @@ then
         echo "Could not initiate glad" >&2
         exit 1
     fi
-else
-    python3 -m pip install --user glad
-    if [ $? -eq 0 ]
-    then
-        echo "Successfully initiated glad"
-    else
-        echo "Could not initiate glad" >&2
-        exit 1
-    fi
+
 fi
 
 if [ "$CI" == "0" ]

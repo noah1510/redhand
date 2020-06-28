@@ -100,8 +100,8 @@ then
     LIBRARY="libredhand.so"
     BUILDGLFW="0"
 
-    export CC="clang-9"
-    export CXX="clang++-9"
+    export CC="clang-10"
+    export CXX="clang++-10"
 
 elif [ "$OSTYPE" == "darwin"* ]
 then

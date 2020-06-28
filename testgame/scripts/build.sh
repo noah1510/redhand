@@ -76,8 +76,8 @@ then
     EXECUTABLE="$PROJECTNAME-$BUILDNAME"
     REDHAND_LOCATION="deploy/libredhand.so"
 
-    export CC="clang-9"
-    export CXX="clang++-9"
+    export CC="clang-10"
+    export CXX="clang++-10"
 
 elif [ "$OSTYPE" == "darwin"* ]
 then
@@ -112,7 +112,7 @@ mkdir -p "build"
 #build actual project
 mkdir -p "build/$BUILDNAME"
 cd "build/$BUILDNAME"
-cmake -G "Ninja" -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT -DREDHAND_LOCATION="$REDHAND_LOCATION" "../../testgame"
+cmake -G "Ninja" -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DOUTPUTFILE="$PROJECTNAME-$BUILDNAME" -DREPOROOT=$REPOROOT -DREDHAND_LOCATION="$REDHAND_LOCATION" "../../testgame"
 ninja -j"$THREADS"
 if [ $? -eq 0 ]
 then
