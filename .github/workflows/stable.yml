@@ -42,7 +42,6 @@ jobs:
       shell: msys2 {0}
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: compress header files
-      shell: msys2 {0}
       run: 7z a -r deploy/headers.zip include/redhand/**
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
