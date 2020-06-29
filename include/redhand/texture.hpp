@@ -11,46 +11,9 @@
 #include <filesystem>
 
 #include "redhand/math.hpp"
+#include "redhand/types.hpp"
 
 namespace redhand{
-
-/**
- * @brief This struct stores all the information needed to create a 2 dimensional image from a file.
- * 
- */
-typedef struct{
-    ///The name of the image
-    std::string name = "texture";
-
-    ///The location of the image file
-    std::filesystem::path file_location;
-
-    ///The wrap mode in x direction
-    int wrap_S = GL_TEXTURE_WRAP_S;
-
-    ///The wrap mode in y direction
-    int wrap_T = GL_TEXTURE_WRAP_T;
-
-    ///The scaling type when downscaling the image
-    int texture_min_filter = GL_LINEAR_MIPMAP_LINEAR;
-
-    ///The scaling type when upscaling the image
-    int texture_max_filter = GL_LINEAR;
-
-    ///The data type of the image
-    int data_type = GL_RGBA;
-
-    ///True if the program should create mipmaps
-    bool create_mipmap = true;
-
-    ///The internal data type that should be used
-    int internal_data_type = GL_RGBA;
-
-    ///If flase image_data will always be a nullptr. 
-    ///This allows for much less memory usage but before transforming the texture the image has to be copied from the gpu to the ram costing some time.
-    bool keep_image_data = true;
-
-} image_properties;
 
 void initImageLoader();
 

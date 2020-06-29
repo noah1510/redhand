@@ -1,28 +1,9 @@
 #pragma once
 
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-#include <iostream>
-//#include <iterator>
-#include <chrono>
-#include <cmath>
-#include <string>
-#include <vector>
-#include <thread>
-#include <future>
-#include <memory>
-#include <algorithm>
-#include <mutex>
-#include <shared_mutex>
-#include <unordered_map>
-
 #include "redhand/math.hpp"
 
 #include "redhand/event/events.hpp"
+#include "redhand/types.hpp"
 
 //#include "audio/AudioHandler.hpp"
 
@@ -33,60 +14,8 @@ class game_object;
 class texture2D;
 class shader;
 
-const auto OPENGL_CORE_PROFILE = GLFW_OPENGL_CORE_PROFILE;
-const auto DONT_CARE = GLFW_DONT_CARE;
-
-///This string provides a version in a pritable format.
-///The first public version is 0.1.0 and from there it will be couted up.
-///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release
-const std::string REDHAND_HEADER_VERSION = "0.0.11";
-
 ///This function will be called every time the window size is changed
 void framebuffer_size_callback(GLFWwindow*, int width, int height);
-
-/**
- * @brief This struct specifies all the properties of the game engine.
- * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_ENGINE_CONFIG.
- */
-typedef struct{
-    ///The newest version of OpenGL which may be used
-    int OPENGL_VERSION_MAJOR;
-    ///The oldest version of OpenGL which may be used
-    int OPENGL_VERSION_MINOR;
-    ///The profile OpenGL should run in (should be redhand::OPENGL_CORE_PROFILE (0x00032001) )
-    int OPENGL_PROFILE;
-    ///Specifies the desired number of samples to use for multisampling. 
-    ///Zero disables multisampling. A value of (redhand::DONT_CARE (-1) ) means the application has no preference.
-    int SAMPLES;
-    ///true if window should be resizable false if not (will be ignored in fullscreen or not decorated)
-    bool RESIZABLE;
-    ///specifies whether the OpenGL context should be forward-compatible, i.e. one where all functionality deprecated in the requested version of OpenGL is removed. 
-    int OPENGL_FORWARD_COMPAT;
-    ///the width of the window
-    unsigned int window_width;
-    ///the heigth of the window
-    unsigned int window_height;
-    ///the window title
-    std::string title;
-    ///the current redhand version (will be overwritten by the contructor)
-    std::string redhand_version;
-}engine_config;
-
-
-///The default configuration of the engine.
-const engine_config DEFAULT_ENGINE_CONFIG = {
-    3,
-    3,
-    redhand::OPENGL_CORE_PROFILE,
-    4,
-    GL_FALSE,
-    GL_TRUE,
-    600,
-    600,
-    redhand::REDHAND_HEADER_VERSION,
-    redhand::REDHAND_HEADER_VERSION
-};
-
 
 /**
  * @brief This class basically handles all the setup need for games to work.

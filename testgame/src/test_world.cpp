@@ -59,7 +59,7 @@ int test_world::onCreate(redhand::event<redhand::engine>){
     }
 
     //triangle
-    auto trig_properties = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
+    redhand::game_object_properties trig_properties;
     trig_properties.points_coordinates = {{0.0f,0.0f}, {1.0f,0.0f}, {0.5f,1.0f}};
     trig_properties.triangle_indices = {{0,1,2}};
     trig_properties.point_colors = {{1.0f,0.0f,0.0f}, {0.0f,1.0f,0.0f}, {0.0f,0.0f,1.0f}};

@@ -1,6 +1,7 @@
 #pragma once
 #include "redhand/math.hpp"
 #include "redhand/event/events.hpp"
+#include "redhand/types.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -12,79 +13,10 @@
 #include <memory>
 #include <thread>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-#include <GLFW/glfw3.h>
-
 namespace redhand{
 
 class texture2D;
 class shader;
-
-const int STATIC_DRAW = 0x88E4;
-/**
- * @brief This struct specifies all the properties of a game_object.
- * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_GAME_OBJECT_PROPERTIES.
- */
-typedef struct{
-    ///A vector containing all the points of the game_object, with each array being one point.
-    std::vector <std::array<float, 2> >                     points_coordinates;
-    ///A vector specifiying which points (their index) form an triangle, with each array being a triangle.
-    std::vector <std::array<unsigned int, 3> >              triangle_indices;
-    ///A vector specifiying the color of each point, with each array being one color.
-    std::vector <std::array<float, 3> >                     point_colors;
-    ///A vector containing all the texture coordinates of each point, with each array being one texture coordinate.
-    std::vector <std::array<float, 2> >                     texture_coordinates;
-    ///A shared pointer on the shader that should be used by this object.
-    std::shared_ptr<redhand::shader>                        attached_shader;
-    ///A shared pointer on the texture that should be used by this object.
-    std::shared_ptr<texture2D>                              attached_texture;
-    ///The scaling factor of the game_object along the x and y axis.
-    std::array<float,2>                                     scale;
-    ///The rotation around the bottom left in degrees.
-    float                                                   rotation;
-    ///The position of the object in world coordinates
-    std::array<float,2>                                     postition;
-    ///The drawing mode of the internal gpu buffer.
-    int                                                     gl_drawing_mode;
-    ///The name of the game_object
-    std::string                                             name;
-    ///The scaling factor of the attached texture along the x and y axis.
-    ///@note this is not the real texture scale this is more like a multiplier for it.
-    glm::vec2                                               texture_scale;
-    ///THe alpha value of this game_object
-    float                                                   alpha_value;
-    ///Enable automatic scaling of texture (might be buggy)
-    bool                                                    automatic_scaling;           
-    ///The point which the object should use as rotation axis
-    glm::vec2                                               rotation_point;                     
-    
-} game_object_properties;
-
-/**
- * @brief The default properties for a game_object.
- * @detailed Set your custom properties to this first and then override the values you need to change to make sure you don't forget any parameter,
- * 
- */
-const game_object_properties DEFAULT_GAME_OBJECT_PROPERTIES = {
-    {{0.0f,0.0f},{1.0f,0.0f},{0.0f,1.0f}},
-    {{0,1,2}},
-    {{1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f},{0.0f,0.0f,1.0f}},
-    {},
-    nullptr,
-    nullptr,
-    {2.0f,2.0f},
-    0,
-    {-1.0f,-1.0f},
-    STATIC_DRAW,
-    "game_object",
-    {1.0f,1.0f},
-    1.0f,
-    false,
-    {0.5f,0.5f}
-};
 
 /**
  * @brief The game_object is a simple object which can be displayed in a world.
@@ -309,7 +241,7 @@ std::unique_ptr<redhand::game_object> createRectangle(
     std::array<float,3> color,
     std::shared_ptr<redhand::shader> shade,
     std::shared_ptr<redhand::texture2D> tex,
-    int DrawingMode,
+    redhand::drawing_modes DrawingMode,
     std::string name,
     float textureScale = 1.0f
 );

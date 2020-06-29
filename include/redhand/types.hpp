@@ -2,7 +2,36 @@
 
 #include "GLFW/glfw3.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+#include <string>
+#include <filesystem>
+#include <vector>
+#include <iostream>
+#include <chrono>
+#include <cmath>
+#include <thread>
+#include <future>
+#include <memory>
+#include <algorithm>
+#include <mutex>
+#include <shared_mutex>
+#include <unordered_map>
+
 namespace redhand{
+
+    class shader;
+    class texture2D;
+
+    ///This string provides a version in a pritable format.
+    ///The first public version is 0.1.0 and from there it will be couted up.
+    ///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release
+    const std::string REDHAND_HEADER_VERSION = "0.0.11";
+
+    const auto OPENGL_CORE_PROFILE = GLFW_OPENGL_CORE_PROFILE;
+    const auto DONT_CARE = GLFW_DONT_CARE;
 
     /**
      * @brief This type specifies the actions a key can trigger
@@ -143,4 +172,120 @@ namespace redhand{
         KEY_MENU = GLFW_KEY_MENU,
         KEY_LAST = GLFW_KEY_LAST
     };
+
+    /**
+     * @brief This struct stores all the information needed to create a 2 dimensional image from a file.
+     * 
+     */
+    typedef struct{
+        ///The name of the image
+        std::string name = "texture";
+
+        ///The location of the image file
+        std::filesystem::path file_location;
+
+        ///The wrap mode in x direction
+        int wrap_S = GL_TEXTURE_WRAP_S;
+
+        ///The wrap mode in y direction
+        int wrap_T = GL_TEXTURE_WRAP_T;
+
+        ///The scaling type when downscaling the image
+        int texture_min_filter = GL_LINEAR_MIPMAP_LINEAR;
+
+        ///The scaling type when upscaling the image
+        int texture_max_filter = GL_LINEAR;
+
+        ///The data type of the image
+        int data_type = GL_RGBA;
+
+        ///True if the program should create mipmaps
+        bool create_mipmap = true;
+
+        ///The internal data type that should be used
+        int internal_data_type = GL_RGBA;
+
+        ///If flase image_data will always be a nullptr. 
+        ///This allows for much less memory usage but before transforming the texture the image has to be copied from the gpu to the ram costing some time.
+        bool keep_image_data = true;
+
+    } image_properties;
+
+
+    /**
+     * @brief These are teh available opengl drawing modes 
+     * 
+     */
+    enum drawing_modes{
+        STATIC_DRAW = GL_STATIC_DRAW,
+        DYNAMIC_DRAW = GL_DYNAMIC_DRAW,
+    };
+
+    /**
+     * @brief This struct specifies all the properties of a game_object.
+     * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_GAME_OBJECT_PROPERTIES.
+     */
+    typedef struct{
+        ///A vector containing all the points of the game_object, with each array being one point.
+        std::vector <std::array<float, 2> >                     points_coordinates = {{0.0f,0.0f},{1.0f,0.0f},{0.0f,1.0f}};
+        ///A vector specifiying which points (their index) form an triangle, with each array being a triangle.
+        std::vector <std::array<unsigned int, 3> >              triangle_indices = {{0,1,2}};
+        ///A vector specifiying the color of each point, with each array being one color.
+        std::vector <std::array<float, 3> >                     point_colors = {{1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f},{0.0f,0.0f,1.0f}};
+        ///A vector containing all the texture coordinates of each point, with each array being one texture coordinate.
+        std::vector <std::array<float, 2> >                     texture_coordinates = {};
+        ///A shared pointer on the shader that should be used by this object.
+        std::shared_ptr<redhand::shader>                        attached_shader = nullptr;
+        ///A shared pointer on the texture that should be used by this object.
+        std::shared_ptr<texture2D>                              attached_texture = nullptr;
+        ///The scaling factor of the game_object along the x and y axis.
+        std::array<float,2>                                     scale = {2.0f,2.0f};
+        ///The rotation around the bottom left in degrees.
+        float                                                   rotation = 0.0f;
+        ///The position of the object in world coordinates
+        std::array<float,2>                                     postition = {-1.0f,-1.0f};
+        ///The drawing mode of the internal gpu buffer.
+        drawing_modes                                           gl_drawing_mode = STATIC_DRAW;
+        ///The name of the game_object
+        std::string                                             name = "game_object";
+        ///The scaling factor of the attached texture along the x and y axis.
+        ///@note this is not the real texture scale this is more like a multiplier for it.
+        glm::vec2                                               texture_scale = {1.0f,1.0f};
+        ///THe alpha value of this game_object
+        float                                                   alpha_value = 1.0f;
+        ///Enable automatic scaling of texture (might be buggy)
+        bool                                                    automatic_scaling = false;           
+        ///The point which the object should use as rotation axis
+        glm::vec2                                               rotation_point = {0.5f,0.5f};                     
+        
+    } game_object_properties;
+
+    /**
+     * @brief This struct specifies all the properties of the game engine.
+     * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_ENGINE_CONFIG.
+     */
+    typedef struct{
+        ///The newest version of OpenGL which may be used
+        int OPENGL_VERSION_MAJOR = 3;
+        ///The oldest version of OpenGL which may be used
+        int OPENGL_VERSION_MINOR = 3;
+        ///The profile OpenGL should run in (should be redhand::OPENGL_CORE_PROFILE (0x00032001) )
+        int OPENGL_PROFILE = redhand::OPENGL_CORE_PROFILE;
+        ///Specifies the desired number of samples to use for multisampling. 
+        ///Zero disables multisampling. A value of (redhand::DONT_CARE (-1) ) means the application has no preference.
+        int SAMPLES = 4;
+        ///true if window should be resizable false if not (will be ignored in fullscreen or not decorated)
+        bool RESIZABLE = false;
+        ///specifies whether the OpenGL context should be forward-compatible, i.e. one where all functionality deprecated in the requested version of OpenGL is removed. 
+        int OPENGL_FORWARD_COMPAT = 1;
+        ///the width of the window
+        unsigned int window_width = 600;
+        ///the heigth of the window
+        unsigned int window_height = 600;
+        ///the window title
+        std::string title = redhand::REDHAND_HEADER_VERSION;
+        ///the current redhand version (will be overwritten by the contructor)
+        std::string redhand_version = redhand::REDHAND_HEADER_VERSION;
+    }engine_config;
+
 }

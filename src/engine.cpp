@@ -11,7 +11,8 @@
 using namespace redhand;
 
 redhand::engine::engine(){
-    setConfig(DEFAULT_ENGINE_CONFIG);
+    redhand::engine_config conf;
+    setConfig(conf);
 }
 
 redhand::engine::~engine(){
@@ -209,8 +210,8 @@ int redhand::engine::runGame(){
 
                 auto switching = redhand::world_switching_event(this,activeWorld,nextWorld);
 
-                nextWorld.onSwitch(switching,true);
-                activeWorld.onSwitch(switching,false);
+                nextWorld->onSwitch(switching,true);
+                activeWorld->onSwitch(switching,false);
 
                 activeWorld.reset();
                 activeWorld = nextWorld;

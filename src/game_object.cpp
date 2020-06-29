@@ -425,7 +425,7 @@ std::unique_ptr<redhand::game_object> redhand::createCircle(
     float texture_scale
 ){
 
-    auto settings = DEFAULT_GAME_OBJECT_PROPERTIES;
+    game_object_properties settings;
 
     settings.points_coordinates = {{0.5f, 0.5f}};
     settings.point_colors = {innerColor};
@@ -485,12 +485,12 @@ std::unique_ptr<redhand::game_object> redhand::createRectangle(
     std::array<float,3> color,
     std::shared_ptr<redhand::shader> shade,
     std::shared_ptr<redhand::texture2D> tex,
-    int DrawingMode,
+    redhand::drawing_modes DrawingMode,
     std::string name,
     float texture_scale
 ){
 
-    auto settings = DEFAULT_GAME_OBJECT_PROPERTIES;
+    game_object_properties settings;
 
     if(texture_scale <= 0.0f){
         settings.texture_scale = {-texture_scale,-texture_scale};

@@ -4,7 +4,7 @@ house::house(
     std::shared_ptr<redhand::texture2D> texture
 ){
 
-    auto settings = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
+    redhand::game_object_properties settings;
 
     settings.attached_shader = nullptr;
     settings.attached_texture = texture;
@@ -72,7 +72,7 @@ hand::hand(
     std::shared_ptr<redhand::texture2D> texture
 ){
 
-    auto settings = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
+    redhand::game_object_properties settings;
 
     settings.attached_shader = nullptr;
     settings.attached_texture = texture;
