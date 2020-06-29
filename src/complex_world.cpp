@@ -284,3 +284,7 @@ void redhand::complex_world::moveCamera(float delta_pos_x, float delta_pos_y){
 int redhand::complex_world::onCreate(redhand::event<redhand::engine>){
     return 0;
 }
+
+int redhand::complex_world::onSwitch(redhand::world_switching_event evt, bool isNextWorld){
+    return 0;
+}

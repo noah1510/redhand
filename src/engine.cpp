@@ -205,10 +205,17 @@ int redhand::engine::runGame(){
 
             //if not a nullptr change world
             if(nextWorld != nullptr){
+                localErrorCode = nextWorld->onCreate(redhand::event<engine>(this));
+
+                auto switching = redhand::world_switching_event(this,activeWorld,nextWorld);
+
+                nextWorld.onSwitch(switching,true);
+                activeWorld.onSwitch(switching,false);
+
                 activeWorld.reset();
                 activeWorld = nextWorld;
                 nextWorld = nullptr;
-                localErrorCode = activeWorld->onCreate(redhand::event<engine>(this));
+                
 
                 //if there was an error terminate the game
                 if(localErrorCode < 0){

@@ -12,9 +12,7 @@
 
 #include <GLFW/glfw3.h>
 
-#include "redhand/event/event.hpp"
-#include "redhand/event/game_loop_event.hpp"
-#include "redhand/event/drawing_event.hpp"
+#include "redhand/event/events.hpp"
 
 namespace redhand{
     
@@ -172,6 +170,15 @@ public:
      * @return int negative if an error happened
      */
     virtual int onCreate(redhand::event<redhand::engine> evt);
+
+    /**
+     * @brief This function gets called when the wolrd is switched by the engine and allows moving needed resources form one world to another
+     * 
+     * @param evt The world_switching event containing a pointer to the previous and next world
+     * @param isNextWorld this is true is this function is resposible for the world that will be activated next
+     * @return int negative if an error happened
+     */
+    virtual int onSwitch(redhand::world_switching_event evt, bool isNextWorld);
 };
 
 }//end of namespace

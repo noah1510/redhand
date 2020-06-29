@@ -22,8 +22,7 @@
 
 #include "redhand/math.hpp"
 
-#include "redhand/event/event.hpp"
-#include "redhand/event/game_loop_event.hpp"
+#include "redhand/event/events.hpp"
 
 //#include "audio/AudioHandler.hpp"
 

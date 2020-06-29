@@ -1,7 +1,6 @@
 #pragma once
 #include "redhand/math.hpp"
-#include "redhand/event/game_loop_event.hpp"
-#include "redhand/event/drawing_event.hpp"
+#include "redhand/event/events.hpp"
 
 #include <cmath>
 #include <iostream>
