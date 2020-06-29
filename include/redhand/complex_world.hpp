@@ -14,6 +14,7 @@
 
 #include "redhand/event/event.hpp"
 #include "redhand/event/game_loop_event.hpp"
+#include "redhand/event/drawing_event.hpp"
 
 namespace redhand{
     
@@ -48,6 +49,9 @@ private:
 
     /// This variable holds the current projection matrix
     glm::mat4 projectionMatrix;
+
+    /// A default shader to guarantee that a shader always exists
+    std::shared_ptr<redhand::shader> defaultShader;
 public:
 
     /**

@@ -115,9 +115,7 @@ private:
     std::shared_mutex runningReadMutex;
 
     bool running = false;
-    //std::thread physicsThread;
-
-    //std::thread drawingThread;
+    
 public:
     ///The constructor for the engine which constructs the object
     engine();

@@ -199,12 +199,12 @@ void redhand::game_object::setScreenSize(int, int){
     }  
 }
 
-void redhand::game_object::draw(){
+void redhand::game_object::draw(redhand::drawing_event evt){
     auto lock1 = std::shared_lock(mutex_object_properties);
-    if(object_properties.attached_shader == nullptr){
-        std::cerr << "ERROR::REDHAND::GAME_OBJECT::NULLPTR_AS_SHADER" << std::endl;
-    }
     auto local_object_properties = object_properties;
+    if(object_properties.attached_shader == nullptr){
+        local_object_properties.attached_shader = evt.getDefaultShader();
+    }
     lock1.unlock();
 
     //if there are textures set the texture scale of the shader

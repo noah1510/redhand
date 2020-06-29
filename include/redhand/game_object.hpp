@@ -1,6 +1,7 @@
 #pragma once
 #include "redhand/math.hpp"
 #include "redhand/event/game_loop_event.hpp"
+#include "redhand/event/drawing_event.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -192,7 +193,7 @@ public:
     std::shared_ptr<redhand::shader> getShader();
 
     ///This function draws the object on the screen
-    virtual void draw();
+    virtual void draw(redhand::drawing_event evt);
 
     ///The loop function of the object
     virtual void onLoop(game_loop_event evt);

@@ -5,8 +5,7 @@
 class house : public redhand::game_object{
     public:
         house(
-            std::shared_ptr<redhand::texture2D> texture,
-            std::shared_ptr<redhand::shader> shade
+            std::shared_ptr<redhand::texture2D> texture
         );
 
         void onLoop(redhand::game_loop_event evt);
@@ -15,8 +14,7 @@ class house : public redhand::game_object{
 class hand : public redhand::game_object{
     public:
         hand(
-            std::shared_ptr<redhand::texture2D> texture,
-            std::shared_ptr<redhand::shader> shade
+            std::shared_ptr<redhand::texture2D> texture
         );
 
         void onLoop(redhand::game_loop_event evt);

@@ -6,6 +6,7 @@
 #include "redhand/texture.hpp"
 #include "redhand/complex_world.hpp"
 #include "redhand/input.hpp"
+#include "redhand/event/drawing_event.hpp"
 
 using namespace redhand;
 
@@ -167,7 +168,7 @@ int redhand::engine::runGame(){
     running = true;
 
     //start the physics thread
-    std::thread physicsThread([&](){
+    std::thread physicsThread([&]() {
         while (isRunning()){
 
             std::this_thread::sleep_for(std::chrono::microseconds(100));
@@ -217,15 +218,12 @@ int redhand::engine::runGame(){
             }
 
             last_time = this_time;
-
         }
     });
 
     //while there is no error run the game loop
     while(isRunning()){
 
-        //draw the game
-        
         //Clear up
         clearBuffers();
 
@@ -241,7 +239,7 @@ int redhand::engine::runGame(){
         glfwPollEvents(); 
 
         std::this_thread::sleep_for(std::chrono::milliseconds(4));
-          
+        
     }
 
     physicsThread.join();

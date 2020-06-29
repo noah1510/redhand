@@ -13,6 +13,8 @@ redhand::complex_world::complex_world(){
     WorldTextures = std::vector< std::shared_ptr<redhand::texture2D>>(0);
     WorldObjects = std::vector< std::shared_ptr<redhand::game_object>>(0);
 
+    defaultShader = std::shared_ptr<redhand::shader>(new redhand::shader());
+
     setWindowSize(600,600);
 }
 
@@ -50,6 +52,7 @@ redhand::complex_world::~complex_world(){
     catch(const std::exception& e){
         std::cout << e.what() << '\n';
     }
+    defaultShader.reset();
     
 }
 
@@ -72,8 +75,11 @@ void redhand::complex_world::tick(redhand::game_loop_event evt){
 void redhand::complex_world::draw(){
     std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
+    //create the new event
+    auto evt = redhand::drawing_event(this,defaultShader);
+
     for(auto x : WorldObjects){
-        x->draw();
+        x->draw(evt);
     }
 
 }
@@ -89,6 +95,8 @@ void redhand::complex_world::setWindowSize(int width, int height){
         for(unsigned int i = 0;i < WorldShaders.size();i++){
             WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
         }
+
+        defaultShader->setProjectionmatrix(projectionMatrix);
 
         std::scoped_lock<std::shared_mutex> lock(WorldObjectsMutex);
         
@@ -260,6 +268,7 @@ void redhand::complex_world::setCamera(float pos_x, float pos_y){
     for(auto x : WorldShaders){
         x->setCamera(cameraPosition[0], cameraPosition[1]);
     }
+    defaultShader->setCamera(cameraPosition[0], cameraPosition[1]);
 }
 
 void redhand::complex_world::moveCamera(float delta_pos_x, float delta_pos_y){
@@ -269,6 +278,7 @@ void redhand::complex_world::moveCamera(float delta_pos_x, float delta_pos_y){
     for(auto x:WorldShaders){
         x->moveCamera(delta_pos_x, delta_pos_y);
     }  
+    defaultShader->moveCamera(delta_pos_x, delta_pos_y);
 }
 
 int redhand::complex_world::onCreate(redhand::event<redhand::engine>){
