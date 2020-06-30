@@ -285,6 +285,6 @@ int redhand::complex_world::onCreate(redhand::event<redhand::engine>){
     return 0;
 }
 
-int redhand::complex_world::onSwitch(redhand::world_switching_event evt, bool isNextWorld){
+int redhand::complex_world::onSwitch(redhand::world_switching_event, bool){
     return 0;
 }

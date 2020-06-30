@@ -16,16 +16,18 @@
         "**/.factorypath": true
     },
     "[cpp]": {
-        "editor.defaultFormatter": "ms-vscode.cpptools"
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     },
     "C_Cpp.clang_format_style": "Visual Studio",
     "json.maxItemsComputed": 10000,
+    "vscode-decompiler.tool.ghidra.path": "/home/noa/Desktop/temp/ghidra_9.1.2_PUBLIC/support/analyzeHeadless",
     "diffEditor.ignoreTrimWhitespace": false,
     "C_Cpp.clang_format_path": ".clang-format",
-    "C_Cpp.default.compilerPath": "/usr/bin/clang-9",
+    "C_Cpp.default.compilerPath": "/usr/bin/clang-10",
     "C_Cpp.default.intelliSenseMode": "clang-x64",
     "C_Cpp.experimentalFeatures": "Enabled",
     "C_Cpp.default.cppStandard": "c++17",
     "C_Cpp.default.cStandard": "c18",
-    "C_Cpp.intelliSenseEngineFallback": "Enabled"
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "cmake.generator": "Ninja",
 }

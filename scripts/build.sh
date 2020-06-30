@@ -158,7 +158,7 @@ else
   #build actual project
   mkdir -p "build/$LIBBUILDNAME"
   cd "build/$LIBBUILDNAME"
-  cmake -G "Ninja" -DBUILDGLFW=$BUILDGLFW -DREPOROOT=$REPOROOT "../.."
+  cmake -G "Ninja" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILDGLFW=$BUILDGLFW -DREPOROOT=$REPOROOT "../.."
   ninja -j"$THREADS"
   if [ $? -eq 0 ]
   then

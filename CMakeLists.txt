@@ -1,12 +1,10 @@
 #specify cmake version and flags
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 cmake_policy(SET CMP0067 NEW)
 
-if(CMAKE_VERSION VERSION_GREATER "3.11.0")
-    cmake_policy(SET CMP0072 NEW)
-    cmake_policy(VERSION 3.11)
-endif()
+cmake_policy(SET CMP0072 NEW)
+cmake_policy(VERSION 3.16)
 
 #the project name and version
 project(redhand VERSION "0.0.11" DESCRIPTION "a small 2D game engine")
@@ -33,7 +31,9 @@ endif()
 
 #set c++ standard to c++17
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_REQUIRED_FLAGS "-std=c++17")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
 #include and link project folders
 include_directories(${CMAKE_PREFIX_PATH}/include/)
@@ -48,7 +48,7 @@ pkg_search_module(GLIB REQUIRED glib-2.0)
 pkg_check_modules(VIPS vips-cpp REQUIRED)
 
 if (UNIX)
-    include_directories(/usr/include/c++/10)
+    include_directories(/usr/include/c++/10 /usr/include/x86_64-linux-gnu/c++/10)
 endif()
 
 #Search for filesystem header
@@ -68,7 +68,7 @@ if (WIN32)
     SET(GCC_COVERAGE_LINK_FLAGS "-pthread")
 endif (WIN32)
 
-SET(GCC_COVERAGE_COMPILE_FLAGS " -std=c++17 -g -O0 -Wall -Wextra")
+SET(GCC_COVERAGE_COMPILE_FLAGS "-g -O0 -Wall -Wextra")
 SET(GCC_COVERAGE_COMPILE_FLAGS "${GCC_COVERAGE_COMPILE_FLAGS} -g -O0")
 
 SET(GCC_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
@@ -90,7 +90,8 @@ add_library(redhand SHARED
     src/input.cpp
     src/engine.cpp)
 
-    #include glib and link libraries
+#include glib and link libraries
+#target_precompile_headers(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/redhand/types.hpp)
 target_include_directories(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/)
 target_include_directories(redhand PRIVATE ${GLIB_INCLUDE_DIRS})
 target_link_libraries(redhand ${GLIB_LDFLAGS})

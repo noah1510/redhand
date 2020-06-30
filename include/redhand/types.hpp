@@ -2,6 +2,12 @@
 
 #include "GLFW/glfw3.h"
 
+/* If we are we on Windows, we want a single define for it.
+ */
+#if !defined(_WIN32) && (defined(__WIN32__) || defined(WIN32) || defined(__MINGW32__))
+    #define GLFW_DLL
+#endif
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -19,6 +25,7 @@
 #include <mutex>
 #include <shared_mutex>
 #include <unordered_map>
+#include <utility>
 
 namespace redhand{
 
@@ -217,8 +224,8 @@ namespace redhand{
      * 
      */
     enum drawing_modes{
-        STATIC_DRAW = GL_STATIC_DRAW,
-        DYNAMIC_DRAW = GL_DYNAMIC_DRAW,
+        STATIC_DRAW = 0x88E4,
+        DYNAMIC_DRAW = 0x88E8,
     };
 
     /**
