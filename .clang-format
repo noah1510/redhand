@@ -8,4 +8,5 @@
   ColumnLimit: 0,
   FixNamespaceComments: true,
   NamespaceIndentation: All,
+  SortIncludes: 'false'
 }
