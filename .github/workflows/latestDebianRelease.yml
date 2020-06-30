@@ -59,7 +59,7 @@ jobs:
       with: 
         lfs: false
     - name: add required ppa
-      run: sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test && sudo apt update
+      run: sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test && sudo add-apt-repository -y ppa:savoury1/build-tools && sudo apt update
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
