@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.11</span>
+   &#160;<span id="projectnumber">0.0.12</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -85,39 +85,26 @@ $(document).ready(function(){initNavTree('engine_8hpp.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">engine.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;GLFW/glfw3.h&gt;</code><br />
-<code>#include &lt;glm/glm.hpp&gt;</code><br />
-<code>#include &lt;glm/gtc/matrix_transform.hpp&gt;</code><br />
-<code>#include &lt;glm/gtc/type_ptr.hpp&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;chrono&gt;</code><br />
-<code>#include &lt;cmath&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;thread&gt;</code><br />
-<code>#include &lt;future&gt;</code><br />
-<code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;mutex&gt;</code><br />
-<code>#include &lt;shared_mutex&gt;</code><br />
-<code>#include &lt;unordered_map&gt;</code><br />
-<code>#include &quot;<a class="el" href="math_8hpp_source.html">redhand/math.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="event_8hpp_source.html">redhand/event/event.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="game__loop__event_8hpp_source.html">redhand/event/game_loop_event.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="math_8hpp_source.html">redhand/math.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="events_8hpp_source.html">redhand/event/events.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="types_8hpp_source.html">redhand/types.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for engine.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="engine_8hpp__incl.png" border="0" usemap="#include_2redhand_2engine_8hpp" alt=""/></div>
 <map name="include_2redhand_2engine_8hpp" id="include_2redhand_2engine_8hpp">
-<area shape="rect" id="node18" href="math_8hpp.html" title="redhand/math.hpp" alt="" coords="731,87,858,114"/>
-<area shape="rect" id="node19" href="event_8hpp.html" title="redhand/event/event.hpp" alt="" coords="1823,169,1988,196"/>
-<area shape="rect" id="node20" href="game__loop__event_8hpp.html" title="redhand/event/game\l_loop_event.hpp" alt="" coords="1806,80,1946,121"/>
+<area shape="rect" id="node2" href="math_8hpp.html" title="redhand/math.hpp" alt="" coords="523,80,649,107"/>
+<area shape="rect" id="node4" href="events_8hpp.html" title="redhand/event/events.hpp" alt="" coords="224,80,396,107"/>
+<area shape="rect" id="node13" href="types_8hpp.html" title="redhand/types.hpp" alt="" coords="1217,162,1347,189"/>
+<area shape="rect" id="node5" href="event_8hpp.html" title="redhand/event/event.hpp" alt="" coords="149,244,314,271"/>
+<area shape="rect" id="node7" href="drawing__event_8hpp.html" title="redhand/event/drawing\l_event.hpp" alt="" coords="7,155,160,196"/>
+<area shape="rect" id="node10" href="game__loop__event_8hpp.html" title="redhand/event/game\l_loop_event.hpp" alt="" coords="408,155,548,196"/>
+<area shape="rect" id="node12" href="world__switching__event_8hpp.html" title="redhand/event/world\l_switching_event.hpp" alt="" coords="236,155,384,196"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -136,9 +123,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1engine__config.html">redhand::engine_config</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct specifies all the properties of the game engine.  <a href="structredhand_1_1engine__config.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1engine.html">redhand::engine</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class basically handles all the setup need for games to work.  <a href="classredhand_1_1engine.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,19 +137,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ab95b24b0e20cce1e97f173eb74d8d2a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#ab95b24b0e20cce1e97f173eb74d8d2a8">redhand::framebuffer_size_callback</a> (GLFWwindow *, int width, int height)</td></tr>
 <tr class="memdesc:ab95b24b0e20cce1e97f173eb74d8d2a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will be called every time the window size is changed.  <a href="namespaceredhand.html#ab95b24b0e20cce1e97f173eb74d8d2a8">More...</a><br /></td></tr>
 <tr class="separator:ab95b24b0e20cce1e97f173eb74d8d2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a9d97421fe7a319c9f5ff8a99a2d0d103"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a9d97421fe7a319c9f5ff8a99a2d0d103">redhand::OPENGL_CORE_PROFILE</a> = GLFW_OPENGL_CORE_PROFILE</td></tr>
-<tr class="separator:a9d97421fe7a319c9f5ff8a99a2d0d103"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a72ba2fe45b898f5108b553ca4a72ed59">redhand::DONT_CARE</a> = GLFW_DONT_CARE</td></tr>
-<tr class="separator:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76b9afa08e6105875a3aa4a05a5282b7"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a76b9afa08e6105875a3aa4a05a5282b7">redhand::REDHAND_HEADER_VERSION</a> = &quot;0.0.11&quot;</td></tr>
-<tr class="memdesc:a76b9afa08e6105875a3aa4a05a5282b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This string provides a version in a pritable format.  <a href="namespaceredhand.html#a76b9afa08e6105875a3aa4a05a5282b7">More...</a><br /></td></tr>
-<tr class="separator:a76b9afa08e6105875a3aa4a05a5282b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61dd684bf860b95bfdac37b230eb7237"><td class="memItemLeft" align="right" valign="top">const engine_config&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a61dd684bf860b95bfdac37b230eb7237">redhand::DEFAULT_ENGINE_CONFIG</a></td></tr>
-<tr class="memdesc:a61dd684bf860b95bfdac37b230eb7237"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default configuration of the engine.  <a href="namespaceredhand.html#a61dd684bf860b95bfdac37b230eb7237">More...</a><br /></td></tr>
-<tr class="separator:a61dd684bf860b95bfdac37b230eb7237"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -11,5 +11,6 @@ var namespaceredhand =
     [ "image_properties", "structredhand_1_1image__properties.html", "structredhand_1_1image__properties" ],
     [ "input_system", "classredhand_1_1input__system.html", "classredhand_1_1input__system" ],
     [ "shader", "classredhand_1_1shader.html", "classredhand_1_1shader" ],
-    [ "texture2D", "classredhand_1_1texture2_d.html", "classredhand_1_1texture2_d" ]
+    [ "texture2D", "classredhand_1_1texture2_d.html", "classredhand_1_1texture2_d" ],
+    [ "world_switching_event", "classredhand_1_1world__switching__event.html", "classredhand_1_1world__switching__event" ]
 ];

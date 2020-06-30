@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['key_5factions',['key_actions',['../namespaceredhand.html#a464bced11626cb6586b13eafc2d9a643',1,'redhand']]],
-  ['keyboard_5fkeys',['keyboard_keys',['../namespaceredhand.html#a573eb484452b586e12a8d3834d567a72',1,'redhand']]]
+  ['drawing_5fmodes',['drawing_modes',['../namespaceredhand.html#a2103d42ed1241072d38f93468cd4456b',1,'redhand']]]
 ];

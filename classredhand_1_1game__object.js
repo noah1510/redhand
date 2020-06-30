@@ -4,7 +4,7 @@ var classredhand_1_1game__object =
     [ "game_object", "classredhand_1_1game__object.html#a6996cc21ee5cc717bcb221a8f52a8f09", null ],
     [ "~game_object", "classredhand_1_1game__object.html#a368858d4cfa877b408b0dee15440051e", null ],
     [ "checkObjectProperties", "classredhand_1_1game__object.html#aab09e1d3997643975240945894f32627", null ],
-    [ "draw", "classredhand_1_1game__object.html#a7a6df057629792294cbeebb95a47c3e1", null ],
+    [ "draw", "classredhand_1_1game__object.html#a933c4de59196cfb56d9a7db4cae6255e", null ],
     [ "getName", "classredhand_1_1game__object.html#a41b81e0a7a449c75e0289cf20aacb9a6", null ],
     [ "getPosition", "classredhand_1_1game__object.html#ac96accee11394b88519406b5bff15417", null ],
     [ "getRotation", "classredhand_1_1game__object.html#a758aeed2f46f7f240ee05d43e5640b94", null ],

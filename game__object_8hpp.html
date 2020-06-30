@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.11</span>
+   &#160;<span id="projectnumber">0.0.12</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -85,14 +85,14 @@ $(document).ready(function(){initNavTree('game__object_8hpp.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">game_object.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="math_8hpp_source.html">redhand/math.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="game__loop__event_8hpp_source.html">redhand/event/game_loop_event.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="events_8hpp_source.html">redhand/event/events.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="types_8hpp_source.html">redhand/types.hpp</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -102,18 +102,18 @@ $(document).ready(function(){initNavTree('game__object_8hpp.html','');});
 <code>#include &lt;future&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;thread&gt;</code><br />
-<code>#include &lt;glm/glm.hpp&gt;</code><br />
-<code>#include &lt;glm/gtc/matrix_transform.hpp&gt;</code><br />
-<code>#include &lt;glm/gtc/type_ptr.hpp&gt;</code><br />
-<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for game_object.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="game__object_8hpp__incl.png" border="0" usemap="#include_2redhand_2game__object_8hpp" alt=""/></div>
 <map name="include_2redhand_2game__object_8hpp" id="include_2redhand_2game__object_8hpp">
-<area shape="rect" id="node2" href="math_8hpp.html" title="redhand/math.hpp" alt="" coords="5,102,132,129"/>
-<area shape="rect" id="node4" href="game__loop__event_8hpp.html" title="redhand/event/game\l_loop_event.hpp" alt="" coords="225,95,365,136"/>
-<area shape="rect" id="node5" href="event_8hpp.html" title="redhand/event/event.hpp" alt="" coords="115,184,281,211"/>
+<area shape="rect" id="node2" href="math_8hpp.html" title="redhand/math.hpp" alt="" coords="26,95,152,121"/>
+<area shape="rect" id="node4" href="events_8hpp.html" title="redhand/event/events.hpp" alt="" coords="424,95,596,121"/>
+<area shape="rect" id="node13" href="types_8hpp.html" title="redhand/types.hpp" alt="" coords="1618,95,1747,121"/>
+<area shape="rect" id="node5" href="event_8hpp.html" title="redhand/event/event.hpp" alt="" coords="269,259,434,285"/>
+<area shape="rect" id="node7" href="drawing__event_8hpp.html" title="redhand/event/drawing\l_event.hpp" alt="" coords="434,169,587,211"/>
+<area shape="rect" id="node10" href="game__loop__event_8hpp.html" title="redhand/event/game\l_loop_event.hpp" alt="" coords="611,169,751,211"/>
+<area shape="rect" id="node12" href="world__switching__event_8hpp.html" title="redhand/event/world\l_switching_event.hpp" alt="" coords="262,169,410,211"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -132,9 +132,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html">redhand::game_object_properties</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct specifies all the properties of a <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>.  <a href="structredhand_1_1game__object__properties.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a> is a simple object which can be displayed in a world.  <a href="classredhand_1_1game__object.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,17 +146,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8c4caa8e286ebd6aba41a04a606df6aa"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a8c4caa8e286ebd6aba41a04a606df6aa">redhand::createCircle</a> (std::array&lt; float, 2 &gt; midpoint, float radius, unsigned int edges, std::array&lt; float, 3 &gt; innerColor, std::array&lt; float, 3 &gt; outerColor, std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; tex, std::string name, float texture_scale=1.0f)</td></tr>
 <tr class="memdesc:a8c4caa8e286ebd6aba41a04a606df6aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Circle object.  <a href="namespaceredhand.html#a8c4caa8e286ebd6aba41a04a606df6aa">More...</a><br /></td></tr>
 <tr class="separator:a8c4caa8e286ebd6aba41a04a606df6aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d1767916fe650a8093e21ddcd663887"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a7d1767916fe650a8093e21ddcd663887">redhand::createRectangle</a> (std::array&lt; float, 2 &gt; bottomleft, float width, float height, std::array&lt; float, 3 &gt; color, std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; tex, int DrawingMode, std::string name, float textureScale=1.0f)</td></tr>
-<tr class="memdesc:a7d1767916fe650a8093e21ddcd663887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a rectangular object.  <a href="namespaceredhand.html#a7d1767916fe650a8093e21ddcd663887">More...</a><br /></td></tr>
-<tr class="separator:a7d1767916fe650a8093e21ddcd663887"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:abda7db2e8b63323bda574a12996ad073"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#abda7db2e8b63323bda574a12996ad073">redhand::STATIC_DRAW</a> = 0x88E4</td></tr>
-<tr class="separator:abda7db2e8b63323bda574a12996ad073"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96ad4254bd7bf636c1a82d1c7996ab81"><td class="memItemLeft" align="right" valign="top">const game_object_properties&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a96ad4254bd7bf636c1a82d1c7996ab81">redhand::DEFAULT_GAME_OBJECT_PROPERTIES</a></td></tr>
-<tr class="memdesc:a96ad4254bd7bf636c1a82d1c7996ab81"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default properties for a <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>.  <a href="namespaceredhand.html#a96ad4254bd7bf636c1a82d1c7996ab81">More...</a><br /></td></tr>
-<tr class="separator:a96ad4254bd7bf636c1a82d1c7996ab81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12df168f6322b2b468606efa8a1aabc0"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a12df168f6322b2b468606efa8a1aabc0">redhand::createRectangle</a> (std::array&lt; float, 2 &gt; bottomleft, float width, float height, std::array&lt; float, 3 &gt; color, std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; tex, <a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456b">redhand::drawing_modes</a> DrawingMode, std::string name, float textureScale=1.0f)</td></tr>
+<tr class="memdesc:a12df168f6322b2b468606efa8a1aabc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a rectangular object.  <a href="namespaceredhand.html#a12df168f6322b2b468606efa8a1aabc0">More...</a><br /></td></tr>
+<tr class="separator:a12df168f6322b2b468606efa8a1aabc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

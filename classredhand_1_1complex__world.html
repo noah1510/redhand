@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.11</span>
+   &#160;<span id="projectnumber">0.0.12</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -146,6 +146,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a96e5a18fe42dcd4abfd7182c9fe336fc"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1complex__world.html#a96e5a18fe42dcd4abfd7182c9fe336fc">onCreate</a> (<a class="el" href="classredhand_1_1event.html">redhand::event</a>&lt; <a class="el" href="classredhand_1_1engine.html">redhand::engine</a> &gt; evt)</td></tr>
 <tr class="memdesc:a96e5a18fe42dcd4abfd7182c9fe336fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function gets called when the world is created by the engine and should fill the world with its contents.  <a href="#a96e5a18fe42dcd4abfd7182c9fe336fc">More...</a><br /></td></tr>
 <tr class="separator:a96e5a18fe42dcd4abfd7182c9fe336fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8891e4cef128f1dc673070ed4d712789"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1complex__world.html#a8891e4cef128f1dc673070ed4d712789">onSwitch</a> (<a class="el" href="classredhand_1_1world__switching__event.html">redhand::world_switching_event</a> evt, bool isNextWorld)</td></tr>
+<tr class="memdesc:a8891e4cef128f1dc673070ed4d712789"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function gets called when the wolrd is switched by the engine and allows moving needed resources form one world to another.  <a href="#a8891e4cef128f1dc673070ed4d712789">More...</a><br /></td></tr>
+<tr class="separator:a8891e4cef128f1dc673070ed4d712789"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -158,9 +161,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a215804da0f26b2c43a14065f6e138d4b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1complex__world.html#a215804da0f26b2c43a14065f6e138d4b">WorldShaders</a></td></tr>
 <tr class="memdesc:a215804da0f26b2c43a14065f6e138d4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector holds all the shaders in this world.  <a href="#a215804da0f26b2c43a14065f6e138d4b">More...</a><br /></td></tr>
 <tr class="separator:a215804da0f26b2c43a14065f6e138d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1999e219a837cd074b9675fc17d3a69c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1complex__world.html#a1999e219a837cd074b9675fc17d3a69c">WorldTextures</a></td></tr>
-<tr class="memdesc:a1999e219a837cd074b9675fc17d3a69c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector holds all the textures in this world.  <a href="#a1999e219a837cd074b9675fc17d3a69c">More...</a><br /></td></tr>
-<tr class="separator:a1999e219a837cd074b9675fc17d3a69c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac63cb9812a2ac46d1670e79019f32996"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1complex__world.html#ac63cb9812a2ac46d1670e79019f32996">WorldTextures</a></td></tr>
+<tr class="memdesc:ac63cb9812a2ac46d1670e79019f32996"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector holds all the textures in this world.  <a href="#ac63cb9812a2ac46d1670e79019f32996">More...</a><br /></td></tr>
+<tr class="separator:ac63cb9812a2ac46d1670e79019f32996"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a431625fba54eeebe4411b43bc778ef07"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1complex__world.html#a431625fba54eeebe4411b43bc778ef07">cameraPosition</a> [2] = {0.0f, 0.0f}</td></tr>
 <tr class="memdesc:a431625fba54eeebe4411b43bc778ef07"><td class="mdescLeft">&#160;</td><td class="mdescRight">This array holds the current camera Position.  <a href="#a431625fba54eeebe4411b43bc778ef07">More...</a><br /></td></tr>
 <tr class="separator:a431625fba54eeebe4411b43bc778ef07"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,10 +176,13 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aca78a83eb400929793462d11b9738656"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1complex__world.html#aca78a83eb400929793462d11b9738656">projectionMatrix</a></td></tr>
 <tr class="memdesc:aca78a83eb400929793462d11b9738656"><td class="mdescLeft">&#160;</td><td class="mdescRight">This variable holds the current projection matrix.  <a href="#aca78a83eb400929793462d11b9738656">More...</a><br /></td></tr>
 <tr class="separator:aca78a83eb400929793462d11b9738656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa42ce7621a0320acab377e31a5f29aff"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1complex__world.html#aa42ce7621a0320acab377e31a5f29aff">defaultShader</a></td></tr>
+<tr class="memdesc:aa42ce7621a0320acab377e31a5f29aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">A default shader to guarantee that a shader always exists.  <a href="#aa42ce7621a0320acab377e31a5f29aff">More...</a><br /></td></tr>
+<tr class="separator:aa42ce7621a0320acab377e31a5f29aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00026">26</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00024">24</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a38d68b2855b62c2f427b9f6a679013ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38d68b2855b62c2f427b9f6a679013ab">&#9670;&nbsp;</a></span>complex_world()</h2>
@@ -224,7 +230,7 @@ Private Attributes</h2></td></tr>
 
 <p>The destructor will clean up everything and delete all objects stored in this world. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00019">19</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00021">21</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -256,7 +262,7 @@ Private Attributes</h2></td></tr>
 <p>The addObject function will add an object to the world. </p>
 <p>All added objects will be drawn on each world tick. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00138">138</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00139">139</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -287,7 +293,7 @@ Private Attributes</h2></td></tr>
 <p>The addShader function will add a shader to the world. </p>
 <p>Please add all shader you use for your objects to the world the objects resides in. Not doing this may easily cause NULL Pointer exceptions and Segmentation faults. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00102">102</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00103">103</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -318,7 +324,7 @@ Private Attributes</h2></td></tr>
 <p>The addTexture function will add a texture to the world. </p>
 <p>Please add all testures you use for your objects to the world the objects resides in. Not doing this may easily cause NULL Pointer exceptions and Segmentation faults. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00121">121</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00122">122</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -347,7 +353,7 @@ Private Attributes</h2></td></tr>
 
 <p>draw all the objects in this world </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00072">72</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00070">70</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -384,7 +390,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the object if everything worked, nullptr if no shader was found or something went wrong </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00243">243</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00237">237</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +427,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the shader if everything worked, nullptr if no shader was found or something went wrong </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00218">218</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00215">215</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -458,7 +464,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the texture if everything worked, nullptr if no shader was found or something went wrong </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00230">230</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00226">226</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -505,7 +511,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00265">265</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00259">259</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -542,7 +548,55 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int negative if an error happened </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00274">274</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00269">269</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8891e4cef128f1dc673070ed4d712789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8891e4cef128f1dc673070ed4d712789">&#9670;&nbsp;</a></span>onSwitch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int redhand::complex_world::onSwitch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classredhand_1_1world__switching__event.html">redhand::world_switching_event</a>&#160;</td>
+          <td class="paramname"><em>evt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isNextWorld</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function gets called when the wolrd is switched by the engine and allows moving needed resources form one world to another. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">evt</td><td>The world_switching event containing a pointer to the previous and next world </td></tr>
+    <tr><td class="paramname">isNextWorld</td><td>this is true is this function is resposible for the world that will be activated next </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int negative if an error happened </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00273">273</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -579,7 +633,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if everything worked, 1 if no object was found, negative if something bad happened </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00196">196</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00195">195</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -616,7 +670,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if everything worked, 1 if no object was found, negative if something bad happened </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00158">158</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00159">159</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -700,7 +754,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00256">256</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00249">249</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
 </div>
 </div>
@@ -783,9 +837,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00056">56</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8cpp_source.html#l00055">55</a> of file <a class="el" href="complex__world_8cpp_source.html">complex_world.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="event_8hpp_source.html#l00032">redhand::event&lt; T &gt;::getRaiser()</a>, and <a class="el" href="engine_8cpp_source.html#l00098">redhand::engine::getWindow()</a>.</p>
+<p class="reference">References <a class="el" href="event_8hpp_source.html#l00033">redhand::event&lt; T &gt;::getRaiser()</a>, and <a class="el" href="engine_8cpp_source.html#l00099">redhand::engine::getWindow()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -821,7 +875,33 @@ Here is the call graph for this function:</div>
 
 <p>This array holds the current camera Position. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00041">41</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00039">39</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa42ce7621a0320acab377e31a5f29aff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa42ce7621a0320acab377e31a5f29aff">&#9670;&nbsp;</a></span>defaultShader</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classredhand_1_1shader.html">redhand::shader</a>&gt; redhand::complex_world::defaultShader</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A default shader to guarantee that a shader always exists. </p>
+
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00051">51</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
 
 </div>
 </div>
@@ -847,7 +927,7 @@ Here is the call graph for this function:</div>
 
 <p>This variable holds the current projection matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00050">50</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00048">48</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
 
 </div>
 </div>
@@ -873,7 +953,7 @@ Here is the call graph for this function:</div>
 
 <p>This variable holds the height of the window in pixels. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00047">47</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00045">45</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
 
 </div>
 </div>
@@ -899,7 +979,7 @@ Here is the call graph for this function:</div>
 
 <p>This variable holds the width of the window in pixels. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00044">44</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00042">42</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
 
 </div>
 </div>
@@ -925,7 +1005,7 @@ Here is the call graph for this function:</div>
 
 <p>This vector holds all the game_objetcs in this world. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00032">32</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00030">30</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
 
 </div>
 </div>
@@ -951,7 +1031,7 @@ Here is the call graph for this function:</div>
 
 <p>The mutex for allowing only one thread to acces the world objects at once. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00029">29</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00027">27</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
 
 </div>
 </div>
@@ -977,12 +1057,12 @@ Here is the call graph for this function:</div>
 
 <p>This vector holds all the shaders in this world. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00035">35</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00033">33</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a1999e219a837cd074b9675fc17d3a69c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1999e219a837cd074b9675fc17d3a69c">&#9670;&nbsp;</a></span>WorldTextures</h2>
+<a id="ac63cb9812a2ac46d1670e79019f32996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac63cb9812a2ac46d1670e79019f32996">&#9670;&nbsp;</a></span>WorldTextures</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -991,7 +1071,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::shared_ptr &lt;<a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a>&gt; &gt; redhand::complex_world::WorldTextures</td>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a>&gt; &gt; redhand::complex_world::WorldTextures</td>
         </tr>
       </table>
   </td>
@@ -1003,7 +1083,7 @@ Here is the call graph for this function:</div>
 
 <p>This vector holds all the textures in this world. </p>
 
-<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00038">38</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="complex__world_8hpp_source.html#l00036">36</a> of file <a class="el" href="complex__world_8hpp_source.html">complex_world.hpp</a>.</p>
 
 </div>
 </div>

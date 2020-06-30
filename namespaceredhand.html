@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.11</span>
+   &#160;<span id="projectnumber">0.0.12</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -123,6 +123,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1shader.html">shader</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1texture2_d.html">texture2D</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredhand_1_1world__switching__event.html">world_switching_event</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -291,6 +293,11 @@ Enumerations</h2></td></tr>
  }<tr class="memdesc:a573eb484452b586e12a8d3834d567a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">This type contains all keys on the keyboard.  <a href="namespaceredhand.html#a573eb484452b586e12a8d3834d567a72">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a573eb484452b586e12a8d3834d567a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2103d42ed1241072d38f93468cd4456b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456b">drawing_modes</a> { <a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456bab18f49f572e28810f1a6351531ca6dac">STATIC_DRAW</a> = 0x88E4, 
+<a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456ba9190b86a2e7df57184bdbf34292b7390">DYNAMIC_DRAW</a> = 0x88E8
+ }<tr class="memdesc:a2103d42ed1241072d38f93468cd4456b"><td class="mdescLeft">&#160;</td><td class="mdescRight">These are teh available opengl drawing modes.  <a href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456b">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a2103d42ed1241072d38f93468cd4456b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -300,9 +307,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8c4caa8e286ebd6aba41a04a606df6aa"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a8c4caa8e286ebd6aba41a04a606df6aa">createCircle</a> (std::array&lt; float, 2 &gt; midpoint, float radius, unsigned int edges, std::array&lt; float, 3 &gt; innerColor, std::array&lt; float, 3 &gt; outerColor, std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; tex, std::string name, float texture_scale=1.0f)</td></tr>
 <tr class="memdesc:a8c4caa8e286ebd6aba41a04a606df6aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Circle object.  <a href="#a8c4caa8e286ebd6aba41a04a606df6aa">More...</a><br /></td></tr>
 <tr class="separator:a8c4caa8e286ebd6aba41a04a606df6aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d1767916fe650a8093e21ddcd663887"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a7d1767916fe650a8093e21ddcd663887">createRectangle</a> (std::array&lt; float, 2 &gt; bottomleft, float width, float height, std::array&lt; float, 3 &gt; color, std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; tex, int DrawingMode, std::string name, float textureScale=1.0f)</td></tr>
-<tr class="memdesc:a7d1767916fe650a8093e21ddcd663887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a rectangular object.  <a href="#a7d1767916fe650a8093e21ddcd663887">More...</a><br /></td></tr>
-<tr class="separator:a7d1767916fe650a8093e21ddcd663887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12df168f6322b2b468606efa8a1aabc0"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classredhand_1_1game__object.html">redhand::game_object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a12df168f6322b2b468606efa8a1aabc0">createRectangle</a> (std::array&lt; float, 2 &gt; bottomleft, float width, float height, std::array&lt; float, 3 &gt; color, std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt; shade, std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">redhand::texture2D</a> &gt; tex, <a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456b">redhand::drawing_modes</a> DrawingMode, std::string name, float textureScale=1.0f)</td></tr>
+<tr class="memdesc:a12df168f6322b2b468606efa8a1aabc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a rectangular object.  <a href="#a12df168f6322b2b468606efa8a1aabc0">More...</a><br /></td></tr>
+<tr class="separator:a12df168f6322b2b468606efa8a1aabc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae34e8f79b078f1b4dbecf43d18a2802a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#ae34e8f79b078f1b4dbecf43d18a2802a">sinDeg</a> (float deg)</td></tr>
 <tr class="memdesc:ae34e8f79b078f1b4dbecf43d18a2802a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function calculates a sine with an angle in degrees.  <a href="#ae34e8f79b078f1b4dbecf43d18a2802a">More...</a><br /></td></tr>
 <tr class="separator:ae34e8f79b078f1b4dbecf43d18a2802a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -314,27 +321,41 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a9d97421fe7a319c9f5ff8a99a2d0d103"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a9d97421fe7a319c9f5ff8a99a2d0d103">OPENGL_CORE_PROFILE</a> = GLFW_OPENGL_CORE_PROFILE</td></tr>
-<tr class="separator:a9d97421fe7a319c9f5ff8a99a2d0d103"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a72ba2fe45b898f5108b553ca4a72ed59">DONT_CARE</a> = GLFW_DONT_CARE</td></tr>
-<tr class="separator:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76b9afa08e6105875a3aa4a05a5282b7"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a76b9afa08e6105875a3aa4a05a5282b7">REDHAND_HEADER_VERSION</a> = &quot;0.0.11&quot;</td></tr>
-<tr class="memdesc:a76b9afa08e6105875a3aa4a05a5282b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This string provides a version in a pritable format.  <a href="#a76b9afa08e6105875a3aa4a05a5282b7">More...</a><br /></td></tr>
-<tr class="separator:a76b9afa08e6105875a3aa4a05a5282b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61dd684bf860b95bfdac37b230eb7237"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structredhand_1_1engine__config.html">engine_config</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a61dd684bf860b95bfdac37b230eb7237">DEFAULT_ENGINE_CONFIG</a></td></tr>
-<tr class="memdesc:a61dd684bf860b95bfdac37b230eb7237"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default configuration of the engine.  <a href="#a61dd684bf860b95bfdac37b230eb7237">More...</a><br /></td></tr>
-<tr class="separator:a61dd684bf860b95bfdac37b230eb7237"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abda7db2e8b63323bda574a12996ad073"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#abda7db2e8b63323bda574a12996ad073">STATIC_DRAW</a> = 0x88E4</td></tr>
-<tr class="separator:abda7db2e8b63323bda574a12996ad073"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96ad4254bd7bf636c1a82d1c7996ab81"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structredhand_1_1game__object__properties.html">game_object_properties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a96ad4254bd7bf636c1a82d1c7996ab81">DEFAULT_GAME_OBJECT_PROPERTIES</a></td></tr>
-<tr class="memdesc:a96ad4254bd7bf636c1a82d1c7996ab81"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default properties for a <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>.  <a href="#a96ad4254bd7bf636c1a82d1c7996ab81">More...</a><br /></td></tr>
-<tr class="separator:a96ad4254bd7bf636c1a82d1c7996ab81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85f4521c351dace88fafe7c2c6c14f05"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a85f4521c351dace88fafe7c2c6c14f05">DefaultFragmentSource</a> []</td></tr>
 <tr class="separator:a85f4521c351dace88fafe7c2c6c14f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89b726e7342aec7af7ba4aa857e1a85d"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a89b726e7342aec7af7ba4aa857e1a85d">DefaultVertexSource</a> []</td></tr>
 <tr class="separator:a89b726e7342aec7af7ba4aa857e1a85d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76b9afa08e6105875a3aa4a05a5282b7"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a76b9afa08e6105875a3aa4a05a5282b7">REDHAND_HEADER_VERSION</a> = &quot;0.0.12&quot;</td></tr>
+<tr class="memdesc:a76b9afa08e6105875a3aa4a05a5282b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This string provides a version in a pritable format.  <a href="#a76b9afa08e6105875a3aa4a05a5282b7">More...</a><br /></td></tr>
+<tr class="separator:a76b9afa08e6105875a3aa4a05a5282b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d97421fe7a319c9f5ff8a99a2d0d103"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a9d97421fe7a319c9f5ff8a99a2d0d103">OPENGL_CORE_PROFILE</a> = GLFW_OPENGL_CORE_PROFILE</td></tr>
+<tr class="separator:a9d97421fe7a319c9f5ff8a99a2d0d103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceredhand.html#a72ba2fe45b898f5108b553ca4a72ed59">DONT_CARE</a> = GLFW_DONT_CARE</td></tr>
+<tr class="separator:a72ba2fe45b898f5108b553ca4a72ed59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a2103d42ed1241072d38f93468cd4456b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2103d42ed1241072d38f93468cd4456b">&#9670;&nbsp;</a></span>drawing_modes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456b">redhand::drawing_modes</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>These are teh available opengl drawing modes. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2103d42ed1241072d38f93468cd4456bab18f49f572e28810f1a6351531ca6dac"></a>STATIC_DRAW&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2103d42ed1241072d38f93468cd4456ba9190b86a2e7df57184bdbf34292b7390"></a>DYNAMIC_DRAW&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00225">225</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a464bced11626cb6586b13eafc2d9a643"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a464bced11626cb6586b13eafc2d9a643">&#9670;&nbsp;</a></span>key_actions</h2>
 
@@ -355,7 +376,7 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="a464bced11626cb6586b13eafc2d9a643a5377457a85d7a5fae8e0fcb1e900ba02"></a>UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00011">11</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00047">47</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -497,7 +518,7 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="a573eb484452b586e12a8d3834d567a72aae260a9fb5c5200d630d72c8721e00b4"></a>KEY_LAST&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00022">22</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00058">58</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -615,9 +636,9 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>game_object* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8cpp_source.html#l00416">416</a> of file <a class="el" href="game__object_8cpp_source.html">game_object.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__object_8cpp_source.html#l00407">407</a> of file <a class="el" href="game__object_8cpp_source.html">game_object.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="math_8cpp_source.html#l00009">cosDeg()</a>, <a class="el" href="game__object_8hpp_source.html#l00071">DEFAULT_GAME_OBJECT_PROPERTIES</a>, <a class="el" href="game__object_8hpp_source.html#l00033">redhand::game_object_properties::points_coordinates</a>, and <a class="el" href="math_8cpp_source.html#l00005">sinDeg()</a>.</p>
+<p class="reference">References <a class="el" href="types_8hpp_source.html#l00244">redhand::game_object_properties::attached_shader</a>, <a class="el" href="types_8hpp_source.html#l00246">redhand::game_object_properties::attached_texture</a>, <a class="el" href="math_8cpp_source.html#l00009">cosDeg()</a>, <a class="el" href="types_8hpp_source.html#l00256">redhand::game_object_properties::name</a>, <a class="el" href="types_8hpp_source.html#l00240">redhand::game_object_properties::point_colors</a>, <a class="el" href="types_8hpp_source.html#l00236">redhand::game_object_properties::points_coordinates</a>, <a class="el" href="types_8hpp_source.html#l00252">redhand::game_object_properties::postition</a>, <a class="el" href="types_8hpp_source.html#l00248">redhand::game_object_properties::scale</a>, <a class="el" href="math_8cpp_source.html#l00005">sinDeg()</a>, <a class="el" href="types_8hpp_source.html#l00242">redhand::game_object_properties::texture_coordinates</a>, <a class="el" href="types_8hpp_source.html#l00259">redhand::game_object_properties::texture_scale</a>, and <a class="el" href="types_8hpp_source.html#l00238">redhand::game_object_properties::triangle_indices</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -630,8 +651,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a7d1767916fe650a8093e21ddcd663887"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d1767916fe650a8093e21ddcd663887">&#9670;&nbsp;</a></span>createRectangle()</h2>
+<a id="a12df168f6322b2b468606efa8a1aabc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12df168f6322b2b468606efa8a1aabc0">&#9670;&nbsp;</a></span>createRectangle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -675,7 +696,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456b">redhand::drawing_modes</a>&#160;</td>
           <td class="paramname"><em>DrawingMode</em>, </td>
         </tr>
         <tr>
@@ -714,9 +735,9 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>game_object* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8cpp_source.html#l00481">481</a> of file <a class="el" href="game__object_8cpp_source.html">game_object.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__object_8cpp_source.html#l00471">471</a> of file <a class="el" href="game__object_8cpp_source.html">game_object.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="game__object_8hpp_source.html#l00071">DEFAULT_GAME_OBJECT_PROPERTIES</a>, and <a class="el" href="game__object_8hpp_source.html#l00056">redhand::game_object_properties::texture_scale</a>.</p>
+<p class="reference">References <a class="el" href="types_8hpp_source.html#l00244">redhand::game_object_properties::attached_shader</a>, <a class="el" href="types_8hpp_source.html#l00246">redhand::game_object_properties::attached_texture</a>, <a class="el" href="types_8hpp_source.html#l00263">redhand::game_object_properties::automatic_scaling</a>, <a class="el" href="types_8hpp_source.html#l00254">redhand::game_object_properties::gl_drawing_mode</a>, <a class="el" href="types_8hpp_source.html#l00256">redhand::game_object_properties::name</a>, <a class="el" href="types_8hpp_source.html#l00240">redhand::game_object_properties::point_colors</a>, <a class="el" href="types_8hpp_source.html#l00236">redhand::game_object_properties::points_coordinates</a>, <a class="el" href="types_8hpp_source.html#l00252">redhand::game_object_properties::postition</a>, <a class="el" href="types_8hpp_source.html#l00248">redhand::game_object_properties::scale</a>, <a class="el" href="types_8hpp_source.html#l00259">redhand::game_object_properties::texture_scale</a>, and <a class="el" href="types_8hpp_source.html#l00238">redhand::game_object_properties::triangle_indices</a>.</p>
 
 </div>
 </div>
@@ -754,7 +775,7 @@ Here is the call graph for this function:</div>
 
 <p>This function will be called every time the window size is changed. </p>
 
-<p class="definition">Definition at line <a class="el" href="engine_8cpp_source.html#l00252">252</a> of file <a class="el" href="engine_8cpp_source.html">engine.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="engine_8cpp_source.html#l00254">254</a> of file <a class="el" href="engine_8cpp_source.html">engine.cpp</a>.</p>
 
 </div>
 </div>
@@ -807,46 +828,6 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a61dd684bf860b95bfdac37b230eb7237"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61dd684bf860b95bfdac37b230eb7237">&#9670;&nbsp;</a></span>DEFAULT_ENGINE_CONFIG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="structredhand_1_1engine__config.html">engine_config</a> redhand::DEFAULT_ENGINE_CONFIG</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    3,</div><div class="line">    3,</div><div class="line">    <a class="code" href="namespaceredhand.html#a9d97421fe7a319c9f5ff8a99a2d0d103">redhand::OPENGL_CORE_PROFILE</a>,</div><div class="line">    4,</div><div class="line">    GL_FALSE,</div><div class="line">    GL_TRUE,</div><div class="line">    600,</div><div class="line">    600,</div><div class="line">    <a class="code" href="namespaceredhand.html#a76b9afa08e6105875a3aa4a05a5282b7">redhand::REDHAND_HEADER_VERSION</a>,</div><div class="line">    redhand::REDHAND_HEADER_VERSION</div><div class="line">}</div><div class="ttc" id="namespaceredhand_html_a76b9afa08e6105875a3aa4a05a5282b7"><div class="ttname"><a href="namespaceredhand.html#a76b9afa08e6105875a3aa4a05a5282b7">redhand::REDHAND_HEADER_VERSION</a></div><div class="ttdeci">const std::string REDHAND_HEADER_VERSION</div><div class="ttdoc">This string provides a version in a pritable format. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8hpp_source.html#l00043">engine.hpp:43</a></div></div>
-<div class="ttc" id="namespaceredhand_html_a9d97421fe7a319c9f5ff8a99a2d0d103"><div class="ttname"><a href="namespaceredhand.html#a9d97421fe7a319c9f5ff8a99a2d0d103">redhand::OPENGL_CORE_PROFILE</a></div><div class="ttdeci">const auto OPENGL_CORE_PROFILE</div><div class="ttdef"><b>Definition:</b> <a href="engine_8hpp_source.html#l00037">engine.hpp:37</a></div></div>
-</div><!-- fragment -->
-<p>The default configuration of the engine. </p>
-
-<p class="definition">Definition at line <a class="el" href="engine_8hpp_source.html#l00078">78</a> of file <a class="el" href="engine_8hpp_source.html">engine.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a96ad4254bd7bf636c1a82d1c7996ab81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96ad4254bd7bf636c1a82d1c7996ab81">&#9670;&nbsp;</a></span>DEFAULT_GAME_OBJECT_PROPERTIES</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="structredhand_1_1game__object__properties.html">game_object_properties</a> redhand::DEFAULT_GAME_OBJECT_PROPERTIES</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    {{0.0f,0.0f},{1.0f,0.0f},{0.0f,1.0f}},</div><div class="line">    {{0,1,2}},</div><div class="line">    {{1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f},{0.0f,0.0f,1.0f}},</div><div class="line">    {},</div><div class="line">    <span class="keyword">nullptr</span>,</div><div class="line">    <span class="keyword">nullptr</span>,</div><div class="line">    {2.0f,2.0f},</div><div class="line">    0,</div><div class="line">    {-1.0f,-1.0f},</div><div class="line">    <a class="code" href="namespaceredhand.html#abda7db2e8b63323bda574a12996ad073">STATIC_DRAW</a>,</div><div class="line">    <span class="stringliteral">&quot;game_object&quot;</span>,</div><div class="line">    {1.0f,1.0f},</div><div class="line">    1.0f,</div><div class="line">    <span class="keyword">false</span>,</div><div class="line">    {0.5f,0.5f}</div><div class="line">}</div><div class="ttc" id="namespaceredhand_html_abda7db2e8b63323bda574a12996ad073"><div class="ttname"><a href="namespaceredhand.html#abda7db2e8b63323bda574a12996ad073">redhand::STATIC_DRAW</a></div><div class="ttdeci">const int STATIC_DRAW</div><div class="ttdef"><b>Definition:</b> <a href="game__object_8hpp_source.html#l00026">game_object.hpp:26</a></div></div>
-</div><!-- fragment -->
-<p>The default properties for a <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>. </p>
-<p>Set your custom properties to this first and then override the values you need to change to make sure you don't forget any parameter, </p>
-
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00071">71</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
-
-</div>
-</div>
 <a id="a85f4521c351dace88fafe7c2c6c14f05"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a85f4521c351dace88fafe7c2c6c14f05">&#9670;&nbsp;</a></span>DefaultFragmentSource</h2>
 
@@ -858,7 +839,7 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line"><span class="stringliteral">&quot;#version 330 core\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n out vec4 FragColor;\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n in vec3 vertColor;\</span></div><div class="line"><span class="stringliteral">\n in vec2 TexCoord;\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n uniform int textureMode;\</span></div><div class="line"><span class="stringliteral">\n uniform float colorAlpha;\</span></div><div class="line"><span class="stringliteral">\n uniform vec2 textureScale;\</span></div><div class="line"><span class="stringliteral">\n uniform sampler2D tex1;\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n void main(){\</span></div><div class="line"><span class="stringliteral">\n     if(textureMode == 1){\</span></div><div class="line"><span class="stringliteral">\n         FragColor = texture(tex1, vec2(textureScale.x * TexCoord.x,textureScale.y * TexCoord.y)) * vec4(vertColor, colorAlpha);\</span></div><div class="line"><span class="stringliteral">\n     }else{\</span></div><div class="line"><span class="stringliteral">\n         FragColor = vec4(vertColor, colorAlpha);\</span></div><div class="line"><span class="stringliteral">\n     }\</span></div><div class="line"><span class="stringliteral">\n }\</span></div><div class="line"><span class="stringliteral">\0&quot;</span></div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">=</div><div class="line">        <span class="stringliteral">&quot;#version 330 core\</span></div><div class="line"><span class="stringliteral">        \n \</span></div><div class="line"><span class="stringliteral">        \n out vec4 FragColor;\</span></div><div class="line"><span class="stringliteral">        \n \</span></div><div class="line"><span class="stringliteral">        \n in vec3 vertColor;\</span></div><div class="line"><span class="stringliteral">        \n in vec2 TexCoord;\</span></div><div class="line"><span class="stringliteral">        \n \</span></div><div class="line"><span class="stringliteral">        \n uniform int textureMode;\</span></div><div class="line"><span class="stringliteral">        \n uniform float colorAlpha;\</span></div><div class="line"><span class="stringliteral">        \n uniform vec2 textureScale;\</span></div><div class="line"><span class="stringliteral">        \n uniform sampler2D tex1;\</span></div><div class="line"><span class="stringliteral">        \n \</span></div><div class="line"><span class="stringliteral">        \n void main(){\</span></div><div class="line"><span class="stringliteral">        \n     if(textureMode == 1){\</span></div><div class="line"><span class="stringliteral">        \n         FragColor = texture(tex1, vec2(textureScale.x * TexCoord.x,textureScale.y * TexCoord.y)) * vec4(vertColor, colorAlpha);\</span></div><div class="line"><span class="stringliteral">        \n     }else{\</span></div><div class="line"><span class="stringliteral">        \n         FragColor = vec4(vertColor, colorAlpha);\</span></div><div class="line"><span class="stringliteral">        \n     }\</span></div><div class="line"><span class="stringliteral">        \n }\</span></div><div class="line"><span class="stringliteral">        \0&quot;</span></div></div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="shader_source_8hpp_source.html#l00005">5</a> of file <a class="el" href="shader_source_8hpp_source.html">shaderSource.hpp</a>.</p>
 
 </div>
@@ -874,7 +855,7 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line"><span class="stringliteral">&quot;#version 330 core\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n layout (location = 0) in vec3 aPos;\</span></div><div class="line"><span class="stringliteral">\n layout (location = 1) in vec3 aColor;\</span></div><div class="line"><span class="stringliteral">\n layout (location = 2) in vec2 aTexCoord;\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n out vec3 vertColor;\</span></div><div class="line"><span class="stringliteral">\n out vec2 TexCoord;\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n uniform mat4 worldTransformation;\</span></div><div class="line"><span class="stringliteral">\n uniform mat4 camera;\</span></div><div class="line"><span class="stringliteral">\n uniform mat4 projection;\</span></div><div class="line"><span class="stringliteral">\n \</span></div><div class="line"><span class="stringliteral">\n void main(){\</span></div><div class="line"><span class="stringliteral">\n     gl_Position = projection * camera * worldTransformation * vec4(aPos.xyz, 1.0f);\</span></div><div class="line"><span class="stringliteral">\n     vertColor = aColor;\</span></div><div class="line"><span class="stringliteral">\n     TexCoord = aTexCoord;\</span></div><div class="line"><span class="stringliteral">\n }\</span></div><div class="line"><span class="stringliteral">\0&quot;</span></div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">=</div><div class="line">        <span class="stringliteral">&quot;#version 330 core\</span></div><div class="line"><span class="stringliteral">        \n \</span></div><div class="line"><span class="stringliteral">        \n layout (location = 0) in vec3 aPos;\</span></div><div class="line"><span class="stringliteral">        \n layout (location = 1) in vec3 aColor;\</span></div><div class="line"><span class="stringliteral">        \n layout (location = 2) in vec2 aTexCoord;\</span></div><div class="line"><span class="stringliteral">        \n \</span></div><div class="line"><span class="stringliteral">        \n out vec3 vertColor;\</span></div><div class="line"><span class="stringliteral">        \n out vec2 TexCoord;\</span></div><div class="line"><span class="stringliteral">        \n \</span></div><div class="line"><span class="stringliteral">        \n uniform mat4 worldTransformation;\</span></div><div class="line"><span class="stringliteral">        \n uniform mat4 camera;\</span></div><div class="line"><span class="stringliteral">        \n uniform mat4 projection;\</span></div><div class="line"><span class="stringliteral">        \n \</span></div><div class="line"><span class="stringliteral">        \n void main(){\</span></div><div class="line"><span class="stringliteral">        \n     gl_Position = projection * camera * worldTransformation * vec4(aPos.xyz, 1.0f);\</span></div><div class="line"><span class="stringliteral">        \n     vertColor = aColor;\</span></div><div class="line"><span class="stringliteral">        \n     TexCoord = aTexCoord;\</span></div><div class="line"><span class="stringliteral">        \n }\</span></div><div class="line"><span class="stringliteral">        \0&quot;</span></div></div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="shader_source_8hpp_source.html#l00027">27</a> of file <a class="el" href="shader_source_8hpp_source.html">shaderSource.hpp</a>.</p>
 
 </div>
@@ -891,7 +872,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="engine_8hpp_source.html#l00038">38</a> of file <a class="el" href="engine_8hpp_source.html">engine.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00041">41</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -907,7 +888,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="engine_8hpp_source.html#l00037">37</a> of file <a class="el" href="engine_8hpp_source.html">engine.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00040">40</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -918,7 +899,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string redhand::REDHAND_HEADER_VERSION = &quot;0.0.11&quot;</td>
+          <td class="memname">const std::string redhand::REDHAND_HEADER_VERSION = &quot;0.0.12&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -926,23 +907,7 @@ Here is the call graph for this function:</div>
 <p>This string provides a version in a pritable format. </p>
 <p>The first public version is 0.1.0 and from there it will be couted up. There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release </p>
 
-<p class="definition">Definition at line <a class="el" href="engine_8hpp_source.html#l00043">43</a> of file <a class="el" href="engine_8hpp_source.html">engine.hpp</a>.</p>
-
-</div>
-</div>
-<a id="abda7db2e8b63323bda574a12996ad073"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abda7db2e8b63323bda574a12996ad073">&#9670;&nbsp;</a></span>STATIC_DRAW</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int redhand::STATIC_DRAW = 0x88E4</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00026">26</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00038">38</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>

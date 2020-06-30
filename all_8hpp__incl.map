@@ -1,14 +1,16 @@
 <map id="include/redhand/all.hpp" name="include/redhand/all.hpp">
-<area shape="rect" id="node3" href="$complex__world_8hpp.html" title="redhand/complex_world.hpp" alt="" coords="796,87,980,114"/>
-<area shape="rect" id="node13" href="$event_8hpp.html" title="redhand/event/event.hpp" alt="" coords="5,259,171,285"/>
-<area shape="rect" id="node14" href="$game__loop__event_8hpp.html" title="redhand/event/game\l_loop_event.hpp" alt="" coords="246,169,386,211"/>
-<area shape="rect" id="node16" href="$engine_8hpp.html" title="redhand/engine.hpp" alt="" coords="1063,87,1198,114"/>
-<area shape="rect" id="node23" href="$math_8hpp.html" title="redhand/math.hpp" alt="" coords="2193,177,2319,203"/>
-<area shape="rect" id="node24" href="$game__object_8hpp.html" title="redhand/game_object.hpp" alt="" coords="1620,87,1791,114"/>
-<area shape="rect" id="node26" href="$input_8hpp.html" title="redhand/input.hpp" alt="" coords="2799,87,2924,114"/>
-<area shape="rect" id="node27" href="$types_8hpp.html" title="redhand/types.hpp" alt="" coords="3190,177,3319,203"/>
-<area shape="rect" id="node28" href="$shader_8hpp.html" title="redhand/shader.hpp" alt="" coords="1920,87,2056,114"/>
-<area shape="rect" id="node32" href="$texture_8hpp.html" title="redhand/texture.hpp" alt="" coords="2081,87,2218,114"/>
-<area shape="rect" id="node34" href="$drawing__event_8hpp.html" title="redhand/event/drawing\l_event.hpp" alt="" coords="197,80,350,121"/>
-<area shape="rect" id="node31" href="$shader_source_8hpp.html" title="redhand/shaderSource.hpp" alt="" coords="2438,177,2615,203"/>
+<area shape="rect" id="node3" href="$complex__world_8hpp.html" title="redhand/complex_world.hpp" alt="" coords="829,80,1013,107"/>
+<area shape="rect" id="node14" href="$event_8hpp.html" title="redhand/event/event.hpp" alt="" coords="404,319,569,345"/>
+<area shape="rect" id="node15" href="$drawing__event_8hpp.html" title="redhand/event/drawing\l_event.hpp" alt="" coords="33,229,186,271"/>
+<area shape="rect" id="node17" href="$game__loop__event_8hpp.html" title="redhand/event/game\l_loop_event.hpp" alt="" coords="363,229,503,271"/>
+<area shape="rect" id="node20" href="$engine_8hpp.html" title="redhand/engine.hpp" alt="" coords="1421,80,1555,107"/>
+<area shape="rect" id="node21" href="$math_8hpp.html" title="redhand/math.hpp" alt="" coords="3039,237,3166,263"/>
+<area shape="rect" id="node23" href="$types_8hpp.html" title="redhand/types.hpp" alt="" coords="1477,155,1606,181"/>
+<area shape="rect" id="node31" href="$game__object_8hpp.html" title="redhand/game_object.hpp" alt="" coords="1037,80,1208,107"/>
+<area shape="rect" id="node33" href="$input_8hpp.html" title="redhand/input.hpp" alt="" coords="2169,80,2295,107"/>
+<area shape="rect" id="node34" href="$shader_8hpp.html" title="redhand/shader.hpp" alt="" coords="2332,155,2468,181"/>
+<area shape="rect" id="node38" href="$texture_8hpp.html" title="redhand/texture.hpp" alt="" coords="1829,80,1966,107"/>
+<area shape="rect" id="node13" href="$events_8hpp.html" title="redhand/event/events.hpp" alt="" coords="491,155,663,181"/>
+<area shape="rect" id="node19" href="$world__switching__event_8hpp.html" title="redhand/event/world\l_switching_event.hpp" alt="" coords="579,229,727,271"/>
+<area shape="rect" id="node37" href="$shader_source_8hpp.html" title="redhand/shaderSource.hpp" alt="" coords="2667,237,2845,263"/>
 </map>

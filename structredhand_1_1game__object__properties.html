@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="redhand.svg.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libredhand
-   &#160;<span id="projectnumber">0.0.11</span>
+   &#160;<span id="projectnumber">0.0.12</span>
    </div>
    <div id="projectbrief">A small easy to use game development library</div>
   </td>
@@ -93,61 +93,61 @@ $(document).ready(function(){initNavTree('structredhand_1_1game__object__propert
 <p>This struct specifies all the properties of a <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>.  
  <a href="structredhand_1_1game__object__properties.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="types_8hpp_source.html">types.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aee84254af87496bdf5bb9892ecd515fe"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; float, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#aee84254af87496bdf5bb9892ecd515fe">points_coordinates</a></td></tr>
+<tr class="memitem:aee84254af87496bdf5bb9892ecd515fe"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; float, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#aee84254af87496bdf5bb9892ecd515fe">points_coordinates</a> = {{0.0f, 0.0f}, {1.0f, 0.0f}, {0.0f, 1.0f}}</td></tr>
 <tr class="memdesc:aee84254af87496bdf5bb9892ecd515fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vector containing all the points of the <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>, with each array being one point.  <a href="#aee84254af87496bdf5bb9892ecd515fe">More...</a><br /></td></tr>
 <tr class="separator:aee84254af87496bdf5bb9892ecd515fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86c5284203c38c84fea1830bdfeeb850"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; unsigned int, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a86c5284203c38c84fea1830bdfeeb850">triangle_indices</a></td></tr>
+<tr class="memitem:a86c5284203c38c84fea1830bdfeeb850"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; unsigned int, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a86c5284203c38c84fea1830bdfeeb850">triangle_indices</a> = {{0, 1, 2}}</td></tr>
 <tr class="memdesc:a86c5284203c38c84fea1830bdfeeb850"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vector specifiying which points (their index) form an triangle, with each array being a triangle.  <a href="#a86c5284203c38c84fea1830bdfeeb850">More...</a><br /></td></tr>
 <tr class="separator:a86c5284203c38c84fea1830bdfeeb850"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acada0682e17d30b70b9751a2ab1c703d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; float, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#acada0682e17d30b70b9751a2ab1c703d">point_colors</a></td></tr>
+<tr class="memitem:acada0682e17d30b70b9751a2ab1c703d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; float, 3 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#acada0682e17d30b70b9751a2ab1c703d">point_colors</a> = {{1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}}</td></tr>
 <tr class="memdesc:acada0682e17d30b70b9751a2ab1c703d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vector specifiying the color of each point, with each array being one color.  <a href="#acada0682e17d30b70b9751a2ab1c703d">More...</a><br /></td></tr>
 <tr class="separator:acada0682e17d30b70b9751a2ab1c703d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a672a53302f8bee317f37a63e7c90cabc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; float, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a672a53302f8bee317f37a63e7c90cabc">texture_coordinates</a></td></tr>
+<tr class="memitem:a672a53302f8bee317f37a63e7c90cabc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; float, 2 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a672a53302f8bee317f37a63e7c90cabc">texture_coordinates</a> = {}</td></tr>
 <tr class="memdesc:a672a53302f8bee317f37a63e7c90cabc"><td class="mdescLeft">&#160;</td><td class="mdescRight">A vector containing all the texture coordinates of each point, with each array being one texture coordinate.  <a href="#a672a53302f8bee317f37a63e7c90cabc">More...</a><br /></td></tr>
 <tr class="separator:a672a53302f8bee317f37a63e7c90cabc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc0b418ce6d599896de4e57a0612a31d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#afc0b418ce6d599896de4e57a0612a31d">attached_shader</a></td></tr>
+<tr class="memitem:afc0b418ce6d599896de4e57a0612a31d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classredhand_1_1shader.html">redhand::shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#afc0b418ce6d599896de4e57a0612a31d">attached_shader</a> = nullptr</td></tr>
 <tr class="memdesc:afc0b418ce6d599896de4e57a0612a31d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A shared pointer on the shader that should be used by this object.  <a href="#afc0b418ce6d599896de4e57a0612a31d">More...</a><br /></td></tr>
 <tr class="separator:afc0b418ce6d599896de4e57a0612a31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22b1b9f3c4d8a0bf9574f363b974a013"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a22b1b9f3c4d8a0bf9574f363b974a013">attached_texture</a></td></tr>
+<tr class="memitem:a22b1b9f3c4d8a0bf9574f363b974a013"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classredhand_1_1texture2_d.html">texture2D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a22b1b9f3c4d8a0bf9574f363b974a013">attached_texture</a> = nullptr</td></tr>
 <tr class="memdesc:a22b1b9f3c4d8a0bf9574f363b974a013"><td class="mdescLeft">&#160;</td><td class="mdescRight">A shared pointer on the texture that should be used by this object.  <a href="#a22b1b9f3c4d8a0bf9574f363b974a013">More...</a><br /></td></tr>
 <tr class="separator:a22b1b9f3c4d8a0bf9574f363b974a013"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ddae5f23e040c13ac84c3927218d32f"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a5ddae5f23e040c13ac84c3927218d32f">scale</a></td></tr>
-<tr class="memdesc:a5ddae5f23e040c13ac84c3927218d32f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The scaling factor of the <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a> along the x and y axis.  <a href="#a5ddae5f23e040c13ac84c3927218d32f">More...</a><br /></td></tr>
-<tr class="separator:a5ddae5f23e040c13ac84c3927218d32f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93266223760de22a99a6788d4433380c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a93266223760de22a99a6788d4433380c">rotation</a></td></tr>
+<tr class="memitem:a7769c973ecffe8db3e7a30aa4697de01"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a7769c973ecffe8db3e7a30aa4697de01">scale</a> = {2.0f, 2.0f}</td></tr>
+<tr class="memdesc:a7769c973ecffe8db3e7a30aa4697de01"><td class="mdescLeft">&#160;</td><td class="mdescRight">The scaling factor of the <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a> along the x and y axis.  <a href="#a7769c973ecffe8db3e7a30aa4697de01">More...</a><br /></td></tr>
+<tr class="separator:a7769c973ecffe8db3e7a30aa4697de01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93266223760de22a99a6788d4433380c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a93266223760de22a99a6788d4433380c">rotation</a> = 0.0f</td></tr>
 <tr class="memdesc:a93266223760de22a99a6788d4433380c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The rotation around the bottom left in degrees.  <a href="#a93266223760de22a99a6788d4433380c">More...</a><br /></td></tr>
 <tr class="separator:a93266223760de22a99a6788d4433380c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39e684a6b386913de5ec35e44e3abaf6"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a39e684a6b386913de5ec35e44e3abaf6">postition</a></td></tr>
-<tr class="memdesc:a39e684a6b386913de5ec35e44e3abaf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position of the object in world coordinates.  <a href="#a39e684a6b386913de5ec35e44e3abaf6">More...</a><br /></td></tr>
-<tr class="separator:a39e684a6b386913de5ec35e44e3abaf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5b48ab349ed9204dfce81c66793b692"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#aa5b48ab349ed9204dfce81c66793b692">gl_drawing_mode</a></td></tr>
-<tr class="memdesc:aa5b48ab349ed9204dfce81c66793b692"><td class="mdescLeft">&#160;</td><td class="mdescRight">The drawing mode of the internal gpu buffer.  <a href="#aa5b48ab349ed9204dfce81c66793b692">More...</a><br /></td></tr>
-<tr class="separator:aa5b48ab349ed9204dfce81c66793b692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8c482f3ee6ee0da3a2d83f786a47daf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#aa8c482f3ee6ee0da3a2d83f786a47daf">name</a></td></tr>
+<tr class="memitem:aa8e65d18542c846c5766438a837bbf2d"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#aa8e65d18542c846c5766438a837bbf2d">postition</a> = {-1.0f, -1.0f}</td></tr>
+<tr class="memdesc:aa8e65d18542c846c5766438a837bbf2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position of the object in world coordinates.  <a href="#aa8e65d18542c846c5766438a837bbf2d">More...</a><br /></td></tr>
+<tr class="separator:aa8e65d18542c846c5766438a837bbf2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0655e5867e1b6985d984e98fac858056"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456b">drawing_modes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a0655e5867e1b6985d984e98fac858056">gl_drawing_mode</a> = <a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456bab18f49f572e28810f1a6351531ca6dac">STATIC_DRAW</a></td></tr>
+<tr class="memdesc:a0655e5867e1b6985d984e98fac858056"><td class="mdescLeft">&#160;</td><td class="mdescRight">The drawing mode of the internal gpu buffer.  <a href="#a0655e5867e1b6985d984e98fac858056">More...</a><br /></td></tr>
+<tr class="separator:a0655e5867e1b6985d984e98fac858056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c482f3ee6ee0da3a2d83f786a47daf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#aa8c482f3ee6ee0da3a2d83f786a47daf">name</a> = &quot;game_object&quot;</td></tr>
 <tr class="memdesc:aa8c482f3ee6ee0da3a2d83f786a47daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>.  <a href="#aa8c482f3ee6ee0da3a2d83f786a47daf">More...</a><br /></td></tr>
 <tr class="separator:aa8c482f3ee6ee0da3a2d83f786a47daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac70c165789bc0ef7aa8f2243d412b7a0"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#ac70c165789bc0ef7aa8f2243d412b7a0">texture_scale</a></td></tr>
+<tr class="memitem:ac70c165789bc0ef7aa8f2243d412b7a0"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#ac70c165789bc0ef7aa8f2243d412b7a0">texture_scale</a> = {1.0f, 1.0f}</td></tr>
 <tr class="memdesc:ac70c165789bc0ef7aa8f2243d412b7a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The scaling factor of the attached texture along the x and y axis.  <a href="#ac70c165789bc0ef7aa8f2243d412b7a0">More...</a><br /></td></tr>
 <tr class="separator:ac70c165789bc0ef7aa8f2243d412b7a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ff25eda12cd60299361b911504fe557"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a4ff25eda12cd60299361b911504fe557">alpha_value</a></td></tr>
+<tr class="memitem:a4ff25eda12cd60299361b911504fe557"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a4ff25eda12cd60299361b911504fe557">alpha_value</a> = 1.0f</td></tr>
 <tr class="memdesc:a4ff25eda12cd60299361b911504fe557"><td class="mdescLeft">&#160;</td><td class="mdescRight">THe alpha value of this <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>.  <a href="#a4ff25eda12cd60299361b911504fe557">More...</a><br /></td></tr>
 <tr class="separator:a4ff25eda12cd60299361b911504fe557"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59b125f67d0ee1f6d611bf1ee807ca2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a59b125f67d0ee1f6d611bf1ee807ca2b">automatic_scaling</a></td></tr>
+<tr class="memitem:a59b125f67d0ee1f6d611bf1ee807ca2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#a59b125f67d0ee1f6d611bf1ee807ca2b">automatic_scaling</a> = false</td></tr>
 <tr class="memdesc:a59b125f67d0ee1f6d611bf1ee807ca2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable automatic scaling of texture (might be buggy)  <a href="#a59b125f67d0ee1f6d611bf1ee807ca2b">More...</a><br /></td></tr>
 <tr class="separator:a59b125f67d0ee1f6d611bf1ee807ca2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc9d5a712e4b6ba666c694252fc6265b"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#afc9d5a712e4b6ba666c694252fc6265b">rotation_point</a></td></tr>
+<tr class="memitem:afc9d5a712e4b6ba666c694252fc6265b"><td class="memItemLeft" align="right" valign="top">glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structredhand_1_1game__object__properties.html#afc9d5a712e4b6ba666c694252fc6265b">rotation_point</a> = {0.5f, 0.5f}</td></tr>
 <tr class="memdesc:afc9d5a712e4b6ba666c694252fc6265b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The point which the object should use as rotation axis.  <a href="#afc9d5a712e4b6ba666c694252fc6265b">More...</a><br /></td></tr>
 <tr class="separator:afc9d5a712e4b6ba666c694252fc6265b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This struct specifies all the properties of a <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>. </p>
-<dl class="section note"><dt>Note</dt><dd>Please create a custom configuration by first setting your variable to <a class="el" href="namespaceredhand.html#a96ad4254bd7bf636c1a82d1c7996ab81" title="The default properties for a game_object. ">redhand::DEFAULT_GAME_OBJECT_PROPERTIES</a>. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Please create a custom configuration by first setting your variable to redhand::DEFAULT_GAME_OBJECT_PROPERTIES. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00031">31</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00234">234</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a4ff25eda12cd60299361b911504fe557"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ff25eda12cd60299361b911504fe557">&#9670;&nbsp;</a></span>alpha_value</h2>
@@ -156,14 +156,14 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float redhand::game_object_properties::alpha_value</td>
+          <td class="memname">float redhand::game_object_properties::alpha_value = 1.0f</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>THe alpha value of this <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00058">58</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00261">261</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -174,14 +174,14 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classredhand_1_1shader.html">redhand::shader</a>&gt; redhand::game_object_properties::attached_shader</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classredhand_1_1shader.html">redhand::shader</a>&gt; redhand::game_object_properties::attached_shader = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>A shared pointer on the shader that should be used by this object. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00041">41</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00244">244</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -192,14 +192,14 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classredhand_1_1texture2_d.html">texture2D</a>&gt; redhand::game_object_properties::attached_texture</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classredhand_1_1texture2_d.html">texture2D</a>&gt; redhand::game_object_properties::attached_texture = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>A shared pointer on the texture that should be used by this object. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00043">43</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00246">246</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -210,32 +210,32 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool redhand::game_object_properties::automatic_scaling</td>
+          <td class="memname">bool redhand::game_object_properties::automatic_scaling = false</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Enable automatic scaling of texture (might be buggy) </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00060">60</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00263">263</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aa5b48ab349ed9204dfce81c66793b692"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5b48ab349ed9204dfce81c66793b692">&#9670;&nbsp;</a></span>gl_drawing_mode</h2>
+<a id="a0655e5867e1b6985d984e98fac858056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0655e5867e1b6985d984e98fac858056">&#9670;&nbsp;</a></span>gl_drawing_mode</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int redhand::game_object_properties::gl_drawing_mode</td>
+          <td class="memname"><a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456b">drawing_modes</a> redhand::game_object_properties::gl_drawing_mode = <a class="el" href="namespaceredhand.html#a2103d42ed1241072d38f93468cd4456bab18f49f572e28810f1a6351531ca6dac">STATIC_DRAW</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The drawing mode of the internal gpu buffer. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00051">51</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00254">254</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -246,14 +246,14 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string redhand::game_object_properties::name</td>
+          <td class="memname">std::string redhand::game_object_properties::name = &quot;game_object&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The name of the <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00053">53</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00256">256</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -264,14 +264,14 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::array&lt;float, 3&gt; &gt; redhand::game_object_properties::point_colors</td>
+          <td class="memname">std::vector&lt;std::array&lt;float, 3&gt; &gt; redhand::game_object_properties::point_colors = {{1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>A vector specifiying the color of each point, with each array being one color. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00037">37</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00240">240</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -282,32 +282,32 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::array&lt;float, 2&gt; &gt; redhand::game_object_properties::points_coordinates</td>
+          <td class="memname">std::vector&lt;std::array&lt;float, 2&gt; &gt; redhand::game_object_properties::points_coordinates = {{0.0f, 0.0f}, {1.0f, 0.0f}, {0.0f, 1.0f}}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>A vector containing all the points of the <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a>, with each array being one point. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00033">33</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00236">236</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a39e684a6b386913de5ec35e44e3abaf6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39e684a6b386913de5ec35e44e3abaf6">&#9670;&nbsp;</a></span>postition</h2>
+<a id="aa8e65d18542c846c5766438a837bbf2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8e65d18542c846c5766438a837bbf2d">&#9670;&nbsp;</a></span>postition</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::array&lt;float,2&gt; redhand::game_object_properties::postition</td>
+          <td class="memname">std::array&lt;float, 2&gt; redhand::game_object_properties::postition = {-1.0f, -1.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The position of the object in world coordinates. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00049">49</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00252">252</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -318,14 +318,14 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float redhand::game_object_properties::rotation</td>
+          <td class="memname">float redhand::game_object_properties::rotation = 0.0f</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The rotation around the bottom left in degrees. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00047">47</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00250">250</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -336,32 +336,32 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">glm::vec2 redhand::game_object_properties::rotation_point</td>
+          <td class="memname">glm::vec2 redhand::game_object_properties::rotation_point = {0.5f, 0.5f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The point which the object should use as rotation axis. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00062">62</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00265">265</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a5ddae5f23e040c13ac84c3927218d32f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ddae5f23e040c13ac84c3927218d32f">&#9670;&nbsp;</a></span>scale</h2>
+<a id="a7769c973ecffe8db3e7a30aa4697de01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7769c973ecffe8db3e7a30aa4697de01">&#9670;&nbsp;</a></span>scale</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::array&lt;float,2&gt; redhand::game_object_properties::scale</td>
+          <td class="memname">std::array&lt;float, 2&gt; redhand::game_object_properties::scale = {2.0f, 2.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The scaling factor of the <a class="el" href="classredhand_1_1game__object.html" title="The game_object is a simple object which can be displayed in a world. ">game_object</a> along the x and y axis. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00045">45</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00248">248</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -372,14 +372,14 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::array&lt;float, 2&gt; &gt; redhand::game_object_properties::texture_coordinates</td>
+          <td class="memname">std::vector&lt;std::array&lt;float, 2&gt; &gt; redhand::game_object_properties::texture_coordinates = {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>A vector containing all the texture coordinates of each point, with each array being one texture coordinate. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00039">39</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00242">242</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -390,7 +390,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">glm::vec2 redhand::game_object_properties::texture_scale</td>
+          <td class="memname">glm::vec2 redhand::game_object_properties::texture_scale = {1.0f, 1.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -398,7 +398,7 @@ Public Attributes</h2></td></tr>
 <p>The scaling factor of the attached texture along the x and y axis. </p>
 <dl class="section note"><dt>Note</dt><dd>this is not the real texture scale this is more like a multiplier for it. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00056">56</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00259">259</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -409,19 +409,19 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::array&lt;unsigned int, 3&gt; &gt; redhand::game_object_properties::triangle_indices</td>
+          <td class="memname">std::vector&lt;std::array&lt;unsigned int, 3&gt; &gt; redhand::game_object_properties::triangle_indices = {{0, 1, 2}}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>A vector specifiying which points (their index) form an triangle, with each array being a triangle. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__object_8hpp_source.html#l00035">35</a> of file <a class="el" href="game__object_8hpp_source.html">game_object.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00238">238</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/redhand/<a class="el" href="game__object_8hpp_source.html">game_object.hpp</a></li>
+<li>include/redhand/<a class="el" href="types_8hpp_source.html">types.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,5 +1,12 @@
 var types_8hpp =
 [
+    [ "image_properties", "structredhand_1_1image__properties.html", "structredhand_1_1image__properties" ],
+    [ "game_object_properties", "structredhand_1_1game__object__properties.html", "structredhand_1_1game__object__properties" ],
+    [ "engine_config", "structredhand_1_1engine__config.html", "structredhand_1_1engine__config" ],
+    [ "drawing_modes", "types_8hpp.html#a2103d42ed1241072d38f93468cd4456b", [
+      [ "STATIC_DRAW", "types_8hpp.html#a2103d42ed1241072d38f93468cd4456bab18f49f572e28810f1a6351531ca6dac", null ],
+      [ "DYNAMIC_DRAW", "types_8hpp.html#a2103d42ed1241072d38f93468cd4456ba9190b86a2e7df57184bdbf34292b7390", null ]
+    ] ],
     [ "key_actions", "types_8hpp.html#a464bced11626cb6586b13eafc2d9a643", [
       [ "PRESS", "types_8hpp.html#a464bced11626cb6586b13eafc2d9a643a7322bafbd6caee97c93fdfed7954a74a", null ],
       [ "REPEAT", "types_8hpp.html#a464bced11626cb6586b13eafc2d9a643a1dd5a283ab76f23a93e08a90d7d79f89", null ],
@@ -129,5 +136,8 @@ var types_8hpp =
       [ "KEY_RIGHT_SUPER", "types_8hpp.html#a573eb484452b586e12a8d3834d567a72a2ce435e746be0482b948d91e00427399", null ],
       [ "KEY_MENU", "types_8hpp.html#a573eb484452b586e12a8d3834d567a72a5e48eb995a7ef68c623169a7e21de0e8", null ],
       [ "KEY_LAST", "types_8hpp.html#a573eb484452b586e12a8d3834d567a72aae260a9fb5c5200d630d72c8721e00b4", null ]
-    ] ]
+    ] ],
+    [ "DONT_CARE", "types_8hpp.html#a72ba2fe45b898f5108b553ca4a72ed59", null ],
+    [ "OPENGL_CORE_PROFILE", "types_8hpp.html#a9d97421fe7a319c9f5ff8a99a2d0d103", null ],
+    [ "REDHAND_HEADER_VERSION", "types_8hpp.html#a76b9afa08e6105875a3aa4a05a5282b7", null ]
 ];

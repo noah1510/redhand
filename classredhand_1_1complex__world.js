@@ -11,6 +11,7 @@ var classredhand_1_1complex__world =
     [ "getTextureByName", "classredhand_1_1complex__world.html#a089c9e46f5025b2449766b1e3503bcb7", null ],
     [ "moveCamera", "classredhand_1_1complex__world.html#a7d643d4cc5ef57fd69c69c30a6f4c091", null ],
     [ "onCreate", "classredhand_1_1complex__world.html#a96e5a18fe42dcd4abfd7182c9fe336fc", null ],
+    [ "onSwitch", "classredhand_1_1complex__world.html#a8891e4cef128f1dc673070ed4d712789", null ],
     [ "removeObject", "classredhand_1_1complex__world.html#ad2812631aad73f823a9c6ed0c73d7b52", null ],
     [ "removeShader", "classredhand_1_1complex__world.html#a510db1ca2384538c1f4649a6abae2111", null ],
     [ "removeTexture", "classredhand_1_1complex__world.html#af8c54d33de31a227b5db5b50347ad66d", null ],
@@ -18,11 +19,12 @@ var classredhand_1_1complex__world =
     [ "setWindowSize", "classredhand_1_1complex__world.html#af15dfb0cf5b1c9dd76e8208e2a2d14c6", null ],
     [ "tick", "classredhand_1_1complex__world.html#a6e1694305d9e80390fedd20446554a5f", null ],
     [ "cameraPosition", "classredhand_1_1complex__world.html#a431625fba54eeebe4411b43bc778ef07", null ],
+    [ "defaultShader", "classredhand_1_1complex__world.html#aa42ce7621a0320acab377e31a5f29aff", null ],
     [ "projectionMatrix", "classredhand_1_1complex__world.html#aca78a83eb400929793462d11b9738656", null ],
     [ "windowHeight", "classredhand_1_1complex__world.html#a306a3276f72086ed0df9ec85ca951907", null ],
     [ "windowWidth", "classredhand_1_1complex__world.html#a3f7e33161da62de8383c01a51e8bc8cb", null ],
     [ "WorldObjects", "classredhand_1_1complex__world.html#afb6b510c172781685df56445cfb86098", null ],
     [ "WorldObjectsMutex", "classredhand_1_1complex__world.html#a082716960d0527c82218b2fa2bb97851", null ],
     [ "WorldShaders", "classredhand_1_1complex__world.html#a215804da0f26b2c43a14065f6e138d4b", null ],
-    [ "WorldTextures", "classredhand_1_1complex__world.html#a1999e219a837cd074b9675fc17d3a69c", null ]
+    [ "WorldTextures", "classredhand_1_1complex__world.html#ac63cb9812a2ac46d1670e79019f32996", null ]
 ];
