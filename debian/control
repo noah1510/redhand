@@ -4,7 +4,7 @@ Maintainer: Noa Sakurajin <noasakurajin@web.de>
 Build-Depends: 
     debhelper, 
     dh-make, 
-    cmake,  
+    cmake (>3.16),  
     clang-10,
     libclang-10-dev,
     g++-10,
