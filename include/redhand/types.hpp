@@ -1,12 +1,12 @@
 #pragma once
 
-#include "GLFW/glfw3.h"
-
-/* If we are we on Windows, we want a single define for it.
+/* If we are we on Windows, use dll
  */
 #if !defined(_WIN32) && (defined(__WIN32__) || defined(WIN32) || defined(__MINGW32__))
-#define GLFW_DLL
+    #define GLFW_DLL
 #endif
+
+#include "GLFW/glfw3.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -35,7 +35,7 @@ namespace redhand {
     ///This string provides a version in a pritable format.
     ///The first public version is 0.1.0 and from there it will be couted up.
     ///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release
-    const std::string REDHAND_HEADER_VERSION = "0.0.11";
+    const std::string REDHAND_HEADER_VERSION = "0.0.12";
 
     const auto OPENGL_CORE_PROFILE = GLFW_OPENGL_CORE_PROFILE;
     const auto DONT_CARE = GLFW_DONT_CARE;

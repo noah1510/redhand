@@ -7,7 +7,7 @@ cmake_policy(SET CMP0072 NEW)
 cmake_policy(VERSION 3.16)
 
 #the project name and version
-project(redhand VERSION "0.0.11" DESCRIPTION "a small 2D game engine")
+project(redhand VERSION "0.0.12" DESCRIPTION "a small 2D game engine")
 
 #the available build options
 option(OUTPUTFILE "Name of file to output")
