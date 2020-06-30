@@ -5,7 +5,7 @@
 /* If we are we on Windows, we want a single define for it.
  */
 #if !defined(_WIN32) && (defined(__WIN32__) || defined(WIN32) || defined(__MINGW32__))
-    #define GLFW_DLL
+#define GLFW_DLL
 #endif
 
 #include <glm/glm.hpp>
@@ -27,7 +27,7 @@
 #include <unordered_map>
 #include <utility>
 
-namespace redhand{
+namespace redhand {
 
     class shader;
     class texture2D;
@@ -56,7 +56,7 @@ namespace redhand{
      * 
      */
     enum keyboard_keys {
-        KEY_UNKNOWN = GLFW_KEY_UNKNOWN, 
+        KEY_UNKNOWN = GLFW_KEY_UNKNOWN,
         KEY_SPACE = GLFW_KEY_SPACE,
         KEY_APOSTROPHE = GLFW_KEY_APOSTROPHE,
         KEY_COMMA = GLFW_KEY_COMMA,
@@ -80,7 +80,7 @@ namespace redhand{
         KEY_C = GLFW_KEY_C,
         KEY_D = GLFW_KEY_D,
         KEY_E = GLFW_KEY_E,
-        KEY_F = GLFW_KEY_F, 
+        KEY_F = GLFW_KEY_F,
         KEY_G = GLFW_KEY_G,
         KEY_H = GLFW_KEY_H,
         KEY_I = GLFW_KEY_I,
@@ -184,7 +184,7 @@ namespace redhand{
      * @brief This struct stores all the information needed to create a 2 dimensional image from a file.
      * 
      */
-    typedef struct{
+    typedef struct {
         ///The name of the image
         std::string name = "texture";
 
@@ -212,18 +212,17 @@ namespace redhand{
         ///The internal data type that should be used
         int internal_data_type = GL_RGBA;
 
-        ///If flase image_data will always be a nullptr. 
+        ///If flase image_data will always be a nullptr.
         ///This allows for much less memory usage but before transforming the texture the image has to be copied from the gpu to the ram costing some time.
         bool keep_image_data = true;
 
     } image_properties;
 
-
     /**
      * @brief These are teh available opengl drawing modes 
      * 
      */
-    enum drawing_modes{
+    enum drawing_modes {
         STATIC_DRAW = 0x88E4,
         DYNAMIC_DRAW = 0x88E8,
     };
@@ -232,58 +231,58 @@ namespace redhand{
      * @brief This struct specifies all the properties of a game_object.
      * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_GAME_OBJECT_PROPERTIES.
      */
-    typedef struct{
+    typedef struct {
         ///A vector containing all the points of the game_object, with each array being one point.
-        std::vector <std::array<float, 2> >                     points_coordinates = {{0.0f,0.0f},{1.0f,0.0f},{0.0f,1.0f}};
+        std::vector<std::array<float, 2>> points_coordinates = {{0.0f, 0.0f}, {1.0f, 0.0f}, {0.0f, 1.0f}};
         ///A vector specifiying which points (their index) form an triangle, with each array being a triangle.
-        std::vector <std::array<unsigned int, 3> >              triangle_indices = {{0,1,2}};
+        std::vector<std::array<unsigned int, 3>> triangle_indices = {{0, 1, 2}};
         ///A vector specifiying the color of each point, with each array being one color.
-        std::vector <std::array<float, 3> >                     point_colors = {{1.0f,0.0f,0.0f},{0.0f,1.0f,0.0f},{0.0f,0.0f,1.0f}};
+        std::vector<std::array<float, 3>> point_colors = {{1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}};
         ///A vector containing all the texture coordinates of each point, with each array being one texture coordinate.
-        std::vector <std::array<float, 2> >                     texture_coordinates = {};
+        std::vector<std::array<float, 2>> texture_coordinates = {};
         ///A shared pointer on the shader that should be used by this object.
-        std::shared_ptr<redhand::shader>                        attached_shader = nullptr;
+        std::shared_ptr<redhand::shader> attached_shader = nullptr;
         ///A shared pointer on the texture that should be used by this object.
-        std::shared_ptr<texture2D>                              attached_texture = nullptr;
+        std::shared_ptr<texture2D> attached_texture = nullptr;
         ///The scaling factor of the game_object along the x and y axis.
-        std::array<float,2>                                     scale = {2.0f,2.0f};
+        std::array<float, 2> scale = {2.0f, 2.0f};
         ///The rotation around the bottom left in degrees.
-        float                                                   rotation = 0.0f;
+        float rotation = 0.0f;
         ///The position of the object in world coordinates
-        std::array<float,2>                                     postition = {-1.0f,-1.0f};
+        std::array<float, 2> postition = {-1.0f, -1.0f};
         ///The drawing mode of the internal gpu buffer.
-        drawing_modes                                           gl_drawing_mode = STATIC_DRAW;
+        drawing_modes gl_drawing_mode = STATIC_DRAW;
         ///The name of the game_object
-        std::string                                             name = "game_object";
+        std::string name = "game_object";
         ///The scaling factor of the attached texture along the x and y axis.
         ///@note this is not the real texture scale this is more like a multiplier for it.
-        glm::vec2                                               texture_scale = {1.0f,1.0f};
+        glm::vec2 texture_scale = {1.0f, 1.0f};
         ///THe alpha value of this game_object
-        float                                                   alpha_value = 1.0f;
+        float alpha_value = 1.0f;
         ///Enable automatic scaling of texture (might be buggy)
-        bool                                                    automatic_scaling = false;           
+        bool automatic_scaling = false;
         ///The point which the object should use as rotation axis
-        glm::vec2                                               rotation_point = {0.5f,0.5f};                     
-        
+        glm::vec2 rotation_point = {0.5f, 0.5f};
+
     } game_object_properties;
 
     /**
      * @brief This struct specifies all the properties of the game engine.
      * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_ENGINE_CONFIG.
      */
-    typedef struct{
+    typedef struct {
         ///The newest version of OpenGL which may be used
         int OPENGL_VERSION_MAJOR = 3;
         ///The oldest version of OpenGL which may be used
         int OPENGL_VERSION_MINOR = 3;
         ///The profile OpenGL should run in (should be redhand::OPENGL_CORE_PROFILE (0x00032001) )
         int OPENGL_PROFILE = redhand::OPENGL_CORE_PROFILE;
-        ///Specifies the desired number of samples to use for multisampling. 
+        ///Specifies the desired number of samples to use for multisampling.
         ///Zero disables multisampling. A value of (redhand::DONT_CARE (-1) ) means the application has no preference.
         int SAMPLES = 4;
         ///true if window should be resizable false if not (will be ignored in fullscreen or not decorated)
         bool RESIZABLE = false;
-        ///specifies whether the OpenGL context should be forward-compatible, i.e. one where all functionality deprecated in the requested version of OpenGL is removed. 
+        ///specifies whether the OpenGL context should be forward-compatible, i.e. one where all functionality deprecated in the requested version of OpenGL is removed.
         int OPENGL_FORWARD_COMPAT = 1;
         ///the width of the window
         unsigned int window_width = 600;
@@ -293,6 +292,6 @@ namespace redhand{
         std::string title = redhand::REDHAND_HEADER_VERSION;
         ///the current redhand version (will be overwritten by the contructor)
         std::string redhand_version = redhand::REDHAND_HEADER_VERSION;
-    }engine_config;
+    } engine_config;
 
-}
+} // namespace redhand
