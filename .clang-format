@@ -4,6 +4,10 @@
   IndentWidth: 4,
   TabWidth: 4,
   BreakBeforeBraces: Attach,
-  IndentCaseLabels: false,
+  IndentCaseLabels: true,
   ColumnLimit: 0,
+  FixNamespaceComments: true,
+  NamespaceIndentation: All,
+  SortIncludes: 'false',
+  ReflowComments: 'true',
 }

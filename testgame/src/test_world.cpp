@@ -1,17 +1,6 @@
 #include "test_world.hpp"
 
 int test_world::onCreate(redhand::event<redhand::engine>){
-    auto shader1 = std::unique_ptr<redhand::shader>(new redhand::shader());
-    if( this->addShader(std::move(shader1)) < 0){
-        std::cerr << "Got error while adding shader" << std::endl;
-        return -10;
-    }
-
-    if(this->getShaderByName("default") == nullptr){
-        std::cerr << "Got nullpointer as shader" << std::endl;
-        return -11;
-    }
-
     //Add textures to world
     auto tex0 = std::unique_ptr<redhand::texture2D>(new redhand::texture2D("textures/open/crate.png","house"));
     if(this->addTexture(std::move(tex0)) < 0){
@@ -38,7 +27,7 @@ int test_world::onCreate(redhand::event<redhand::engine>){
             200.0f,
             200.0f,
             {0.0f, 0.6f, 1.0f},
-            this->getShaderByName("default"),
+            nullptr,
             this->getTextureByName("bg"),
             redhand::STATIC_DRAW,
             "background",
@@ -56,7 +45,7 @@ int test_world::onCreate(redhand::event<redhand::engine>){
             edges,
             {0.0f, 0.8f, 1.0f},
             {0.8f, 0.0f, 1.0f},
-            this->getShaderByName("default"),
+            nullptr,
             nullptr,
             "sun2"
         )
@@ -65,19 +54,19 @@ int test_world::onCreate(redhand::event<redhand::engine>){
     }
 
     // sun one
-    if( this->addObject(redhand::createCircle({0.8f,0.45f}, 0.35f, edges, {1.0f,1.0f,0.0f}, {1.0f,0.5f,0.0f}, this->getShaderByName("default"), nullptr, "sun1")) < 0){
+    if( this->addObject(redhand::createCircle({0.8f,0.45f}, 0.35f, edges, {1.0f,1.0f,0.0f}, {1.0f,0.5f,0.0f}, nullptr, nullptr, "sun1")) < 0){
         return -3;
     }
 
     //triangle
-    auto trig_properties = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
+    redhand::game_object_properties trig_properties;
     trig_properties.points_coordinates = {{0.0f,0.0f}, {1.0f,0.0f}, {0.5f,1.0f}};
     trig_properties.triangle_indices = {{0,1,2}};
     trig_properties.point_colors = {{1.0f,0.0f,0.0f}, {0.0f,1.0f,0.0f}, {0.0f,0.0f,1.0f}};
     trig_properties.texture_coordinates = {{0.0f,0.0f}, {1.0f*10.0f,0.0f}, {0.5f*10.0f,1.0f*10.0f}};
     trig_properties.postition = {-0.4f,-0.4f};
     trig_properties.name = "trig";
-    trig_properties.attached_shader = this->getShaderByName("default");
+    nullptr;
     trig_properties.scale = {0.5f,0.5f};
     trig_properties.rotation_point = {0.0f,0.0f};
     
@@ -87,14 +76,14 @@ int test_world::onCreate(redhand::event<redhand::engine>){
 
     //house
     if( this->addObject(
-        std::move( std::unique_ptr<redhand::game_object>( new house( this->getTextureByName("house"), this->getShaderByName("default"))))
+        std::move( std::unique_ptr<redhand::game_object>( new house( this->getTextureByName("house"))))
     ) < 0){
         return -3;
     }
 
     //hand
     if( this->addObject(
-        std::move( std::unique_ptr<redhand::game_object>( new hand( this->getTextureByName("hand"), this->getShaderByName("default"))))
+        std::move( std::unique_ptr<redhand::game_object>( new hand( this->getTextureByName("hand"))))
     ) < 0){
         return -3;
     }

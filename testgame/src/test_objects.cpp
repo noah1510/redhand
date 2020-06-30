@@ -1,13 +1,12 @@
 #include "test_objects.hpp"
 
 house::house(
-    std::shared_ptr<redhand::texture2D> texture,
-    std::shared_ptr<redhand::shader> shade
+    std::shared_ptr<redhand::texture2D> texture
 ){
 
-    auto settings = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
+    redhand::game_object_properties settings;
 
-    settings.attached_shader = shade;
+    settings.attached_shader = nullptr;
     settings.attached_texture = texture;
     settings.name = "house";
 
@@ -70,13 +69,12 @@ void house::onLoop(redhand::game_loop_event){
 
 
 hand::hand(
-    std::shared_ptr<redhand::texture2D> texture,
-    std::shared_ptr<redhand::shader> shade
+    std::shared_ptr<redhand::texture2D> texture
 ){
 
-    auto settings = redhand::DEFAULT_GAME_OBJECT_PROPERTIES;
+    redhand::game_object_properties settings;
 
-    settings.attached_shader = shade;
+    settings.attached_shader = nullptr;
     settings.attached_texture = texture;
     settings.name = "hand";
 

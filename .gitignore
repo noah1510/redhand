@@ -1,5 +1,6 @@
 .vscode
 !configurations/linux/.vscode
+.clangd
 .vs
 CMakeCache.txt
 cmake_install.cmake

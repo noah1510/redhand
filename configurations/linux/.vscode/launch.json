@@ -3,53 +3,28 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
-        
+    "configurations": [        
         {
             "name": "build and debug testgame",
-            "type": "cppdbg",
+            "type": "gdb",
             "request": "launch",
-            "program": "${workspaceFolder}/deploy/redhand-testgame",
-            "args": [],
-            "stopAtEntry": false,
+            "target": "${workspaceFolder}/deploy/redhand-testgame",
             "cwd": "${workspaceFolder}",
-            "environment": [
-                {"name":"LD_LIBRARY_PATH", "value": "${workspaceFolder}/deploy"}
-            ],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
+            "env": {
+                "LD_LIBRARY_PATH":"${workspaceFolder}/deploy"
+            },
             "preLaunchTask": "build testgame",
-            "miDebuggerPath": "/usr/bin/gdb"
         },
         {
             "name": "clean build and debug testgame",
-            "type": "cppdbg",
+            "type": "gdb",
             "request": "launch",
-            "program": "${workspaceFolder}/deploy/redhand-testgame",
-            "args": [],
-            "stopAtEntry": false,
+            "target": "${workspaceFolder}/deploy/redhand-testgame",
             "cwd": "${workspaceFolder}",
-            "environment": [
-                {"name":"LD_LIBRARY_PATH", "value": "${workspaceFolder}/deploy"}
-            ],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
+            "env": {
+                "LD_LIBRARY_PATH":"${workspaceFolder}/deploy"
+            },
             "preLaunchTask": "clean and build testgame",
-            "miDebuggerPath": "/usr/bin/gdb",
         }
     ]
 }
