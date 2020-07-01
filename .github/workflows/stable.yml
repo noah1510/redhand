@@ -60,7 +60,7 @@ jobs:
       with: 
         lfs: false
     - name: add required ppa
-      run: sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test && sudo apt update
+      run: sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test && sudo add-apt-repository -y ppa:savoury1/build-tools && sudo add-apt-repository -y ppa:savoury1/backports && sudo apt update
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
@@ -79,7 +79,7 @@ jobs:
     - name: build package
       run: debuild -S -sa
     - name: publish package
-      run: dput ppa:noasakurajin/libredhand ../*.changes
+      run: dput ppa:noasakurajin/libredhand ../*b1_source.changes
     - name: reset changelog
       run: git checkout -- debian/changelog
     - name: update release version
@@ -89,6 +89,6 @@ jobs:
     - name: build package
       run: debuild -S -sa
     - name: publish package
-      run: dput ppa:noasakurajin/libredhand ../*.changes
+      run: dput ppa:noasakurajin/libredhand ../*f1_source.changes
     - name: reset changelog
       run: git checkout -- debian/changelog
