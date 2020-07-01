@@ -1,3 +1,9 @@
+libredhand (0.0.12+1) bionic; urgency=medium
+
+  * small package build fixes/improvements
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Wed, 01 Jul 2020 10:15:02 +0200
+
 libredhand (0.0.12) bionic; urgency=medium
 
   * finishing event system (for now)
