@@ -166,6 +166,19 @@ then
 
 fi
 
+if [ "$PACKAGEBUILD" == "0" ]
+then
+    git submodule update --init testgame
+    if [ $? -eq 0 ]
+    then
+        echo "Successfully initiated testgame"
+    else
+        echo "Could not initiate testgame" >&2
+        exit 1
+    fi
+
+fi
+
 if [ "$CI" == "0" ]
 then
   #git lfs install
