@@ -2,6 +2,7 @@
 
 /* If we are we on Windows, use dll
  */
+#include <glm/detail/type_vec.hpp>
 #if !defined(_WIN32) && (defined(__WIN32__) || defined(WIN32) || defined(__MINGW32__))
     #define GLFW_DLL
 #endif
@@ -233,23 +234,23 @@ namespace redhand {
      */
     typedef struct {
         ///A vector containing all the points of the game_object, with each array being one point.
-        std::vector<std::array<float, 2>> points_coordinates = {{0.0f, 0.0f}, {1.0f, 0.0f}, {0.0f, 1.0f}};
+        std::vector<glm::vec2> points_coordinates = {{0.0f, 0.0f}, {1.0f, 0.0f}, {0.0f, 1.0f}};
         ///A vector specifiying which points (their index) form an triangle, with each array being a triangle.
         std::vector<std::array<unsigned int, 3>> triangle_indices = {{0, 1, 2}};
         ///A vector specifiying the color of each point, with each array being one color.
-        std::vector<std::array<float, 3>> point_colors = {{1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}};
+        std::vector<glm::vec3> point_colors = {{1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}};
         ///A vector containing all the texture coordinates of each point, with each array being one texture coordinate.
-        std::vector<std::array<float, 2>> texture_coordinates = {};
+        std::vector<glm::vec2> texture_coordinates = {};
         ///A shared pointer on the shader that should be used by this object.
         std::shared_ptr<redhand::shader> attached_shader = nullptr;
         ///A shared pointer on the texture that should be used by this object.
         std::shared_ptr<texture2D> attached_texture = nullptr;
         ///The scaling factor of the game_object along the x and y axis.
-        std::array<float, 2> scale = {2.0f, 2.0f};
+        glm::vec2 scale = {2.0f, 2.0f};
         ///The rotation around the bottom left in degrees.
         float rotation = 0.0f;
         ///The position of the object in world coordinates
-        std::array<float, 2> postition = {-1.0f, -1.0f};
+        glm::vec2 postition = {-1.0f, -1.0f};
         ///The drawing mode of the internal gpu buffer.
         drawing_modes gl_drawing_mode = STATIC_DRAW;
         ///The name of the game_object

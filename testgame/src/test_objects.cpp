@@ -123,7 +123,7 @@ void hand::updateWorldTransformation() {
     glm::mat4 scale = glm::mat4(1.0f);
     scale = glm::scale(
         scale, 
-        glm::vec3(local_object_properties.scale.at(0), local_object_properties.scale.at(1), 1.0f)
+        glm::vec3(local_object_properties.scale, 1.0f)
     );
     auto delta = scale * glm::vec4(local_object_properties.rotation_point,0.0f,1.0f);
 
@@ -131,8 +131,7 @@ void hand::updateWorldTransformation() {
     glm::mat4 local_world_transformation = glm::mat4(1.0f);
     local_world_transformation = glm::translate(
         local_world_transformation, 
-        glm::vec3(local_object_properties.postition.at(0),
-        local_object_properties.postition.at(1),0.0f)
+        glm::vec3(local_object_properties.postition, 0.0f)
     );
 
     local_world_transformation = glm::translate(
@@ -153,7 +152,7 @@ void hand::updateWorldTransformation() {
 
     local_world_transformation = glm::scale(
         local_world_transformation, 
-        glm::vec3(local_object_properties.scale.at(0), local_object_properties.scale.at(1), 1.0f)
+        glm::vec3(local_object_properties.scale, 1.0f)
     );
 
 
