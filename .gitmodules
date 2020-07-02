@@ -7,3 +7,6 @@
 [submodule "dependencies/gladRepo"]
 	path = dependencies/gladRepo
 	url = https://github.com/Dav1dde/glad
+[submodule "testgame"]
+	path = testgame
+	url = https://github.com/noah1510/redhand-testgame.git
