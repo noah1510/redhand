@@ -192,6 +192,8 @@ namespace redhand {
         * @return std::array<float,2> [0] = x scale and [1] is y scale
         */
         glm::vec2 getScale();
+
+        //bool isAtEdge();
     };
 
     /**

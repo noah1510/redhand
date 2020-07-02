@@ -1,6 +1,7 @@
 #include "redhand/event/drawing_event.hpp"
 #include "redhand/game_object.hpp"
 #include "redhand/texture.hpp"
+#include <chrono>
 #include <filesystem>
 #include <glm/glm.hpp>
 #include <shared_mutex>
@@ -42,6 +43,18 @@ namespace redhand{
              * 
              */
             float actorScale = 1.0f;
+
+            /**
+             * @brief The mutex for locking the movement Speed.
+             * 
+             */
+            std::shared_mutex mutex_movementSpeed;
+
+            /**
+             * @brief This is the distance the actor should move per second.
+             * 
+             */
+            float movementSpeed = 0.0f;
 
         public:
 
@@ -119,5 +132,72 @@ namespace redhand{
              * @return glm::vec2 the dimensions of the Actor
              */
             glm::vec2 getSize();
+
+            /**
+             * @brief Get the Image attached to the actor
+             * 
+             * @return std::shared_ptr<redhand::texture2D> the image attached to the actor
+             */
+            std::shared_ptr<redhand::texture2D> getImage();
+
+            /**
+             * @brief Get the Rotation of the actor in degrees
+             * 
+             * @return float the rotation in degrees
+             */
+            float getRotation() override;
+
+            /**
+             * @brief Get the Position of the Actor
+             * 
+             * @return glm::vec2 The position in the world
+             */
+            glm::vec2 getPosition() override;
+
+            //bool isAtEdge() override;
+
+            /**
+             * @brief move the actor in the rotated direction by the specefied distance
+             * 
+             * @param distance The distance the actor should move
+             */
+            void move(float distance);
+
+            /**
+             * @brief move the actor using the specified speed.
+             * This function is supposed to be called in the act function by supplying evt.getFrameTime() as parameter to this function.
+             * 
+             * @param frameTime The time difference between the function calls
+             */
+            void move(std::chrono::nanoseconds frameTime);
+
+            /**
+             * @brief move the actor by a given amount of units
+             * 
+             * @param delta the units the actor should move
+             */
+            void move(glm::vec2 delta) override;
+
+            /**
+             * @brief Set the movement Speed of the Actor in units per seconds
+             * 
+             * @param speed the speed in units per second
+             */
+            void setSpeed(float speed);
+
+            /**
+             * @brief Turn the actor by a given amount of degrees
+             * 
+             * @param delta how much degrees the actor should rotate
+             */
+            void turn(float delta);
+
+            /**
+             * @brief Specify a point the actor should turn towards
+             * 
+             * @param point the point the actor should look at
+             */
+            void turnTowards(glm::vec2 point);
+
     };
 }

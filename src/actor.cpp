@@ -4,6 +4,7 @@
 #include "redhand/texture.hpp"
 #include "redhand/types.hpp"
 #include <algorithm>
+#include <chrono>
 #include <filesystem>
 #include <future>
 #include <memory>
@@ -122,3 +123,53 @@ void redhand::Actor::setImage(std::filesystem::path img){
     setImage(tex);
 }
 
+std::shared_ptr<redhand::texture2D> redhand::Actor::getImage(){
+    std::shared_lock<std::shared_mutex> lock(mutex_image);
+    return image;
+}
+
+float redhand::Actor::getRotation(){
+    std::shared_lock<std::shared_mutex> lock(mutex_game_object);
+    return object_properties.rotation;
+}
+
+glm::vec2 redhand::Actor::getPosition(){
+    return {getX(),getY()};
+}
+
+void redhand::Actor::move(float distance){
+    auto rot = getRotation();
+    move({
+        distance*rot*glm::cos(glm::radians(rot)),
+        distance*rot*glm::sin(glm::radians(rot))
+    });
+}
+
+void redhand::Actor::move(std::chrono::nanoseconds deltaT){
+    float distance = movementSpeed * (deltaT/std::chrono::nanoseconds(std::chrono::seconds(1)));
+    move(distance);
+}
+
+void redhand::Actor::move(glm::vec2 delta){
+    mutex_object_properties.lock();
+
+    object_properties.postition += delta;
+
+    mutex_object_properties.unlock();
+
+    updateWorldTransformation();
+}
+
+void redhand::Actor::setSpeed(float speed){
+    std::scoped_lock<std::shared_mutex> lock(mutex_movementSpeed);
+    movementSpeed = speed;
+}
+
+void redhand::Actor::turn(float delta){
+    rotate(delta);
+}
+
+void redhand::Actor::turnTowards(glm::vec2 point){
+    auto line = point - getPosition();
+    setRotation(glm::degrees( glm::atan(line.y/line.x) ));
+}
