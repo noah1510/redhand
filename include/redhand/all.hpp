@@ -16,6 +16,7 @@
 #include "redhand/input.hpp"
 #include "redhand/shader.hpp"
 #include "redhand/texture.hpp"
+#include "redhand/actor.hpp"
 
 #include "redhand/event/event.hpp"
 #include "redhand/event/game_loop_event.hpp"

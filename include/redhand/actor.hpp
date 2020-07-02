@@ -2,7 +2,7 @@
 #include "redhand/game_object.hpp"
 #include "redhand/texture.hpp"
 #include <filesystem>
-#include <glm/detail/type_vec.hpp>
+#include <glm/glm.hpp>
 #include <shared_mutex>
 
 namespace redhand{

@@ -1,4 +1,3 @@
-#include <glm/detail/type_vec.hpp>
 #include <redhand/glad/glad.h>
 
 #include "redhand/game_object.hpp"

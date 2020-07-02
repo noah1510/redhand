@@ -6,7 +6,6 @@
 #include <algorithm>
 #include <filesystem>
 #include <future>
-#include <glm/detail/type_vec.hpp>
 #include <memory>
 #include <mutex>
 #include <shared_mutex>

@@ -2,7 +2,6 @@
 
 /* If we are we on Windows, use dll
  */
-#include <glm/detail/type_vec.hpp>
 #if !defined(_WIN32) && (defined(__WIN32__) || defined(WIN32) || defined(__MINGW32__))
     #define GLFW_DLL
 #endif
