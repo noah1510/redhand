@@ -56,6 +56,36 @@ namespace redhand{
              */
             float movementSpeed = 0.0f;
 
+        protected:
+            /**
+             * @brief Set the Position of the actor to the given point
+             * 
+             * @param location the new position of the actor
+             */
+            void setPosition(glm::vec2 location) override;
+
+            /**
+             * @brief Set the alpha of this objects color
+             * 
+             * @param alpha value of this objects color
+             */
+            void setColorAlpha(float alpha) override;
+
+            /**
+             * @brief This allows you to change tha axis objects rotate around
+             * 
+             */
+            void setRotaionAxis(glm::vec3);
+
+            /**
+             * @brief push new data into the opengl buffers
+             * 
+             * @param points the new set of points used to describe triangles
+             * @param indicies the indixes that each form a single triangle
+             * @param colors the colors each of the points should have (size must be 0 or size of points)
+             */
+            void updateBufferData(std::vector<glm::vec2> points, std::vector<std::array<unsigned int,3>> indicies, std::vector<glm::vec3> colors);
+
         public:
 
             /**

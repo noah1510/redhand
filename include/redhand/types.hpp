@@ -261,8 +261,10 @@ namespace redhand {
         float alpha_value = 1.0f;
         ///Enable automatic scaling of texture (might be buggy)
         bool automatic_scaling = false;
-        ///The point which the object should use as rotation axis
+        ///The postion of the rotation axis on the object
         glm::vec2 rotation_point = {0.5f, 0.5f};
+        ///The position of the rotation axis in the 3D Space (only the angle and orientation matters)
+        glm::vec3 rotation_axis = {0.0f,0.0f,1.0f};
 
     } game_object_properties;
 

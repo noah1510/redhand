@@ -44,6 +44,13 @@ redhand::Actor::Actor(redhand::texture2D* tex):redhand::game_object(){
         config.point_colors.at(i) = {0.0f,0.0f,0.0f};
     }
     
+    config.texture_coordinates = {
+        {1.0f, 0.0f}, //top left
+        {1.0f, 1.0f}, //top right
+        {0.0f, 1.0f}, //bottom right
+        {0.0f, 0.0f}  //bottom left
+    };
+
     object_properties = config;
     updateBuffers();
 
@@ -98,11 +105,26 @@ void redhand::Actor::act(redhand::game_loop_event){}
 
 void redhand::Actor::setImage(redhand::texture2D* img){
     std::unique_lock<std::shared_mutex> lock(mutex_image);
+    if( img == image.get()){
+        return;
+    }
     image.reset();
-    image = std::shared_ptr<redhand::texture2D>(std::move(img));
+    
+    if (img != nullptr && img->hasErrord()){
+        img = nullptr;
+        std::cerr << "the given image had an error" << std::endl;
+    }
+    image = std::shared_ptr<redhand::texture2D>(img);
 
     std::unique_lock<std::shared_mutex> lock2(mutex_object_properties);
     object_properties.attached_texture = image;
+    if(image != nullptr){
+        std::scoped_lock<std::shared_mutex> lock3 (mutex_texture_mode);
+        texture_mode = 1;
+    }else{
+        std::scoped_lock<std::shared_mutex> lock3 (mutex_texture_mode);
+        texture_mode = 0;
+    }
 
     lock.unlock();
     lock2.unlock();
@@ -118,7 +140,7 @@ void redhand::Actor::scaleActor(float size){
 void redhand::Actor::setImage(std::filesystem::path img){
     redhand::image_properties prop;
     prop.file_location = img;
-    auto* tex = new redhand::texture2D(prop);
+    redhand::texture2D* tex = new redhand::texture2D(prop);
 
     setImage(tex);
 }
@@ -172,4 +194,46 @@ void redhand::Actor::turn(float delta){
 void redhand::Actor::turnTowards(glm::vec2 point){
     auto line = point - getPosition();
     setRotation(glm::degrees( glm::atan(line.y/line.x) ));
+}
+
+void redhand::Actor::setPosition(glm::vec2 location){
+    mutex_object_properties.lock();
+
+    object_properties.postition = location;
+
+    mutex_object_properties.unlock();
+
+    updateWorldTransformation();
+}
+
+void redhand::Actor::updateBufferData(std::vector<glm::vec2> points, std::vector<std::array<unsigned int,3>> indicies, std::vector<glm::vec3> colors){
+    mutex_object_properties.lock();
+
+    object_properties.points_coordinates = points;
+    object_properties.triangle_indices = indicies;
+    object_properties.point_colors = {};
+    if ( points.size() == colors.size()){
+        object_properties.point_colors = colors;
+    }
+
+    mutex_object_properties.unlock();
+
+    updateBuffers();
+}
+
+void redhand::Actor::setColorAlpha(float alpha){
+    if (alpha >= 0.0f && alpha <= 1.0f) {
+        std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
+        object_properties.alpha_value = alpha;
+    }
+}
+
+void redhand::Actor::setRotaionAxis(glm::vec3 axis){
+    mutex_object_properties.lock();
+
+    object_properties.rotation_axis = axis;
+
+    mutex_object_properties.unlock();
+
+    updateWorldTransformation();
 }

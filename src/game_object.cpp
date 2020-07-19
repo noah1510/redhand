@@ -74,6 +74,9 @@ void redhand::game_object::updateBuffers() {
         glGenBuffers(1, &EBO);
     };
 
+    //Clear the old data
+    data.clear();
+
     //Reserve the needed size in the vecctor
     data.reserve(
         object_properties.points_coordinates.size() * 3   //size of points
@@ -141,6 +144,7 @@ void redhand::game_object::updateBuffers() {
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void *)((object_properties.points_coordinates.size() * 6) * sizeof(float)));
     glEnableVertexAttribArray(2);
 
+    texture_mode = 0;
     if (object_properties.attached_texture != NULL && object_properties.attached_texture != nullptr && !object_properties.attached_texture->hasErrord()) {
         texture_mode = 1;
     };
@@ -203,12 +207,15 @@ void redhand::game_object::setScreenSize(int, int) {
 }
 
 void redhand::game_object::draw(redhand::drawing_event evt) {
+    //create a local copy of the properties
     auto lock1 = std::shared_lock(mutex_object_properties);
     auto local_object_properties = object_properties;
-    if (object_properties.attached_shader == nullptr) {
+    lock1.unlock();
+
+    //use default shader if no other is specified
+    if (local_object_properties.attached_shader == nullptr) {
         local_object_properties.attached_shader = evt.getDefaultShader();
     }
-    lock1.unlock();
 
     //if there are textures set the texture scale of the shader
     auto lock2 = std::shared_lock(mutex_texture_mode);
@@ -268,7 +275,7 @@ void redhand::game_object::updateWorldTransformation() {
     local_world_transformation = glm::rotate(
         local_world_transformation,
         glm::radians(local_object_properties.rotation),
-        glm::vec3(0.0f, 0.0f, 1.0f));
+        glm::vec3(local_object_properties.rotation_axis));
 
     local_world_transformation = glm::translate(
         local_world_transformation,
