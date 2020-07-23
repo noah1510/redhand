@@ -1,9 +1,0 @@
-<map id="include/redhand/engine.hpp" name="include/redhand/engine.hpp">
-<area shape="rect" id="node2" href="$math_8hpp.html" title="redhand/math.hpp" alt="" coords="523,80,649,107"/>
-<area shape="rect" id="node4" href="$events_8hpp.html" title="redhand/event/events.hpp" alt="" coords="224,80,396,107"/>
-<area shape="rect" id="node13" href="$types_8hpp.html" title="redhand/types.hpp" alt="" coords="1217,162,1347,189"/>
-<area shape="rect" id="node5" href="$event_8hpp.html" title="redhand/event/event.hpp" alt="" coords="149,244,314,271"/>
-<area shape="rect" id="node7" href="$drawing__event_8hpp.html" title="redhand/event/drawing\l_event.hpp" alt="" coords="7,155,160,196"/>
-<area shape="rect" id="node10" href="$game__loop__event_8hpp.html" title="redhand/event/game\l_loop_event.hpp" alt="" coords="408,155,548,196"/>
-<area shape="rect" id="node12" href="$world__switching__event_8hpp.html" title="redhand/event/world\l_switching_event.hpp" alt="" coords="236,155,384,196"/>
-</map>
