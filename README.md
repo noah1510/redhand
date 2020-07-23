@@ -5,7 +5,7 @@
 <a href="https://github.com/noah1510/redhand/blob/master/License"><img src="https://img.shields.io/github/license/noah1510/redhand.svg" alt="GitHub license" /></a>
 <img src="https://github.com/noah1510/redhand/workflows/CI/badge.svg" alt="build status" />
 <a href="https://frontend.code-inspector.com/project/5322/dashboard"><img src="https://www.code-inspector.com/project/5322/score/svg" alt="code quality" /></a>
-<a href="https://discord.gg/awjW3aG"><img src="https://discordapp.com/api/guilds/691968013234339881/widget.png" alt="Discord" /></a>
+<a href="https://matrix.to/#/+redhand:tchncs.de"><img src="https://matrix.to/img/matrix-badge.svg" alt="Matrix" /></a>
 <a href="https://GitHub.com/noah1510/redhand/releases/"><img src="https://img.shields.io/github/v/release/noah1510/redhand.svg" alt="stable release" /></a>
 </h2>
 
@@ -30,7 +30,7 @@ You can find the full information [here](https://github.com/noah1510/redhand/blo
 There are two release types tagged and latest.
 The tagged version is generally more stable and tested while the latest version has all the features but might break some games.
 
-### Ubuntu (bionic) based distributions
+### Ubuntu (bionic/focal) based distributions
 
 There are two personal package archieves you can choose from:
 
