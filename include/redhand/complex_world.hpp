@@ -1,3 +1,14 @@
+/**
+ * @file complex_world.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref complex_world
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #pragma once
 
 #include <vector>
@@ -22,6 +33,10 @@ namespace redhand {
     class shader;
     class Actor;
 
+    /**
+     * @brief This is the underlying type for worlds with lots of low level functions for managing objects.
+     * 
+     */
     class complex_world {
       private:
         ///The mutex for allowing only one thread to acces the world objects at once

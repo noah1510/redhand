@@ -10,3 +10,6 @@
 [submodule "testgame"]
 	path = testgame
 	url = https://github.com/noah1510/redhand-testgame.git
+[submodule "doc/m.css"]
+	path = doc/m.css
+	url = git://github.com/mosra/m.css

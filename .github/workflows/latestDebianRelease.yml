@@ -10,10 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: install dependencies
-      run: sudo apt install doxygen graphviz
     - name: generate docs
-      run: doxygen
+      run: ./srcipts/docs.sh --init
     - name: Deploy
       uses: s0/git-publish-subdir-action@master
       env:

@@ -1,3 +1,14 @@
+/**
+ * @file types.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief types that are used throughout the redhand library
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #pragma once
 
 /* If we are we on Windows, use dll
@@ -35,7 +46,7 @@ namespace redhand {
     ///This string provides a version in a pritable format.
     ///The first public version is 0.1.0 and from there it will be couted up.
     ///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release
-    const std::string REDHAND_HEADER_VERSION = "0.0.12";
+    const std::string REDHAND_HEADER_VERSION = "0.0.13";
 
     const auto OPENGL_CORE_PROFILE = GLFW_OPENGL_CORE_PROFILE;
     const auto DONT_CARE = GLFW_DONT_CARE;
@@ -219,7 +230,7 @@ namespace redhand {
     } image_properties;
 
     /**
-     * @brief These are teh available opengl drawing modes 
+     * @brief These are the available opengl drawing modes 
      * 
      */
     enum drawing_modes {
@@ -229,7 +240,6 @@ namespace redhand {
 
     /**
      * @brief This struct specifies all the properties of a game_object.
-     * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_GAME_OBJECT_PROPERTIES.
      */
     typedef struct {
         ///A vector containing all the points of the game_object, with each array being one point.
@@ -270,7 +280,6 @@ namespace redhand {
 
     /**
      * @brief This struct specifies all the properties of the game engine.
-     * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_ENGINE_CONFIG.
      */
     typedef struct {
         ///The newest version of OpenGL which may be used

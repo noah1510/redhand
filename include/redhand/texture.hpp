@@ -1,3 +1,15 @@
+/**
+ * @file texture.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref texture2D
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ * 
+ */
+
 #pragma once
 
 #include <GLFW/glfw3.h>
@@ -17,6 +29,9 @@ namespace redhand {
 
     void initImageLoader();
 
+    /**
+     * @brief This class is a simple 2 Dimensional texture.
+     */
     class texture2D {
       private:
         ///true if an error happened

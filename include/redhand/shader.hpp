@@ -1,3 +1,14 @@
+/**
+ * @file shader.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref shader
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #pragma once
 
 #include <GLFW/glfw3.h>
@@ -18,6 +29,11 @@
 
 namespace redhand {
 
+    /**
+     * @brief This class provides a simple abstraction for opengl shaders.
+     * To render anything on a screen a shader is needed to transform the supplied data into actual pixels that you will see on the screen.
+     * 
+     */
     class shader {
       private:
         /// the program ID

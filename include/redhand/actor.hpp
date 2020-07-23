@@ -1,3 +1,14 @@
+/**
+ * @file actor.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref Actor
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #include "redhand/event/drawing_event.hpp"
 #include "redhand/game_object.hpp"
 #include "redhand/texture.hpp"
@@ -7,6 +18,10 @@
 #include <shared_mutex>
 
 namespace redhand{
+    /**
+     * @brief The Actor is the simple class used to diplay most things in redhand.
+     * 
+     */
     class Actor : private redhand::game_object{
         friend class redhand::complex_world;
         private:

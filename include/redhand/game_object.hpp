@@ -1,3 +1,14 @@
+/**
+ * @file game_object.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref game_object
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #pragma once
 #include "redhand/math.hpp"
 #include "redhand/event/events.hpp"
@@ -19,10 +30,10 @@ namespace redhand {
     class shader;
 
     /**
-    * @brief The game_object is a simple object which can be displayed in a world.
+    * @brief The game_object is a complex object which can be displayed in a world.
     * It is the first abstraction layer and is a very low level openGL object.
     * You can create a game_object by specifying all the points, and which points form a triangel.
-    * Each game_object NEEDS a shader in order to work.
+    * If nothing else is specified, the default shader is used to render this object.
     * Please use a shader which is added to the same world as the game_object in order to prevent errors.
     * 
     * The Points specified are all local coordinates.
