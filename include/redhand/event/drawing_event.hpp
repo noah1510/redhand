@@ -1,3 +1,14 @@
+/**
+ * @file drawing_event.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref game_loop_event
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #pragma once
 
 #include "redhand/event/event.hpp"
@@ -10,14 +21,24 @@ namespace redhand {
     class complex_world;
     class game_object;
     class shader;
+
+    /**
+     * @brief raise a new drawing event that is raised once every draw tick.
+     * This event is independet form game loop events and should be used to draw the game_objects.
+     * 
+     */
     class drawing_event : public redhand::event<complex_world> {
       private:
+        /**
+         * @brief The default shader to render most objects
+         * 
+         */
         std::shared_ptr<shader> defaultShader;
 
       public:
         /**
-        * @brief raise a new game loop event that is raised once every game loop tick.
-        * This event is independet form Input events and drawing events and should be used to define game logic and physics.
+        * @brief raise a new drawing event that is raised once every draw tick.
+        * This event is independet form game loop events and should be used to draw the game_objects.
         * 
         * @param raiser a pointer to the object that raised the event
         * @param delta_t the time difference to the last game_loop_event
@@ -26,6 +47,11 @@ namespace redhand {
             defaultShader = shade;
         };
 
+        /**
+         * @brief Get the Default Shader to render most objects
+         * 
+         * @return std::shared_ptr<shader> A shared pointer to the default shader
+         */
         std::shared_ptr<shader> getDefaultShader() {
             return defaultShader;
         };

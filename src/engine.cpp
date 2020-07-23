@@ -177,7 +177,7 @@ int redhand::engine::runGame() {
 
             auto diff = this_time - last_time;
 
-            if (diff < std::chrono::milliseconds(1000 / 60)) {
+            if (diff < std::chrono::milliseconds(1000 / 120)) {
                 continue;
             }
 
@@ -243,7 +243,7 @@ int redhand::engine::runGame() {
         glfwSwapBuffers(getWindow());
         glfwPollEvents();
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(4));
+        std::this_thread::sleep_for(std::chrono::milliseconds(3));
     }
 
     physicsThread.join();

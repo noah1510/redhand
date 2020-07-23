@@ -14,6 +14,7 @@
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 build:
+	sudo -H pip3 install jinja2 Pygments
 	bash scripts/docs.sh
 	dh_testdir
 	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER=/usr/bin/clang-10 -DCMAKE_CXX_COMPILER=/usr/bin/clang++-10

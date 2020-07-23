@@ -1,3 +1,14 @@
+/**
+ * @file input.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref input_system
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #pragma once
 
 #include "redhand/types.hpp"
@@ -10,6 +21,11 @@ namespace redhand {
 
     class engine;
 
+    /**
+     * @brief The input_system is used to handle user inputs for all kinds of devices.
+     * @todo finish documentation of members
+     * 
+     */
     class input_system {
 
       private:

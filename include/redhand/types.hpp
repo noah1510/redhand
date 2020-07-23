@@ -1,3 +1,14 @@
+/**
+ * @file types.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief types that are used throughout the redhand library
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #pragma once
 
 /* If we are we on Windows, use dll
@@ -35,7 +46,7 @@ namespace redhand {
     ///This string provides a version in a pritable format.
     ///The first public version is 0.1.0 and from there it will be couted up.
     ///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release
-    const std::string REDHAND_HEADER_VERSION = "0.0.12";
+    const std::string REDHAND_HEADER_VERSION = "0.0.13";
 
     const auto OPENGL_CORE_PROFILE = GLFW_OPENGL_CORE_PROFILE;
     const auto DONT_CARE = GLFW_DONT_CARE;
@@ -219,7 +230,7 @@ namespace redhand {
     } image_properties;
 
     /**
-     * @brief These are teh available opengl drawing modes 
+     * @brief These are the available opengl drawing modes 
      * 
      */
     enum drawing_modes {
@@ -229,27 +240,26 @@ namespace redhand {
 
     /**
      * @brief This struct specifies all the properties of a game_object.
-     * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_GAME_OBJECT_PROPERTIES.
      */
     typedef struct {
         ///A vector containing all the points of the game_object, with each array being one point.
-        std::vector<std::array<float, 2>> points_coordinates = {{0.0f, 0.0f}, {1.0f, 0.0f}, {0.0f, 1.0f}};
+        std::vector<glm::vec2> points_coordinates = {{0.0f, 0.0f}, {1.0f, 0.0f}, {0.0f, 1.0f}};
         ///A vector specifiying which points (their index) form an triangle, with each array being a triangle.
         std::vector<std::array<unsigned int, 3>> triangle_indices = {{0, 1, 2}};
         ///A vector specifiying the color of each point, with each array being one color.
-        std::vector<std::array<float, 3>> point_colors = {{1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}};
+        std::vector<glm::vec3> point_colors = {{1.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 1.0f}};
         ///A vector containing all the texture coordinates of each point, with each array being one texture coordinate.
-        std::vector<std::array<float, 2>> texture_coordinates = {};
+        std::vector<glm::vec2> texture_coordinates = {};
         ///A shared pointer on the shader that should be used by this object.
         std::shared_ptr<redhand::shader> attached_shader = nullptr;
         ///A shared pointer on the texture that should be used by this object.
         std::shared_ptr<texture2D> attached_texture = nullptr;
         ///The scaling factor of the game_object along the x and y axis.
-        std::array<float, 2> scale = {2.0f, 2.0f};
+        glm::vec2 scale = {2.0f, 2.0f};
         ///The rotation around the bottom left in degrees.
         float rotation = 0.0f;
         ///The position of the object in world coordinates
-        std::array<float, 2> postition = {-1.0f, -1.0f};
+        glm::vec2 postition = {-1.0f, -1.0f};
         ///The drawing mode of the internal gpu buffer.
         drawing_modes gl_drawing_mode = STATIC_DRAW;
         ///The name of the game_object
@@ -261,14 +271,15 @@ namespace redhand {
         float alpha_value = 1.0f;
         ///Enable automatic scaling of texture (might be buggy)
         bool automatic_scaling = false;
-        ///The point which the object should use as rotation axis
+        ///The postion of the rotation axis on the object
         glm::vec2 rotation_point = {0.5f, 0.5f};
+        ///The position of the rotation axis in the 3D Space (only the angle and orientation matters)
+        glm::vec3 rotation_axis = {0.0f,0.0f,1.0f};
 
     } game_object_properties;
 
     /**
      * @brief This struct specifies all the properties of the game engine.
-     * @note Please create a custom configuration by first setting your variable to redhand::DEFAULT_ENGINE_CONFIG.
      */
     typedef struct {
         ///The newest version of OpenGL which may be used

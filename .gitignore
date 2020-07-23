@@ -54,3 +54,7 @@ doc/man
 !logo
 
 src/glad.c
+
+doc/xml/
+
+doc/__pycache__/

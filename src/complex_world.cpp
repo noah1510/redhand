@@ -5,6 +5,7 @@
 #include "redhand/game_object.hpp"
 #include "redhand/shader.hpp"
 #include "redhand/texture.hpp"
+#include "redhand/actor.hpp"
 
 using namespace redhand;
 
@@ -52,6 +53,22 @@ redhand::complex_world::~complex_world() {
     defaultShader.reset();
 }
 
+int redhand::complex_world::add(redhand::Actor* obj){
+    if (obj == nullptr || obj == NULL) {
+        return -1;
+    }
+
+    std::scoped_lock<std::shared_mutex> lock(WorldObjectsMutex);
+
+    WorldActors.emplace_back(std::shared_ptr<redhand::Actor>(std::move(obj)));
+    if (WorldActors.back() != nullptr) {
+        WorldActors.back()->setScreenSize(windowWidth, windowHeight);
+        return 0;
+    } else {
+        return -3;
+    }
+}
+
 void redhand::complex_world::tick(redhand::game_loop_event evt) {
 
     auto window = evt.getRaiser()->getWindow();
@@ -65,6 +82,10 @@ void redhand::complex_world::tick(redhand::game_loop_event evt) {
     for (unsigned int i = 0; i < WorldObjects.size(); i++) {
         WorldObjects.at(i)->onLoop(evt);
     }
+
+    for (auto x:WorldActors){
+        x->onLoop(evt);
+    }
 }
 
 void redhand::complex_world::draw() {
@@ -74,6 +95,10 @@ void redhand::complex_world::draw() {
     auto evt = redhand::drawing_event(this, defaultShader);
 
     for (auto x : WorldObjects) {
+        x->draw(evt);
+    }
+
+    for (auto x: WorldActors){
         x->draw(evt);
     }
 }

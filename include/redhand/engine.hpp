@@ -1,3 +1,13 @@
+/**
+ * @file engine.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref engine
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
 #pragma once
 
 #include "redhand/math.hpp"

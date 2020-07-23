@@ -1,3 +1,14 @@
+/**
+ * @file game_object.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref game_object
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #pragma once
 #include "redhand/math.hpp"
 #include "redhand/event/events.hpp"
@@ -19,10 +30,10 @@ namespace redhand {
     class shader;
 
     /**
-    * @brief The game_object is a simple object which can be displayed in a world.
+    * @brief The game_object is a complex object which can be displayed in a world.
     * It is the first abstraction layer and is a very low level openGL object.
     * You can create a game_object by specifying all the points, and which points form a triangel.
-    * Each game_object NEEDS a shader in order to work.
+    * If nothing else is specified, the default shader is used to render this object.
     * Please use a shader which is added to the same world as the game_object in order to prevent errors.
     * 
     * The Points specified are all local coordinates.
@@ -137,21 +148,21 @@ namespace redhand {
         * 
         * @return std::array<float,2> 
         */
-        virtual std::array<float, 2> getPosition();
+        virtual glm::vec2 getPosition();
 
         /**
         * @brief Set the Position of the object
         * 
         * @param pos a vector with the in x and y direction in world scale
         */
-        virtual void setPosition(std::array<float, 2> pos);
+        virtual void setPosition(glm::vec2 pos);
 
         /**
         * @brief moves the object by the specified amount
         * 
         * @param delta_pos a vector with the difference in x and y direction in world scale
         */
-        virtual void move(std::array<float, 2> delta_pos);
+        virtual void move(glm::vec2 delta_pos);
 
         ///gets the rotation in degrees
         virtual float getRotation();
@@ -191,7 +202,9 @@ namespace redhand {
         * 
         * @return std::array<float,2> [0] = x scale and [1] is y scale
         */
-        std::array<float, 2> getScale();
+        glm::vec2 getScale();
+
+        //bool isAtEdge();
     };
 
     /**
@@ -208,11 +221,11 @@ namespace redhand {
     * @return game_object* 
     */
     std::unique_ptr<redhand::game_object> createCircle(
-        std::array<float, 2> midpoint,
+        glm::vec2 midpoint,
         float radius,
         unsigned int edges,
-        std::array<float, 3> innerColor,
-        std::array<float, 3> outerColor,
+        glm::vec3 innerColor,
+        glm::vec3 outerColor,
         std::shared_ptr<redhand::shader> shade,
         std::shared_ptr<redhand::texture2D> tex,
         std::string name,
@@ -231,10 +244,10 @@ namespace redhand {
     * @return game_object*
     */
     std::unique_ptr<redhand::game_object> createRectangle(
-        std::array<float, 2> bottomleft,
+        glm::vec2 bottomleft,
         float width,
         float height,
-        std::array<float, 3> color,
+        glm::vec3 color,
         std::shared_ptr<redhand::shader> shade,
         std::shared_ptr<redhand::texture2D> tex,
         redhand::drawing_modes DrawingMode,

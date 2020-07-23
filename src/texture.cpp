@@ -27,24 +27,11 @@ void redhand::texture2D::initTexture2D() {
             texture_properties.file_location.string().c_str(),
             vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));
 
-        //image_data = std::unique_ptr<vips::VImage>(std::move(Texture));
-        //Texture = nullptr;
+        image_data.set("format", VIPS_FORMAT_UCHAR);
+        image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
+
+        image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
     }
-
-    image_data.set("format", VIPS_FORMAT_UCHAR);
-    image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
-
-    image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
-
-    /*
-    //Format data
-    image_data->flip();
-    image_data->depth(8);
-    image_data->magick("RGBA");
-
-    //copy image to blob
-    Magick::Blob data;
-    image_data->write(&data, "RGBA");*/
 
     //update the dimensions
     width = image_data.width();
@@ -80,6 +67,11 @@ redhand::texture2D::texture2D(image_properties prop) {
         image_data = vips::VImage::new_from_file(
             texture_properties.file_location.string().c_str(),
             vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));
+
+        image_data.set("format", VIPS_FORMAT_UCHAR);
+        image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
+
+        image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
     }
 
     initTexture2D();
@@ -97,7 +89,12 @@ redhand::texture2D::texture2D(std::string file_location, std::string texture_nam
     if (texture_properties.keep_image_data) {
         image_data = vips::VImage::new_from_file(
             texture_properties.file_location.string().c_str(),
-            vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));
+            vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));        
+
+        image_data.set("format", VIPS_FORMAT_UCHAR);
+        image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
+
+        image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
     }
 
     initTexture2D();
@@ -120,6 +117,7 @@ unsigned int redhand::texture2D::getID() {
 
 void redhand::texture2D::bind(int unit) {
     auto lock = std::shared_lock(mutex_id);
+    unit %= 16;
     glActiveTexture(GL_TEXTURE0 + unit);
     glBindTexture(GL_TEXTURE_2D, id);
 }

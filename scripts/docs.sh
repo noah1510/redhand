@@ -5,10 +5,19 @@ then
     # Linux
     echo "script running on linux"
 
-    if [ $1 == "--init" ]
+    if [ "$1" == "--init" ]
     then
-        sudo apt update
-        sudo apt install  graphviz graphviz-dev doxygen --yes
+        sudo apt-get update
+        sudo apt-get install doxygen graphviz texlive-base texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended --yes
+        if [ $? -eq 0 ]
+        then
+            echo "Successfully installed dependencies"
+        else
+            echo "Could not install dependencies" >&2
+            exit 2
+        fi
+
+        pip3 install jinja2 Pygments
         if [ $? -eq 0 ]
         then
             echo "Successfully installed dependencies"
@@ -65,7 +74,8 @@ else
 fi
 
 mkdir -p "doc/html"
-doxygen "Doxyfile"
+cd doc/m.css/documentation
+./doxygen.py --debug ../../conf.py
 if [ $? -eq 0 ]
 then
     echo "Successfully installed dependencies"

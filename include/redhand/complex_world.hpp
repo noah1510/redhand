@@ -1,3 +1,14 @@
+/**
+ * @file complex_world.hpp
+ * @author noasakurajin (noasakurajin@web.de)
+ * @brief Class @ref complex_world
+ * @version 0.13
+ * @date 2020-07-23
+ * 
+ * @copyright Copyright (c) 2020
+ * @license This file is licensed under the LGPL v3 license.
+ */
+
 #pragma once
 
 #include <vector>
@@ -20,7 +31,12 @@ namespace redhand {
     class game_object;
     class texture2D;
     class shader;
+    class Actor;
 
+    /**
+     * @brief This is the underlying type for worlds with lots of low level functions for managing objects.
+     * 
+     */
     class complex_world {
       private:
         ///The mutex for allowing only one thread to acces the world objects at once
@@ -34,6 +50,9 @@ namespace redhand {
 
         /// This vector holds all the textures in this world
         std::vector<std::shared_ptr<redhand::texture2D>> WorldTextures;
+
+        /// This vector holds all the actors in this world
+        std::vector<std::shared_ptr<redhand::Actor>> WorldActors;
 
         /// This array holds the current camera Position
         float cameraPosition[2] = {0.0f, 0.0f};
@@ -80,6 +99,13 @@ namespace redhand {
         * All added objects will be drawn on each world tick.
         */
         virtual int addObject(std::unique_ptr<redhand::game_object>);
+
+        /**
+         * @brief add an actor to the world just by using +=
+         * @param the actor that will be added to the world
+         * @return int < 0 is something went wrong
+         */
+        virtual int add(redhand::Actor* obj);
 
         /**
         * This function removes a shader from its world and delete the shader.

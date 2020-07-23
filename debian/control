@@ -17,7 +17,9 @@ Build-Depends:
     libgl1-mesa-dev, 
     doxygen, 
     graphviz,
-    libvips-dev
+    libvips-dev,
+    python3,
+    python3-pip
 Standards-Version: 4.1.2
 Section: libs
 #Homepage: <insert the upstream URL, if relevant>
