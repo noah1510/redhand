@@ -73,6 +73,8 @@ else
     exit 1
 fi
 
+git submodule update --init doc/m.css
+
 mkdir -p "doc/html"
 cd doc/m.css/documentation
 ./doxygen.py --debug ../../conf.py
