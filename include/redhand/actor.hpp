@@ -9,6 +9,8 @@
  * @license This file is licensed under the LGPL v3 license.
  */
 
+#pragma once
+
 #include "redhand/event/drawing_event.hpp"
 #include "redhand/game_object.hpp"
 #include "redhand/texture.hpp"
