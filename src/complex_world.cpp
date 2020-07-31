@@ -53,14 +53,14 @@ redhand::complex_world::~complex_world() {
     defaultShader.reset();
 }
 
-int redhand::complex_world::add(redhand::Actor* obj){
-    if (obj == nullptr || obj == NULL) {
+int redhand::complex_world::add(std::shared_ptr<redhand::Actor> obj){
+    if (obj == nullptr) {
         return -1;
     }
 
     std::scoped_lock<std::shared_mutex> lock(WorldObjectsMutex);
 
-    WorldActors.emplace_back(std::shared_ptr<redhand::Actor>(std::move(obj)));
+    WorldActors.emplace_back(obj);
     if (WorldActors.back() != nullptr) {
         WorldActors.back()->setScreenSize(windowWidth, windowHeight);
         return 0;
@@ -265,6 +265,18 @@ std::shared_ptr<redhand::game_object> redhand::complex_world::getObjectByName(st
     for (auto x : WorldObjects) {
         if (x->getName().compare(name) == 0) {
             return std::shared_ptr<redhand::game_object>(x);
+        }
+    }
+
+    return nullptr;
+}
+
+std::shared_ptr<redhand::Actor> redhand::complex_world::get(std::string name) {
+    std::shared_lock<std::shared_mutex> lock(WorldObjectsMutex);
+
+    for (auto x : WorldActors) {
+        if (x->getName().compare(name) == 0) {
+            return x;
         }
     }
 

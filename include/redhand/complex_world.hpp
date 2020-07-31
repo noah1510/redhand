@@ -105,7 +105,7 @@ namespace redhand {
          * @param the actor that will be added to the world
          * @return int < 0 is something went wrong
          */
-        virtual int add(redhand::Actor* obj);
+        virtual int add(std::shared_ptr<redhand::Actor> obj);
 
         /**
         * This function removes a shader from its world and delete the shader.
@@ -148,6 +148,13 @@ namespace redhand {
         * @return pointer to the object if everything worked, nullptr if no shader was found or something went wrong
         */
         virtual std::shared_ptr<game_object> getObjectByName(std::string name);
+
+        /**
+        * This function returns a pointer to the first Actor with the given name
+        * @param name the name of the wanted object 
+        * @return pointer to the object if everything worked, nullptr if no shader was found or something went wrong
+        */
+        virtual std::shared_ptr<Actor> get(std::string name);
 
         /**
         * This function executes a world tick and is called for each frame.
