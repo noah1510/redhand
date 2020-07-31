@@ -47,10 +47,6 @@ find_package(PkgConfig REQUIRED)
 pkg_search_module(GLIB REQUIRED glib-2.0)
 pkg_check_modules(VIPS vips-cpp REQUIRED)
 
-if (UNIX)
-    include_directories(/usr/include/c++/10 /usr/include/x86_64-linux-gnu/c++/10)
-endif()
-
 #Search for filesystem header
 include(CheckIncludeFileCXX)
 CHECK_INCLUDE_FILE_CXX("filesystem" HAVE_FILESYSTEM)

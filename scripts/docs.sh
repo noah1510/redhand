@@ -73,17 +73,21 @@ else
     exit 1
 fi
 
-git submodule update --init doc/m.css
-
-mkdir -p "doc/html"
-cd doc/m.css/documentation
-./doxygen.py --debug ../../conf.py
-if [ $? -eq 0 ]
+if [ $1 == "--deb" ]
 then
-    echo "Successfully installed dependencies"
+    doxygen
 else
-    echo "Could not install dependencies" >&2
-    exit 2
-fi
+    git submodule update --init doc/m.css
 
+    mkdir -p "doc/html"
+    cd doc/m.css/documentation
+    ./doxygen.py --debug ../../conf.py
+    if [ $? -eq 0 ]
+    then
+        echo "Successfully installed dependencies"
+    else
+        echo "Could not install dependencies" >&2
+        exit 2
+    fi
+fi
 exit 0

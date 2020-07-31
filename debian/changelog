@@ -1,3 +1,11 @@
+libredhand (0.0.13~rc4) groovy; urgency=medium
+
+  * improvements to texture and Actor
+
+  * fixed failing deb docs build
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Fri, 31 Jul 2020 12:49:46 +0200
+
 libredhand (0.0.13~rc3) groovy; urgency=medium
 
   * experimental Actor class

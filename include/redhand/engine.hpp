@@ -56,7 +56,7 @@ namespace redhand {
 
       public:
         ///The constructor for the engine which constructs the object
-        engine();
+        engine(char *arg);
 
         ///The destructor for the engine which cleans everything up
         ~engine();

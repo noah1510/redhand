@@ -10,7 +10,9 @@
 
 using namespace redhand;
 
-redhand::engine::engine() {
+redhand::engine::engine(char *arg) {
+    redhand::initImageLoader(arg);
+
     redhand::engine_config conf;
     setConfig(conf);
 }
@@ -23,6 +25,9 @@ redhand::engine::~engine() {
 
     //close the window + clean up
     glfwTerminate();
+
+    //terminate vips
+    vips_shutdown();
 }
 
 void redhand::engine::setConfig(redhand::engine_config conf) {
@@ -67,9 +72,6 @@ void redhand::engine::init() {
         errorCode = -2;
         return;
     }
-
-    //init image loading library
-    initImageLoader();
 
     //enable multisampling
     glEnable(GL_MULTISAMPLE);

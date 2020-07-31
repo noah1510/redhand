@@ -1,6 +1,7 @@
 .vscode
 !configurations/linux/.vscode
 .clangd
+.cache
 .vs
 CMakeCache.txt
 cmake_install.cmake
@@ -50,6 +51,7 @@ debian/*
 doc/html
 doc/def
 doc/man
+doc/xml
 !doc/markdown
 !logo
 

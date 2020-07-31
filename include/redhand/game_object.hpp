@@ -77,7 +77,7 @@ namespace redhand {
         std::shared_mutex mutex_object_properties;
 
         ///The scaling factor of the attached texture along the x and y axis.
-        glm::vec2 texture_scale;
+        glm::vec2 texture_scale = {1.0f, 1.0f};
         ///lock the texture_scale of the object
         std::shared_mutex mutex_texture_scale;
 

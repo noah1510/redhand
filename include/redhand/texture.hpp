@@ -27,7 +27,7 @@
 
 namespace redhand {
 
-    void initImageLoader();
+    void initImageLoader(char *str);
 
     /**
      * @brief This class is a simple 2 Dimensional texture.

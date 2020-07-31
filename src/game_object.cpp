@@ -229,7 +229,7 @@ void redhand::game_object::draw(redhand::drawing_event evt) {
     local_object_properties.attached_shader->use();
 
     //set the uniform variables
-    local_object_properties.attached_shader->setInt("textureMode", texture_mode);
+    local_object_properties.attached_shader->setInt("textureMode", local_texture_mode);
     local_object_properties.attached_shader->setFloat("colorAlpha", local_object_properties.alpha_value);
 
     //bind texture and draw background
@@ -492,7 +492,7 @@ std::unique_ptr<redhand::game_object> redhand::createRectangle(
     settings.attached_shader = shade;
     settings.attached_texture = tex;
     settings.gl_drawing_mode = DrawingMode;
-    settings.scale = {width,height};
+    settings.scale = {width, height};
     settings.name = name;
 
     settings.points_coordinates = {

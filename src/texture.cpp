@@ -3,8 +3,10 @@
 
 using namespace redhand;
 
-void redhand::initImageLoader() {
-    vips_init("");
+void redhand::initImageLoader(char *str) {
+    if (vips_init(str)) {
+        vips_error_exit(NULL);
+    }
 }
 
 void redhand::texture2D::initTexture2D() {
@@ -29,6 +31,7 @@ void redhand::texture2D::initTexture2D() {
 
         image_data.set("format", VIPS_FORMAT_UCHAR);
         image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
+        //image_data = image_data.case_image()
 
         image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
     }
@@ -89,7 +92,7 @@ redhand::texture2D::texture2D(std::string file_location, std::string texture_nam
     if (texture_properties.keep_image_data) {
         image_data = vips::VImage::new_from_file(
             texture_properties.file_location.string().c_str(),
-            vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));        
+            vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));
 
         image_data.set("format", VIPS_FORMAT_UCHAR);
         image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);

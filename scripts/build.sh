@@ -1,5 +1,29 @@
 #!/bin/bash
 
+find_compiler(){
+    # get cross-distro version of POSIX command
+    COMMAND=""
+    if command -v command 2>/dev/null; then
+        COMMAND="command -v"
+    elif type type 2>/dev/null; then
+        COMMAND="type"
+    fi
+
+    for comp in clang-12 clang-11 clang-10 clang-9 gcc-10 gcc-9 C:/Program Files/LLVM/bin/clang.exe; do
+        if $COMMAND "$comp" 2>/dev/null; then
+            export CC="$comp"
+            break;
+        fi
+    done
+
+    for comp in clang++-12 clang++-11 clang++-10 clang++-9 g++-10 g++-9 C:/Program Files/LLVM/bin/clang++.exe; do
+        if $COMMAND "$comp" 2>/dev/null; then
+            export CXX="$comp"
+            break;
+        fi
+    done
+}
+
 THREADS="3"
 LIBBUILDNAME="lib"
 SETUP="0"
@@ -100,9 +124,6 @@ then
     LIBRARY="libredhand.so"
     BUILDGLFW="0"
 
-    export CC="clang-10"
-    export CXX="clang++-10"
-
 elif [ "$OSTYPE" == "darwin"* ]
 then
     # Mac OSX
@@ -121,13 +142,6 @@ then
 
     BUILDGLFW="1"
 
-    if [ "$REDHAND_CI" == "1" ]
-    then
-        ls "C:/ProgramData/chocolatey/bin"
-        export CC="C:/Program Files/LLVM/bin/clang.exe"
-        export CXX="C:/Program Files/LLVM/bin/clang++.exe"
-    fi
-
 elif [ "$OSTYPE" == "msys" ]
 then
     echo "script running on windows"
@@ -142,6 +156,8 @@ else
     echo "Not a supported OS: $OSTYPE" >&2
     exit 1
 fi
+
+find_compiler
 
 echo "number of THREADS:$THREADS"
 echo "buildname:$LIBBUILDNAME"
