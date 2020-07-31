@@ -492,7 +492,7 @@ std::unique_ptr<redhand::game_object> redhand::createRectangle(
     settings.attached_shader = shade;
     settings.attached_texture = tex;
     settings.gl_drawing_mode = DrawingMode;
-    settings.scale = {width,height};
+    settings.scale = {width, height};
     settings.name = name;
 
     settings.points_coordinates = {
