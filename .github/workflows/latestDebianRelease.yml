@@ -3,7 +3,7 @@ name: create automatic debian release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   doxygen:

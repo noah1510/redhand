@@ -27,7 +27,7 @@ Package: libredhand
 Architecture: amd64
 Section: libs
 Multi-Arch: same
-Depends: libglfw3, libglm-dev, libvips-dev, ${misc:Depends}
+Depends: libglfw3, libglm-dev, libvips-dev, ${misc:Depends}, ${shlibs:Depends}
 Recommends: libredhand-doc
 Description: a small and easy to use game development library
 

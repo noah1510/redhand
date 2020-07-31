@@ -14,7 +14,8 @@
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 build:
-	bash scripts/docs.sh --deb
+	doxygen
+	. ./scripts/configure_compiler.sh
 	dh_testdir
 	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)"
 	dh_auto_build
