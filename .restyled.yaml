@@ -16,7 +16,7 @@ auto: false
 
 pull_requests: true
 
-comments: false
+comments: true
 
 statuses:
   differences: true
