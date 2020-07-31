@@ -13,11 +13,18 @@
 # package maintainers to append LDFLAGS
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
+#C_comp :=
+#C_comp := $(foreach comp,"clang-12" "clang-11" "clang-10" "clang-9" "gcc-10" "gcc-9",$(if command -v $(comp) 2>/dev/null,$(comp),))
+
+#CXX_comp :=
+#CXX_comp := $(foreach comp,"clang++-13 clang++-12" "clang++-11" "clang++-10" "clang++-9" "g++-10" "g++-9",$(if $(@sh command -v $$comp 2>/dev/null),$(@sh command -v $$comp),))
+
 build:
 	doxygen
-	. ./scripts/configure_compiler.sh
 	dh_testdir
-	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER="$(CC)" -DCMAKE_CXX_COMPILER="$(CXX)"
+	#dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER="$(word 1,$(C_comp))" -DCMAKE_CXX_COMPILER="$(word 1,$(CXX_comp))"
+	@eval ./scripts/configure_compiler.sh
+	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER="$(CC)" -DCMAKE_CXX_COMPILER="$(CXX_comp)"
 	dh_auto_build
 	dh_auto_test
 
