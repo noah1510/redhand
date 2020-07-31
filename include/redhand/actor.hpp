@@ -84,6 +84,13 @@ namespace redhand {
         void setPosition(glm::vec2 location) override;
 
         /**
+         * @brief Set the Name of the Actor
+         * 
+         * @param name THe name the actor should have
+         */
+        void setName(std::string name) override;
+
+        /**
           * @brief Set the alpha of this objects color
           * 
           * @param alpha value of this objects color
@@ -208,6 +215,13 @@ namespace redhand {
           * @return glm::vec2 The position in the world
           */
         glm::vec2 getPosition() override;
+
+        /**
+         * @brief Get the Name of the Actor
+         * 
+         * @return std::string the name of the actor
+         */
+        std::string_view getName();
 
         //bool isAtEdge() override;
 

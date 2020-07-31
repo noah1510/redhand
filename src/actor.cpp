@@ -57,6 +57,18 @@ redhand::Actor::Actor(redhand::texture2D *tex) : redhand::game_object() {
     this->setColorAlpha(1.0f);
 }
 
+void redhand::Actor::setName(std::string name) {
+    std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    object_properties.name = name;
+}
+
+std::string_view redhand::Actor::getName() {
+    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    return object_properties.name;
+}
+
 void redhand::Actor::onLoop(game_loop_event evt) {
     this->act(evt);
 }

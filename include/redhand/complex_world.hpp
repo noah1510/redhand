@@ -151,8 +151,8 @@ namespace redhand {
 
         /**
         * This function returns a pointer to the first Actor with the given name
-        * @param name the name of the wanted object 
-        * @return pointer to the object if everything worked, nullptr if no shader was found or something went wrong
+        * @param name the name of the wanted Actor 
+        * @return pointer to the Actor if everything worked, nullptr if no shader was found or something went wrong
         */
         virtual std::shared_ptr<Actor> get(std::string name);
 
