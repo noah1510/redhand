@@ -17,7 +17,7 @@ build:
 	doxygen
 	. ./scripts/configure_compiler.sh
 	dh_testdir
-	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)"
+	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER="$(echo CC)" -DCMAKE_CXX_COMPILER="$(echo CXX)"
 	dh_auto_build
 	dh_auto_test
 
