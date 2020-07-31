@@ -89,7 +89,7 @@
             </dt>
             <dd>The addObject function will add an object to the world.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a04865a5a49072ebf9663dc3708f83155" class="m-doc">add</a>(</span><span class="m-doc-wrap"><a href="classredhand_1_1_actor.html" class="m-doc">redhand::<wbr />Actor</a>* obj) -&gt; int <span class="m-label m-flat m-warning">virtual</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a84e5222eebbb99225b0eea728f6ddfb2" class="m-doc">add</a>(</span><span class="m-doc-wrap">std::shared_ptr&lt;<a href="classredhand_1_1_actor.html" class="m-doc">redhand::<wbr />Actor</a>&gt; obj) -&gt; int <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>add an actor to the world just by using +=</dd>
             <dt>
@@ -116,6 +116,10 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a975d51a2c10282b0324269b6c99d0634" class="m-doc">getObjectByName</a>(</span><span class="m-doc-wrap">std::string name) -&gt; std::shared_ptr&lt;<a href="classredhand_1_1game__object.html" class="m-doc">game_<wbr />object</a>&gt; <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>This function returns a pointer to the first object with the given name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae5e0e5023bdb24ac137c3d242d02af30" class="m-doc">get</a>(</span><span class="m-doc-wrap">std::string name) -&gt; std::shared_ptr&lt;<a href="classredhand_1_1_actor.html" class="m-doc">Actor</a>&gt; <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>This function returns a pointer to the first <a href="classredhand_1_1_actor.html" class="m-doc">Actor</a> with the given name.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">void <a href="#a6e1694305d9e80390fedd20446554a5f" class="m-doc">tick</a>(</span><span class="m-doc-wrap"><a href="classredhand_1_1game__loop__event.html" class="m-doc">redhand::<wbr />game_loop_event</a> evt) <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
@@ -173,9 +177,9 @@
             <p>The addObject function will add an object to the world.</p>
 <p>All added objects will be drawn on each world tick.</p>
           </div></section>
-          <section class="m-doc-details" id="a04865a5a49072ebf9663dc3708f83155"><div>
+          <section class="m-doc-details" id="a84e5222eebbb99225b0eea728f6ddfb2"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">int redhand::<wbr />complex_world::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a04865a5a49072ebf9663dc3708f83155" class="m-doc-self">add</a>(</span><span class="m-doc-wrap"><a href="classredhand_1_1_actor.html" class="m-doc">redhand::<wbr />Actor</a>* obj) <span class="m-label m-warning">virtual</span></span></span>
+              <span class="m-doc-wrap-bumper">int redhand::<wbr />complex_world::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a84e5222eebbb99225b0eea728f6ddfb2" class="m-doc-self">add</a>(</span><span class="m-doc-wrap">std::shared_ptr&lt;<a href="classredhand_1_1_actor.html" class="m-doc">redhand::<wbr />Actor</a>&gt; obj) <span class="m-label m-warning">virtual</span></span></span>
             </h3>
             <p>add an actor to the world just by using +=</p>
             <table class="m-table m-fullwidth m-flat">
@@ -280,6 +284,29 @@
               <span class="m-doc-wrap-bumper">std::shared_ptr&lt;<a href="classredhand_1_1game__object.html" class="m-doc">game_<wbr />object</a>&gt; redhand::<wbr />complex_world::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a975d51a2c10282b0324269b6c99d0634" class="m-doc-self">getObjectByName</a>(</span><span class="m-doc-wrap">std::string name) <span class="m-label m-warning">virtual</span></span></span>
             </h3>
             <p>This function returns a pointer to the first object with the given name.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">name</td>
+                  <td>the name of the wanted object</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>pointer to the object if everything worked, nullptr if no shader was found or something went wrong</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ae5e0e5023bdb24ac137c3d242d02af30"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::shared_ptr&lt;<a href="classredhand_1_1_actor.html" class="m-doc">Actor</a>&gt; redhand::<wbr />complex_world::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae5e0e5023bdb24ac137c3d242d02af30" class="m-doc-self">get</a>(</span><span class="m-doc-wrap">std::string name) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>This function returns a pointer to the first <a href="classredhand_1_1_actor.html" class="m-doc">Actor</a> with the given name.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
