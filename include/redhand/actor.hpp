@@ -14,9 +14,11 @@
 #include "redhand/event/drawing_event.hpp"
 #include "redhand/game_object.hpp"
 #include "redhand/texture.hpp"
+#include "redhand/types.hpp"
 #include <chrono>
 #include <filesystem>
 #include <glm/glm.hpp>
+#include <memory>
 #include <shared_mutex>
 
 namespace redhand{
@@ -143,7 +145,7 @@ namespace redhand{
              * 
              * @param img The image that the Actor will now own
              */
-            void setImage(redhand::texture2D* img);
+            void setImage(std::shared_ptr<redhand::texture2D> img);
 
             /**
              * @brief Set the Image of the Actor and automatically resizes accordingly
@@ -151,6 +153,13 @@ namespace redhand{
              * @param img The location of the image the actor will use now
              */
             void setImage(std::filesystem::path img);
+
+            /**
+             * @brief Set the Image of the Actor and automatically resizes accordingly
+             * 
+             * @param img The location of the image the actor will use now
+             */
+            void setImage(redhand::image_properties img);
 
             /**
              * @brief scale the actor by the given factor

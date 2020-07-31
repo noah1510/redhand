@@ -103,9 +103,9 @@ glm::vec2 redhand::Actor::getSize(){
 
 void redhand::Actor::act(redhand::game_loop_event){}
 
-void redhand::Actor::setImage(redhand::texture2D* img){
+void redhand::Actor::setImage(std::shared_ptr<redhand::texture2D> img){
     std::unique_lock<std::shared_mutex> lock(mutex_image);
-    if( img == image.get()){
+    if( img == image){
         return;
     }
     image.reset();
@@ -114,10 +114,12 @@ void redhand::Actor::setImage(redhand::texture2D* img){
         img = nullptr;
         std::cerr << "the given image had an error" << std::endl;
     }
-    image = std::shared_ptr<redhand::texture2D>(img);
+    image = img;
 
     std::unique_lock<std::shared_mutex> lock2(mutex_object_properties);
     object_properties.attached_texture = image;
+    lock2.unlock();
+
     if(image != nullptr){
         std::scoped_lock<std::shared_mutex> lock3 (mutex_texture_mode);
         texture_mode = 1;
@@ -127,7 +129,6 @@ void redhand::Actor::setImage(redhand::texture2D* img){
     }
 
     lock.unlock();
-    lock2.unlock();
 
     scaleActor();
 }
@@ -140,8 +141,11 @@ void redhand::Actor::scaleActor(float size){
 void redhand::Actor::setImage(std::filesystem::path img){
     redhand::image_properties prop;
     prop.file_location = img;
-    redhand::texture2D* tex = new redhand::texture2D(prop);
+    setImage(prop);
+}
 
+void redhand::Actor::setImage(redhand::image_properties img){
+    auto tex = std::make_shared<redhand::texture2D>(img);
     setImage(tex);
 }
 

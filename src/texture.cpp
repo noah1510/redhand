@@ -3,8 +3,10 @@
 
 using namespace redhand;
 
-void redhand::initImageLoader() {
-    vips_init("");
+void redhand::initImageLoader(char* str) {
+    if(vips_init(str)){
+        vips_error_exit( NULL ); 
+    }
 }
 
 void redhand::texture2D::initTexture2D() {
@@ -29,6 +31,7 @@ void redhand::texture2D::initTexture2D() {
 
         image_data.set("format", VIPS_FORMAT_UCHAR);
         image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
+        //image_data = image_data.case_image()
 
         image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
     }

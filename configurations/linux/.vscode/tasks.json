@@ -30,23 +30,26 @@
             "label": "build testgame",
             "command": "${workspaceFolder}/testgame/scripts/build.sh",
             "args": [
-                "--lib"
+                "--lib",
+                "--setup"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "group": "build"
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
         },
         {
             "type": "shell",
             "label": "clean and build testgame",
-            "command": "${workspaceFolder}/scripts/clean.sh",
+            "command": "${workspaceFolder}/testgame/scripts/build.sh",
             "args": [
-                "&&",
-                "${workspaceFolder}/scripts/setup.sh",
-                "&&",
-                "${workspaceFolder}/testgame/scripts/build.sh",
-                "--lib"
+                "--lib",
+                "--setup",
+                "--clean"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

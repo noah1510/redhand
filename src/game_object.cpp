@@ -229,7 +229,7 @@ void redhand::game_object::draw(redhand::drawing_event evt) {
     local_object_properties.attached_shader->use();
 
     //set the uniform variables
-    local_object_properties.attached_shader->setInt("textureMode", texture_mode);
+    local_object_properties.attached_shader->setInt("textureMode", local_texture_mode);
     local_object_properties.attached_shader->setFloat("colorAlpha", local_object_properties.alpha_value);
 
     //bind texture and draw background
