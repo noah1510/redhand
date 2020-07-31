@@ -51,6 +51,7 @@ debian/*
 doc/html
 doc/def
 doc/man
+doc/xml
 !doc/markdown
 !logo
 
