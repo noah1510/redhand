@@ -3,9 +3,9 @@
 
 using namespace redhand;
 
-void redhand::initImageLoader(char* str) {
-    if(vips_init(str)){
-        vips_error_exit( NULL ); 
+void redhand::initImageLoader(char *str) {
+    if (vips_init(str)) {
+        vips_error_exit(NULL);
     }
 }
 
@@ -92,7 +92,7 @@ redhand::texture2D::texture2D(std::string file_location, std::string texture_nam
     if (texture_properties.keep_image_data) {
         image_data = vips::VImage::new_from_file(
             texture_properties.file_location.string().c_str(),
-            vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));        
+            vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));
 
         image_data.set("format", VIPS_FORMAT_UCHAR);
         image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);

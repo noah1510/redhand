@@ -10,7 +10,7 @@
 
 using namespace redhand;
 
-redhand::engine::engine(char* arg) {
+redhand::engine::engine(char *arg) {
     redhand::initImageLoader(arg);
 
     redhand::engine_config conf;
