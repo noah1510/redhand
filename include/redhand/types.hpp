@@ -195,7 +195,8 @@ namespace redhand {
      * @brief This struct stores all the information needed to create a 2 dimensional image from a file.
      * 
      */
-    typedef struct {
+    class image_properties {
+      public:
         ///The name of the image
         std::string name = "texture";
 
@@ -227,7 +228,7 @@ namespace redhand {
         ///This allows for much less memory usage but before transforming the texture the image has to be copied from the gpu to the ram costing some time.
         bool keep_image_data = true;
 
-    } image_properties;
+    };
 
     /**
      * @brief These are the available opengl drawing modes 
@@ -241,7 +242,8 @@ namespace redhand {
     /**
      * @brief This struct specifies all the properties of a game_object.
      */
-    typedef struct {
+    class game_object_properties {
+      public:
         ///A vector containing all the points of the game_object, with each array being one point.
         std::vector<glm::vec2> points_coordinates = {{0.0f, 0.0f}, {1.0f, 0.0f}, {0.0f, 1.0f}};
         ///A vector specifiying which points (their index) form an triangle, with each array being a triangle.
@@ -276,13 +278,14 @@ namespace redhand {
         ///The position of the rotation axis in the 3D Space (only the angle and orientation matters)
         glm::vec3 rotation_axis = {0.0f,0.0f,1.0f};
 
-    } game_object_properties;
+    } ;
 
     /**
      * @brief This struct specifies all the properties of the game engine.
      */
-    typedef struct {
-        ///The newest version of OpenGL which may be used
+    class engine_config{
+      public:
+        //The newest version of OpenGL which may be used
         int OPENGL_VERSION_MAJOR = 3;
         ///The oldest version of OpenGL which may be used
         int OPENGL_VERSION_MINOR = 3;
@@ -303,6 +306,6 @@ namespace redhand {
         std::string title = redhand::REDHAND_HEADER_VERSION;
         ///the current redhand version (will be overwritten by the contructor)
         std::string redhand_version = redhand::REDHAND_HEADER_VERSION;
-    } engine_config;
+    };
 
 } // namespace redhand

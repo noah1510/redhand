@@ -1,4 +1,6 @@
+#include <mutex>
 #include <redhand/glad/glad.h>
+#include <shared_mutex>
 
 #include "redhand/shader.hpp"
 
@@ -8,14 +10,23 @@ using namespace redhand;
 #define FRAGMENT_SHADER GL_FRAGMENT_SHADER
 
 redhand::shader::~shader() {
-    auto lock = {
-        std::scoped_lock(mutex_camera),
-        std::scoped_lock(mutex_cameraVector),
-        std::scoped_lock(mutex_errord),
-        std::scoped_lock(mutex_initilized),
-        std::scoped_lock(mutex_projectionMatrix),
-        std::scoped_lock(mutex_shader_name),
-        std::scoped_lock(mutex_textureScale)};
+    std::scoped_lock<
+        std::shared_mutex,
+        std::shared_mutex,
+        std::shared_mutex,
+        std::shared_mutex,
+        std::shared_mutex,
+        std::shared_mutex,
+        std::shared_mutex
+    > lock (
+        mutex_camera,
+        mutex_cameraVector,
+        mutex_errord,
+        mutex_initilized,
+        mutex_projectionMatrix,
+        mutex_shader_name,
+        mutex_textureScale
+    );
 
     glDeleteProgram(ID);
 }
@@ -159,9 +170,7 @@ void redhand::shader::linkShader(unsigned int vertexShader, unsigned int fragmen
 }
 
 void redhand::shader::setCamera(float pos_x, float pos_y) {
-    auto lock = {
-        std::scoped_lock(mutex_cameraVector),
-        std::scoped_lock(mutex_camera)};
+    std::scoped_lock<std::shared_mutex,std::shared_mutex> lock (mutex_cameraVector,mutex_camera);
 
     cameraVector.x = -pos_x;
     cameraVector.y = -pos_y;
@@ -171,9 +180,7 @@ void redhand::shader::setCamera(float pos_x, float pos_y) {
 }
 
 void redhand::shader::moveCamera(float delta_pos_x, float delta_pos_y) {
-    auto lock = {
-        std::scoped_lock(mutex_cameraVector),
-        std::scoped_lock(mutex_camera)};
+    std::scoped_lock<std::shared_mutex,std::shared_mutex> lock (mutex_cameraVector,mutex_camera);
 
     cameraVector.x -= delta_pos_x;
     cameraVector.y -= delta_pos_y;
@@ -183,9 +190,7 @@ void redhand::shader::moveCamera(float delta_pos_x, float delta_pos_y) {
 }
 
 bool redhand::shader::hasErrored() {
-    auto lock = {
-        std::shared_lock(mutex_initilized),
-        std::shared_lock(mutex_errord)};
+    std::scoped_lock<std::shared_mutex,std::shared_mutex> lock (mutex_initilized,mutex_errord);
 
     return !initilized || errord;
 }
@@ -195,10 +200,7 @@ unsigned int shader::getID() {
 }
 
 void redhand::shader::use() {
-    auto lock = {
-        std::shared_lock(mutex_camera),
-        std::shared_lock(mutex_projectionMatrix),
-        std::shared_lock(mutex_textureScale)};
+    std::scoped_lock<std::shared_mutex,std::shared_mutex,std::shared_mutex> lock (mutex_camera,mutex_projectionMatrix,mutex_textureScale);
 
     glUseProgram(ID);
 
