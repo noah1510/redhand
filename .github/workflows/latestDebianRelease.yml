@@ -67,6 +67,8 @@ jobs:
     - name: create source package
       shell: powershell
       run: tar -cf deploy/source.tar.gz include/redhand/**  src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
+    - name: create source folder and copy files
+      run: mkdir upstream upstream/include upstream/include/redhand upstream/doc upstream/doc/markdown && cp -r src/ CMakeLists.txt README.md Doxyfile LICENSE debian/ upstream && cp -r include/redhand upstream/include && cp -r doc/markdown upstream/doc
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -82,7 +84,7 @@ jobs:
       env:
         REPO: self
         BRANCH: upstream
-        FOLDER: include/redhand/**  src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
+        FOLDER: upstream
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v1
       if: failure()
