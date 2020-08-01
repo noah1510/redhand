@@ -20,9 +20,9 @@ jobs:
         FOLDER: doc/html
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  pre-release:
-    name: "windows latest release"
-    runs-on: "windows-latest"
+  windows:
+    name: windows build and test latest release
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
       with: 
@@ -39,6 +39,8 @@ jobs:
     - name: build library
       shell: msys2 {0}
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
+    - name: build testgame
+      run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - name: compress header files
       run: 7z a -r deploy/headers.zip include/redhand/**
     - uses: "marvinpinto/action-automatic-releases@latest"
@@ -49,20 +51,27 @@ jobs:
         files: |
           deploy/libredhand.dll
           deploy/headers.zip
-  setup:
-    needs: pre-release
-    name: build and publish deb
-    runs-on: ubuntu-18.04
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: build-artifact-linux
+        path: .
+  ubuntu:
+    name: build, test and publish deb
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
       with: 
         lfs: false
-    - name: add required ppa
-      run: sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test && sudo add-apt-repository -y ppa:savoury1/build-tools && sudo add-apt-repository -y ppa:savoury1/backports && sudo apt update
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
       run:  bash scripts/setup.sh --ci
+    - name: build library
+      run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
+    - name: build testgame
+      run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
+     
     - name: install additional dependencies
       run: sudo apt install gpg debhelper dput openssl libdistro-info-perl dh-make graphviz
     - name: configure gpg key and environment
@@ -103,3 +112,8 @@ jobs:
       run: dput ppa:noasakurajin/libredhand ../*g1_source.changes
     - name: reset changelog
       run: git checkout -- debian/changelog
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: build-artifact-linux
+        path: .
