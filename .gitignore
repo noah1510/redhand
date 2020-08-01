@@ -39,6 +39,7 @@ debian/*
 !debian/copyright
 !debian/libredhand-dev.install
 !libredhand-doc.manpages
+!debian/patches
 *.deb
 *.ddeb
 *.changes
