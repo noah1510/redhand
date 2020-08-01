@@ -75,3 +75,4 @@ If you have implemented a new feature or bugfix just make a pull request and wai
 Please document your changes, this will mak it easier for everyone.
 
 Also feel free to propose updates/changes for the wiki to improve the overall documentation and allow newcomers to have more fun (because they don't have to guess what the functions and objects are doing).
+Note for potential developers: stgit is used to manage patches and please send pull-request to the dev-noa branch.
