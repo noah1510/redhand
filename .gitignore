@@ -40,6 +40,7 @@ debian/*
 !debian/libredhand-dev.install
 !libredhand-doc.manpages
 !debian/patches
+!debian/watch
 *.deb
 *.ddeb
 *.changes

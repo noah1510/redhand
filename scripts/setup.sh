@@ -112,8 +112,6 @@ then
       cp -r "configurations/linux/.vscode" "."
     fi
 
-    #export CC="C:/Program Files/LLVM/bin/clang.exe"
-    #export CXX="C:/Program Files/LLVM/bin/clang++.exe"
 elif [  "$OSTYPE" == "msys" ]
 then
     echo "script running on windows"
@@ -179,30 +177,6 @@ then
 
 fi
 
-if [ "$CI" == "0" ]
-then
-  #git lfs install
-  if [ $? -eq 0 ]
-  then
-      echo "Successfully initiated git-lfs"
-  else
-      echo "Could not initiate git-lfs" >&2
-      exit 2
-  fi
-
-  #git-lfs pull
-  if [ $? -eq 0 ]
-  then
-      echo "Successfully pulled git-lfs"
-  else
-      echo "Could not pulled git-lfs" >&2
-      exit 2
-  fi
-else
-  echo "running in ci mode"
-fi
-
-
 cd "dependencies/gladRepo"
 python3 -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
 if [ $? -eq 0 ]
@@ -243,34 +217,6 @@ mkdir -p "build"
 mkdir -p "lib"
 mkdir -p "build/$BUILDNAME"
 mkdir -p "deploy"
-
-#compiling glfw
-#if [ "$BUILDGLFW" == "1" ]
-#then
-#  mkdir -p "build/glfw"
-#  cd "build/glfw"
-#  cmake -G "Ninja" -DBUILD_SHARED_LIBS=ON  "../../dependencies/glfw"
-#  ninja -j"$THREADS"
-
-#  if [ $? -eq 0 ]
-#  then
-#    echo "Successfully compiled glfw"
-#  else
-#    echo "Could not compile glfw" >&2
-#    cd "../.."
-#    exit 2
-#  fi
-#  cd "../.."
-
-#  cp "build/glfw/src/$GLFWLIB" "lib"
-#  cp "build/glfw/src/$GLFWDEPLOY" "lib"
-
-#  cp "build/glfw/src/$GLFWLIB" "build/$BUILDNAME"
-
-#  cp "build/glfw/src/$GLFWLIB" "deploy"
-#  cp "build/glfw/src/$GLFWDEPLOY" "deploy"
-
-#fi
 
 #copy results
 cp -r "dependencies/glad/include" "."

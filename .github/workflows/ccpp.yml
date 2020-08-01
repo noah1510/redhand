@@ -33,7 +33,9 @@ jobs:
   build-windows:
     runs-on: windows-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
-    
+    defaults:
+      run:
+        shell: msys2 {0}
     steps:
     - uses: actions/checkout@v1
       with: 
@@ -42,16 +44,12 @@ jobs:
       with:
         update: true
     - name: install dependencies
-      shell: msys2 {0}
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
-      shell: msys2 {0}
       run:  bash scripts/setup.sh --ci
     - name: build library
-      shell: msys2 {0}
       run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
     - name: build testgame
-      shell: msys2 {0}
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - uses: actions/upload-artifact@v1
       if: failure()

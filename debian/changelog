@@ -1,30 +1,13 @@
-libredhand (0.0.13~rc6) groovy; urgency=medium
-
-  * experimental hitboxes
-
-  * automatic compiler selection 
-
- -- Noa Sakurajin <noasakurajin@web.de>  Sat, 01 Aug 2020 11:31:55 +0200
-
-libredhand (0.0.13~rc5) groovy; urgency=medium
-
-  * improvements to texture and Actor
-
-  * fixed failing deb docs build
-
- -- Noa Sakurajin <noasakurajin@web.de>  Fri, 31 Jul 2020 12:49:46 +0200
-
-libredhand (0.0.13~rc3) groovy; urgency=medium
+libredhand (0.1.0) groovy; urgency=medium
 
   * experimental Actor class
+  * experimental hitboxes
+  * improvements to texture2D and complex_world
+  * automatic compiler detection
+  * now using quilt format to handle patches
+  * changlog cleanup
 
- -- Noa Sakurajin <noasakurajin@web.de>  Thu, 23 Jul 2020 14:18:38 +0200
-
-libredhand (0.0.12.1) bionic; urgency=medium
-
-  * small package build fixes/improvements
-
- -- Noa Sakurajin <noasakurajin@web.de>  Wed, 01 Jul 2020 10:15:02 +0200
+ -- Noa Sakurajin <noasakurajin@web.de>  Sat, 01 Aug 2020 14:21:07 +0200
 
 libredhand (0.0.12) bionic; urgency=medium
 
@@ -71,36 +54,6 @@ libredhand (0.0.6) bionic; urgency=medium
   * finished refactoring of game_object
 
  -- Noa Sakurajin <noasakurajin@web.de>  Thu, 02 Apr 2020 15:23:55 +0200
-
-libredhand (0.0.2+5) bionic; urgency=medium
-
-  * small fixes to automatic build
-
- -- Noa Sakurajin <noasakurajin@web.de>  Tue, 10 Mar 2020 15:20:22 +0100
-
-libredhand (0.0.2+4) bionic; urgency=medium
-
-  * updated dependencies and scripts
-
- -- Noa Sakurajin <noasakurajin@web.de>  Thu, 05 Mar 2020 19:39:36 +0100
-
-libredhand (0.0.2+3) bionic; urgency=medium
-
-  * fixed man pages
-
- -- Noa Sakurajin <noasakurajin@web.de>  Thu, 05 Mar 2020 16:17:24 +0100
-
-libredhand (0.0.2+2) bionic; urgency=medium
-
-  * Adding debug symbol package
-
- -- Noa Sakurajin <noasakurajin@web.de>  Thu, 05 Mar 2020 12:55:13 +0100
-
-libredhand (0.0.2+1) bionic; urgency=medium
-
-  * Some more changes to make package work
-
- -- Noa Sakurajin <noasakurajin@web.de>  Thu, 05 Mar 2020 12:29:14 +0100
 
 libredhand (0.0.2) bionic; urgency=medium
 
