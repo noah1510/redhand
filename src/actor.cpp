@@ -249,3 +249,18 @@ void redhand::Actor::setRotaionAxis(glm::vec3 axis) {
 
     updateWorldTransformation();
 }
+
+std::vector<glm::vec2> redhand::Actor::getHitbox(){
+    auto pos = getPosition();
+    auto size = getSize();
+
+    std::vector<glm::vec2> ret = {pos, pos+glm::vec2{size.x,0},pos+size,pos+glm::vec2{0,size.y}};
+
+    std::shared_lock<std::shared_mutex> lock1(mutex_world_transformation);
+
+    for (unsigned int i=0;i<ret.size();i++){
+        ret.at(i) = world_transformation * glm::vec4( ret.at(i),0,0);
+    }
+
+    return ret;
+}

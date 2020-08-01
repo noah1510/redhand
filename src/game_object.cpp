@@ -409,6 +409,21 @@ std::string_view redhand::game_object::getName() {
     return object_properties.name;
 }
 
+std::vector<glm::vec2> redhand::game_object::getHitbox(){
+    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
+
+    std::vector<glm::vec2> ret = object_properties.points_coordinates;
+    lock.unlock();
+
+    std::shared_lock<std::shared_mutex> lock1(mutex_world_transformation);
+
+    for (unsigned int i=0;i<ret.size();i++){
+        ret.at(i) = world_transformation * glm::vec4( ret.at(i),0,0);
+    }
+
+    return ret;
+}
+
 std::unique_ptr<redhand::game_object> redhand::createCircle(
     glm::vec2 midpoint,
     float radius,
@@ -447,8 +462,8 @@ std::unique_ptr<redhand::game_object> redhand::createCircle(
     auto fut1 = std::async(std::launch::async, [&]() {
         for (unsigned int i = 1; i <= edges; i++) {
             float dx, dy;
-            dx = cosDeg(i * 360 / edges) / 2.0f + 0.5f;
-            dy = sinDeg(i * 360 / edges) / 2.0f + 0.5f;
+            dx = cosDeg(i * 360.0f / edges) / 2.0f + 0.5f;
+            dy = sinDeg(i * 360.0f / edges) / 2.0f + 0.5f;
 
             settings.points_coordinates.at(i) = {dx, dy};
             settings.point_colors.push_back(outerColor);

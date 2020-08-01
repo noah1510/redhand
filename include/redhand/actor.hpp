@@ -267,5 +267,12 @@ namespace redhand {
           * @param point the point the actor should look at
           */
         void turnTowards(glm::vec2 point);
+
+        /**
+         * @brief Get the Hitbox of the game_object.
+         * 
+         * @return std::vector<glm::vec2> the hitbox of the game_object.
+         */
+        virtual std::vector<glm::vec2> getHitbox() override;
     };
 } // namespace redhand

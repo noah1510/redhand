@@ -204,6 +204,13 @@ namespace redhand {
         */
         glm::vec2 getScale();
 
+        /**
+         * @brief Get the Hitbox of the game_object.
+         * 
+         * @return std::vector<glm::vec2> the hitbox of the game_object.
+         */
+        virtual std::vector<glm::vec2> getHitbox();
+
         //bool isAtEdge();
     };
 
