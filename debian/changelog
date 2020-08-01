@@ -1,0 +1,68 @@
+libredhand (0.1.0) groovy; urgency=medium
+
+  * experimental Actor class
+  * experimental hitboxes
+  * improvements to texture2D and complex_world
+  * automatic compiler detection
+  * now using quilt format to handle patches
+  * changlog cleanup
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Sat, 01 Aug 2020 14:21:07 +0200
+
+libredhand (0.0.12) bionic; urgency=medium
+
+  * finishing event system (for now)
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Tue, 30 Jun 2020 16:07:20 +0200
+
+libredhand (0.0.11) bionic; urgency=medium
+
+  * started implementation of event based function model
+
+  * switched from stb to vips
+
+  * building with gcc > 9
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Wed, 10 Jun 2020 14:02:31 +0200
+
+libredhand (0.0.10) bionic; urgency=medium
+
+  * reworked textures
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Thu, 30 Apr 2020 16:07:24 +0200
+
+libredhand (0.0.9) bionic; urgency=medium
+
+  * Updated copyright and minor fixes
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Sat, 25 Apr 2020 10:08:07 +0200
+
+libredhand (0.0.8) bionic; urgency=medium
+
+  * added missing khrplatform.h and glad.h to package (redhand/glad/gald.h to avoid possible conflicts)
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Fri, 24 Apr 2020 16:16:48 +0200
+
+libredhand (0.0.7) bionic; urgency=medium
+
+  * updated library version variable
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Tue, 21 Apr 2020 15:27:28 +0200
+
+libredhand (0.0.6) bionic; urgency=medium
+
+  * finished refactoring of game_object
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Thu, 02 Apr 2020 15:23:55 +0200
+
+libredhand (0.0.2) bionic; urgency=medium
+
+  * Fixing package creation.
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Wed, 04 Mar 2020 20:25:48 +0100
+
+libredhand (0.0.1) bionic; urgency=medium
+
+  * Marking package for bionic
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Mon, 02 Mar 2020 18:07:34 +0100

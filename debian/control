@@ -1,0 +1,62 @@
+Source: libredhand
+Priority: optional
+Maintainer: Noa Sakurajin <noasakurajin@web.de>
+Build-Depends: 
+    debhelper, 
+    dh-make, 
+    cmake (>= 3.16),  
+    clang-12 | clang-11 | clang-10 | clang-9,
+    libclang-12-dev | libclang-11-dev | libclang-10-dev | libclang-9-dev,
+    fakeroot, 
+    libglfw3-dev, 
+    xorg-dev,
+    libglm-dev, 
+    python3, 
+    git, 
+    libgl1-mesa-dev, 
+    doxygen, 
+    graphviz,
+    libvips-dev
+Standards-Version: 4.1.2
+Section: libs
+#Homepage: https://www.patreon.com/noasakurajin
+Vcs-Git: https://github.com/noah1510/redhand.git
+Vcs-Browser: https://github.com/noah1510/redhand.git
+
+Package: libredhand
+Architecture: amd64
+Section: libs
+Multi-Arch: same
+Depends: libglfw3, libglm-dev, libvips-dev, ${misc:Depends}, ${shlibs:Depends}
+Recommends: libredhand-doc
+Description: a small and easy to use game development library
+
+Package: libredhand-dev
+Architecture: amd64
+Section: libs
+Depends: libredhand (= ${binary:Version}), ${misc:Depends}, libglfw3-dev, libgl1-mesa-dev, libvips-dev
+Suggests: libredhand-dbg
+Recommends: libredhand-doc
+Multi-Arch: same
+Description: libredhand: detached development headers
+ This package contains the detached development headers for the libredhand
+
+
+Package: libredhand-dbg
+Architecture: amd64
+Section: debug
+Depends: libredhand-dev (= ${binary:Version}), ${misc:Depends}
+Recommends: libredhand-doc
+Multi-Arch: same
+Description: libredhand: detached debug symbold
+ This package contains the detached debug symbols for the libredhand
+
+
+Package: libredhand-doc
+Architecture: amd64
+Section: debug
+Priority: optional
+Multi-Arch: same
+Depends: libredhand (= ${binary:Version}), ${misc:Depends}, man
+Description: libredhand: detached documentations
+ This package contains the detached documentation for the libredhand.
