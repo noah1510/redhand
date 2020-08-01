@@ -1,3 +1,11 @@
+libredhand (0.0.13~rc6) groovy; urgency=medium
+
+  * experimental hitboxes
+
+  * automatic compiler selection 
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Sat, 01 Aug 2020 11:31:55 +0200
+
 libredhand (0.0.13~rc5) groovy; urgency=medium
 
   * improvements to texture and Actor

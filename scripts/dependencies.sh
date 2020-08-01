@@ -23,10 +23,10 @@ then
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil python-dev"
     QT4DEPS="libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4"
 
-    sudo apt update
+    sudo apt-get update
     if [ "$CI" == "1" ]
     then
-        sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS --yes
+        sudo apt-get install $DOCDEPS $GLFWDEPS $REDHANDDEPS --yes
         if [ $? -eq 0 ]
         then
         echo "Successfully installed dependencies"
@@ -35,7 +35,7 @@ then
         exit 2
         fi
     else
-        sudo apt install $DOCDEPS $GLFWDEPS $REDHANDDEPS $ADDITIONALDEPS --yes
+        sudo apt-get install $DOCDEPS $GLFWDEPS $REDHANDDEPS $ADDITIONALDEPS --yes
         if [ $? -eq 0 ]
         then
         echo "Successfully installed dependencies"

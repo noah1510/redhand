@@ -84,33 +84,33 @@ jobs:
     - name: update bionic release version
       run: |
         MESSAGE="automatic bionic build"
-        dch --distribution bionic -l+git$(date +%Y.%m%d.%H%M%S)~b $MESSAGE
+        dch --distribution bionic -l+git$(date +%Y.%m%d.%H%M%S)~18.04. $MESSAGE
     - name: build bionic package
       run: debuild -S -sa
     - name: publish bionic package
-      run: dput ppa:noasakurajin/libredhand ../*b1_source.changes
+      run: dput ppa:noasakurajin/libredhand ../*18.04.1_source.changes
     - name: reset changelog
       run: git checkout -- debian/changelog
 
     - name: update focal release version
       run: |
         MESSAGE="automatic focal build"
-        dch --distribution focal -l+git$(date +%Y.%m%d.%H%M%S)~f $MESSAGE
+        dch --distribution focal -l+git$(date +%Y.%m%d.%H%M%S)~20.04. $MESSAGE
     - name: build focal package
       run: debuild -S -sa
     - name: publish focal package
-      run: dput ppa:noasakurajin/libredhand ../*f1_source.changes
+      run: dput ppa:noasakurajin/libredhand ../*20.04.1_source.changes
     - name: reset changelog
       run: git checkout -- debian/changelog
 
     - name: update groovy release version
       run: |
         MESSAGE="automatic groovy build"
-        dch --distribution groovy -l+git$(date +%Y.%m%d.%H%M%S)~g $MESSAGE
+        dch --distribution groovy -l+git$(date +%Y.%m%d.%H%M%S)~20.10. $MESSAGE
     - name: build groovy package
       run: debuild -S -sa
     - name: publish groovy package
-      run: dput ppa:noasakurajin/libredhand ../*g1_source.changes
+      run: dput ppa:noasakurajin/libredhand ../*20.10.1_source.changes
     - name: reset changelog
       run: git checkout -- debian/changelog
     - uses: actions/upload-artifact@v1
