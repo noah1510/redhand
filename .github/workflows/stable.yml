@@ -40,6 +40,7 @@ jobs:
       shell: msys2 {0}
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
+      shell: msys2 {0}
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - name: compress header files
       run: 7z a -r deploy/headers.zip include/redhand/**

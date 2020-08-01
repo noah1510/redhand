@@ -39,6 +39,7 @@ jobs:
       shell: msys2 {0}
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
+      shell: msys2 {0}
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - name: compress header files
       run: 7z a -r deploy/headers.zip include/redhand/**
@@ -71,7 +72,7 @@ jobs:
       run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
     - name: build testgame
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
-      
+
     - name: install additional dependencies
       run: sudo apt install gpg debhelper dput openssl libdistro-info-perl dh-make graphviz
     - name: configure gpg key and environment
