@@ -77,6 +77,13 @@ jobs:
           deploy/libredhand.dll
           deploy/headers.zip
           deploy/source.tar.gz
+    - name: Deploy
+      uses: s0/git-publish-subdir-action@master
+      env:
+        REPO: self
+        BRANCH: upstream
+        FOLDER: include/redhand/**  src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
