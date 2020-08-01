@@ -1,6 +1,0 @@
-<map id="redhand::engine::init" name="redhand::engine::init">
-<area shape="rect" id="node2" href="$namespaceredhand.html#ab95b24b0e20cce1e97f173eb74d8d2a8" title="This function will be called every time the window size is changed. " alt="" coords="205,5,347,47"/>
-<area shape="rect" id="node3" href="$classredhand_1_1input__system.html#a8cea2fa63bcb11f0059250c7f54d2c9a" title="redhand::input_system\l::getInstance" alt="" coords="199,71,353,112"/>
-<area shape="rect" id="node4" href="$namespaceredhand.html#af2e18f1e9f9c20dac61dd83f92798ba3" title="redhand::initImageLoader" alt="" coords="192,137,360,163"/>
-<area shape="rect" id="node5" href="$classredhand_1_1input__system.html#a66493981098d2d6c6a0c4bb735886319" title="redhand::input_system\l::registerEngine" alt="" coords="199,188,353,229"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="redhand::shader::createShaderFromCode" name="redhand::shader::createShaderFromCode">
-<area shape="rect" id="node2" href="$classredhand_1_1shader.html#a84c36b746cac66990d0c36fcb78a7d63" title="This function compiles a given shader source code and returns the id of the compiled shader or 0 if t..." alt="" coords="261,5,429,47"/>
-<area shape="rect" id="node5" href="$classredhand_1_1shader.html#a9d8b3435844e25e5c723e596c9a00801" title="This function links a vertex and fragment shader and if no error happened it will set initilized to t..." alt="" coords="253,71,437,98"/>
-<area shape="rect" id="node3" href="$classredhand_1_1shader.html#a0349760c18df5c891fae3114bf671f88" title="This constructor creates a shader with the default vector and fragment shaders named &quot;default&quot;..." alt="" coords="485,42,648,69"/>
-<area shape="rect" id="node4" href="$classredhand_1_1shader.html#a365dacdd2bfc281b2da897e3ef03538b" title="Initilizes the shader object with the default shader. " alt="" coords="696,89,897,131"/>
-</map>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>include/redhand/engine.hpp file | libredhand A small easy to use game development library</title>
+  <title>redhand::image_properties class | libredhand A small easy to use game development library</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="redhand.svg" type="image/svg+xml" />
@@ -44,37 +44,75 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a>/</span><span class="m-breadcrumb"><a href="dir_2bdcf419000696365f47c311814bfb78.html">redhand</a>/</span>engine.hpp <span class="m-thin">file</span>
+          <span class="m-breadcrumb"><a href="namespaceredhand.html">redhand</a>::<wbr/></span>image_properties <span class="m-thin">class</span>
+          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="types_8hpp.html">&lt;include/redhand/types.hpp&gt;</a></div>
         </h1>
-        <p>Class engine.</p>
+        <p>This struct stores all the information needed to create a 2 dimensional image from a file.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#namespaces">Namespaces</a></li>
-                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </div>
-<aside class="m-note m-default"><h4>Author</h4><p>noasakurajin (<a href="mailto:noasakurajin@web.de">noasakurajin@web.de</a>)</p></aside><aside class="m-note m-default"><h4>Version</h4><p>0.13</p></aside><aside class="m-note m-default"><h4>Date</h4><p>2020-07-23</p></aside><aside class="m-note m-default"><h4>Copyright</h4><p>Copyright (c) 2020</p></aside><aside class="m-note m-default"><h4>License: This file is licensed under the LGPL v3 license.</h4></aside>
-        <section id="namespaces">
-          <h2><a href="#namespaces">Namespaces</a></h2>
+        <section id="pub-attribs">
+          <h2><a href="#pub-attribs">Public variables</a></h2>
           <dl class="m-doc">
-            <dt>namespace <a href="namespaceredhand.html" class="m-doc">redhand</a></dt>
-            <dd>The Redhand library.</dd>
+            <dt id="ae70c7567c43278cabde37707a2baba5b">
+              std::string <a href="#ae70c7567c43278cabde37707a2baba5b" class="m-doc-self">name</a>
+            </dt>
+            <dd>The name of the image.</dd>
+            <dt id="af77b7d8e66b83448492840e0a145193b">
+              std::filesystem::path <a href="#af77b7d8e66b83448492840e0a145193b" class="m-doc-self">file_location</a>
+            </dt>
+            <dd>The location of the image file.</dd>
+            <dt id="a77df7223296cfbf24160c8767dc2cb4d">
+              int <a href="#a77df7223296cfbf24160c8767dc2cb4d" class="m-doc-self">wrap_S</a>
+            </dt>
+            <dd>The wrap mode in x direction.</dd>
+            <dt id="a9518f1e1176c8a220c593a6fc1f7ebb1">
+              int <a href="#a9518f1e1176c8a220c593a6fc1f7ebb1" class="m-doc-self">wrap_T</a>
+            </dt>
+            <dd>The wrap mode in y direction.</dd>
+            <dt id="add42eb1ffc0c82977e345423fc888c73">
+              int <a href="#add42eb1ffc0c82977e345423fc888c73" class="m-doc-self">texture_min_filter</a>
+            </dt>
+            <dd>The scaling type when downscaling the image.</dd>
+            <dt id="a12c1ab36d5a8144c0690b18ced962afc">
+              int <a href="#a12c1ab36d5a8144c0690b18ced962afc" class="m-doc-self">texture_max_filter</a>
+            </dt>
+            <dd>The scaling type when upscaling the image.</dd>
+            <dt id="a4c3559e2219043af1698e1f68511ad79">
+              int <a href="#a4c3559e2219043af1698e1f68511ad79" class="m-doc-self">data_type</a>
+            </dt>
+            <dd>The data type of the image.</dd>
+            <dt id="a40d3c3507afce7eac0e863ee1952cb9c">
+              bool <a href="#a40d3c3507afce7eac0e863ee1952cb9c" class="m-doc-self">create_mipmap</a>
+            </dt>
+            <dd>True if the program should create mipmaps.</dd>
+            <dt id="a3b57b6a7e96917c31b51fa995a6e2fb6">
+              int <a href="#a3b57b6a7e96917c31b51fa995a6e2fb6" class="m-doc-self">internal_data_type</a>
+            </dt>
+            <dd>The internal data type that should be used.</dd>
+            <dt>
+              bool <a href="#a7d4f7854f71798708c369988cc21d601" class="m-doc">keep_image_data</a>
+            </dt>
+            <dd>If flase image_data will always be a nullptr.</dd>
           </dl>
         </section>
-        <section id="nested-classes">
-          <h2><a href="#nested-classes">Classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              class <a href="classredhand_1_1engine.html" class="m-doc">redhand::engine</a>
-            </dt>
-            <dd>This class basically handles all the setup need for games to work.</dd>
-          </dl>
+        <section>
+          <h2>Variable documentation</h2>
+          <section class="m-doc-details" id="a7d4f7854f71798708c369988cc21d601"><div>
+            <h3>
+              bool redhand::<wbr />image_properties::<wbr /><a href="#a7d4f7854f71798708c369988cc21d601" class="m-doc-self">keep_image_data</a>
+            </h3>
+            <p>If flase image_data will always be a nullptr.</p>
+<p>This allows for much less memory usage but before transforming the texture the image has to be copied from the gpu to the ram costing some time.</p>
+          </div></section>
         </section>
       </div>
     </div>

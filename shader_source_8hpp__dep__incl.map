@@ -1,8 +1,0 @@
-<map id="include/redhand/shaderSource.hpp" name="include/redhand/shaderSource.hpp">
-<area shape="rect" id="node2" href="$shader_8hpp.html" title="include/redhand/shader.hpp" alt="" coords="298,80,479,107"/>
-<area shape="rect" id="node3" href="$complex__world_8cpp.html" title="src/complex_world.cpp" alt="" coords="5,155,161,181"/>
-<area shape="rect" id="node4" href="$engine_8cpp.html" title="src/engine.cpp" alt="" coords="186,155,293,181"/>
-<area shape="rect" id="node5" href="$game__object_8cpp.html" title="src/game_object.cpp" alt="" coords="317,155,460,181"/>
-<area shape="rect" id="node6" href="$shader_8cpp.html" title="src/shader.cpp" alt="" coords="484,155,592,181"/>
-<area shape="rect" id="node7" href="$all_8hpp.html" title="Include this header to include all redhand headers. " alt="" coords="617,155,771,181"/>
-</map>

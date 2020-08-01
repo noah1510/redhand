@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>include/redhand/engine.hpp file | libredhand A small easy to use game development library</title>
+  <title>redhand::engine_config class | libredhand A small easy to use game development library</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="redhand.svg" type="image/svg+xml" />
@@ -44,37 +44,71 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a>/</span><span class="m-breadcrumb"><a href="dir_2bdcf419000696365f47c311814bfb78.html">redhand</a>/</span>engine.hpp <span class="m-thin">file</span>
+          <span class="m-breadcrumb"><a href="namespaceredhand.html">redhand</a>::<wbr/></span>engine_config <span class="m-thin">class</span>
+          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="types_8hpp.html">&lt;include/redhand/types.hpp&gt;</a></div>
         </h1>
-        <p>Class engine.</p>
+        <p>This struct specifies all the properties of the game engine.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#namespaces">Namespaces</a></li>
-                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </div>
-<aside class="m-note m-default"><h4>Author</h4><p>noasakurajin (<a href="mailto:noasakurajin@web.de">noasakurajin@web.de</a>)</p></aside><aside class="m-note m-default"><h4>Version</h4><p>0.13</p></aside><aside class="m-note m-default"><h4>Date</h4><p>2020-07-23</p></aside><aside class="m-note m-default"><h4>Copyright</h4><p>Copyright (c) 2020</p></aside><aside class="m-note m-default"><h4>License: This file is licensed under the LGPL v3 license.</h4></aside>
-        <section id="namespaces">
-          <h2><a href="#namespaces">Namespaces</a></h2>
+        <section id="pub-attribs">
+          <h2><a href="#pub-attribs">Public variables</a></h2>
           <dl class="m-doc">
-            <dt>namespace <a href="namespaceredhand.html" class="m-doc">redhand</a></dt>
-            <dd>The Redhand library.</dd>
+            <dt id="a1cce428ac7eb5d9fb4ddb014ea3e7c2d">
+              int <a href="#a1cce428ac7eb5d9fb4ddb014ea3e7c2d" class="m-doc-self">OPENGL_VERSION_MINOR</a>
+            </dt>
+            <dd>The oldest version of OpenGL which may be used.</dd>
+            <dt id="a6131e94eb3c1df3796946740ead5de87">
+              int <a href="#a6131e94eb3c1df3796946740ead5de87" class="m-doc-self">OPENGL_PROFILE</a>
+            </dt>
+            <dd>The profile OpenGL should run in (should be <a href="namespaceredhand.html#a9d97421fe7a319c9f5ff8a99a2d0d103" class="m-doc">redhand::<wbr />OPENGL_CORE_PROFILE</a> (0x00032001) )</dd>
+            <dt>
+              int <a href="#a0e9435c59f4be9a1ee6864e54222fc5e" class="m-doc">SAMPLES</a>
+            </dt>
+            <dd>Specifies the desired number of samples to use for multisampling.</dd>
+            <dt id="ab16e48e0e83a873101f62a23d9cd35ee">
+              bool <a href="#ab16e48e0e83a873101f62a23d9cd35ee" class="m-doc-self">RESIZABLE</a>
+            </dt>
+            <dd>true if window should be resizable false if not (will be ignored in fullscreen or not decorated)</dd>
+            <dt id="a3926fc84b50a14b3f4dd8fd59906595b">
+              int <a href="#a3926fc84b50a14b3f4dd8fd59906595b" class="m-doc-self">OPENGL_FORWARD_COMPAT</a>
+            </dt>
+            <dd>specifies whether the OpenGL context should be forward-compatible, i.e. one where all functionality deprecated in the requested version of OpenGL is removed.</dd>
+            <dt id="a05a72f25aa72160f4d1d59502fd545b6">
+              unsigned int <a href="#a05a72f25aa72160f4d1d59502fd545b6" class="m-doc-self">window_width</a>
+            </dt>
+            <dd>the width of the window</dd>
+            <dt id="a83e07ee8b9c3eca651fed31f5bfa691d">
+              unsigned int <a href="#a83e07ee8b9c3eca651fed31f5bfa691d" class="m-doc-self">window_height</a>
+            </dt>
+            <dd>the heigth of the window</dd>
+            <dt id="a7cd1bd487356960274723cfd8dcc7bf9">
+              std::string <a href="#a7cd1bd487356960274723cfd8dcc7bf9" class="m-doc-self">title</a>
+            </dt>
+            <dd>the window title</dd>
+            <dt id="aadea1b8ec68b2e6a0677fd6c6463ba8c">
+              std::string <a href="#aadea1b8ec68b2e6a0677fd6c6463ba8c" class="m-doc-self">redhand_version</a>
+            </dt>
+            <dd>the current redhand version (will be overwritten by the contructor)</dd>
           </dl>
         </section>
-        <section id="nested-classes">
-          <h2><a href="#nested-classes">Classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              class <a href="classredhand_1_1engine.html" class="m-doc">redhand::engine</a>
-            </dt>
-            <dd>This class basically handles all the setup need for games to work.</dd>
-          </dl>
+        <section>
+          <h2>Variable documentation</h2>
+          <section class="m-doc-details" id="a0e9435c59f4be9a1ee6864e54222fc5e"><div>
+            <h3>
+              int redhand::<wbr />engine_config::<wbr /><a href="#a0e9435c59f4be9a1ee6864e54222fc5e" class="m-doc-self">SAMPLES</a>
+            </h3>
+            <p>Specifies the desired number of samples to use for multisampling.</p>
+<p>Zero disables multisampling. A value of (<a href="namespaceredhand.html#a72ba2fe45b898f5108b553ca4a72ed59" class="m-doc">redhand::<wbr />DONT_CARE</a> (-1) ) means the application has no preference.</p>
+          </div></section>
         </section>
       </div>
     </div>
