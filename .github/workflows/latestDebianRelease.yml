@@ -35,7 +35,6 @@ jobs:
     - name: build testgame
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - name: create source package
-      shell: powershell
       run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
     - uses: actions/upload-artifact@v2
       with:
@@ -72,7 +71,7 @@ jobs:
       shell: powershell
       run: 7z a -r deploy/headers.zip include/redhand/**
     - name: create source folder and copy files
-      run: mkdir upstream upstream/include upstream/include/redhand upstream/doc upstream/doc/markdown && cp -r src/ CMakeLists.txt README.md Doxyfile LICENSE scripts/ debian/ upstream && cp -r include/redhand upstream/include && cp -r doc/markdown upstream/doc
+      run: mkdir upstream upstream/include upstream/include/redhand upstream/doc upstream/doc/markdown upstream/.github upstream/.github/workflows && cp -r src/ CMakeLists.txt README.md Doxyfile LICENSE scripts/ debian/ upstream && cp -r include/redhand upstream/include && cp -r doc/markdown upstream/doc && cp -r .github/workflows/stable.yml upstream/.github/workflows/
     - name: Download a single artifact
       uses: actions/download-artifact@v2
       with:

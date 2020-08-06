@@ -26,16 +26,7 @@ C_comp := $(foreach comp,$(C_comps),$(if $(shell ${WHICH} $(comp) 2>${DEVNUL} ),
 CXX_comp := $(foreach comp,$(CXX_comps),$(if $(shell ${WHICH} $(comp) 2>${DEVNUL} ),$(comp),))
 
 build:
-	rm -rf doc/man doc/html doc/def
 	doxygen
-	rm -rf dependencies && git clone https://github.com/Dav1dde/glad.git dependencies/gladRepo
-	cd dependencies/gladRepo && python3 -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
-	cp -r "dependencies/glad/include" "."
-	mkdir -p "include/redhand/glad"
-	mkdir -p "include/redhand/KHR"
-	cp -r "dependencies/glad/include/glad/glad.h" "include/redhand/glad"
-	cp -r "dependencies/glad/include/KHR/khrplatform.h" "include/redhand/KHR"
-	cp -r "dependencies/glad/src/glad.c" "src"
 	dh_testdir
 	dh_auto_configure -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER="$(word 1,$(C_comp))" -DCMAKE_CXX_COMPILER="$(word 1,$(CXX_comp))"
 	dh_auto_build
