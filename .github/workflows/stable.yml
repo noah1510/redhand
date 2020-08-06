@@ -37,10 +37,10 @@ jobs:
     - name: create source package
       shell: powershell
       run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v2
       with:
-        name: source-package
-        path: .
+        name: source-package        
+        path: deploy/source.tar.gz
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
@@ -72,7 +72,7 @@ jobs:
       shell: powershell
       run: 7z a -r deploy/headers.zip include/redhand/**
     - name: Download a single artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/download-artifact@v2
       with:
         name: source-package
         path: .
