@@ -6,19 +6,6 @@ on:
       - "v*"
 
 jobs:
-  doxygen:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: generate docs
-      run: ./scripts/docs.sh --init
-    - name: Deploy
-      uses: s0/git-publish-subdir-action@master
-      env:
-        REPO: self
-        BRANCH: gh-pages
-        FOLDER: doc/html
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   ubuntu:
     name: build, test and publish deb-source
     runs-on: ubuntu-20.04
@@ -29,7 +16,7 @@ jobs:
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
-      run:  bash scripts/setup.sh --ci --deb
+      run:  bash scripts/setup.sh --ci
     - name: build library
       run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
     - name: build testgame
@@ -62,7 +49,7 @@ jobs:
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
-      run:  bash scripts/setup.sh --deb --ci
+      run:  bash scripts/setup.sh --ci
     - name: build library
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: build testgame
@@ -89,34 +76,3 @@ jobs:
       with:
         name: build-artifact-windows
         path: .
-  package-test:
-    name: download source and build pacakge
-    needs: windows
-    runs-on: ubuntu-20.04
-    steps:
-      - name: install devscripts
-        run: sudo apt install devscripts
-      - name: create and install# build dependencies
-        run: sudo mk-build-deps -i -r && rm -rf libredhand-build-deps*
-      - name: download package
-        run: uscan -vv -dd
-      - name: build package
-        run: debuild
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: build-artifact-package
-          path: .
-  push-stable:
-    name: push changes to stable branch
-    needs: package-test
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Deploy
-        uses: s0/git-publish-subdir-action@master
-        env:
-          REPO: self
-          BRANCH: stable
-          FOLDER: .
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
