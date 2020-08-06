@@ -2,7 +2,7 @@
 <h1 align="center"> <img src="https://github.com/noah1510/redhand/blob/dev-noa/logo/redhand.svg" alt="logo" height="40pt" /> Welcome to RedHand  </h1>
 
 <h2 align="center">
-<a href="https://github.com/noah1510/redhand/blob/master/License"><img src="https://img.shields.io/github/license/noah1510/redhand.svg" alt="GitHub license" /></a>
+<a href="https://github.com/noah1510/redhand/blob/main/License"><img src="https://img.shields.io/github/license/noah1510/redhand.svg" alt="GitHub license" /></a>
 <img src="https://github.com/noah1510/redhand/workflows/CI/badge.svg" alt="build status" />
 <a href="https://frontend.code-inspector.com/project/5322/dashboard"><img src="https://www.code-inspector.com/project/5322/score/svg" alt="code quality" /></a>
 <a href="https://matrix.to/#/+redhand:tchncs.de"><img src="https://matrix.to/img/matrix-badge.svg" alt="Matrix" /></a>
@@ -23,19 +23,22 @@ You can find all the documentation [here](https://noah1510.github.io/redhand/).
 
 The code is licensed under the LGPL-3.0 License.
 All the other stuff, like Textures, Images and Sounds are Licensed under CC-0.
-You can find the full information [here](https://github.com/noah1510/redhand/blob/master/debian/copyright).
+You can find the full information [here](https://github.com/noah1510/redhand/blob/main/debian/copyright).
 
 ## How to compile/install this project
 
 There are two release types tagged and latest.
 The tagged version is generally more stable and tested while the latest version has all the features but might break some games.
 
-### Ubuntu (bionic/focal) based distributions
+### Ubuntu (focal/groovy) based distributions
 
 There are two personal package archieves you can choose from:
 
 * [libredhand tagged](https://launchpad.net/~noasakurajin/+archive/ubuntu/libredhand)
 * [libredhand latest](https://launchpad.net/~noasakurajin/+archive/ubuntu/libredhand-latest)
+
+Please note that I don't actively suport ubuntu bionic or even other linux distros.
+This project should compile on all those platforms just fine if you figure the dependencies out (and for ubuntu add repositories for newer compiler versions).
 
 ### Windows
 
@@ -54,10 +57,10 @@ You might also need to install glfw to get it working properly
 
 ### Extra Notes for contibutors
 
-All changes have to be made on the dev branch and merged to master via a pull request.
+All changes have to be made on the dev branch and merged to main via a pull request.
 Open a Terminal in the folder where you cloned the repository to, type `git checkout dev` and you are ready to go.
-To update the branch from master first type `git fetch` then `git rebase origin/master`.
-The CI has to succeed in compiling before you are allowd to push your changes to master.
+To update the branch from main first type `git fetch` then `git rebase origin/main`.
+The CI has to succeed in compiling before you are allowd to push your changes to main.
 
 ## Getting started
 

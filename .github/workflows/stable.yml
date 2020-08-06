@@ -107,4 +107,16 @@ jobs:
         with:
           name: build-artifact-package
           path: .
+  push-stable:
+    name: push changes to stable branch
+    needs: package-test
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@master
+        env:
+          REPO: self
+          BRANCH: stable
+          FOLDER: .
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
