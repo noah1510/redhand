@@ -66,7 +66,7 @@ jobs:
       run: 7z a -r deploy/headers.zip include/redhand/**
     - name: create source package
       shell: powershell
-      run: tar -cf deploy/source.tar.gz include/redhand/**  src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
+      run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
