@@ -57,6 +57,6 @@ Architecture: amd64
 Section: debug
 Priority: optional
 Multi-Arch: same
-Depends: libredhand (= ${binary:Version}), ${misc:Depends}, man
+Depends: ${misc:Depends}, man
 Description: libredhand: detached documentations
  This package contains the detached documentation for the libredhand.

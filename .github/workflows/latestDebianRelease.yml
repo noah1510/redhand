@@ -65,7 +65,6 @@ jobs:
       shell: powershell
       run: 7z a -r deploy/headers.zip include/redhand/**
     - name: create source package
-      shell: powershell
       run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
     - name: create source folder and copy files
       run: mkdir upstream upstream/include upstream/include/redhand upstream/doc upstream/doc/markdown && cp -r src/ CMakeLists.txt README.md Doxyfile LICENSE scripts/ debian/ upstream && cp -r include/redhand upstream/include && cp -r doc/markdown upstream/doc
