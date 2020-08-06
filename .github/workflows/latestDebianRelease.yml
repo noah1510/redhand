@@ -34,6 +34,13 @@ jobs:
       run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
     - name: build testgame
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
+    - name: create source package
+      shell: powershell
+      run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
+    - uses: actions/upload-artifact@v1
+      with:
+        name: source-package
+        path: .
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
@@ -64,10 +71,12 @@ jobs:
     - name: compress header files
       shell: powershell
       run: 7z a -r deploy/headers.zip include/redhand/**
-    - name: create source package
-      run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
     - name: create source folder and copy files
       run: mkdir upstream upstream/include upstream/include/redhand upstream/doc upstream/doc/markdown && cp -r src/ CMakeLists.txt README.md Doxyfile LICENSE scripts/ debian/ upstream && cp -r include/redhand upstream/include && cp -r doc/markdown upstream/doc
+    - name: Download a single artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: source-package
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -77,7 +86,7 @@ jobs:
         files: |
           deploy/libredhand.dll
           deploy/headers.zip
-          deploy/source.tar.gz
+          source.tar.gz
     - name: Deploy
       uses: s0/git-publish-subdir-action@master
       env:
@@ -88,5 +97,5 @@ jobs:
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
-        name: build-artifact-linux
+        name: build-artifact-windows
         path: .
