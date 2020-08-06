@@ -71,7 +71,7 @@ jobs:
       shell: powershell
       run: 7z a -r deploy/headers.zip include/redhand/**
     - name: create source folder and copy files
-      run: mkdir upstream upstream/include upstream/include/redhand upstream/doc upstream/doc/markdown upstream/.github upstream/.github/workflows && cp -r src/ CMakeLists.txt README.md Doxyfile LICENSE scripts/ debian/ upstream && cp -r include/redhand upstream/include && cp -r doc/markdown upstream/doc && cp -r .github/workflows/stable.yml upstream/.github/workflows/
+      run: mkdir upstream upstream/include upstream/include/redhand upstream/doc upstream/doc/markdown upstream/ && cp -r src/ CMakeLists.txt README.md Doxyfile LICENSE scripts/ debian/ upstream && cp -r include/redhand upstream/include && cp -r doc/markdown upstream/doc
     - name: Download a single artifact
       uses: actions/download-artifact@v2
       with:
