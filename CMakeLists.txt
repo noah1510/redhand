@@ -89,7 +89,7 @@ add_library(redhand SHARED
 
 #include glib and link libraries
 #target_precompile_headers(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/redhand/types.hpp)
-target_include_directories(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/)
+target_include_directories(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/ ${CMAKE_PREFIX_PATH}/include/redhand)
 target_include_directories(redhand PRIVATE ${GLIB_INCLUDE_DIRS})
 target_link_libraries(redhand ${GLIB_LDFLAGS})
 target_link_libraries(redhand OpenGL::GL)

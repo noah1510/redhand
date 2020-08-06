@@ -161,6 +161,18 @@ then
         echo "Could not initiate glad" >&2
         exit 1
     fi
+    
+    cd "dependencies/gladRepo"
+    python3 -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
+    if [ $? -eq 0 ]
+    then
+      echo "Successfully initilized glad"
+    else
+      echo "Could not initilize glad" >&2
+      cd "../.."
+      exit 3
+    fi
+    cd "../.."
 
 fi
 
@@ -174,20 +186,16 @@ then
         echo "Could not initiate testgame" >&2
         exit 1
     fi
-
-fi
-
-cd "dependencies/gladRepo"
-python3 -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
-if [ $? -eq 0 ]
-then
-  echo "Successfully initilized glad"
 else
-  echo "Could not initilize glad" >&2
-  cd "../.."
-  exit 3
+    git clone https://github.com/noah1510/redhand-testgame.git testgame
+    if [ $? -eq 0 ]
+    then
+        echo "Successfully initiated testgame"
+    else
+        echo "Could not initiate testgame" >&2
+        exit 1
+    fi
 fi
-cd "../.."
 
 if [ "$BUILDGLM" == "1" ]
 then

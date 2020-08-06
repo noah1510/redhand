@@ -1,0 +1,110 @@
+name: "tagged-release"
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  doxygen:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: generate docs
+      run: ./scripts/docs.sh --init
+    - name: Deploy
+      uses: s0/git-publish-subdir-action@master
+      env:
+        REPO: self
+        BRANCH: gh-pages
+        FOLDER: doc/html
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  ubuntu:
+    name: build, test and publish deb-source
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        lfs: false
+    - name: install dependencies
+      run:  bash scripts/dependencies.sh --ci
+    - name: setup the project
+      run:  bash scripts/setup.sh --ci --deb
+    - name: build library
+      run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
+    - name: build testgame
+      run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
+    - name: create source package
+      run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
+    - uses: actions/upload-artifact@v2
+      with:
+        name: source-package        
+        path: deploy/source.tar.gz
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: build-artifact-linux
+        path: .
+  windows:
+    name: windows build and test latest release
+    runs-on: windows-latest
+    needs: ubuntu
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        lfs: false
+    - uses: msys2/setup-msys2@v1
+      with:
+        update: true
+    - name: install dependencies
+      run:  bash scripts/dependencies.sh --ci
+    - name: setup the project
+      run:  bash scripts/setup.sh --deb --ci
+    - name: build library
+      run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
+    - name: build testgame
+      run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
+    - name: compress header files
+      shell: powershell
+      run: 7z a -r deploy/headers.zip include/redhand/**
+    - name: Download a single artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: source-package
+        path: .
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: true
+        title: "tagged release"
+        files: |
+          deploy/libredhand.dll
+          deploy/headers.zip
+          source.tar.gz
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: build-artifact-windows
+        path: .
+  package-test:
+    name: download source and build pacakge
+    needs: windows
+    runs-on: ubuntu-20.04
+    steps:
+      - name: install devscripts
+        run: sudo apt install devscripts
+      - name: create and install# build dependencies
+        run: sudo mk-build-deps -i -r && rm -rf libredhand-build-deps*
+      - name: download package
+        run: uscan -vv -dd
+      - name: build package
+        run: debuild
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: build-artifact-package
+          path: .
+

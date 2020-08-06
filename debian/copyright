@@ -21,7 +21,7 @@ Files: textures/open/house.png
 Copyright: Rattel <https://opengameart.org/users/rattel>
 License: CC-0
 
-Files: include/redhand/glad/glad.h include/redhand/KHR/khrplatform.h
+Files: include/redhand/glad/glad.h include/redhand/KHR/khrplatform.h src/glad.c
 Copyright: David Herberth <https://github.com/Dav1dde>
 License: Mit
 
