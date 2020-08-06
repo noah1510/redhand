@@ -40,7 +40,7 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: source-package
-        path: .
+        path: deploy/source.tar.gz
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
