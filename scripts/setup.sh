@@ -163,6 +163,7 @@ then
     exit 1
   fi
 fi
+git submodule update --init dependencies/openal
 
 if [ "$PACKAGEBUILD" == "0" ]
 then
@@ -243,6 +244,7 @@ then
       exit 2
   fi
 fi
+cp -r "dependencies/openal/include/AL" "include/AL"
 
 mkdir -p "build"
 mkdir -p "lib"

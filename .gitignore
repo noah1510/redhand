@@ -10,12 +10,12 @@ Makefile
 
 build
 dependencies/glfw/
-dependencies/SFML/
+dependencies/openal
 dependencies/glad
 lib
 deploy
 
-include/SFML
+include/AL
 include/glm
 include/GLFW
 include/glad

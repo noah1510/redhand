@@ -29,6 +29,8 @@ else()
     add_subdirectory("dependencies/glfw/")
 endif()
 
+add_subdirectory("dependencies/openal/")
+
 #set c++ standard to c++17
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -85,15 +87,17 @@ add_library(redhand SHARED
     src/complex_world.cpp
     src/actor.cpp
     src/input.cpp
-    src/engine.cpp)
+    src/engine.cpp
+    src/audio.cpp)
 
 #include glib and link libraries
 #target_precompile_headers(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/redhand/types.hpp)
-target_include_directories(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/ ${CMAKE_PREFIX_PATH}/include/redhand)
+target_include_directories(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/ ${CMAKE_PREFIX_PATH}/include/redhand ${CMAKE_PREFIX_PATH}/include/AL)
 target_include_directories(redhand PRIVATE ${GLIB_INCLUDE_DIRS})
 target_link_libraries(redhand ${GLIB_LDFLAGS})
 target_link_libraries(redhand OpenGL::GL)
 target_link_libraries(redhand glfw)
+#target_link_libraries(redhand lib/dependencies/openal/libopenal.so.1)
 target_include_directories(redhand PRIVATE ${VIPS_INCLUDE_DIRS})
 target_link_libraries(redhand ${VIPS_LDFLAGS})
 

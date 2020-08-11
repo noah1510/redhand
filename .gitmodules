@@ -13,3 +13,6 @@
 [submodule "doc/m.css"]
 	path = doc/m.css
 	url = git://github.com/mosra/m.css
+[submodule "dependencies/openal"]
+	path = dependencies/openal
+	url = https://github.com/kcat/openal-soft.git
