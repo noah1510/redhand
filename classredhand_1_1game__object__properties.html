@@ -54,11 +54,29 @@
             <li>
               Reference
               <ul>
+                <li><a href="#pub-methods">Public functions</a></li>
                 <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </div>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac1abac5c1c11ba1bcc2f3d501da378cb" class="m-doc">check</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Checks the properties for errors.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adc1a20669c796ba424e8c46a90ed26ba" class="m-doc">getData</a>(</span><span class="m-doc-wrap">) -&gt; std::vector&lt;float&gt;</span>
+            </dt>
+            <dd>create the vector containing all the vertex data</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab0c1ac17cb6b6e2121d7d8b9bba39b64" class="m-doc">getIndicies</a>(</span><span class="m-doc-wrap">) -&gt; std::vector&lt;unsigned int&gt;</span>
+            </dt>
+            <dd>Get the Indicies for the EBO in one single vector.</dd>
+          </dl>
+        </section>
         <section id="pub-attribs">
           <h2><a href="#pub-attribs">Public variables</a></h2>
           <dl class="m-doc">
@@ -127,6 +145,51 @@
             </dt>
             <dd>The position of the rotation axis in the 3D Space (only the angle and orientation matters)</dd>
           </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ac1abac5c1c11ba1bcc2f3d501da378cb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool redhand::<wbr />game_object_properties::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac1abac5c1c11ba1bcc2f3d501da378cb" class="m-doc-self">check</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Checks the properties for errors.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true the properties have an error</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="adc1a20669c796ba424e8c46a90ed26ba"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::vector&lt;float&gt; redhand::<wbr />game_object_properties::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adc1a20669c796ba424e8c46a90ed26ba" class="m-doc-self">getData</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>create the vector containing all the vertex data</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>std::vector&lt;float&gt; the vertex data</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ab0c1ac17cb6b6e2121d7d8b9bba39b64"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::vector&lt;unsigned int&gt; redhand::<wbr />game_object_properties::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab0c1ac17cb6b6e2121d7d8b9bba39b64" class="m-doc-self">getIndicies</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Get the Indicies for the EBO in one single vector.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>std::vector&lt;unsigned int&gt; the indicies in a single vector</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
         </section>
         <section>
           <h2>Variable documentation</h2>

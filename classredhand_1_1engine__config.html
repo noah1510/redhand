@@ -74,7 +74,11 @@
               unsigned int minor,
               unsigned int patch) -&gt; bool</span>
             </dt>
-            <dd>check if the version of the engine is greater than the given version</dd>
+            <dd>check if the version of the engine is greater or equal the given value</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0ec441c06c1884d3912e2afc2b842d50" class="m-doc">versionIsGreaterThan</a>(</span><span class="m-doc-wrap">std::string version) -&gt; bool</span>
+            </dt>
+            <dd>check if the version of the engine is greater or equal the given value</dd>
           </dl>
         </section>
         <section id="pub-attribs">
@@ -167,7 +171,7 @@
               unsigned int minor,
               unsigned int patch)</span></span>
             </h3>
-            <p>check if the version of the engine is greater than the given version</p>
+            <p>check if the version of the engine is greater or equal the given value</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -184,6 +188,29 @@
                 <tr>
                   <td>patch</td>
                   <td>the patch version number x.y.Z</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true the version of the engine is greater or equal to the given version</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a0ec441c06c1884d3912e2afc2b842d50"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool redhand::<wbr />engine_config::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0ec441c06c1884d3912e2afc2b842d50" class="m-doc-self">versionIsGreaterThan</a>(</span><span class="m-doc-wrap">std::string version)</span></span>
+            </h3>
+            <p>check if the version of the engine is greater or equal the given value</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">version</td>
+                  <td>the version in the format x.y.z</td>
                 </tr>
               </tbody>
               <tfoot>
