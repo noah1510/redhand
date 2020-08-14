@@ -2,7 +2,7 @@
  * @file events.hpp
  * @author noasakurajin (noasakurajin@web.de)
  * @brief Include this file to include all types of events
- * @version 0.13
+ * @version 0.1.1
  * @date 2020-07-23
  * 
  * @copyright Copyright (c) 2020

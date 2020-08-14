@@ -2,7 +2,7 @@
  * @file drawing_event.hpp
  * @author noasakurajin (noasakurajin@web.de)
  * @brief Class @ref game_loop_event
- * @version 0.13
+ * @version 0.1.1
  * @date 2020-07-23
  * 
  * @copyright Copyright (c) 2020

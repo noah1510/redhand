@@ -2,15 +2,13 @@
  * @file engine.hpp
  * @author noasakurajin (noasakurajin@web.de)
  * @brief Class @ref engine
- * @version 0.13
+ * @version 0.1.1
  * @date 2020-07-23
  * 
  * @copyright Copyright (c) 2020
  * @license This file is licensed under the LGPL v3 license.
  */
 #pragma once
-
-#include "redhand/math.hpp"
 
 #include "redhand/event/events.hpp"
 #include "redhand/types.hpp"
@@ -173,6 +171,13 @@ namespace redhand {
         * @param error the error code which the game should be set to, 0 if none is given.
         */
         void stopGame(int error = 0);
+
+        /**
+         * @brief Get a reference to the engine object
+         * 
+         * @return engine& the reference to the object (*this)
+         */
+        engine& getReference();
     };
 
 } // namespace redhand

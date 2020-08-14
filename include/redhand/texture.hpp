@@ -2,7 +2,7 @@
  * @file texture.hpp
  * @author noasakurajin (noasakurajin@web.de)
  * @brief Class @ref texture2D
- * @version 0.13
+ * @version 0.1.1
  * @date 2020-07-23
  * 
  * @copyright Copyright (c) 2020
@@ -22,7 +22,6 @@
 #include <shared_mutex>
 #include <filesystem>
 
-#include "redhand/math.hpp"
 #include "redhand/types.hpp"
 
 namespace redhand {

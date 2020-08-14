@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$(basename $(pwd))" == "scripts" ]
+then
+    cd ..
+fi
+
 if [ "$OSTYPE" == "linux-gnu" ]
 then
     # Linux

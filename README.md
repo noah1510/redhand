@@ -12,7 +12,7 @@
 The goal is to create an easy to use 2D Game engine using C++.
 Its purpose is to give new programmers an easy introduction into game programming and even more abstract topics like object oriented programming and graphics programming in general.
 The used OpenGL APIs are GLFW and glad so this project should run on all operating systems.
-**This Project is still in the alpha phase and there might be srastic changes to the codebase and API causing your Programs to break with an update.
+**This Project is still in the alpha phase and there might be drastic changes to the codebase and API causing your Programs to break with an update.
 Backwards compatibility will be a consideration after the release of version 1.0.0 everything prior to that might include drastic changes!**
 This Project provides several functions and objects that make it easier to start building your own games.
 While these objects give you a simple way to get started, they also allow you to insert advanced OpenGL commands.
@@ -57,18 +57,18 @@ You might also need to install glfw to get it working properly
 
 ### Extra Notes for contibutors
 
-All changes have to be made on the dev branch and merged to main via a pull request.
-Open a Terminal in the folder where you cloned the repository to, type `git checkout dev` and you are ready to go.
-To update the branch from main first type `git fetch` then `git rebase origin/main`.
-The CI has to succeed in compiling before you are allowd to push your changes to main.
+All changes have to be made on a dev branch and merged to main via a pull request.
+
+If you want to contribute, first fork the project.
+After that you can make all the changes you want on your fork.
+If you think your changes are ready for the main repository open a pull request to the **dev-noa** branch not main.
+The CI has to succeed in compiling before you are allowed to push your changes.
+dev-noa is merged into master on a regular basis, when the changes seem stable.
 
 ## Getting started
 
-If you want to get started using this project, begin by modifying the games.cpp file.
-The functions that specify the game logic are here.
-
-game_init is called in the beginning to construct the main world that the game will enter first.
-game_loop is called every game tick, here is where all the logic happens.
+If you want to get started using this project, clone the testgame somewhere and try to understand what the code in src does.
+You can safely ignore src/main.cpp since that code is mostly glue to setup redhand and will be mostly the same for every project.
 
 ## How to contribute to this project
 
@@ -78,4 +78,4 @@ If you have implemented a new feature or bugfix just make a pull request and wai
 Please document your changes, this will mak it easier for everyone.
 
 Also feel free to propose updates/changes for the wiki to improve the overall documentation and allow newcomers to have more fun (because they don't have to guess what the functions and objects are doing).
-Note for potential developers: stgit is used to manage patches and please send pull-request to the dev-noa branch.
+Note for potential developers: please send pull-request to the dev-noa branch.

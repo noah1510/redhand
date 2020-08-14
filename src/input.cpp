@@ -1,19 +1,20 @@
 #include "redhand/input.hpp"
-
 #include "redhand/engine.hpp"
+#include "redhand/helper.hpp"
 
-void redhand::input_system::registerEngine(engine *main_engine) {
-    m_engine = main_engine;
-}
+#include <exception>
 
-redhand::key_actions redhand::input_system::getKeyAction(redhand::keyboard_keys wantedKey) {
-    if (this->m_engine == nullptr || this->m_engine->getWindow() == nullptr) {
+
+
+redhand::key_actions redhand::input_system::impl_getKeyAction(redhand::keyboard_keys wantedKey) {
+    if (helper::getEngine().getWindow() == nullptr) {
         return redhand::UNKNOWN;
     }
 
-    return (redhand::key_actions)glfwGetKey(this->m_engine->getWindow(), wantedKey);
+    return (redhand::key_actions)glfwGetKey(helper::getEngine().getWindow(), wantedKey);
 }
 
-bool redhand::input_system::isKeyPressed(redhand::keyboard_keys wantedKey) {
-    return getKeyAction(wantedKey) == redhand::PRESS;
+bool redhand::input_system::impl_isKeyPressed(redhand::keyboard_keys wantedKey) {
+    return impl_getKeyAction(wantedKey) == redhand::PRESS;
 }
+
