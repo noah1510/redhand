@@ -163,7 +163,14 @@ then
     exit 1
   fi
 fi
-git submodule update --init dependencies/openal
+git submodule update --init dependencies/openal-soft
+if [ $? -eq 0 ]
+then
+  echo "Successfully initiated openal-soft"
+else
+  echo "Could not initiate openal-soft" >&2
+  exit 1
+fi
 
 if [ "$PACKAGEBUILD" == "0" ]
 then
@@ -244,7 +251,14 @@ then
       exit 2
   fi
 fi
-cp -r "dependencies/openal/include/AL" "include/AL"
+cp -r "dependencies/openal-soft/include/AL" "include/AL"
+if [ $? -eq 0 ]
+then
+    echo "Successfully copied openal-soft"
+else
+    echo "Could not copy openal-soft" >&2
+    exit 2
+fi
 
 mkdir -p "build"
 mkdir -p "lib"

@@ -29,7 +29,7 @@ else()
     add_subdirectory("dependencies/glfw/")
 endif()
 
-add_subdirectory("dependencies/openal/")
+add_subdirectory("dependencies/openal-soft/")
 
 #set c++ standard to c++17
 set(CMAKE_CXX_STANDARD 17)
