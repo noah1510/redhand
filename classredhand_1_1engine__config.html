@@ -54,11 +54,29 @@
             <li>
               Reference
               <ul>
+                <li><a href="#pub-methods">Public functions</a></li>
                 <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </div>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab8a475eec4ae65645e3a263552644cb4" class="m-doc">doesMatchVersion</a>(</span><span class="m-doc-wrap">unsigned int major,
+              unsigned int minor,
+              unsigned int patch) -&gt; bool</span>
+            </dt>
+            <dd>check if the the version of the engine matches the given version</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad0e479146784461a76727870582d5096" class="m-doc">versionIsGreaterThan</a>(</span><span class="m-doc-wrap">unsigned int major,
+              unsigned int minor,
+              unsigned int patch) -&gt; bool</span>
+            </dt>
+            <dd>check if the version of the engine is greater than the given version</dd>
+          </dl>
+        </section>
         <section id="pub-attribs">
           <h2><a href="#pub-attribs">Public variables</a></h2>
           <dl class="m-doc">
@@ -94,11 +112,88 @@
               std::string <a href="#a7cd1bd487356960274723cfd8dcc7bf9" class="m-doc-self">title</a>
             </dt>
             <dd>the window title</dd>
-            <dt id="aadea1b8ec68b2e6a0677fd6c6463ba8c">
-              std::string <a href="#aadea1b8ec68b2e6a0677fd6c6463ba8c" class="m-doc-self">redhand_version</a>
+            <dt id="a27cd06ec81b9a1b3390ee933012919d1">
+              unsigned int <a href="#a27cd06ec81b9a1b3390ee933012919d1" class="m-doc-self">redhand_version_major</a>
             </dt>
-            <dd>the current redhand version (will be overwritten by the contructor)</dd>
+            <dd>the current redhand major version X.y.z</dd>
+            <dt id="a87fc96d705ed93b3d4ec00ab569535c8">
+              unsigned int <a href="#a87fc96d705ed93b3d4ec00ab569535c8" class="m-doc-self">redhand_version_minor</a>
+            </dt>
+            <dd>the current redhand minor version x.Y.z</dd>
+            <dt id="abed1121bcefc745fc879abb81d265a97">
+              unsigned int <a href="#abed1121bcefc745fc879abb81d265a97" class="m-doc-self">redhand_version_patch</a>
+            </dt>
+            <dd>the current redhand pacht version x.y.Z</dd>
           </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ab8a475eec4ae65645e3a263552644cb4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool redhand::<wbr />engine_config::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab8a475eec4ae65645e3a263552644cb4" class="m-doc-self">doesMatchVersion</a>(</span><span class="m-doc-wrap">unsigned int major,
+              unsigned int minor,
+              unsigned int patch)</span></span>
+            </h3>
+            <p>check if the the version of the engine matches the given version</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">major</td>
+                  <td>the major version number X.y.z</td>
+                </tr>
+                <tr>
+                  <td>minor</td>
+                  <td>the minor version number x.Y.z</td>
+                </tr>
+                <tr>
+                  <td>patch</td>
+                  <td>the patch version number x.y.Z</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true the version match</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ad0e479146784461a76727870582d5096"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool redhand::<wbr />engine_config::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad0e479146784461a76727870582d5096" class="m-doc-self">versionIsGreaterThan</a>(</span><span class="m-doc-wrap">unsigned int major,
+              unsigned int minor,
+              unsigned int patch)</span></span>
+            </h3>
+            <p>check if the version of the engine is greater than the given version</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">major</td>
+                  <td>the major version number X.y.z</td>
+                </tr>
+                <tr>
+                  <td>minor</td>
+                  <td>the minor version number x.Y.z</td>
+                </tr>
+                <tr>
+                  <td>patch</td>
+                  <td>the patch version number x.y.Z</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true the version of the engine is greater or equal to the given version</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
         </section>
         <section>
           <h2>Variable documentation</h2>

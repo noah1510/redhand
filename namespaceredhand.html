@@ -56,7 +56,6 @@
                 <li><a href="#nested-classes">Classes</a></li>
                 <li><a href="#enum-members">Enums</a></li>
                 <li><a href="#func-members">Functions</a></li>
-                <li><a href="#var-members">Variables</a></li>
               </ul>
             </li>
           </ul>
@@ -101,6 +100,10 @@
               class <a href="classredhand_1_1game__object__properties.html" class="m-doc">game_object_properties</a>
             </dt>
             <dd>This struct specifies all the properties of a <a href="classredhand_1_1game__object.html" class="m-doc">game_<wbr />object</a>.</dd>
+            <dt>
+              class <a href="classredhand_1_1helper.html" class="m-doc">helper</a>
+            </dt>
+            <dd>A singlton with a lot of helper functions available to all parts of redhand.</dd>
             <dt>
               class <a href="classredhand_1_1image__properties.html" class="m-doc">image_properties</a>
             </dt>
@@ -298,23 +301,6 @@
               float textureScale = 1.0f) -&gt; std::unique_ptr&lt;<a href="classredhand_1_1game__object.html" class="m-doc">redhand::<wbr />game_object</a>&gt;</span>
             </dt>
             <dd>Create a rectangular object.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ae34e8f79b078f1b4dbecf43d18a2802a" class="m-doc">sinDeg</a>(</span><span class="m-doc-wrap">float deg) -&gt; float</span>
-            </dt>
-            <dd>This function calculates a sine with an angle in degrees.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a1b2ac3e9266a94535968adc5cbc8e104" class="m-doc">cosDeg</a>(</span><span class="m-doc-wrap">float deg) -&gt; float</span>
-            </dt>
-            <dd>This function calculates a cosine with an angle in degrees.</dd>
-          </dl>
-        </section>
-        <section id="var-members">
-          <h2><a href="#var-members">Variables</a></h2>
-          <dl class="m-doc">
-            <dt>
-              const std::string <a href="#a76b9afa08e6105875a3aa4a05a5282b7" class="m-doc">REDHAND_HEADER_VERSION</a>
-            </dt>
-            <dd>This string provides a version in a pritable format.</dd>
           </dl>
         </section>
         <section>
@@ -479,65 +465,6 @@
                 </tr>
               </tfoot>
             </table>
-          </div></section>
-          <section class="m-doc-details" id="ae34e8f79b078f1b4dbecf43d18a2802a"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">float redhand::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae34e8f79b078f1b4dbecf43d18a2802a" class="m-doc-self">sinDeg</a>(</span><span class="m-doc-wrap">float deg)</span></span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="math_8hpp.html">&lt;include/redhand/math.hpp&gt;</a></div>
-            </h3>
-            <p>This function calculates a sine with an angle in degrees.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">deg</td>
-                  <td>The angle in Degrees</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>float The sine of that angle</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="a1b2ac3e9266a94535968adc5cbc8e104"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">float redhand::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1b2ac3e9266a94535968adc5cbc8e104" class="m-doc-self">cosDeg</a>(</span><span class="m-doc-wrap">float deg)</span></span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="math_8hpp.html">&lt;include/redhand/math.hpp&gt;</a></div>
-            </h3>
-            <p>This function calculates a cosine with an angle in degrees.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">deg</td>
-                  <td>The angle in Degrees</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>float The cosine of that angle</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div></section>
-        </section>
-        <section>
-          <h2>Variable documentation</h2>
-          <section class="m-doc-details" id="a76b9afa08e6105875a3aa4a05a5282b7"><div>
-            <h3>
-              const std::string redhand::<wbr /><a href="#a76b9afa08e6105875a3aa4a05a5282b7" class="m-doc-self">REDHAND_HEADER_VERSION</a>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="types_8hpp.html">&lt;include/redhand/types.hpp&gt;</a></div>
-            </h3>
-            <p>This string provides a version in a pritable format.</p>
-<p>The first public version is 0.1.0 and from there it will be couted up. There might be subversions in the format &quot;X.Y.Z&quot; but the Z only tells how much further the current build is from the last major release</p>
           </div></section>
         </section>
       </div>
