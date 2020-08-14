@@ -1,3 +1,14 @@
+libredhand (0.1.1) groovy; urgency=medium
+
+  * rework of input_system
+  * new helper singleton
+  * engine version checks
+  * fixed version info in header files
+  * moving checkObjectProperties to obj.check()
+  * initial arm64 support
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Fri, 14 Aug 2020 14:46:57 +0200
+
 libredhand (0.1.0) groovy; urgency=medium
 
   * experimental Actor class
@@ -18,9 +29,7 @@ libredhand (0.0.12) bionic; urgency=medium
 libredhand (0.0.11) bionic; urgency=medium
 
   * started implementation of event based function model
-
   * switched from stb to vips
-
   * building with gcc > 9
 
  -- Noa Sakurajin <noasakurajin@web.de>  Wed, 10 Jun 2020 14:02:31 +0200
