@@ -1,5 +1,21 @@
 #!/bin/bash
 
+findReporoot(){
+  if [ "$(basename $(pwd))" == "scripts" ]
+  then
+    cd ..
+  fi
+
+  if [ "$(basename $(pwd))" == "$BASPATHNAME" ]
+  then
+    REPOROOT="$(pwd)"
+  else
+    echo "invalid directory"
+    exit 1
+  fi
+}
+
+BASPATHNAME="redhand"
 THREADS="3"
 LIBBUILDNAME="lib"
 SETUP="0"
@@ -7,6 +23,7 @@ PACKAGE="0"
 INITILIZE="0"
 BUILDGLFW="0"
 export REDHAND_CI="0"
+AUTOSETUP="1"
 
 #parse parameter
 pars=$#
@@ -23,6 +40,15 @@ do
       fi
       shift
       i++
+      ;;
+    "--pathname")
+      shift
+      if [ $1 ]
+      then
+        BASPATHNAME="$1"
+      fi
+      shift
+      i+=1
       ;;
     "-j")
       shift
@@ -46,6 +72,10 @@ do
       shift
       PACKAGE="1"
       ;;
+    "--no-autosetup")
+      shift
+      AUTOSETUP="0"
+      ;;
     "--ci")
       shift
       REDHAND_CI="1"
@@ -58,10 +88,12 @@ do
       echo "    --help              Display this information"
       echo "    -j [threadnumber]   Build the project with the specified number of threads."
       echo "    -o [buildname]      Build the project with the specified buildname defaults to main"
+      echo "    --pathname [name]   The name of the redhand folder"
       echo "    --setup             Also execute the setup script to prepare all dependencies"
       echo "    --init              Also execute the setup and dependencies scripts to prepare and install all dependencies"
       echo "    --deb               Build the library as debian package"
       echo "    --ci                Build the library in an CI (manually sets the CC and CXX for win)"
+      echo "    --no-autosetup      Disable the automatic call of setup.sh in the CMakelist.txt"
       echo ""
       echo "view the source on https://github.com/noah1510/redhand"
       exit 1
@@ -79,7 +111,7 @@ then
   THREADS="$(($THREADS+1))"
 fi
 
-REPOROOT="$(pwd)"
+findReporoot
 PROJECTNAME="redhand"
 
 if [ "$INITILIZE" == "1" ]
@@ -148,21 +180,23 @@ else
   mkdir -p "build"
 
   #build actual project
-  mkdir -p "build/$LIBBUILDNAME"
-  cd "build/$LIBBUILDNAME"
-  cmake -G "Ninja" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILDGLFW=$BUILDGLFW -DREPOROOT=$REPOROOT "../.."
+
+  cmake -G "Ninja" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILDGLFW=$BUILDGLFW -B$REPOROOT/build -S$REPOROOT -DAUTOSETUP=$AUTOSETUP
+  
+  cd build
   ninja -j"$THREADS"
   if [ $? -eq 0 ]
   then
     echo "Successfully compiled $PROJECTNAME"
+    cd ".."
   else
     echo "Could not compile $PROJECTNAME" >&2
-    cd "../.."
+    cd ".."
     exit 4
   fi
-  cd "../.."
-  cp -r "build/$LIBBUILDNAME/$LIBRARY" "deploy"
-  cp -r "build/$LIBBUILDNAME/$LIBRARY" "lib"
+  
+  cp -r "build/$LIBRARY" "deploy"
+  cp -r "build/$LIBRARY" "lib"
 
   LD_LIBRARY_PATH="$REPOROOT/lib"
   export LD_LIBRARY_PATH
