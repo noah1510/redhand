@@ -78,7 +78,8 @@ SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS
 #add executable name
 add_library(redhand SHARED
     src/glad.c
-    src/math.cpp
+    src/helper.cpp
+    src/types.cpp
     src/shader.cpp
     src/texture.cpp
     src/game_object.cpp

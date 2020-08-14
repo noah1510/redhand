@@ -1,5 +1,6 @@
 #include <redhand/glad/glad.h>
 
+#include "helper.hpp"
 #include "redhand/engine.hpp"
 #include "redhand/game_object.hpp"
 #include "redhand/shader.hpp"
@@ -7,6 +8,7 @@
 #include "redhand/complex_world.hpp"
 #include "redhand/input.hpp"
 #include "redhand/event/drawing_event.hpp"
+#include "types.hpp"
 
 using namespace redhand;
 
@@ -36,7 +38,10 @@ redhand::engine& redhand::engine::getReference(){
 
 void redhand::engine::setConfig(redhand::engine_config conf) {
     configuration = conf;
-    configuration.redhand_version = redhand::REDHAND_HEADER_VERSION;
+    engine_config con;
+    configuration.redhand_version_major = con.redhand_version_major;
+    configuration.redhand_version_minor = con.redhand_version_minor;
+    configuration.redhand_version_patch = con.redhand_version_patch;
 }
 
 redhand::engine_config redhand::engine::getConfig() {
@@ -67,7 +72,7 @@ void redhand::engine::init() {
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     //register engine to input system
-    input_system::getInstance().registerEngine(this);
+    helper::getInstance().registerEngine(this);
 
     //make sure glad works
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
