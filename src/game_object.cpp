@@ -462,8 +462,9 @@ std::unique_ptr<redhand::game_object> redhand::createCircle(
     auto fut1 = std::async(std::launch::async, [&]() {
         for (unsigned int i = 1; i <= edges; i++) {
             float dx, dy;
-            dx = cosDeg(i * 360.0f / edges) / 2.0f + 0.5f;
-            dy = sinDeg(i * 360.0f / edges) / 2.0f + 0.5f;
+            
+            dx = glm::sin(glm::radians(i * 360.0f / edges)) / 2.0f + 0.5f;
+            dy = glm::sin(glm::radians(i * 360.0f / edges)) / 2.0f + 0.5f;
 
             settings.points_coordinates.at(i) = {dx, dy};
             settings.point_colors.push_back(outerColor);

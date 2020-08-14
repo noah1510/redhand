@@ -2,7 +2,7 @@
  * @file shader.hpp
  * @author noasakurajin (noasakurajin@web.de)
  * @brief Class @ref shader
- * @version 0.13
+ * @version 0.1.1
  * @date 2020-07-23
  * 
  * @copyright Copyright (c) 2020
@@ -24,7 +24,6 @@
 #include <mutex>
 #include <shared_mutex>
 
-#include "redhand/math.hpp"
 #include "redhand/shaderSource.hpp"
 
 namespace redhand {

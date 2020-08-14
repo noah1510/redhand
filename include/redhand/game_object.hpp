@@ -2,7 +2,7 @@
  * @file game_object.hpp
  * @author noasakurajin (noasakurajin@web.de)
  * @brief Class @ref game_object
- * @version 0.13
+ * @version 0.1.1
  * @date 2020-07-23
  * 
  * @copyright Copyright (c) 2020
@@ -10,7 +10,6 @@
  */
 
 #pragma once
-#include "redhand/math.hpp"
 #include "redhand/event/events.hpp"
 #include "redhand/types.hpp"
 

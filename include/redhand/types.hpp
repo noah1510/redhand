@@ -2,7 +2,7 @@
  * @file types.hpp
  * @author noasakurajin (noasakurajin@web.de)
  * @brief types that are used throughout the redhand library
- * @version 0.13
+ * @version 0.1.1
  * @date 2020-07-23
  * 
  * @copyright Copyright (c) 2020
@@ -42,11 +42,6 @@ namespace redhand {
 
     class shader;
     class texture2D;
-
-    ///This string provides a version in a pritable format.
-    ///The first public version is 0.1.0 and from there it will be couted up.
-    ///There might be subversions in the format "X.Y.Z" but the Z only tells how much further the current build is from the last major release
-    const std::string REDHAND_HEADER_VERSION = "0.0.13";
 
     const auto OPENGL_CORE_PROFILE = GLFW_OPENGL_CORE_PROFILE;
     const auto DONT_CARE = GLFW_DONT_CARE;
@@ -303,9 +298,54 @@ namespace redhand {
         ///the heigth of the window
         unsigned int window_height = 600;
         ///the window title
-        std::string title = redhand::REDHAND_HEADER_VERSION;
-        ///the current redhand version (will be overwritten by the contructor)
-        std::string redhand_version = redhand::REDHAND_HEADER_VERSION;
+        std::string title = "redhand application";
+        ///the current redhand major version X.y.z
+        unsigned int redhand_version_major = 0;
+        ///the current redhand minor version x.Y.z
+        unsigned int redhand_version_minor = 1;
+        ///the current redhand pacht version x.y.Z
+        unsigned int redhand_version_patch = 1;
+
+        /**
+         * @brief check if the the version of the engine matches the given version
+         * 
+         * @param major the major version number X.y.z
+         * @param minor the minor version number x.Y.z
+         * @param patch the patch version number x.y.Z
+         * @return true the version match
+         * @return false the version is not exactly the same
+         */
+        bool doesMatchVersion(unsigned int major, unsigned int minor, unsigned int patch){
+            return major == redhand_version_major && minor == redhand_version_minor && patch == redhand_version_patch;
+        }
+
+        /**
+         * @brief check if the version of the engine is greater than the given version
+         * 
+         * @param major the major version number X.y.z
+         * @param minor the minor version number x.Y.z
+         * @param patch the patch version number x.y.Z
+         * @return true the version of the engine is greater or equal to the given version
+         * @return false the version of the engine is lower than the given value
+         */
+        bool versionIsGreaterThan(unsigned int major, unsigned int minor, unsigned int patch){
+            if (redhand_version_major > major){
+                return true;
+            }
+
+            if(redhand_version_major == major && redhand_version_minor > minor){
+                return true;
+            }
+
+            if(redhand_version_major == major && redhand_version_minor == minor && redhand_version_patch >= patch){
+                return true;
+            }
+
+            return false;
+
+        }
+
+        bool versionIsGreaterThan(std::string version);
     };
 
 } // namespace redhand

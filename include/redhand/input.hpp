@@ -2,7 +2,7 @@
  * @file input.hpp
  * @author noasakurajin (noasakurajin@web.de)
  * @brief Class @ref input_system
- * @version 0.13
+ * @version 0.1.1
  * @date 2020-07-23
  * 
  * @copyright Copyright (c) 2020
@@ -27,7 +27,6 @@ namespace redhand {
      * 
      */
     class input_system {
-        friend class engine;
       private:
         /**
          * @brief Construct a new input system object
@@ -35,6 +34,7 @@ namespace redhand {
          * 
          */
         input_system(void) {
+
         };
 
         ///disable compy constructor
@@ -42,26 +42,6 @@ namespace redhand {
 
         ///disable copy assignment
         void operator=(input_system const &);
-
-        /**
-         * @brief a pointer to the attached engine
-         * 
-         */
-        engine* m_engine;
-
-        /**
-         * @brief Get a reference to the attached engine, will throw an execption if m_engine is not set.
-         * 
-         * @return engine& A reference to the atteched engine.
-         */
-        engine& getEngineReference();
-
-        /**
-         * @brief This function sets m_engine
-         * 
-         * @param main_engine the engine that will be attached
-         */
-        void registerEngine(engine* main_engine);
 
         /**
          * @brief This function implements the getKeyAction function
@@ -112,15 +92,6 @@ namespace redhand {
         static bool isKeyPressed(keyboard_keys wantedKey) {
             return getInstance().impl_isKeyPressed(wantedKey);
         };
-
-        /**
-         * @brief Get the active engine, this will throw an error if no engine is attached
-         * 
-         * @return engine& A reference to the active engine
-         */
-        static engine& getEngine(){
-            return getInstance().getEngineReference();
-        }
         
         /**
          * @warning will be removed in 0.2.0
