@@ -19,7 +19,7 @@ then
 
     DOCDEPS="doxygen graphviz-dev"
     GLFWDEPS="xorg-dev libgl1-mesa-dev"
-    REDHANDDEPS="cmake clang-10 clang-tools-10 ninja-build libglm-dev libglfw3-dev devscripts libvips-dev libclang-10-dev python3-glad"
+    REDHANDDEPS="cmake clang-10 clang-tools-10 ninja-build libglm-dev libglfw3-dev devscripts libvips-dev libclang-10-dev libopenal-dev python3-glad"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil python-dev"
     QT4DEPS="libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4"
 
@@ -108,7 +108,7 @@ then
 elif [ "$OSTYPE" == "msys" ]
 then
     pacman -S --noconfirm pactoys git
-    pacboy -S --noconfirm ninja:x clang:x cmake:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x
+    pacboy -S --noconfirm ninja:x clang:x cmake:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x
 else
     # Unknown os
     echo "running on something else."

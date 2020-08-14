@@ -29,7 +29,8 @@ else()
     add_subdirectory("dependencies/glfw/")
 endif()
 
-add_subdirectory("dependencies/openal-soft/")
+#search for openal
+find_package(OpenAL REQUIRED)
 
 #set c++ standard to c++17
 set(CMAKE_CXX_STANDARD 17)
@@ -94,7 +95,9 @@ add_library(redhand SHARED
 #target_precompile_headers(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/redhand/types.hpp)
 target_include_directories(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/ ${CMAKE_PREFIX_PATH}/include/redhand ${CMAKE_PREFIX_PATH}/include/AL)
 target_include_directories(redhand PRIVATE ${GLIB_INCLUDE_DIRS})
+target_include_directories(redhand PRIVATE ${OPENAL_INCLUDE_DIR})
 target_link_libraries(redhand ${GLIB_LDFLAGS})
+target_link_libraries(redhand ${OPENAL_LIBRARY})
 target_link_libraries(redhand OpenGL::GL)
 target_link_libraries(redhand glfw)
 #target_link_libraries(redhand lib/dependencies/openal/libopenal.so.1)

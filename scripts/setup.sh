@@ -251,6 +251,7 @@ then
       exit 2
   fi
 fi
+
 cp -r "dependencies/openal-soft/include/AL" "include/AL"
 if [ $? -eq 0 ]
 then
