@@ -48,7 +48,117 @@
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="input_8hpp.html">&lt;include/redhand/input.hpp&gt;</a></div>
         </h1>
         <p>The <a href="classredhand_1_1input__system.html" class="m-doc">input_<wbr />system</a> is used to handle user inputs for all kinds of devices.</p>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000002" class="m-doc">Todo</a></h4><p>finish documentation of members</p></aside>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#adcb4c5bdb0763978828fd71cee04c81b" class="m-doc">getKeyAction</a>(</span><span class="m-doc-wrap"><a href="namespaceredhand.html#a573eb484452b586e12a8d3834d567a72" class="m-doc">keyboard_<wbr />keys</a> wantedKey) -&gt; <a href="namespaceredhand.html#a464bced11626cb6586b13eafc2d9a643" class="m-doc">key_<wbr />actions</a></span>
+            </dt>
+            <dd>returns the state of a given key</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a1747e785c5e7a47061eb505534103945" class="m-doc">isKeyPressed</a>(</span><span class="m-doc-wrap"><a href="namespaceredhand.html#a573eb484452b586e12a8d3834d567a72" class="m-doc">keyboard_<wbr />keys</a> wantedKey) -&gt; bool</span>
+            </dt>
+            <dd>check if a given key is pressed</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac700f1ec8a0e4213ec86ec9571ffbb74" class="m-doc">getEngine</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classredhand_1_1engine.html" class="m-doc">engine</a>&amp;</span>
+            </dt>
+            <dd>Get the active engine, this will throw an error if no engine is attached.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#aa44a99981f08a096bf4f0d792a08176a" class="m-doc">static_getKeyAction</a>(</span><span class="m-doc-wrap"><a href="namespaceredhand.html#a573eb484452b586e12a8d3834d567a72" class="m-doc">keyboard_<wbr />keys</a> wantedKey) -&gt; <a href="namespaceredhand.html#a464bced11626cb6586b13eafc2d9a643" class="m-doc">key_<wbr />actions</a></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ae7961b7067a3a57952123661ee722a72" class="m-doc">static_isKeyPressed</a>(</span><span class="m-doc-wrap"><a href="namespaceredhand.html#a573eb484452b586e12a8d3834d567a72" class="m-doc">keyboard_<wbr />keys</a> wantedKey) -&gt; bool</span>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="adcb4c5bdb0763978828fd71cee04c81b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="namespaceredhand.html#a464bced11626cb6586b13eafc2d9a643" class="m-doc">key_<wbr />actions</a> redhand::<wbr />input_system::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adcb4c5bdb0763978828fd71cee04c81b" class="m-doc-self">getKeyAction</a>(</span><span class="m-doc-wrap"><a href="namespaceredhand.html#a573eb484452b586e12a8d3834d567a72" class="m-doc">keyboard_<wbr />keys</a> wantedKey)</span></span>
+            </h3>
+            <p>returns the state of a given key</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">wantedKey</td>
+                  <td>the key you want to know about</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>key_actions the current state of that key</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a1747e785c5e7a47061eb505534103945"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool redhand::<wbr />input_system::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1747e785c5e7a47061eb505534103945" class="m-doc-self">isKeyPressed</a>(</span><span class="m-doc-wrap"><a href="namespaceredhand.html#a573eb484452b586e12a8d3834d567a72" class="m-doc">keyboard_<wbr />keys</a> wantedKey)</span></span>
+            </h3>
+            <p>check if a given key is pressed</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">wantedKey</td>
+                  <td>the key you want to know about</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true the key is pressed</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac700f1ec8a0e4213ec86ec9571ffbb74"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classredhand_1_1engine.html" class="m-doc">engine</a>&amp; redhand::<wbr />input_system::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac700f1ec8a0e4213ec86ec9571ffbb74" class="m-doc-self">getEngine</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Get the active engine, this will throw an error if no engine is attached.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>engine&amp; A reference to the active engine</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aa44a99981f08a096bf4f0d792a08176a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="namespaceredhand.html#a464bced11626cb6586b13eafc2d9a643" class="m-doc">key_<wbr />actions</a> redhand::<wbr />input_system::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa44a99981f08a096bf4f0d792a08176a" class="m-doc-self">static_getKeyAction</a>(</span><span class="m-doc-wrap"><a href="namespaceredhand.html#a573eb484452b586e12a8d3834d567a72" class="m-doc">keyboard_<wbr />keys</a> wantedKey)</span></span>
+            </h3>
+<aside class="m-note m-danger"><h4>Warning</h4><p>will be removed in 0.2.0</p></aside><aside class="m-note m-dim"><h4><a href="todo.html#_todo000002" class="m-doc">Todo</a></h4><p>remove</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae7961b7067a3a57952123661ee722a72"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool redhand::<wbr />input_system::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae7961b7067a3a57952123661ee722a72" class="m-doc-self">static_isKeyPressed</a>(</span><span class="m-doc-wrap"><a href="namespaceredhand.html#a573eb484452b586e12a8d3834d567a72" class="m-doc">keyboard_<wbr />keys</a> wantedKey)</span></span>
+            </h3>
+<aside class="m-note m-danger"><h4>Warning</h4><p>will be removed in 0.2.0</p></aside><aside class="m-note m-dim"><h4><a href="todo.html#_todo000003" class="m-doc">Todo</a></h4><p>remove</p></aside>
+          </div></section>
+        </section>
       </div>
     </div>
   </div>
