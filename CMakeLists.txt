@@ -10,13 +10,27 @@ cmake_policy(VERSION 3.16)
 project(redhand VERSION "0.1.1" DESCRIPTION "a small 2D game engine")
 
 #the available build options
-option(OUTPUTFILE "Name of file to output")
-option(REPOROOT "Path of the root of the repo" "${CMAKE_CURRENT_BINARY_DIR}/..")
 option(BUILDGLFW "allow manual compiling of glfw" "1")
+option(AUTOSETUP "automatically call setup.sh if needed" ON)
 
 #set the reporoot var
-SET(CMAKE_PREFIX_PATH ${REPOROOT})
-message("Repo base path is ${CMAKE_PREFIX_PATH}")
+message("Repo base path is ${CMAKE_SOURCE_DIR}")
+
+#execute setup.sh if needed
+if(AUTOSETUP)
+    if(EXISTS ${CMAKE_SOURCE_DIR}/src/glad.c)
+        message("glad.c found; not calling setup")
+    else()
+        message("glad.c not found; executing setup")
+        execute_process(COMMAND bash ${CMAKE_SOURCE_DIR}/scripts/setup.sh RESULT_VARIABLE setupOutput WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+
+        if(setupOutput MATCHES 0)
+            message("setup sucessful")
+        else()
+            message( FATAL_ERROR "error during setup" )
+        endif()
+    endif()
+endif()
 
 #add glfw to build if needed
 if (${BUILDGLFW} EQUAL  "0")
@@ -36,8 +50,8 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 #include and link project folders
-include_directories(${CMAKE_PREFIX_PATH}/include/)
-link_directories(${CMAKE_PREFIX_PATH}/lib/)
+include_directories(${CMAKE_SOURCE_DIR}/include/)
+link_directories(${CMAKE_SOURCE_DIR}/lib/)
 
 #search for opengl
 find_package(OpenGL REQUIRED)
@@ -89,8 +103,8 @@ add_library(redhand SHARED
     src/engine.cpp)
 
 #include glib and link libraries
-#target_precompile_headers(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/redhand/types.hpp)
-target_include_directories(redhand PRIVATE ${CMAKE_PREFIX_PATH}/include/ ${CMAKE_PREFIX_PATH}/include/redhand)
+#target_precompile_headers(redhand PRIVATE ${CMAKE_SOURCE_DIR}/include/redhand/types.hpp)
+target_include_directories(redhand PRIVATE ${CMAKE_SOURCE_DIR}/include/ ${CMAKE_SOURCE_DIR}/include/redhand)
 target_include_directories(redhand PRIVATE ${GLIB_INCLUDE_DIRS})
 target_link_libraries(redhand ${GLIB_LDFLAGS})
 target_link_libraries(redhand OpenGL::GL)
@@ -103,12 +117,12 @@ if (UNIX)
 endif (UNIX)
 
 if (WIN32)
-    #target_link_libraries(redhand ${CMAKE_PREFIX_PATH}/lib/glfw3.dll)
+    #target_link_libraries(redhand ${CMAKE_SOURCE_DIR}/lib/glfw3.dll)
 endif (WIN32)
 
 install(TARGETS redhand
         LIBRARY DESTINATION .
-        PUBLIC_HEADER DESTINATION ${CMAKE_PREFIX_PATH}/include/redhand)
+        PUBLIC_HEADER DESTINATION ${CMAKE_SOURCE_DIR}/include/redhand)
 
 file(GLOB HEADERS src/*.hpp)
-install(FILES ${HEADERS} DESTINATION ${CMAKE_PREFIX_PATH}/include/redhand)
+install(FILES ${HEADERS} DESTINATION ${CMAKE_SOURCE_DIR}/include/redhand)

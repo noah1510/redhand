@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$(basename $(pwd))" == "scripts" ]
+then
+    cd ..
+fi
+
 #clean up
 rm -rf "build"
 rm -rf "CMakeFiles"

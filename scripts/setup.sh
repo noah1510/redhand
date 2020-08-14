@@ -1,5 +1,35 @@
 #!/bin/bash
 
+findReporoot(){
+  if [ "$(basename $(pwd))" == "scripts" ]
+  then
+    cd ..
+  fi
+
+  if [ "$(basename $(pwd))" == "$BASPATHNAME" ]
+  then
+    REPOROOT="$(pwd)"
+  else
+    echo "invalid directory $(pwd)"
+    exit 1
+  fi
+}
+
+lookForGlad(){
+  if [ -n "$(glad 2>&1 >/dev/null | grep -c "ModuleNotFoundError: No module named")" ]
+  then
+    if [ -n "$(python3 -m glad 2>&1 >/dev/null | grep -c "No module named glad")" ]
+    then
+      echo "System glad not installed"
+    else
+      SYSTEMGLAD="1"
+    fi
+  else
+    SYSTEMGLAD="1"
+  fi
+}
+
+BASPATHNAME="redhand"
 THREADS="3"
 CI="0"
 VSCODE="0"
@@ -23,6 +53,15 @@ do
       shift
       i+=1
       ;;
+    "--pathname")
+      shift
+      if [ $1 ]
+      then
+        BASPATHNAME="$1"
+      fi
+      shift
+      i+=1
+      ;;
     "--ci")
       CI="1"
       shift
@@ -40,10 +79,6 @@ do
       NOTESTGAME="1"
       shift
       ;;
-    "--system-glad")
-      SYSTEMGLAD="1"
-      shift
-      ;;
     "--help")
       echo "Usage: scripts/build.sh [options]"
       echo "Options:"
@@ -53,7 +88,7 @@ do
       echo "    --vscode            Addes the configurations for visual studio code to the .vscode folder"
       echo "    --deb               The setup to create debian packages (!!!only intended for the debhelper!!!)"
       echo "    --no-testgame       Do not setup the testgame"
-      echo "    --system-glad       Use System wide glad installation"
+      echo "    --pathname [name]   The name of the redhand folder"
       echo ""
       echo "view the source on https://github.com/noah1510/redhand"
       exit 1
@@ -76,8 +111,9 @@ then
   THREADS="$(($THREADS+1))"
 fi
 
-REPOROOT="$(pwd)"
 PROJECTNAME="redhand"
+findReporoot
+lookForGlad
 
 if [ "$OSTYPE" == "linux-gnu" ]
 then
