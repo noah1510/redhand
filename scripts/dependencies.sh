@@ -22,11 +22,12 @@ then
     REDHANDDEPS="cmake clang-10 clang-tools-10 ninja-build libglm-dev libglfw3-dev devscripts libvips-dev libclang-10-dev libopenal-dev python3-glad"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil python-dev"
     QT4DEPS="libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4"
+    OPENAL="libasound2 alsa-utils alsa-oss"
 
     sudo apt-get update
     if [ "$CI" == "1" ]
     then
-        sudo apt-get install $DOCDEPS $GLFWDEPS $REDHANDDEPS --yes
+        sudo apt-get install $DOCDEPS $GLFWDEPS $REDHANDDEPS $OPENAL --yes
         if [ $? -eq 0 ]
         then
         echo "Successfully installed dependencies"
@@ -35,7 +36,7 @@ then
         exit 2
         fi
     else
-        sudo apt-get install $DOCDEPS $GLFWDEPS $REDHANDDEPS $ADDITIONALDEPS --yes
+        sudo apt-get install $DOCDEPS $GLFWDEPS $REDHANDDEPS $ADDITIONALDEPS $OPENAL --yes
         if [ $? -eq 0 ]
         then
         echo "Successfully installed dependencies"
