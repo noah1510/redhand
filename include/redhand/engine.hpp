@@ -173,6 +173,13 @@ namespace redhand {
         * @param error the error code which the game should be set to, 0 if none is given.
         */
         void stopGame(int error = 0);
+
+        /**
+         * @brief Get a reference to the engine object
+         * 
+         * @return engine& the reference to the object (*this)
+         */
+        engine& getReference();
     };
 
 } // namespace redhand

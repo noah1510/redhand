@@ -30,6 +30,10 @@ redhand::engine::~engine() {
     vips_shutdown();
 }
 
+redhand::engine& redhand::engine::getReference(){
+    return *this;
+}
+
 void redhand::engine::setConfig(redhand::engine_config conf) {
     configuration = conf;
     configuration.redhand_version = redhand::REDHAND_HEADER_VERSION;
@@ -63,8 +67,7 @@ void redhand::engine::init() {
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     //register engine to input system
-    input_system &in_sys = input_system::getInstance();
-    in_sys.registerEngine(this);
+    input_system::getInstance().registerEngine(this);
 
     //make sure glad works
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
