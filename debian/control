@@ -24,7 +24,7 @@ Vcs-Git: https://github.com/noah1510/redhand.git
 Vcs-Browser: https://github.com/noah1510/redhand.git
 
 Package: libredhand
-Architecture: amd64,arm64
+Architecture: any
 Section: libs
 Multi-Arch: same
 Depends: libglfw3, libglm-dev, libvips-dev, ${misc:Depends}, ${shlibs:Depends}
@@ -32,7 +32,7 @@ Recommends: libredhand-doc
 Description: a small and easy to use game development library
 
 Package: libredhand-dev
-Architecture: amd64,arm64
+Architecture: any
 Section: libs
 Depends: libredhand (= ${binary:Version}), ${misc:Depends}, libglfw3-dev, libgl1-mesa-dev, libvips-dev
 Suggests: libredhand-dbg
@@ -43,7 +43,7 @@ Description: libredhand: detached development headers
 
 
 Package: libredhand-dbg
-Architecture: amd64,arm64
+Architecture: any
 Section: debug
 Depends: libredhand-dev (= ${binary:Version}), ${misc:Depends}
 Recommends: libredhand-doc
@@ -53,7 +53,7 @@ Description: libredhand: detached debug symbold
 
 
 Package: libredhand-doc
-Architecture: amd64,arm64
+Architecture: any
 Section: debug
 Priority: optional
 Multi-Arch: same
