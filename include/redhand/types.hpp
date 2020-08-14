@@ -273,6 +273,29 @@ namespace redhand {
         ///The position of the rotation axis in the 3D Space (only the angle and orientation matters)
         glm::vec3 rotation_axis = {0.0f,0.0f,1.0f};
 
+        /**
+        * @brief Checks the properties for errors
+        * 
+        * @param properties the properties that should be checked
+        * @return true the properties have an error
+        * @return false there is no error in the properties
+        */
+        bool check();
+
+        /**
+         * @brief create the vector containing all the vertex data
+         * 
+         * @return std::vector<float> the vertex data
+         */
+        std::vector<float> getData();
+
+        /**
+         * @brief Get the Indicies for the EBO in one single vector
+         * 
+         * @return std::vector<unsigned int> the indicies in a single vector
+         */
+        std::vector<unsigned int> getIndicies();
+
     } ;
 
     /**
@@ -315,12 +338,10 @@ namespace redhand {
          * @return true the version match
          * @return false the version is not exactly the same
          */
-        bool doesMatchVersion(unsigned int major, unsigned int minor, unsigned int patch){
-            return major == redhand_version_major && minor == redhand_version_minor && patch == redhand_version_patch;
-        }
+        bool doesMatchVersion(unsigned int major, unsigned int minor, unsigned int patch);
 
         /**
-         * @brief check if the version of the engine is greater than the given version
+         * @brief check if the version of the engine is greater or equal the given value
          * 
          * @param major the major version number X.y.z
          * @param minor the minor version number x.Y.z
@@ -328,23 +349,15 @@ namespace redhand {
          * @return true the version of the engine is greater or equal to the given version
          * @return false the version of the engine is lower than the given value
          */
-        bool versionIsGreaterThan(unsigned int major, unsigned int minor, unsigned int patch){
-            if (redhand_version_major > major){
-                return true;
-            }
+        bool versionIsGreaterThan(unsigned int major, unsigned int minor, unsigned int patch);
 
-            if(redhand_version_major == major && redhand_version_minor > minor){
-                return true;
-            }
-
-            if(redhand_version_major == major && redhand_version_minor == minor && redhand_version_patch >= patch){
-                return true;
-            }
-
-            return false;
-
-        }
-
+        /**
+         * @brief check if the version of the engine is greater or equal the given value
+         * 
+         * @param version the version in the format x.y.z
+         * @return true the version of the engine is greater or equal to the given version
+         * @return false the version of the engine is lower than the given value
+         */
         bool versionIsGreaterThan(std::string version);
     };
 

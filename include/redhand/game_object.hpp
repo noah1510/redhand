@@ -119,15 +119,6 @@ namespace redhand {
         */
         virtual ~game_object();
 
-        /**
-        * @brief Checks the provided properties for errors
-        * 
-        * @param properties the properties that should be checked
-        * @return true the properties have an error
-        * @return false there is no error in the properties
-        */
-        bool checkObjectProperties(game_object_properties properties);
-
         ///This function returns a pointer to the attached shader
         std::shared_ptr<redhand::shader> getShader();
 
