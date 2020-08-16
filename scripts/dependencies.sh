@@ -108,7 +108,7 @@ then
 elif [ "$OSTYPE" == "msys" ]
 then
     pacman -S --noconfirm pactoys git
-    pacboy -S --noconfirm ninja:x clang:x cmake:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x
+    pacboy -S --noconfirm ninja:x clang:x cmake:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x
 else
     # Unknown os
     echo "running on something else."

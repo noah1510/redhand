@@ -8,6 +8,7 @@ on:
 jobs:
   doxygen:
     runs-on: ubuntu-latest
+    needs: windows
     steps:
     - uses: actions/checkout@v1
     - name: generate docs
@@ -58,7 +59,7 @@ jobs:
         lfs: false
     - uses: msys2/setup-msys2@v1
       with:
-        update: true
+        update: false
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: setup the project
