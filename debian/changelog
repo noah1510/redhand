@@ -1,3 +1,9 @@
+libredhand (0.1.2) groovy; urgency=medium
+
+  * fully working arm64, armfh and ppc64el packages
+
+ -- Noa Sakurajin <noasakurajin@web.de>  Sun, 16 Aug 2020 18:31:27 +0200
+
 libredhand (0.1.1) groovy; urgency=medium
 
   * rework of input_system
