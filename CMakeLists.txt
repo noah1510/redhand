@@ -4,13 +4,16 @@ set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 cmake_policy(SET CMP0067 NEW)
 
 cmake_policy(SET CMP0072 NEW)
+cmake_policy(SET CMP0069 NEW)
 cmake_policy(VERSION 3.16)
 
 #the project name and version
 project(redhand VERSION "0.1.1" DESCRIPTION "a small 2D game engine")
 
+#enable link time optimization
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
+
 #the available build options
-option(BUILDGLFW "allow manual compiling of glfw" "1")
 option(AUTOSETUP "automatically call setup.sh if needed" ON)
 
 #set the reporoot var
@@ -33,8 +36,9 @@ if(AUTOSETUP)
 endif()
 
 #add glfw to build if needed
-if (${BUILDGLFW} EQUAL  "0")
-    find_package(glfw3 REQUIRED)
+find_package(glfw3)
+if(glfw3_FOUND)
+    message("using installed version of glfw")
 else()
     message("Manually building glfw")
     set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
@@ -89,6 +93,15 @@ SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} ${GC_COVERAGE_COMPILE_FLAGS}")
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 11.0)
+        SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -fpch-instantiate-templates")
+        SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -fpch-instantiate-templates")
+    endif()
+    SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}")
+    SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
+endif()
+
 #add executable name
 add_library(redhand SHARED
     src/glad.c
@@ -103,7 +116,7 @@ add_library(redhand SHARED
     src/engine.cpp)
 
 #include glib and link libraries
-#target_precompile_headers(redhand PRIVATE ${CMAKE_SOURCE_DIR}/include/redhand/types.hpp)
+#target_precompile_headers(redhand PRIVATE ${CMAKE_SOURCE_DIR}/include/redhand/helper.hpp)
 target_include_directories(redhand PRIVATE ${CMAKE_SOURCE_DIR}/include/ ${CMAKE_SOURCE_DIR}/include/redhand)
 target_include_directories(redhand PRIVATE ${GLIB_INCLUDE_DIRS})
 target_link_libraries(redhand ${GLIB_LDFLAGS})

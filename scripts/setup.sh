@@ -280,11 +280,6 @@ then
   fi
 fi
 
-mkdir -p "build"
-mkdir -p "lib"
-mkdir -p "build/$BUILDNAME"
-mkdir -p "deploy"
-
 #copy results
 cp -r "dependencies/glad/include" "."
 mkdir -p "include/redhand/glad"

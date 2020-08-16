@@ -18,3 +18,7 @@ rm -rf ".cache"
 rm -rf "doc/def"
 rm -rf "doc/man"
 rm -rf "obj-x86_64-linux-gnu"
+
+mkdir "lib"
+mkdir "build"
+mkdir "deploy"

@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include <GLFW/glfw3.h>
+#include "redhand/types.hpp"
 #include <glm/glm.hpp>
 #include <vips/vips8>
 
@@ -21,8 +21,6 @@
 #include <mutex>
 #include <shared_mutex>
 #include <filesystem>
-
-#include "redhand/types.hpp"
 
 namespace redhand {
 

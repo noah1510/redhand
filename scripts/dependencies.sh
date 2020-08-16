@@ -115,3 +115,7 @@ else
     echo "Not a supported OS: $OSTYPE" >&2
     exit 1
 fi
+
+mkdir -p "lib"
+mkdir -p "build"
+mkdir -p "deploy"
