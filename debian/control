@@ -8,6 +8,8 @@ Build-Depends:
     clang-12 | clang-11 | clang-10 | clang-9,
     libclang-12-dev | libclang-11-dev | libclang-10-dev | libclang-9-dev,
     libc++-12-dev | libc++-11-dev | libc++-10-dev | libc++-9-dev,
+    libc++abi-12-dev | libc++abi-11-dev | libc++abi-10-dev | libc++abi-9-dev,
+    liblld-12-dev | liblld-11-dev | liblld-10-dev | liblld-9-dev,
     fakeroot, 
     libglfw3-dev, 
     xorg-dev,

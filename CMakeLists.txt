@@ -10,9 +10,6 @@ cmake_policy(VERSION 3.16)
 #the project name and version
 project(redhand VERSION 0.1.1 LANGUAGES C CXX DESCRIPTION "a small 2D game engine")
 
-#enable link time optimization
-set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
-
 #the available build options
 option(AUTOSETUP "automatically call setup.sh if needed" ON)
 
@@ -52,6 +49,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
+
+#enable link time optimization if possible
+include(CheckIPOSupported)
+check_ipo_supported(RESULT lto_supported OUTPUT error)
+
+if(lto_supported)
+    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
+endif()
 
 #include and link project folders
 include_directories(${CMAKE_SOURCE_DIR}/include/)
