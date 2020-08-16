@@ -28,15 +28,15 @@ CXX_comp := $(foreach comp,$(CXX_comps),$(if $(shell ${WHICH} $(comp) 2>${DEVNUL
 build:
 	doxygen
 	dh_testdir
-	dh_auto_configure -- -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER="$(word 1,$(C_comp))" -DCMAKE_CXX_COMPILER="$(word 1,$(CXX_comp))"
-	dh_auto_build
-	dh_auto_test
+	dh_auto_configure --builddir=build -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER="$(word 1,$(C_comp))" -DCMAKE_CXX_COMPILER="$(word 1,$(CXX_comp))"
+	dh_auto_build --builddir=build
+	dh_auto_test --builddir=build
 
 clean:
 	bash scripts/clean.sh
 	dh_testdir
-	dh_auto_clean
-	dh_clean
+	dh_auto_clean --builddir=build
+	dh_clean 
 
 override_dh_strip:
 	dh_strip --dbg-package=libredhand-dbg
