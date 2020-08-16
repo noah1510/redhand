@@ -8,7 +8,7 @@ cmake_policy(SET CMP0069 NEW)
 cmake_policy(VERSION 3.16)
 
 #the project name and version
-project(redhand VERSION "0.1.1" DESCRIPTION "a small 2D game engine")
+project(redhand VERSION 0.1.1 LANGUAGES CXX DESCRIPTION "a small 2D game engine")
 
 #enable link time optimization
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
