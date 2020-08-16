@@ -1,1 +1,61 @@
-build/lib/compile_commands.json
+[
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang-11 -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16    -g -flto=thin -fPIC   -std=gnu11 -o CMakeFiles/redhand.dir/src/glad.c.o   -c /home/noa/opengl/redhand/src/glad.c",
+  "file": "/home/noa/opengl/redhand/src/glad.c"
+},
+
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang++-11  -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16   -g -O0 -Wall -Wextra -g -O0 -g -flto=thin -fPIC   -std=gnu++17 -o CMakeFiles/redhand.dir/src/helper.cpp.o -c /home/noa/opengl/redhand/src/helper.cpp",
+  "file": "/home/noa/opengl/redhand/src/helper.cpp"
+},
+
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang++-11  -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16   -g -O0 -Wall -Wextra -g -O0 -g -flto=thin -fPIC   -std=gnu++17 -o CMakeFiles/redhand.dir/src/types.cpp.o -c /home/noa/opengl/redhand/src/types.cpp",
+  "file": "/home/noa/opengl/redhand/src/types.cpp"
+},
+
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang++-11  -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16   -g -O0 -Wall -Wextra -g -O0 -g -flto=thin -fPIC   -std=gnu++17 -o CMakeFiles/redhand.dir/src/shader.cpp.o -c /home/noa/opengl/redhand/src/shader.cpp",
+  "file": "/home/noa/opengl/redhand/src/shader.cpp"
+},
+
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang++-11  -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16   -g -O0 -Wall -Wextra -g -O0 -g -flto=thin -fPIC   -std=gnu++17 -o CMakeFiles/redhand.dir/src/texture.cpp.o -c /home/noa/opengl/redhand/src/texture.cpp",
+  "file": "/home/noa/opengl/redhand/src/texture.cpp"
+},
+
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang++-11  -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16   -g -O0 -Wall -Wextra -g -O0 -g -flto=thin -fPIC   -std=gnu++17 -o CMakeFiles/redhand.dir/src/game_object.cpp.o -c /home/noa/opengl/redhand/src/game_object.cpp",
+  "file": "/home/noa/opengl/redhand/src/game_object.cpp"
+},
+
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang++-11  -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16   -g -O0 -Wall -Wextra -g -O0 -g -flto=thin -fPIC   -std=gnu++17 -o CMakeFiles/redhand.dir/src/complex_world.cpp.o -c /home/noa/opengl/redhand/src/complex_world.cpp",
+  "file": "/home/noa/opengl/redhand/src/complex_world.cpp"
+},
+
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang++-11  -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16   -g -O0 -Wall -Wextra -g -O0 -g -flto=thin -fPIC   -std=gnu++17 -o CMakeFiles/redhand.dir/src/actor.cpp.o -c /home/noa/opengl/redhand/src/actor.cpp",
+  "file": "/home/noa/opengl/redhand/src/actor.cpp"
+},
+
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang++-11  -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16   -g -O0 -Wall -Wextra -g -O0 -g -flto=thin -fPIC   -std=gnu++17 -o CMakeFiles/redhand.dir/src/input.cpp.o -c /home/noa/opengl/redhand/src/input.cpp",
+  "file": "/home/noa/opengl/redhand/src/input.cpp"
+},
+
+{
+  "directory": "/home/noa/opengl/redhand/build",
+  "command": "/usr/bin/clang++-11  -Dredhand_EXPORTS -I../include -I../include/redhand -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/libgsf-1 -I/usr/include/libxml2 -I/usr/include/x86_64-linux-gnu/ImageMagick-6 -I/usr/include/ImageMagick-6 -I/usr/include/orc-0.4 -I/usr/include/OpenEXR -I/usr/include/poppler/glib -I/usr/include/poppler -I/usr/include/librsvg-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/openslide -I/usr/lib/x86_64-linux-gnu/hdf5/serial/include -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16   -g -O0 -Wall -Wextra -g -O0 -g -flto=thin -fPIC   -std=gnu++17 -o CMakeFiles/redhand.dir/src/engine.cpp.o -c /home/noa/opengl/redhand/src/engine.cpp",
+  "file": "/home/noa/opengl/redhand/src/engine.cpp"
+}
+]
