@@ -32,6 +32,8 @@ build:
 	dh_auto_build --builddir=build
 	dh_auto_test --builddir=build
 
+build-arch: build
+
 clean:
 	bash scripts/clean.sh
 	dh_testdir
