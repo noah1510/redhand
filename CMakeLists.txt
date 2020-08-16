@@ -134,7 +134,7 @@ if (WIN32)
 endif (WIN32)
 
 install(TARGETS redhand
-        LIBRARY DESTINATION .
+        LIBRARY DESTINATION ${CMAKE_SOURCE_DIR}
         PUBLIC_HEADER DESTINATION ${CMAKE_SOURCE_DIR}/include/redhand)
 
 file(GLOB HEADERS src/*.hpp)
