@@ -122,6 +122,7 @@ then
 
     GLFWLIB="libglfw.so"
     GLFWDEPLOY="libglfw.so.3"
+    PYTHON="python3"
 
     if [ $VSCODE -eq "1" ]
     then
@@ -135,6 +136,7 @@ then
     echo "script running on mac osx"
 
     GLFWLIB="libglfw.so"
+    PYTHON="python"
 
     if [ $VSCODE -eq "1" ]
     then
@@ -154,6 +156,7 @@ then
     GLFWDEPLOY="glfw3.dll"
     BUILDGLFW="1"
     BUILDGLM="1"
+    PYTHON="py"
 
     if [ $VSCODE -eq "1" ]
     then
@@ -167,6 +170,7 @@ then
     
     BUILDGLFW="0"
     BUILDGLM="0"
+    PYTHON="py"
 else
     # Unknown os
     echo "running on something else."

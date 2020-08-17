@@ -51,6 +51,8 @@ debian/*
 *.tar.xz
 *.tar.gz
 
+!meson.build
+
 doc/html
 doc/def
 doc/man
