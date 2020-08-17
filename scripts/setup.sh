@@ -221,7 +221,7 @@ then
     fi
     
     cd "dependencies/gladRepo"
-    python3 -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
+    $PYTHON -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
     if [ $? -eq 0 ]
     then
       echo "Successfully initilized glad"
