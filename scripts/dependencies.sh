@@ -21,7 +21,6 @@ then
     GLFWDEPS="xorg-dev libgl1-mesa-dev"
     REDHANDDEPS="cmake clang-10 clang-tools-10 ninja-build libglm-dev libglfw3-dev devscripts libvips-dev libclang-10-dev python3-glad libopenal-dev"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil python-dev"
-    QT4DEPS="libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4"
 
     sudo apt-get update
     if [ "$CI" == "1" ]

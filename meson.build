@@ -15,9 +15,10 @@ deps = [
     dependency('threads', required : true),
     dependency('glfw3', required : true),
     dependency('opengl', required : true),
-    dependency('vips', required : true, method : 'pkg-config'),
-    dependency('vips-cpp', required : true, method : 'pkg-config'),
-    dependency('glib-2.0', required : true, method : 'pkg-config'),
+    dependency('vips', required : true),
+    dependency('vips-cpp', required : true),
+    dependency('glib-2.0', required : true),
+    dependency('openal', required : true),
     cc.find_library('dl', required : false),
 ]
 
