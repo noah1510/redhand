@@ -1,0 +1,12 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: ./scripts/setup.sh && ./scripts/build.sh
+
+vscode:
+  extensions:
+    - llvm-vs-code-extensions.vscode-clangd@0.1.5:VVxg4kW5VbJUP3ysCuG3Fg==
+    - notskm.clang-tidy@0.5.1:+QMYmPGGWj0QCN6sba42Vw==
+    - twxs.cmake@0.0.17:aQNzlYa74rJFJ5/BnUF1yA==
+    - webfreak.debug@0.25.0:F9uLpAOde6r0l7rgMC8LTQ==
