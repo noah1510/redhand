@@ -1,6 +1,6 @@
 #include <redhand/glad/glad.h>
 
-#include "helper.hpp"
+#include "redhand/helper.hpp"
 #include "redhand/engine.hpp"
 #include "redhand/game_object.hpp"
 #include "redhand/shader.hpp"
@@ -8,7 +8,7 @@
 #include "redhand/complex_world.hpp"
 #include "redhand/input.hpp"
 #include "redhand/event/drawing_event.hpp"
-#include "types.hpp"
+#include "redhand/types.hpp"
 
 using namespace redhand;
 
