@@ -10,3 +10,5 @@ vscode:
     - notskm.clang-tidy@0.5.1:+QMYmPGGWj0QCN6sba42Vw==
     - twxs.cmake@0.0.17:aQNzlYa74rJFJ5/BnUF1yA==
     - webfreak.debug@0.25.0:F9uLpAOde6r0l7rgMC8LTQ==
+    - cschlosser.doxdocgen@0.7.2:g0DIKlW09t+j2Xi04fzrAA==
+    - bbenoist.Doxygen@1.0.0:pFvmFb+cj5Q2lWRLRCSajA==
