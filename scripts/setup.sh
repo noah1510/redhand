@@ -144,11 +144,11 @@ then
       cp -r "configurations/linux/.vscode" "."
     fi
 
-        
+
 elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]
 then
     # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
-    # or 
+    # or
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
@@ -164,13 +164,24 @@ then
       cp -r "configurations/linux/.vscode" "."
     fi
 
+    if [ "$CI" == "1" ]
+    then
+        PYTHON="python3"
+    fi
+
 elif [  "$OSTYPE" == "msys" ]
 then
     echo "script running on windows"
-    
+
     BUILDGLFW="0"
     BUILDGLM="0"
     PYTHON="py"
+
+    if [ "$CI" == "1" ]
+    then
+        PYTHON="python3"
+    fi
+
 else
     # Unknown os
     echo "running on something else."
@@ -219,9 +230,9 @@ then
       fi
 
     fi
-    
+
     cd "dependencies/gladRepo"
-    python3 -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
+    $PYTHON -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
     if [ $? -eq 0 ]
     then
       echo "Successfully initilized glad"
