@@ -37,11 +37,16 @@ sources = [
     'src/types.cpp'
 ]
 
-library(
+libredhand = library(
     'redhand', 
     sources, 
     version : '0.1.2', 
     soversion : '0', 
     include_directories : incdir,
     dependencies: deps
+)
+
+libredhand_dep = declare_dependency(
+    include_directories : incdir,
+    link_with : libredhand
 )
