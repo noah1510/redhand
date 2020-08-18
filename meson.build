@@ -13,11 +13,13 @@ cc = meson.get_compiler('cpp')
 
 deps = [
     dependency('threads', required : true),
-    dependency('glfw3', required : true),
+    dependency('glfw3', required : true, fallback : ['glfw3', 'glfw3_dep']),
     dependency('opengl', required : true),
     dependency('vips', required : true),
     dependency('vips-cpp', required : true),
-    dependency('glib-2.0', required : true),
+    dependency('glib-2.0', required : true, fallback : ['glib', 'glib_dep']),
+    dependency('gobject-2.0', required : true, fallback : ['glib', 'gobject_dep']),
+    dependency('gio-2.0', required : true, fallback : ['glib', 'gio_dep']),
     dependency('openal', required : true),
     cc.find_library('dl', required : false),
 ]
@@ -37,7 +39,7 @@ sources = [
     'src/types.cpp'
 ]
 
-libredhand = library(
+redhand = library(
     'redhand', 
     sources, 
     version : '0.1.2', 
@@ -46,7 +48,9 @@ libredhand = library(
     dependencies: deps
 )
 
-libredhand_dep = declare_dependency(
+redhand_dep = declare_dependency(
     include_directories : incdir,
-    link_with : libredhand
+    link_with : redhand,
+    dependencies : deps,
+    version: '0.1.2'
 )
