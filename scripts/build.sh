@@ -23,6 +23,7 @@ PACKAGE="0"
 INITILIZE="0"
 export REDHAND_CI="0"
 AUTOSETUP="1"
+CP_FLAGS="-s -r"
 
 #parse parameter
 pars=$#
@@ -144,12 +145,14 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    LIBRARY="libredhand.dll"
+    CP_FLAGE="-r"
+    LIBRARY="libredhand-0.dll"
 
 elif [ "$OSTYPE" == "msys" ]
 then
     echo "script running on windows"
 
+    CP_FLAGS="-r"
     LIBRARY="libredhand.dll"
 
 else
@@ -204,8 +207,8 @@ else
 
   fi
 
-  cd "deploy" && cp -r -s "../build/$LIBRARY" "$LIBRARY" && cd ..
-  cd "lib" && cp -r -s "../build/$LIBRARY" "$LIBRARY" && cd ..
+  cd "deploy" && cp $CP_FLAGS "../build/$LIBRARY" "$LIBRARY" && cd ..
+  cd "lib" && cp $CP_FLAGS "../build/$LIBRARY" "$LIBRARY" && cd ..
 
   LD_LIBRARY_PATH="$REPOROOT/lib"
   export LD_LIBRARY_PATH
