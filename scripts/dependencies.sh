@@ -99,7 +99,7 @@ then
 elif [ "$OSTYPE" == "msys" ]
 then
     pacman -S --noconfirm pactoys git meson
-    pacboy -S --noconfirm clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x
+    pacboy -S --noconfirm clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x pip:x python:x
     pip install glad
 else
     # Unknown os
