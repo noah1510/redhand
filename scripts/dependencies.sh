@@ -67,14 +67,14 @@ then
         #    exit 2
         #fi
 
-        choco install llvm --yes --no-progress
-        if [ $? -eq 0 ]
-        then
-            echo "Successfully installed llvm"
-        else
-            echo "Could not install llvm" >&2
-            exit 2
-        fi
+        #choco install llvm --yes --no-progress
+        #if [ $? -eq 0 ]
+        #then
+        #    echo "Successfully installed llvm"
+        #else
+        #    echo "Could not install llvm" >&2
+        #    exit 2
+        #fi
 
     else
         #choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
@@ -86,20 +86,30 @@ then
         #    exit 2
         #fi
 
-        choco install doxygen.install mingw pip llvm --yes --verbose --no-progress
+        choco install doxygen.install --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
-            echo "Successfully installed dependencies"
+            echo "Successfully installed doxygen"
         else
-            echo "Could not install dependencies" >&2
+            echo "Could not install doxygen" >&2
             exit 2
         fi
     fi
+
+    choco install  mingw pip llvm --yes --verbose --no-progress
+    if [ $? -eq 0 ]
+    then
+        echo "Successfully installed dependencies"
+    else
+        echo "Could not install dependencies" >&2
+        exit 2
+    fi
+
     pip install meson glad
 elif [ "$OSTYPE" == "msys" ]
 then
     pacman -S --noconfirm pactoys git mingw-w64-x86_64-python-pip
-    pacboy -S --noconfirm clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x meson:x
+    pacboy -S --noconfirm pkg-config:x clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x meson:x
     pip install glad
 else
     # Unknown os
