@@ -22,5 +22,4 @@ rm -rf "include/redhand/glad"
 rm -rf "include/redhand/KHR"
 
 mkdir "lib"
-mkdir "build"
 mkdir "deploy"

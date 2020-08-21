@@ -18,7 +18,7 @@ py = pymod.find_installation('python3', required: true, modules: ['glad'])
 deps = [
     dependency('threads', required : true),
     dependency('glfw3', required : true, fallback : ['glfw3', 'glfw_dep']),
-    dependency('opengl', required : true),
+    dependency('gl', required : true),
     dependency('vips', required : true),
     dependency('vips-cpp', required : true),
     dependency('glib-2.0', required : true, fallback : ['glib', 'glib_dep']),
