@@ -1,6 +1,3 @@
-[submodule "include/gitglm"]
-	path = include/gitglm
-	url = https://github.com/g-truc/glm
 [submodule "testgame"]
 	path = testgame
 	url = https://github.com/noah1510/redhand-testgame.git
