@@ -177,7 +177,7 @@ else
     meson setup build
   fi
 
-  meson compile -C build
+  ninja -C build
   if [ $? -eq 0 ]
   then
     echo "Successfully compiled $PROJECTNAME"
@@ -193,7 +193,7 @@ else
       exit 4
     fi
 
-    meson compile -C build
+    ninja -C build
     if [ $? -eq 0 ]
     then
       echo "Successfully built redhand"
