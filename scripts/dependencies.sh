@@ -95,11 +95,12 @@ then
             exit 2
         fi
     fi
-    pip install meson
+    pip install meson glad
 elif [ "$OSTYPE" == "msys" ]
 then
     pacman -S --noconfirm pactoys git meson
     pacboy -S --noconfirm clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x
+    pip install glad
 else
     # Unknown os
     echo "running on something else."
