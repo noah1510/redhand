@@ -75,6 +75,7 @@ then
         #    echo "Could not install llvm" >&2
         #    exit 2
         #fi
+        echo "CI mode installation"
 
     else
         #choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
