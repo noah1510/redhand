@@ -25,10 +25,13 @@ C_comp := $(foreach comp,$(C_comps),$(if $(shell ${WHICH} $(comp) 2>${DEVNUL} ),
 
 CXX_comp := $(foreach comp,$(CXX_comps),$(if $(shell ${WHICH} $(comp) 2>${DEVNUL} ),$(comp),))
 
+CC := "$(word 1,$(C_comp))"
+CXX := "$(word 1,$(CXX_comp))"
+
 build:
 	doxygen
 	dh_testdir
-	dh_auto_configure --builddir=build -- -DBUILDGLFW="0" -DREPOROOT="$(shell pwd)" -DCMAKE_C_COMPILER="$(word 1,$(C_comp))" -DCMAKE_CXX_COMPILER="$(word 1,$(CXX_comp))"
+	dh_auto_configure --builddir=build --
 	dh_auto_build --builddir=build
 	dh_auto_test --builddir=build
 
