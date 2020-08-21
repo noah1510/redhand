@@ -15,29 +15,12 @@ findReporoot(){
   fi
 }
 
-lookForGlad(){
-  if [ -n "$(glad 2>&1 >/dev/null | grep -c "ModuleNotFoundError: No module named")" ]
-  then
-    if [ -n "$(python3 -m glad 2>&1 >/dev/null | grep -c "No module named glad")" ]
-    then
-      echo "System glad not installed"
-    else
-      SYSTEMGLAD="1"
-    fi
-  else
-    SYSTEMGLAD="1"
-  fi
-}
-
 BASPATHNAME="redhand"
 THREADS="3"
 CI="0"
 VSCODE="0"
-BUILDGLFW="0"
-BUILDGLM="0"
 PACKAGEBUILD="0"
 NOTESTGAME="0"
-SYSTEMGLAD="0"
 
 #parse parameter
 pars=$#
@@ -72,7 +55,6 @@ do
       ;;
     "--deb")
       PACKAGEBUILD="1"
-      SYSTEMGLAD="1"
       shift
       ;;
     "--no-testgame")
@@ -113,16 +95,11 @@ fi
 
 PROJECTNAME="redhand"
 findReporoot
-lookForGlad
 
 if [ "$OSTYPE" == "linux-gnu" ]
 then
     # Linux
     echo "script running on linux"
-
-    GLFWLIB="libglfw.so"
-    GLFWDEPLOY="libglfw.so.3"
-    PYTHON="python3"
 
     if [ $VSCODE -eq "1" ]
     then
@@ -134,9 +111,6 @@ elif [ "$OSTYPE" == "darwin"* ]
 then
     # Mac OSX
     echo "script running on mac osx"
-
-    GLFWLIB="libglfw.so"
-    PYTHON="python"
 
     if [ $VSCODE -eq "1" ]
     then
@@ -152,35 +126,15 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    GLFWLIB="glfw3.dll"
-    GLFWDEPLOY="glfw3.dll"
-    BUILDGLFW="1"
-    BUILDGLM="1"
-    PYTHON="py"
-
     if [ $VSCODE -eq "1" ]
     then
       echo "The configurations are for linux and not guaranteed to work"
       cp -r "configurations/linux/.vscode" "."
     fi
 
-    if [ "$CI" == "1" ]
-    then
-        PYTHON="python3"
-    fi
-
 elif [  "$OSTYPE" == "msys" ]
 then
     echo "script running on windows"
-
-    BUILDGLFW="0"
-    BUILDGLM="0"
-    PYTHON="py"
-
-    if [ "$CI" == "1" ]
-    then
-        PYTHON="python3"
-    fi
 
 else
     # Unknown os
@@ -190,60 +144,6 @@ else
 fi
 
 echo "number of THREADS:$THREADS"
-
-if [ "$BUILDGLM" == "1" ]
-then
-  git submodule update --init include/gitglm
-  if [ $? -eq 0 ]
-  then
-    echo "Successfully initiated glm"
-  else
-    echo "Could not initiate glm" >&2
-    exit 1
-  fi
-fi
-
-if [ "$BUILDGLFW" == "1" ]
-then
-  git submodule update --init dependencies/glfw
-  if [ $? -eq 0 ]
-  then
-    echo "Successfully initiated glfw"
-  else
-    echo "Could not initiate glfw" >&2
-    exit 1
-  fi
-fi
-
-if [ "$PACKAGEBUILD" == "0" ]
-then
-    if [ "$SYSTEMGLAD" == "0" ]
-    then
-
-      git submodule update --init dependencies/gladRepo
-      if [ $? -eq 0 ]
-      then
-          echo "Successfully initiated glad"
-      else
-          echo "Could not initiate glad" >&2
-          exit 1
-      fi
-
-    fi
-
-    cd "dependencies/gladRepo"
-    $PYTHON -m glad --generator=c --extensions=GL_EXT_framebuffer_multisample,GL_EXT_texture_filter_anisotropic --out-path="../glad" --reproducible --profile core
-    if [ $? -eq 0 ]
-    then
-      echo "Successfully initilized glad"
-    else
-      echo "Could not initilize glad" >&2
-      cd "../.."
-      exit 3
-    fi
-    cd "../.."
-
-fi
 
 if [ "$NOTESTGAME" == "0" ]
 then
@@ -270,38 +170,6 @@ then
   fi
 
 fi
-
-if [ "$BUILDGLM" == "1" ]
-then
-  cp -r "include/gitglm/glm" "include/glm"
-  if [ $? -eq 0 ]
-  then
-      echo "Successfully copied glm"
-  else
-      echo "Could not copy glm" >&2
-      exit 2
-  fi
-fi
-
-if [ "$BUILDGLFW" == "1" ]
-then
-  cp -r "dependencies/glfw/include/GLFW" "include/GLFW"
-  if [ $? -eq 0 ]
-  then
-      echo "Successfully copied GLFW"
-  else
-      echo "Could not copy GLFW" >&2
-      exit 2
-  fi
-fi
-
-#copy results
-cp -r "dependencies/glad/include" "."
-mkdir -p "include/redhand/glad"
-mkdir -p "include/redhand/KHR"
-cp -r "dependencies/glad/include/glad/glad.h" "include/redhand/glad"
-cp -r "dependencies/glad/include/KHR/khrplatform.h" "include/redhand/KHR"
-cp -r "dependencies/glad/src/glad.c" "src"
 
 echo "Successfully finished setup"
 exit 0

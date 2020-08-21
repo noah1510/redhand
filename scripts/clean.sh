@@ -18,6 +18,8 @@ rm -rf ".cache"
 rm -rf "doc/def"
 rm -rf "doc/man"
 rm -rf "obj-x86_64-linux-gnu"
+rm -rf "include/redhand/glad"
+rm -rf "include/redhand/KHR"
 
 mkdir "lib"
 mkdir "build"

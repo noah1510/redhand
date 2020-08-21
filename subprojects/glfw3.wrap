@@ -1,3 +1,6 @@
 [wrap-git]
-url = https://github.com/glfw/glfw.git
-revision = master
+url = https://github.com/henry4k/glfw-meson.git
+revision = head
+
+[provides]
+dependency_names = glfw3

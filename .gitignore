@@ -65,3 +65,7 @@ src/glad.c
 doc/xml/
 
 doc/__pycache__/
+
+subprojects/glfw3/
+subprojects/glm/
+subprojects/glib/
