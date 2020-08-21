@@ -22,7 +22,7 @@ jobs:
     - name: build testgame
       run:  bash testgame/scripts/build.sh -j 2 -o "testgame-$GITHUB_SHA"
     - name: create source package
-      run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** CMakeLists.txt README.md doc/markdown/** Doxyfile LICENSE debian/**
+      run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** meson.build subprojects/* README.md doc/markdown/** Doxyfile LICENSE debian/**
     - uses: actions/upload-artifact@v2
       with:
         name: source-package        
