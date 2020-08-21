@@ -98,8 +98,8 @@ then
     pip install meson glad
 elif [ "$OSTYPE" == "msys" ]
 then
-    pacman -S --noconfirm pactoys git
-    pacboy -S --noconfirm clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x pip:x python:x meson:x
+    pacman -S --noconfirm pactoys git mingw-w64-python-pip
+    pacboy -S --noconfirm clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x meson:x
     pip install glad
 else
     # Unknown os
