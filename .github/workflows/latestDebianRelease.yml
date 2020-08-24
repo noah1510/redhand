@@ -29,8 +29,6 @@ jobs:
         lfs: false
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
-    - name: setup the project
-      run:  bash scripts/setup.sh --ci
     - name: build library
       run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
     - name: get testgame
@@ -64,8 +62,6 @@ jobs:
         update: false
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
-    - name: setup the project
-      run:  bash scripts/setup.sh --ci
     - name: build library
       run:  bash scripts/build.sh -j 2 -o $GITHUB_SHA
     - name: get testgame
