@@ -4,7 +4,7 @@ Maintainer: Noa Sakurajin <noasakurajin@web.de>
 Build-Depends: 
     debhelper, 
     dh-make, 
-    cmake (>= 3.16),  
+    meson (>= 50.0.0),  
     clang-12 | clang-11 | clang-10 | clang-9,
     libclang-12-dev | libclang-11-dev | libclang-10-dev | libclang-9-dev,
     libc++-12-dev | libc++-11-dev | libc++-10-dev | libc++-9-dev,

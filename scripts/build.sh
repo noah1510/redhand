@@ -21,9 +21,9 @@ LIBBUILDNAME="lib"
 SETUP="0"
 PACKAGE="0"
 INITILIZE="0"
-BUILDGLFW="0"
 export REDHAND_CI="0"
 AUTOSETUP="1"
+CP_FLAGS="-s -r"
 
 #parse parameter
 pars=$#
@@ -130,7 +130,6 @@ then
     echo "script running on linux"
 
     LIBRARY="libredhand.so"
-    BUILDGLFW="0"
 
 elif [ "$OSTYPE" == "darwin"* ]
 then
@@ -146,17 +145,15 @@ then
     # POSIX compatibility layer and Linux environment emulation for Windows
     echo "script running on windows"
 
-    LIBRARY="libredhand.dll"
-
-    BUILDGLFW="1"
+    CP_FLAGE="-r"
+    LIBRARY="libredhand-0.dll"
 
 elif [ "$OSTYPE" == "msys" ]
 then
     echo "script running on windows"
 
+    CP_FLAGS="-r"
     LIBRARY="libredhand.dll"
-
-    BUILDGLFW="0"
 
 else
     # Unknown os
@@ -177,26 +174,41 @@ then
 
 else
 
-  mkdir -p "build"
-
   #build actual project
+  if [ ! -d "build" ]; then
+    echo "configuring meson"
+    meson setup build
+  fi
 
-  cmake -G "Ninja" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B$REPOROOT/build -S$REPOROOT -DAUTOSETUP=$AUTOSETUP
-  
-  cd build
-  ninja -j"$THREADS"
+  ninja -C build
   if [ $? -eq 0 ]
   then
     echo "Successfully compiled $PROJECTNAME"
-    cd ".."
   else
-    echo "Could not compile $PROJECTNAME" >&2
-    cd ".."
-    exit 4
+    echo "Could not compile $PROJECTNAME. Trying to reconfigure" >&2
+
+    meson setup build --reconfigure
+    if [ $? -eq 0 ]
+    then
+      echo "Successfully setup build"
+    else
+      echo "Could not setup build" >&2
+      exit 4
+    fi
+
+    ninja -C build
+    if [ $? -eq 0 ]
+    then
+      echo "Successfully built redhand"
+    else
+      echo "Could not build redhand" >&2
+      exit 4
+    fi
+
   fi
-  
-  cp -r "build/$LIBRARY" "deploy"
-  cp -r "build/$LIBRARY" "lib"
+
+  cd "deploy" && cp $CP_FLAGS "../build/$LIBRARY" "$LIBRARY" && cd ..
+  cd "lib" && cp $CP_FLAGS "../build/$LIBRARY" "$LIBRARY" && cd ..
 
   LD_LIBRARY_PATH="$REPOROOT/lib"
   export LD_LIBRARY_PATH

@@ -19,7 +19,7 @@ then
 
     DOCDEPS="doxygen graphviz-dev"
     GLFWDEPS="xorg-dev libgl1-mesa-dev"
-    REDHANDDEPS="cmake clang-10 clang-tools-10 ninja-build libglm-dev libglfw3-dev devscripts libvips-dev libclang-10-dev python3-glad libopenal-dev"
+    REDHANDDEPS="cmake meson clang-10 clang-tools-10 ninja-build libglm-dev libglfw3-dev devscripts libvips-dev libclang-10-dev python3-glad libopenal-dev"
     ADDITIONALDEPS="python3-setuptools python-setuptools build-essential autoconf libtool pkg-config python-pil python-dev"
 
     sudo apt-get update
@@ -66,24 +66,16 @@ then
         #    echo "Could not install magick" >&2
         #    exit 2
         #fi
-        
-        choco install ninja --yes --no-progress
-        if [ $? -eq 0 ]
-        then
-            echo "Successfully installed ninja"
-        else
-            echo "Could not install ninja" >&2
-            exit 2
-        fi
 
-        choco install llvm --yes --no-progress
-        if [ $? -eq 0 ]
-        then
-            echo "Successfully installed llvm"
-        else
-            echo "Could not install llvm" >&2
-            exit 2
-        fi
+        #choco install llvm --yes --no-progress
+        #if [ $? -eq 0 ]
+        #then
+        #    echo "Successfully installed llvm"
+        #else
+        #    echo "Could not install llvm" >&2
+        #    exit 2
+        #fi
+        echo "CI mode installation"
 
     else
         #choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
@@ -95,19 +87,31 @@ then
         #    exit 2
         #fi
 
-        choco install doxygen.install mingw cmake ninja llvm --yes --verbose --no-progress
+        choco install doxygen.install --yes --verbose --no-progress
         if [ $? -eq 0 ]
         then
-            echo "Successfully installed dependencies"
+            echo "Successfully installed doxygen"
         else
-            echo "Could not install dependencies" >&2
+            echo "Could not install doxygen" >&2
             exit 2
         fi
     fi
+
+    choco install  mingw pip llvm --yes --verbose --no-progress
+    if [ $? -eq 0 ]
+    then
+        echo "Successfully installed dependencies"
+    else
+        echo "Could not install dependencies" >&2
+        exit 2
+    fi
+
+    pip install meson glad
 elif [ "$OSTYPE" == "msys" ]
 then
-    pacman -S --noconfirm pactoys git
-    pacboy -S --noconfirm ninja:x clang:x cmake:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x
+    pacman -S --noconfirm pactoys git mingw-w64-x86_64-python-pip
+    pacboy -S --noconfirm cmake:x pkg-config:x clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x libvips:x glib2:x openal:x meson:x
+    pip install glad
 else
     # Unknown os
     echo "running on something else."
@@ -116,5 +120,4 @@ else
 fi
 
 mkdir -p "lib"
-mkdir -p "build"
 mkdir -p "deploy"
