@@ -9,7 +9,6 @@ project(
     version: '0.1.2'
 )
 
-#add_project_arguments('-std=gnu++17', language : 'cpp')
 cc = meson.get_compiler('cpp')
 
 pymod = import('python')
@@ -21,9 +20,9 @@ deps = [
     dependency('gl', required : true),
     dependency('vips', required : true),
     dependency('vips-cpp', required : true),
-    dependency('glib-2.0', required : true, fallback : ['glib', 'glib_dep']),
-    dependency('gobject-2.0', required : true, fallback : ['glib', 'gobject_dep']),
-    dependency('gio-2.0', required : true, fallback : ['glib', 'gio_dep']),
+    dependency('glib-2.0', required : true, fallback : 'glib'),
+    dependency('gobject-2.0', required : true, fallback : 'glib'),
+    dependency('gio-2.0', required : true, fallback : 'glib'),
     dependency('openal', required : true),
     py.dependency(),
     cc.find_library('dl', required : false),
