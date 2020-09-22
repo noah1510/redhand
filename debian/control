@@ -20,7 +20,8 @@ Build-Depends:
     libgl1-mesa-dev, 
     doxygen, 
     graphviz,
-    libvips-dev
+    libvips-dev,
+    libopenal-dev
 Standards-Version: 4.1.2
 Section: libs
 #Homepage: https://www.patreon.com/noasakurajin
