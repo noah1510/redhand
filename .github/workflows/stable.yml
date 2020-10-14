@@ -22,7 +22,7 @@ jobs:
     - name: build testgame
       run:  cd ../redhand-testgame && bash scripts/build.sh -j 2
     - name: create source package
-      run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** meson.build subprojects/* README.md doc/markdown/** Doxyfile LICENSE debian/**
+      run: tar -czf deploy/source.tar.gz include/redhand/** scripts/** src/** meson.build meson_options.txt subprojects/* README.md doc/markdown/** Doxyfile LICENSE debian/**
     - uses: actions/upload-artifact@v2
       with:
         name: source-package        
