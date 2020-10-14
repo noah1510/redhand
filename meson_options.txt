@@ -1,0 +1,1 @@
+option('build-testgame', type : 'boolean', value : false, description : 'set to true if you want to build the testgame.')
