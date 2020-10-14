@@ -1,12 +1,10 @@
 project(
-    'redhand', 
-    'c', 
-    'cpp',
-    default_options : [
-        'c_std=c11', 
-        'cpp_std=c++17'
-    ],
-    version: '0.1.3'
+  'redhand',
+  'c',
+  'cpp',
+default_options : ['c_std=c11', 'cpp_std=c++17', 'b_lto=True'],
+version : '0.1.3',
+license : 'LGPL-v3'
 )
 
 cc = meson.get_compiler('cpp')
@@ -78,6 +76,17 @@ redhand_dep = declare_dependency(
     dependencies : deps,
     version: meson.project_version()
 )
+
+if get_option('build-testgame')
+    testgame_proj = subproject('redhand-testgame')
+    
+    executable(
+        'redhand-testgame', 
+        testgame_proj.get_variable('testgame_sources'),
+        include_directories : testgame_proj.get_variable('testgame_incdir'),
+        dependencies: redhand_dep
+    )
+endif
 
 install_subdir('include/redhand', install_dir : 'include')
 

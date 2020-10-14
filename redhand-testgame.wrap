@@ -1,0 +1,7 @@
+[wrap-git]
+url = https://github.com/noah1510/redhand-testgame.git
+revision = master
+
+[provides]
+dependency_names = redhand-testgame
+
