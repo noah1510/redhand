@@ -327,7 +327,7 @@ namespace redhand {
         ///the current redhand minor version x.Y.z
         unsigned int redhand_version_minor = 1;
         ///the current redhand pacht version x.y.Z
-        unsigned int redhand_version_patch = 2;
+        unsigned int redhand_version_patch = 3;
 
         /**
          * @brief check if the the version of the engine matches the given version

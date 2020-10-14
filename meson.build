@@ -6,7 +6,7 @@ project(
         'c_std=c11', 
         'cpp_std=c++17'
     ],
-    version: '0.1.2'
+    version: '0.1.3'
 )
 
 cc = meson.get_compiler('cpp')
