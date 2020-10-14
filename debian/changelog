@@ -1,3 +1,10 @@
+libredhand (0.1.3) groovy; urgency=medium
+
+  * switch to meson as build system
+  * initial kdevelop integration
+
+ -- noa <noa@noa-ZenBook-UX462DA>  Wed, 14 Oct 2020 22:01:48 +0200
+
 libredhand (0.1.2) groovy; urgency=medium
 
   * fully working arm64, armfh and ppc64el packages
