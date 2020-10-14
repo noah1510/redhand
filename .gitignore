@@ -69,3 +69,7 @@ doc/__pycache__/
 subprojects/glfw3/
 subprojects/glm/
 subprojects/glib/
+
+.kdev4/
+
+subprojects/libffi
