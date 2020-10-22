@@ -16,6 +16,7 @@ deps = [
     dependency('threads', required : true),
     dependency('glfw3', required : true, fallback : ['glfw3', 'glfw_dep']),
     dependency('gl', required : true),
+    dependency('glm', required : true, fallback : ['glm','glm_dep']),
     dependency('vips', required : true),
     dependency('vips-cpp', required : true),
     dependency('glib-2.0', required : true, fallback : ['glib','libglib_dep']),
