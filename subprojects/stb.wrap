@@ -4,3 +4,4 @@ revision = patch-1
 
 [provides]
 dependency_names = stb
+stb=stb_dep

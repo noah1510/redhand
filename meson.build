@@ -90,5 +90,7 @@ install_subdir('include/redhand', install_dir : 'include')
 pkg = import('pkgconfig')
 pkg.generate(redhand)
 
-meson.override_dependency('redhand', redhand_dep)
-meson.override_dependency('libredhand', redhand_dep)
+if meson.version().version_compare('>=0.54.0')
+    meson.override_dependency('redhand', redhand_dep)
+    meson.override_dependency('libredhand', redhand_dep)
+endif
