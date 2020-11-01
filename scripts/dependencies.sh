@@ -58,34 +58,10 @@ then
 
     if [ "$CI" == "1" ]
     then
-        #choco install imagemagick  -PackageParameters InstallDevelopmentHeaders=true  --yes --no-progress
-        #if [ $? -eq 0 ]
-        #then
-        #    echo "Successfully installed magick"
-        #else
-        #    echo "Could not install magick" >&2
-        #    exit 2
-        #fi
-
-        #choco install llvm --yes --no-progress
-        #if [ $? -eq 0 ]
-        #then
-        #    echo "Successfully installed llvm"
-        #else
-        #    echo "Could not install llvm" >&2
-        #    exit 2
-        #fi
+    
         echo "CI mode installation"
 
     else
-        #choco install -PackageParameters InstallDevelopmentHeaders=true imagemagick
-        #if [ $? -eq 0 ]
-        #then
-        #    echo "Successfully installed magick"
-        #else
-        #    echo "Could not install magick" >&2
-        #    exit 2
-        #fi
 
         choco install doxygen.install --yes --verbose --no-progress
         if [ $? -eq 0 ]

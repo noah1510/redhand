@@ -36,16 +36,10 @@ jobs:
     name: windows build and test latest release
     runs-on: windows-latest
     needs: ubuntu
-    defaults:
-      run:
-        shell: msys2 {0}
     steps:
     - uses: actions/checkout@v2
       with: 
         lfs: false
-    - uses: msys2/setup-msys2@v1
-      with:
-        update: false
     - name: install dependencies
       run:  bash scripts/dependencies.sh --ci
     - name: build library
