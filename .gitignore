@@ -78,3 +78,5 @@ subprojects/redhand-testgame
 subprojects/glm-0.9.9.8/
 
 subprojects/packagecache/
+
+subprojects/stb

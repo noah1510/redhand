@@ -27,9 +27,6 @@ redhand::engine::~engine() {
 
     //close the window + clean up
     glfwTerminate();
-
-    //terminate vips
-    vips_shutdown();
 }
 
 redhand::engine& redhand::engine::getReference(){

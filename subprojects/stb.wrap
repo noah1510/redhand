@@ -1,0 +1,6 @@
+[wrap-git]
+url = https://github.com/noah1510/stb.git
+revision = patch-1
+
+[provides]
+dependency_names = stb

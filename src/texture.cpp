@@ -1,12 +1,24 @@
 #include <redhand/glad/glad.h>
+#define STB_IMAGE_IMPLEMENTATION
 #include "redhand/texture.hpp"
 
 using namespace redhand;
 
 void redhand::initImageLoader(char *str) {
-    if (vips_init(str)) {
-        vips_error_exit(NULL);
-    }
+    stbi_set_flip_vertically_on_load(true); 
+}
+
+void redhand::texture2D::loadImage(){
+    std::scoped_lock<std::shared_mutex,std::shared_mutex,std::shared_mutex,std::shared_mutex> lock(mutex_height,mutex_width,mutex_channels,mutex_image_data);
+    image_data = stbi_load(texture_properties.file_location.string().c_str(), &width, &height, &nrChannels, STBI_rgb_alpha);
+}
+
+void redhand::texture2D::freeImage() {
+    std::scoped_lock<std::shared_mutex,std::shared_mutex,std::shared_mutex,std::shared_mutex> lock(mutex_height,mutex_width,mutex_channels,mutex_image_data);
+    stbi_image_free(image_data);
+    width = 0;
+    height = 0;
+    nrChannels = 0;
 }
 
 void redhand::texture2D::initTexture2D() {
@@ -24,25 +36,14 @@ void redhand::texture2D::initTexture2D() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, texture_properties.texture_max_filter);
 
     //get the image if it is only temporary
+    
     if (!texture_properties.keep_image_data) {
-        image_data = vips::VImage::new_from_file(
-            texture_properties.file_location.string().c_str(),
-            vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));
-
-        image_data.set("format", VIPS_FORMAT_UCHAR);
-        image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
-        //image_data = image_data.case_image()
-
-        image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
+        loadImage();
     }
 
-    //update the dimensions
-    width = image_data.width();
-    height = image_data.height();
-
     //create opengl texture
-    if (image_data.data() != nullptr) {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data.data());
+    if (image_data != nullptr) {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
         glGenerateMipmap(GL_TEXTURE_2D);
     } else {
         std::cout << "Failed to load texture" << std::endl;
@@ -51,8 +52,7 @@ void redhand::texture2D::initTexture2D() {
 
     //If the image should not be kept delete it
     if (!texture_properties.keep_image_data) {
-        //image_data.release();
-        image_data = nullptr;
+        freeImage();
     }
 
     glBindTexture(GL_TEXTURE_2D, 0);
@@ -67,14 +67,7 @@ redhand::texture2D::texture2D(image_properties prop) {
     }
 
     if (texture_properties.keep_image_data) {
-        image_data = vips::VImage::new_from_file(
-            texture_properties.file_location.string().c_str(),
-            vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));
-
-        image_data.set("format", VIPS_FORMAT_UCHAR);
-        image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
-
-        image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
+       loadImage();
     }
 
     initTexture2D();
@@ -90,22 +83,14 @@ redhand::texture2D::texture2D(std::string file_location, std::string texture_nam
     }
 
     if (texture_properties.keep_image_data) {
-        image_data = vips::VImage::new_from_file(
-            texture_properties.file_location.string().c_str(),
-            vips::VImage::option()->set("access", VIPS_ACCESS_SEQUENTIAL));
-
-        image_data.set("format", VIPS_FORMAT_UCHAR);
-        image_data = image_data.colourspace(VIPS_INTERPRETATION_sRGB);
-
-        image_data = image_data.flip(VIPS_DIRECTION_VERTICAL);
+        loadImage();
     }
 
     initTexture2D();
 }
 
 redhand::texture2D::~texture2D() {
-    //image_data.release();
-    //image_data = nullptr;
+    freeImage();
 }
 
 bool redhand::texture2D::hasErrord() {

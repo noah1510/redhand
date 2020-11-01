@@ -17,11 +17,7 @@ deps = [
     dependency('glfw3', required : true, fallback : ['glfw3', 'glfw_dep']),
     dependency('gl', required : true),
     dependency('glm', required : true, fallback : ['glm','glm_dep']),
-    dependency('vips', required : true),
-    dependency('vips-cpp', required : true),
-    dependency('glib-2.0', required : true, fallback : ['glib','libglib_dep']),
-    dependency('gobject-2.0', required : true, fallback : ['glib','libgobject_dep']),
-    dependency('gio-2.0', required : true, fallback : ['glib','libgio_dep']),
+    dependency('stb', required : true, fallback : ['stb', 'stb_dep']),
     dependency('openal', required : true),
     py.dependency(),
     cc.find_library('dl', required : false),
@@ -93,3 +89,6 @@ install_subdir('include/redhand', install_dir : 'include')
 
 pkg = import('pkgconfig')
 pkg.generate(redhand)
+
+meson.override_dependency('redhand', redhand_dep)
+meson.override_dependency('libredhand', redhand_dep)
