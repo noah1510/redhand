@@ -87,8 +87,24 @@ then
 elif [ "$OSTYPE" == "msys" ]
 then
     pacman -S --noconfirm pactoys git mingw-w64-x86_64-python-pip
-    pacboy -S --noconfirm cmake:x pkg-config:x clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x openal:x meson:x
-    pip install meson glad
+    if [ $? -eq 0 ]
+    then
+        echo "Successfully installed dependencies"
+        pacboy -S --noconfirm cmake:x pkg-config:x clang:x opencv:x doxygen:x glfw:x glm:x graphviz:x openal:x meson:x
+    else
+        echo "Could not install dependencies trying choco" >&2
+        
+        choco install pip llvm --yes --verbose --no-progress
+        if [ $? -eq 0 ]
+        then
+            echo "Successfully installed dependencies"
+        else
+            echo "Could not install dependencies" >&2
+            exit 2
+        fi
+    fi
+    
+    pip install meson ninja glad
 else
     # Unknown os
     echo "running on something else."

@@ -10,7 +10,22 @@ license : 'LGPL-v3'
 cc = meson.get_compiler('cpp')
 
 pymod = import('python')
-py = pymod.find_installation('python3', required: true, modules: ['glad'])
+py = pymod.find_installation('python3', required: false, modules: ['glad'])
+if not py.dependency().found()
+    pip = pymod.find_installation('python3', required: true, modules: ['pip'])
+    r = run_command(py.path(), '-m', 'pip', 'install', 'glad')
+    if r.returncode() != 0
+        error('error while installing glad')
+    endif
+    
+    ninja = find_program('ninja')
+    if not ninja.found()
+        run_command(py.path(), '-m', 'pip', 'install', 'ninja')
+    endif
+    
+    py = pymod.find_installation('python3', required: true, modules: ['glad'])
+endif
+        
 
 deps = [
     dependency('threads', required : true),
