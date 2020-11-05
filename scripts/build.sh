@@ -146,7 +146,7 @@ then
     echo "script running on windows"
 
     CP_FLAGE="-r"
-    LIBRARY="libredhand-0.dll"
+    LIBRARY="libredhand.dll"
 
 elif [ "$OSTYPE" == "msys" ]
 then
@@ -154,6 +154,11 @@ then
 
     CP_FLAGS="-r"
     LIBRARY="libredhand.dll"
+    
+    if [ ! command -v ninja &> /dev/null ]
+    then
+        choco install ninja
+    fi
 
 else
     # Unknown os
@@ -180,7 +185,7 @@ else
     meson setup build
   fi
 
-  ninja -C build
+  meson compile -C build
   if [ $? -eq 0 ]
   then
     echo "Successfully compiled $PROJECTNAME"
@@ -196,7 +201,7 @@ else
       exit 4
     fi
 
-    ninja -C build
+    meson compile -C build
     if [ $? -eq 0 ]
     then
       echo "Successfully built redhand"
