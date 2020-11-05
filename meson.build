@@ -8,6 +8,8 @@ license : 'LGPL-v3'
 )
 
 cc = meson.get_compiler('cpp')
+ssmod = import('sourceset')
+ss = ssmod.source_set()
 
 pymod = import('python')
 py = pymod.find_installation('python3', required: false, modules: ['glad'])
@@ -33,9 +35,12 @@ deps = [
     dependency('gl', required : true),
     dependency('glm', required : true, fallback : ['glm','glm_dep']),
     dependency('stb', required : true, fallback : ['stb', 'stb_dep']),
-    dependency('openal', required : true),
     py.dependency(),
     cc.find_library('dl', required : false),
+]
+
+audio_deps = [
+    dependency('openal', required : false),
 ]
 
 glad_args = [
@@ -60,32 +65,37 @@ run_command('mv', '-f', 'include/KHR', 'include/redhand/KHR')
 
 incdir = include_directories('include', 'include/redhand')
 
-sources = [
-    'src/actor.cpp', 
-    'src/complex_world.cpp', 
-    'src/engine.cpp', 
-    'src/game_object.cpp', 
-    'src/glad.c', 
-    'src/helper.cpp', 
-    'src/input.cpp', 
-    'src/shader.cpp', 
-    'src/texture.cpp', 
-    'src/types.cpp'
-]
+ss.add(
+    when: deps,
+    if_true: files([
+        'src/actor.cpp', 
+        'src/complex_world.cpp', 
+        'src/engine.cpp', 
+        'src/game_object.cpp', 
+        'src/glad.c', 
+        'src/helper.cpp', 
+        'src/input.cpp', 
+        'src/shader.cpp', 
+        'src/texture.cpp', 
+        'src/types.cpp'
+    ])
+)
+
+#ss.add(when: audio_deps, if_true: files('src/audio.cpp'))
 
 redhand = library(
     'redhand', 
-    sources, 
+    ss.all_sources(), 
     version : meson.project_version(), 
     soversion : '0',
     include_directories : incdir,
-    dependencies: deps
+    dependencies: ss.all_dependencies()
 )
 
 redhand_dep = declare_dependency(
     include_directories : include_directories('include'),
     link_with : redhand,
-    dependencies : deps,
+    dependencies : ss.all_dependencies(),
     version: meson.project_version()
 )
 
