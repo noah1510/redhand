@@ -19,10 +19,6 @@ jobs:
       run:  bash scripts/dependencies.sh --ci
     - name: build library
       run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
-    - name: get testgame
-      run: cd .. && git clone https://github.com/noah1510/redhand-testgame.git
-    - name: build testgame
-      run:  cd ../redhand-testgame && bash scripts/build.sh -j 2
     - uses: actions/upload-artifact@v1
       if: failure()
       with:
@@ -45,10 +41,6 @@ jobs:
       run:  bash scripts/dependencies.sh --ci
     - name: build library
       run:  bash scripts/build.sh --ci -j 2 -o $GITHUB_SHA
-    - name: get testgame
-      run: cd .. && git clone https://github.com/noah1510/redhand-testgame.git
-    - name: build testgame
-      run:  cd ../redhand-testgame && bash scripts/build.sh -j 2
     - uses: actions/upload-artifact@v1
       if: failure()
       with:

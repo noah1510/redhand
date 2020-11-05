@@ -12,9 +12,16 @@ ssmod = import('sourceset')
 ss = ssmod.source_set()
 
 pymod = import('python')
-py = pymod.find_installation('python', required: false, modules: ['glad'])
-if not py.dependency().found()
-    pip = pymod.find_installation('python', required: true, modules: ['pip'])
+
+python_string = 'python3'
+if build_machine.system() == 'windows'
+    python_string = 'python'
+endif
+
+py = pymod.find_installation(python_string, required: false, modules: ['glad'])
+pydep = py.dependency()
+if not pydep.found()
+    pip = pymod.find_installation(python_string, required: true, modules: ['pip'])
     r = run_command(py.path(), '-m', 'pip', 'install', 'glad')
     if r.returncode() != 0
         error('error while installing glad')
@@ -25,9 +32,9 @@ if not py.dependency().found()
         run_command(py.path(), '-m', 'pip', 'install', 'ninja')
     endif
     
-    py = pymod.find_installation('python', required: true, modules: ['glad'])
+    py = pymod.find_installation(python_string, required: true, modules: ['glad'])
+    pydep = py.dependency()
 endif
-        
 
 deps = [
     dependency('threads', required : true),
@@ -35,7 +42,7 @@ deps = [
     dependency('gl', required : true),
     dependency('glm', required : true, fallback : ['glm','glm_dep']),
     dependency('stb', required : true, fallback : ['stb', 'stb_dep']),
-    py.dependency(),
+    pydep,
     cc.find_library('dl', required : false),
 ]
 
@@ -106,7 +113,8 @@ if get_option('build-testgame')
         'redhand-testgame', 
         testgame_proj.get_variable('testgame_sources'),
         include_directories : testgame_proj.get_variable('testgame_incdir'),
-        dependencies: redhand_dep
+        dependencies: redhand_dep,
+        link_with: redhand,
     )
 endif
 

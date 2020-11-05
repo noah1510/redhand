@@ -182,7 +182,7 @@ else
   #build actual project
   if [ ! -d "build" ]; then
     echo "configuring meson"
-    meson setup build
+    meson setup -Dbuild-testgame=true build
   fi
 
   minja -C build
@@ -192,7 +192,7 @@ else
   else
     echo "Could not compile $PROJECTNAME. Trying to reconfigure" >&2
 
-    meson setup build --reconfigure
+    meson setup -Dbuild-testgame=true build --reconfigure
     if [ $? -eq 0 ]
     then
       echo "Successfully setup build"
