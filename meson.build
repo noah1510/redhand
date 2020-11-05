@@ -12,9 +12,9 @@ ssmod = import('sourceset')
 ss = ssmod.source_set()
 
 pymod = import('python')
-py = pymod.find_installation('python3', required: false, modules: ['glad'])
+py = pymod.find_installation('python', required: false, modules: ['glad'])
 if not py.dependency().found()
-    pip = pymod.find_installation('python3', required: true, modules: ['pip'])
+    pip = pymod.find_installation('python', required: true, modules: ['pip'])
     r = run_command(py.path(), '-m', 'pip', 'install', 'glad')
     if r.returncode() != 0
         error('error while installing glad')
@@ -25,7 +25,7 @@ if not py.dependency().found()
         run_command(py.path(), '-m', 'pip', 'install', 'ninja')
     endif
     
-    py = pymod.find_installation('python3', required: true, modules: ['glad'])
+    py = pymod.find_installation('python', required: true, modules: ['glad'])
 endif
         
 
