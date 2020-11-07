@@ -116,12 +116,11 @@ endif
 
 if get_option('build-testgame')
     testgame_proj = subproject('redhand-testgame')
-    testgame_dep = dependency('redhand', required: true)
     
     executable(
         'redhand-testgame', 
         testgame_proj.get_variable('testgame_sources'),
         include_directories : testgame_proj.get_variable('testgame_incdir'),
-        dependencies: testgame_dep,
+        dependencies: redhand_dep,
     )
 endif
