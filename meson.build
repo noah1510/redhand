@@ -104,18 +104,6 @@ redhand_dep = declare_dependency(
     version: meson.project_version()
 )
 
-if get_option('build-testgame')
-    testgame_proj = subproject('redhand-testgame')
-    
-    executable(
-        'redhand-testgame', 
-        testgame_proj.get_variable('testgame_sources'),
-        include_directories : testgame_proj.get_variable('testgame_incdir'),
-        dependencies: redhand_dep,
-        link_with: redhand,
-    )
-endif
-
 install_subdir('include/redhand', install_dir : 'include')
 
 pkg = import('pkgconfig')
@@ -124,4 +112,16 @@ pkg.generate(redhand)
 if meson.version().version_compare('>=0.54.0')
     meson.override_dependency('redhand', redhand_dep)
     meson.override_dependency('libredhand', redhand_dep)
+endif
+
+if get_option('build-testgame')
+    testgame_proj = subproject('redhand-testgame')
+    testgame_dep = dependency('redhand', required: true)
+    
+    executable(
+        'redhand-testgame', 
+        testgame_proj.get_variable('testgame_sources'),
+        include_directories : testgame_proj.get_variable('testgame_incdir'),
+        dependencies: testgame_dep,
+    )
 endif
