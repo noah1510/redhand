@@ -19,21 +19,19 @@ if build_machine.system() == 'windows'
 endif
 
 py = pymod.find_installation(python_string, required: false, modules: ['glad'])
-pydep = py.dependency()
-if not pydep.found()
+if not py.found()
     pip = pymod.find_installation(python_string, required: true, modules: ['pip'])
-    r = run_command(py.path(), '-m', 'pip', 'install', 'glad')
+    r = run_command(pip.path(), '-m', 'pip', 'install', '--user', 'glad')
     if r.returncode() != 0
         error('error while installing glad')
     endif
     
     ninja = find_program('ninja')
     if not ninja.found()
-        run_command(py.path(), '-m', 'pip', 'install', 'ninja')
+        run_command(pip.path(), '-m', 'pip', 'install', '--user', 'ninja')
     endif
     
     py = pymod.find_installation(python_string, required: true, modules: ['glad'])
-    pydep = py.dependency()
 endif
 
 deps = [
@@ -42,7 +40,7 @@ deps = [
     dependency('gl', required : true),
     dependency('glm', required : true, fallback : ['glm','glm_dep']),
     dependency('stb', required : true, fallback : ['stb', 'stb_dep']),
-    pydep,
+    py.dependency(),
     cc.find_library('dl', required : false),
 ]
 
