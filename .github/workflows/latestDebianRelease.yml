@@ -59,15 +59,15 @@ jobs:
     - name: install glad
       run: pip install glad
     - uses: BSFishy/meson-build@v1.0.2
-        name: build llvm/clang
-        env:
-          CXX: clang++
-          CC: clang
-        with:
-          action: test
-          directory: build
-          options: --verbose
-          meson-version: 0.56.1
+      name: build llvm/clang
+      env:
+        CXX: clang++
+        CC: clang
+      with:
+        action: test
+        directory: build
+        options: --verbose
+        meson-version: 0.56.1
     - name: compress header files
       shell: powershell
       run: 7z a -r deploy/headers.zip include/redhand/**
