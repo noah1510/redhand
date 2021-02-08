@@ -81,7 +81,7 @@ jobs:
         mkdir upstream/include/redhand
         mkdir upstream/doc
         mkdir upstream/doc/markdown
-        cp -r src/ 
+        cp -r src/ upstream/
         cp meson.build upstream/
         cp README.md upstream/
         cp Doxyfile upstream/
