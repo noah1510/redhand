@@ -1,5 +1,5 @@
 [wrap-git]
-url = https://github.com/henry4k/glfw-meson.git
+url = https://github.com/rib/glfw
 revision = head
 
 [provides]
