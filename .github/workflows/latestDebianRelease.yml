@@ -80,7 +80,16 @@ jobs:
         mkdir upstream/include/redhand
         mkdir upstream/doc
         mkdir upstream/doc/markdown
-        cp -r src/ meson.build README.md Doxyfile meson_options.txt LICENSE subprojects/* scripts/ debian/ upstream && cp -r include/redhand upstream/include
+        cp -r src/ 
+        cp meson.build upstream/
+        cp README.md upstream/
+        cp Doxyfile upstream/
+        cp meson_options.txt upstream/
+        cp LICENSE upstream/
+        cp -r subprojects/* upstream/
+        cp -r scripts/ upstream/
+        cp -r debian/ upstream/
+        cp -r include/redhand upstream/include
         cp -r doc/markdown upstream/doc
     - name: Download a single artifact
       uses: actions/download-artifact@v2
