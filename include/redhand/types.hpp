@@ -222,6 +222,19 @@ namespace redhand {
         ///If flase image_data will always be a nullptr.
         ///This allows for much less memory usage but before transforming the texture the image has to be copied from the gpu to the ram costing some time.
         bool keep_image_data = true;
+        
+        ///create and return an empy image_properties object
+        static image_properties emptyProperties(){
+            image_properties conf;
+            return conf;
+        }
+        
+        ///create and return a configuaration from a path
+        static image_properties fromPath(std::filesystem::path location){
+            image_properties conf;
+            conf.file_location = location;
+            return conf;
+        }
 
     };
 
@@ -304,9 +317,9 @@ namespace redhand {
     class engine_config{
       public:
         //The newest version of OpenGL which may be used
-        int OPENGL_VERSION_MAJOR = 3;
+        int OPENGL_VERSION_MAJOR = 4;
         ///The oldest version of OpenGL which may be used
-        int OPENGL_VERSION_MINOR = 3;
+        int OPENGL_VERSION_MINOR = 6;
         ///The profile OpenGL should run in (should be redhand::OPENGL_CORE_PROFILE (0x00032001) )
         int OPENGL_PROFILE = redhand::OPENGL_CORE_PROFILE;
         ///Specifies the desired number of samples to use for multisampling.

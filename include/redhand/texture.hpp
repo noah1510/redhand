@@ -14,7 +14,7 @@
 
 #include "redhand/types.hpp"
 #include <glm/glm.hpp>
-#include <vips/vips8>
+#include <stb_image.h>
 
 #include <iostream>
 #include <string>
@@ -50,6 +50,11 @@ namespace redhand {
         int height;
         ///the mutex for the height
         std::shared_mutex mutex_height;
+        
+        ///the number of channels the image has
+        int nrChannels;
+        ///the mutex for nrChannels
+        std::shared_mutex mutex_channels;
 
         ///the properties of the texture
         image_properties texture_properties;
@@ -61,9 +66,15 @@ namespace redhand {
 
         ///The underlying image data stored in the ram nullptr if none.
         ///This also allows for fast transformation of the texture without touching the shader.
-        vips::VImage image_data;
-
-        //std::unique_ptr<vips::VImage> image_data;
+        unsigned char *image_data = nullptr;
+        ///the mutex for image_data
+        std::shared_mutex mutex_image_data;
+        
+        ///loads the image into ram and sets width hight and channels
+        void loadImage();
+        
+        ///frees teh image_data
+        void freeImage();
 
       public:
         /**
@@ -111,6 +122,13 @@ namespace redhand {
          * This funtion returns the name of the object.
          */
         std::string_view getName();
+        
+        /**
+         * Returns the image_properties that define this texture.
+         * This allows easy copying/moving of the texture because it can just be recreated from the configuration.
+         */
+        image_properties getProperties();
+        
     };
 
 } // namespace redhand

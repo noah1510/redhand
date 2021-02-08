@@ -103,19 +103,37 @@ void redhand::complex_world::draw() {
     }
 }
 
+void redhand::complex_world::updateProjectionMatrix(){
+    projectionMatrix = glm::ortho(-1.0f, cameraZoom * (float)windowWidth / (float)windowHeight, -1.0f, cameraZoom * (float)windowHeight / (float)windowWidth, -10.0f, 10.0f);
+    
+    for (unsigned int i = 0; i < WorldShaders.size(); i++) {
+        WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
+    }
+    defaultShader->setProjectionmatrix(projectionMatrix);
+}
+
+void redhand::complex_world::setCamerZoom ( float zoom_factor ) {
+    if (cameraZoom != zoom_factor){
+        cameraZoom = zoom_factor;
+        updateProjectionMatrix();
+    }
+}
+
+void redhand::complex_world::zoomCamera ( float delta_zoom ) {
+    if(delta_zoom != 1.0f){
+        cameraZoom  /= std::abs(delta_zoom);
+        updateProjectionMatrix();
+    }
+}
+
+
 void redhand::complex_world::setWindowSize(int width, int height) {
 
     if (width != windowWidth || height != windowHeight) {
         windowWidth = width;
         windowHeight = height;
 
-        projectionMatrix = glm::ortho(-1.0f, (float)width / (float)height, -1.0f, (float)height / (float)width, -10.0f, 10.0f);
-
-        for (unsigned int i = 0; i < WorldShaders.size(); i++) {
-            WorldShaders.at(i)->setProjectionmatrix(projectionMatrix);
-        }
-
-        defaultShader->setProjectionmatrix(projectionMatrix);
+        updateProjectionMatrix();
 
         std::scoped_lock<std::shared_mutex> lock(WorldObjectsMutex);
 

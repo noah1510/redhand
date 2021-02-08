@@ -11,14 +11,17 @@
 #include <mutex>
 #include <shared_mutex>
 
-redhand::Actor::Actor() : redhand::Actor(nullptr) {}
+redhand::Actor::Actor() : redhand::Actor(image_properties::emptyProperties()) {}
 
-redhand::Actor::Actor(redhand::texture2D *tex) : redhand::game_object() {
+redhand::Actor::Actor(std::filesystem::path img_location) : redhand::Actor(image_properties::fromPath(img_location)) {}
+
+redhand::Actor::Actor(redhand::image_properties prop) : redhand::game_object() {
     redhand::game_object_properties config;
 
     config.attached_shader = nullptr;
+    
+    image = std::make_shared<redhand::texture2D>(prop);
 
-    image = std::shared_ptr<redhand::texture2D>(std::move(tex));
     config.attached_texture = image;
 
     config.scale = {1.0f, 1.0f};
@@ -50,37 +53,15 @@ redhand::Actor::Actor(redhand::texture2D *tex) : redhand::game_object() {
         {0.0f, 1.0f}, //bottom right
         {0.0f, 0.0f}  //bottom left
     };
+    
+    config.alpha_value = 1.0f;
 
     object_properties = config;
     updateBuffers();
-
-    this->setColorAlpha(1.0f);
-}
-
-void redhand::Actor::setName(std::string name) {
-    std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
-
-    object_properties.name = name;
-}
-
-std::string_view redhand::Actor::getName() {
-    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
-
-    return object_properties.name;
 }
 
 void redhand::Actor::onLoop(game_loop_event evt) {
     this->act(evt);
-}
-
-float redhand::Actor::getX() {
-    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
-    return object_properties.postition.x;
-}
-
-float redhand::Actor::getY() {
-    std::shared_lock<std::shared_mutex> lock(mutex_object_properties);
-    return object_properties.postition.y;
 }
 
 void redhand::Actor::setActorScale(float factor) {
@@ -164,15 +145,6 @@ std::shared_ptr<redhand::texture2D> redhand::Actor::getImage() {
     return image;
 }
 
-float redhand::Actor::getRotation() {
-    std::shared_lock<std::shared_mutex> lock(mutex_game_object);
-    return object_properties.rotation;
-}
-
-glm::vec2 redhand::Actor::getPosition() {
-    return {getX(), getY()};
-}
-
 void redhand::Actor::move(float distance) {
     auto rot = getRotation();
     move({distance * rot * glm::cos(glm::radians(rot)),
@@ -182,16 +154,6 @@ void redhand::Actor::move(float distance) {
 void redhand::Actor::move(std::chrono::nanoseconds deltaT) {
     float distance = movementSpeed * (deltaT / std::chrono::nanoseconds(std::chrono::seconds(1)));
     move(distance);
-}
-
-void redhand::Actor::move(glm::vec2 delta) {
-    mutex_object_properties.lock();
-
-    object_properties.postition += delta;
-
-    mutex_object_properties.unlock();
-
-    updateWorldTransformation();
 }
 
 void redhand::Actor::setSpeed(float speed) {
@@ -206,16 +168,6 @@ void redhand::Actor::turn(float delta) {
 void redhand::Actor::turnTowards(glm::vec2 point) {
     auto line = point - getPosition();
     setRotation(glm::degrees(glm::atan(line.y / line.x)));
-}
-
-void redhand::Actor::setPosition(glm::vec2 location) {
-    mutex_object_properties.lock();
-
-    object_properties.postition = location;
-
-    mutex_object_properties.unlock();
-
-    updateWorldTransformation();
 }
 
 void redhand::Actor::updateBufferData(std::vector<glm::vec2> points, std::vector<std::array<unsigned int, 3>> indicies, std::vector<glm::vec3> colors) {
@@ -233,13 +185,6 @@ void redhand::Actor::updateBufferData(std::vector<glm::vec2> points, std::vector
     updateBuffers();
 }
 
-void redhand::Actor::setColorAlpha(float alpha) {
-    if (alpha >= 0.0f && alpha <= 1.0f) {
-        std::scoped_lock<std::shared_mutex> lock(mutex_object_properties);
-        object_properties.alpha_value = alpha;
-    }
-}
-
 void redhand::Actor::setRotaionAxis(glm::vec3 axis) {
     mutex_object_properties.lock();
 
@@ -248,19 +193,4 @@ void redhand::Actor::setRotaionAxis(glm::vec3 axis) {
     mutex_object_properties.unlock();
 
     updateWorldTransformation();
-}
-
-std::vector<glm::vec2> redhand::Actor::getHitbox(){
-    auto pos = getPosition();
-    auto size = getSize();
-
-    std::vector<glm::vec2> ret = {pos, pos+glm::vec2{size.x,0},pos+size,pos+glm::vec2{0,size.y}};
-
-    std::shared_lock<std::shared_mutex> lock1(mutex_world_transformation);
-
-    for (unsigned int i=0;i<ret.size();i++){
-        ret.at(i) = world_transformation * glm::vec4( ret.at(i),0,0);
-    }
-
-    return ret;
 }

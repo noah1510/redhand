@@ -18,3 +18,15 @@ bool redhand::input_system::impl_isKeyPressed(redhand::keyboard_keys wantedKey) 
     return impl_getKeyAction(wantedKey) == redhand::PRESS;
 }
 
+double redhand::input_system::impl_getScrollX() {
+    auto scroll = scroll_x;
+    scroll_x = 0.0;
+    return scroll;
+}
+
+double redhand::input_system::impl_getScrollY() {
+    auto scroll = scroll_y;
+    scroll_y = 0.0;
+    return scroll;
+}
+

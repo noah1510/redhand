@@ -403,7 +403,8 @@ std::unique_ptr<redhand::game_object> redhand::createRectangle(
     std::shared_ptr<redhand::texture2D> tex,
     redhand::drawing_modes DrawingMode,
     std::string name,
-    float texture_scale) {
+    float texture_scale
+) {
 
     game_object_properties settings;
 

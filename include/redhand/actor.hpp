@@ -81,21 +81,21 @@ namespace redhand {
           * 
           * @param location the new position of the actor
           */
-        void setPosition(glm::vec2 location) override;
+        void setPosition(glm::vec2 location) {game_object::setPosition(location);};
 
         /**
          * @brief Set the Name of the Actor
          * 
-         * @param name THe name the actor should have
+         * @param name THe name the aactor should have
          */
-        void setName(std::string name) override;
+        void setName(std::string name) {game_object::setName(name);};
 
         /**
           * @brief Set the alpha of this objects color
           * 
           * @param alpha value of this objects color
           */
-        void setColorAlpha(float alpha) override;
+        void setColorAlpha(float alpha) {game_object::setColorAlpha(alpha);};
 
         /**
           * @brief This allows you to change tha axis objects rotate around
@@ -112,7 +112,10 @@ namespace redhand {
           */
         void updateBufferData(std::vector<glm::vec2> points, std::vector<std::array<unsigned int, 3>> indicies, std::vector<glm::vec3> colors);
 
+        void updateBuffers(){game_object::updateBuffers();};
+        
       public:
+          
         /**
           * @brief Construct a new Actor object with no image.
           * 
@@ -123,7 +126,13 @@ namespace redhand {
           * @brief Construct a new Actor object with the supplied image.
           * 
           */
-        Actor(redhand::texture2D *);
+        Actor(redhand::image_properties prop);
+        
+        /**
+          * @brief Construct a new Actor object with the supplied image.
+          * 
+          */
+        Actor(std::filesystem::path img_location);
 
         /**
           * @brief The act method is called by the world to give actors a chance to perform some action.
@@ -137,14 +146,14 @@ namespace redhand {
           * 
           * @return float The x position
           */
-        float getX();
+        float getX() {return game_object::getPosition().x;};
 
         /**
           * @brief This returns the y position of the Actor in the world
           * 
           * @return float The y position
           */
-        float getY();
+        float getY() {return game_object::getPosition().y;};
 
         /**
           * @brief Set the Image of the Actor and automatically resizes accordingly
@@ -207,21 +216,21 @@ namespace redhand {
           * 
           * @return float the rotation in degrees
           */
-        float getRotation() override;
+        float getRotation() {return game_object::getRotation();};
 
         /**
           * @brief Get the Position of the Actor
           * 
           * @return glm::vec2 The position in the world
           */
-        glm::vec2 getPosition() override;
+        glm::vec2 getPosition() {return game_object::getPosition();};
 
         /**
          * @brief Get the Name of the Actor
          * 
          * @return std::string the name of the actor
          */
-        std::string_view getName();
+        std::string_view getName() {return game_object::getName();};
 
         //bool isAtEdge() override;
 
@@ -245,7 +254,7 @@ namespace redhand {
           * 
           * @param delta the units the actor should move
           */
-        void move(glm::vec2 delta) override;
+        void move(glm::vec2 delta) {game_object::move(delta);};
 
         /**
           * @brief Set the movement Speed of the Actor in units per seconds
@@ -273,6 +282,6 @@ namespace redhand {
          * 
          * @return std::vector<glm::vec2> the hitbox of the game_object.
          */
-        virtual std::vector<glm::vec2> getHitbox() override;
+        virtual std::vector<glm::vec2> getHitbox() {return game_object::getHitbox();};
     };
 } // namespace redhand

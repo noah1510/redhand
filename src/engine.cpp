@@ -27,9 +27,6 @@ redhand::engine::~engine() {
 
     //close the window + clean up
     glfwTerminate();
-
-    //terminate vips
-    vips_shutdown();
 }
 
 redhand::engine& redhand::engine::getReference(){
@@ -70,6 +67,8 @@ void redhand::engine::init() {
 
     //register callback function for viewport
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    
+    glfwSetScrollCallback(window, engine::scroll_callback);
 
     //register engine to input system
     helper::getInstance().registerEngine(this);

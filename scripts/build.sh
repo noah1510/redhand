@@ -146,7 +146,7 @@ then
     echo "script running on windows"
 
     CP_FLAGE="-r"
-    LIBRARY="libredhand-0.dll"
+    LIBRARY="libredhand.dll"
 
 elif [ "$OSTYPE" == "msys" ]
 then
@@ -154,6 +154,11 @@ then
 
     CP_FLAGS="-r"
     LIBRARY="libredhand.dll"
+    
+    if [ ! command -v ninja &> /dev/null ]
+    then
+        choco install ninja
+    fi
 
 else
     # Unknown os
@@ -177,17 +182,17 @@ else
   #build actual project
   if [ ! -d "build" ]; then
     echo "configuring meson"
-    meson setup build
+    meson setup -Dbuild-testgame=true build
   fi
 
-  ninja -C build
+  minja -C build
   if [ $? -eq 0 ]
   then
     echo "Successfully compiled $PROJECTNAME"
   else
     echo "Could not compile $PROJECTNAME. Trying to reconfigure" >&2
 
-    meson setup build --reconfigure
+    meson setup -Dbuild-testgame=true build --reconfigure
     if [ $? -eq 0 ]
     then
       echo "Successfully setup build"

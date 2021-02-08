@@ -8,8 +8,6 @@
  * @copyright Copyright (c) 2020
  * @license This file is licensed under the LGPL v3 license.
  */
-#include <vips/vips8>
-
 #include "redhand/complex_world.hpp"
 #include "redhand/engine.hpp"
 #include "redhand/game_object.hpp"

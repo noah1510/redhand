@@ -1,0 +1,7 @@
+[wrap-git]
+url = https://github.com/noah1510/stb-meson.git
+revision = main
+
+[provides]
+dependency_names = stb
+stb=stb_dep
