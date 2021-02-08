@@ -69,8 +69,12 @@
               <span class="m-doc-wrap-bumper"><a href="#aadb68ddbbf248c6c6a41859e2061cfba" class="m-doc-self">Actor</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd>Construct a new <a href="classredhand_1_1_actor.html" class="m-doc">Actor</a> object with no image.</dd>
-            <dt id="a2071380b195d017bba04fdaabc5e237f">
-              <span class="m-doc-wrap-bumper"><a href="#a2071380b195d017bba04fdaabc5e237f" class="m-doc-self">Actor</a>(</span><span class="m-doc-wrap"><a href="classredhand_1_1texture2_d.html" class="m-doc">redhand::<wbr />texture2D</a>*)</span>
+            <dt id="a0764b6299b7fbbf535962fc59732d71e">
+              <span class="m-doc-wrap-bumper"><a href="#a0764b6299b7fbbf535962fc59732d71e" class="m-doc-self">Actor</a>(</span><span class="m-doc-wrap"><a href="classredhand_1_1image__properties.html" class="m-doc">redhand::<wbr />image_properties</a> prop)</span>
+            </dt>
+            <dd>Construct a new <a href="classredhand_1_1_actor.html" class="m-doc">Actor</a> object with the supplied image.</dd>
+            <dt id="ae2f87e074ca6b732c5f5e00f917ead3d">
+              <span class="m-doc-wrap-bumper"><a href="#ae2f87e074ca6b732c5f5e00f917ead3d" class="m-doc-self">Actor</a>(</span><span class="m-doc-wrap">std::filesystem::path img_location)</span>
             </dt>
             <dd>Construct a new <a href="classredhand_1_1_actor.html" class="m-doc">Actor</a> object with the supplied image.</dd>
           </dl>
@@ -123,11 +127,11 @@
             </dt>
             <dd>Get the Image attached to the actor.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#abb7baad6eef0a1f5c5b1c49ba4024d8a" class="m-doc">getRotation</a>(</span><span class="m-doc-wrap">) -&gt; float <span class="m-label m-flat m-warning">override</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5729f0633b90899f01b35f4b828d8a4c" class="m-doc">getRotation</a>(</span><span class="m-doc-wrap">) -&gt; float <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Get the Rotation of the actor in degrees.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a014deb7a4cb9babaa3b95af83f3ae1c2" class="m-doc">getPosition</a>(</span><span class="m-doc-wrap">) -&gt; glm::vec2 <span class="m-label m-flat m-warning">override</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a022ee44490e105d8006fe12abcc2c476" class="m-doc">getPosition</a>(</span><span class="m-doc-wrap">) -&gt; glm::vec2 <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Get the Position of the <a href="classredhand_1_1_actor.html" class="m-doc">Actor</a>.</dd>
             <dt>
@@ -143,7 +147,7 @@
             </dt>
             <dd>move the actor using the specified speed.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">void <a href="#a96081ce6cbbf0c731e44a1e120d290ab" class="m-doc">move</a>(</span><span class="m-doc-wrap">glm::vec2 delta) <span class="m-label m-flat m-warning">override</span></span>
+              <span class="m-doc-wrap-bumper">void <a href="#a8499ca50511737962658c0193a602311" class="m-doc">move</a>(</span><span class="m-doc-wrap">glm::vec2 delta) <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>move the actor by a given amount of units</dd>
             <dt>
@@ -159,7 +163,7 @@
             </dt>
             <dd>Specify a point the actor should turn towards.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a9cf5b7da71c24c2f26cb40d341617be2" class="m-doc">getHitbox</a>(</span><span class="m-doc-wrap">) -&gt; std::vector&lt;glm::vec2&gt; <span class="m-label m-flat m-warning">override</span></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa338b98da165874aae896429094fd8bb" class="m-doc">getHitbox</a>(</span><span class="m-doc-wrap">) -&gt; std::vector&lt;glm::vec2&gt; <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Get the Hitbox of the <a href="classredhand_1_1game__object.html" class="m-doc">game_<wbr />object</a>.</dd>
           </dl>
@@ -168,15 +172,15 @@
           <h2><a href="#pro-methods">Protected functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">void <a href="#ae6f676c831be48a56269fac5641756f5" class="m-doc">setPosition</a>(</span><span class="m-doc-wrap">glm::vec2 location) <span class="m-label m-flat m-warning">override</span></span>
+              <span class="m-doc-wrap-bumper">void <a href="#aa9e7349c0f5ecb9fece321f155ac0991" class="m-doc">setPosition</a>(</span><span class="m-doc-wrap">glm::vec2 location) <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Set the Position of the actor to the given point.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">void <a href="#aa2c8950017de33965f6315c80d3c2a4f" class="m-doc">setName</a>(</span><span class="m-doc-wrap">std::string name) <span class="m-label m-flat m-warning">override</span></span>
+              <span class="m-doc-wrap-bumper">void <a href="#a9e26e75276ce8f402771e209e5c7eb33" class="m-doc">setName</a>(</span><span class="m-doc-wrap">std::string name) <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Set the Name of the <a href="classredhand_1_1_actor.html" class="m-doc">Actor</a>.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">void <a href="#aa154d7c24c71174237c454683d60f1b5" class="m-doc">setColorAlpha</a>(</span><span class="m-doc-wrap">float alpha) <span class="m-label m-flat m-warning">override</span></span>
+              <span class="m-doc-wrap-bumper">void <a href="#a24c197474888d825dcce4632e4c62fcc" class="m-doc">setColorAlpha</a>(</span><span class="m-doc-wrap">float alpha) <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Set the alpha of this objects color.</dd>
             <dt id="a5742f88bdd77e90fb2cd5b91d8158e52">
@@ -374,9 +378,9 @@
               </tfoot>
             </table>
           </div></section>
-          <section class="m-doc-details" id="abb7baad6eef0a1f5c5b1c49ba4024d8a"><div>
+          <section class="m-doc-details" id="a5729f0633b90899f01b35f4b828d8a4c"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">float redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abb7baad6eef0a1f5c5b1c49ba4024d8a" class="m-doc-self">getRotation</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">override</span></span></span>
+              <span class="m-doc-wrap-bumper">float redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5729f0633b90899f01b35f4b828d8a4c" class="m-doc-self">getRotation</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
             </h3>
             <p>Get the Rotation of the actor in degrees.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -388,9 +392,9 @@
               </tfoot>
             </table>
           </div></section>
-          <section class="m-doc-details" id="a014deb7a4cb9babaa3b95af83f3ae1c2"><div>
+          <section class="m-doc-details" id="a022ee44490e105d8006fe12abcc2c476"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">glm::vec2 redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a014deb7a4cb9babaa3b95af83f3ae1c2" class="m-doc-self">getPosition</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">override</span></span></span>
+              <span class="m-doc-wrap-bumper">glm::vec2 redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a022ee44490e105d8006fe12abcc2c476" class="m-doc-self">getPosition</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
             </h3>
             <p>Get the Position of the <a href="classredhand_1_1_actor.html" class="m-doc">Actor</a>.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -451,9 +455,9 @@
             </table>
 <p>This function is supposed to be called in the act function by supplying evt.getFrameTime() as parameter to this function.</p>
           </div></section>
-          <section class="m-doc-details" id="a96081ce6cbbf0c731e44a1e120d290ab"><div>
+          <section class="m-doc-details" id="a8499ca50511737962658c0193a602311"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">void redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a96081ce6cbbf0c731e44a1e120d290ab" class="m-doc-self">move</a>(</span><span class="m-doc-wrap">glm::vec2 delta) <span class="m-label m-warning">override</span></span></span>
+              <span class="m-doc-wrap-bumper">void redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8499ca50511737962658c0193a602311" class="m-doc-self">move</a>(</span><span class="m-doc-wrap">glm::vec2 delta) <span class="m-label m-warning">virtual</span></span></span>
             </h3>
             <p>move the actor by a given amount of units</p>
             <table class="m-table m-fullwidth m-flat">
@@ -519,9 +523,9 @@
               </tbody>
             </table>
           </div></section>
-          <section class="m-doc-details" id="a9cf5b7da71c24c2f26cb40d341617be2"><div>
+          <section class="m-doc-details" id="aa338b98da165874aae896429094fd8bb"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">std::vector&lt;glm::vec2&gt; redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9cf5b7da71c24c2f26cb40d341617be2" class="m-doc-self">getHitbox</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">override</span></span></span>
+              <span class="m-doc-wrap-bumper">std::vector&lt;glm::vec2&gt; redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa338b98da165874aae896429094fd8bb" class="m-doc-self">getHitbox</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
             </h3>
             <p>Get the Hitbox of the <a href="classredhand_1_1game__object.html" class="m-doc">game_<wbr />object</a>.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -533,9 +537,9 @@
               </tfoot>
             </table>
           </div></section>
-          <section class="m-doc-details" id="ae6f676c831be48a56269fac5641756f5"><div>
+          <section class="m-doc-details" id="aa9e7349c0f5ecb9fece321f155ac0991"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">void redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae6f676c831be48a56269fac5641756f5" class="m-doc-self">setPosition</a>(</span><span class="m-doc-wrap">glm::vec2 location) <span class="m-label m-warning">override</span> <span class="m-label m-warning">protected</span></span></span>
+              <span class="m-doc-wrap-bumper">void redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa9e7349c0f5ecb9fece321f155ac0991" class="m-doc-self">setPosition</a>(</span><span class="m-doc-wrap">glm::vec2 location) <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
             </h3>
             <p>Set the Position of the actor to the given point.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -550,9 +554,9 @@
               </tbody>
             </table>
           </div></section>
-          <section class="m-doc-details" id="aa2c8950017de33965f6315c80d3c2a4f"><div>
+          <section class="m-doc-details" id="a9e26e75276ce8f402771e209e5c7eb33"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">void redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa2c8950017de33965f6315c80d3c2a4f" class="m-doc-self">setName</a>(</span><span class="m-doc-wrap">std::string name) <span class="m-label m-warning">override</span> <span class="m-label m-warning">protected</span></span></span>
+              <span class="m-doc-wrap-bumper">void redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e26e75276ce8f402771e209e5c7eb33" class="m-doc-self">setName</a>(</span><span class="m-doc-wrap">std::string name) <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
             </h3>
             <p>Set the Name of the <a href="classredhand_1_1_actor.html" class="m-doc">Actor</a>.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -562,14 +566,14 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">name</td>
-                  <td>THe name the actor should have</td>
+                  <td>THe name the aactor should have</td>
                 </tr>
               </tbody>
             </table>
           </div></section>
-          <section class="m-doc-details" id="aa154d7c24c71174237c454683d60f1b5"><div>
+          <section class="m-doc-details" id="a24c197474888d825dcce4632e4c62fcc"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">void redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa154d7c24c71174237c454683d60f1b5" class="m-doc-self">setColorAlpha</a>(</span><span class="m-doc-wrap">float alpha) <span class="m-label m-warning">override</span> <span class="m-label m-warning">protected</span></span></span>
+              <span class="m-doc-wrap-bumper">void redhand::<wbr />Actor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a24c197474888d825dcce4632e4c62fcc" class="m-doc-self">setColorAlpha</a>(</span><span class="m-doc-wrap">float alpha) <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
             </h3>
             <p>Set the alpha of this objects color.</p>
             <table class="m-table m-fullwidth m-flat">
