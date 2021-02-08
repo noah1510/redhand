@@ -74,6 +74,7 @@ jobs:
       shell: powershell
       run: 7z a -r deploy/headers.zip include/redhand/**
     - name: create source folder and copy files
+      shell: bash
       run: |
         mkdir upstream 
         mkdir upstream/include
