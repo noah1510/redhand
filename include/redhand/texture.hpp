@@ -122,6 +122,13 @@ namespace redhand {
          * This funtion returns the name of the object.
          */
         std::string_view getName();
+        
+        /**
+         * Returns the image_properties that define this texture.
+         * This allows easy copying/moving of the texture because it can just be recreated from the configuration.
+         */
+        image_properties getProperties();
+        
     };
 
 } // namespace redhand

@@ -91,6 +91,9 @@ redhand::texture2D::texture2D(std::string file_location, std::string texture_nam
 
 redhand::texture2D::~texture2D() {
     freeImage();
+    if(id != 0){
+        glDeleteTextures(1,&id);
+    }
 }
 
 bool redhand::texture2D::hasErrord() {
@@ -105,7 +108,9 @@ unsigned int redhand::texture2D::getID() {
 
 void redhand::texture2D::bind(int unit) {
     auto lock = std::shared_lock(mutex_id);
-    unit %= 16;
+    int max_units = 0;
+    glGetIntegerv(GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS,&max_units);
+    unit %= max_units;
     glActiveTexture(GL_TEXTURE0 + unit);
     glBindTexture(GL_TEXTURE_2D, id);
 }
@@ -123,4 +128,9 @@ int redhand::texture2D::getHeight() {
 std::string_view redhand::texture2D::getName() {
     auto lock = std::shared_lock(mutex_texture_properties);
     return texture_properties.name;
+}
+
+image_properties redhand::texture2D::getProperties(){
+    auto lock = std::shared_lock(mutex_texture_properties);
+    return texture_properties;
 }
