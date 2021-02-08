@@ -58,11 +58,13 @@ jobs:
         directory: ${{ runner.temp }}/llvm
     - name: install glad
       run: pip install glad
+    - name: install glfw
+      run: choco install glfw3
     - uses: BSFishy/meson-build@v1.0.2
-      name: build llvm/clang
-      env:
-        CXX: clang++
-        CC: clang
+      name: build default
+      #env:
+      #  CXX: clang++
+      #  CC: clang
       with:
         action: test
         directory: build
