@@ -67,6 +67,8 @@ void redhand::engine::init() {
 
     //register callback function for viewport
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    
+    glfwSetScrollCallback(window, engine::scroll_callback);
 
     //register engine to input system
     helper::getInstance().registerEngine(this);

@@ -65,9 +65,15 @@ namespace redhand {
 
         /// This variable holds the current projection matrix
         glm::mat4 projectionMatrix;
+        
+        ///The zoom factor of the camera
+        float cameraZoom = 1.0;
 
         /// A default shader to guarantee that a shader always exists
         std::shared_ptr<redhand::shader> defaultShader;
+        
+        ///updates the projection matrix with the current window size and zoom factor
+        void updateProjectionMatrix();
 
       public:
         /**
@@ -180,6 +186,11 @@ namespace redhand {
         * @param delta_pos_y The amount the camera should move along the y-Axis
         */
         virtual void moveCamera(float delta_pos_x, float delta_pos_y);
+        
+        ///This factor will be multiplied with the current zoom factor so the value will be made positive
+        virtual void zoomCamera(float delta_zoom);
+        
+        virtual void setCamerZoom(float zoom_factor);
 
         /**
         * This functions sets the window size to construct the projection matrix.

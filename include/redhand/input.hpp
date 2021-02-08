@@ -28,6 +28,8 @@ namespace redhand {
      */
     class input_system {
       private:
+        friend class redhand::engine;
+        
         /**
          * @brief Construct a new input system object
          * @warning this must not be called by anything except getInstatnce()
@@ -59,6 +61,17 @@ namespace redhand {
          * @return false the key is not pressed
          */
         bool impl_isKeyPressed(keyboard_keys wantedKey);
+        
+        double scroll_x = 0.0;
+        double scroll_y = 0.0;
+        
+        static void registerScrollingEvent(double xoffset, double yoffset){
+            getInstance().scroll_x += xoffset;
+            getInstance().scroll_y += yoffset;
+        }
+        
+        double impl_getScrollX();
+        double impl_getScrollY();
 
         /**
          * @brief This function returns an instance of the input_system
@@ -92,6 +105,14 @@ namespace redhand {
         static bool isKeyPressed(keyboard_keys wantedKey) {
             return getInstance().impl_isKeyPressed(wantedKey);
         };
+        
+        static double getScrollX(){
+            return getInstance().impl_getScrollX();
+        }
+        
+        static double getScrollY(){
+            return getInstance().impl_getScrollY();
+        }
         
         /**
          * @warning will be removed in 0.2.0

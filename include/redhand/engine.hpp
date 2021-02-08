@@ -12,6 +12,7 @@
 
 #include "redhand/event/events.hpp"
 #include "redhand/types.hpp"
+#include "redhand/input.hpp"
 
 //#include "audio/AudioHandler.hpp"
 
@@ -24,6 +25,9 @@ namespace redhand {
 
     ///This function will be called every time the window size is changed
     void framebuffer_size_callback(GLFWwindow *, int width, int height);
+    
+    
+
 
     /**
     * @brief This class basically handles all the setup need for games to work.
@@ -31,6 +35,10 @@ namespace redhand {
     */
     class engine {
       private:
+        ///This function will be called every time there was a scrolling event
+        static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
+            input_system::registerScrollingEvent(xoffset,yoffset);
+        }
         ///The opengl configuration of the engine
         engine_config configuration;
 
