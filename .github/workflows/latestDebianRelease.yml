@@ -93,7 +93,7 @@ jobs:
         cp -r include/redhand upstream/include
         cp -r doc/markdown upstream/doc
     - name: Download a single artifact
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4.1.7
       with:
         name: source-package
         path: .
